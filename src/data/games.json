@@ -1,0 +1,207 @@
+[
+  {
+    "id": "neon-snake-rush",
+    "name": "Neon Snake Rush",
+    "genre": "Arcade",
+    "category": "arcade",
+    "emoji": "🐍",
+    "difficulty": "Easy",
+    "playStyle": "Swipe survival",
+    "iframeUrl": "/games/neon-snake-rush/index.html",
+    "thumbnail": "/games/neon-snake-rush/thumb.svg",
+    "description": "Swipe through a neon grid, collect glowing orbs, build combo chains and chase a new mobile high score.",
+    "seoTitle": "Play Neon Snake Rush Online Free | Mobile Snake Game",
+    "seoDescription": "Play Neon Snake Rush free online. A mobile-friendly neon snake game with swipe controls, combo chains and high-score chasing.",
+    "baseTrivia": "Built mobile-first with swipe controls, large touch arrows, fast restarts and a clean high-score loop for one-more-go sessions.",
+    "controls": [
+      "Mobile swipe",
+      "Large touch arrows",
+      "Arrow keys / WASD",
+      "Instant restart"
+    ],
+    "engagementHooks": [
+      "Combo chains",
+      "High-score chase",
+      "Fast restart",
+      "Mobile swipe control"
+    ],
+    "translations": {
+      "es": {
+        "name": "Neon Snake Rush",
+        "description": "Desliza por una cuadrícula de neón, recoge orbes brillantes y busca tu mejor puntuación."
+      },
+      "fr": {
+        "name": "Neon Snake Rush",
+        "description": "Glisse sur une grille néon, collecte des orbes lumineux et vise un nouveau record."
+      },
+      "de": {
+        "name": "Neon Snake Rush",
+        "description": "Wische durch ein Neon-Raster, sammle leuchtende Kugeln und jage deinen Highscore."
+      }
+    }
+  },
+  {
+    "id": "stack-tower-rush",
+    "name": "Stack Tower Rush",
+    "genre": "Skill",
+    "category": "skill",
+    "emoji": "▥",
+    "difficulty": "Easy",
+    "playStyle": "One-tap stacker",
+    "iframeUrl": "/games/stack-tower-rush/index.html",
+    "thumbnail": "/games/stack-tower-rush/thumb.svg",
+    "description": "Tap to drop moving blocks, land perfect stacks and build the tallest neon tower before the platform slips away.",
+    "seoTitle": "Play Stack Tower Rush Online Free | One Tap Stacking Game",
+    "seoDescription": "Play Stack Tower Rush free online. A mobile-first one-tap stacking game with perfect placement combos and high-score tower runs.",
+    "baseTrivia": "One-tap controls make this ideal for mobile: every block creates instant pressure, visible progress and a clear reason to retry.",
+    "controls": [
+      "Tap anywhere",
+      "Space / click",
+      "Perfect stack bonus",
+      "Instant restart"
+    ],
+    "engagementHooks": [
+      "One-tap loop",
+      "Perfect streaks",
+      "Visible progress",
+      "Short sessions"
+    ],
+    "translations": {
+      "es": {
+        "name": "Stack Tower Rush",
+        "description": "Toca para soltar bloques, consigue apilados perfectos y construye la torre más alta."
+      },
+      "fr": {
+        "name": "Stack Tower Rush",
+        "description": "Tape pour lâcher les blocs, réussis des placements parfaits et construis la plus haute tour."
+      },
+      "de": {
+        "name": "Stack Tower Rush",
+        "description": "Tippe, um Blöcke fallen zu lassen, perfekte Stapel zu schaffen und den höchsten Turm zu bauen."
+      }
+    }
+  },
+  {
+    "id": "turbo-drift-grid",
+    "name": "Turbo Drift Grid",
+    "genre": "Racing",
+    "category": "racing",
+    "emoji": "🏎️",
+    "difficulty": "Medium",
+    "playStyle": "Hold-to-steer racer",
+    "iframeUrl": "/games/turbo-drift-grid/index.html",
+    "thumbnail": "/games/turbo-drift-grid/thumb.svg",
+    "description": "Hold left or right to drift through a neon traffic grid, collect boosts and avoid blockers at rising speed.",
+    "seoTitle": "Play Turbo Drift Grid Online Free | Mobile Racing Game",
+    "seoDescription": "Play Turbo Drift Grid free online. A mobile-friendly neon racing game with hold-to-steer controls, boosts and obstacle dodging.",
+    "baseTrivia": "The controls are designed for thumbs first: hold either side of the screen to steer through the grid and collect boost rewards.",
+    "controls": [
+      "Hold left/right",
+      "A/D or arrow keys",
+      "Collect boosts",
+      "Avoid blockers"
+    ],
+    "engagementHooks": [
+      "Speed ramp",
+      "Boost pickups",
+      "Distance scoring",
+      "Thumb-friendly controls"
+    ],
+    "translations": {
+      "es": {
+        "name": "Turbo Drift Grid",
+        "description": "Mantén izquierda o derecha para derrapar por una pista de neón y recoger impulsos."
+      },
+      "fr": {
+        "name": "Turbo Drift Grid",
+        "description": "Maintiens gauche ou droite pour drifter sur une grille néon et collecter des boosts."
+      },
+      "de": {
+        "name": "Turbo Drift Grid",
+        "description": "Halte links oder rechts, drifte durch das Neon-Raster und sammle Boosts."
+      }
+    }
+  },
+  {
+    "id": "pixel-goal-hero",
+    "name": "Pixel Goal Hero",
+    "genre": "Sports",
+    "category": "sports",
+    "emoji": "⚽",
+    "difficulty": "Easy",
+    "playStyle": "Drag-and-shoot football",
+    "iframeUrl": "/games/pixel-goal-hero/index.html",
+    "thumbnail": "/games/pixel-goal-hero/thumb.svg",
+    "description": "Drag to aim, release to shoot and beat the moving keeper in a quick-fire mobile penalty challenge.",
+    "seoTitle": "Play Pixel Goal Hero Online Free | Mobile Penalty Game",
+    "seoDescription": "Play Pixel Goal Hero free online. A mobile-friendly football penalty game with drag-to-aim shooting, moving keeper and goal streaks.",
+    "baseTrivia": "Drag-and-release shooting gives mobile players a clear aiming gesture, quick feedback and a streak target on every shot.",
+    "controls": [
+      "Drag to aim",
+      "Release to shoot",
+      "Mouse drag",
+      "Score streaks"
+    ],
+    "engagementHooks": [
+      "Goal streaks",
+      "Quick shots",
+      "Moving keeper",
+      "Mobile drag control"
+    ],
+    "translations": {
+      "es": {
+        "name": "Pixel Goal Hero",
+        "description": "Arrastra para apuntar, suelta para disparar y vence al portero en penaltis rápidos."
+      },
+      "fr": {
+        "name": "Pixel Goal Hero",
+        "description": "Glisse pour viser, relâche pour tirer et bats le gardien dans un défi de penalty."
+      },
+      "de": {
+        "name": "Pixel Goal Hero",
+        "description": "Ziehe zum Zielen, lasse los zum Schuss und besiege den Torwart im Elfmeter-Spiel."
+      }
+    }
+  },
+  {
+    "id": "space-tap-survival",
+    "name": "Space Tap Survival",
+    "genre": "Action",
+    "category": "action",
+    "emoji": "🚀",
+    "difficulty": "Medium",
+    "playStyle": "Hold-to-fly survival",
+    "iframeUrl": "/games/space-tap-survival/index.html",
+    "thumbnail": "/games/space-tap-survival/thumb.svg",
+    "description": "Hold to thrust, release to fall, dodge asteroid swarms and grab shields in a fast mobile space survival run.",
+    "seoTitle": "Play Space Tap Survival Online Free | Mobile Space Game",
+    "seoDescription": "Play Space Tap Survival free online. A mobile-first space survival game with hold-to-fly controls, asteroids, shields and distance scoring.",
+    "baseTrivia": "Hold-to-fly control keeps the game simple for mobile while asteroids, shields and distance scoring create a strong replay loop.",
+    "controls": [
+      "Hold to thrust",
+      "Release to fall",
+      "Space / up key",
+      "Collect shields"
+    ],
+    "engagementHooks": [
+      "Distance chase",
+      "Shield saves",
+      "One-thumb play",
+      "Fast restarts"
+    ],
+    "translations": {
+      "es": {
+        "name": "Space Tap Survival",
+        "description": "Mantén pulsado para subir, suelta para caer, esquiva asteroides y recoge escudos."
+      },
+      "fr": {
+        "name": "Space Tap Survival",
+        "description": "Maintiens pour monter, relâche pour descendre, évite les astéroïdes et récupère des boucliers."
+      },
+      "de": {
+        "name": "Space Tap Survival",
+        "description": "Halte gedrückt zum Steigen, lasse los zum Fallen, weiche Asteroiden aus und sammle Schilde."
+      }
+    }
+  }
+]

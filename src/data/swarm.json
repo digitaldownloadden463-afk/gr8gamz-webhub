@@ -1,0 +1,19 @@
+{
+  "default": {
+    "title": "GR8 GAMZ",
+    "tagline": "Instant Browser Games, Daily Challenges and High-Score Energy",
+    "color": "#35ff8d"
+  },
+  "domains": {
+    "gr8gamz.com": {
+      "title": "GR8 GAMZ",
+      "tagline": "Premium Instant Web Arcade",
+      "color": "#35ff8d"
+    },
+    "chromebookarcade.io": {
+      "title": "Chromebook Arcade",
+      "tagline": "Fast Low-Spec Browser Gaming Hub",
+      "color": "#00ff66"
+    }
+  }
+}
