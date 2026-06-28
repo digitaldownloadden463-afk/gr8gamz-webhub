@@ -7,24 +7,23 @@
     "emoji": "\ud83d\udc0d",
     "difficulty": "Easy",
     "playStyle": "Swipe survival",
-    "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v4-premium-20260628",
+    "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v8-selection-labs-20260628",
     "thumbnail": "/games/neon-snake-rush/thumb.webp?v=thumbs-v1",
-    "description": "Swipe through a cinematic neon arena, collect glowing energy orbs, chain combos and chase a new best score in the upgraded V4 edition.",
-    "seoTitle": "Play Neon Snake Rush V4 Online Free | Premium Mobile Snake Game",
-    "seoDescription": "Play Neon Snake Rush V4 free online. A premium mobile-first neon snake game with swipe controls, combo chains, particle effects and impactful game-over screens.",
+    "description": "Swipe through a cinematic neon arena, choose a snake from the Snake Lab, collect energy orbs, chain combos and chase a new best score.",
+    "seoTitle": "Play Neon Snake Rush V8 Online Free | Snake Lab Arcade Game",
+    "seoDescription": "Play Neon Snake Rush V8 free online. Choose your snake, swipe to move, chain energy pickups and chase high scores in a premium mobile-first arcade game.",
     "baseTrivia": "Built mobile-first with swipe controls, large touch arrows, fast restarts and a clean high-score loop for one-more-go sessions.",
     "controls": [
-      "Mobile: swipe anywhere",
-      "Mobile: large touch arrows",
-      "Desktop: arrow keys / WASD",
-      "Space: instant restart"
+      "Mobile: swipe anywhere to turn",
+      "Mobile: use large touch arrows",
+      "Choose a snake in the Snake Lab",
+      "Desktop: arrow keys or WASD"
     ],
     "engagementHooks": [
-      "Combo chains",
-      "Impactful game-over",
-      "New-best celebration",
-      "Fast restart",
-      "Mobile swipe control"
+      "Snake Lab selection",
+      "Combo multiplier",
+      "Speed ramp",
+      "High-score chasing"
     ],
     "translations": {
       "es": {
@@ -73,26 +72,23 @@
     "emoji": "\u25a5",
     "difficulty": "Easy",
     "playStyle": "One-tap stacker",
-    "iframeUrl": "/games/stack-tower-rush/index.html?v=gr8-v5-premium-20260628",
+    "iframeUrl": "/games/stack-tower-rush/index.html?v=gr8-v8-selection-labs-20260628",
     "thumbnail": "/games/stack-tower-rush/thumb.webp?v=thumbs-v1",
-    "description": "Tap with precision, stack glowing blocks, build perfect-drop chains and chase the tallest neon tower.",
-    "seoTitle": "Play Stack Tower Rush Online Free | One Tap Stacking Game",
-    "seoDescription": "Play Stack Tower Rush free online. A mobile-first one-tap stacking game with perfect placement combos and high-score tower runs.",
+    "description": "Choose your Build Mode, tap perfect drops, chain clean placements and build the tallest neon tower you can.",
+    "seoTitle": "Play Stack Tower Rush V8 Online Free | Build Mode Stacking Game",
+    "seoDescription": "Play Stack Tower Rush V8 free online. Choose a block mode, tap to stack, hit perfect drops and chase the highest neon tower.",
     "baseTrivia": "Stack Tower Rush rewards perfect timing with glowing feedback, chain bonuses and an instant one-more-go loop.",
     "controls": [
-      "Tap anywhere",
-      "Space / click",
-      "Perfect stack bonus",
-      "Instant restart"
+      "Mobile: tap anywhere to drop",
+      "Choose a Build Mode before playing",
+      "Perfect alignment increases your chain",
+      "Desktop: click, Space or Enter"
     ],
     "engagementHooks": [
-      "One-tap loop",
-      "Perfect streaks",
-      "Visible progress",
-      "Short sessions",
-      "Premium start screen",
-      "Impactful results screen",
-      "Mobile-first touch controls"
+      "Build Mode selection",
+      "Perfect-drop chains",
+      "Hard-mode score bonuses",
+      "Fast replay loop"
     ],
     "translations": {
       "es": {
@@ -213,26 +209,23 @@
     "emoji": "\u26bd",
     "difficulty": "Easy",
     "playStyle": "Drag-and-shoot football",
-    "iframeUrl": "/games/pixel-goal-hero/index.html?v=gr8-v5-premium-20260628",
+    "iframeUrl": "/games/pixel-goal-hero/index.html?v=gr8-v8-selection-labs-20260628",
     "thumbnail": "/games/pixel-goal-hero/thumb.webp?v=thumbs-v1",
-    "description": "Drag, aim and release to score neon penalties, beat the moving keeper and build a goal streak.",
-    "seoTitle": "Play Pixel Goal Hero Online Free | Mobile Penalty Game",
-    "seoDescription": "Play Pixel Goal Hero free online. A mobile-friendly football penalty game with drag-to-aim shooting, moving keeper and goal streaks.",
+    "description": "Choose your shot style in the Team Locker, drag to aim, release to shoot and beat the moving keeper.",
+    "seoTitle": "Play Pixel Goal Hero V8 Online Free | Team Locker Penalty Game",
+    "seoDescription": "Play Pixel Goal Hero V8 free online. Choose a striker style, drag to aim, release to shoot and build your penalty streak.",
     "baseTrivia": "Pixel Goal Hero turns every shot into a quick tension moment: aim, release, goal burst or dramatic save.",
     "controls": [
-      "Drag to aim",
+      "Mobile: drag from the ball to aim",
       "Release to shoot",
-      "Mouse drag",
-      "Score streaks"
+      "Choose a style in the Team Locker",
+      "Desktop: click, drag and release"
     ],
     "engagementHooks": [
-      "Goal streaks",
-      "Quick shots",
-      "Moving keeper",
-      "Mobile drag control",
-      "Premium start screen",
-      "Impactful results screen",
-      "Mobile-first touch controls"
+      "Team Locker selection",
+      "Streak scoring",
+      "Power and curve shot styles",
+      "One-save game-over tension"
     ],
     "translations": {
       "es": {
@@ -281,26 +274,23 @@
     "emoji": "\ud83d\ude80",
     "difficulty": "Medium",
     "playStyle": "Hold-to-fly survival",
-    "iframeUrl": "/games/space-tap-survival/index.html?v=gr8-v5-premium-20260628",
+    "iframeUrl": "/games/space-tap-survival/index.html?v=gr8-v8-selection-labs-20260628",
     "thumbnail": "/games/space-tap-survival/thumb.webp?v=thumbs-v1",
-    "description": "Hold to fly, release to fall, dodge glowing asteroids and survive deeper into a neon space storm.",
-    "seoTitle": "Play Space Tap Survival Online Free | Mobile Space Game",
-    "seoDescription": "Play Space Tap Survival free online. A mobile-first space survival game with hold-to-fly controls, asteroids, shields and distance scoring.",
+    "description": "Choose your ship in the Space Hangar, hold to fly, release to fall and survive a neon asteroid field.",
+    "seoTitle": "Play Space Tap Survival V8 Online Free | Space Hangar Survival Game",
+    "seoDescription": "Play Space Tap Survival V8 free online. Choose a ship, hold to fly, collect shields and dodge asteroids in a mobile-first space game.",
     "baseTrivia": "Space Tap Survival uses one-touch flight, shields and boost pickups to create a fast survival chase.",
     "controls": [
-      "Hold to thrust",
+      "Mobile: hold the screen to fly upward",
       "Release to fall",
-      "Space / up key",
-      "Collect shields"
+      "Choose a ship in the Space Hangar",
+      "Collect shields and boosts"
     ],
     "engagementHooks": [
-      "Distance chase",
+      "Space Hangar selection",
       "Shield saves",
-      "One-thumb play",
-      "Fast restarts",
-      "Premium start screen",
-      "Impactful results screen",
-      "Mobile-first touch controls"
+      "Boost pickups",
+      "Survival distance chasing"
     ],
     "translations": {
       "es": {

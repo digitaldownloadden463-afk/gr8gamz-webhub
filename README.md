@@ -1,43 +1,34 @@
-# GR8 GAMZ V7 Drift Garage Update
+# GR8 GAMZ V8 Selection Labs Update
 
-This update improves Turbo Drift Grid based on live testing feedback.
+This update adds the same deeper player-choice idea from Turbo Drift Garage into the other launched games.
+
+## Updated games
+
+- Neon Snake Rush now has **Snake Lab**
+- Stack Tower Rush now has **Build Mode**
+- Pixel Goal Hero now has **Team Locker**
+- Space Tap Survival now has **Space Hangar**
 
 ## What changed
 
-- Reduced the effective car hitboxes so the vehicles can fit through obstacles properly.
-- Reduced/tuned obstacle width and spacing.
-- Added a new garage menu before the race starts.
-- Added selectable cars and vans:
-  - Neon Coupe — balanced
-  - Micro GT — smaller and easier through tight gaps
-  - Pulse Van — heavier, bonus-score run
-  - Grid Hauler — larger hard-mode van/truck challenge
-- Added vehicle-specific handling, score bonus and steering feel.
-- Updated in-game instructions to explain the garage system.
-- Added cache-busting iframe URL in `src/data/games.json`.
+- Selection menus before play
+- Different play styles with visible stats
+- More replay value
+- Better mobile-first instructions
+- Stronger game-over messaging
+- Updated cache-busted iframe URLs in `src/data/games.json`
 
-## Upload instructions
+## Upload
 
-Upload these folders/files into the root of your GitHub repo:
+Upload these folders/files to GitHub and allow overwrite:
 
-```txt
-public
-src
-README.md
-UPLOAD-INSTRUCTIONS.txt
-```
+- `public`
+- `src`
+- `README.md`
+- `UPLOAD-INSTRUCTIONS.txt`
 
-Let GitHub overwrite existing files.
+Commit message:
 
-Suggested commit message:
+`Add V8 selection labs to launched games`
 
-```txt
-Add Turbo Drift garage and car sizing fix
-```
-
-After Vercel redeploys, test:
-
-```txt
-/arcade/turbo-drift-grid
-/games/turbo-drift-grid/index.html?v=gr8-v7-drift-garage-20260628
-```
+Then wait for Vercel to redeploy.
