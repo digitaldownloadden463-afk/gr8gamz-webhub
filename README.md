@@ -116,3 +116,15 @@ This package now includes the V19 planning layer:
 - `GR8-GAMZ-V19-QA-MATRIX.md`
 
 V19 is the next implementation phase after V18: full testing, balancing, mechanic polish and premium QA across all 15 existing games.
+
+
+## V19 implementation
+V19 upgrades the second-drop gameplay engine and strengthens quality across the existing 15-game arcade library.
+
+Key implementation points:
+- Score/result posting added to the last ten games.
+- Pause/resume/mute handling added for GR8 Focus Mode.
+- Better mobile and keyboard control handling.
+- Fairer collision and spawn behaviour.
+- Stronger combo/scoring feedback.
+- New V19 update article added to the content engine.

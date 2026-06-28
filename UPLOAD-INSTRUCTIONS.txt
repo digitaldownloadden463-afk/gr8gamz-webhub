@@ -31,3 +31,22 @@ V18 + V19 documentation included:
 
 Suggested commit message:
 Add V18 gameplay art polish and V19 QA plan
+
+
+V19 implementation upload:
+- src
+- public
+- README.md
+- UPLOAD-INSTRUCTIONS.txt
+- GR8-GAMZ-V19-IMPLEMENTATION-SPEC.md
+
+Suggested commit message:
+Implement V19 gameplay QA and premium polish
+
+After deployment, test:
+https://www.gr8gamz.com/arcade/zombie-lane-runner
+https://www.gr8gamz.com/arcade/traffic-tap-chaos
+https://www.gr8gamz.com/arcade/rocket-fuel-frenzy
+https://www.gr8gamz.com/arcade/neon-air-hockey
+https://www.gr8gamz.com/arcade/cyber-basketball-shots
+https://www.gr8gamz.com/updates/v19-gameplay-qa-premium-polish-implementation

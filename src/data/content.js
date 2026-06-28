@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v19-gameplay-qa-premium-polish-implementation',
+    title: 'V19 gameplay QA and premium polish implementation',
+    date: '2026-06-28',
+    category: 'Gameplay QA',
+    description: 'The V19 GR8 GAMZ implementation improves game reliability, scoring, controls, fairness and premium polish across the existing arcade library.',
+    tags: ['gameplay-qa', 'premium-polish', 'mobile-games', 'browser-games'],
+    relatedGameIds: ['zombie-lane-runner', 'traffic-tap-chaos', 'rocket-fuel-frenzy', 'neon-air-hockey'],
+    summary: [
+      'V19 focuses on improving the existing 15-game library before adding more games.',
+      'The second-drop games now share a stronger gameplay engine with better control handling, scoring, result posting and feedback.',
+      'The update targets mobile responsiveness, fairer collision, clearer HUD behaviour and stronger replay loops.'
+    ],
+    sections: [
+      {
+        heading: 'Why V19 focused on quality before quantity',
+        body: 'A bigger game catalogue only matters if the games feel good. V19 strengthens the current GR8 GAMZ library by improving controls, result handling, restart flow, difficulty balance and player feedback across the existing games.'
+      },
+      {
+        heading: 'What changed in the second-drop games',
+        body: 'The second-drop games now use a stronger shared arcade engine with better post-game result reporting, pause/resume support, stronger mobile input handling, clearer effects, fairer hazards and more consistent scoring.'
+      },
+      {
+        heading: 'Why result posting matters',
+        body: 'When games report scores properly to the host page, GR8 GAMZ can power XP, progress, best-score tracking and replay loops. That makes the site feel more like a connected arcade platform instead of separate isolated mini games.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Did V19 add new games?',
+        answer: 'No. V19 focuses on making the existing games stronger before the next game drop.'
+      },
+      {
+        question: 'What was the main V19 priority?',
+        answer: 'The main priority was improving game reliability, controls, scoring, restart flow and premium feel across the existing arcade library.'
+      }
+    ]
+  },
+  {
     slug: 'gr8-gamz-launch-announcement',
     title: 'GR8 GAMZ launch announcement: a neon browser arcade built for quick repeat play',
     date: '2026-06-28',
