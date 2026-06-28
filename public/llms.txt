@@ -36,3 +36,16 @@ Authority and content routes:
 
 Update pages include visible summaries, article sections, FAQs, related game links and Article schema.
 Collection pages include real playable game lists, summary content and CollectionPage schema.
+
+
+Growth automation and feeds:
+- /latest - latest changed pages and fresh crawl map
+- /feeds - RSS, JSON Feed, grouped sitemaps and IndexNow endpoint list
+- /seo-status - operational search/indexing checklist
+- /rss.xml - RSS feed for update posts
+- /feed.json - JSON Feed for update posts
+- /sitemap-index.xml - grouped sitemap index
+- /sitemap-games.xml - playable game sitemap
+- /sitemap-content.xml - updates and collections sitemap
+- /sitemap-discovery.xml - core, category, tag and discovery route sitemap
+- /indexnow-urls.json - machine-readable IndexNow URL list
