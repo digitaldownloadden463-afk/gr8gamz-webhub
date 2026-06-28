@@ -13,9 +13,9 @@ import { getFeaturedGames, getNewGames, getPopularGames, getAllTags } from '../l
 import { itemListJsonLd } from '../lib/seo';
 
 export default function HomePage() {
-  const featured = getFeaturedGames();
-  const popular = getPopularGames(5);
-  const newest = getNewGames(5);
+  const featured = getFeaturedGames(15);
+  const popular = getPopularGames(8);
+  const newest = getNewGames(10);
   const tags = getAllTags().slice(0, 18);
 
   return (

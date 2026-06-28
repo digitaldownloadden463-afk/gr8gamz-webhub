@@ -50,6 +50,34 @@ export const siteConfig = {
       description: 'Fast mobile survival games with simple controls, shields, hazards and score chasing.',
       emoji: '🚀',
       seoCopy: 'Action games on GR8 GAMZ are built for movement, survival and quick decisions, with touch controls that work on phones and tablets.'
+    },
+    {
+      id: 'puzzle',
+      name: 'Puzzle Games',
+      description: 'Bubble, crystal and match-style games built around taps, combos and satisfying clears.',
+      emoji: '🧩',
+      seoCopy: 'Puzzle games add variety to GR8 GAMZ with slower but addictive tap-based challenges, combo clears and target-score loops.'
+    },
+    {
+      id: 'shooter',
+      name: 'Shooter Games',
+      description: 'Mobile-first neon shooters with drag movement, auto-fire loops and wave survival.',
+      emoji: '👾',
+      seoCopy: 'Shooter games create arcade energy with dodging, blasting, wave clears and quick high-score pressure.'
+    },
+    {
+      id: 'adventure',
+      name: 'Adventure Games',
+      description: 'Quick risk-choice games with treasure, traps and fast decision loops.',
+      emoji: '🚪',
+      seoCopy: 'Adventure games bring choice and risk into short browser sessions, giving players quick decisions and immediate rewards.'
+    },
+    {
+      id: 'strategy',
+      name: 'Strategy Games',
+      description: 'Light strategy games built for taps, timing, traffic flow and fast reactions.',
+      emoji: '🚦',
+      seoCopy: 'Strategy games on GR8 GAMZ use simple controls but ask players to manage timing, flow and consequences under pressure.'
     }
   ],
   platforms: [

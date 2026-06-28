@@ -51,3 +51,7 @@ Then wait for Vercel to redeploy.
 - Added branded GR8 Focus Mode for fullscreen play.
 - Added pause overlay, sound toggle, quick restart and mobile rotate suggestion.
 - Added post-game result overlay with Play Again and Next Game flow.
+
+
+## V12 Second Game Drop
+Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch games with new puzzle, shooter, adventure and strategy coverage.
