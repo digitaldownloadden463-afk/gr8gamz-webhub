@@ -1,15 +1,18 @@
 import { siteConfig } from '../data/site';
 import { getAllGames, getAllTags } from '../lib/games';
+import { getAllContentCollections, getAllUpdatePosts } from '../lib/content';
 
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
-  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/advertise', '/privacy'];
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/updates', '/collections', '/new-this-week', '/advertise', '/privacy'];
   const routes = [
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),
     ...siteConfig.platforms.map((platform) => `/platforms/${platform.id}`),
     ...(siteConfig.seoHubs || []).map((hub) => hub.path),
+    ...getAllUpdatePosts().map((post) => `/updates/${post.slug}`),
+    ...getAllContentCollections().map((collection) => `/collections/${collection.slug}`),
     ...(siteConfig.controlTypes || []).map((control) => `/controls/${control.id}`),
     ...(siteConfig.difficulties || []).map((difficulty) => `/difficulty/${difficulty.id}`),
     ...getAllTags().map((tag) => `/tags/${tag}`),

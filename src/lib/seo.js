@@ -158,3 +158,48 @@ export function imageObjectJsonLd({ name, description, path, image }) {
     url: absoluteUrl(path)
   };
 }
+
+
+export function articleJsonLd(post, path) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.updatedAt || post.date,
+    author: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.siteUrl
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/icon.png')
+      }
+    },
+    mainEntityOfPage: absoluteUrl(path),
+    image: absoluteUrl(siteConfig.socialImage),
+    keywords: (post.tags || []).join(', ')
+  };
+}
+
+export function blogJsonLd(posts = [], path = '/updates') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${siteConfig.name} Updates`,
+    description: 'Fresh GR8 GAMZ game updates, developer notes, guides and platform news.',
+    url: absoluteUrl(path),
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: absoluteUrl(`/updates/${post.slug}`),
+      datePublished: post.date,
+      description: post.description
+    }))
+  };
+}

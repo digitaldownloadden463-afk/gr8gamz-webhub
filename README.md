@@ -81,3 +81,14 @@ Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch gam
 - Added IndexNow-ready routes and environment-variable setup.
 - Added `llms.txt` and sitemap updates.
 - Added Google/Bing verification metadata support.
+
+
+## V16 Authority + Content Engine
+- Added `/updates` content hub.
+- Added update/article pages with Article and FAQ schema.
+- Added `/collections` guide hub.
+- Added curated collection pages with CollectionPage and ItemList schema.
+- Added `/new-this-week` fresh crawl hub.
+- Added homepage latest-updates section.
+- Added header links for Updates and Collections.
+- Updated sitemap and llms.txt with the new authority/content routes.

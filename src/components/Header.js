@@ -17,6 +17,8 @@ export default function Header() {
         <Link href="/quick-games">Quick</Link>
         <Link href="/popular">Popular</Link>
         <Link href="/new">New</Link>
+        <Link href="/updates">Updates</Link>
+        <Link href="/collections">Collections</Link>
         <Link href="/advertise">Advertise</Link>
       </nav>
     </header>

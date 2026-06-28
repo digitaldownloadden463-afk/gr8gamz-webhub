@@ -1,21 +1,22 @@
-GR8 GAMZ IndexNow root key fix
+Upload these items to GitHub and let them overwrite/add files:
 
-Upload these folders to GitHub and let them overwrite/add files:
-
-- public
 - src
+- public
+- README.md
+- GR8-GAMZ-V16-AUTHORITY-CONTENT-ENGINE-SPEC.md
+- UPLOAD-INSTRUCTIONS.txt
 
-This adds the IndexNow key in two ways:
-1. public/470561d472ec49aca5a704b6d8a3eac0.txt
-2. src/app/470561d472ec49aca5a704b6d8a3eac0.txt/route.js
+Suggested commit message:
+Add V16 authority and content engine
 
-After Vercel redeploys, test BOTH:
+After Vercel redeploys, test:
 
-https://www.gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
-https://gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
-
-The page should show exactly:
-
-470561d472ec49aca5a704b6d8a3eac0
-
-If one redirects to the other, that is fine. Bing only needs the key file to be reachable at the root of the verified host.
+https://www.gr8gamz.com/updates
+https://www.gr8gamz.com/updates/gr8-gamz-launch-announcement
+https://www.gr8gamz.com/updates/first-15-games-guide
+https://www.gr8gamz.com/collections
+https://www.gr8gamz.com/collections/best-mobile-browser-games
+https://www.gr8gamz.com/collections/games-with-selection-labs
+https://www.gr8gamz.com/new-this-week
+https://www.gr8gamz.com/sitemap.xml
+https://www.gr8gamz.com/llms.txt

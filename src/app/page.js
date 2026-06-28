@@ -8,11 +8,13 @@ import RecentlyPlayed from '../components/player/RecentlyPlayed';
 import DailyReward from '../components/player/DailyReward';
 import AchievementBadges from '../components/player/AchievementBadges';
 import DiscoveryRail from '../components/player/DiscoveryRail';
+import ContentRail from '../components/content/ContentRail';
 import AdSlot from '../components/ads/AdSlot';
 import JsonLd from '../components/JsonLd';
 import { siteConfig } from '../data/site';
 import { adPlacements } from '../lib/ads';
 import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
+import { getFeaturedUpdatePosts } from '../lib/content';
 import { itemListJsonLd } from '../lib/seo';
 
 export default function HomePage() {
@@ -22,6 +24,7 @@ export default function HomePage() {
   const tags = getAllTags().slice(0, 18);
   const quickPlay = getQuickPlayGames(6);
   const hardMode = getHardModeGames(6);
+  const latestPosts = getFeaturedUpdatePosts(3);
 
   return (
     <main>
@@ -202,6 +205,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <ContentRail posts={latestPosts} eyebrow="Fresh crawl layer" title="Latest GR8 GAMZ updates." />
 
       <DailyChallenge />
 
