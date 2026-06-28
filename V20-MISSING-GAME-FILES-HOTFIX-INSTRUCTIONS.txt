@@ -1,0 +1,52 @@
+GR8 GAMZ V20 missing game files hotfix
+
+Problem:
+The /games page is showing the V20 game entries, but the game thumbnails and game URLs are 404.
+That means the src/data/games.json update deployed, but the actual public game files were not uploaded into the right place.
+
+Fix:
+Upload this hotfix zip to GitHub.
+
+It contains ONLY the 10 new V20 game folders:
+public/games/neon-pinball-rush
+public/games/cyber-bowling-blitz
+public/games/lava-tile-escape
+public/games/galaxy-golf-putt
+public/games/monster-truck-tap
+public/games/fruit-slice-fever
+public/games/shadow-ninja-leap
+public/games/cannon-coin-blast
+public/games/ice-slide-puzzle
+public/games/astro-memory-grid
+
+Each folder contains:
+- index.html
+- game.js
+- thumb.png
+- thumb.webp
+
+Upload steps:
+1. Download and unzip this hotfix.
+2. In GitHub, open the repository.
+3. Go into the root of the repo.
+4. Click Add file > Upload files.
+5. Drag the extracted public folder into GitHub.
+6. Commit the upload.
+
+Important:
+Make sure the files land exactly here:
+public/games/neon-pinball-rush/index.html
+public/games/neon-pinball-rush/thumb.webp
+
+NOT here:
+gr8gamz-v20-missing-public-games-hotfix/public/games/...
+or:
+public/public/games/...
+
+Suggested commit message:
+Fix V20 missing public game files
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/games
+https://www.gr8gamz.com/games/neon-pinball-rush/thumb.webp
+https://www.gr8gamz.com/arcade/neon-pinball-rush
