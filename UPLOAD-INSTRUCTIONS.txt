@@ -1,0 +1,19 @@
+GR8 GAMZ V4 Premium Gameplay Update
+
+Upload this update to GitHub by dragging these items into the root of your repository:
+
+- public
+- src
+- README.md
+- GR8-GAMZ-V4-GAMEPLAY-SPEC.md
+
+Commit message:
+Upgrade Neon Snake and Turbo Drift to V4 premium gameplay
+
+After Vercel redeploys, test:
+
+/games/neon-snake-rush/index.html?v=gr8-v4-premium-20260628
+/games/turbo-drift-grid/index.html?v=gr8-v4-premium-20260628
+/arcade/neon-snake-rush
+/arcade/turbo-drift-grid
+

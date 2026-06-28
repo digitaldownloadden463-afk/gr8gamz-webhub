@@ -7,21 +7,22 @@
     "emoji": "🐍",
     "difficulty": "Easy",
     "playStyle": "Swipe survival",
-    "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v2-20260628",
+    "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v4-premium-20260628",
     "thumbnail": "/games/neon-snake-rush/thumb.webp?v=thumbs-v1",
-    "description": "Swipe through a neon grid, collect glowing orbs, build combo chains and chase a new mobile high score.",
-    "seoTitle": "Play Neon Snake Rush Online Free | Mobile Snake Game",
-    "seoDescription": "Play Neon Snake Rush free online. A mobile-friendly neon snake game with swipe controls, combo chains and high-score chasing.",
+    "description": "Swipe through a cinematic neon arena, collect glowing energy orbs, chain combos and chase a new best score in the upgraded V4 edition.",
+    "seoTitle": "Play Neon Snake Rush V4 Online Free | Premium Mobile Snake Game",
+    "seoDescription": "Play Neon Snake Rush V4 free online. A premium mobile-first neon snake game with swipe controls, combo chains, particle effects and impactful game-over screens.",
     "baseTrivia": "Built mobile-first with swipe controls, large touch arrows, fast restarts and a clean high-score loop for one-more-go sessions.",
     "controls": [
-      "Mobile swipe",
-      "Large touch arrows",
-      "Arrow keys / WASD",
-      "Instant restart"
+      "Mobile: swipe anywhere",
+      "Mobile: large touch arrows",
+      "Desktop: arrow keys / WASD",
+      "Space: instant restart"
     ],
     "engagementHooks": [
       "Combo chains",
-      "High-score chase",
+      "Impactful game-over",
+      "New-best celebration",
       "Fast restart",
       "Mobile swipe control"
     ],
@@ -61,7 +62,7 @@
     "rating": 4.8,
     "shortControls": "Swipe to turn",
     "launchOrder": 1,
-    "longDescription": "Neon Snake Rush is the GR8 GAMZ take on instant arcade survival: swipe through a glowing grid, collect energy, grow longer and chase the run that beats your best score. Built mobile-first, it gives players a fast restart loop and simple touch controls that work cleanly on phones.",
+    "longDescription": "Neon Snake Rush V4 upgrades the original GR8 GAMZ snake loop with a cinematic neon arena, richer particle effects, stronger start instructions, combo scoring, speed ramps, new-best celebrations and a bigger game-over reward screen. It is built mobile-first for swipe controls and quick replay sessions.",
     "thumbnailAlt": "Neon Snake Rush neon arcade game thumbnail"
   },
   {
@@ -137,22 +138,23 @@
     "emoji": "🏎️",
     "difficulty": "Medium",
     "playStyle": "Hold-to-steer racer",
-    "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v2-20260628",
+    "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v4-premium-20260628",
     "thumbnail": "/games/turbo-drift-grid/thumb.webp?v=thumbs-v1",
-    "description": "Hold left or right to drift through a neon traffic grid, collect boosts and avoid blockers at rising speed.",
-    "seoTitle": "Play Turbo Drift Grid Online Free | Mobile Racing Game",
-    "seoDescription": "Play Turbo Drift Grid free online. A mobile-friendly neon racing game with hold-to-steer controls, boosts and obstacle dodging.",
+    "description": "Hold left or right to drift across a cinematic neon track, dodge blockers, trigger near-miss bonuses and collect boost energy in the upgraded V4 edition.",
+    "seoTitle": "Play Turbo Drift Grid V4 Online Free | Premium Mobile Racing Game",
+    "seoDescription": "Play Turbo Drift Grid V4 free online. A premium mobile-first neon racing game with hold-to-steer controls, boost pickups, near-miss scoring and impactful crash screens.",
     "baseTrivia": "The controls are designed for thumbs first: hold either side of the screen to steer through the grid and collect boost rewards.",
     "controls": [
-      "Hold left/right",
-      "A/D or arrow keys",
-      "Collect boosts",
-      "Avoid blockers"
+      "Mobile: hold left half to steer left",
+      "Mobile: hold right half to steer right",
+      "Desktop: A/D or arrow keys",
+      "Space: instant restart"
     ],
     "engagementHooks": [
       "Speed ramp",
       "Boost pickups",
-      "Distance scoring",
+      "Near-miss bonuses",
+      "Impactful crash screen",
       "Thumb-friendly controls"
     ],
     "translations": {
@@ -191,7 +193,7 @@
     "rating": 4.7,
     "shortControls": "Hold left or right",
     "launchOrder": 3,
-    "longDescription": "Turbo Drift Grid brings racing energy into a clean neon lane game. Hold either side of the screen to steer, avoid blockers and collect boost energy as the speed rises.",
+    "longDescription": "Turbo Drift Grid V4 upgrades the original mobile racing loop with a richer neon track, stronger car visuals, boost pickups, near-miss scoring, speed progression, impact flashes and a more rewarding game-over screen. It is designed for reliable one-thumb play on phones.",
     "thumbnailAlt": "Turbo Drift Grid neon arcade game thumbnail"
   },
   {
