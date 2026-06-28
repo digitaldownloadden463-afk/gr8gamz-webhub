@@ -208,6 +208,27 @@ export default function HomePage() {
 
       <ContentRail posts={latestPosts} eyebrow="Fresh crawl layer" title="Latest GR8 GAMZ updates." />
 
+      <section className="content-panel compact-panel">
+        <div className="section-heading compact">
+          <span>Growth automation</span>
+          <h2>Fresh routes for crawlers and players.</h2>
+        </div>
+        <div className="quick-link-grid">
+          <Link href="/latest" className="quick-link-card">
+            <strong>Latest changed pages</strong>
+            <small>Fresh crawl map for new updates, games and collections</small>
+          </Link>
+          <Link href="/feeds" className="quick-link-card">
+            <strong>Feeds and sitemaps</strong>
+            <small>RSS, JSON Feed, grouped sitemaps and IndexNow URL list</small>
+          </Link>
+          <Link href="/seo-status" className="quick-link-card">
+            <strong>SEO status</strong>
+            <small>Operational checklist for indexing and discovery</small>
+          </Link>
+        </div>
+      </section>
+
       <DailyChallenge />
 
       <section className="section-heading">

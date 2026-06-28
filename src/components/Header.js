@@ -19,6 +19,7 @@ export default function Header() {
         <Link href="/new">New</Link>
         <Link href="/updates">Updates</Link>
         <Link href="/collections">Collections</Link>
+        <Link href="/latest">Latest</Link>
         <Link href="/advertise">Advertise</Link>
       </nav>
     </header>

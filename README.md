@@ -92,3 +92,13 @@ Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch gam
 - Added homepage latest-updates section.
 - Added header links for Updates and Collections.
 - Updated sitemap and llms.txt with the new authority/content routes.
+
+
+## V17 Growth Automation + Feed Engine
+- Added RSS and JSON feeds for update posts.
+- Added grouped sitemaps and a sitemap index.
+- Added `/latest`, `/feeds` and `/seo-status` hubs.
+- Added IndexNow URL list and bulk submission route.
+- Added root IndexNow key fallback file/route.
+- Updated robots.txt and llms.txt with feed/sitemap routes.
+- Added homepage links into the freshness and crawl automation layer.

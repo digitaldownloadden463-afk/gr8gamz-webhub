@@ -1,4 +1,5 @@
 import { siteConfig } from '../../../data/site';
+import { INDEXNOW_KEY, absolutePath } from '../../../lib/crawl';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,14 +11,14 @@ function normaliseUrl(url) {
 }
 
 export async function GET(request) {
-  const key = process.env.INDEXNOW_KEY;
+  const key = INDEXNOW_KEY;
   const { searchParams } = new URL(request.url);
   const targetUrl = normaliseUrl(searchParams.get('url'));
 
   if (!key) {
     return Response.json({
       ok: false,
-      message: 'INDEXNOW_KEY is not configured yet. Add it in Vercel environment variables before submitting URLs.',
+      message: 'INDEXNOW_KEY fallback is active.',
       example: '/api/indexnow?url=/arcade/neon-snake-rush'
     }, { status: 200 });
   }
@@ -30,7 +31,7 @@ export async function GET(request) {
   const payload = {
     host,
     key,
-    keyLocation: `${siteConfig.siteUrl.replace(/\/$/, '')}/indexnow-key.txt`,
+    keyLocation: absolutePath(`/${key}.txt`),
     urlList: [targetUrl]
   };
 

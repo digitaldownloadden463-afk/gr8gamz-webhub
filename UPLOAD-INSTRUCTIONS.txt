@@ -3,20 +3,22 @@ Upload these items to GitHub and let them overwrite/add files:
 - src
 - public
 - README.md
-- GR8-GAMZ-V16-AUTHORITY-CONTENT-ENGINE-SPEC.md
+- GR8-GAMZ-V17-GROWTH-AUTOMATION-FEED-ENGINE-SPEC.md
 - UPLOAD-INSTRUCTIONS.txt
 
 Suggested commit message:
-Add V16 authority and content engine
+Add V17 growth automation and feed engine
 
 After Vercel redeploys, test:
 
-https://www.gr8gamz.com/updates
-https://www.gr8gamz.com/updates/gr8-gamz-launch-announcement
-https://www.gr8gamz.com/updates/first-15-games-guide
-https://www.gr8gamz.com/collections
-https://www.gr8gamz.com/collections/best-mobile-browser-games
-https://www.gr8gamz.com/collections/games-with-selection-labs
-https://www.gr8gamz.com/new-this-week
-https://www.gr8gamz.com/sitemap.xml
-https://www.gr8gamz.com/llms.txt
+https://www.gr8gamz.com/rss.xml
+https://www.gr8gamz.com/feed.json
+https://www.gr8gamz.com/sitemap-index.xml
+https://www.gr8gamz.com/sitemap-games.xml
+https://www.gr8gamz.com/sitemap-content.xml
+https://www.gr8gamz.com/sitemap-discovery.xml
+https://www.gr8gamz.com/indexnow-urls.json
+https://www.gr8gamz.com/latest
+https://www.gr8gamz.com/feeds
+https://www.gr8gamz.com/seo-status
+https://www.gr8gamz.com/api/indexnow/bulk?scope=content&dryRun=1

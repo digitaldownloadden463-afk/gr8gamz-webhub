@@ -34,7 +34,7 @@ export default function robots() {
         allow: '/'
       }
     ],
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: [`${base}/sitemap.xml`, `${base}/sitemap-index.xml`, `${base}/sitemap-games.xml`, `${base}/sitemap-content.xml`, `${base}/sitemap-discovery.xml`],
     host: base
   };
 }
