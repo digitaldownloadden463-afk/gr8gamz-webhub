@@ -1,0 +1,20 @@
+# GR8 GAMZ
+
+GR8 GAMZ is a mobile-first browser games hub for free HTML5 arcade games, quick-play games, daily challenges, selection labs and repeat-play loops.
+
+Primary site: https://www.gr8gamz.com
+
+Important routes:
+- /games - full game catalogue
+- /mobile-games - mobile-first browser games collection
+- /quick-games - short-session quick games collection
+- /free-browser-games - free no-download browser games collection
+- /popular - popular games
+- /new - new games
+- /controls/tap - tap games
+- /controls/swipe - swipe games
+- /controls/drag - drag games
+- /difficulty/easy - easy games
+- /difficulty/medium - medium games
+
+Game pages use /arcade/{game-slug} and include visible instructions, controls, summary content, FAQs and related-game links.
