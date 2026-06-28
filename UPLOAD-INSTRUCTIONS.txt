@@ -3,7 +3,8 @@ Upload these items to GitHub and let them overwrite existing files:
 - public
 - src
 - README.md
-- GR8-GAMZ-V9-HOMEPAGE-ARTWORK-SPEC.md
+- GR8-GAMZ-V10-CONVERSION-SPEED-SPEC.md
+- UPLOAD-INSTRUCTIONS.txt
 
 Suggested commit message:
-Add V9 homepage artwork pass
+Add V10 conversion speed polish and fix badges

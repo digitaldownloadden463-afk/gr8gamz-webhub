@@ -23,37 +23,39 @@ export default function HomePage() {
       <JsonLd data={itemListJsonLd(featured, '/')} />
       <section className="hero hero-premium">
         <div className="hero-copy hero-copy-premium">
-          <span className="eyebrow">Instant mobile arcade</span>
-          <h1>Welcome to the neon world players want to come back to.</h1>
+          <span className="eyebrow">Free browser games • mobile-first</span>
+          <h1>Play quick. Pick your style. Chase one more run.</h1>
           <p>
-            GR8 GAMZ is a premium browser-game hub built for fast dopamine loops, memorable visuals and instant touchscreen play.
-            Jump into original neon games, selection labs, garage pickers and quick-play sessions with no app download.
+            Jump into premium GR8 GAMZ originals with neon visuals, instant restarts, vehicle garages, snake labs, hangars,
+            team lockers and touchscreen controls built for fast repeat play.
           </p>
           <div className="hero-actions">
-            <Link href="/games" className="cta">Browse games</Link>
-            <Link href="/popular" className="secondary-cta">Popular now</Link>
-            <Link href="/platforms/originals" className="secondary-cta">Original games</Link>
+            <Link href="/games" className="cta">Start playing</Link>
+            <Link href="/popular" className="secondary-cta">Popular games</Link>
+            <Link href="/platforms/mobile" className="secondary-cta">Mobile picks</Link>
           </div>
           <div className="hero-support-grid" aria-label="GR8 GAMZ launch highlights">
             <div className="hero-support-card">
-              <strong>Premium launch games</strong>
-              <span>Five polished originals, each with its own replay hook and control style.</span>
+              <strong>Pick before you play</strong>
+              <span>Cars, vans, ships, snakes, shot styles and build modes make each run feel different.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Selection labs live</strong>
-              <span>Garages, hangars, lockers and snake labs create variety and replay value.</span>
+              <strong>Fast replay loops</strong>
+              <span>Short sessions, strong game-over screens and instant restarts keep the momentum alive.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Built for quick returns</strong>
-              <span>Fast restarts, meaningful choices and memorable visuals keep players inside the loop.</span>
+              <strong>Made for mobile</strong>
+              <span>Swipe, tap, hold and drag controls are designed for touchscreen play first.</span>
             </div>
           </div>
         </div>
         <aside className="hero-visual" aria-label="GR8 GAMZ visual showcase and live platform panel">
           <div className="hero-art-card">
             <img
-              src="/art/homepage-hero-arena.png"
+              src="/art/homepage-hero-arena.webp"
               alt="Epic GR8 GAMZ neon arcade montage with racing, sports, space and digital action"
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="hero-floating-badge hero-floating-badge-top">Original neon arcade universe</div>
             <div className="hero-floating-badge hero-floating-badge-bottom">Fast play • sharp visuals • mobile first</div>
@@ -61,40 +63,54 @@ export default function HomePage() {
           <div className="hero-visual-stack">
             <div className="pulse-card hero-pulse-card">
               <strong>{featured.length}</strong>
-              <span>premium launch games now live and tuned for mobile-first play.</span>
+              <span>premium launch games live now, with more originals planned.</span>
             </div>
             <div className="hero-mini-panels">
               <div>
                 <strong>5</strong>
-                <span>selection menus live</span>
+                <span>selection menus</span>
               </div>
               <div>
                 <strong>90</strong>
-                <span>routes generated</span>
+                <span>search-ready routes</span>
               </div>
               <div>
-                <strong>24/7</strong>
-                <span>instant browser access</span>
+                <strong>0</strong>
+                <span>downloads needed</span>
               </div>
             </div>
-            <AdSlot placement={adPlacements.homeTop} compact />
           </div>
         </aside>
       </section>
 
       <section className="launch-strip" aria-label="Launch readiness promises">
-        <div><strong>5 premium games live</strong><span>Mobile-first controls, instant play and polished replay loops.</span></div>
-        <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones away from touch controls.</span></div>
-        <div><strong>Search-ready structure</strong><span>Game, category, tag, platform and sitemap routes prepared.</span></div>
+        <div><strong>Choose your loadout</strong><span>Garages, labs, hangars and lockers add replay value before each run.</span></div>
+        <div><strong>Built for repeat visits</strong><span>Daily challenges, XP panels, popular pages and quick restarts give players a reason to return.</span></div>
+        <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones are positioned away from gameplay controls.</span></div>
       </section>
+
+      <section id="games">
+        <div className="section-heading section-heading-primary">
+          <div>
+            <span>Start here</span>
+            <h2>Launch games with the strongest replay loops.</h2>
+          </div>
+          <p>
+            Pick a game, choose your style and jump straight into a short high-score run built for mobile.
+          </p>
+        </div>
+        <GameGrid games={featured} />
+      </section>
+
+      <RecentlyPlayed />
 
       <section className="immersive-banner" aria-label="GR8 GAMZ world building banner">
         <div className="immersive-banner-copy">
           <span className="eyebrow">Built to be memorable</span>
-          <h2>More than a game list — this is a neon arcade world.</h2>
+          <h2>Not just a game list — a neon arcade world.</h2>
           <p>
-            The homepage now leads with cinematic branded artwork so GR8 GAMZ feels like a destination. Expect original visuals,
-            touch-friendly games, sharper discovery pages and a universe that grows with every launch.
+            GR8 GAMZ is being shaped into a fast, visual and mobile-first browser-game destination with original games,
+            rich discovery pages and a growing universe of categories, tags and challenges.
           </p>
         </div>
         <div className="immersive-banner-actions">
@@ -112,29 +128,6 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-      </section>
-
-      <RecentlyPlayed />
-
-      <section aria-label="Game categories">
-        <div className="category-row">
-          {siteConfig.categories.map((category) => (
-            <CategoryPill key={category.id} category={category} />
-          ))}
-        </div>
-      </section>
-
-      <section id="games">
-        <div className="section-heading">
-          <div>
-            <span>Curated launch library</span>
-            <h2>Pick a game and trigger the loop.</h2>
-          </div>
-          <p>
-            The launch build now has proper game discovery pages, popular/new/A-Z routes, tags, platform hubs and mobile-first game controls.
-          </p>
-        </div>
-        <GameGrid games={featured} />
       </section>
 
       <section>
@@ -157,6 +150,20 @@ export default function HomePage() {
           <Link href="/new" className="secondary-cta">View new games</Link>
         </div>
         <GameGrid games={newest} showAd={false} />
+      </section>
+
+      <section aria-label="Game categories">
+        <div className="section-heading">
+          <div>
+            <span>Browse by mood</span>
+            <h2>Choose a category.</h2>
+          </div>
+        </div>
+        <div className="category-row">
+          {siteConfig.categories.map((category) => (
+            <CategoryPill key={category.id} category={category} />
+          ))}
+        </div>
       </section>
 
       <section className="content-panel">

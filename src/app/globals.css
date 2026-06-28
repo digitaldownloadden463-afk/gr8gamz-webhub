@@ -913,3 +913,63 @@ button, input, textarea, select { font: inherit; }
   .immersive-banner { padding: 20px; }
   .immersive-banner-copy h2 { max-width: none; }
 }
+
+
+/* GR8 GAMZ v10 conversion and speed polish */
+.game-thumb .thumb-status-badge,
+.game-card .game-thumb .thumb-status-badge {
+  font-size: clamp(0.62rem, 0.85vw, 0.78rem) !important;
+  line-height: 1.15 !important;
+  max-width: min(58%, 220px);
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--brand) !important;
+  padding: 7px 10px !important;
+  transform: none !important;
+  filter: none !important;
+}
+.game-card:hover .game-thumb .thumb-status-badge {
+  transform: translateY(-1px) !important;
+}
+.hero-premium::before {
+  background:
+    linear-gradient(180deg, rgba(5,5,7,0.52), rgba(5,5,7,0.14)),
+    url('/art/homepage-neon-horizon.webp') center/cover no-repeat;
+}
+.immersive-banner {
+  background:
+    linear-gradient(90deg, rgba(5,5,7,0.92) 0%, rgba(5,5,7,0.58) 56%, rgba(5,5,7,0.3) 100%),
+    url('/art/homepage-neon-horizon.webp') center/cover no-repeat;
+}
+.hero-copy-premium h1 {
+  max-width: 11.5ch;
+  text-wrap: balance;
+}
+.hero-copy-premium p,
+.immersive-banner-copy p,
+.section-heading p {
+  text-wrap: pretty;
+}
+.section-heading-primary {
+  margin-top: 34px;
+}
+.game-card-body {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+}
+.game-card p {
+  min-height: 92px;
+}
+.game-card:hover .game-thumb img {
+  will-change: transform;
+}
+@media (max-width: 680px) {
+  .game-thumb .thumb-status-badge,
+  .game-card .game-thumb .thumb-status-badge {
+    max-width: 48%;
+    font-size: 0.62rem !important;
+    padding: 6px 8px !important;
+  }
+  .hero-copy-premium h1 { max-width: none; }
+  .game-card p { min-height: unset; }
+}

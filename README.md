@@ -38,3 +38,10 @@ Then wait for Vercel to redeploy.
 - Added premium homepage hero artwork and supporting neon landscape section background.
 - Improved first-impression messaging and launch highlight panels.
 - Added local artwork assets under `public/art/`.
+
+
+## V10 Conversion + Speed Polish
+- Fixed oversized thumbnail control labels.
+- Reordered homepage sections for stronger conversion and repeat-play flow.
+- Improved CTA wording and headline hierarchy.
+- Added compressed WebP homepage artwork references for faster loading.
