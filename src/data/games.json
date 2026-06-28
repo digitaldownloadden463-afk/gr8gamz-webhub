@@ -8,7 +8,7 @@
     "difficulty": "Easy",
     "playStyle": "Swipe survival",
     "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v2-20260628",
-    "thumbnail": "/games/neon-snake-rush/thumb.svg",
+    "thumbnail": "/games/neon-snake-rush/thumb.webp?v=thumbs-v1",
     "description": "Swipe through a neon grid, collect glowing orbs, build combo chains and chase a new mobile high score.",
     "seoTitle": "Play Neon Snake Rush Online Free | Mobile Snake Game",
     "seoDescription": "Play Neon Snake Rush free online. A mobile-friendly neon snake game with swipe controls, combo chains and high-score chasing.",
@@ -61,7 +61,8 @@
     "rating": 4.8,
     "shortControls": "Swipe to turn",
     "launchOrder": 1,
-    "longDescription": "Neon Snake Rush is the GR8 GAMZ take on instant arcade survival: swipe through a glowing grid, collect energy, grow longer and chase the run that beats your best score. Built mobile-first, it gives players a fast restart loop and simple touch controls that work cleanly on phones."
+    "longDescription": "Neon Snake Rush is the GR8 GAMZ take on instant arcade survival: swipe through a glowing grid, collect energy, grow longer and chase the run that beats your best score. Built mobile-first, it gives players a fast restart loop and simple touch controls that work cleanly on phones.",
+    "thumbnailAlt": "Neon Snake Rush neon arcade game thumbnail"
   },
   {
     "id": "stack-tower-rush",
@@ -72,7 +73,7 @@
     "difficulty": "Easy",
     "playStyle": "One-tap stacker",
     "iframeUrl": "/games/stack-tower-rush/index.html?v=gr8-v2-20260628",
-    "thumbnail": "/games/stack-tower-rush/thumb.svg",
+    "thumbnail": "/games/stack-tower-rush/thumb.webp?v=thumbs-v1",
     "description": "Tap to drop moving blocks, land perfect stacks and build the tallest neon tower before the platform slips away.",
     "seoTitle": "Play Stack Tower Rush Online Free | One Tap Stacking Game",
     "seoDescription": "Play Stack Tower Rush free online. A mobile-first one-tap stacking game with perfect placement combos and high-score tower runs.",
@@ -125,7 +126,8 @@
     "rating": 4.7,
     "shortControls": "Tap to drop",
     "launchOrder": 2,
-    "longDescription": "Stack Tower Rush is a one-tap timing game built for short mobile sessions. Drop each block at the perfect moment, hold the tower together and push for a higher record every attempt."
+    "longDescription": "Stack Tower Rush is a one-tap timing game built for short mobile sessions. Drop each block at the perfect moment, hold the tower together and push for a higher record every attempt.",
+    "thumbnailAlt": "Stack Tower Rush neon arcade game thumbnail"
   },
   {
     "id": "turbo-drift-grid",
@@ -136,7 +138,7 @@
     "difficulty": "Medium",
     "playStyle": "Hold-to-steer racer",
     "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v2-20260628",
-    "thumbnail": "/games/turbo-drift-grid/thumb.svg",
+    "thumbnail": "/games/turbo-drift-grid/thumb.webp?v=thumbs-v1",
     "description": "Hold left or right to drift through a neon traffic grid, collect boosts and avoid blockers at rising speed.",
     "seoTitle": "Play Turbo Drift Grid Online Free | Mobile Racing Game",
     "seoDescription": "Play Turbo Drift Grid free online. A mobile-friendly neon racing game with hold-to-steer controls, boosts and obstacle dodging.",
@@ -189,7 +191,8 @@
     "rating": 4.7,
     "shortControls": "Hold left or right",
     "launchOrder": 3,
-    "longDescription": "Turbo Drift Grid brings racing energy into a clean neon lane game. Hold either side of the screen to steer, avoid blockers and collect boost energy as the speed rises."
+    "longDescription": "Turbo Drift Grid brings racing energy into a clean neon lane game. Hold either side of the screen to steer, avoid blockers and collect boost energy as the speed rises.",
+    "thumbnailAlt": "Turbo Drift Grid neon arcade game thumbnail"
   },
   {
     "id": "pixel-goal-hero",
@@ -200,7 +203,7 @@
     "difficulty": "Easy",
     "playStyle": "Drag-and-shoot football",
     "iframeUrl": "/games/pixel-goal-hero/index.html?v=gr8-v2-20260628",
-    "thumbnail": "/games/pixel-goal-hero/thumb.svg",
+    "thumbnail": "/games/pixel-goal-hero/thumb.webp?v=thumbs-v1",
     "description": "Drag to aim, release to shoot and beat the moving keeper in a quick-fire mobile penalty challenge.",
     "seoTitle": "Play Pixel Goal Hero Online Free | Mobile Penalty Game",
     "seoDescription": "Play Pixel Goal Hero free online. A mobile-friendly football penalty game with drag-to-aim shooting, moving keeper and goal streaks.",
@@ -253,7 +256,8 @@
     "rating": 4.6,
     "shortControls": "Drag and release",
     "launchOrder": 4,
-    "longDescription": "Pixel Goal Hero is a fast football penalty challenge for mobile players. Drag to aim, release to shoot and try to build a scoring streak against the moving keeper."
+    "longDescription": "Pixel Goal Hero is a fast football penalty challenge for mobile players. Drag to aim, release to shoot and try to build a scoring streak against the moving keeper.",
+    "thumbnailAlt": "Pixel Goal Hero neon arcade game thumbnail"
   },
   {
     "id": "space-tap-survival",
@@ -264,7 +268,7 @@
     "difficulty": "Medium",
     "playStyle": "Hold-to-fly survival",
     "iframeUrl": "/games/space-tap-survival/index.html?v=gr8-v2-20260628",
-    "thumbnail": "/games/space-tap-survival/thumb.svg",
+    "thumbnail": "/games/space-tap-survival/thumb.webp?v=thumbs-v1",
     "description": "Hold to thrust, release to fall, dodge asteroid swarms and grab shields in a fast mobile space survival run.",
     "seoTitle": "Play Space Tap Survival Online Free | Mobile Space Game",
     "seoDescription": "Play Space Tap Survival free online. A mobile-first space survival game with hold-to-fly controls, asteroids, shields and distance scoring.",
@@ -317,6 +321,7 @@
     "rating": 4.7,
     "shortControls": "Hold to fly",
     "launchOrder": 5,
-    "longDescription": "Space Tap Survival is a one-thumb space dodger. Hold to climb, release to fall, dodge asteroid waves and grab shields to keep the run alive."
+    "longDescription": "Space Tap Survival is a one-thumb space dodger. Hold to climb, release to fall, dodge asteroid waves and grab shields to keep the run alive.",
+    "thumbnailAlt": "Space Tap Survival neon arcade game thumbnail"
   }
 ]

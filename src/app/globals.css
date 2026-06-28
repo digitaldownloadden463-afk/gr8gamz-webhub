@@ -540,3 +540,60 @@ button, input, textarea, select { font: inherit; }
   .game-topbar { align-items: flex-start; flex-direction: column; }
   .rating-card { width: 100%; }
 }
+
+
+/* GR8 GAMZ premium thumbnail polish */
+.game-card {
+  box-shadow: 0 18px 60px rgba(0,0,0,0.32), inset 0 0 0 1px rgba(255,255,255,0.015);
+}
+.game-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 28px 90px rgba(0,0,0,0.5), 0 0 38px rgba(53,255,141,0.12);
+}
+.game-thumb {
+  aspect-ratio: 16 / 9;
+  min-height: unset;
+  background: #050507;
+}
+.game-thumb img {
+  opacity: 1;
+  transform: scale(1.01);
+  filter: saturate(1.14) contrast(1.06);
+}
+.game-card:hover .game-thumb img {
+  transform: scale(1.055);
+  transition: transform 420ms ease, filter 420ms ease;
+  filter: saturate(1.22) contrast(1.1) brightness(1.05);
+}
+.game-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.18), transparent 28%), linear-gradient(135deg, rgba(53,255,141,0.08), transparent 48%, rgba(255,47,125,0.12));
+  pointer-events: none;
+}
+.game-thumb::after {
+  z-index: 2;
+  background: linear-gradient(180deg, transparent 46%, rgba(5,5,7,0.82));
+}
+.game-thumb-emoji {
+  z-index: 3;
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  font-size: 1.8rem !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.38), 0 0 22px rgba(53,255,141,0.14);
+}
+.game-meta-row span:first-child {
+  color: var(--brand);
+}
+.game-meta-row span:last-child {
+  color: var(--brand-2);
+}
+@media (max-width: 680px) {
+  .game-thumb { aspect-ratio: 16 / 9; min-height: unset; }
+}
