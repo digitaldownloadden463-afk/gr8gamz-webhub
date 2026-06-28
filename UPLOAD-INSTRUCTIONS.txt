@@ -1,24 +1,21 @@
-Upload these items to GitHub and let them overwrite existing files:
+GR8 GAMZ IndexNow root key fix
+
+Upload these folders to GitHub and let them overwrite/add files:
 
 - public
 - src
-- .env.example
-- README.md
-- GR8-GAMZ-V15-SEO-AI-VISIBILITY-SPEC.md
-- UPLOAD-INSTRUCTIONS.txt
 
-Suggested commit message:
-Add V15 SEO and AI visibility layer
+This adds the IndexNow key in two ways:
+1. public/470561d472ec49aca5a704b6d8a3eac0.txt
+2. src/app/470561d472ec49aca5a704b6d8a3eac0.txt/route.js
 
-After Vercel redeploys, test:
-/
-/games
-/mobile-games
-/quick-games
-/free-browser-games
-/arcade/neon-snake-rush
-/robots.txt
-/sitemap.xml
-/llms.txt
-/indexnow-key.txt
-/api/indexnow?url=/mobile-games
+After Vercel redeploys, test BOTH:
+
+https://www.gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
+https://gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
+
+The page should show exactly:
+
+470561d472ec49aca5a704b6d8a3eac0
+
+If one redirects to the other, that is fine. Bing only needs the key file to be reachable at the root of the verified host.
