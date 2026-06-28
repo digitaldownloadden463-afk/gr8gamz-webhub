@@ -340,7 +340,7 @@
     "difficulty": "Easy",
     "playStyle": "Paddle brick breaker",
     "iframeUrl": "/games/neon-breakout-rush/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/neon-breakout-rush/thumb.svg?v=v12",
+    "thumbnail": "/games/neon-breakout-rush/thumb.webp?v=v13-premium",
     "description": "Choose a paddle style, slide through a neon arena, smash glowing bricks and chase perfect clears.",
     "seoTitle": "Play Neon Breakout Rush Online Free | GR8 GAMZ",
     "seoDescription": "Play Neon Breakout Rush online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -391,7 +391,7 @@
     "shortControls": "Slide paddle",
     "launchOrder": 6,
     "longDescription": "Choose a paddle style, slide through a neon arena, smash glowing bricks and chase perfect clears. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Neon Breakout Rush neon arcade game thumbnail"
+    "thumbnailAlt": "Neon Breakout Rush premium neon arcade thumbnail"
   },
   {
     "id": "cyber-basketball-shots",
@@ -402,7 +402,7 @@
     "difficulty": "Easy",
     "playStyle": "Drag-and-release shots",
     "iframeUrl": "/games/cyber-basketball-shots/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/cyber-basketball-shots/thumb.svg?v=v12",
+    "thumbnail": "/games/cyber-basketball-shots/thumb.webp?v=v13-premium",
     "description": "Choose your ball, drag to aim, release to shoot and build a neon basketball scoring streak.",
     "seoTitle": "Play Cyber Basketball Shots Online Free | GR8 GAMZ",
     "seoDescription": "Play Cyber Basketball Shots online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -453,7 +453,7 @@
     "shortControls": "Drag shot",
     "launchOrder": 7,
     "longDescription": "Choose your ball, drag to aim, release to shoot and build a neon basketball scoring streak. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Cyber Basketball Shots neon arcade game thumbnail"
+    "thumbnailAlt": "Cyber Basketball Shots premium neon arcade thumbnail"
   },
   {
     "id": "zombie-lane-runner",
@@ -464,7 +464,7 @@
     "difficulty": "Medium",
     "playStyle": "Lane-switch survival",
     "iframeUrl": "/games/zombie-lane-runner/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/zombie-lane-runner/thumb.svg?v=v12",
+    "thumbnail": "/games/zombie-lane-runner/thumb.webp?v=v13-premium",
     "description": "Pick a survivor, swipe lanes, dodge zombie traffic and collect neon batteries in a survival sprint.",
     "seoTitle": "Play Zombie Lane Runner Online Free | GR8 GAMZ",
     "seoDescription": "Play Zombie Lane Runner online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -515,7 +515,7 @@
     "shortControls": "Swipe lanes",
     "launchOrder": 8,
     "longDescription": "Pick a survivor, swipe lanes, dodge zombie traffic and collect neon batteries in a survival sprint. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Zombie Lane Runner neon arcade game thumbnail"
+    "thumbnailAlt": "Zombie Lane Runner premium neon arcade thumbnail"
   },
   {
     "id": "bubble-pop-blitz",
@@ -526,7 +526,7 @@
     "difficulty": "Easy",
     "playStyle": "Tap combo popper",
     "iframeUrl": "/games/bubble-pop-blitz/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/bubble-pop-blitz/thumb.svg?v=v12",
+    "thumbnail": "/games/bubble-pop-blitz/thumb.webp?v=v13-premium",
     "description": "Choose a power mode, tap matching neon groups and trigger satisfying combo bursts.",
     "seoTitle": "Play Bubble Pop Blitz Online Free | GR8 GAMZ",
     "seoDescription": "Play Bubble Pop Blitz online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -577,7 +577,7 @@
     "shortControls": "Tap bubbles",
     "launchOrder": 9,
     "longDescription": "Choose a power mode, tap matching neon groups and trigger satisfying combo bursts. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Bubble Pop Blitz neon arcade game thumbnail"
+    "thumbnailAlt": "Bubble Pop Blitz premium neon arcade thumbnail"
   },
   {
     "id": "neon-air-hockey",
@@ -588,7 +588,7 @@
     "difficulty": "Medium",
     "playStyle": "Drag paddle duel",
     "iframeUrl": "/games/neon-air-hockey/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/neon-air-hockey/thumb.svg?v=v12",
+    "thumbnail": "/games/neon-air-hockey/thumb.webp?v=v13-premium",
     "description": "Choose your striker paddle, drag to defend, smash the puck and beat the neon arena AI.",
     "seoTitle": "Play Neon Air Hockey Online Free | GR8 GAMZ",
     "seoDescription": "Play Neon Air Hockey online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -639,7 +639,7 @@
     "shortControls": "Drag paddle",
     "launchOrder": 10,
     "longDescription": "Choose your striker paddle, drag to defend, smash the puck and beat the neon arena AI. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Neon Air Hockey neon arcade game thumbnail"
+    "thumbnailAlt": "Neon Air Hockey premium neon arcade thumbnail"
   },
   {
     "id": "alien-invader-swarm",
@@ -650,7 +650,7 @@
     "difficulty": "Medium",
     "playStyle": "Auto-fire space shooter",
     "iframeUrl": "/games/alien-invader-swarm/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/alien-invader-swarm/thumb.svg?v=v12",
+    "thumbnail": "/games/alien-invader-swarm/thumb.webp?v=v13-premium",
     "description": "Choose your fighter, drag to dodge, auto-fire lasers and clear waves of neon alien invaders.",
     "seoTitle": "Play Alien Invader Swarm Online Free | GR8 GAMZ",
     "seoDescription": "Play Alien Invader Swarm online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -701,7 +701,7 @@
     "shortControls": "Drag ship",
     "launchOrder": 11,
     "longDescription": "Choose your fighter, drag to dodge, auto-fire lasers and clear waves of neon alien invaders. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Alien Invader Swarm neon arcade game thumbnail"
+    "thumbnailAlt": "Alien Invader Swarm premium neon arcade thumbnail"
   },
   {
     "id": "crystal-match-quest",
@@ -712,7 +712,7 @@
     "difficulty": "Easy",
     "playStyle": "Tap-match puzzle",
     "iframeUrl": "/games/crystal-match-quest/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/crystal-match-quest/thumb.svg?v=v12",
+    "thumbnail": "/games/crystal-match-quest/thumb.webp?v=v13-premium",
     "description": "Choose a power mode, tap matching neon groups and trigger satisfying combo bursts.",
     "seoTitle": "Play Crystal Match Quest Online Free | GR8 GAMZ",
     "seoDescription": "Play Crystal Match Quest online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -763,7 +763,7 @@
     "shortControls": "Tap crystals",
     "launchOrder": 12,
     "longDescription": "Choose a power mode, tap matching neon groups and trigger satisfying combo bursts. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Crystal Match Quest neon arcade game thumbnail"
+    "thumbnailAlt": "Crystal Match Quest premium neon arcade thumbnail"
   },
   {
     "id": "dungeon-door-dash",
@@ -774,7 +774,7 @@
     "difficulty": "Easy",
     "playStyle": "Risk-choice treasure run",
     "iframeUrl": "/games/dungeon-door-dash/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/dungeon-door-dash/thumb.svg?v=v12",
+    "thumbnail": "/games/dungeon-door-dash/thumb.webp?v=v13-premium",
     "description": "Choose a hero class, pick doors, dodge traps and stack treasure in a fast risk-reward dungeon run.",
     "seoTitle": "Play Dungeon Door Dash Online Free | GR8 GAMZ",
     "seoDescription": "Play Dungeon Door Dash online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -825,7 +825,7 @@
     "shortControls": "Pick doors",
     "launchOrder": 13,
     "longDescription": "Choose a hero class, pick doors, dodge traps and stack treasure in a fast risk-reward dungeon run. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Dungeon Door Dash neon arcade game thumbnail"
+    "thumbnailAlt": "Dungeon Door Dash premium neon arcade thumbnail"
   },
   {
     "id": "traffic-tap-chaos",
@@ -836,7 +836,7 @@
     "difficulty": "Medium",
     "playStyle": "Tap traffic control",
     "iframeUrl": "/games/traffic-tap-chaos/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/traffic-tap-chaos/thumb.svg?v=v12",
+    "thumbnail": "/games/traffic-tap-chaos/thumb.webp?v=v13-premium",
     "description": "Choose a city route, tap cars through the neon junction and avoid crashes as the traffic speeds up.",
     "seoTitle": "Play Traffic Tap Chaos Online Free | GR8 GAMZ",
     "seoDescription": "Play Traffic Tap Chaos online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -887,7 +887,7 @@
     "shortControls": "Tap cars",
     "launchOrder": 14,
     "longDescription": "Choose a city route, tap cars through the neon junction and avoid crashes as the traffic speeds up. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Traffic Tap Chaos neon arcade game thumbnail"
+    "thumbnailAlt": "Traffic Tap Chaos premium neon arcade thumbnail"
   },
   {
     "id": "rocket-fuel-frenzy",
@@ -898,7 +898,7 @@
     "difficulty": "Medium",
     "playStyle": "Fuel collection flyer",
     "iframeUrl": "/games/rocket-fuel-frenzy/index.html?v=gr8-v12-second-drop-20260628",
-    "thumbnail": "/games/rocket-fuel-frenzy/thumb.svg?v=v12",
+    "thumbnail": "/games/rocket-fuel-frenzy/thumb.webp?v=v13-premium",
     "description": "Choose a rocket, drag through neon space gates, collect fuel cells and survive the fuel countdown.",
     "seoTitle": "Play Rocket Fuel Frenzy Online Free | GR8 GAMZ",
     "seoDescription": "Play Rocket Fuel Frenzy online for free at GR8 GAMZ. Mobile-first controls, fast restarts and original neon arcade action.",
@@ -949,6 +949,6 @@
     "shortControls": "Drag rocket",
     "launchOrder": 15,
     "longDescription": "Choose a rocket, drag through neon space gates, collect fuel cells and survive the fuel countdown. This V12 second-drop title adds a pre-play choice menu, mobile-first controls, score saving and a fast one-more-go loop inside the GR8 GAMZ neon arcade universe.",
-    "thumbnailAlt": "Rocket Fuel Frenzy neon arcade game thumbnail"
+    "thumbnailAlt": "Rocket Fuel Frenzy premium neon arcade thumbnail"
   }
 ]
