@@ -1,46 +1,14 @@
-# GR8 GAMZ V5 Premium Gameplay Update
+# GR8 GAMZ V6 Card Badge Hotfix
 
-This build keeps the GR8 GAMZ neon theme and upgrades the remaining three launch games to a stronger premium arcade standard.
+This hotfix fixes the oversized thumbnail control labels on the game cards.
 
-## Upgraded in this pack
+Problem fixed:
+- "Swipe to turn", "Tap to drop", "Hold left or right" etc were displaying at a huge font size and covering the thumbnails.
 
-- Stack Tower Rush V5
-- Pixel Goal Hero V5
-- Space Tap Survival V5
+Files included:
+- src/app/globals.css
 
-## Already upgraded in V4
-
-- Neon Snake Rush V4
-- Turbo Drift Grid V4
-
-## Upload instructions
-
-For an existing GitHub repository, upload the V5 update pack contents:
-
-- `public`
-- `src`
-- `README.md`
-- `GR8-GAMZ-V5-GAMEPLAY-SPEC.md`
+Upload the `src` folder to GitHub and allow it to overwrite the existing CSS file.
 
 Commit message suggestion:
-
-`Upgrade remaining games to V5 premium gameplay`
-
-Vercel should redeploy automatically.
-
-## Direct test URLs
-
-- `/games/stack-tower-rush/index.html?v=gr8-v5-premium-20260628`
-- `/games/pixel-goal-hero/index.html?v=gr8-v5-premium-20260628`
-- `/games/space-tap-survival/index.html?v=gr8-v5-premium-20260628`
-
-## Game page test URLs
-
-- `/arcade/stack-tower-rush`
-- `/arcade/pixel-goal-hero`
-- `/arcade/space-tap-survival`
-
-
-## V6 Launch Polish
-
-This repository now includes the GR8 GAMZ V6 launch polish layer: stronger homepage launch messaging, better game-card badges, improved game-page instructions, fullscreen shortcuts and safer mobile game-frame styling. See `GR8-GAMZ-V6-LAUNCH-CHECKLIST.md` before pushing traffic.
+Fix oversized game-card thumbnail badges

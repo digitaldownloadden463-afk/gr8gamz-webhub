@@ -1,25 +1,8 @@
-GR8 GAMZ V6 LAUNCH POLISH UPDATE
-
-Upload these items to the root of your GitHub repository:
-
-- src
-- README.md
-- GR8-GAMZ-V6-LAUNCH-CHECKLIST.md
-- UPLOAD-INSTRUCTIONS.txt
-
-Let GitHub overwrite the existing files.
-
-Commit message:
-Launch V6 polish pass
-
-After Vercel redeploys, test:
-/
-/games
-/arcade/neon-snake-rush
-/arcade/turbo-drift-grid
-/arcade/stack-tower-rush
-/arcade/pixel-goal-hero
-/arcade/space-tap-survival
-/sitemap.xml
-/robots.txt
-/ads.txt
+Upload instructions:
+1. Unzip this file.
+2. Go to GitHub > your gr8gamz-webhub repo.
+3. Click Add file > Upload files.
+4. Drag the src folder into GitHub.
+5. Allow GitHub to overwrite src/app/globals.css.
+6. Commit with: Fix oversized game-card thumbnail badges
+7. Wait for Vercel to redeploy.

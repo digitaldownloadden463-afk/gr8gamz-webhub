@@ -703,3 +703,31 @@ button, input, textarea, select { font: inherit; }
   .thumb-status-badge { top: 10px; right: 10px; font-size: 0.68rem; max-width: 58%; text-align: center; }
   .game-card p { min-height: unset; }
 }
+
+/* GR8 GAMZ V6 hotfix: keep thumbnail control badges compact.
+   Earlier .game-thumb span styling made all thumbnail spans huge, which caused
+   "Swipe to turn", "Tap to drop" and similar labels to cover the artwork. */
+.game-thumb .thumb-status-badge {
+  font-size: 0.72rem !important;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  max-width: 64%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  filter: none;
+}
+
+.game-thumb .game-thumb-emoji {
+  font-size: 1.8rem !important;
+}
+
+@media (max-width: 680px) {
+  .game-thumb .thumb-status-badge {
+    font-size: 0.64rem !important;
+    max-width: 58%;
+    padding: 6px 8px;
+  }
+}
