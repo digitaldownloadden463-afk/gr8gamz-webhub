@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import JsonLd from '../components/JsonLd';
 import { siteConfig } from '../data/site';
 import { buildPageMetadata, organizationJsonLd, websiteJsonLd } from '../lib/seo';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadataBase = new URL(siteConfig.siteUrl);
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
