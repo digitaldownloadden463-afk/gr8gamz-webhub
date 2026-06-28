@@ -1,1 +1,9 @@
-Upload public, src, README.md and UPLOAD-INSTRUCTIONS.txt to the root of your GitHub repo. Let GitHub overwrite existing files. Commit: Add V8 selection labs to launched games.
+Upload these items to GitHub and let them overwrite existing files:
+
+- public
+- src
+- README.md
+- GR8-GAMZ-V9-HOMEPAGE-ARTWORK-SPEC.md
+
+Suggested commit message:
+Add V9 homepage artwork pass

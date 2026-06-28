@@ -21,26 +21,64 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={itemListJsonLd(featured, '/')} />
-      <section className="hero">
-        <div className="hero-copy">
+      <section className="hero hero-premium">
+        <div className="hero-copy hero-copy-premium">
           <span className="eyebrow">Instant mobile arcade</span>
-          <h1>Play fast. Retry faster. Chase the next run.</h1>
+          <h1>Welcome to the neon world players want to come back to.</h1>
           <p>
-            GR8 GAMZ is a neon browser-game hub built mobile-first: tap, swipe, hold and play instantly with no app download.
+            GR8 GAMZ is a premium browser-game hub built for fast dopamine loops, memorable visuals and instant touchscreen play.
+            Jump into original neon games, selection labs, garage pickers and quick-play sessions with no app download.
           </p>
           <div className="hero-actions">
             <Link href="/games" className="cta">Browse games</Link>
             <Link href="/popular" className="secondary-cta">Popular now</Link>
-            <Link href="/platforms/mobile" className="secondary-cta">Mobile games</Link>
+            <Link href="/platforms/originals" className="secondary-cta">Original games</Link>
+          </div>
+          <div className="hero-support-grid" aria-label="GR8 GAMZ launch highlights">
+            <div className="hero-support-card">
+              <strong>Premium launch games</strong>
+              <span>Five polished originals, each with its own replay hook and control style.</span>
+            </div>
+            <div className="hero-support-card">
+              <strong>Selection labs live</strong>
+              <span>Garages, hangars, lockers and snake labs create variety and replay value.</span>
+            </div>
+            <div className="hero-support-card">
+              <strong>Built for quick returns</strong>
+              <span>Fast restarts, meaningful choices and memorable visuals keep players inside the loop.</span>
+            </div>
           </div>
         </div>
-        <aside className="hero-panel" aria-label="GR8 GAMZ player stats and advertising">
-          <div className="pulse-card">
-            <strong>{featured.length}</strong>
-            <span>launch games live now — designed for touchscreen play.</span>
+        <aside className="hero-visual" aria-label="GR8 GAMZ visual showcase and live platform panel">
+          <div className="hero-art-card">
+            <img
+              src="/art/homepage-hero-arena.png"
+              alt="Epic GR8 GAMZ neon arcade montage with racing, sports, space and digital action"
+            />
+            <div className="hero-floating-badge hero-floating-badge-top">Original neon arcade universe</div>
+            <div className="hero-floating-badge hero-floating-badge-bottom">Fast play • sharp visuals • mobile first</div>
           </div>
-          <ProgressionPanel />
-          <AdSlot placement={adPlacements.homeTop} compact />
+          <div className="hero-visual-stack">
+            <div className="pulse-card hero-pulse-card">
+              <strong>{featured.length}</strong>
+              <span>premium launch games now live and tuned for mobile-first play.</span>
+            </div>
+            <div className="hero-mini-panels">
+              <div>
+                <strong>5</strong>
+                <span>selection menus live</span>
+              </div>
+              <div>
+                <strong>90</strong>
+                <span>routes generated</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>instant browser access</span>
+              </div>
+            </div>
+            <AdSlot placement={adPlacements.homeTop} compact />
+          </div>
         </aside>
       </section>
 
@@ -48,6 +86,21 @@ export default function HomePage() {
         <div><strong>5 premium games live</strong><span>Mobile-first controls, instant play and polished replay loops.</span></div>
         <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones away from touch controls.</span></div>
         <div><strong>Search-ready structure</strong><span>Game, category, tag, platform and sitemap routes prepared.</span></div>
+      </section>
+
+      <section className="immersive-banner" aria-label="GR8 GAMZ world building banner">
+        <div className="immersive-banner-copy">
+          <span className="eyebrow">Built to be memorable</span>
+          <h2>More than a game list — this is a neon arcade world.</h2>
+          <p>
+            The homepage now leads with cinematic branded artwork so GR8 GAMZ feels like a destination. Expect original visuals,
+            touch-friendly games, sharper discovery pages and a universe that grows with every launch.
+          </p>
+        </div>
+        <div className="immersive-banner-actions">
+          <Link href="/games" className="cta">Enter the arcade</Link>
+          <Link href="/tags/mobile" className="secondary-cta">Touchscreen picks</Link>
+        </div>
       </section>
 
       <section aria-label="Launch shortcuts" className="content-panel compact-panel">

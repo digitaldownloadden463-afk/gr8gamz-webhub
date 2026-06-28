@@ -32,3 +32,9 @@ Commit message:
 `Add V8 selection labs to launched games`
 
 Then wait for Vercel to redeploy.
+
+
+## V9 Homepage Artwork Pass
+- Added premium homepage hero artwork and supporting neon landscape section background.
+- Improved first-impression messaging and launch highlight panels.
+- Added local artwork assets under `public/art/`.
