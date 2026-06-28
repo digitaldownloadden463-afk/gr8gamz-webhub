@@ -45,3 +45,9 @@ Then wait for Vercel to redeploy.
 - Reordered homepage sections for stronger conversion and repeat-play flow.
 - Improved CTA wording and headline hierarchy.
 - Added compressed WebP homepage artwork references for faster loading.
+
+
+## V11 Immersive Play System
+- Added branded GR8 Focus Mode for fullscreen play.
+- Added pause overlay, sound toggle, quick restart and mobile rotate suggestion.
+- Added post-game result overlay with Play Again and Next Game flow.

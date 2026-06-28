@@ -44,7 +44,7 @@ export default function GameSessionTools({ game }) {
         {favourite ? '★ Saved' : '☆ Save game'}
       </button>
       <a className="secondary-cta session-button" href={game.iframeUrl} target="_blank" rel="noopener noreferrer">
-        Open fullscreen
+        Open raw game
       </a>
       <span>{recentCount ? `${recentCount} recent game${recentCount === 1 ? '' : 's'} tracked on this device` : 'Recent games start here'}</span>
     </div>

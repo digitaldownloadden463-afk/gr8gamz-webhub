@@ -4,6 +4,7 @@ import AdSlot from '../../../components/ads/AdSlot';
 import GameGrid from '../../../components/GameGrid';
 import JsonLd from '../../../components/JsonLd';
 import GameSessionTools from '../../../components/player/GameSessionTools';
+import ImmersiveGameFrame from '../../../components/player/ImmersiveGameFrame';
 import GameInstructionPanel from '../../../components/player/GameInstructionPanel';
 import ProgressionPanel from '../../../components/engagement/ProgressionPanel';
 import LeaderboardTerminal from '../../../components/engagement/LeaderboardTerminal';
@@ -71,15 +72,7 @@ export default function ArcadeGamePage({ params }) {
             </div>
             <Link href="/games" className="secondary-cta">All games</Link>
           </div>
-          <div className="game-frame-wrap">
-            <iframe
-              title={`Play ${game.name}`}
-              src={game.iframeUrl}
-              loading="eager"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowFullScreen
-            />
-          </div>
+          <ImmersiveGameFrame game={game} nextGame={related[0]} />
           <div className="game-notes">
             <GameSessionTools game={game} />
             <div className="tag-list">

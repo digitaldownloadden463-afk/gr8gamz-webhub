@@ -1,10 +1,9 @@
 Upload these items to GitHub and let them overwrite existing files:
 
-- public
 - src
 - README.md
-- GR8-GAMZ-V10-CONVERSION-SPEED-SPEC.md
+- GR8-GAMZ-V11-IMMERSIVE-PLAY-SPEC.md
 - UPLOAD-INSTRUCTIONS.txt
 
 Suggested commit message:
-Add V10 conversion speed polish and fix badges
+Add V11 immersive play mode
