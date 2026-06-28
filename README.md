@@ -55,3 +55,9 @@ Then wait for Vercel to redeploy.
 
 ## V12 Second Game Drop
 Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch games with new puzzle, shooter, adventure and strategy coverage.
+
+
+## V13 Second Drop Polish
+- Upgraded the V12 second-drop thumbnails to premium neon artwork consistent with the first five games.
+- Fixed oversized thumbnail control badges with stronger CSS targeting.
+- Fixed Zombie Lane Runner arrow key / A-D lane switching.
