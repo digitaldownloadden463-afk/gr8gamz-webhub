@@ -22,3 +22,12 @@ https://www.gr8gamz.com/latest
 https://www.gr8gamz.com/feeds
 https://www.gr8gamz.com/seo-status
 https://www.gr8gamz.com/api/indexnow/bulk?scope=content&dryRun=1
+
+
+V18 + V19 documentation included:
+- GR8-GAMZ-V18-GAMEPLAY-ART-POLISH-SPEC.md
+- GR8-GAMZ-V19-FULL-GAMEPLAY-QA-PREMIUM-POLISH-SPEC.md
+- GR8-GAMZ-V19-QA-MATRIX.md
+
+Suggested commit message:
+Add V18 gameplay art polish and V19 QA plan

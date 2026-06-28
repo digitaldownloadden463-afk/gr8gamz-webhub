@@ -315,8 +315,8 @@ button, input, textarea, select { font: inherit; }
 .game-frame-wrap {
   position: relative;
   background: #000;
-  min-height: min(72vh, 760px);
-  aspect-ratio: 16/10;
+  min-height: clamp(760px, 82vh, 980px);
+  aspect-ratio: 16/11;
 }
 .game-frame-wrap iframe {
   position: absolute;
@@ -1025,7 +1025,7 @@ button, input, textarea, select { font: inherit; }
   border-bottom: 1px solid rgba(251,191,36,0.16);
 }
 .immersive-frame-wrap {
-  min-height: min(74vh, 780px);
+  min-height: clamp(780px, 84vh, 1040px);
 }
 .immersive-overlay {
   position: absolute;
@@ -1127,6 +1127,25 @@ button, input, textarea, select { font: inherit; }
   }
 }
 
+
+
+@media (max-width: 900px) {
+  .game-frame-wrap {
+    min-height: clamp(620px, 78vh, 860px);
+    aspect-ratio: auto;
+  }
+  .immersive-frame-wrap {
+    min-height: clamp(640px, 80vh, 900px);
+  }
+}
+@media (max-width: 560px) {
+  .game-frame-wrap {
+    min-height: clamp(560px, 76vh, 760px);
+  }
+  .immersive-frame-wrap {
+    min-height: clamp(580px, 78vh, 820px);
+  }
+}
 
 /* GR8 GAMZ v13 thumbnail consistency and badge hard-fix */
 .game-thumb .thumb-status-badge,

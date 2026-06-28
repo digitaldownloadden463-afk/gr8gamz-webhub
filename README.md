@@ -102,3 +102,17 @@ Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch gam
 - Added root IndexNow key fallback file/route.
 - Updated robots.txt and llms.txt with feed/sitemap routes.
 - Added homepage links into the freshness and crawl automation layer.
+
+
+## V18 gameplay + art polish
+- Larger arcade viewport heights for better in-game visibility.
+- Premium neon artwork refresh for the last ten games.
+- Zombie Lane Runner control reliability patch with touch lane buttons.
+
+
+## V19 included planning docs
+This package now includes the V19 planning layer:
+- `GR8-GAMZ-V19-FULL-GAMEPLAY-QA-PREMIUM-POLISH-SPEC.md`
+- `GR8-GAMZ-V19-QA-MATRIX.md`
+
+V19 is the next implementation phase after V18: full testing, balancing, mechanic polish and premium QA across all 15 existing games.
