@@ -49,3 +49,8 @@ Growth automation and feeds:
 - /sitemap-content.xml - updates and collections sitemap
 - /sitemap-discovery.xml - core, category, tag and discovery route sitemap
 - /indexnow-urls.json - machine-readable IndexNow URL list
+
+
+V19 implementation:
+- /updates/v19-gameplay-qa-premium-polish-implementation - gameplay QA and premium polish update
+- Second-drop games now include stronger shared engine behaviour, score result posting, pause/resume support and improved controls.
