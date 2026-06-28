@@ -38,7 +38,30 @@
         "name": "Neon Snake Rush",
         "description": "Wische durch ein Neon-Raster, sammle leuchtende Kugeln und jage deinen Highscore."
       }
-    }
+    },
+    "tags": [
+      "snake",
+      "arcade",
+      "mobile",
+      "swipe",
+      "high-score",
+      "quick-play",
+      "retro-inspired"
+    ],
+    "platforms": [
+      "html5",
+      "mobile",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-06-28",
+    "playsLabel": "Launch favourite",
+    "rating": 4.8,
+    "shortControls": "Swipe to turn",
+    "launchOrder": 1,
+    "longDescription": "Neon Snake Rush is the GR8 GAMZ take on instant arcade survival: swipe through a glowing grid, collect energy, grow longer and chase the run that beats your best score. Built mobile-first, it gives players a fast restart loop and simple touch controls that work cleanly on phones."
   },
   {
     "id": "stack-tower-rush",
@@ -79,7 +102,30 @@
         "name": "Stack Tower Rush",
         "description": "Tippe, um Blöcke fallen zu lassen, perfekte Stapel zu schaffen und den höchsten Turm zu bauen."
       }
-    }
+    },
+    "tags": [
+      "stacking",
+      "skill",
+      "mobile",
+      "tap",
+      "one-tap",
+      "high-score",
+      "quick-play"
+    ],
+    "platforms": [
+      "html5",
+      "mobile",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-06-28",
+    "playsLabel": "One-tap hit",
+    "rating": 4.7,
+    "shortControls": "Tap to drop",
+    "launchOrder": 2,
+    "longDescription": "Stack Tower Rush is a one-tap timing game built for short mobile sessions. Drop each block at the perfect moment, hold the tower together and push for a higher record every attempt."
   },
   {
     "id": "turbo-drift-grid",
@@ -120,7 +166,30 @@
         "name": "Turbo Drift Grid",
         "description": "Halte links oder rechts, drifte durch das Neon-Raster und sammle Boosts."
       }
-    }
+    },
+    "tags": [
+      "racing",
+      "drift",
+      "mobile",
+      "hold-to-steer",
+      "boost",
+      "reaction",
+      "neon"
+    ],
+    "platforms": [
+      "html5",
+      "mobile",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-06-28",
+    "playsLabel": "Racing launch pick",
+    "rating": 4.7,
+    "shortControls": "Hold left or right",
+    "launchOrder": 3,
+    "longDescription": "Turbo Drift Grid brings racing energy into a clean neon lane game. Hold either side of the screen to steer, avoid blockers and collect boost energy as the speed rises."
   },
   {
     "id": "pixel-goal-hero",
@@ -161,7 +230,30 @@
         "name": "Pixel Goal Hero",
         "description": "Ziehe zum Zielen, lasse los zum Schuss und besiege den Torwart im Elfmeter-Spiel."
       }
-    }
+    },
+    "tags": [
+      "football",
+      "sports",
+      "penalty",
+      "mobile",
+      "drag",
+      "soccer",
+      "quick-play"
+    ],
+    "platforms": [
+      "html5",
+      "mobile",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-06-28",
+    "playsLabel": "Sports starter",
+    "rating": 4.6,
+    "shortControls": "Drag and release",
+    "launchOrder": 4,
+    "longDescription": "Pixel Goal Hero is a fast football penalty challenge for mobile players. Drag to aim, release to shoot and try to build a scoring streak against the moving keeper."
   },
   {
     "id": "space-tap-survival",
@@ -202,6 +294,29 @@
         "name": "Space Tap Survival",
         "description": "Halte gedrückt zum Steigen, lasse los zum Fallen, weiche Asteroiden aus und sammle Schilde."
       }
-    }
+    },
+    "tags": [
+      "space",
+      "action",
+      "survival",
+      "mobile",
+      "tap",
+      "asteroids",
+      "high-score"
+    ],
+    "platforms": [
+      "html5",
+      "mobile",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-06-28",
+    "playsLabel": "Survival loop",
+    "rating": 4.7,
+    "shortControls": "Hold to fly",
+    "launchOrder": 5,
+    "longDescription": "Space Tap Survival is a one-thumb space dodger. Hold to climb, release to fall, dodge asteroid waves and grab shields to keep the run alive."
   }
 ]

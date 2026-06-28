@@ -1,14 +1,15 @@
 import { siteConfig } from '../data/site';
-import { getAllGames } from '../lib/games';
+import { getAllGames, getAllTags } from '../lib/games';
 
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/advertise', '/privacy'];
   const routes = [
-    '/',
-    '/advertise',
-    '/privacy',
+    ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),
+    ...siteConfig.platforms.map((platform) => `/platforms/${platform.id}`),
+    ...getAllTags().map((tag) => `/tags/${tag}`),
     ...getAllGames().map((game) => `/arcade/${game.id}`)
   ];
 
@@ -24,6 +25,6 @@ export default function sitemap() {
     url: `${base}${route}`,
     lastModified: now,
     changeFrequency: route.includes('/arcade/') ? 'weekly' : 'daily',
-    priority: route === '/' ? 1 : route.includes('/arcade/') ? 0.9 : 0.75
+    priority: route === '/' ? 1 : route.includes('/arcade/') ? 0.9 : route.includes('/tags/') ? 0.7 : 0.8
   }));
 }

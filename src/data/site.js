@@ -20,31 +20,69 @@ export const siteConfig = {
       id: 'arcade',
       name: 'Arcade Games',
       description: 'Fast reflex games built for instant play, swipe controls and repeat attempts.',
-      emoji: '⚡'
+      emoji: '⚡',
+      seoCopy: 'Arcade games on GR8 GAMZ are designed for instant action: open the page, tap play, learn the controls in seconds and chase a better score.'
     },
     {
       id: 'skill',
       name: 'Skill Games',
       description: 'One-tap timing games with clean mobile controls and quick high-score runs.',
-      emoji: '🎯'
+      emoji: '🎯',
+      seoCopy: 'Skill games reward timing, precision and fast retries. They are ideal for mobile players who want a quick challenge without complicated setup.'
     },
     {
       id: 'racing',
       name: 'Racing Games',
       description: 'Thumb-friendly racing games with drift lines, speed boosts and distance scoring.',
-      emoji: '🏎️'
+      emoji: '🏎️',
+      seoCopy: 'Racing games bring speed, dodging and boost chasing to mobile-first browser play. GR8 GAMZ racing pages are built around simple steering and repeat runs.'
     },
     {
       id: 'sports',
       name: 'Sports Games',
       description: 'Quick sports challenges built for drag, tap and swipe gameplay on mobile devices.',
-      emoji: '⚽'
+      emoji: '⚽',
+      seoCopy: 'Sports games turn quick moments into replayable challenges: aim, shoot, score and try to beat your last streak.'
     },
     {
       id: 'action',
       name: 'Action Games',
       description: 'Fast mobile survival games with simple controls, shields, hazards and score chasing.',
-      emoji: '🚀'
+      emoji: '🚀',
+      seoCopy: 'Action games on GR8 GAMZ are built for movement, survival and quick decisions, with touch controls that work on phones and tablets.'
     }
+  ],
+  platforms: [
+    {
+      id: 'html5',
+      name: 'HTML5 Games',
+      emoji: '🌐',
+      description: 'Instant web games that run directly in the browser with no app download required.'
+    },
+    {
+      id: 'mobile',
+      name: 'Mobile Games',
+      emoji: '📱',
+      description: 'Touchscreen-first games with tap, swipe, hold and drag controls for phones and tablets.'
+    },
+    {
+      id: 'originals',
+      name: 'GR8 Originals',
+      emoji: '💚',
+      description: 'Original GR8 GAMZ games built for fast loading, repeat play and safe monetisation.'
+    },
+    {
+      id: 'retro-inspired',
+      name: 'Retro-Inspired Games',
+      emoji: '🕹️',
+      description: 'Modern browser games inspired by classic arcade loops, rebuilt with original branding and mobile-first controls.'
+    }
+  ],
+  launchLinks: [
+    { label: 'All Games', href: '/games' },
+    { label: 'Popular', href: '/popular' },
+    { label: 'New', href: '/new' },
+    { label: 'A-Z', href: '/a-z' },
+    { label: 'Mobile', href: '/platforms/mobile' }
   ]
 };

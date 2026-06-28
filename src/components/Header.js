@@ -12,8 +12,10 @@ export default function Header() {
         </span>
       </Link>
       <nav className="main-nav" aria-label="Primary navigation">
-        <Link href="/#games">Games</Link>
-        <Link href="/#daily">Daily</Link>
+        <Link href="/games">Games</Link>
+        <Link href="/popular">Popular</Link>
+        <Link href="/new">New</Link>
+        <Link href="/a-z">A-Z</Link>
         <Link href="/advertise">Advertise</Link>
       </nav>
     </header>
