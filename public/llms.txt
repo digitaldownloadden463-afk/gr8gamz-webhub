@@ -18,3 +18,21 @@ Important routes:
 - /difficulty/medium - medium games
 
 Game pages use /arcade/{game-slug} and include visible instructions, controls, summary content, FAQs and related-game links.
+
+
+Authority and content routes:
+- /updates - GR8 GAMZ updates, game guides and developer notes
+- /updates/gr8-gamz-launch-announcement - launch announcement
+- /updates/first-15-games-guide - launch game guide
+- /updates/mobile-first-browser-game-design-notes - mobile-first design notes
+- /updates/gr8-focus-mode-explained - fullscreen play feature notes
+- /updates/seo-and-ai-visibility-foundation - SEO and AI visibility notes
+- /collections - curated game collections
+- /collections/best-mobile-browser-games - mobile browser game collection
+- /collections/best-quick-games - quick game collection
+- /collections/best-arcade-games - arcade game collection
+- /collections/games-with-selection-labs - games with loadouts and selection systems
+- /new-this-week - fresh weekly-style hub for new games and updates
+
+Update pages include visible summaries, article sections, FAQs, related game links and Article schema.
+Collection pages include real playable game lists, summary content and CollectionPage schema.
