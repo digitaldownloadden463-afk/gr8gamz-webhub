@@ -1,5 +1,6 @@
 import './globals.css';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import JsonLd from '../components/JsonLd';
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
