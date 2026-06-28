@@ -72,3 +72,12 @@ Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch gam
 - Added `/difficulty/[slug]` landing pages.
 - Updated sitemap to include new discovery routes.
 - Improved game session tracking for favourites, plays, recent games and local XP.
+
+
+## V15 SEO + AI Visibility Layer
+- Added advanced crawl/AI visibility structure.
+- Added `/mobile-games`, `/quick-games` and `/free-browser-games` SEO hubs.
+- Added richer visible game-page SEO content and FAQs.
+- Added IndexNow-ready routes and environment-variable setup.
+- Added `llms.txt` and sitemap updates.
+- Added Google/Bing verification metadata support.

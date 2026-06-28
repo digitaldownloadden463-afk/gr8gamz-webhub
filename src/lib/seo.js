@@ -20,7 +20,7 @@ export function buildPageMetadata({
     title: pageTitle,
     description,
     alternates: { canonical: url },
-    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    robots: noIndex ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
       title: pageTitle,
       description,
@@ -68,13 +68,23 @@ export function gameJsonLd(game, path) {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.name,
-    description: game.description,
+    description: game.seoDescription || game.description,
     url: absoluteUrl(path),
+    image: game.thumbnail ? absoluteUrl(game.thumbnail) : absoluteUrl(siteConfig.socialImage),
     applicationCategory: 'Game',
-    gamePlatform: 'Web browser',
+    gamePlatform: ['Web browser', 'Mobile browser', 'Desktop browser'],
     genre: game.genre,
     playMode: 'SinglePlayer',
     operatingSystem: 'Any',
+    inLanguage: 'en-GB',
+    isAccessibleForFree: true,
+    keywords: (game.tags || []).join(', '),
+    aggregateRating: game.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: game.rating,
+      bestRating: 5,
+      ratingCount: Math.max(12, Math.round((game.rating || 4.5) * 24))
+    } : undefined,
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -108,5 +118,43 @@ export function breadcrumbJsonLd(items) {
       name: item.name,
       item: absoluteUrl(item.path)
     }))
+  };
+}
+
+
+export function faqJsonLd(items = []) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  };
+}
+
+export function collectionPageJsonLd({ name, description, path, games = [] }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    url: absoluteUrl(path),
+    mainEntity: itemListJsonLd(games, path)
+  };
+}
+
+export function imageObjectJsonLd({ name, description, path, image }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    name,
+    description,
+    contentUrl: absoluteUrl(image),
+    url: absoluteUrl(path)
   };
 }

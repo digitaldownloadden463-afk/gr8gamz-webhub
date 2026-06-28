@@ -1,17 +1,24 @@
 Upload these items to GitHub and let them overwrite existing files:
 
+- public
 - src
+- .env.example
 - README.md
-- GR8-GAMZ-V14-RETENTION-DISCOVERY-SPEC.md
+- GR8-GAMZ-V15-SEO-AI-VISIBILITY-SPEC.md
 - UPLOAD-INSTRUCTIONS.txt
 
 Suggested commit message:
-Add V14 retention and discovery engine
+Add V15 SEO and AI visibility layer
 
 After Vercel redeploys, test:
 /
 /games
-/games?control=tap
-/controls/tap
-/difficulty/easy
+/mobile-games
+/quick-games
+/free-browser-games
 /arcade/neon-snake-rush
+/robots.txt
+/sitemap.xml
+/llms.txt
+/indexnow-key.txt
+/api/indexnow?url=/mobile-games

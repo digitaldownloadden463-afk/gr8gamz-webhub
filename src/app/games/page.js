@@ -5,11 +5,15 @@ import { siteConfig } from '../../data/site';
 import { filterGames, getAllTags } from '../../lib/games';
 import { buildPageMetadata, itemListJsonLd } from '../../lib/seo';
 
-export const metadata = buildPageMetadata({
-  title: 'All Free Online Games',
-  description: 'Browse and filter all GR8 GAMZ mobile-first browser games by category, control type, difficulty and popularity.',
-  path: '/games'
-});
+export function generateMetadata({ searchParams }) {
+  const hasFilters = Boolean(searchParams?.q || searchParams?.category || searchParams?.platform || searchParams?.control || searchParams?.difficulty || (searchParams?.sort && searchParams.sort !== 'launch'));
+  return buildPageMetadata({
+    title: hasFilters ? 'Filtered Game Results' : 'All Free Online Games',
+    description: 'Browse and filter all GR8 GAMZ mobile-first browser games by category, control type, difficulty and popularity.',
+    path: '/games',
+    noIndex: hasFilters
+  });
+}
 
 function makeHref(params) {
   const entries = Object.entries(params).filter(([, value]) => value);

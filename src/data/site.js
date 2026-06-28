@@ -163,6 +163,39 @@ export const siteConfig = {
       description: 'Harder games for players chasing skill, pressure and bigger replay rewards.'
     }
   ],
+
+  seoHubs: [
+    {
+      id: 'mobile-games',
+      path: '/mobile-games',
+      title: 'Mobile Games',
+      headline: 'Free mobile browser games.',
+      eyebrow: 'Mobile-first games',
+      description: 'Play GR8 GAMZ mobile games directly in your phone browser with tap, swipe, hold and drag controls. No app download required.',
+      filter: { platform: 'mobile' },
+      seoCopy: 'This page groups the GR8 GAMZ games that are strongest for touchscreen play. It is designed as a clear mobile-games landing page for players and search engines.'
+    },
+    {
+      id: 'quick-games',
+      path: '/quick-games',
+      title: 'Quick Games',
+      headline: 'Quick games for short sessions.',
+      eyebrow: 'Fast play',
+      description: 'Open a quick GR8 GAMZ game, learn the controls in seconds and chase a better score in short repeatable runs.',
+      filter: { control: 'tap' },
+      seoCopy: 'Quick games work well for repeat visits because they reduce friction: simple controls, fast restarts and clear high-score targets.'
+    },
+    {
+      id: 'free-browser-games',
+      path: '/free-browser-games',
+      title: 'Free Browser Games',
+      headline: 'Free browser games with no download.',
+      eyebrow: 'Instant play',
+      description: 'Browse free GR8 GAMZ browser games built with HTML5, mobile-first controls, replay loops and no app installation.',
+      filter: { platform: 'html5' },
+      seoCopy: 'Free browser games are the core GR8 GAMZ format: accessible in modern browsers, quick to load and built around replayable arcade loops.'
+    }
+  ],
   launchLinks: [
     { label: 'All Games', href: '/games' },
     { label: 'Popular', href: '/popular' },

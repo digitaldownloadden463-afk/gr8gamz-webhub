@@ -8,11 +8,12 @@ import ImmersiveGameFrame from '../../../components/player/ImmersiveGameFrame';
 import GameInstructionPanel from '../../../components/player/GameInstructionPanel';
 import AchievementBadges from '../../../components/player/AchievementBadges';
 import DiscoveryRail from '../../../components/player/DiscoveryRail';
+import GameSeoSections, { buildGameFaq } from '../../../components/seo/GameSeoSections';
 import ProgressionPanel from '../../../components/engagement/ProgressionPanel';
 import LeaderboardTerminal from '../../../components/engagement/LeaderboardTerminal';
 import { adPlacements } from '../../../lib/ads';
 import { getAllGames, getGameBySlug, getRelatedGames, getQuickPlayGames } from '../../../lib/games';
-import { breadcrumbJsonLd, buildPageMetadata, gameJsonLd } from '../../../lib/seo';
+import { breadcrumbJsonLd, buildPageMetadata, faqJsonLd, gameJsonLd, imageObjectJsonLd } from '../../../lib/seo';
 
 export function generateStaticParams() {
   return getAllGames().map((game) => ({ slug: game.id }));
@@ -42,6 +43,13 @@ export default function ArcadeGamePage({ params }) {
   return (
     <main>
       <JsonLd data={gameJsonLd(game, `/arcade/${game.id}`)} />
+      <JsonLd data={faqJsonLd(buildGameFaq(game))} />
+      <JsonLd data={imageObjectJsonLd({
+        name: `${game.name} thumbnail`,
+        description: game.thumbnailAlt || `${game.name} game artwork`,
+        image: game.thumbnail || '/og/gr8gamz-og.png',
+        path: `/arcade/${game.id}`
+      })} />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: 'Home', path: '/' },
@@ -102,6 +110,8 @@ export default function ArcadeGamePage({ params }) {
           {hooks.map((hook) => <span key={hook}>{hook}</span>)}
         </div>
       </section>
+
+      <GameSeoSections game={game} related={related} />
 
       <DiscoveryRail
         eyebrow="Quick next run"

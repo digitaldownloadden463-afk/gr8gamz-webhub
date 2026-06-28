@@ -8,11 +8,19 @@ import { buildPageMetadata, organizationJsonLd, websiteJsonLd } from '../lib/seo
 
 export const metadataBase = new URL(siteConfig.siteUrl);
 
-export const metadata = buildPageMetadata({
-  title: 'Free Browser Games, XP Streaks and Daily Challenges',
-  description: siteConfig.description,
-  path: '/'
-});
+export const metadata = {
+  ...buildPageMetadata({
+    title: 'Free Browser Games, XP Streaks and Daily Challenges',
+    description: siteConfig.description,
+    path: '/'
+  }),
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || undefined
+    }
+  }
+};
 
 export const viewport = {
   width: 'device-width',

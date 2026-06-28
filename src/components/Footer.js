@@ -9,6 +9,9 @@ export default function Footer() {
         <p>Instant browser games, curated collections, XP streaks and brand-safe sponsorship inventory.</p>
       </div>
       <nav aria-label="Footer navigation">
+        <Link href="/free-browser-games">Free browser games</Link>
+        <Link href="/mobile-games">Mobile games</Link>
+        <Link href="/quick-games">Quick games</Link>
         <Link href="/advertise">Advertise</Link>
         <Link href="/privacy">Privacy</Link>
         <Link href="/sitemap.xml">Sitemap</Link>

@@ -4,11 +4,12 @@ import { getAllGames, getAllTags } from '../lib/games';
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
-  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/advertise', '/privacy'];
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/advertise', '/privacy'];
   const routes = [
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),
     ...siteConfig.platforms.map((platform) => `/platforms/${platform.id}`),
+    ...(siteConfig.seoHubs || []).map((hub) => hub.path),
     ...(siteConfig.controlTypes || []).map((control) => `/controls/${control.id}`),
     ...(siteConfig.difficulties || []).map((difficulty) => `/difficulty/${difficulty.id}`),
     ...getAllTags().map((tag) => `/tags/${tag}`),
@@ -23,7 +24,7 @@ export default function sitemap() {
       ...getAllGames().map((game) => `/${locale}/arcade/${game.id}`)
     ]);
 
-  return [...routes, ...localizedRoutes].map((route) => ({
+  return Array.from(new Set([...routes, ...localizedRoutes])).map((route) => ({
     url: `${base}${route}`,
     lastModified: now,
     changeFrequency: route.includes('/arcade/') ? 'weekly' : 'daily',

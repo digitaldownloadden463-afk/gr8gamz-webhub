@@ -1344,3 +1344,60 @@ article.game-card .thumb-status-badge {
     margin-right: 0;
   }
 }
+
+/* GR8 GAMZ v15 SEO + AI visibility layer */
+.ai-summary-box,
+.seo-detail-panel {
+  border-color: rgba(53,255,141,0.16);
+}
+.ai-summary-box {
+  margin: 20px 0;
+  padding: 24px;
+  border: 1px solid rgba(53,255,141,0.18);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(53,255,141,0.12), transparent 24rem),
+    radial-gradient(circle at 100% 0%, rgba(255,47,125,0.1), transparent 18rem),
+    rgba(13,13,19,0.78);
+  box-shadow: var(--shadow);
+}
+.ai-summary-box h2 {
+  margin: 12px 0 14px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.05em;
+}
+.ai-summary-box ul,
+.seo-detail-panel ul,
+.seo-detail-panel ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.ai-summary-box li::marker,
+.seo-detail-panel li::marker { color: var(--brand); }
+.seo-content-stack { margin-top: 18px; }
+.seo-detail-panel h2 { margin: 12px 0 10px; }
+.seo-detail-panel h3 { margin: 0 0 8px; letter-spacing: -0.03em; }
+.seo-detail-panel p { color: var(--muted); line-height: 1.72; }
+.seo-two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.faq-list { display: grid; gap: 10px; }
+.faq-list details {
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+}
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.faq-list p { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .seo-two-column { grid-template-columns: 1fr; }
+}
