@@ -141,24 +141,26 @@
     "emoji": "\ud83c\udfce\ufe0f",
     "difficulty": "Medium",
     "playStyle": "Hold-to-steer racer",
-    "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v4-premium-20260628",
+    "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v7-drift-garage-20260628",
     "thumbnail": "/games/turbo-drift-grid/thumb.webp?v=thumbs-v1",
-    "description": "Hold left or right to drift across a cinematic neon track, dodge blockers, trigger near-miss bonuses and collect boost energy in the upgraded V4 edition.",
-    "seoTitle": "Play Turbo Drift Grid V4 Online Free | Premium Mobile Racing Game",
-    "seoDescription": "Play Turbo Drift Grid V4 free online. A premium mobile-first neon racing game with hold-to-steer controls, boost pickups, near-miss scoring and impactful crash screens.",
-    "baseTrivia": "The controls are designed for thumbs first: hold either side of the screen to steer through the grid and collect boost rewards.",
+    "description": "Choose from neon cars and vans, then hold left or right to drift through tighter obstacles, grab boost and chase a garage record.",
+    "seoTitle": "Play Turbo Drift Grid V7 Online Free | Car & Van Drift Game",
+    "seoDescription": "Play Turbo Drift Grid V7 free online. Pick a neon car or van, hold left or right to steer, dodge obstacles, collect boost and chase your best drift distance.",
+    "baseTrivia": "Turbo Drift Grid now includes a garage selection menu. Smaller cars fit tight gaps more easily, while vans feel heavier and reward skilled runs.",
     "controls": [
+      "Pick a car or van from the garage",
       "Mobile: hold left half to steer left",
       "Mobile: hold right half to steer right",
       "Desktop: A/D or arrow keys",
       "Space: instant restart"
     ],
     "engagementHooks": [
-      "Speed ramp",
+      "Vehicle garage menu",
+      "Smaller cars for tighter gaps",
+      "Vans with bonus scoring",
       "Boost pickups",
       "Near-miss bonuses",
-      "Impactful crash screen",
-      "Thumb-friendly controls"
+      "Impactful crash screen"
     ],
     "translations": {
       "es": {
@@ -181,7 +183,11 @@
       "hold-to-steer",
       "boost",
       "reaction",
-      "neon"
+      "neon",
+      "cars",
+      "vans",
+      "garage",
+      "vehicle-select"
     ],
     "platforms": [
       "html5",
@@ -192,11 +198,11 @@
     "isPopular": true,
     "isNew": true,
     "dateAdded": "2026-06-28",
-    "playsLabel": "Racing launch pick",
+    "playsLabel": "Garage drift pick",
     "rating": 4.7,
-    "shortControls": "Hold left or right",
+    "shortControls": "Pick ride + hold to steer",
     "launchOrder": 3,
-    "longDescription": "Turbo Drift Grid V4 upgrades the original mobile racing loop with a richer neon track, stronger car visuals, boost pickups, near-miss scoring, speed progression, impact flashes and a more rewarding game-over screen. It is designed for reliable one-thumb play on phones.",
+    "longDescription": "Turbo Drift Grid V7 adds a proper garage menu so players can choose between a balanced neon coupe, tight-handling Micro GT, heavier Pulse Van or hard-mode Grid Hauler. The car hitboxes and obstacle spacing have been tuned so the vehicle can actually fit through the track gaps, while vans provide a higher-risk bonus-score run.",
     "thumbnailAlt": "Turbo Drift Grid neon arcade game thumbnail"
   },
   {

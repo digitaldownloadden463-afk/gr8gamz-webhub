@@ -1,14 +1,43 @@
-# GR8 GAMZ V6 Card Badge Hotfix
+# GR8 GAMZ V7 Drift Garage Update
 
-This hotfix fixes the oversized thumbnail control labels on the game cards.
+This update improves Turbo Drift Grid based on live testing feedback.
 
-Problem fixed:
-- "Swipe to turn", "Tap to drop", "Hold left or right" etc were displaying at a huge font size and covering the thumbnails.
+## What changed
 
-Files included:
-- src/app/globals.css
+- Reduced the effective car hitboxes so the vehicles can fit through obstacles properly.
+- Reduced/tuned obstacle width and spacing.
+- Added a new garage menu before the race starts.
+- Added selectable cars and vans:
+  - Neon Coupe — balanced
+  - Micro GT — smaller and easier through tight gaps
+  - Pulse Van — heavier, bonus-score run
+  - Grid Hauler — larger hard-mode van/truck challenge
+- Added vehicle-specific handling, score bonus and steering feel.
+- Updated in-game instructions to explain the garage system.
+- Added cache-busting iframe URL in `src/data/games.json`.
 
-Upload the `src` folder to GitHub and allow it to overwrite the existing CSS file.
+## Upload instructions
 
-Commit message suggestion:
-Fix oversized game-card thumbnail badges
+Upload these folders/files into the root of your GitHub repo:
+
+```txt
+public
+src
+README.md
+UPLOAD-INSTRUCTIONS.txt
+```
+
+Let GitHub overwrite existing files.
+
+Suggested commit message:
+
+```txt
+Add Turbo Drift garage and car sizing fix
+```
+
+After Vercel redeploys, test:
+
+```txt
+/arcade/turbo-drift-grid
+/games/turbo-drift-grid/index.html?v=gr8-v7-drift-garage-20260628
+```

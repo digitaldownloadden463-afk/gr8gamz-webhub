@@ -1,8 +1,14 @@
-Upload instructions:
-1. Unzip this file.
-2. Go to GitHub > your gr8gamz-webhub repo.
+GR8 GAMZ V7 DRIFT GARAGE UPDATE
+
+1. Unzip this update pack.
+2. Open your GitHub repository.
 3. Click Add file > Upload files.
-4. Drag the src folder into GitHub.
-5. Allow GitHub to overwrite src/app/globals.css.
-6. Commit with: Fix oversized game-card thumbnail badges
+4. Drag in:
+   - public
+   - src
+   - README.md
+   - UPLOAD-INSTRUCTIONS.txt
+5. Let GitHub overwrite existing files.
+6. Commit with: Add Turbo Drift garage and car sizing fix
 7. Wait for Vercel to redeploy.
+8. Test /arcade/turbo-drift-grid
