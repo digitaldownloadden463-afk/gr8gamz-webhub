@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v20-third-premium-game-drop',
+    title: 'V20 third premium game drop: 10 new GR8 GAMZ browser games',
+    date: '2026-06-28',
+    category: 'Game Drop',
+    description: 'The V20 GR8 GAMZ update adds 10 new premium browser games including pinball, bowling, golf, ninja, cannon, ice puzzle and memory games.',
+    tags: ['game-drop', 'new-games', 'mobile-games', 'browser-games'],
+    relatedGameIds: ['neon-pinball-rush', 'cyber-bowling-blitz', 'monster-truck-tap', 'shadow-ninja-leap'],
+    summary: [
+      'V20 adds 10 new premium games built on the stronger post-V19 gameplay standard.',
+      'The new games expand GR8 GAMZ into pinball, bowling, golf, monster truck, fruit slicing, ninja, cannon, ice puzzle and memory-game search territory.',
+      'Each new game includes a dedicated arcade page, premium thumbnail, mobile-first controls and result posting.'
+    ],
+    sections: [
+      {
+        heading: 'Why V20 adds games after the quality pass',
+        body: 'V19 focused on making the existing library stronger. V20 builds on that foundation with 10 new games that use mobile-first controls, fast score loops and GR8 Focus Mode compatibility.'
+      },
+      {
+        heading: 'What is included in the V20 drop',
+        body: 'The V20 drop includes Neon Pinball Rush, Cyber Bowling Blitz, Lava Tile Escape, Galaxy Golf Putt, Monster Truck Tap, Fruit Slice Fever, Shadow Ninja Leap, Cannon Coin Blast, Ice Slide Puzzle and Astro Memory Grid.'
+      },
+      {
+        heading: 'How this helps discovery',
+        body: 'The new games expand the site into more recognisable player searches such as pinball, bowling, golf, monster truck, fruit slicing, ninja, cannon, ice puzzle and memory games.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'How many games were added in V20?',
+        answer: 'V20 adds 10 new premium GR8 GAMZ browser games.'
+      },
+      {
+        question: 'Are the V20 games mobile-friendly?',
+        answer: 'Yes. The V20 games are built with mobile-first controls and browser play in mind.'
+      }
+    ]
+  },
+  {
     slug: 'v19-gameplay-qa-premium-polish-implementation',
     title: 'V19 gameplay QA and premium polish implementation',
     date: '2026-06-28',
@@ -268,6 +306,14 @@ export const updatePosts = [
 ];
 
 export const contentCollections = [
+  {
+    slug: 'v20-third-game-drop',
+    title: 'V20 third game drop',
+    description: 'The third premium GR8 GAMZ game drop with pinball, bowling, golf, ninja, cannon, ice puzzle and memory games.',
+    gameIds: ['neon-pinball-rush', 'cyber-bowling-blitz', 'lava-tile-escape', 'galaxy-golf-putt', 'monster-truck-tap', 'fruit-slice-fever', 'shadow-ninja-leap', 'cannon-coin-blast', 'ice-slide-puzzle', 'astro-memory-grid'],
+    intro: 'V20 expands the GR8 GAMZ arcade with 10 new premium browser games built after the V19 quality pass.',
+    tips: ['Start with easy sports and puzzle games.', 'Use GR8 Focus Mode for the biggest play area.', 'Try the harder action games after learning the controls.']
+  },
   {
     slug: 'best-mobile-browser-games',
     title: 'Best mobile browser games on GR8 GAMZ',

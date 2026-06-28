@@ -54,3 +54,18 @@ Growth automation and feeds:
 V19 implementation:
 - /updates/v19-gameplay-qa-premium-polish-implementation - gameplay QA and premium polish update
 - Second-drop games now include stronger shared engine behaviour, score result posting, pause/resume support and improved controls.
+
+
+V20 third game drop:
+- /updates/v20-third-premium-game-drop - announcement for the 10-game V20 premium drop
+- /collections/v20-third-game-drop - curated V20 game collection
+- /arcade/neon-pinball-rush
+- /arcade/cyber-bowling-blitz
+- /arcade/lava-tile-escape
+- /arcade/galaxy-golf-putt
+- /arcade/monster-truck-tap
+- /arcade/fruit-slice-fever
+- /arcade/shadow-ninja-leap
+- /arcade/cannon-coin-blast
+- /arcade/ice-slide-puzzle
+- /arcade/astro-memory-grid

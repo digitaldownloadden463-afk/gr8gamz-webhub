@@ -128,3 +128,24 @@ Key implementation points:
 - Fairer collision and spawn behaviour.
 - Stronger combo/scoring feedback.
 - New V19 update article added to the content engine.
+
+
+## V20 third premium game drop
+V20 adds 10 new premium mobile-first browser games:
+- Neon Pinball Rush
+- Cyber Bowling Blitz
+- Lava Tile Escape
+- Galaxy Golf Putt
+- Monster Truck Tap
+- Fruit Slice Fever
+- Shadow Ninja Leap
+- Cannon Coin Blast
+- Ice Slide Puzzle
+- Astro Memory Grid
+
+Also adds:
+- V20 update article
+- V20 curated collection
+- premium thumbnails
+- score/result posting
+- GR8 Focus Mode pause/resume support

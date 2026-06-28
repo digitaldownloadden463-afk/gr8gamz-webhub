@@ -50,3 +50,28 @@ https://www.gr8gamz.com/arcade/rocket-fuel-frenzy
 https://www.gr8gamz.com/arcade/neon-air-hockey
 https://www.gr8gamz.com/arcade/cyber-basketball-shots
 https://www.gr8gamz.com/updates/v19-gameplay-qa-premium-polish-implementation
+
+
+V20 third premium game drop upload:
+- src
+- public
+- README.md
+- UPLOAD-INSTRUCTIONS.txt
+- GR8-GAMZ-V20-THIRD-PREMIUM-GAME-DROP-SPEC.md
+
+Suggested commit message:
+Add V20 third premium game drop
+
+After deployment, test:
+https://www.gr8gamz.com/arcade/neon-pinball-rush
+https://www.gr8gamz.com/arcade/cyber-bowling-blitz
+https://www.gr8gamz.com/arcade/lava-tile-escape
+https://www.gr8gamz.com/arcade/galaxy-golf-putt
+https://www.gr8gamz.com/arcade/monster-truck-tap
+https://www.gr8gamz.com/arcade/fruit-slice-fever
+https://www.gr8gamz.com/arcade/shadow-ninja-leap
+https://www.gr8gamz.com/arcade/cannon-coin-blast
+https://www.gr8gamz.com/arcade/ice-slide-puzzle
+https://www.gr8gamz.com/arcade/astro-memory-grid
+https://www.gr8gamz.com/updates/v20-third-premium-game-drop
+https://www.gr8gamz.com/collections/v20-third-game-drop
