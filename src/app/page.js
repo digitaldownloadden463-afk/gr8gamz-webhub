@@ -5,11 +5,14 @@ import DailyChallenge from '../components/engagement/DailyChallenge';
 import LeaderboardTerminal from '../components/engagement/LeaderboardTerminal';
 import ProgressionPanel from '../components/engagement/ProgressionPanel';
 import RecentlyPlayed from '../components/player/RecentlyPlayed';
+import DailyReward from '../components/player/DailyReward';
+import AchievementBadges from '../components/player/AchievementBadges';
+import DiscoveryRail from '../components/player/DiscoveryRail';
 import AdSlot from '../components/ads/AdSlot';
 import JsonLd from '../components/JsonLd';
 import { siteConfig } from '../data/site';
 import { adPlacements } from '../lib/ads';
-import { getFeaturedGames, getNewGames, getPopularGames, getAllTags } from '../lib/games';
+import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
 import { itemListJsonLd } from '../lib/seo';
 
 export default function HomePage() {
@@ -17,6 +20,8 @@ export default function HomePage() {
   const popular = getPopularGames(8);
   const newest = getNewGames(10);
   const tags = getAllTags().slice(0, 18);
+  const quickPlay = getQuickPlayGames(6);
+  const hardMode = getHardModeGames(6);
 
   return (
     <main>
@@ -89,6 +94,8 @@ export default function HomePage() {
         <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones are positioned away from gameplay controls.</span></div>
       </section>
 
+      <DailyReward />
+
       <section id="games">
         <div className="section-heading section-heading-primary">
           <div>
@@ -103,6 +110,24 @@ export default function HomePage() {
       </section>
 
       <RecentlyPlayed />
+
+      <DiscoveryRail
+        eyebrow="Recommended next"
+        title="Quick 60-second games."
+        description="Short sessions, simple controls and fast restarts for players who want instant action."
+        games={quickPlay}
+        href="/controls/tap"
+      />
+
+      <DiscoveryRail
+        eyebrow="Skill climb"
+        title="Harder runs to master."
+        description="Push players into tougher loops once they are warmed up and ready for a bigger challenge."
+        games={hardMode}
+        href="/difficulty/medium"
+      />
+
+      <AchievementBadges />
 
       <section className="immersive-banner" aria-label="GR8 GAMZ world building banner">
         <div className="immersive-banner-copy">

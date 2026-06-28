@@ -60,6 +60,19 @@ export default function ImmersiveGameFrame({ game, nextGame }) {
       if (data.game && data.game !== game.id) return;
       setPaused(false);
       setSessionResult(data);
+      try {
+        const profile = JSON.parse(window.localStorage.getItem('gr8gamz_profile') || '{}');
+        const gameScores = { ...(profile.gameScores || {}) };
+        const currentBest = Number(gameScores[game.id] || 0);
+        const nextScore = Number(data.score || 0);
+        gameScores[game.id] = Math.max(currentBest, nextScore);
+        window.localStorage.setItem('gr8gamz_profile', JSON.stringify({
+          ...profile,
+          xp: Number(profile.xp || 0) + Math.max(25, Math.min(250, Math.round(nextScore / 12) || 25)),
+          lastScoreGame: game.id,
+          gameScores
+        }));
+      } catch {}
     }
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);

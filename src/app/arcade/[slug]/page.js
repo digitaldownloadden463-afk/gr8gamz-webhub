@@ -6,10 +6,12 @@ import JsonLd from '../../../components/JsonLd';
 import GameSessionTools from '../../../components/player/GameSessionTools';
 import ImmersiveGameFrame from '../../../components/player/ImmersiveGameFrame';
 import GameInstructionPanel from '../../../components/player/GameInstructionPanel';
+import AchievementBadges from '../../../components/player/AchievementBadges';
+import DiscoveryRail from '../../../components/player/DiscoveryRail';
 import ProgressionPanel from '../../../components/engagement/ProgressionPanel';
 import LeaderboardTerminal from '../../../components/engagement/LeaderboardTerminal';
 import { adPlacements } from '../../../lib/ads';
-import { getAllGames, getGameBySlug, getRelatedGames } from '../../../lib/games';
+import { getAllGames, getGameBySlug, getRelatedGames, getQuickPlayGames } from '../../../lib/games';
 import { breadcrumbJsonLd, buildPageMetadata, gameJsonLd } from '../../../lib/seo';
 
 export function generateStaticParams() {
@@ -33,6 +35,7 @@ export default function ArcadeGamePage({ params }) {
   if (!game) notFound();
 
   const related = getRelatedGames(game, 4);
+  const quickPlay = getQuickPlayGames(5);
   const controls = game.controls || [];
   const hooks = game.engagementHooks || [];
 
@@ -99,6 +102,16 @@ export default function ArcadeGamePage({ params }) {
           {hooks.map((hook) => <span key={hook}>{hook}</span>)}
         </div>
       </section>
+
+      <DiscoveryRail
+        eyebrow="Quick next run"
+        title="Short games to play after this."
+        description="Keep the session alive with a fast restart-style game path."
+        games={quickPlay.filter((item) => item.id !== game.id).slice(0, 5)}
+        href="/games?control=tap"
+      />
+
+      <AchievementBadges />
 
       <AdSlot placement={adPlacements.gameBottom} />
 

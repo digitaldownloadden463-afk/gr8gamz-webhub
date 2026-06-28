@@ -2,8 +2,16 @@ Upload these items to GitHub and let them overwrite existing files:
 
 - src
 - README.md
-- GR8-GAMZ-V11-IMMERSIVE-PLAY-SPEC.md
+- GR8-GAMZ-V14-RETENTION-DISCOVERY-SPEC.md
 - UPLOAD-INSTRUCTIONS.txt
 
 Suggested commit message:
-Add V11 immersive play mode
+Add V14 retention and discovery engine
+
+After Vercel redeploys, test:
+/
+/games
+/games?control=tap
+/controls/tap
+/difficulty/easy
+/arcade/neon-snake-rush

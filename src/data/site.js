@@ -106,11 +106,69 @@ export const siteConfig = {
       description: 'Modern browser games inspired by classic arcade loops, rebuilt with original branding and mobile-first controls.'
     }
   ],
+  controlTypes: [
+    {
+      id: 'tap',
+      name: 'Tap Games',
+      emoji: '👆',
+      description: 'Quick one-touch games for short mobile sessions and instant repeat play.',
+      keywords: ['tap', 'click', 'drop', 'doors', 'bubbles', 'cars']
+    },
+    {
+      id: 'swipe',
+      name: 'Swipe Games',
+      emoji: '↔️',
+      description: 'Swipe-control games made for lane changes, quick turns and phone-first play.',
+      keywords: ['swipe', 'turn', 'lanes']
+    },
+    {
+      id: 'drag',
+      name: 'Drag Games',
+      emoji: '🕹️',
+      description: 'Drag-control games for aiming, steering, paddles and precision movement.',
+      keywords: ['drag', 'aim', 'paddle', 'ship', 'rocket']
+    },
+    {
+      id: 'hold',
+      name: 'Hold Games',
+      emoji: '🔥',
+      description: 'Hold-and-release games for flying, steering and survival loops.',
+      keywords: ['hold', 'fly', 'steer']
+    },
+    {
+      id: 'keyboard',
+      name: 'Keyboard Games',
+      emoji: '⌨️',
+      description: 'Desktop-friendly games that also support keyboard controls.',
+      keywords: ['arrow', 'wasd', 'keyboard', 'desktop']
+    }
+  ],
+  difficulties: [
+    {
+      id: 'easy',
+      name: 'Easy Games',
+      emoji: '🟢',
+      description: 'Easy-to-start games with simple controls and fast learning curves.'
+    },
+    {
+      id: 'medium',
+      name: 'Medium Games',
+      emoji: '🟡',
+      description: 'Medium difficulty games with more pressure, speed or reaction demand.'
+    },
+    {
+      id: 'hard',
+      name: 'Hard Games',
+      emoji: '🔴',
+      description: 'Harder games for players chasing skill, pressure and bigger replay rewards.'
+    }
+  ],
   launchLinks: [
     { label: 'All Games', href: '/games' },
     { label: 'Popular', href: '/popular' },
     { label: 'New', href: '/new' },
-    { label: 'A-Z', href: '/a-z' },
-    { label: 'Mobile', href: '/platforms/mobile' }
+    { label: 'Mobile', href: '/platforms/mobile' },
+    { label: 'Tap Games', href: '/controls/tap' },
+    { label: 'Easy Games', href: '/difficulty/easy' }
   ]
 };

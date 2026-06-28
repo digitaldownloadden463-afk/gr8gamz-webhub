@@ -9,6 +9,8 @@ export default function sitemap() {
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),
     ...siteConfig.platforms.map((platform) => `/platforms/${platform.id}`),
+    ...(siteConfig.controlTypes || []).map((control) => `/controls/${control.id}`),
+    ...(siteConfig.difficulties || []).map((difficulty) => `/difficulty/${difficulty.id}`),
     ...getAllTags().map((tag) => `/tags/${tag}`),
     ...getAllGames().map((game) => `/arcade/${game.id}`)
   ];

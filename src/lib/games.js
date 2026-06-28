@@ -108,3 +108,86 @@ export function getLocalizedPath(path, locale = siteConfig.defaultLocale) {
 export function isValidLocale(locale) {
   return siteConfig.locales.includes(locale);
 }
+
+
+export function getControlTypeBySlug(slug) {
+  return siteConfig.controlTypes?.find((control) => control.id === slug);
+}
+
+export function getDifficultyBySlug(slug) {
+  return siteConfig.difficulties?.find((difficulty) => difficulty.id === slug);
+}
+
+export function getGamesByControlType(slug) {
+  const control = getControlTypeBySlug(slug);
+  if (!control) return [];
+  const keywords = (control.keywords || []).map((keyword) => keyword.toLowerCase());
+  return getAllGames().filter((game) => {
+    const haystack = [
+      game.shortControls,
+      game.playStyle,
+      game.description,
+      ...(game.controls || []),
+      ...(game.tags || [])
+    ].join(' ').toLowerCase();
+    return keywords.some((keyword) => haystack.includes(keyword));
+  });
+}
+
+export function getGamesByDifficulty(slug) {
+  const normalized = slug?.toLowerCase();
+  return getAllGames().filter((game) => game.difficulty?.toLowerCase() === normalized);
+}
+
+export function getQuickPlayGames(limit = 6) {
+  const quick = getAllGames().filter((game) => {
+    const text = [game.playTime, game.playStyle, game.description, ...(game.tags || [])].join(' ').toLowerCase();
+    return text.includes('quick') || text.includes('tap') || text.includes('easy') || game.difficulty === 'Easy';
+  });
+  return quick.slice(0, limit);
+}
+
+export function getHardModeGames(limit = 6) {
+  return getAllGames().filter((game) => game.difficulty === 'Hard' || game.difficulty === 'Medium').slice(0, limit);
+}
+
+export function getRecommendedGames(seedGameId, limit = 6) {
+  const seed = seedGameId ? getGameBySlug(seedGameId) : null;
+  if (seed) return getRelatedGames(seed, limit);
+  return getPopularGames(limit).length ? getPopularGames(limit) : getAllGames().slice(0, limit);
+}
+
+export function filterGames({ category, platform, control, difficulty, sort, query } = {}) {
+  let list = getAllGames();
+
+  if (query) {
+    const q = query.trim().toLowerCase();
+    list = list.filter((game) => {
+      const text = [
+        game.name,
+        game.genre,
+        game.category,
+        game.description,
+        game.shortControls,
+        game.difficulty,
+        ...(game.tags || [])
+      ].join(' ').toLowerCase();
+      return text.includes(q);
+    });
+  }
+
+  if (category) list = list.filter((game) => game.category === category);
+  if (platform) list = list.filter((game) => game.platforms?.includes(platform));
+  if (difficulty) list = list.filter((game) => game.difficulty?.toLowerCase() === difficulty.toLowerCase());
+  if (control) {
+    const controlMatches = new Set(getGamesByControlType(control).map((game) => game.id));
+    list = list.filter((game) => controlMatches.has(game.id));
+  }
+
+  if (sort === 'az') list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+  if (sort === 'new') list = [...list].sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0));
+  if (sort === 'popular') list = [...list].sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  if (!sort || sort === 'launch') list = [...list].sort((a, b) => (a.launchOrder || 999) - (b.launchOrder || 999));
+
+  return list;
+}

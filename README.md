@@ -61,3 +61,14 @@ Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch gam
 - Upgraded the V12 second-drop thumbnails to premium neon artwork consistent with the first five games.
 - Fixed oversized thumbnail control badges with stronger CSS targeting.
 - Fixed Zombie Lane Runner arrow key / A-D lane switching.
+
+
+## V14 Retention + Discovery Engine
+- Added daily XP reward card.
+- Added local achievement badges.
+- Added recommended horizontal game rails.
+- Improved `/games` filtering by category, control type, difficulty and sort order.
+- Added `/controls/[slug]` landing pages.
+- Added `/difficulty/[slug]` landing pages.
+- Updated sitemap to include new discovery routes.
+- Improved game session tracking for favourites, plays, recent games and local XP.
