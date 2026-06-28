@@ -44,6 +44,12 @@ export default function HomePage() {
         </aside>
       </section>
 
+      <section className="launch-strip" aria-label="Launch readiness promises">
+        <div><strong>5 premium games live</strong><span>Mobile-first controls, instant play and polished replay loops.</span></div>
+        <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones away from touch controls.</span></div>
+        <div><strong>Search-ready structure</strong><span>Game, category, tag, platform and sitemap routes prepared.</span></div>
+      </section>
+
       <section aria-label="Launch shortcuts" className="content-panel compact-panel">
         <div className="quick-link-grid">
           {siteConfig.launchLinks.map((link) => (

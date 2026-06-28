@@ -39,3 +39,8 @@ Vercel should redeploy automatically.
 - `/arcade/stack-tower-rush`
 - `/arcade/pixel-goal-hero`
 - `/arcade/space-tap-survival`
+
+
+## V6 Launch Polish
+
+This repository now includes the GR8 GAMZ V6 launch polish layer: stronger homepage launch messaging, better game-card badges, improved game-page instructions, fullscreen shortcuts and safer mobile game-frame styling. See `GR8-GAMZ-V6-LAUNCH-CHECKLIST.md` before pushing traffic.

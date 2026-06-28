@@ -1,10 +1,25 @@
-GR8 GAMZ V5 Premium Gameplay Update
+GR8 GAMZ V6 LAUNCH POLISH UPDATE
 
-1. Download and unzip the update pack.
-2. Open your GitHub repository.
-3. Click Add file > Upload files.
-4. Drag in: public, src, README.md, GR8-GAMZ-V5-GAMEPLAY-SPEC.md.
-5. Let GitHub overwrite files.
-6. Commit with: Upgrade remaining games to V5 premium gameplay.
-7. Wait for Vercel to redeploy.
-8. Test /arcade/stack-tower-rush, /arcade/pixel-goal-hero and /arcade/space-tap-survival.
+Upload these items to the root of your GitHub repository:
+
+- src
+- README.md
+- GR8-GAMZ-V6-LAUNCH-CHECKLIST.md
+- UPLOAD-INSTRUCTIONS.txt
+
+Let GitHub overwrite the existing files.
+
+Commit message:
+Launch V6 polish pass
+
+After Vercel redeploys, test:
+/
+/games
+/arcade/neon-snake-rush
+/arcade/turbo-drift-grid
+/arcade/stack-tower-rush
+/arcade/pixel-goal-hero
+/arcade/space-tap-survival
+/sitemap.xml
+/robots.txt
+/ads.txt

@@ -4,6 +4,7 @@ import AdSlot from '../../../components/ads/AdSlot';
 import GameGrid from '../../../components/GameGrid';
 import JsonLd from '../../../components/JsonLd';
 import GameSessionTools from '../../../components/player/GameSessionTools';
+import GameInstructionPanel from '../../../components/player/GameInstructionPanel';
 import ProgressionPanel from '../../../components/engagement/ProgressionPanel';
 import LeaderboardTerminal from '../../../components/engagement/LeaderboardTerminal';
 import { adPlacements } from '../../../lib/ads';
@@ -59,6 +60,8 @@ export default function ArcadeGamePage({ params }) {
 
       <AdSlot placement={adPlacements.gameTop} />
 
+      <GameInstructionPanel game={game} />
+
       <section className="game-layout" style={{ marginTop: 18 }}>
         <article className="game-page-main">
           <div className="game-topbar">
@@ -97,8 +100,8 @@ export default function ArcadeGamePage({ params }) {
       </section>
 
       <section className="content-panel" style={{ marginTop: 18 }}>
-        <h2>How to play {game.name}</h2>
-        <p>{game.baseTrivia}</p>
+        <h2>Why {game.name} is built for repeat play</h2>
+        <p>{game.longDescription || game.baseTrivia}</p>
         <div className="tag-list">
           {hooks.map((hook) => <span key={hook}>{hook}</span>)}
         </div>
