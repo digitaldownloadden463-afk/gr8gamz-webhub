@@ -103,3 +103,10 @@ V24 Game Profile Engine and search footprint expansion:
 - /sitemap-partner-games.xml - partner profile sitemap
 - /sitemap-images.xml - branded partner profile image sitemap
 - /updates/v24-game-profile-engine-search-footprint-expansion - V24 release note
+
+
+V25 partner game playability and real artwork fix:
+- /more-free-games/[slug]/play - noindex GR8-branded partner game play routes
+- /api/partner-games/[slug] - live supplier artwork and play URL resolver for partner profiles
+- Partner game profiles now include direct Play Now CTAs and live artwork panels
+- Supplier route tabs remain hidden from the main public journey; /more-free-games remains the branded indexable hub

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PartnerProfileLiveImage from './PartnerProfileLiveImage';
 
 export default function PartnerProfileGrid({ profiles = [], title = 'GR8 game profiles', eyebrow = 'Indexed game profiles', description = 'Branded profile pages built to help players discover more free games through GR8 GAMZ.' }) {
   if (!profiles.length) return null;
@@ -16,7 +17,7 @@ export default function PartnerProfileGrid({ profiles = [], title = 'GR8 game pr
         {profiles.map((game) => (
           <article className="partner-profile-card" key={game.slug}>
             <Link href={game.path} className="partner-profile-image" aria-label={`Open ${game.title} game profile`}>
-              <img src={game.image} alt={`${game.title} GR8 GAMZ branded game profile artwork`} loading="lazy" />
+              <PartnerProfileLiveImage profile={game} showLabel={false} />
               <small>{game.category}</small>
             </Link>
             <div className="partner-profile-body">
@@ -27,7 +28,10 @@ export default function PartnerProfileGrid({ profiles = [], title = 'GR8 game pr
                 <span>{game.difficulty}</span>
                 <span>{game.bestFor}</span>
               </div>
-              <Link href={game.path} className="primary-link">View GR8 profile</Link>
+              <div className="partner-card-actions">
+                <Link href={game.playPath || `${game.path}/play`} className="primary-link">Play Now</Link>
+                <Link href={game.path} className="soft-link">View profile</Link>
+              </div>
             </div>
           </article>
         ))}

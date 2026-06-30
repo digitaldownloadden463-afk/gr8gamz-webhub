@@ -2174,3 +2174,244 @@ article.game-card .thumb-status-badge {
   .faq-grid { grid-template-columns: 1fr; }
   .demo-stage { height: 180px; }
 }
+
+/* V24 Game Profile Engine */
+.partner-profile-section {
+  margin: clamp(28px, 5vw, 72px) 0;
+}
+.partner-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.partner-profile-card {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+  box-shadow: 0 18px 60px rgba(0,0,0,0.24);
+}
+.partner-profile-card a { color: inherit; text-decoration: none; }
+.partner-profile-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+}
+.partner-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform .25s ease, filter .25s ease;
+}
+.partner-profile-card:hover .partner-profile-image img {
+  transform: scale(1.055);
+  filter: saturate(1.18) contrast(1.05);
+}
+.partner-profile-image small {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.74);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.partner-profile-body {
+  padding: 18px;
+}
+.partner-profile-body h3 {
+  margin: 10px 0 8px;
+  font-size: clamp(1.12rem, 2vw, 1.45rem);
+}
+.partner-profile-body p {
+  color: var(--muted);
+  font-size: .95rem;
+}
+.partner-profile-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.88fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: center;
+  margin: 28px 0 42px;
+  padding: clamp(22px, 4vw, 44px);
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background:
+    radial-gradient(circle at 18% 10%, rgba(57,255,20,0.18), transparent 36%),
+    radial-gradient(circle at 90% 15%, rgba(24,194,255,0.14), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+  box-shadow: 0 30px 100px rgba(0,0,0,0.28);
+}
+.partner-profile-copy h1 {
+  max-width: 900px;
+  margin: 8px 0 14px;
+  font-size: clamp(2.3rem, 6vw, 5.5rem);
+  letter-spacing: -0.06em;
+  line-height: .92;
+}
+.partner-profile-copy p {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.17rem);
+}
+.partner-profile-art img {
+  width: 100%;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 24px 90px rgba(0,0,0,0.34), 0 0 55px rgba(57,255,20,0.08);
+}
+.partner-keyword-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+.partner-keyword-row span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.11);
+  color: rgba(255,255,255,0.88);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.partner-launch-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+}
+.partner-launch-box small {
+  color: var(--muted);
+}
+.game-profile-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr);
+  gap: clamp(20px, 4vw, 38px);
+  align-items: start;
+}
+.profile-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.profile-facts-grid article {
+  min-height: 112px;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.045);
+}
+.profile-facts-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brand);
+  font-size: .76rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.profile-facts-grid span {
+  color: rgba(255,255,255,0.88);
+}
+@media (max-width: 860px) {
+  .partner-profile-hero,
+  .game-profile-detail {
+    grid-template-columns: 1fr;
+  }
+  .profile-facts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* V25 Partner game playability and real artwork layer */
+.partner-live-panel {
+  border: 1px solid rgba(76, 255, 114, 0.22);
+  border-radius: 28px;
+  padding: 16px;
+  background: radial-gradient(circle at top left, rgba(76, 255, 114, 0.15), rgba(9, 13, 24, 0.88) 42%, rgba(5, 7, 14, 0.94));
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35), inset 0 0 34px rgba(76, 255, 114, 0.08);
+}
+.partner-live-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  min-height: 260px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+.partner-live-screen img,
+.partner-live-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.partner-live-screen span,
+.partner-live-image small {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #091019;
+  background: linear-gradient(135deg, var(--brand), #fff, var(--brand-2));
+  box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+}
+.partner-live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.partner-live-status {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.partner-live-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.partner-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+.partner-launch-box-ready small {
+  color: var(--muted);
+}
+.partner-branded-player {
+  border: 1px solid rgba(76,255,114,0.22);
+  box-shadow: 0 24px 100px rgba(76,255,114,0.08), 0 24px 100px rgba(0,0,0,0.4);
+}
+.partner-feed-warning {
+  border-color: rgba(255, 190, 80, 0.3);
+}
+.partner-play-title h1 {
+  max-width: 920px;
+}
+@media (max-width: 760px) {
+  .partner-live-screen { min-height: 210px; }
+  .partner-live-actions .hero-cta,
+  .partner-live-actions .secondary-cta,
+  .partner-card-actions .primary-link,
+  .partner-card-actions .soft-link { width: 100%; text-align: center; justify-content: center; }
+}

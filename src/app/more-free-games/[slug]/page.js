@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import JsonLd from '../../../components/JsonLd';
 import PartnerPlayLauncher from '../../../components/partner/PartnerPlayLauncher';
+import PartnerLiveGamePanel from '../../../components/partner/PartnerLiveGamePanel';
 import PartnerProfileGrid from '../../../components/partner/PartnerProfileGrid';
 import { getAllGames } from '../../../lib/games';
 import { getFeaturedPartnerGameProfiles, getPartnerGameProfile, getPartnerGameProfiles } from '../../../data/partnerGameProfiles';
@@ -27,6 +28,7 @@ function partnerGameJsonLd(profile) {
     description: profile.description,
     url: absoluteUrl(profile.path),
     image: absoluteUrl(profile.image),
+    sameAs: absoluteUrl(profile.playPath || `${profile.path}/play`),
     applicationCategory: 'Game',
     gamePlatform: ['Web browser', 'Mobile browser', 'Desktop browser'],
     genre: profile.category,
@@ -85,7 +87,7 @@ export default function PartnerGameProfilePage({ params }) {
           <PartnerPlayLauncher profile={profile} />
         </div>
         <div className="partner-profile-art">
-          <img src={profile.image} alt={`${profile.title} GR8 GAMZ branded artwork`} />
+          <PartnerLiveGamePanel profile={profile} />
         </div>
       </section>
 

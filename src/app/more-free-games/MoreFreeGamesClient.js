@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { getPartnerProfileUrl } from '../../data/partnerGameProfiles';
+import { getPartnerPlayUrl, getPartnerProfileUrl } from '../../data/partnerGameProfiles';
 import { useEffect, useMemo, useState } from 'react';
 
 function textOnly(value = '') {
@@ -21,7 +21,8 @@ function normaliseGamePix(game = {}) {
     description: textOnly(game.description || 'Play this free partner-powered browser game on GR8 GAMZ.'),
     category: game.category || 'Arcade',
     image: game.banner_image || game.image || '',
-    href: getPartnerProfileUrl(game.title) || `/gamepix-games/play?title=${encodeURIComponent(game.title || 'Network Game')}&url=${encodeURIComponent(game.url || '')}&w=${encodeURIComponent(game.width || 800)}&h=${encodeURIComponent(game.height || 600)}`,
+    profileHref: getPartnerProfileUrl(game.title),
+    href: getPartnerPlayUrl(game.title) || `/gamepix-games/play?title=${encodeURIComponent(game.title || 'Network Game')}&url=${encodeURIComponent(game.url || '')}&w=${encodeURIComponent(game.width || 800)}&h=${encodeURIComponent(game.height || 600)}`,
     badge: 'Featured Network Pick'
   };
 }
@@ -33,7 +34,8 @@ function normaliseGameMonetize(game = {}) {
     description: textOnly(game.description || 'Play this free partner-powered browser game on GR8 GAMZ.'),
     category: game.category || 'Arcade',
     image: game.thumb || '',
-    href: getPartnerProfileUrl(game.title) || `/gamemonetize-games/play?title=${encodeURIComponent(game.title || 'Network Game')}&url=${encodeURIComponent(game.url || '')}&w=${encodeURIComponent(game.width || 800)}&h=${encodeURIComponent(game.height || 600)}`,
+    profileHref: getPartnerProfileUrl(game.title),
+    href: getPartnerPlayUrl(game.title) || `/gamemonetize-games/play?title=${encodeURIComponent(game.title || 'Network Game')}&url=${encodeURIComponent(game.url || '')}&w=${encodeURIComponent(game.width || 800)}&h=${encodeURIComponent(game.height || 600)}`,
     badge: 'More Free Game'
   };
 }
@@ -114,8 +116,9 @@ export default function MoreFreeGamesClient() {
               <h3>{game.title}</h3>
               <p>{game.description.slice(0, 150)}{game.description.length > 150 ? '…' : ''}</p>
               <Link href={game.href} className="primary-link" onClick={() => trackNetworkEvent('more_free_games_play_click', { title: game.title, category: game.category })}>
-                View game profile
+                Play Now
               </Link>
+              {game.profileHref ? <Link href={game.profileHref} className="soft-link">View profile</Link> : null}
             </div>
           </article>
         ))}

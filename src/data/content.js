@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v25-partner-game-playability-real-artwork-fix',
+    title: 'V25 partner game playability and real artwork fix',
+    date: '2026-06-30',
+    category: 'Monetisation',
+    description: 'V25 upgrades partner game profiles with live supplier artwork, direct GR8-branded play routes, stronger Play Now calls-to-action and profile validation tooling.',
+    tags: ['partner-games', 'playability', 'game-profiles', 'search-footprint'],
+    relatedGameIds: ['neon-snake-rush', 'neon-pinball-rush', 'cyber-bowling-blitz'],
+    summary: [
+      'Partner game profiles now have direct GR8-branded play routes.',
+      'Profile cards and pages can display actual live partner game artwork when the feed returns it.',
+      'A partner-profile audit script checks for missing play paths, profile paths, keywords and FAQs before upload.'
+    ],
+    sections: [
+      {
+        heading: 'Why this fix matters',
+        body: 'A game profile should not only read well for search. It must also feel playable for visitors. V25 turns the first GR8 partner profiles into stronger landing pages with actual artwork and clear Play Now routes.'
+      },
+      {
+        heading: 'What changed for players',
+        body: 'Players now see clearer calls-to-action, live game preview artwork when available and a branded play route at /more-free-games/[game]/play rather than being forced through visible supplier tabs.'
+      },
+      {
+        heading: 'What changed for scaling',
+        body: 'The new resolver and audit layer makes it safer to scale partner game profiles because each profile has a path, play path, keywords, FAQs and a live-feed lookup route.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Are supplier play pages indexable?',
+        answer: 'No. The profile pages are the indexable GR8-branded search assets. The play routes are noindex because they exist for gameplay.'
+      },
+      {
+        question: 'Do profile pages show real game images?',
+        answer: 'Yes, the new live artwork components check the partner feed and display actual game artwork when the feed returns a matching game image.'
+      }
+    ]
+  },
+  {
     slug: 'v24-game-profile-engine-search-footprint-expansion',
     title: 'V24 Game Profile Engine and search footprint expansion',
     date: '2026-06-30',
