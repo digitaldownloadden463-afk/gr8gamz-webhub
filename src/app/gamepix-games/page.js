@@ -3,9 +3,10 @@ import { buildPageMetadata, breadcrumbJsonLd } from '../../lib/seo';
 import GamePixGamesClient from './GamePixGamesClient';
 
 export const metadata = buildPageMetadata({
-  title: 'GamePix Partner Games',
-  description: 'Browse partner HTML5 games powered by the GR8 GAMZ GamePix publisher feed.',
-  path: '/gamepix-games'
+  title: 'Partner Game Feed',
+  description: 'Internal partner-powered game feed for GR8 GAMZ network testing and disclosure.',
+  path: '/gamepix-games',
+  noIndex: true
 });
 
 export default function GamePixGamesPage() {
@@ -13,14 +14,14 @@ export default function GamePixGamesPage() {
     <main>
       <JsonLd data={breadcrumbJsonLd([
         { name: 'Home', path: '/' },
-        { name: 'GamePix Partner Games', path: '/gamepix-games' }
+        { name: 'Partner Game Feed', path: '/gamepix-games' }
       ])} />
 
       <div className="page-title">
-        <span className="eyebrow">GamePix partner games</span>
-        <h1>More free browser games from our partner feed.</h1>
+        <span className="eyebrow">Partner feed</span>
+        <h1>Internal partner-powered games feed.</h1>
         <p>
-          GR8 GAMZ originals stay at the centre of the arcade, while the GamePix partner catalogue gives visitors more games to discover and helps the site build a wider monetised gaming network.
+          This route remains available for testing and attribution, but the public player journey now promotes the branded More Free Games network instead.
         </p>
       </div>
 

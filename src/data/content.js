@@ -1,5 +1,48 @@
 export const updatePosts = [
   {
+    slug: 'v23-brand-network-google-content-engine',
+    title: 'V23 brand identity, game network visibility and Google content engine',
+    date: '2026-06-30',
+    category: 'Growth Engine',
+    description: 'V23 upgrades GR8 GAMZ with a proper logo and favicon system, stronger navigation, live preview screens, More Free Games branding and a wider Google-ready content footprint.',
+    tags: ['brand-identity', 'seo', 'game-network', 'hot-picks', 'favicon'],
+    relatedGameIds: ['neon-snake-rush', 'neon-pinball-rush', 'turbo-drift-grid', 'astro-memory-grid'],
+    summary: [
+      'V23 makes GR8 GAMZ feel like a branded gaming network rather than a basic game list.',
+      'The update adds Google-ready favicon/logo assets, app icons, manifest and Organization logo schema.',
+      'Supplier names are removed from the main player journey and replaced by GR8 Originals, More Free Games, Hot Picks and Gaming Deals.',
+      'A wider set of helpful SEO hub pages gives Google more crawlable market entry points without creating thin content.'
+    ],
+    sections: [
+      {
+        heading: 'Why brand identity matters now',
+        body: 'A gaming site needs to be recognised quickly in search results, browser tabs, mobile bookmarks and social previews. V23 adds a full GR8 GAMZ identity system so the brand is visible beyond the website itself.'
+      },
+      {
+        heading: 'Why supplier names are hidden from the main navigation',
+        body: 'Partner game feeds are useful for scale, but the player should feel like they are using one GR8 GAMZ network. V23 changes the visible journey to GR8 Originals, More Free Games and Hot Picks while keeping disclosures in place.'
+      },
+      {
+        heading: 'How V23 supports Google discovery',
+        body: 'The update adds focused hub pages for free online games, HTML5 games, no-download games, arcade games, puzzle games, racing games and other search paths. Each page links to real games and useful internal routes.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V23 add a new favicon and logo?',
+        answer: 'Yes. V23 adds favicon.ico, app icons, a logo mark, a wide logo, a Google-safe logo and a new social preview image.'
+      },
+      {
+        question: 'Does V23 remove GamePix and GameMonetize?',
+        answer: 'No. Those integrations remain. V23 simply changes the player-facing navigation so the experience feels like one GR8 GAMZ network.'
+      },
+      {
+        question: 'Does V23 add more Google pages?',
+        answer: 'Yes. V23 adds multiple helpful SEO hub pages and includes them in the crawl, sitemap and IndexNow systems.'
+      }
+    ]
+  },
+  {
     slug: 'v22-gamemonetize-network-integration',
     title: 'V22 GameMonetize network integration',
     date: '2026-06-30',
@@ -382,6 +425,47 @@ export const updatePosts = [
 ];
 
 export const contentCollections = [
+
+  {
+    slug: 'gr8-originals',
+    title: 'GR8 Originals: brand-owned browser games',
+    description: 'Self-hosted GR8 GAMZ original games with fast replay loops, mobile-first controls and premium neon styling.',
+    filter: { platform: 'originals' },
+    intro: 'GR8 Originals are the core of the site and the strongest way to build long-term brand recognition.',
+    tips: ['Start with the featured original games.', 'Use quick restarts to chase better scores.', 'Try Hot Picks after your first run.']
+  },
+  {
+    slug: 'no-download-browser-games',
+    title: 'No download browser games',
+    description: 'Free games that run directly in a browser without app store installs or software downloads.',
+    filter: { platform: 'html5' },
+    intro: 'No-download games reduce friction and help players start quickly on mobile, tablet and desktop.',
+    tips: ['Open the game page directly.', 'Use full screen or focus mode where available.', 'Save your favourite pages for fast return visits.']
+  },
+  {
+    slug: 'one-tap-mobile-games',
+    title: 'One tap mobile games',
+    description: 'Simple tap and click games for short mobile sessions, quick scores and repeat attempts.',
+    filter: { control: 'tap' },
+    intro: 'One-tap games are ideal for short breaks because they are easy to understand and fast to restart.',
+    tips: ['Learn the rhythm first.', 'Replay quickly after a miss.', 'Use daily rewards to make short sessions more useful.']
+  },
+  {
+    slug: 'hot-picks-from-the-arcade',
+    title: 'Hot picks from the GR8 arcade',
+    description: 'Featured GR8 GAMZ games chosen for replay value, quick controls and strong arcade feel.',
+    gameIds: ['neon-snake-rush', 'neon-pinball-rush', 'cyber-bowling-blitz', 'turbo-drift-grid', 'astro-memory-grid', 'fruit-slice-fever'],
+    intro: 'Hot Picks give players an easy starting point when they do not know what to play next.',
+    tips: ['Try one featured pick first.', 'Move into More Free Games when you want variety.', 'Return to originals to chase better scores.']
+  },
+  {
+    slug: 'safe-feeling-browser-games',
+    title: 'Safe-feeling browser games with clear play paths',
+    description: 'Browser-first games with clear labels, no forced downloads and straightforward player navigation.',
+    filter: { platform: 'html5' },
+    intro: 'Trust matters. Clear game pages, labelled ads and no forced downloads help GR8 GAMZ feel stronger than cluttered portals.',
+    tips: ['Use the main play button.', 'Avoid unofficial download prompts on the wider web.', 'Check the partner disclosure for network-powered games.']
+  },
   {
     slug: 'v20-third-game-drop',
     title: 'V20 third game drop',

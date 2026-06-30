@@ -1,24 +1,25 @@
 import Link from 'next/link';
+import BrandLogo from './BrandLogo';
 import { siteConfig } from '../data/site';
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div>
-        <strong>{siteConfig.name}</strong>
-        <p>Instant browser games, curated collections, XP streaks and brand-safe sponsorship inventory.</p>
+    <footer className="site-footer site-footer-network">
+      <div className="footer-brand-block">
+        <BrandLogo compact />
+        <p>{siteConfig.description}</p>
       </div>
       <nav aria-label="Footer navigation">
+        <Link href="/free-online-games">Free online games</Link>
         <Link href="/free-browser-games">Free browser games</Link>
-        <Link href="/mobile-games">Mobile games</Link>
-        <Link href="/quick-games">Quick games</Link>
-        <Link href="/advertise">Advertise</Link>
-        <Link href="/gamepix-games">GamePix games</Link>
-        <Link href="/gamemonetize-games">GameMonetize games</Link>
+        <Link href="/original-games">GR8 Originals</Link>
+        <Link href="/more-free-games">More free games</Link>
+        <Link href="/hot-picks">Hot picks</Link>
         <Link href="/gaming-deals">Gaming deals</Link>
-        <Link href="/partner-disclosure">Disclosure</Link>
-        <Link href="/privacy">Privacy</Link>
+        <Link href="/partner-disclosure">Partner disclosure</Link>
+        <Link href="/advertise">Advertise</Link>
         <Link href="/sitemap.xml">Sitemap</Link>
+        <Link href="/privacy">Privacy</Link>
       </nav>
     </footer>
   );

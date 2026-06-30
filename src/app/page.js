@@ -3,22 +3,21 @@ import GameGrid from '../components/GameGrid';
 import CategoryPill from '../components/CategoryPill';
 import DailyChallenge from '../components/engagement/DailyChallenge';
 import LeaderboardTerminal from '../components/engagement/LeaderboardTerminal';
-import ProgressionPanel from '../components/engagement/ProgressionPanel';
 import RecentlyPlayed from '../components/player/RecentlyPlayed';
 import DailyReward from '../components/player/DailyReward';
 import AchievementBadges from '../components/player/AchievementBadges';
 import DiscoveryRail from '../components/player/DiscoveryRail';
 import ContentRail from '../components/content/ContentRail';
-import AdSlot from '../components/ads/AdSlot';
 import JsonLd from '../components/JsonLd';
+import LivePreviewScreens from '../components/LivePreviewScreens';
+import NetworkMegaPanel from '../components/NetworkMegaPanel';
 import { siteConfig } from '../data/site';
-import { adPlacements } from '../lib/ads';
 import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
 import { getFeaturedUpdatePosts } from '../lib/content';
 import { itemListJsonLd } from '../lib/seo';
 
 export default function HomePage() {
-  const featured = getFeaturedGames(15);
+  const featured = getFeaturedGames(12);
   const popular = getPopularGames(8);
   const newest = getNewGames(10);
   const tags = getAllTags().slice(0, 18);
@@ -29,73 +28,45 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={itemListJsonLd(featured, '/')} />
-      <section className="hero hero-premium">
+      <section className="hero hero-premium hero-network-v23">
         <div className="hero-copy hero-copy-premium">
-          <span className="eyebrow">Free browser games • mobile-first</span>
-          <h1>Play quick. Pick your style. Chase one more run.</h1>
+          <span className="eyebrow">GR8 Game Network • free browser games</span>
+          <h1>Originals. Hot picks. More free games. One GR8 arcade.</h1>
           <p>
-            Jump into premium GR8 GAMZ originals with neon visuals, instant restarts, vehicle garages, snake labs, hangars,
-            team lockers and touchscreen controls built for fast repeat play.
+            GR8 GAMZ is now shaped as a full browser gaming network: original self-hosted games, live-style preview screens, partner-powered game discovery, gaming deals and search-ready content hubs built to grow into the market.
           </p>
           <div className="hero-actions">
-            <Link href="/games" className="cta">Start playing</Link>
-            <Link href="/popular" className="secondary-cta">Popular games</Link>
-            <Link href="/platforms/mobile" className="secondary-cta">Mobile picks</Link>
+            <Link href="/original-games" className="cta">Play GR8 Originals</Link>
+            <Link href="/more-free-games" className="secondary-cta">More Free Games</Link>
+            <Link href="/hot-picks" className="secondary-cta">Hot Picks</Link>
           </div>
-          <div className="hero-support-grid" aria-label="GR8 GAMZ launch highlights">
+          <div className="hero-support-grid" aria-label="GR8 GAMZ network highlights">
             <div className="hero-support-card">
-              <strong>Pick before you play</strong>
-              <span>Cars, vans, ships, snakes, shot styles and build modes make each run feel different.</span>
+              <strong>Brand-first network</strong>
+              <span>Partner catalogues are presented as More Free Games, keeping GR8 GAMZ as the main brand.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Fast replay loops</strong>
-              <span>Short sessions, strong game-over screens and instant restarts keep the momentum alive.</span>
+              <strong>Google content engine</strong>
+              <span>More crawlable hub pages, collections, update posts, schema and sitemap routes.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Made for mobile</strong>
-              <span>Swipe, tap, hold and drag controls are designed for touchscreen play first.</span>
+              <strong>Live arcade feel</strong>
+              <span>Animated preview screens make the homepage feel active without loading heavy background iframes.</span>
             </div>
           </div>
         </div>
-        <aside className="hero-visual" aria-label="GR8 GAMZ visual showcase and live platform panel">
-          <div className="hero-art-card">
-            <img
-              src="/art/homepage-hero-arena.webp"
-              alt="Epic GR8 GAMZ neon arcade montage with racing, sports, space and digital action"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <div className="hero-floating-badge hero-floating-badge-top">Original neon arcade universe</div>
-            <div className="hero-floating-badge hero-floating-badge-bottom">Fast play • sharp visuals • mobile first</div>
-          </div>
-          <div className="hero-visual-stack">
-            <div className="pulse-card hero-pulse-card">
-              <strong>{featured.length}</strong>
-              <span>premium launch games live now, with more originals planned.</span>
-            </div>
-            <div className="hero-mini-panels">
-              <div>
-                <strong>5</strong>
-                <span>selection menus</span>
-              </div>
-              <div>
-                <strong>90</strong>
-                <span>search-ready routes</span>
-              </div>
-              <div>
-                <strong>0</strong>
-                <span>downloads needed</span>
-              </div>
-            </div>
-          </div>
+        <aside className="hero-visual hero-live-preview" aria-label="GR8 GAMZ live demo screens">
+          <LivePreviewScreens />
         </aside>
       </section>
 
-      <section className="launch-strip" aria-label="Launch readiness promises">
-        <div><strong>Choose your loadout</strong><span>Garages, labs, hangars and lockers add replay value before each run.</span></div>
-        <div><strong>Built for repeat visits</strong><span>Daily challenges, XP panels, popular pages and quick restarts give players a reason to return.</span></div>
-        <div><strong>Ad-safe layout</strong><span>Clear labelled ad zones are positioned away from gameplay controls.</span></div>
+      <section className="launch-strip network-strip" aria-label="Network positioning promises">
+        <div><strong>GR8 Originals</strong><span>Self-hosted games with mobile controls, XP hooks and replay loops.</span></div>
+        <div><strong>More Free Games</strong><span>Partner-powered catalogues presented under the GR8 Game Network.</span></div>
+        <div><strong>Google-ready footprint</strong><span>Helpful hub pages, rich schema, feeds, sitemaps and IndexNow routes.</span></div>
       </section>
+
+      <NetworkMegaPanel />
 
       <DailyReward />
 
@@ -103,10 +74,10 @@ export default function HomePage() {
         <div className="section-heading section-heading-primary">
           <div>
             <span>Start here</span>
-            <h2>Launch games with the strongest replay loops.</h2>
+            <h2>GR8 original games with the strongest replay loops.</h2>
           </div>
           <p>
-            Pick a game, choose your style and jump straight into a short high-score run built for mobile.
+            These self-hosted games are the brand-owned core of GR8 GAMZ. They keep the arcade distinctive while the wider game network adds scale.
           </p>
         </div>
         <GameGrid games={featured} />
@@ -119,7 +90,7 @@ export default function HomePage() {
         title="Quick 60-second games."
         description="Short sessions, simple controls and fast restarts for players who want instant action."
         games={quickPlay}
-        href="/controls/tap"
+        href="/one-tap-games"
       />
 
       <DiscoveryRail
@@ -132,22 +103,21 @@ export default function HomePage() {
 
       <AchievementBadges />
 
-      <section className="immersive-banner" aria-label="GR8 GAMZ world building banner">
+      <section className="immersive-banner" aria-label="GR8 GAMZ market growth banner">
         <div className="immersive-banner-copy">
-          <span className="eyebrow">Built to be memorable</span>
-          <h2>Not just a game list — a neon arcade world.</h2>
+          <span className="eyebrow">Built to outgrow a simple game list</span>
+          <h2>A premium neon arcade brand with a serious search footprint.</h2>
           <p>
-            GR8 GAMZ is being shaped into a fast, visual and mobile-first browser-game destination with original games,
-            rich discovery pages and a growing universe of categories, tags and challenges.
+            The next stage is about scale with quality: more useful pages, stronger internal links, clear branding, live-feeling discovery and a revenue path that does not damage the player experience.
           </p>
         </div>
         <div className="immersive-banner-actions">
-          <Link href="/games" className="cta">Enter the arcade</Link>
-          <Link href="/tags/mobile" className="secondary-cta">Touchscreen picks</Link>
+          <Link href="/free-online-games" className="cta">Free online games</Link>
+          <Link href="/gaming-deals" className="secondary-cta">Gaming deals</Link>
         </div>
       </section>
 
-      <section aria-label="Launch shortcuts" className="content-panel compact-panel">
+      <section aria-label="Growth shortcuts" className="content-panel compact-panel">
         <div className="quick-link-grid">
           {siteConfig.launchLinks.map((link) => (
             <Link href={link.href} key={link.href} className="quick-link-card">
@@ -161,10 +131,10 @@ export default function HomePage() {
       <section>
         <div className="section-heading">
           <div>
-            <span>Player pull</span>
-            <h2>Popular right now.</h2>
+            <span>Featured now</span>
+            <h2>Hot picks for repeat players.</h2>
           </div>
-          <Link href="/popular" className="secondary-cta">View all popular</Link>
+          <Link href="/hot-picks" className="secondary-cta">View hot picks</Link>
         </div>
         <GameGrid games={popular} showAd={false} />
       </section>

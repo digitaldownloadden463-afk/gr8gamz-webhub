@@ -5,7 +5,7 @@ import { getAllContentCollections, getAllUpdatePosts } from '../lib/content';
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
-  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/privacy', '/gamepix-games', '/gamemonetize-games', '/gaming-deals', '/partner-disclosure'];
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/free-online-games', '/play-free-games', '/html5-games', '/arcade-games', '/action-games', '/puzzle-games', '/racing-games', '/no-download-games', '/one-tap-games', '/games-for-mobile', '/safe-browser-games', '/best-free-browser-games', '/original-games', '/more-free-games', '/hot-picks', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/privacy', '/gaming-deals', '/partner-disclosure'];
   const routes = [
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),

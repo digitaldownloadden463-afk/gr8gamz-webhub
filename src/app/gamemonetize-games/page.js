@@ -3,9 +3,10 @@ import { buildPageMetadata, breadcrumbJsonLd } from '../../lib/seo';
 import GameMonetizeGamesClient from './GameMonetizeGamesClient';
 
 export const metadata = buildPageMetadata({
-  title: 'GameMonetize Partner Games',
-  description: 'Browse partner HTML5 games powered by the GR8 GAMZ GameMonetize feed integration.',
-  path: '/gamemonetize-games'
+  title: 'Partner Game Feed',
+  description: 'Internal partner-powered game feed for GR8 GAMZ network testing and disclosure.',
+  path: '/gamemonetize-games',
+  noIndex: true
 });
 
 export default function GameMonetizeGamesPage() {
@@ -13,14 +14,14 @@ export default function GameMonetizeGamesPage() {
     <main>
       <JsonLd data={breadcrumbJsonLd([
         { name: 'Home', path: '/' },
-        { name: 'GameMonetize Partner Games', path: '/gamemonetize-games' }
+        { name: 'Partner Game Feed', path: '/gamemonetize-games' }
       ])} />
 
       <div className="page-title">
-        <span className="eyebrow">GameMonetize partner games</span>
-        <h1>Another free game network inside GR8 GAMZ.</h1>
+        <span className="eyebrow">Partner feed</span>
+        <h1>Internal partner-powered games feed.</h1>
         <p>
-          GameMonetize gives GR8 GAMZ a second partner catalogue alongside GamePix, helping the site feel bigger, keep players discovering more games and support future revenue growth.
+          This route remains available for testing and attribution, but the public player journey now promotes the branded More Free Games network instead.
         </p>
       </div>
 

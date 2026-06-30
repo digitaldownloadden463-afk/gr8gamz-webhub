@@ -59,7 +59,9 @@ export function organizationJsonLd() {
     '@type': 'Organization',
     name: siteConfig.legalName,
     url: siteConfig.siteUrl,
-    logo: `${siteConfig.siteUrl}/icon.png`
+    logo: absoluteUrl(siteConfig.logo || '/brand/gr8-gamz-google-logo.png'),
+    image: absoluteUrl(siteConfig.socialImage),
+    sameAs: []
   };
 }
 
@@ -178,7 +180,7 @@ export function articleJsonLd(post, path) {
       name: siteConfig.name,
       logo: {
         '@type': 'ImageObject',
-        url: absoluteUrl('/icon.png')
+        url: absoluteUrl(siteConfig.logo || '/brand/gr8-gamz-google-logo.png')
       }
     },
     mainEntityOfPage: absoluteUrl(path),

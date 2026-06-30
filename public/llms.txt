@@ -84,3 +84,13 @@ V22 GameMonetize network integration:
 - /gamemonetize-games/play - noindex GameMonetize partner game embed route
 - /api/gamemonetize/feed - server-side proxy for the GameMonetize JSON/RSS feed
 - /updates/v22-gamemonetize-network-integration - V22 update announcement
+
+V23 brand identity, network visibility and Google content engine:
+- /original-games - GR8 Originals brand-owned game hub
+- /more-free-games - GR8 Game Network page combining partner-powered game feeds under one player-facing brand
+- /hot-picks - featured now / hot picks discovery page
+- /free-online-games, /play-free-games, /html5-games, /arcade-games, /action-games, /puzzle-games, /racing-games, /no-download-games, /one-tap-games, /games-for-mobile, /safe-browser-games, /best-free-browser-games - helpful SEO hub pages for market coverage
+- public/favicon.ico, /icon.png, /apple-touch-icon.png, /android-chrome-192x192.png, /android-chrome-512x512.png and /manifest.webmanifest - Google/browser/app identity system
+- /brand/gr8-gamz-google-logo.png - Organization logo structured-data asset
+- /og/gr8gamz-og.png - social preview asset
+- Supplier-specific partner routes are kept available for attribution/testing but hidden from main navigation and marked noindex.
