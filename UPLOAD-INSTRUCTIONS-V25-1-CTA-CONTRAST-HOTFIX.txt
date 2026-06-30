@@ -1,0 +1,18 @@
+GR8 GAMZ V25.1 CTA contrast hotfix upload instructions
+
+Purpose:
+This small hotfix makes the Play Now buttons readable and unmistakable on the More Free Games cards.
+
+Upload this file only:
+- src/app/globals.css
+
+Suggested GitHub commit message:
+Fix Play Now button text contrast
+
+After Vercel redeploys, test:
+https://www.gr8gamz.com/more-free-games
+
+Check:
+- Play Now button text is visible
+- Play Now button is neon green/blue, not plain white
+- View profile button remains visible
