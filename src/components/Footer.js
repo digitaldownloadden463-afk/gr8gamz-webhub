@@ -14,6 +14,7 @@ export default function Footer() {
         <Link href="/quick-games">Quick games</Link>
         <Link href="/advertise">Advertise</Link>
         <Link href="/gamepix-games">GamePix games</Link>
+        <Link href="/gamemonetize-games">GameMonetize games</Link>
         <Link href="/gaming-deals">Gaming deals</Link>
         <Link href="/partner-disclosure">Disclosure</Link>
         <Link href="/privacy">Privacy</Link>

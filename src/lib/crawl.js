@@ -33,6 +33,7 @@ export function getCoreRoutes() {
     '/advertise',
     '/privacy',
     '/gamepix-games',
+    '/gamemonetize-games',
     '/gaming-deals',
     '/partner-disclosure'
   ];

@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v22-gamemonetize-network-integration',
+    title: 'V22 GameMonetize network integration',
+    date: '2026-06-30',
+    category: 'Monetisation',
+    description: 'V22 adds GameMonetize as a second partner game network alongside GamePix and strengthens the GR8 GAMZ monetisation foundation.',
+    tags: ['gamemonetize', 'partner-games', 'monetisation', 'game-network'],
+    relatedGameIds: ['neon-pinball-rush', 'neon-snake-rush', 'cyber-bowling-blitz'],
+    summary: [
+      'V22 adds a GameMonetize partner games section.',
+      'The integration uses the public GameMonetize JSON feed for HTML5 games.',
+      'GR8 GAMZ now has original games, GamePix partner games and GameMonetize partner games as separate network pillars.'
+    ],
+    sections: [
+      {
+        heading: 'Why add a second partner game network',
+        body: 'A serious gaming network needs more than one route for discovery and revenue. GameMonetize adds another large HTML5 game catalogue while GR8 originals stay clearly separated as the branded core.'
+      },
+      {
+        heading: 'How the feed works',
+        body: 'The GameMonetize RSS/JSON builder supplies game titles, descriptions, categories, thumbnails, play URLs and game dimensions. GR8 GAMZ uses those fields to create partner cards and safe embed pages.'
+      },
+      {
+        heading: 'Why this supports monetisation',
+        body: 'More partner games can increase session depth, game discovery and future ad revenue potential while still keeping GR8 GAMZ structured, labelled and brand-safe.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does GameMonetize replace GamePix?',
+        answer: 'No. GameMonetize is added as a second partner catalogue alongside GamePix.'
+      },
+      {
+        question: 'Are GameMonetize play pages indexable?',
+        answer: 'The main GameMonetize catalogue page is indexable. The dynamic partner play iframe route is noindex to avoid thin dynamic URLs.'
+      }
+    ]
+  },
+  {
     slug: 'v21-gamepix-feed-integration',
     title: 'V21 GamePix feed integration and monetisation foundation',
     date: '2026-06-30',

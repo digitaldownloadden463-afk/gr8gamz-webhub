@@ -77,3 +77,10 @@ V21 GamePix monetisation foundation:
 - /gaming-deals - future affiliate buyer guide hub
 - /partner-disclosure - partner and affiliate disclosure
 - /updates/v21-gamepix-feed-integration - V21 update announcement
+
+
+V22 GameMonetize network integration:
+- /gamemonetize-games - GameMonetize partner games feed page
+- /gamemonetize-games/play - noindex GameMonetize partner game embed route
+- /api/gamemonetize/feed - server-side proxy for the GameMonetize JSON/RSS feed
+- /updates/v22-gamemonetize-network-integration - V22 update announcement

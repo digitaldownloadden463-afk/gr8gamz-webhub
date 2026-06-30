@@ -1,0 +1,38 @@
+GR8 GAMZ V22 GameMonetize upload instructions
+
+Upload these files/folders from the update zip:
+
+- package.json
+- package-lock.json
+- public/ads.txt
+- public/llms.txt
+- src/app/layout.js
+- src/app/api/gamemonetize/feed/route.js
+- src/app/gamemonetize-games/page.js
+- src/app/gamemonetize-games/GameMonetizeGamesClient.js
+- src/app/gamemonetize-games/play/page.js
+- src/data/gamemonetize.js
+- src/data/content.js
+- src/components/Header.js
+- src/components/Footer.js
+- src/app/globals.css
+- src/app/sitemap.js
+- src/lib/crawl.js
+- src/app/partner-disclosure/page.js
+- src/app/gaming-deals/page.js
+- GR8-GAMZ-V22-GAMEMONETIZE-NETWORK-INTEGRATION-SPEC.md
+- UPLOAD-INSTRUCTIONS-V22-GAMEMONETIZE.txt
+
+Suggested commit message:
+Add V22 GameMonetize network integration
+
+After Vercel redeploys, test:
+
+https://www.gr8gamz.com/gamemonetize-games
+https://www.gr8gamz.com/api/gamemonetize/feed?amount=12&category=All&popularity=newest
+https://www.gr8gamz.com/ads.txt
+https://www.gr8gamz.com/updates/v22-gamemonetize-network-integration
+
+Also check that /ads.txt includes both:
+#gpx-property-8G856
+#GameMonetize.com

@@ -1848,3 +1848,29 @@ article.game-card .thumb-status-badge {
   .gamepix-player,
   .gamepix-player iframe { min-height: 72vh; }
 }
+
+
+/* V22 GameMonetize network layer */
+.partner-filter-row {
+  align-items: center;
+}
+.partner-filter-row select {
+  min-height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  padding: 0 14px;
+  font-weight: 900;
+}
+.gamepix-filters button.secondary-active {
+  box-shadow: 0 0 0 2px rgba(255,47,125,0.25), 0 0 28px rgba(255,47,125,0.18);
+}
+.partner-network-card .primary-link {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+.network-zone .gamepix-toolbar h2 {
+  background: linear-gradient(135deg, var(--brand), #fff, var(--brand-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}

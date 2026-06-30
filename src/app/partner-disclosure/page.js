@@ -23,6 +23,11 @@ export default function PartnerDisclosurePage() {
           Some games may be provided through the GamePix partner catalogue. These games can include tracking URLs that allow GamePix to report activity back to the correct publisher property.
         </p>
 
+        <h2>GameMonetize partner games</h2>
+        <p>
+          Some games may also be provided through the GameMonetize catalogue. These partner games can include advertising and partner monetisation.
+        </p>
+
         <h2>Affiliate links and advertising</h2>
         <p>
           Some pages may contain affiliate links or advertising links. If you click a qualifying link or complete an action, GR8 GAMZ may earn a commission at no extra cost to you.
