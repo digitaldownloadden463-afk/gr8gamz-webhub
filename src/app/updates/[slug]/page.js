@@ -44,7 +44,7 @@ export default function UpdatePostPage({ params }) {
         </div>
 
         <AiSummaryBox
-          title="AI-readable page summary"
+          title="Quick page summary"
           bullets={post.summary || []}
         />
 

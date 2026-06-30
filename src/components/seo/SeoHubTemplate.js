@@ -31,9 +31,9 @@ export default function SeoHubTemplate({ hub }) {
       <AiSummaryBox
         title={`${hub.title} quick summary`}
         bullets={[
-          `${hub.title} is part of the GR8 GAMZ Google content engine.`,
+          `${hub.title} is part of the GR8 GAMZ game discovery network.`,
           'The page links to real playable game pages and related discovery routes.',
-          'The layout avoids thin content by combining game cards, context, FAQs and internal links.',
+          'The layout combines playable game cards, context, FAQs and helpful internal links.',
           `Current featured games: ${games.length}.`
         ]}
       />
@@ -58,16 +58,16 @@ export default function SeoHubTemplate({ hub }) {
 
       <section className="content-panel seo-detail-panel">
         <span className="eyebrow">Why this page exists</span>
-        <h2>{hub.detailTitle || 'Built for players and search engines.'}</h2>
+        <h2>{hub.detailTitle || 'Built to help players choose faster.'}</h2>
         <p>{hub.seoCopy}</p>
         <p>
-          GR8 GAMZ uses focused hub pages to help players find the right game faster and to give search engines a cleaner understanding of the arcade network.
+          GR8 GAMZ uses focused hub pages to help players find the right game faster and to keep the arcade network easy to browse.
         </p>
         <div className="quick-link-grid network-mini-links">
           <Link href="/original-games" className="quick-link-card"><strong>GR8 Originals</strong><small>Self-hosted original games</small></Link>
           <Link href="/more-free-games" className="quick-link-card"><strong>More Free Games</strong><small>Partner-powered game network</small></Link>
           <Link href="/hot-picks" className="quick-link-card"><strong>Hot Picks</strong><small>Featured now and new this week</small></Link>
-          <Link href="/gaming-deals" className="quick-link-card"><strong>Gaming Deals</strong><small>Future revenue pages</small></Link>
+          <Link href="/gaming-deals" className="quick-link-card"><strong>Gaming Deals</strong><small>Gaming accessories and gift ideas</small></Link>
         </div>
       </section>
 

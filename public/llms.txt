@@ -85,7 +85,7 @@ V22 GameMonetize network integration:
 - /api/gamemonetize/feed - server-side proxy for the GameMonetize JSON/RSS feed
 - /updates/v22-gamemonetize-network-integration - V22 update announcement
 
-V23 brand identity, network visibility and Google content engine:
+V23 brand identity, network visibility and game discovery engine:
 - /original-games - GR8 Originals brand-owned game hub
 - /more-free-games - GR8 Game Network page combining partner-powered game feeds under one player-facing brand
 - /hot-picks - featured now / hot picks discovery page
@@ -119,3 +119,10 @@ V26 retention and network cluster engine:
 - /more-free-games/new - fresh network profile route
 - /more-free-games/categories/[slug] - partner game category clusters
 - Partner play pages remain noindex; profile and cluster pages are the indexable layer.
+
+
+V27 launch compliance, trust and polish hardening:
+- /privacy - live privacy, cookies, advertising and local storage information
+- /contact - contact route for privacy, game issues, advertising and partner feedback
+- /gaming-deals - soft-launch buyer-guide and affiliate disclosure hub
+- /updates/v27-launch-compliance-trust-polish-hardening - V27 launch QA update

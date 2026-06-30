@@ -5,7 +5,7 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.gr8gamz.com',
   tagline: 'Free browser gaming network: originals, hot picks and more free games.',
   description:
-    'Play free mobile-first browser games on GR8 GAMZ: original arcade games, hot picks, more free games, daily challenges, XP streaks and Google-ready game collections.',
+    'Play free mobile-first browser games on GR8 GAMZ: original arcade games, hot picks, more free games, daily challenges, XP streaks and helpful game collections.',
   defaultLocale: 'en',
   locales: ['en', 'es', 'fr', 'de'],
   localeNames: {

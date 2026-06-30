@@ -101,7 +101,7 @@ export default function GamesPage({ searchParams }) {
 
         <div className="filter-summary">
           <strong>{games.length}</strong>
-          <span>game{games.length === 1 ? '' : 's'} matched your filter path.</span>
+          <span>{games.length === 1 ? 'game matched' : 'games matched'} your filter path.</span>
           <Link href="/games" className="secondary-cta">Reset filters</Link>
         </div>
       </section>
@@ -111,7 +111,7 @@ export default function GamesPage({ searchParams }) {
       <section className="content-panel">
         <div className="section-heading compact">
           <span>Browse deeper</span>
-          <h2>SEO-ready discovery paths.</h2>
+          <h2>Game discovery paths.</h2>
         </div>
         <div className="quick-link-grid">
           {siteConfig.categories.map((category) => (

@@ -1,5 +1,39 @@
 export const updatePosts = [
   {
+    slug: 'v27-launch-compliance-trust-polish-hardening',
+    title: 'V27 launch compliance, trust and polish hardening',
+    date: '2026-06-30',
+    category: 'Trust & Launch QA',
+    description: 'V27 replaces placeholder privacy copy, cleans the gaming deals hub, fixes visible UX wording, improves launch leaderboard wording and strengthens the first partner-game profiles.',
+    tags: ['privacy', 'trust', 'launch-polish', 'partner-games', 'gaming-deals'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'The privacy page now explains local storage, advertising, affiliate links and partner game disclosures.',
+      'The Gaming Deals page has been turned into a proper soft-launch buyer-guide hub instead of a placeholder.',
+      'Player-facing copy is cleaner and less developer-focused across key pages.'
+    ],
+    sections: [
+      {
+        heading: 'Why this hardening pass matters',
+        body: 'GR8 GAMZ has grown quickly. Before scaling more pages, V27 focuses on trust, clarity and launch polish so the current platform feels finished to players and safer for monetisation.'
+      },
+      {
+        heading: 'What changed',
+        body: 'The update removes placeholder privacy language, improves affiliate disclosure, fixes small copy bugs, adjusts demo leaderboard wording and adds more specific top partner-game profile copy.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V27 add more games?',
+        answer: 'No. V27 focuses on launch hardening, trust and polish before the next scale-up.'
+      },
+      {
+        question: 'Should play pages be indexed?',
+        answer: 'No. Partner game play routes should stay noindex while profile pages and hub pages are the indexed discovery routes.'
+      }
+    ]
+  },
+  {
     slug: 'v26-retention-network-cluster-engine',
     title: 'V26 retention and network cluster engine',
     date: '2026-06-30',
@@ -116,15 +150,15 @@ export const updatePosts = [
   },
   {
     slug: 'v23-brand-network-google-content-engine',
-    title: 'V23 brand identity, game network visibility and Google content engine',
+    title: 'V23 brand identity, game network visibility and game discovery engine',
     date: '2026-06-30',
     category: 'Growth Engine',
-    description: 'V23 upgrades GR8 GAMZ with a proper logo and favicon system, stronger navigation, live preview screens, More Free Games branding and a wider Google-ready content footprint.',
+    description: 'V23 upgrades GR8 GAMZ with a proper logo and favicon system, stronger navigation, live preview screens, More Free Games branding and a wider search-friendly content footprint.',
     tags: ['brand-identity', 'seo', 'game-network', 'hot-picks', 'favicon'],
     relatedGameIds: ['neon-snake-rush', 'neon-pinball-rush', 'turbo-drift-grid', 'astro-memory-grid'],
     summary: [
       'V23 makes GR8 GAMZ feel like a branded gaming network rather than a basic game list.',
-      'The update adds Google-ready favicon/logo assets, app icons, manifest and Organization logo schema.',
+      'The update adds Google-compatible favicon/logo assets, app icons, manifest and Organization logo schema.',
       'Supplier names are removed from the main player journey and replaced by GR8 Originals, More Free Games, Hot Picks and Gaming Deals.',
       'A wider set of helpful SEO hub pages gives Google more crawlable market entry points without creating thin content.'
     ],
@@ -320,7 +354,7 @@ export const updatePosts = [
     summary: [
       'GR8 GAMZ is a free browser-games hub focused on mobile-first HTML5 arcade games.',
       'The platform is built around quick starts, fast restarts, full-screen play and original game loops.',
-      'Launch pages include game collections, category paths, control pages, difficulty pages and AI-readable summaries.'
+      'Launch pages include game collections, category paths, control pages, difficulty pages and quick summaries.'
     ],
     sections: [
       {
@@ -466,7 +500,7 @@ export const updatePosts = [
     title: 'SEO and AI visibility foundation for a browser-game platform',
     date: '2026-06-28',
     category: 'Search',
-    description: 'A GR8 GAMZ update covering sitemap, robots, llms.txt, IndexNow, AI-readable summaries and crawlable game pages.',
+    description: 'A GR8 GAMZ update covering sitemap, robots, llms.txt, IndexNow, quick summaries and crawlable game pages.',
     tags: ['seo', 'ai-search', 'indexnow', 'sitemap'],
     relatedGameIds: ['neon-snake-rush', 'neon-breakout-rush', 'bubble-pop-blitz', 'traffic-tap-chaos'],
     summary: [
@@ -480,7 +514,7 @@ export const updatePosts = [
         body: 'Search engines need clean pages, correct canonical URLs, crawlable links and helpful content before a site can build authority. GR8 GAMZ now has the technical foundation to support future content growth.'
       },
       {
-        heading: 'Why AI-readable summaries help',
+        heading: 'Why quick summaries help',
         body: 'AI search systems need clear, structured explanations. Short summaries, visible FAQs and focused collection pages make the purpose of each page easier to understand.'
       },
       {

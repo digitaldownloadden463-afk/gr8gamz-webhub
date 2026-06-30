@@ -18,24 +18,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/body-drop-3d/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Body Drop 3D is a ragdoll physics stunt game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Body Drop 3D because it fits high-intent browser-game searches around ragdoll physics stunt game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want quick physics chaos and funny replay moments",
+    "controls": "Use mouse, touch or drag-style inputs to aim, trigger or adjust the stunt depending on the loaded game prompt.",
+    "description": "Body Drop 3D is a physics-based stunt game where the fun comes from timing the drop, watching the ragdoll reaction and trying another setup straight away. It suits players who want quick action, silly impacts and instant no-download browser play.",
+    "whyPicked": "We picked Body Drop 3D because ragdoll physics games are easy to understand, highly replayable and visually clear from the first click.",
     "faqs": [
       {
-        "question": "Can I play Body Drop 3D without a download?",
-        "answer": "Yes. Body Drop 3D is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Body Drop 3D without downloading an app?",
+        "answer": "Yes. Body Drop 3D is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Body Drop 3D?",
-        "answer": "Body Drop 3D is positioned as a action game, useful for players looking for ragdoll physics stunt game and quick free online play."
+        "question": "What is the best way to start Body Drop 3D?",
+        "answer": "Start by launching the stunt, watch how the body reacts, then adjust your timing or aim on the next attempt. The best runs usually come from small changes rather than random clicks."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Body Drop 3D?",
+        "answer": "Works best on desktop or larger mobile screens where the physics action is easy to see."
       }
-    ]
+    ],
+    "howToPlay": "Start by launching the stunt, watch how the body reacts, then adjust your timing or aim on the next attempt. The best runs usually come from small changes rather than random clicks.",
+    "deviceFit": "Works best on desktop or larger mobile screens where the physics action is easy to see."
   },
   {
     "title": "TenTrix",
@@ -56,24 +58,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/tentrix/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Easy to start",
-    "bestFor": "short mobile sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "TenTrix is a block puzzle strategy game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked TenTrix because it fits high-intent browser-game searches around block puzzle strategy game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like relaxed puzzle sessions and planning ahead",
+    "controls": "Drag or tap blocks into the grid and try to complete lines or spaces before the board fills up.",
+    "description": "TenTrix is a 10x10 block puzzle game built around smart placement, clear spaces and calm strategy. It is ideal for players who want a slower thinking game rather than a frantic arcade run.",
+    "whyPicked": "We picked TenTrix because block puzzle games match high-intent no-download puzzle searches and keep players engaged without complicated controls.",
     "faqs": [
       {
-        "question": "Can I play TenTrix without a download?",
-        "answer": "Yes. TenTrix is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play TenTrix without downloading an app?",
+        "answer": "Yes. TenTrix is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is TenTrix?",
-        "answer": "TenTrix is positioned as a puzzle game, useful for players looking for block puzzle strategy game and quick free online play."
+        "question": "What is the best way to start TenTrix?",
+        "answer": "Place each block carefully, avoid trapping awkward gaps and keep the centre of the board flexible. A safe layout is usually better than chasing one quick clear."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for TenTrix?",
+        "answer": "Strong on mobile, tablet and desktop because the game is simple to read and easy to control."
       }
-    ]
+    ],
+    "howToPlay": "Place each block carefully, avoid trapping awkward gaps and keep the centre of the board flexible. A safe layout is usually better than chasing one quick clear.",
+    "deviceFit": "Strong on mobile, tablet and desktop because the game is simple to read and easy to control."
   },
   {
     "title": "Bloxd.io",
@@ -94,24 +98,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/bloxd-io/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Bloxd.io is a multiplayer io building game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Bloxd.io because it fits high-intent browser-game searches around multiplayer io building game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want a bigger multiplayer-style browser session",
+    "controls": "Use keyboard and mouse on desktop where available. On mobile, follow the on-screen movement and action controls.",
+    "description": "Bloxd.io is a multiplayer-style building and challenge game with block-world energy. It fits players who like exploration, movement challenges and social-feeling browser games.",
+    "whyPicked": "We picked Bloxd.io because io games can generate long sessions and repeat visits when players want something bigger than a short one-tap game.",
     "faqs": [
       {
-        "question": "Can I play Bloxd.io without a download?",
-        "answer": "Yes. Bloxd.io is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Bloxd.io without downloading an app?",
+        "answer": "Yes. Bloxd.io is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Bloxd.io?",
-        "answer": "Bloxd.io is positioned as a .io game, useful for players looking for multiplayer io building game and quick free online play."
+        "question": "What is the best way to start Bloxd.io?",
+        "answer": "Choose a mode, learn the movement first and treat the early moments as practice. The game rewards control confidence more than rushing."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Bloxd.io?",
+        "answer": "Best on desktop or tablet; mobile can work but the controls may feel busier."
       }
-    ]
+    ],
+    "howToPlay": "Choose a mode, learn the movement first and treat the early moments as practice. The game rewards control confidence more than rushing.",
+    "deviceFit": "Best on desktop or tablet; mobile can work but the controls may feel busier."
   },
   {
     "title": "Basketball Stars",
@@ -132,24 +138,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/basketball-stars/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Basketball Stars is a basketball shooting sports game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Basketball Stars because it fits high-intent browser-game searches around basketball shooting sports game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want quick sports action and scoring challenges",
+    "controls": "Aim, move, jump or shoot using the game prompts. Desktop controls are usually easier for competitive play.",
+    "description": "Basketball Stars is a fast sports game built around timing, aiming and quick scoring pressure. It gives sports fans a simple route into browser basketball without installing anything.",
+    "whyPicked": "We picked Basketball Stars because sports games broaden the GR8 network beyond arcade and puzzle traffic while still staying quick to play.",
     "faqs": [
       {
-        "question": "Can I play Basketball Stars without a download?",
-        "answer": "Yes. Basketball Stars is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Basketball Stars without downloading an app?",
+        "answer": "Yes. Basketball Stars is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Basketball Stars?",
-        "answer": "Basketball Stars is positioned as a sports game, useful for players looking for basketball shooting sports game and quick free online play."
+        "question": "What is the best way to start Basketball Stars?",
+        "answer": "Learn the shot timing first, then focus on positioning. Winning runs usually come from clean timing rather than button mashing."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Basketball Stars?",
+        "answer": "Strong on desktop and tablet; mobile works best in landscape if the game offers it."
       }
-    ]
+    ],
+    "howToPlay": "Learn the shot timing first, then focus on positioning. Winning runs usually come from clean timing rather than button mashing.",
+    "deviceFit": "Strong on desktop and tablet; mobile works best in landscape if the game offers it."
   },
   {
     "title": "Slope Racing 3D",
@@ -170,24 +178,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/slope-racing-3d/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Slope Racing 3D is a 3D downhill racing game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Slope Racing 3D because it fits high-intent browser-game searches around 3D downhill racing game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like speed, reaction tests and instant retries",
+    "controls": "Steer with keyboard, touch or on-screen controls depending on device. Small corrections are safer than heavy turns.",
+    "description": "Slope Racing 3D is a speed-focused downhill racing game where reactions matter. The appeal is simple: stay on track, dodge danger and survive a little longer each run.",
+    "whyPicked": "We picked Slope Racing 3D because 3D racing and slope-style games have strong replay loops and clear visual appeal.",
     "faqs": [
       {
-        "question": "Can I play Slope Racing 3D without a download?",
-        "answer": "Yes. Slope Racing 3D is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Slope Racing 3D without downloading an app?",
+        "answer": "Yes. Slope Racing 3D is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Slope Racing 3D?",
-        "answer": "Slope Racing 3D is positioned as a racing game, useful for players looking for 3D downhill racing game and quick free online play."
+        "question": "What is the best way to start Slope Racing 3D?",
+        "answer": "Keep your movement smooth, look ahead for gaps and avoid over-correcting. The longer you survive, the more important rhythm becomes."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Slope Racing 3D?",
+        "answer": "Best on desktop or landscape mobile where the track is easier to read."
       }
-    ]
+    ],
+    "howToPlay": "Keep your movement smooth, look ahead for gaps and avoid over-correcting. The longer you survive, the more important rhythm becomes.",
+    "deviceFit": "Best on desktop or landscape mobile where the track is easier to read."
   },
   {
     "title": "Car Crash Test",
@@ -208,24 +218,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/car-crash-test/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Car Crash Test is a car crash simulator game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Car Crash Test because it fits high-intent browser-game searches around car crash simulator game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who enjoy driving experiments and vehicle physics",
+    "controls": "Use steering, throttle and brake controls shown by the game. Desktop keyboard controls usually give the best precision.",
+    "description": "Car Crash Test is a driving and crash-simulator style game where the entertainment comes from testing speed, impact and vehicle control.",
+    "whyPicked": "We picked Car Crash Test because car simulator pages attract players looking for physics, driving and crash-test gameplay.",
     "faqs": [
       {
-        "question": "Can I play Car Crash Test without a download?",
-        "answer": "Yes. Car Crash Test is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Car Crash Test without downloading an app?",
+        "answer": "Yes. Car Crash Test is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Car Crash Test?",
-        "answer": "Car Crash Test is positioned as a racing game, useful for players looking for car crash simulator game and quick free online play."
+        "question": "What is the best way to start Car Crash Test?",
+        "answer": "Start slowly to understand the car handling, then increase speed and test bigger impacts. Better runs come from learning how the vehicle reacts."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Car Crash Test?",
+        "answer": "Best on desktop and larger screens; playable on mobile when controls are clear."
       }
-    ]
+    ],
+    "howToPlay": "Start slowly to understand the car handling, then increase speed and test bigger impacts. Better runs come from learning how the vehicle reacts.",
+    "deviceFit": "Best on desktop and larger screens; playable on mobile when controls are clear."
   },
   {
     "title": "10x10!",
@@ -246,24 +258,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/10x10/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Easy to start",
-    "bestFor": "short mobile sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "10x10! is a 10x10 block puzzle game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked 10x10! because it fits high-intent browser-game searches around 10x10 block puzzle game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like simple rules with deeper strategy",
+    "controls": "Drag blocks onto the grid and complete full rows or columns to clear space.",
+    "description": "10x10! is a clean block-placement puzzle where every move matters. It suits players who want quick thinking, tidy clears and simple controls.",
+    "whyPicked": "We picked 10x10! because classic block puzzles are evergreen search targets and work well on almost any device.",
     "faqs": [
       {
-        "question": "Can I play 10x10! without a download?",
-        "answer": "Yes. 10x10! is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play 10x10! without downloading an app?",
+        "answer": "Yes. 10x10! is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is 10x10!?",
-        "answer": "10x10! is positioned as a puzzle game, useful for players looking for 10x10 block puzzle game and quick free online play."
+        "question": "What is the best way to start 10x10!?",
+        "answer": "Keep space available for large pieces, avoid isolated gaps and plan two moves ahead when possible."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for 10x10!?",
+        "answer": "Excellent on mobile, tablet and desktop."
       }
-    ]
+    ],
+    "howToPlay": "Keep space available for large pieces, avoid isolated gaps and plan two moves ahead when possible.",
+    "deviceFit": "Excellent on mobile, tablet and desktop."
   },
   {
     "title": "Dungeon Master - Cult & Craft",
@@ -284,24 +298,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/dungeon-master-cult-and-craft/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Dungeon Master - Cult & Craft is a dungeon crafting adventure game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Dungeon Master - Cult & Craft because it fits high-intent browser-game searches around dungeon crafting adventure game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want a longer adventure-style session",
+    "controls": "Follow the in-game prompts for movement, selection, crafting and upgrades.",
+    "description": "Dungeon Master - Cult & Craft mixes dungeon adventure energy with crafting and progression. It gives players a more involved partner-game option inside the GR8 network.",
+    "whyPicked": "We picked Dungeon Master - Cult & Craft to add deeper adventure variety alongside the quick arcade and puzzle pages.",
     "faqs": [
       {
-        "question": "Can I play Dungeon Master - Cult & Craft without a download?",
-        "answer": "Yes. Dungeon Master - Cult & Craft is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Dungeon Master - Cult & Craft without downloading an app?",
+        "answer": "Yes. Dungeon Master - Cult & Craft is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Dungeon Master - Cult & Craft?",
-        "answer": "Dungeon Master - Cult & Craft is positioned as a adventure game, useful for players looking for dungeon crafting adventure game and quick free online play."
+        "question": "What is the best way to start Dungeon Master - Cult & Craft?",
+        "answer": "Explore carefully, learn what each upgrade does and avoid spending resources too quickly. Progression is usually the key to a better run."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Dungeon Master - Cult & Craft?",
+        "answer": "Best on desktop or tablet because adventure interfaces can have more buttons."
       }
-    ]
+    ],
+    "howToPlay": "Explore carefully, learn what each upgrade does and avoid spending resources too quickly. Progression is usually the key to a better run.",
+    "deviceFit": "Best on desktop or tablet because adventure interfaces can have more buttons."
   },
   {
     "title": "1942 Pacific Front",
@@ -322,24 +338,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/1942-pacific-front/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "1942 Pacific Front is a WW2 tactical action game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked 1942 Pacific Front because it fits high-intent browser-game searches around WW2 tactical action game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who enjoy tactical decisions and slower action",
+    "controls": "Use the game prompts for unit selection, movement, attacks and tactical choices.",
+    "description": "1942 Pacific Front is a tactical action game with war-game strategy appeal. It is better for players who want decisions and positioning rather than pure reflex play.",
+    "whyPicked": "We picked 1942 Pacific Front because strategy/action hybrids add variety and help GR8 GAMZ reach players searching for tactical browser games.",
     "faqs": [
       {
-        "question": "Can I play 1942 Pacific Front without a download?",
-        "answer": "Yes. 1942 Pacific Front is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play 1942 Pacific Front without downloading an app?",
+        "answer": "Yes. 1942 Pacific Front is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is 1942 Pacific Front?",
-        "answer": "1942 Pacific Front is positioned as a action game, useful for players looking for WW2 tactical action game and quick free online play."
+        "question": "What is the best way to start 1942 Pacific Front?",
+        "answer": "Study the map, protect key units and avoid rushing into poor positions. Tactical games reward patience."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for 1942 Pacific Front?",
+        "answer": "Best on desktop or tablet where the map and controls are easier to manage."
       }
-    ]
+    ],
+    "howToPlay": "Study the map, protect key units and avoid rushing into poor positions. Tactical games reward patience.",
+    "deviceFit": "Best on desktop or tablet where the map and controls are easier to manage."
   },
   {
     "title": "Spaceflight Simulator",
@@ -360,24 +378,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/spaceflight-simulator/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Spaceflight Simulator is a space rocket simulator game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Spaceflight Simulator because it fits high-intent browser-game searches around space rocket simulator game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like rockets, physics and testing ideas",
+    "controls": "Build, adjust and launch using the game interface. Precision improves once you understand each part or stage.",
+    "description": "Spaceflight Simulator is a rocket-building and launch game for players who enjoy experimentation, physics and space missions.",
+    "whyPicked": "We picked Spaceflight Simulator because simulation games create longer, curiosity-driven sessions and stand out from ordinary arcade pages.",
     "faqs": [
       {
-        "question": "Can I play Spaceflight Simulator without a download?",
-        "answer": "Yes. Spaceflight Simulator is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Spaceflight Simulator without downloading an app?",
+        "answer": "Yes. Spaceflight Simulator is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Spaceflight Simulator?",
-        "answer": "Spaceflight Simulator is positioned as a simulation game, useful for players looking for space rocket simulator game and quick free online play."
+        "question": "What is the best way to start Spaceflight Simulator?",
+        "answer": "Start with a simple rocket, test the launch, then add complexity. Each failed attempt teaches you what to change next."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Spaceflight Simulator?",
+        "answer": "Best on desktop or tablet for easier building and reading."
       }
-    ]
+    ],
+    "howToPlay": "Start with a simple rocket, test the launch, then add complexity. Each failed attempt teaches you what to change next.",
+    "deviceFit": "Best on desktop or tablet for easier building and reading."
   },
   {
     "title": "Dynamons 6",
@@ -398,24 +418,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/dynamons-6/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Dynamons 6 is a monster battle adventure game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Dynamons 6 because it fits high-intent browser-game searches around monster battle adventure game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who enjoy creature battles and progression",
+    "controls": "Use taps or clicks to select attacks, navigate menus and progress through battles.",
+    "description": "Dynamons 6 is a monster-battle adventure game where players collect, battle and progress through a colourful creature world.",
+    "whyPicked": "We picked Dynamons 6 because monster-battle games attract adventure players and give the partner catalogue more depth.",
     "faqs": [
       {
-        "question": "Can I play Dynamons 6 without a download?",
-        "answer": "Yes. Dynamons 6 is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Dynamons 6 without downloading an app?",
+        "answer": "Yes. Dynamons 6 is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Dynamons 6?",
-        "answer": "Dynamons 6 is positioned as a adventure game, useful for players looking for monster battle adventure game and quick free online play."
+        "question": "What is the best way to start Dynamons 6?",
+        "answer": "Learn each creature ability, choose attacks carefully and upgrade your team rather than relying on one favourite."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Dynamons 6?",
+        "answer": "Good on mobile, tablet and desktop because turn-based controls are easy to follow."
       }
-    ]
+    ],
+    "howToPlay": "Learn each creature ability, choose attacks carefully and upgrade your team rather than relying on one favourite.",
+    "deviceFit": "Good on mobile, tablet and desktop because turn-based controls are easy to follow."
   },
   {
     "title": "Spider Evolution Runner Game",
@@ -436,24 +458,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/spider-evolution-runner-game/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Spider Evolution Runner Game is a evolution runner game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Spider Evolution Runner Game because it fits high-intent browser-game searches around evolution runner game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like quick runner games with upgrade momentum",
+    "controls": "Swipe, drag or use on-screen controls to move lanes and collect the right upgrades.",
+    "description": "Spider Evolution Runner Game is a fast evolution runner where movement, upgrades and lane choices drive the replay loop.",
+    "whyPicked": "We picked it because runner games are instantly understandable and work well as quick Play Now options.",
     "faqs": [
       {
-        "question": "Can I play Spider Evolution Runner Game without a download?",
-        "answer": "Yes. Spider Evolution Runner Game is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Spider Evolution Runner Game without downloading an app?",
+        "answer": "Yes. Spider Evolution Runner Game is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Spider Evolution Runner Game?",
-        "answer": "Spider Evolution Runner Game is positioned as a runner game, useful for players looking for evolution runner game and quick free online play."
+        "question": "What is the best way to start Spider Evolution Runner Game?",
+        "answer": "Watch the lane ahead, collect helpful items and avoid choices that weaken your run. Clean movement is more important than speed."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Spider Evolution Runner Game?",
+        "answer": "Strong on mobile because runner controls are naturally touch-friendly."
       }
-    ]
+    ],
+    "howToPlay": "Watch the lane ahead, collect helpful items and avoid choices that weaken your run. Clean movement is more important than speed.",
+    "deviceFit": "Strong on mobile because runner controls are naturally touch-friendly."
   },
   {
     "title": "4 Colors Multiplayer",
@@ -474,24 +498,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/4-colors-multiplayer/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Easy to start",
-    "bestFor": "short mobile sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "4 Colors Multiplayer is a multiplayer card game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked 4 Colors Multiplayer because it fits high-intent browser-game searches around multiplayer card game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want a simple competitive card session",
+    "controls": "Tap or click the card you want to play and follow the match rules shown in the game.",
+    "description": "4 Colors Multiplayer is a card-style game built around matching colours, numbers and smart timing against other players or computer opponents.",
+    "whyPicked": "We picked 4 Colors Multiplayer because card games add a calmer social option to the GR8 network.",
     "faqs": [
       {
-        "question": "Can I play 4 Colors Multiplayer without a download?",
-        "answer": "Yes. 4 Colors Multiplayer is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play 4 Colors Multiplayer without downloading an app?",
+        "answer": "Yes. 4 Colors Multiplayer is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is 4 Colors Multiplayer?",
-        "answer": "4 Colors Multiplayer is positioned as a card game, useful for players looking for multiplayer card game and quick free online play."
+        "question": "What is the best way to start 4 Colors Multiplayer?",
+        "answer": "Save action cards for key moments and watch what your opponent is likely to need next."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for 4 Colors Multiplayer?",
+        "answer": "Excellent on mobile, tablet and desktop."
       }
-    ]
+    ],
+    "howToPlay": "Save action cards for key moments and watch what your opponent is likely to need next.",
+    "deviceFit": "Excellent on mobile, tablet and desktop."
   },
   {
     "title": "Brutal Zombies",
@@ -512,24 +538,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/brutal-zombies/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Brutal Zombies is a zombie survival shooter selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Brutal Zombies because it fits high-intent browser-game searches around zombie survival shooter, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want shooting action and survival pressure",
+    "controls": "Use movement and aiming controls shown by the game. Desktop usually gives the strongest aim control.",
+    "description": "Brutal Zombies is a zombie shooter for players who want survival action, target pressure and fast combat.",
+    "whyPicked": "We picked Brutal Zombies because zombie survival keywords have strong demand and the game adds action depth to More Free Games.",
     "faqs": [
       {
-        "question": "Can I play Brutal Zombies without a download?",
-        "answer": "Yes. Brutal Zombies is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Brutal Zombies without downloading an app?",
+        "answer": "Yes. Brutal Zombies is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Brutal Zombies?",
-        "answer": "Brutal Zombies is positioned as a zombie game, useful for players looking for zombie survival shooter and quick free online play."
+        "question": "What is the best way to start Brutal Zombies?",
+        "answer": "Keep moving, create distance and avoid getting surrounded. Survival games punish standing still."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Brutal Zombies?",
+        "answer": "Best on desktop or larger screens for aiming and visibility."
       }
-    ]
+    ],
+    "howToPlay": "Keep moving, create distance and avoid getting surrounded. Survival games punish standing still.",
+    "deviceFit": "Best on desktop or larger screens for aiming and visibility."
   },
   {
     "title": "Yummy Tales",
@@ -550,24 +578,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/yummy-tales/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Easy to start",
-    "bestFor": "short mobile sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Yummy Tales is a match puzzle game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Yummy Tales because it fits high-intent browser-game searches around match puzzle game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want relaxed puzzle play and satisfying clears",
+    "controls": "Tap or drag matching pieces to create lines and clear the target items.",
+    "description": "Yummy Tales is a colourful match puzzle game with friendly visuals, simple goals and satisfying combo clears.",
+    "whyPicked": "We picked Yummy Tales because match puzzles are accessible, family-friendly and ideal for casual repeat visits.",
     "faqs": [
       {
-        "question": "Can I play Yummy Tales without a download?",
-        "answer": "Yes. Yummy Tales is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Yummy Tales without downloading an app?",
+        "answer": "Yes. Yummy Tales is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Yummy Tales?",
-        "answer": "Yummy Tales is positioned as a puzzle game, useful for players looking for match puzzle game and quick free online play."
+        "question": "What is the best way to start Yummy Tales?",
+        "answer": "Look for larger matches, chain reactions and level targets before making the first move."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Yummy Tales?",
+        "answer": "Excellent on mobile, tablet and desktop."
       }
-    ]
+    ],
+    "howToPlay": "Look for larger matches, chain reactions and level targets before making the first move.",
+    "deviceFit": "Excellent on mobile, tablet and desktop."
   },
   {
     "title": "Wild West Gun Game",
@@ -588,24 +618,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/wild-west-gun-game/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Wild West Gun Game is a western shooting game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Wild West Gun Game because it fits high-intent browser-game searches around western shooting game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like quick aim challenges",
+    "controls": "Aim and shoot using mouse, touch or the game controls. Accuracy matters more than speed.",
+    "description": "Wild West Gun Game is a western shooting challenge focused on aim, timing and fast reactions.",
+    "whyPicked": "We picked it because western shooting games are easy to understand and give the network another action angle.",
     "faqs": [
       {
-        "question": "Can I play Wild West Gun Game without a download?",
-        "answer": "Yes. Wild West Gun Game is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Wild West Gun Game without downloading an app?",
+        "answer": "Yes. Wild West Gun Game is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Wild West Gun Game?",
-        "answer": "Wild West Gun Game is positioned as a shooter game, useful for players looking for western shooting game and quick free online play."
+        "question": "What is the best way to start Wild West Gun Game?",
+        "answer": "Take a moment to line up targets and avoid panicking. The best scores come from calm timing."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Wild West Gun Game?",
+        "answer": "Best on desktop, playable on touch screens when aiming feels clear."
       }
-    ]
+    ],
+    "howToPlay": "Take a moment to line up targets and avoid panicking. The best scores come from calm timing.",
+    "deviceFit": "Best on desktop, playable on touch screens when aiming feels clear."
   },
   {
     "title": "Shell Shockers",
@@ -626,24 +658,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/shell-shockers/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Shell Shockers is a multiplayer egg shooter game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Shell Shockers because it fits high-intent browser-game searches around multiplayer egg shooter game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who want online shooter-style action",
+    "controls": "Use keyboard and mouse on desktop for movement and aim. Follow mobile prompts if available.",
+    "description": "Shell Shockers is a multiplayer egg shooter with fast matches and a memorable theme. It is one of the stronger recognisable partner picks for action players.",
+    "whyPicked": "We picked Shell Shockers because multiplayer shooters can drive longer sessions and repeat visits when the game loads well.",
     "faqs": [
       {
-        "question": "Can I play Shell Shockers without a download?",
-        "answer": "Yes. Shell Shockers is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Shell Shockers without downloading an app?",
+        "answer": "Yes. Shell Shockers is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Shell Shockers?",
-        "answer": "Shell Shockers is positioned as a .io game, useful for players looking for multiplayer egg shooter game and quick free online play."
+        "question": "What is the best way to start Shell Shockers?",
+        "answer": "Move constantly, reload at safe moments and learn the map before chasing risky fights."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Shell Shockers?",
+        "answer": "Best on desktop because shooters need accurate aiming."
       }
-    ]
+    ],
+    "howToPlay": "Move constantly, reload at safe moments and learn the map before chasing risky fights.",
+    "deviceFit": "Best on desktop because shooters need accurate aiming."
   },
   {
     "title": "Little Big Snake",
@@ -664,24 +698,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/little-big-snake/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Little Big Snake is a snake io multiplayer game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Little Big Snake because it fits high-intent browser-game searches around snake io multiplayer game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who enjoy growth, survival and arena movement",
+    "controls": "Guide the snake with mouse, touch or directional controls depending on device.",
+    "description": "Little Big Snake is an io-style snake game where players grow, avoid danger and compete for space.",
+    "whyPicked": "We picked Little Big Snake because snake-style io games connect naturally to GR8 original snake gameplay while adding a larger multiplayer feel.",
     "faqs": [
       {
-        "question": "Can I play Little Big Snake without a download?",
-        "answer": "Yes. Little Big Snake is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Little Big Snake without downloading an app?",
+        "answer": "Yes. Little Big Snake is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Little Big Snake?",
-        "answer": "Little Big Snake is positioned as a .io game, useful for players looking for snake io multiplayer game and quick free online play."
+        "question": "What is the best way to start Little Big Snake?",
+        "answer": "Collect safely, avoid risky collisions and use boosts only when you have space to recover."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Little Big Snake?",
+        "answer": "Good on desktop and tablet; mobile works when movement controls feel smooth."
       }
-    ]
+    ],
+    "howToPlay": "Collect safely, avoid risky collisions and use boosts only when you have space to recover.",
+    "deviceFit": "Good on desktop and tablet; mobile works when movement controls feel smooth."
   },
   {
     "title": "Rocket Bot Royale",
@@ -702,24 +738,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/rocket-bot-royale/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Rocket Bot Royale is a robot tank battle io game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Rocket Bot Royale because it fits high-intent browser-game searches around robot tank battle io game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like arena battles and explosive action",
+    "controls": "Use movement, aiming and firing controls shown by the game. Desktop is usually best for accuracy.",
+    "description": "Rocket Bot Royale is a robot tank battle game with explosive movement and arena combat.",
+    "whyPicked": "We picked Rocket Bot Royale because it brings battle-style energy and a stronger action loop to the partner profile set.",
     "faqs": [
       {
-        "question": "Can I play Rocket Bot Royale without a download?",
-        "answer": "Yes. Rocket Bot Royale is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Rocket Bot Royale without downloading an app?",
+        "answer": "Yes. Rocket Bot Royale is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Rocket Bot Royale?",
-        "answer": "Rocket Bot Royale is positioned as a .io game, useful for players looking for robot tank battle io game and quick free online play."
+        "question": "What is the best way to start Rocket Bot Royale?",
+        "answer": "Control your position, use shots to pressure opponents and avoid getting trapped near hazards."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Rocket Bot Royale?",
+        "answer": "Best on desktop or tablet for aim and movement precision."
       }
-    ]
+    ],
+    "howToPlay": "Control your position, use shots to pressure opponents and avoid getting trapped near hazards.",
+    "deviceFit": "Best on desktop or tablet for aim and movement precision."
   },
   {
     "title": "Madalin Stunt Cars 2",
@@ -740,24 +778,26 @@ export const partnerGameProfiles = [
     "playPath": "/more-free-games/madalin-stunt-cars-2/play",
     "providerLabel": "GR8 Game Network",
     "difficulty": "Medium challenge",
-    "bestFor": "fast action sessions",
-    "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Madalin Stunt Cars 2 is a 3D stunt car driving game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Madalin Stunt Cars 2 because it fits high-intent browser-game searches around 3D stunt car driving game, no-download play and quick discovery from mobile or desktop.",
+    "bestFor": "players who like cars, ramps and free driving",
+    "controls": "Use steering, throttle, brake and camera controls shown by the game. Keyboard works best for precise driving.",
+    "description": "Madalin Stunt Cars 2 is a 3D stunt driving game built for speed, ramps, jumps and open driving sessions.",
+    "whyPicked": "We picked Madalin Stunt Cars 2 because stunt car games have strong visual appeal and keep players experimenting with jumps and crashes.",
     "faqs": [
       {
-        "question": "Can I play Madalin Stunt Cars 2 without a download?",
-        "answer": "Yes. Madalin Stunt Cars 2 is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Madalin Stunt Cars 2 without downloading an app?",
+        "answer": "Yes. Madalin Stunt Cars 2 is presented through the GR8 Game Network as a browser-based game profile with a Play Now route."
       },
       {
-        "question": "What type of game is Madalin Stunt Cars 2?",
-        "answer": "Madalin Stunt Cars 2 is positioned as a racing game, useful for players looking for 3D stunt car driving game and quick free online play."
+        "question": "What is the best way to start Madalin Stunt Cars 2?",
+        "answer": "Start by learning the handling, then look for ramps and stunt lines. Bigger jumps need smoother approaches."
       },
       {
-        "question": "Why is this page on GR8 GAMZ?",
-        "answer": "GR8 GAMZ creates branded game profile pages to help players find good free games, understand the game type and move into related GR8 Originals, Hot Picks and More Free Games."
+        "question": "Which device is best for Madalin Stunt Cars 2?",
+        "answer": "Best on desktop or larger screens for 3D driving."
       }
-    ]
+    ],
+    "howToPlay": "Start by learning the handling, then look for ramps and stunt lines. Bigger jumps need smoother approaches.",
+    "deviceFit": "Best on desktop or larger screens for 3D driving."
   },
   {
     "title": "MR RACER - Car Racing",
@@ -950,13 +990,13 @@ export const partnerGameProfiles = [
     ]
   },
   {
-    "title": "Superhero Hammar Man",
+    "title": "Superhero Hammer Man",
     "provider": "gamemonetize",
     "category": "Action",
     "intent": "superhero action fighting game",
     "sourceRank": "GameMonetize current games list",
     "keywords": [
-      "play Superhero Hammar Man online",
+      "play Superhero Hammer Man online",
       "free superhero game",
       "action browser game",
       "no download fighting game"
@@ -970,16 +1010,16 @@ export const partnerGameProfiles = [
     "difficulty": "Medium challenge",
     "bestFor": "fast action sessions",
     "controls": "tap, drag or keyboard controls depending on device",
-    "description": "Superhero Hammar Man is a superhero action fighting game selected for the GR8 Game Network. This profile gives players a branded overview, quick-play context and related routes before they jump into more free games.",
-    "whyPicked": "We picked Superhero Hammar Man because it fits high-intent browser-game searches around superhero action fighting game, no-download play and quick discovery from mobile or desktop.",
+    "description": "Superhero Hammer Man is a superhero action fighting game is a superhero action fighting game with quick combat energy and simple browser access.",
+    "whyPicked": "We picked Superhero Hammer Man because it fits high-intent browser-game searches around superhero action fighting game, no-download play and quick discovery from mobile or desktop.",
     "faqs": [
       {
-        "question": "Can I play Superhero Hammar Man without a download?",
-        "answer": "Yes. Superhero Hammar Man is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
+        "question": "Can I play Superhero Hammer Man without a download?",
+        "answer": "Yes. Superhero Hammer Man is presented as part of the GR8 Game Network for browser-based discovery with no app-store installation required."
       },
       {
-        "question": "What type of game is Superhero Hammar Man?",
-        "answer": "Superhero Hammar Man is positioned as a action game, useful for players looking for superhero action fighting game and quick free online play."
+        "question": "What type of game is Superhero Hammer Man?",
+        "answer": "Superhero Hammer Man is positioned as a action game, useful for players looking for superhero action fighting game and quick free online play."
       },
       {
         "question": "Why is this page on GR8 GAMZ?",

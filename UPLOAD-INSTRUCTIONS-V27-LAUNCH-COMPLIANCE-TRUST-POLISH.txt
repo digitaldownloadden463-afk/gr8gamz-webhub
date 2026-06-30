@@ -1,0 +1,18 @@
+GR8 GAMZ V27 upload instructions
+
+Upload the contents of this zip to the root of your GitHub repository.
+
+Suggested commit message:
+Add V27 launch compliance trust and polish hardening
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/privacy
+https://www.gr8gamz.com/contact
+https://www.gr8gamz.com/gaming-deals
+https://www.gr8gamz.com/games
+https://www.gr8gamz.com/more-free-games
+https://www.gr8gamz.com/more-free-games/body-drop-3d
+https://www.gr8gamz.com/updates/v27-launch-compliance-trust-polish-hardening
+
+Important:
+The contact email in the new contact page is support@gr8gamz.com. Create that mailbox/forwarder or edit src/app/contact/page.js before pushing paid traffic.

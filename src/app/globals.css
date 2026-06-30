@@ -2632,3 +2632,45 @@ article.game-card .thumb-status-badge {
     padding: 10px 13px;
   }
 }
+
+
+/* V27 launch trust, privacy and deals polish */
+.trust-notice-panel {
+  border-color: rgba(251,191,36,0.34);
+  background: radial-gradient(circle at 0% 0%, rgba(251,191,36,0.13), transparent 38%), rgba(13,13,19,0.88);
+}
+.privacy-grid-panel,
+.deal-guide-panel,
+.contact-grid-panel {
+  border-color: rgba(53,255,141,0.22);
+}
+.privacy-row-grid,
+.deal-guide-grid,
+.contact-grid-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.privacy-row-grid article,
+.deal-guide-grid article,
+.contact-grid-panel article {
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.045);
+}
+.privacy-row-grid strong,
+.deal-guide-grid h3,
+.contact-grid-panel h2 {
+  color: var(--text);
+  margin-top: 0;
+}
+.privacy-row-grid p,
+.deal-guide-grid p,
+.contact-grid-panel p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+.strong-affiliate-note {
+  border-color: rgba(53,255,141,0.3);
+}

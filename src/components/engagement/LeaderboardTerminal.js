@@ -9,8 +9,8 @@ export default function LeaderboardTerminal() {
   return (
     <section className="leaderboard-card">
       <div className="section-heading compact">
-        <span>Live targets</span>
-        <h2>Beat the board</h2>
+        <span>Launch demo board</span>
+        <h2>Beat the launch board</h2>
       </div>
       <ol className="leaderboard-list">
         {leaders.map((player, index) => (
@@ -21,7 +21,7 @@ export default function LeaderboardTerminal() {
           </li>
         ))}
       </ol>
-      <p>Static seed board for launch. Ready to connect to Supabase, Firebase or a custom backend later.</p>
+      <p>Launch demo scores. Real player leaderboards are coming soon.</p>
     </section>
   );
 }

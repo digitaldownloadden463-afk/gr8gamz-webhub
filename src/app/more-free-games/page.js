@@ -44,7 +44,7 @@ export default function MoreFreeGamesPage() {
         <div className="section-heading compact">
           <span>Discovery routes</span>
           <h2>Find the next game faster.</h2>
-          <p>V26 adds retention routes and category clusters so players have clear next clicks after every game profile.</p>
+          <p>Use trending, popular, new and category routes to find the next game faster.</p>
         </div>
         <div className="quick-link-grid network-mini-links">
           <Link href="/more-free-games/trending" className="quick-link-card"><strong>Trending</strong><small>Strong network picks</small></Link>
@@ -57,9 +57,9 @@ export default function MoreFreeGamesPage() {
       </section>
       <PartnerProfileGrid
         profiles={profiles}
-        eyebrow="Google-ready game profiles"
+        eyebrow="Featured game profiles"
         title="Featured GR8-branded game profiles."
-        description="Selected partner-powered games now get richer GR8 GAMZ profile pages with branded images, useful player context, FAQs, schema and internal links."
+        description="Selected partner-powered games now get richer GR8 GAMZ profile pages with real artwork, Play Now routes, useful player context and related games."
       />
 
       <PartnerRetentionPanel

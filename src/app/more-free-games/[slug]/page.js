@@ -110,16 +110,18 @@ export default function PartnerGameProfilePage({ params }) {
           <article><strong>Category</strong><span>{profile.category}</span></article>
           <article><strong>Best for</strong><span>{profile.bestFor}</span></article>
           <article><strong>Controls</strong><span>{profile.controls}</span></article>
+          <article><strong>Device fit</strong><span>{profile.deviceFit || 'Browser, tablet and desktop depending on game controls'}</span></article>
           <article><strong>Discovery signal</strong><span>{profile.sourceRank}</span></article>
         </div>
       </section>
 
       <section className="content-panel seo-detail-panel">
         <span className="eyebrow">How to play</span>
-        <h2>Start fast, test the controls, then chase a better run.</h2>
+        <h2>{profile.howToPlay ? `How to start ${profile.title}` : 'Start fast, test the controls, then chase a better run.'}</h2>
         <p>
-          Open the game from the GR8 Game Network, let it load inside the browser and use the on-screen prompts to learn the controls. Most partner games work best when you treat the first round as a quick test, then replay once you understand the timing, aim or movement system.
+          {profile.howToPlay || 'Open the game from the GR8 Game Network, let it load inside the browser and use the on-screen prompts to learn the controls. Most partner games work best when you treat the first round as a quick test, then replay once you understand the timing, aim or movement system.'}
         </p>
+        {profile.deviceFit ? <p><strong>Device tip:</strong> {profile.deviceFit}</p> : null}
         <div className="quick-link-grid network-mini-links">
           <Link href="/hot-picks" className="quick-link-card"><strong>Hot Picks</strong><small>Featured games and fresh picks</small></Link>
           <Link href="/original-games" className="quick-link-card"><strong>GR8 Originals</strong><small>Self-hosted arcade games</small></Link>

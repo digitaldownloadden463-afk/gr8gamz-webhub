@@ -33,7 +33,7 @@ export default function HomePage() {
           <span className="eyebrow">GR8 Game Network • free browser games</span>
           <h1>Originals. Hot picks. More free games. One GR8 arcade.</h1>
           <p>
-            GR8 GAMZ is now shaped as a full browser gaming network: original self-hosted games, live-style preview screens, partner-powered game discovery, gaming deals and search-ready content hubs built to grow into the market.
+            GR8 GAMZ is now shaped as a full browser gaming network: original self-hosted games, live-style preview screens, partner-powered game discovery, gaming deals and helpful discovery pages built to help players find their next game.
           </p>
           <div className="hero-actions">
             <Link href="/original-games" className="cta">Play GR8 Originals</Link>
@@ -46,8 +46,8 @@ export default function HomePage() {
               <span>Partner catalogues are presented as More Free Games, keeping GR8 GAMZ as the main brand.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Google content engine</strong>
-              <span>More crawlable hub pages, collections, update posts, schema and sitemap routes.</span>
+              <strong>Game discovery network</strong>
+              <span>Helpful hub pages, collections, update posts and clean routes for players and search engines.</span>
             </div>
             <div className="hero-support-card">
               <strong>Live arcade feel</strong>
@@ -63,7 +63,7 @@ export default function HomePage() {
       <section className="launch-strip network-strip" aria-label="Network positioning promises">
         <div><strong>GR8 Originals</strong><span>Self-hosted games with mobile controls, XP hooks and replay loops.</span></div>
         <div><strong>More Free Games</strong><span>Partner-powered catalogues presented under the GR8 Game Network.</span></div>
-        <div><strong>Google-ready footprint</strong><span>Helpful hub pages, rich schema, feeds, sitemaps and IndexNow routes.</span></div>
+        <div><strong>Search-friendly footprint</strong><span>Helpful hub pages, rich schema, feeds, sitemaps and IndexNow routes.</span></div>
       </section>
 
       <NetworkMegaPanel />
@@ -106,7 +106,7 @@ export default function HomePage() {
       <section className="immersive-banner" aria-label="GR8 GAMZ market growth banner">
         <div className="immersive-banner-copy">
           <span className="eyebrow">Built to outgrow a simple game list</span>
-          <h2>A premium neon arcade brand with a serious search footprint.</h2>
+          <h2>A premium neon arcade brand built for discovery and repeat play.</h2>
           <p>
             The next stage is about scale with quality: more useful pages, stronger internal links, clear branding, live-feeling discovery and a revenue path that does not damage the player experience.
           </p>
