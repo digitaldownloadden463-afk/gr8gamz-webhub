@@ -81,7 +81,7 @@ export default function ArcadeGamePage({ params }) {
               <h1>{game.name}</h1>
               <p>{game.playStyle} · {game.difficulty} difficulty · {game.shortControls || 'mobile-ready controls'}</p>
             </div>
-            <Link href="/games" className="secondary-cta">All games</Link>
+            <div className="hero-actions compact-actions"><Link href={`/guides/${game.id}`} className="secondary-cta">Game guide</Link><Link href="/games" className="secondary-cta">All games</Link></div>
           </div>
           <ImmersiveGameFrame game={game} nextGame={related[0]} />
           <div className="game-notes">

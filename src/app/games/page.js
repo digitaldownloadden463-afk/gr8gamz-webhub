@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import GameGrid from '../../components/GameGrid';
 import JsonLd from '../../components/JsonLd';

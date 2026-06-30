@@ -1,5 +1,44 @@
 export const updatePosts = [
   {
+    slug: 'v24-game-profile-engine-search-footprint-expansion',
+    title: 'V24 Game Profile Engine and search footprint expansion',
+    date: '2026-06-30',
+    category: 'SEO',
+    description: 'V24 adds GR8-branded partner game profile pages, original game guides, image sitemap support and stronger index routing for the GR8 Game Network.',
+    tags: ['game-profiles', 'seo', 'image-sitemap', 'partner-games', 'google-indexing'],
+    relatedGameIds: ['neon-snake-rush', 'neon-pinball-rush', 'cyber-bowling-blitz'],
+    summary: [
+      'Adds the first 40 GR8-branded partner game profile pages.',
+      'Adds original game guides for every GR8 original game.',
+      'Adds branded WebP artwork and image sitemap coverage for profile pages.',
+      'Keeps supplier feed pages noindex and pushes More Free Games as the public branded hub.'
+    ],
+    sections: [
+      {
+        heading: 'Why game profiles matter',
+        body: 'V24 turns selected partner-feed games into useful GR8-branded profile pages with images, FAQs, keywords and internal links. The aim is to grow search visibility without publishing thin copied feed pages.'
+      },
+      {
+        heading: 'Why not index every partner game at once',
+        body: 'The rollout starts with a curated first batch. This keeps the quality high, gives Google a cleaner footprint and lets future batches expand based on Search Console data.'
+      },
+      {
+        heading: 'What changed technically',
+        body: 'The build now includes partner profile data, static profile routes, branded artwork, partner-game and image sitemaps, original game guide routes and a tighter indexing priority system.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Are supplier feed pages still indexed?',
+        answer: 'No. Supplier-style feed routes remain noindex. The public indexed route is the branded More Free Games hub and the selected GR8 game profile pages.'
+      },
+      {
+        question: 'Are all partner games indexed at once?',
+        answer: 'No. V24 starts with a quality-controlled first batch of selected partner game profile pages.'
+      }
+    ]
+  },
+  {
     slug: 'v23-brand-network-google-content-engine',
     title: 'V23 brand identity, game network visibility and Google content engine',
     date: '2026-06-30',

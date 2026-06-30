@@ -1,0 +1,39 @@
+GR8 GAMZ V24 upload instructions
+
+Use the UPDATE zip, not the full repository.
+
+Upload the contents of the extracted V24 update folder into the root of your GitHub repository.
+
+Suggested commit message:
+Add V24 game profile engine and search footprint expansion
+
+After Vercel deploys, test these priority URLs:
+
+https://www.gr8gamz.com/more-free-games
+https://www.gr8gamz.com/more-free-games/body-drop-3d
+https://www.gr8gamz.com/more-free-games/tentrix
+https://www.gr8gamz.com/more-free-games/bloxd-io
+https://www.gr8gamz.com/guides
+https://www.gr8gamz.com/guides/neon-snake-rush
+https://www.gr8gamz.com/best-action-games-online
+https://www.gr8gamz.com/best-no-download-games
+https://www.gr8gamz.com/sitemap-partner-games.xml
+https://www.gr8gamz.com/sitemap-images.xml
+https://www.gr8gamz.com/indexnow-urls.json
+
+Search Console priority inspect/request indexing:
+- https://www.gr8gamz.com/more-free-games
+- https://www.gr8gamz.com/more-free-games/body-drop-3d
+- https://www.gr8gamz.com/more-free-games/tentrix
+- https://www.gr8gamz.com/more-free-games/bloxd-io
+- https://www.gr8gamz.com/guides
+- https://www.gr8gamz.com/best-no-download-games
+- https://www.gr8gamz.com/best-action-games-online
+
+Do NOT request indexing for supplier feed routes:
+- https://www.gr8gamz.com/gamepix-games
+- https://www.gr8gamz.com/gamemonetize-games
+
+After deploy, run:
+https://www.gr8gamz.com/api/indexnow/bulk?scope=content&limit=40
+https://www.gr8gamz.com/api/indexnow/bulk?scope=games&limit=40

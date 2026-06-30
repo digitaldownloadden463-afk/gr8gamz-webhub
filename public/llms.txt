@@ -94,3 +94,12 @@ V23 brand identity, network visibility and Google content engine:
 - /brand/gr8-gamz-google-logo.png - Organization logo structured-data asset
 - /og/gr8gamz-og.png - social preview asset
 - Supplier-specific partner routes are kept available for attribution/testing but hidden from main navigation and marked noindex.
+
+
+V24 Game Profile Engine and search footprint expansion:
+- /more-free-games/[slug] - curated GR8-branded partner game profile pages
+- /guides - original game guide hub
+- /guides/[slug] - how-to-play guides for GR8 original games
+- /sitemap-partner-games.xml - partner profile sitemap
+- /sitemap-images.xml - branded partner profile image sitemap
+- /updates/v24-game-profile-engine-search-footprint-expansion - V24 release note

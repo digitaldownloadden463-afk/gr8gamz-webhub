@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import GameGrid from '../../components/GameGrid';
+import PartnerProfileGrid from '../../components/partner/PartnerProfileGrid';
 import JsonLd from '../../components/JsonLd';
 import AiSummaryBox from '../../components/seo/AiSummaryBox';
 import { getFeaturedGames, getNewGames, getPopularGames } from '../../lib/games';
+import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { buildPageMetadata, itemListJsonLd, breadcrumbJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
@@ -15,6 +17,7 @@ export default function HotPicksPage() {
   const hot = getPopularGames(9);
   const newest = getNewGames(6);
   const featured = getFeaturedGames(6);
+  const partnerProfiles = getFeaturedPartnerGameProfiles(8);
   return (
     <main>
       <JsonLd data={itemListJsonLd([...hot, ...newest], '/hot-picks')} />
@@ -51,6 +54,12 @@ export default function HotPicksPage() {
         </div>
         <GameGrid games={newest} showAd={false} />
       </section>
+      <PartnerProfileGrid
+        profiles={partnerProfiles}
+        eyebrow="Network hot picks"
+        title="GR8-branded partner profiles to explore."
+        description="These selected game profiles help turn partner-feed games into crawlable, branded GR8 GAMZ discovery assets."
+      />
       <section className="content-panel compact-panel">
         <div className="quick-link-grid">
           <Link href="/original-games" className="quick-link-card"><strong>GR8 Originals</strong><small>Brand-owned games</small></Link>

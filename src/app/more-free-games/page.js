@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import JsonLd from '../../components/JsonLd';
 import MoreFreeGamesClient from './MoreFreeGamesClient';
+import PartnerProfileGrid from '../../components/partner/PartnerProfileGrid';
+import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { buildPageMetadata, breadcrumbJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
@@ -10,6 +12,7 @@ export const metadata = buildPageMetadata({
 });
 
 export default function MoreFreeGamesPage() {
+  const profiles = getFeaturedPartnerGameProfiles(12);
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd([
@@ -34,6 +37,12 @@ export default function MoreFreeGamesPage() {
           <Link href="/gaming-deals" className="secondary-cta">Gaming Deals</Link>
         </div>
       </section>
+      <PartnerProfileGrid
+        profiles={profiles}
+        eyebrow="Google-ready game profiles"
+        title="Featured GR8-branded game profiles."
+        description="Selected partner-powered games now get richer GR8 GAMZ profile pages with branded images, useful player context, FAQs, schema and internal links."
+      />
       <MoreFreeGamesClient />
     </main>
   );

@@ -1,13 +1,16 @@
 import Link from 'next/link';
 import GameGrid from '../GameGrid';
+import PartnerProfileGrid from '../partner/PartnerProfileGrid';
 import JsonLd from '../JsonLd';
 import AiSummaryBox from './AiSummaryBox';
 import { filterGames, getAllGames } from '../../lib/games';
+import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { collectionPageJsonLd, itemListJsonLd, faqJsonLd } from '../../lib/seo';
 
 export default function SeoHubTemplate({ hub }) {
   const filtered = hub.filter ? filterGames(hub.filter) : getAllGames();
   const games = filtered.length ? filtered.slice(0, hub.limit || 18) : getAllGames().slice(0, hub.limit || 18);
+  const partnerProfiles = getFeaturedPartnerGameProfiles(6);
   const faqs = hub.faqs || [
     { question: `Are ${hub.title.toLowerCase()} free on GR8 GAMZ?`, answer: 'Yes. GR8 GAMZ is built around free browser play with no app download required.' },
     { question: 'Can I play on mobile?', answer: 'Yes. The key GR8 GAMZ pages are built for phones, tablets and desktop browsers.' }
@@ -45,6 +48,13 @@ export default function SeoHubTemplate({ hub }) {
         </div>
         <GameGrid games={games} />
       </section>
+
+      <PartnerProfileGrid
+        profiles={partnerProfiles}
+        eyebrow="More game profiles"
+        title="GR8-branded game profiles connected to this topic."
+        description="Selected partner-powered games are now supported by richer GR8 GAMZ profile pages, branded images and search-friendly context."
+      />
 
       <section className="content-panel seo-detail-panel">
         <span className="eyebrow">Why this page exists</span>

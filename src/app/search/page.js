@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import GameGrid from '../../components/GameGrid';
 import { searchGames } from '../../lib/games';
 import { buildPageMetadata } from '../../lib/seo';

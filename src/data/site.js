@@ -338,6 +338,136 @@ export const siteConfig = {
       seoCopy: 'Quick games work well for repeat visits because they reduce friction: simple controls, fast restarts and clear high-score targets.'
     },
     {
+          "id": "best-action-games-online",
+          "path": "/best-action-games-online",
+          "title": "Best Action Games Online",
+          "headline": "Best action games online for instant browser play.",
+          "eyebrow": "Action game guide",
+          "description": "Find fast free action games online on GR8 GAMZ, including original arcade action and network game profiles with no download friction.",
+          "filter": {
+                "genre": "Action"
+          },
+          "seoCopy": "This page targets players searching for action games with quick starts, simple controls and high replay pressure. It links into GR8 Originals, Hot Picks and selected partner-game profiles.",
+          "gameSectionTitle": "Action games to play first."
+    },
+    {
+          "id": "best-puzzle-games-online",
+          "path": "/best-puzzle-games-online",
+          "title": "Best Puzzle Games Online",
+          "headline": "Best puzzle games online for quick brain breaks.",
+          "eyebrow": "Puzzle game guide",
+          "description": "Play free online puzzle games on GR8 GAMZ, from block puzzles and logic games to match-style browser challenges.",
+          "filter": {
+                "genre": "Puzzle"
+          },
+          "seoCopy": "Puzzle-game searches often have strong repeat intent. This page groups logical, calm and combo-based games with internal links to no-download and mobile-friendly options.",
+          "gameSectionTitle": "Puzzle games to try first."
+    },
+    {
+          "id": "best-racing-games-online",
+          "path": "/best-racing-games-online",
+          "title": "Best Racing Games Online",
+          "headline": "Best racing games online with no download.",
+          "eyebrow": "Racing game guide",
+          "description": "Explore free racing games online, including driving, drifting, stunt and speed-based browser games.",
+          "filter": {
+                "genre": "Racing"
+          },
+          "seoCopy": "Racing game pages are useful for players who want fast visual action. This hub points Google and players toward racing-style GR8 games and related game profiles.",
+          "gameSectionTitle": "Racing games to start with."
+    },
+    {
+          "id": "best-no-download-games",
+          "path": "/best-no-download-games",
+          "title": "Best No Download Games",
+          "headline": "Best no-download games to play instantly.",
+          "eyebrow": "No download games",
+          "description": "A curated GR8 GAMZ guide to free games you can play in the browser without installing apps or downloads.",
+          "filter": {
+                "platform": "html5"
+          },
+          "seoCopy": "No-download intent is one of the strongest fits for GR8 GAMZ. The page reinforces instant browser play and points to both original games and branded partner profiles.",
+          "gameSectionTitle": "No-download games ready now."
+    },
+    {
+          "id": "free-games-for-short-breaks",
+          "path": "/free-games-for-short-breaks",
+          "title": "Free Games for Short Breaks",
+          "headline": "Free games for short breaks and quick sessions.",
+          "eyebrow": "Short break games",
+          "description": "Open a quick game, play for a few minutes and jump straight back in with GR8 GAMZ short-session picks.",
+          "filter": {
+                "control": "tap"
+          },
+          "seoCopy": "Short-break pages match the way many players actually use browser games: quick starts, immediate feedback and no long onboarding.",
+          "gameSectionTitle": "Quick-session games."
+    },
+    {
+          "id": "free-games-to-play-at-work",
+          "path": "/free-games-to-play-at-work",
+          "title": "Free Games to Play at Work",
+          "headline": "Free browser games for short work breaks.",
+          "eyebrow": "Break-time games",
+          "description": "Find quick browser games suited to short breaks, simple controls and fast sessions without downloads.",
+          "filter": {
+                "platform": "html5"
+          },
+          "seoCopy": "This page is carefully positioned around short-break use rather than encouraging distraction. It highlights simple browser games that load quickly and can be played in small sessions.",
+          "gameSectionTitle": "Short break browser games."
+    },
+    {
+          "id": "free-games-to-play-on-mobile",
+          "path": "/free-games-to-play-on-mobile",
+          "title": "Free Games to Play on Mobile",
+          "headline": "Free games to play on mobile browsers.",
+          "eyebrow": "Mobile play",
+          "description": "Find mobile-friendly browser games with tap, swipe, drag and hold controls on GR8 GAMZ.",
+          "filter": {
+                "platform": "mobile"
+          },
+          "seoCopy": "Mobile browser-game intent is a natural fit for GR8 GAMZ because the arcade has been built around tap-friendly pages and instant play.",
+          "gameSectionTitle": "Mobile games to play now."
+    },
+    {
+          "id": "free-arcade-games-online",
+          "path": "/free-arcade-games-online",
+          "title": "Free Arcade Games Online",
+          "headline": "Free arcade games online with fast restarts.",
+          "eyebrow": "Arcade games",
+          "description": "Play free arcade games online with neon visuals, simple controls and repeat-score gameplay.",
+          "filter": {
+                "genre": "Arcade"
+          },
+          "seoCopy": "Arcade intent supports the GR8 GAMZ brand theme: fast, visual and replayable. This hub connects the arcade routes with stronger content and discovery.",
+          "gameSectionTitle": "Arcade games to try."
+    },
+    {
+          "id": "free-skill-games-online",
+          "path": "/free-skill-games-online",
+          "title": "Free Skill Games Online",
+          "headline": "Free skill games online for timing and precision.",
+          "eyebrow": "Skill games",
+          "description": "Play free skill games that reward timing, aim, reactions and short-session practice.",
+          "filter": {
+                "genre": "Skill"
+          },
+          "seoCopy": "Skill-game searches work well for high-score and retry loops. This page helps Google understand the reflex and precision side of the GR8 GAMZ catalogue.",
+          "gameSectionTitle": "Skill games for quick practice."
+    },
+    {
+          "id": "browser-games-for-kids",
+          "path": "/browser-games-for-kids",
+          "title": "Browser Games for Kids",
+          "headline": "Browser games for kids and family-friendly play.",
+          "eyebrow": "Family-friendly games",
+          "description": "Discover clear, free browser games with simple controls, no app download and easy routes for family-friendly play.",
+          "filter": {
+                "platform": "html5"
+          },
+          "seoCopy": "This hub focuses on clarity and safe-feeling navigation. It helps parents and younger players find simple browser games without download prompts or confusing supplier names.",
+          "gameSectionTitle": "Simple browser games to start with."
+    },
+    {
       id: 'free-browser-games',
       path: '/free-browser-games',
       title: 'Free Browser Games',

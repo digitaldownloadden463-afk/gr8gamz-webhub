@@ -1,6 +1,7 @@
 import { siteConfig } from '../data/site';
 import { getAllGames, getAllTags } from './games';
 import { getAllContentCollections, getAllUpdatePosts } from './content';
+import { getPartnerGameProfiles } from '../data/partnerGameProfiles';
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '470561d472ec49aca5a704b6d8a3eac0';
 
@@ -48,12 +49,17 @@ export function getCoreRoutes() {
     '/advertise',
     '/privacy',
     '/gaming-deals',
+    '/guides',
     '/partner-disclosure'
   ];
 }
 
 export function getGameRoutes() {
   return getAllGames().map((game) => `/arcade/${game.id}`);
+}
+
+export function getGameGuideRoutes() {
+  return getAllGames().map((game) => `/guides/${game.id}`);
 }
 
 export function getDiscoveryRoutes() {
@@ -67,10 +73,15 @@ export function getDiscoveryRoutes() {
   ];
 }
 
+export function getPartnerGameProfileRoutes() {
+  return getPartnerGameProfiles().map((profile) => profile.path);
+}
+
 export function getContentRoutes() {
   return [
     ...getAllUpdatePosts().map((post) => `/updates/${post.slug}`),
-    ...getAllContentCollections().map((collection) => `/collections/${collection.slug}`)
+    ...getAllContentCollections().map((collection) => `/collections/${collection.slug}`),
+    ...getPartnerGameProfileRoutes()
   ];
 }
 
@@ -79,7 +90,8 @@ export function getAllIndexableRoutes() {
     ...getCoreRoutes(),
     ...getDiscoveryRoutes(),
     ...getContentRoutes(),
-    ...getGameRoutes()
+    ...getGameRoutes(),
+    ...getGameGuideRoutes()
   ]));
 }
 
@@ -110,7 +122,7 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/', title: 'Homepage', type: 'Core', changed: '2026-06-30', priority: 1, reason: 'Primary platform entry point' },
     { path: '/games', title: 'All games', type: 'Core', changed: '2026-06-30', priority: 0.98, reason: 'Main game catalogue' },
     { path: '/original-games', title: 'GR8 Originals', type: 'SEO hub', changed: '2026-06-30', priority: 0.96, reason: 'Brand-owned game hub' },
-    { path: '/more-free-games', title: 'More Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.95, reason: 'Partner-powered network hub' },
+    { path: '/more-free-games', title: 'More Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.97, reason: 'Main branded partner-game hub' },
     { path: '/hot-picks', title: 'Hot Picks', type: 'Fresh hub', changed: '2026-06-30', priority: 0.94, reason: 'Featured game discovery hub' },
     { path: '/free-online-games', title: 'Free online games', type: 'SEO hub', changed: '2026-06-30', priority: 0.93, reason: 'Important search landing page' },
     { path: '/new-this-week', title: 'New this week', type: 'Fresh hub', changed: '2026-06-28', priority: 0.95, reason: 'Fresh crawl hub' },
@@ -118,6 +130,24 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/quick-games', title: 'Quick games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' },
     { path: '/free-browser-games', title: 'Free browser games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' }
   ];
+
+  const partnerProfiles = getPartnerGameProfiles().slice(0, 18).map((profile) => ({
+    path: profile.path,
+    title: profile.title,
+    type: 'Partner profile',
+    changed: '2026-06-30',
+    priority: 0.89,
+    reason: 'GR8-branded partner game profile'
+  }));
+
+  const guides = getAllGames().slice(0, 12).map((game) => ({
+    path: `/guides/${game.id}`,
+    title: `${game.name} Guide`,
+    type: 'Game guide',
+    changed: game.dateAdded || '2026-06-30',
+    priority: 0.88,
+    reason: 'Original game guide page'
+  }));
 
   const games = getAllGames().slice(0, 15).map((game) => ({
     path: `/arcade/${game.id}`,
@@ -128,7 +158,7 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Playable game page'
   }));
 
-  return [...core, ...updates, ...collections, ...games]
+  return [...core, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
     .sort((a, b) => new Date(b.changed) - new Date(a.changed) || b.priority - a.priority)
     .slice(0, limit);
 }
@@ -154,6 +184,22 @@ export function renderUrlSet(routes, { changeFrequency = 'daily', priority = 0.8
   }).join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${items}\n</urlset>`;
+}
+
+
+export function renderImageSitemap(profiles = []) {
+  const now = new Date().toISOString();
+  const items = profiles.map((profile) => `  <url>
+    <loc>${xmlEscape(absolutePath(profile.path))}</loc>
+    <image:image>
+      <image:loc>${xmlEscape(absolutePath(profile.image))}</image:loc>
+      <image:title>${xmlEscape(`${profile.title} GR8 GAMZ game artwork`)}</image:title>
+      <image:caption>${xmlEscape(`Branded GR8 GAMZ profile artwork for ${profile.title}, a free ${profile.category} browser game.`)}</image:caption>
+    </image:image>
+    <lastmod>${now}</lastmod>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${items}\n</urlset>`;
 }
 
 export function renderRssFeed(posts) {

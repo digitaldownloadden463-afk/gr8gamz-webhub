@@ -7,7 +7,7 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/', '/search?*']
+        disallow: ['/api/', '/admin/', '/search?*']
       },
       {
         userAgent: 'Googlebot',
@@ -34,7 +34,7 @@ export default function robots() {
         allow: '/'
       }
     ],
-    sitemap: [`${base}/sitemap.xml`, `${base}/sitemap-index.xml`, `${base}/sitemap-games.xml`, `${base}/sitemap-content.xml`, `${base}/sitemap-discovery.xml`],
+    sitemap: [`${base}/sitemap.xml`, `${base}/sitemap-index.xml`, `${base}/sitemap-games.xml`, `${base}/sitemap-content.xml`, `${base}/sitemap-discovery.xml`, `${base}/sitemap-partner-games.xml`, `${base}/sitemap-images.xml`],
     host: base
   };
 }
