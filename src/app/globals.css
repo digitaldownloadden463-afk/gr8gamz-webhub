@@ -2451,3 +2451,103 @@ article.game-card .thumb-status-badge {
   text-shadow: none !important;
   opacity: 1 !important;
 }
+
+
+/* V26 Retention + network cluster engine */
+.partner-launch-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.partner-save-button {
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.partner-save-button:hover,
+.partner-save-button.saved {
+  background: linear-gradient(135deg, rgba(72,255,168,0.95), rgba(31,214,255,0.95));
+  color: #03100d;
+  border-color: transparent;
+}
+.partner-retention-panel {
+  border-color: rgba(72,255,168,0.28);
+  background: radial-gradient(circle at 15% 0%, rgba(72,255,168,0.12), transparent 35%), rgba(7,12,28,0.86);
+}
+.partner-retention-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+.partner-retention-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+}
+.partner-retention-thumb {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.32);
+}
+.partner-retention-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.partner-retention-card strong,
+.partner-retention-card small {
+  display: block;
+}
+.partner-retention-card small {
+  color: var(--muted);
+  margin-top: 3px;
+}
+.partner-retention-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.network-cluster-panel,
+.network-category-index {
+  border-color: rgba(31,214,255,0.24);
+}
+.network-cluster-panel .quick-link-card strong,
+.network-category-index .quick-link-card strong {
+  color: var(--text);
+}
+@media (max-width: 640px) {
+  .partner-launch-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .partner-save-button,
+  .partner-launch-actions .hero-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .partner-retention-card {
+    grid-template-columns: 64px 1fr;
+  }
+  .partner-retention-thumb {
+    width: 64px;
+    height: 64px;
+  }
+}

@@ -1,7 +1,9 @@
 export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
-import { getPartnerGameProfile } from '../../../../data/partnerGameProfiles';
+import PartnerProfileGrid from '../../../../components/partner/PartnerProfileGrid';
+import PartnerRetentionPanel from '../../../../components/partner/PartnerRetentionPanel';
+import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '../../../../data/partnerGameProfiles';
 import { resolvePartnerGame } from '../../../../lib/partnerFeedResolver';
 import { buildPageMetadata } from '../../../../lib/seo';
 
@@ -17,6 +19,7 @@ export function generateMetadata({ params }) {
 
 export default async function PartnerGamePlayPage({ params }) {
   const profile = getPartnerGameProfile(params.slug);
+  const relatedProfiles = profile ? getRelatedPartnerGameProfiles(profile, 6) : [];
   if (!profile) {
     return (
       <main>
@@ -78,6 +81,15 @@ export default async function PartnerGamePlayPage({ params }) {
           </div>
         </section>
       )}
+
+      <PartnerRetentionPanel fallbackProfiles={relatedProfiles.slice(0, 6)} title="Keep playing after this game." />
+
+      <PartnerProfileGrid
+        profiles={relatedProfiles}
+        eyebrow="Play next"
+        title="More games after this one."
+        description="The next-click rail keeps players inside GR8 GAMZ after every partner game session."
+      />
 
       <section className="content-panel affiliate-note">
         <h2>Partner game notice</h2>

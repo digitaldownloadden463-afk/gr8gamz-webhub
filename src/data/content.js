@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v26-retention-network-cluster-engine',
+    title: 'V26 retention and network cluster engine',
+    date: '2026-06-30',
+    category: 'Growth',
+    description: 'V26 adds Play Next, trending/popular/new partner-game discovery routes, category clusters and local retention tools for the GR8 Game Network.',
+    tags: ['retention', 'partner-games', 'play-next', 'seo', 'game-network'],
+    relatedGameIds: ['neon-snake-rush', 'turbo-drift-grid', 'space-tap-survival'],
+    summary: [
+      'New Play Next and network discovery pages keep players moving.',
+      'Partner game profile routes are grouped into crawlable category clusters.',
+      'Local recent/saved game tools improve return paths without account friction.'
+    ],
+    sections: [
+      {
+        heading: 'Why retention matters',
+        body: 'The strongest game portals keep players moving after every session. V26 adds play-next rails, recently viewed partner games and saved-game actions so GR8 GAMZ can build longer sessions.'
+      },
+      {
+        heading: 'Why category clusters matter',
+        body: 'Partner game profile pages now sit inside clearer groups such as action, puzzle, racing, sports and arcade. This improves player discovery and gives search engines cleaner internal-link structure.'
+      },
+      {
+        heading: 'What remains noindex',
+        body: 'Supplier feed pages and play iframe routes remain noindex. The indexable layer is the GR8-branded profile, hub and category-cluster system.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V26 index partner play pages?',
+        answer: 'No. Play pages stay noindex. The indexable pages are the GR8-branded profile and discovery pages.'
+      },
+      {
+        question: 'What does Play Next do?',
+        answer: 'Play Next gives players a clear one-more-game route after a game session, using curated partner profiles and retention links.'
+      }
+    ]
+  },
+  {
     slug: 'v25-partner-game-playability-real-artwork-fix',
     title: 'V25 partner game playability and real artwork fix',
     date: '2026-06-30',

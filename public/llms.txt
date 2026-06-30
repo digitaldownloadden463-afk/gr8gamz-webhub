@@ -110,3 +110,12 @@ V25 partner game playability and real artwork fix:
 - /api/partner-games/[slug] - live supplier artwork and play URL resolver for partner profiles
 - Partner game profiles now include direct Play Now CTAs and live artwork panels
 - Supplier route tabs remain hidden from the main public journey; /more-free-games remains the branded indexable hub
+
+
+V26 retention and network cluster engine:
+- /play-next - one-more-game retention hub
+- /more-free-games/trending - trending-style GR8 Game Network profile page
+- /more-free-games/popular - popular partner profile discovery page
+- /more-free-games/new - fresh network profile route
+- /more-free-games/categories/[slug] - partner game category clusters
+- Partner play pages remain noindex; profile and cluster pages are the indexable layer.

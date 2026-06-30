@@ -8,6 +8,17 @@ function textOnly(value = '') {
   return String(value).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+function saveNetworkGame(game) {
+  if (typeof window === 'undefined' || !game?.title) return;
+  const slug = String(game.profileHref || game.href || game.title).split('/').filter(Boolean).pop() || game.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const item = { slug, title: game.title, category: game.category, image: game.image, path: game.profileHref || '/more-free-games', playPath: game.href, updatedAt: Date.now() };
+  try {
+    const current = JSON.parse(window.localStorage.getItem('gr8gamz_partner_recent') || '[]');
+    const next = [item, ...current.filter((entry) => entry.slug !== item.slug)].slice(0, 12);
+    window.localStorage.setItem('gr8gamz_partner_recent', JSON.stringify(next));
+  } catch {}
+}
+
 function trackNetworkEvent(name, payload = {}) {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
@@ -115,7 +126,7 @@ export default function MoreFreeGamesClient() {
               <span className="network-badge">{game.badge}</span>
               <h3>{game.title}</h3>
               <p>{game.description.slice(0, 150)}{game.description.length > 150 ? '…' : ''}</p>
-              <Link href={game.href} className="primary-link" onClick={() => trackNetworkEvent('more_free_games_play_click', { title: game.title, category: game.category })}>
+              <Link href={game.href} className="primary-link" onClick={() => { saveNetworkGame(game); trackNetworkEvent('more_free_games_play_click', { title: game.title, category: game.category }); }}>
                 Play Now
               </Link>
               {game.profileHref ? <Link href={game.profileHref} className="soft-link">View profile</Link> : null}

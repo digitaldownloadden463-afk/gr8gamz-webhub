@@ -1,7 +1,7 @@
 import { siteConfig } from '../data/site';
 import { getAllGames, getAllTags } from './games';
 import { getAllContentCollections, getAllUpdatePosts } from './content';
-import { getPartnerGameProfiles } from '../data/partnerGameProfiles';
+import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/partnerGameProfiles';
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '470561d472ec49aca5a704b6d8a3eac0';
 
@@ -39,6 +39,10 @@ export function getCoreRoutes() {
     '/best-free-browser-games',
     '/original-games',
     '/more-free-games',
+    '/more-free-games/trending',
+    '/more-free-games/popular',
+    '/more-free-games/new',
+    '/play-next',
     '/hot-picks',
     '/updates',
     '/collections',
@@ -77,11 +81,22 @@ export function getPartnerGameProfileRoutes() {
   return getPartnerGameProfiles().map((profile) => profile.path);
 }
 
+export function getPartnerNetworkRoutes() {
+  return [
+    '/more-free-games/trending',
+    '/more-free-games/popular',
+    '/more-free-games/new',
+    '/play-next',
+    ...getPartnerNetworkClusterRoutes()
+  ];
+}
+
 export function getContentRoutes() {
   return [
     ...getAllUpdatePosts().map((post) => `/updates/${post.slug}`),
     ...getAllContentCollections().map((collection) => `/collections/${collection.slug}`),
-    ...getPartnerGameProfileRoutes()
+    ...getPartnerGameProfileRoutes(),
+    ...getPartnerNetworkRoutes()
   ];
 }
 
@@ -123,6 +138,10 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/games', title: 'All games', type: 'Core', changed: '2026-06-30', priority: 0.98, reason: 'Main game catalogue' },
     { path: '/original-games', title: 'GR8 Originals', type: 'SEO hub', changed: '2026-06-30', priority: 0.96, reason: 'Brand-owned game hub' },
     { path: '/more-free-games', title: 'More Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.97, reason: 'Main branded partner-game hub' },
+    { path: '/play-next', title: 'Play Next', type: 'Retention hub', changed: '2026-06-30', priority: 0.95, reason: 'One-more-game retention page' },
+    { path: '/more-free-games/trending', title: 'Trending Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Partner game discovery route' },
+    { path: '/more-free-games/popular', title: 'Popular Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Partner game discovery route' },
+    { path: '/more-free-games/new', title: 'New Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Fresh partner game discovery route' },
     { path: '/hot-picks', title: 'Hot Picks', type: 'Fresh hub', changed: '2026-06-30', priority: 0.94, reason: 'Featured game discovery hub' },
     { path: '/free-online-games', title: 'Free online games', type: 'SEO hub', changed: '2026-06-30', priority: 0.93, reason: 'Important search landing page' },
     { path: '/new-this-week', title: 'New this week', type: 'Fresh hub', changed: '2026-06-28', priority: 0.95, reason: 'Fresh crawl hub' },
@@ -131,7 +150,7 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/free-browser-games', title: 'Free browser games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' }
   ];
 
-  const partnerProfiles = getPartnerGameProfiles().slice(0, 18).map((profile) => ({
+  const partnerProfiles = getPartnerGameProfiles().slice(0, 24).map((profile) => ({
     path: profile.path,
     title: profile.title,
     type: 'Partner profile',

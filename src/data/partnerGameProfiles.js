@@ -1568,3 +1568,110 @@ export const partnerKeywordClusters = [
   'quick games to play',
   'games for short breaks'
 ];
+
+
+export const partnerNetworkClusters = [
+  {
+    slug: 'action-games',
+    title: 'Action Games',
+    eyebrow: 'Action partner picks',
+    description: 'Fast, reactive partner-powered games with fighting, survival, shooting, physics and arcade pressure.',
+    categories: ['Action', 'Shooting', '.IO'],
+    intent: 'free action games online, no download action games and quick browser combat games'
+  },
+  {
+    slug: 'puzzle-games',
+    title: 'Puzzle Games',
+    eyebrow: 'Puzzle partner picks',
+    description: 'Block puzzles, sorting games, escape logic and thinking games from the GR8 Game Network.',
+    categories: ['Puzzle', 'Educational'],
+    intent: 'free puzzle games online, block puzzle browser games and no-download thinking games'
+  },
+  {
+    slug: 'racing-games',
+    title: 'Racing & Driving Games',
+    eyebrow: 'Driving partner picks',
+    description: 'Cars, crash tests, stunt runs, 3D racing and fast driving games for instant browser play.',
+    categories: ['Racing'],
+    intent: 'free racing games online, car games no download and fast driving browser games'
+  },
+  {
+    slug: 'sports-games',
+    title: 'Sports Games',
+    eyebrow: 'Sports partner picks',
+    description: 'Basketball, football, pinball sports and skill-based sports games with short-session replay value.',
+    categories: ['Sports'],
+    intent: 'free sports games online, basketball browser games and quick sports games'
+  },
+  {
+    slug: 'arcade-games',
+    title: 'Arcade Games',
+    eyebrow: 'Arcade partner picks',
+    description: 'Simple, addictive partner-powered arcade games selected for quick starts and repeated plays.',
+    categories: ['Arcade'],
+    intent: 'free arcade games online, mobile arcade games and no-download browser arcade games'
+  },
+  {
+    slug: 'strategy-games',
+    title: 'Strategy & Battle Games',
+    eyebrow: 'Strategy partner picks',
+    description: 'Turn-based battles, multiplayer choices, tactics and strategy-style network games.',
+    categories: ['Strategy', 'Multiplayer'],
+    intent: 'free strategy games online, multiplayer browser games and battle games no download'
+  }
+];
+
+export function getPartnerNetworkClusters() {
+  return partnerNetworkClusters;
+}
+
+export function getPartnerNetworkCluster(slug) {
+  return partnerNetworkClusters.find((cluster) => cluster.slug === slug);
+}
+
+export function getPartnerNetworkClusterRoutes() {
+  return partnerNetworkClusters.map((cluster) => `/more-free-games/categories/${cluster.slug}`);
+}
+
+export function getPartnerGameProfilesByCluster(slug, limit = 24) {
+  const cluster = getPartnerNetworkCluster(slug);
+  if (!cluster) return [];
+  const categories = new Set(cluster.categories.map((category) => category.toLowerCase()));
+  return partnerGameProfiles
+    .filter((game) => categories.has(String(game.category).toLowerCase()))
+    .slice(0, limit);
+}
+
+export function getRelatedPartnerGameProfiles(profile, limit = 6) {
+  if (!profile) return getFeaturedPartnerGameProfiles(limit);
+  const sameCategory = partnerGameProfiles
+    .filter((game) => game.slug !== profile.slug && String(game.category).toLowerCase() === String(profile.category).toLowerCase());
+  const different = partnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game));
+  return [...sameCategory, ...different].slice(0, limit);
+}
+
+export function getTrendingPartnerProfiles(limit = 12) {
+  return partnerGameProfiles
+    .slice()
+    .sort((a, b) => {
+      const scoreA = (String(a.sourceRank).toLowerCase().includes('most played') ? 4 : 0) + (String(a.sourceRank).toLowerCase().includes('current') ? 2 : 0) + (a.provider === 'gamepix' ? 1 : 0);
+      const scoreB = (String(b.sourceRank).toLowerCase().includes('most played') ? 4 : 0) + (String(b.sourceRank).toLowerCase().includes('current') ? 2 : 0) + (b.provider === 'gamepix' ? 1 : 0);
+      return scoreB - scoreA || a.rank - b.rank;
+    })
+    .slice(0, limit);
+}
+
+export function getNewPartnerProfiles(limit = 12) {
+  return partnerGameProfiles.slice().sort((a, b) => b.rank - a.rank).slice(0, limit);
+}
+
+export function getPopularPartnerProfiles(limit = 12) {
+  return partnerGameProfiles.slice(0, limit);
+}
+
+export function getPlayNextPartnerProfiles(limit = 12) {
+  const rhythm = ['body-drop-3d', 'tentrix', 'basketball-stars', 'shell-shockers', 'madalin-stunt-cars-2', '100-doors-escape-from-prison', 'monster-survivors-game', 'cannon-shot-online', 'rocket-bot-royale', 'hexa-color-sort', 'city-ride', 'bubble-invasion-3d'];
+  const mapped = rhythm.map((slug) => getPartnerGameProfile(slug)).filter(Boolean);
+  const rest = partnerGameProfiles.filter((game) => !rhythm.includes(game.slug));
+  return [...mapped, ...rest].slice(0, limit);
+}

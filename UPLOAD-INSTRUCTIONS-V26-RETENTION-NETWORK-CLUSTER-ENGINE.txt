@@ -1,0 +1,45 @@
+GR8 GAMZ V26 upload instructions
+
+Use the update zip, not the full repository.
+
+Upload the contents of the extracted update folder to the root of your GitHub repo.
+
+Correct root-level upload should show paths like:
+
+src/app/play-next/page.js
+src/app/more-free-games/trending/page.js
+src/app/more-free-games/popular/page.js
+src/app/more-free-games/new/page.js
+src/app/more-free-games/categories/[slug]/page.js
+src/components/partner/PartnerRetentionPanel.js
+src/components/partner/PartnerCollectionPageTemplate.js
+src/data/partnerGameProfiles.js
+src/lib/crawl.js
+src/app/sitemap.js
+src/app/sitemap-partner-games.xml/route.js
+src/app/globals.css
+public/llms.txt
+scripts/audit-v26-network-routes.mjs
+GR8-GAMZ-V26-RETENTION-NETWORK-CLUSTER-ENGINE-SPEC.md
+UPLOAD-INSTRUCTIONS-V26-RETENTION-NETWORK-CLUSTER-ENGINE.txt
+
+Do not upload the outer zip folder itself.
+
+Suggested commit message:
+Add V26 retention and network cluster engine
+
+After Vercel deploys, test:
+
+https://www.gr8gamz.com/play-next
+https://www.gr8gamz.com/more-free-games/trending
+https://www.gr8gamz.com/more-free-games/popular
+https://www.gr8gamz.com/more-free-games/new
+https://www.gr8gamz.com/more-free-games/categories/action-games
+https://www.gr8gamz.com/more-free-games/categories/puzzle-games
+https://www.gr8gamz.com/more-free-games/body-drop-3d
+https://www.gr8gamz.com/more-free-games/body-drop-3d/play
+https://www.gr8gamz.com/sitemap-partner-games.xml
+https://www.gr8gamz.com/indexnow-urls.json
+
+Indexing note:
+Request indexing for the profile/category/discovery pages. Do not request indexing for /play pages.

@@ -3,8 +3,9 @@ import JsonLd from '../../../components/JsonLd';
 import PartnerPlayLauncher from '../../../components/partner/PartnerPlayLauncher';
 import PartnerLiveGamePanel from '../../../components/partner/PartnerLiveGamePanel';
 import PartnerProfileGrid from '../../../components/partner/PartnerProfileGrid';
+import PartnerRetentionPanel from '../../../components/partner/PartnerRetentionPanel';
 import { getAllGames } from '../../../lib/games';
-import { getFeaturedPartnerGameProfiles, getPartnerGameProfile, getPartnerGameProfiles } from '../../../data/partnerGameProfiles';
+import { getFeaturedPartnerGameProfiles, getPartnerGameProfile, getPartnerGameProfiles, getRelatedPartnerGameProfiles } from '../../../data/partnerGameProfiles';
 import { absoluteUrl, breadcrumbJsonLd, buildPageMetadata, faqJsonLd, imageObjectJsonLd } from '../../../lib/seo';
 
 export function generateMetadata({ params }) {
@@ -62,7 +63,7 @@ export default function PartnerGameProfilePage({ params }) {
     );
   }
 
-  const relatedProfiles = getFeaturedPartnerGameProfiles(9).filter((item) => item.slug !== profile.slug).slice(0, 6);
+  const relatedProfiles = getRelatedPartnerGameProfiles(profile, 8);
   const originals = getAllGames().slice(0, 6);
 
   return (
@@ -90,6 +91,8 @@ export default function PartnerGameProfilePage({ params }) {
           <PartnerLiveGamePanel profile={profile} />
         </div>
       </section>
+
+      <PartnerRetentionPanel fallbackProfiles={relatedProfiles.slice(0, 6)} title="Recently viewed and saved GR8 Network games." />
 
       <section className="content-panel game-profile-detail">
         <div>

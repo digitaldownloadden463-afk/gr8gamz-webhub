@@ -1,12 +1,12 @@
 import { siteConfig } from '../data/site';
 import { getAllGames, getAllTags } from '../lib/games';
 import { getAllContentCollections, getAllUpdatePosts } from '../lib/content';
-import { getPartnerGameProfiles } from '../data/partnerGameProfiles';
+import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/partnerGameProfiles';
 
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
-  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/free-online-games', '/play-free-games', '/html5-games', '/arcade-games', '/action-games', '/puzzle-games', '/racing-games', '/no-download-games', '/one-tap-games', '/games-for-mobile', '/safe-browser-games', '/best-free-browser-games', '/original-games', '/more-free-games', '/hot-picks', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/privacy', '/gaming-deals', '/partner-disclosure', '/guides'];
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/free-online-games', '/play-free-games', '/html5-games', '/arcade-games', '/action-games', '/puzzle-games', '/racing-games', '/no-download-games', '/one-tap-games', '/games-for-mobile', '/safe-browser-games', '/best-free-browser-games', '/original-games', '/more-free-games', '/more-free-games/trending', '/more-free-games/popular', '/more-free-games/new', '/play-next', '/hot-picks', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/privacy', '/gaming-deals', '/partner-disclosure', '/guides'];
   const routes = [
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),
@@ -19,7 +19,8 @@ export default function sitemap() {
     ...getAllTags().map((tag) => `/tags/${tag}`),
     ...getAllGames().map((game) => `/arcade/${game.id}`),
     ...getAllGames().map((game) => `/guides/${game.id}`),
-    ...getPartnerGameProfiles().map((profile) => profile.path)
+    ...getPartnerGameProfiles().map((profile) => profile.path),
+    ...getPartnerNetworkClusterRoutes()
   ];
 
   const localizedRoutes = siteConfig.locales

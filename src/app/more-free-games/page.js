@@ -2,6 +2,7 @@ import Link from 'next/link';
 import JsonLd from '../../components/JsonLd';
 import MoreFreeGamesClient from './MoreFreeGamesClient';
 import PartnerProfileGrid from '../../components/partner/PartnerProfileGrid';
+import PartnerRetentionPanel from '../../components/partner/PartnerRetentionPanel';
 import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { buildPageMetadata, breadcrumbJsonLd } from '../../lib/seo';
 
@@ -35,8 +36,26 @@ export default function MoreFreeGamesPage() {
           <Link href="/original-games" className="secondary-cta">GR8 Originals</Link>
           <Link href="/hot-picks" className="secondary-cta">Hot Picks</Link>
           <Link href="/gaming-deals" className="secondary-cta">Gaming Deals</Link>
+          <Link href="/play-next" className="secondary-cta">Play Next</Link>
         </div>
       </section>
+
+      <section className="content-panel network-category-index">
+        <div className="section-heading compact">
+          <span>Discovery routes</span>
+          <h2>Find the next game faster.</h2>
+          <p>V26 adds retention routes and category clusters so players have clear next clicks after every game profile.</p>
+        </div>
+        <div className="quick-link-grid network-mini-links">
+          <Link href="/more-free-games/trending" className="quick-link-card"><strong>Trending</strong><small>Strong network picks</small></Link>
+          <Link href="/more-free-games/popular" className="quick-link-card"><strong>Popular</strong><small>Featured profile pages</small></Link>
+          <Link href="/more-free-games/new" className="quick-link-card"><strong>New</strong><small>Fresh profile routes</small></Link>
+          <Link href="/more-free-games/categories/action-games" className="quick-link-card"><strong>Action</strong><small>Fast partner picks</small></Link>
+          <Link href="/more-free-games/categories/puzzle-games" className="quick-link-card"><strong>Puzzle</strong><small>Thinking games</small></Link>
+          <Link href="/more-free-games/categories/racing-games" className="quick-link-card"><strong>Racing</strong><small>Car and driving games</small></Link>
+        </div>
+      </section>
+      <PartnerRetentionPanel fallbackProfiles={profiles.slice(0, 6)} />
       <PartnerProfileGrid
         profiles={profiles}
         eyebrow="Google-ready game profiles"
