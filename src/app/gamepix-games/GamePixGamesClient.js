@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { track } from '@vercel/analytics';
 
 const CATEGORIES = [
   { id: 'all', label: 'All' },
@@ -14,6 +13,12 @@ const CATEGORIES = [
   { id: 'shooting', label: 'Shooting' },
   { id: 'strategy', label: 'Strategy' }
 ];
+
+function trackGamePixEvent(name, payload = {}) {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: name, ...payload });
+}
 
 function normalise(game) {
   return {
@@ -47,7 +52,7 @@ export default function GamePixGamesClient() {
       .then((data) => {
         if (!alive) return;
         setFeed(data || { items: [], ok: false });
-        track('GamePix Feed Loaded', { category, page });
+        trackGamePixEvent('gamepix_feed_loaded', { category, page });
       })
       .catch((error) => {
         if (!alive) return;
@@ -64,7 +69,7 @@ export default function GamePixGamesClient() {
   function chooseCategory(nextCategory) {
     setCategory(nextCategory);
     setPage(1);
-    track('GamePix Category Click', { category: nextCategory });
+    trackGamePixEvent('gamepix_category_click', { category: nextCategory });
   }
 
   return (
@@ -128,7 +133,7 @@ export default function GamePixGamesClient() {
                   <Link
                     href={playHref}
                     className="primary-link"
-                    onClick={() => track('GamePix Play Click', { title: game.title, category: game.category })}
+                    onClick={() => trackGamePixEvent('gamepix_play_click', { title: game.title, category: game.category })}
                   >
                     Play partner game
                   </Link>
