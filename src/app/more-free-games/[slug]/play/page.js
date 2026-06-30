@@ -82,7 +82,7 @@ export default async function PartnerGamePlayPage({ params }) {
         </section>
       )}
 
-      <PartnerRetentionPanel fallbackProfiles={relatedProfiles.slice(0, 6)} title="Keep playing after this game." />
+      <PartnerRetentionPanel fallbackProfiles={relatedProfiles.slice(0, 4)} showFallback={true} maxItems={4} title="Keep playing after this game." />
 
       <PartnerProfileGrid
         profiles={relatedProfiles}

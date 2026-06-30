@@ -1,0 +1,27 @@
+GR8 GAMZ V26.1 Retention Layout Hotfix upload instructions
+
+Upload the contents of this zip to the root of your GitHub repository.
+
+Files included:
+- src/components/partner/PartnerRetentionPanel.js
+- src/components/partner/PartnerCollectionPageTemplate.js
+- src/app/more-free-games/page.js
+- src/app/more-free-games/[slug]/page.js
+- src/app/more-free-games/[slug]/play/page.js
+- src/app/globals.css
+- GR8-GAMZ-V26-1-RETENTION-LAYOUT-HOTFIX-SPEC.md
+- UPLOAD-INSTRUCTIONS-V26-1-RETENTION-LAYOUT-HOTFIX.txt
+
+Suggested commit message:
+Fix V26 retention panel layout
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/more-free-games
+https://www.gr8gamz.com/more-free-games/body-drop-3d
+https://www.gr8gamz.com/more-free-games/body-drop-3d/play
+
+Expected:
+- The top of /more-free-games should lead with the GR8 Game Network page content and featured game profiles.
+- The big “Keep playing” block should not dominate the first screen.
+- Recently viewed/saved games should appear only after the user has explored games.
+- Play/Profile button text should remain visible.

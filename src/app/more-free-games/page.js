@@ -55,12 +55,17 @@ export default function MoreFreeGamesPage() {
           <Link href="/more-free-games/categories/racing-games" className="quick-link-card"><strong>Racing</strong><small>Car and driving games</small></Link>
         </div>
       </section>
-      <PartnerRetentionPanel fallbackProfiles={profiles.slice(0, 6)} />
       <PartnerProfileGrid
         profiles={profiles}
         eyebrow="Google-ready game profiles"
         title="Featured GR8-branded game profiles."
         description="Selected partner-powered games now get richer GR8 GAMZ profile pages with branded images, useful player context, FAQs, schema and internal links."
+      />
+
+      <PartnerRetentionPanel
+        title="Continue where you left off."
+        description="Your recently viewed or saved games will appear here after you start exploring."
+        maxItems={4}
       />
       <MoreFreeGamesClient />
     </main>

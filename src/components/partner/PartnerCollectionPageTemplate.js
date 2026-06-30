@@ -84,7 +84,11 @@ export default function PartnerCollectionPageTemplate({ eyebrow, title, descript
         description="Each card gives the player a clear path into a branded profile page and then into the live game route."
       />
 
-      <PartnerRetentionPanel fallbackProfiles={profiles.slice(0, 6)} />
+      <PartnerRetentionPanel
+        title="Continue your GR8 run."
+        description="Recently viewed and saved games appear here once a player starts exploring."
+        maxItems={4}
+      />
 
       <section className="content-panel faq-panel">
         <div className="section-heading compact"><span>Player questions</span><h2>{title} FAQs.</h2></div>

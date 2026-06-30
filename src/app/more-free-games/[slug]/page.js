@@ -92,7 +92,11 @@ export default function PartnerGameProfilePage({ params }) {
         </div>
       </section>
 
-      <PartnerRetentionPanel fallbackProfiles={relatedProfiles.slice(0, 6)} title="Recently viewed and saved GR8 Network games." />
+      <PartnerRetentionPanel
+        title="Continue your GR8 run."
+        description="Recently viewed and saved games appear here after you explore the network."
+        maxItems={4}
+      />
 
       <section className="content-panel game-profile-detail">
         <div>
