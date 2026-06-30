@@ -1,0 +1,42 @@
+GR8 GAMZ V21 GamePix upload instructions
+
+This is a small update package and is under GitHub's 100-file upload limit.
+
+Upload these files/folders from the V21 update zip:
+
+- package.json
+- package-lock.json
+- src/app/layout.js
+- src/app/api/gamepix/feed/route.js
+- src/app/gamepix-games/page.js
+- src/app/gamepix-games/GamePixGamesClient.js
+- src/app/gamepix-games/play/page.js
+- src/app/gaming-deals/page.js
+- src/app/partner-disclosure/page.js
+- src/data/gamepix.js
+- src/data/content.js
+- src/components/Header.js
+- src/components/Footer.js
+- src/app/globals.css
+- src/app/sitemap.js
+- src/lib/crawl.js
+- public/llms.txt
+- GR8-GAMZ-V21-GAMEPIX-FEED-MONETISATION-SPEC.md
+- UPLOAD-INSTRUCTIONS-V21-GAMEPIX.txt
+
+Suggested commit message:
+Add V21 GamePix feed monetisation foundation
+
+After Vercel redeploys, test:
+
+https://www.gr8gamz.com/gamepix-games
+https://www.gr8gamz.com/api/gamepix/feed?page=1&pagination=12
+https://www.gr8gamz.com/gaming-deals
+https://www.gr8gamz.com/partner-disclosure
+https://www.gr8gamz.com/updates/v21-gamepix-feed-integration
+
+If /gamepix-games loads but no games show, check:
+- GamePix feed is active
+- The selected property is Gr8 Gamz
+- The sid remains 8G856
+- Vercel has finished redeploying

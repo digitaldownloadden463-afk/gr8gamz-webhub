@@ -31,7 +31,10 @@ export function getCoreRoutes() {
     '/feeds',
     '/seo-status',
     '/advertise',
-    '/privacy'
+    '/privacy',
+    '/gamepix-games',
+    '/gaming-deals',
+    '/partner-disclosure'
   ];
 }
 

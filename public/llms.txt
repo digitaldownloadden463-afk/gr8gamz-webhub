@@ -69,3 +69,11 @@ V20 third game drop:
 - /arcade/cannon-coin-blast
 - /arcade/ice-slide-puzzle
 - /arcade/astro-memory-grid
+
+
+V21 GamePix monetisation foundation:
+- /gamepix-games - GamePix partner games feed page
+- /gamepix-games/play - noindex partner game embed route
+- /gaming-deals - future affiliate buyer guide hub
+- /partner-disclosure - partner and affiliate disclosure
+- /updates/v21-gamepix-feed-integration - V21 update announcement

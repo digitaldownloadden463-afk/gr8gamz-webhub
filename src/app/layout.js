@@ -1,11 +1,11 @@
 import './globals.css';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import JsonLd from '../components/JsonLd';
 import { siteConfig } from '../data/site';
 import { buildPageMetadata, organizationJsonLd, websiteJsonLd } from '../lib/seo';
-import { Analytics } from '@vercel/analytics/next';
 
 export const metadataBase = new URL(siteConfig.siteUrl);
 
@@ -43,6 +43,7 @@ export default function RootLayout({ children }) {
             strategy="afterInteractive"
           />
         ) : null}
+        <Analytics />
         <JsonLd data={websiteJsonLd()} />
         <JsonLd data={organizationJsonLd()} />
         <div className="site-shell">
@@ -50,7 +51,6 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </div>
-        <Analytics />
       </body>
     </html>
   );

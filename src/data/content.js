@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v21-gamepix-feed-integration',
+    title: 'V21 GamePix feed integration and monetisation foundation',
+    date: '2026-06-30',
+    category: 'Monetisation',
+    description: 'V21 connects GR8 GAMZ to the GamePix publisher feed, adds partner game pages and prepares the site for monetisation tracking.',
+    tags: ['gamepix', 'partner-games', 'monetisation', 'publisher-feed'],
+    relatedGameIds: ['neon-pinball-rush', 'neon-snake-rush', 'turbo-drift-grid'],
+    summary: [
+      'V21 adds a GamePix partner games section using the publisher feed SID.',
+      'Partner game URLs are preserved so GamePix can attribute activity to the correct property.',
+      'The update also adds disclosure, gaming deals and analytics-ready monetisation foundations.'
+    ],
+    sections: [
+      {
+        heading: 'Why add GamePix to GR8 GAMZ',
+        body: 'GR8 GAMZ originals remain the core of the arcade, while the GamePix partner catalogue gives players more games to discover and helps the site build a wider monetised games network.'
+      },
+      {
+        heading: 'How the feed works',
+        body: 'The GamePix JSON feed supplies game titles, descriptions, categories, artwork, dimensions and play URLs. GR8 GAMZ uses those fields to create partner game cards and embedded play pages.'
+      },
+      {
+        heading: 'Why the SID matters',
+        body: 'The publisher SID is kept in the GamePix feed request and partner URLs so plays and activity can be reported back to the correct GamePix property.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V21 replace GR8 original games?',
+        answer: 'No. GR8 original games remain separate. GamePix is added as a partner catalogue and monetisation layer.'
+      },
+      {
+        question: 'Does V21 add monetisation pages?',
+        answer: 'Yes. V21 adds a partner disclosure page and a gaming deals hub ready for future affiliate buyer guides.'
+      }
+    ]
+  },
+  {
     slug: 'v20-third-premium-game-drop',
     title: 'V20 third premium game drop: 10 new GR8 GAMZ browser games',
     date: '2026-06-28',
