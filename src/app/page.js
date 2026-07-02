@@ -9,11 +9,12 @@ import AchievementBadges from '../components/player/AchievementBadges';
 import DiscoveryRail from '../components/player/DiscoveryRail';
 import ContentRail from '../components/content/ContentRail';
 import JsonLd from '../components/JsonLd';
-import LivePreviewScreens from '../components/LivePreviewScreens';
 import NetworkMegaPanel from '../components/NetworkMegaPanel';
+import PartnerHeroShowcase from '../components/partner/PartnerHeroShowcase';
 import { siteConfig } from '../data/site';
 import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
 import { getFeaturedUpdatePosts } from '../lib/content';
+import { getFeaturedPartnerGameProfiles } from '../data/partnerGameProfiles';
 import { itemListJsonLd } from '../lib/seo';
 
 export default function HomePage() {
@@ -24,16 +25,17 @@ export default function HomePage() {
   const quickPlay = getQuickPlayGames(6);
   const hardMode = getHardModeGames(6);
   const latestPosts = getFeaturedUpdatePosts(3);
+  const partnerPicks = getFeaturedPartnerGameProfiles(8);
 
   return (
     <main>
       <JsonLd data={itemListJsonLd(featured, '/')} />
       <section className="hero hero-premium hero-network-v23">
         <div className="hero-copy hero-copy-premium">
-          <span className="eyebrow">GR8 Game Network • free browser games</span>
-          <h1>Originals. Hot picks. More free games. One GR8 arcade.</h1>
+          <span className="eyebrow">GR8 Game Network • free browser games worldwide</span>
+          <h1>More free games. More epic wins. One GR8 arcade.</h1>
           <p>
-            GR8 GAMZ is now shaped as a full browser gaming network: original self-hosted games, live-style preview screens, partner-powered game discovery, gaming deals and helpful discovery pages built to help players find their next game.
+            Play free browser games instantly: GR8 Originals, high-quality partner picks, mobile-friendly games, hot picks and no-download game discovery for players worldwide.
           </p>
           <div className="hero-actions">
             <Link href="/original-games" className="cta">Play GR8 Originals</Link>
@@ -50,13 +52,13 @@ export default function HomePage() {
               <span>Helpful hub pages, collections, update posts and clean routes for players and search engines.</span>
             </div>
             <div className="hero-support-card">
-              <strong>Live arcade feel</strong>
-              <span>Animated preview screens make the homepage feel active without loading heavy background iframes.</span>
+              <strong>Premium preview screens</strong>
+              <span>Real partner-game artwork gives the homepage a sharper, more professional arcade feel.</span>
             </div>
           </div>
         </div>
-        <aside className="hero-visual hero-live-preview" aria-label="GR8 GAMZ live demo screens">
-          <LivePreviewScreens />
+        <aside className="hero-visual hero-live-preview" aria-label="GR8 GAMZ partner game preview screens">
+          <PartnerHeroShowcase profiles={partnerPicks} />
         </aside>
       </section>
 

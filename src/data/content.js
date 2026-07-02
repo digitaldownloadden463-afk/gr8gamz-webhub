@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v29-homepage-partner-showcase-mobile-fullscreen',
+    title: 'V29 homepage partner showcase and mobile fullscreen gameplay',
+    date: '2026-07-02',
+    category: 'UX & Mobile Gameplay',
+    description: 'V29 replaces the homepage demo screens with premium partner-game preview panels, improves partner card artwork handling and adds landscape mobile fullscreen gameplay rules.',
+    tags: ['homepage', 'mobile-fullscreen', 'partner-games', 'gameplay-ux'],
+    relatedGameIds: ['neon-snake-rush', 'turbo-drift-grid', 'neon-breakout-rush'],
+    summary: [
+      'The homepage now uses real partner-game artwork instead of low-quality demo animation panels.',
+      'Partner cards handle live supplier artwork and branded fallback artwork more cleanly.',
+      'Mobile landscape gameplay hides navigation and fills the screen for both GR8 Originals and partner play routes.'
+    ],
+    sections: [
+      {
+        heading: 'Why the homepage changed',
+        body: 'The previous animated demo screens created movement but did not look premium enough. V29 introduces large partner-game preview panels using real game artwork so the first impression feels stronger and more commercially polished.'
+      },
+      {
+        heading: 'Mobile gameplay improvement',
+        body: 'When players open games on a phone and rotate to landscape, gameplay routes now prioritise the game surface by hiding menus, footers and non-game panels on supported modern browsers.'
+      },
+      {
+        heading: 'Partner-card artwork fix',
+        body: 'Partner game images now distinguish between live supplier artwork and branded fallback artwork, so fallback covers display more cleanly instead of looking awkwardly cropped.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V29 load full games in the homepage background?',
+        answer: 'No. It uses high-quality preview panels and artwork, keeping the homepage faster and avoiding heavy background iframes.'
+      },
+      {
+        question: 'Are mobile play routes still noindex?',
+        answer: 'Yes. Partner play routes remain noindex while the profile and discovery pages remain the indexable search layer.'
+      }
+    ]
+  },
+  {
     slug: 'v28-global-search-console-ctr-keyword-engine',
     title: 'V28 global Search Console CTR and keyword engine',
     date: '2026-07-02',

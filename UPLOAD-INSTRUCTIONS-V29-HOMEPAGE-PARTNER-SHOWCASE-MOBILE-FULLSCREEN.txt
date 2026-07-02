@@ -1,0 +1,33 @@
+GR8 GAMZ V29 upload instructions
+
+Upload the contents of this update zip to the root of your GitHub repository.
+
+Files included:
+- src/components/partner/PartnerHeroShowcase.js
+- src/components/partner/PartnerProfileLiveImage.js
+- src/app/page.js
+- src/app/layout.js
+- src/app/more-free-games/[slug]/play/page.js
+- src/app/arcade/[slug]/page.js
+- src/app/globals.css
+- src/data/content.js
+- GR8-GAMZ-V29-HOMEPAGE-PARTNER-SHOWCASE-MOBILE-FULLSCREEN-SPEC.md
+- UPLOAD-INSTRUCTIONS-V29-HOMEPAGE-PARTNER-SHOWCASE-MOBILE-FULLSCREEN.txt
+
+Suggested commit message:
+Add V29 homepage partner showcase and mobile fullscreen gameplay
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/
+https://www.gr8gamz.com/more-free-games
+https://www.gr8gamz.com/more-free-games/body-drop-3d/play
+https://www.gr8gamz.com/arcade/neon-snake-rush
+https://www.gr8gamz.com/updates/v29-homepage-partner-showcase-mobile-fullscreen
+
+Mobile test:
+1. Open a partner play page on your phone.
+2. Rotate the phone to landscape.
+3. The game should fill the screen and the site header/footer should disappear.
+4. Repeat with an original game page such as /arcade/neon-snake-rush.
+
+If mobile Safari keeps the browser address bar visible, that is browser-level UI. The page itself will still hide site navigation and maximise the game area.

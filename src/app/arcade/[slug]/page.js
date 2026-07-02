@@ -41,7 +41,7 @@ export default function ArcadeGamePage({ params }) {
   const hooks = game.engagementHooks || [];
 
   return (
-    <main>
+    <main className="arcade-fullscreen-play">
       <JsonLd data={gameJsonLd(game, `/arcade/${game.id}`)} />
       <JsonLd data={faqJsonLd(buildGameFaq(game))} />
       <JsonLd data={imageObjectJsonLd({

@@ -43,12 +43,12 @@ export default async function PartnerGamePlayPage({ params }) {
   const ratio = Math.max(0.45, Math.min(1.8, height / width));
 
   return (
-    <main>
+    <main className="mobile-fullscreen-play partner-gameplay-page">
       <div className="page-title compact-title partner-play-title">
         <span className="eyebrow">GR8 Game Network</span>
         <h1>Play {profile.title}</h1>
         <p>
-          This noindex play screen connects the GR8-branded game profile to the intended partner game feed while keeping the public search journey focused on GR8 GAMZ.
+          Rotate your phone for a wider play view. On supported mobile browsers, landscape gameplay fills the screen so menus stay out of the way.
         </p>
       </div>
 
