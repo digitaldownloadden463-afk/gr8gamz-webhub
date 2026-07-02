@@ -1,81 +1,112 @@
 import Link from 'next/link';
-import { buildPageMetadata } from '../../lib/seo';
+import JsonLd from '../../components/JsonLd';
+import AffiliateDisclosureBlock from '../../components/affiliate/AffiliateDisclosureBlock';
+import { getBuyerGuides, getFeaturedBuyerGuides } from '../../data/affiliateGuides';
+import { breadcrumbJsonLd, buildPageMetadata, faqJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Gaming Deals and Buyer Guides',
-  description: 'GR8 GAMZ gaming deals hub for controllers, headsets, mobile accessories, gamer gifts and browser-game setup ideas.',
+  title: 'Gaming Deals, Accessories and Buyer Guides',
+  description: 'Gaming accessory buyer guides for controllers, headsets, mobile gaming gear, gifts and browser-game setup upgrades.',
   path: '/gaming-deals'
 });
 
-const guideCards = [
+const faqs = [
   {
-    title: 'Best controllers for browser games',
-    body: 'Look for comfortable grips, reliable Bluetooth or USB-C support, low input delay and compatibility with phones, tablets and desktop browsers.',
-    link: '/gaming-deals#controllers'
+    question: 'Does GR8 GAMZ use affiliate links?',
+    answer: 'Some gaming deal pages may include affiliate links or sponsored links. GR8 GAMZ labels commercial sections clearly and explains this in the affiliate disclosure.'
   },
   {
-    title: 'Budget gaming headsets',
-    body: 'A good budget headset should prioritise comfort, a clear microphone, simple volume controls and durable cabling over flashy extras.',
-    link: '/gaming-deals#headsets'
+    question: 'Are the guides only for expensive gaming products?',
+    answer: 'No. GR8 GAMZ covers budget, mid-range and premium accessories so players can find useful setup ideas at different price points.'
   },
   {
-    title: 'Mobile gaming accessories',
-    body: 'Phone stands, controller clips, longer charging cables and compact grips can make browser games easier to play for longer sessions.',
-    link: '/gaming-deals#mobile'
-  },
-  {
-    title: 'Gaming gifts under £25',
-    body: 'Small accessories, desk lights, cable organisers, mouse mats and retro-themed gifts are strong impulse ideas for casual players.',
-    link: '/gaming-deals#gifts'
+    question: 'Do I need gaming accessories to play GR8 GAMZ?',
+    answer: 'No. GR8 GAMZ games are free browser games. Accessories are optional upgrades for comfort, control and longer sessions.'
   }
 ];
 
 export default function GamingDealsPage() {
+  const featured = getFeaturedBuyerGuides(6);
+  const allGuides = getBuyerGuides();
+
   return (
     <main>
-      <div className="page-title">
-        <span className="eyebrow">Gaming deals</span>
-        <h1>Gaming deals and buyer guides.</h1>
-        <p>
-          A player-friendly hub for useful gaming accessories, gift ideas and browser-game setup advice. Product recommendations will be added carefully with clear affiliate labelling.
-        </p>
-      </div>
+      <JsonLd data={breadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Gaming Deals', path: '/gaming-deals' }
+      ])} />
+      <JsonLd data={faqJsonLd(faqs)} />
 
-      <section className="content-panel affiliate-note strong-affiliate-note">
-        <strong>Affiliate disclosure:</strong>
-        <p>
-          Some future links on this page may be affiliate links. If you click and buy, GR8 GAMZ may earn a commission at no extra cost to you. Sponsored or affiliate sections will be labelled clearly before you click.
-        </p>
+      <section className="buyer-hero gaming-deals-hero">
+        <div>
+          <span className="eyebrow">GR8 Gaming Deals</span>
+          <h1>Gaming deals, accessories and setup guides for players.</h1>
+          <p>
+            GR8 GAMZ is building a trusted gaming deals hub for players who want better controls, comfort, audio and setup upgrades while enjoying free online games.
+          </p>
+          <div className="hero-actions compact-actions">
+            <Link href="/best-gaming-accessories" className="cta">Best Gaming Accessories</Link>
+            <Link href="/best-mobile-game-controllers" className="secondary-cta">Mobile Controllers</Link>
+            <Link href="/affiliate-disclosure" className="secondary-cta">Affiliate Disclosure</Link>
+          </div>
+        </div>
+        <AffiliateDisclosureBlock />
       </section>
 
-      <section className="content-panel deal-guide-panel">
-        <div className="section-heading compact">
-          <span>Buyer-guide hub</span>
-          <h2>Useful gaming kit for casual browser players.</h2>
-          <p>These guides are being built around practical buying advice first, not fake reviews or copied product listings.</p>
+      <section className="content-panel buyer-intro-panel">
+        <span className="eyebrow">Revenue-ready, player-first</span>
+        <h2>Built for useful recommendations, not spammy product dumping.</h2>
+        <p>
+          These guides are designed to support affiliate applications and future product links while staying useful for players. Each guide explains what to compare before buying, who the accessory is for, and how it connects to browser, mobile or desktop play.
+        </p>
+        <div className="quick-link-grid network-mini-links">
+          <Link href="/games" className="quick-link-card"><strong>Play games first</strong><small>Keep revenue after trust</small></Link>
+          <Link href="/mobile-games" className="quick-link-card"><strong>Mobile game gear</strong><small>Controllers, grips and stands</small></Link>
+          <Link href="/action-games" className="quick-link-card"><strong>Action setup</strong><small>Headsets, mice and controls</small></Link>
+          <Link href="/partners" className="quick-link-card"><strong>Partner with GR8</strong><small>Brand and affiliate page</small></Link>
         </div>
-        <div className="deal-guide-grid">
-          {guideCards.map((card) => (
-            <article key={card.title} id={card.link.split('#')[1]}>
-              <h3>{card.title}</h3>
-              <p>{card.body}</p>
-              <Link href={card.link} className="mini-cta mini-cta-muted">Guide section</Link>
-            </article>
+      </section>
+
+      <section className="content-panel">
+        <div className="section-heading compact">
+          <span>Featured buyer guides</span>
+          <h2>Start with the highest-fit gaming revenue pages.</h2>
+          <p>These are the strongest pages for affiliate applications, product-card testing and search visibility.</p>
+        </div>
+        <div className="buyer-guide-grid">
+          {featured.map((guide) => (
+            <Link href={guide.path} className="buyer-guide-card" key={guide.slug}>
+              <span>{guide.primaryKeyword}</span>
+              <h3>{guide.title}</h3>
+              <p>{guide.description}</p>
+              <strong>Open guide →</strong>
+            </Link>
           ))}
         </div>
       </section>
 
       <section className="content-panel">
-        <span className="eyebrow">What to buy first</span>
-        <h2>Start with comfort, control and simple upgrades.</h2>
-        <p>
-          For browser games, the best upgrades are usually simple: a comfortable controller, a stable phone stand, a headset for longer sessions and a tidy desk setup. GR8 GAMZ will only add specific product cards when they are clearly useful, accurately labelled and ready for affiliate tracking.
-        </p>
+        <div className="section-heading compact">
+          <span>All revenue guides</span>
+          <h2>Gaming accessory and gift pages.</h2>
+        </div>
         <div className="quick-link-grid network-mini-links">
-          <Link href="/original-games" className="quick-link-card"><strong>GR8 Originals</strong><small>Games to play now</small></Link>
-          <Link href="/more-free-games" className="quick-link-card"><strong>More Free Games</strong><small>Partner-powered picks</small></Link>
-          <Link href="/hot-picks" className="quick-link-card"><strong>Hot Picks</strong><small>Featured game routes</small></Link>
-          <Link href="/partner-disclosure" className="quick-link-card"><strong>Disclosure</strong><small>How monetisation is labelled</small></Link>
+          {allGuides.map((guide) => (
+            <Link href={guide.path} key={guide.slug} className="quick-link-card">
+              <strong>{guide.title}</strong>
+              <small>{guide.primaryKeyword}</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-panel faq-panel">
+        <div className="section-heading compact">
+          <span>Commercial transparency</span>
+          <h2>Gaming deals FAQs.</h2>
+        </div>
+        <div className="faq-grid">
+          {faqs.map((faq) => <article key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p></article>)}
         </div>
       </section>
     </main>

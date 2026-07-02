@@ -17,6 +17,8 @@ export default function Footer() {
         <Link href="/hot-picks">Hot picks</Link>
         <Link href="/gaming-deals">Gaming deals</Link>
         <Link href="/partner-disclosure">Partner disclosure</Link>
+        <Link href="/affiliate-disclosure">Affiliate disclosure</Link>
+        <Link href="/partners">Partners</Link>
         <Link href="/advertise">Advertise</Link>
         <Link href="/contact">Contact</Link>
         <Link href="/sitemap.xml">Sitemap</Link>

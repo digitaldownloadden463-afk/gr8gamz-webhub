@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v30-revenue-engine-affiliate-application-pack',
+    title: 'V30 revenue engine and affiliate application pack',
+    date: '2026-07-02',
+    category: 'Revenue Growth',
+    description: 'V30 adds a gaming buyer-guide revenue layer, affiliate disclosure, safe outbound-link handling and partner application support pages.',
+    tags: ['affiliate', 'gaming-deals', 'revenue', 'buyer-guides', 'partnerships'],
+    relatedGameIds: ['neon-snake-rush', 'turbo-drift-grid', 'cyber-bowling-blitz'],
+    summary: [
+      'Gaming Deals is now a real buyer-guide hub instead of a placeholder.',
+      'New guide pages cover controllers, headsets, keyboards, mice, gamer gifts and browser-game accessories.',
+      'Commercial links are prepared with sponsored/nofollow handling and clear affiliate disclosure.'
+    ],
+    sections: [
+      {
+        heading: 'Why V30 matters',
+        body: 'GR8 GAMZ now has a revenue layer that fits the gaming audience without overwhelming gameplay. The buyer guides focus on accessories and setup upgrades that make sense for browser, mobile and desktop players.'
+      },
+      {
+        heading: 'Affiliate application readiness',
+        body: 'The update adds a Partners page, affiliate disclosure page and brand-safe buyer-guide pages so affiliate managers can see a polished publisher experience before applications are submitted.'
+      },
+      {
+        heading: 'Player-first monetisation',
+        body: 'The revenue system is designed around helpful comparison criteria, transparent disclosure and safe outbound-link handling rather than spammy product dumping or fake reviews.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V30 add live affiliate links?',
+        answer: 'No. V30 prepares the structure safely. Live affiliate URLs can be added once affiliate accounts are approved.'
+      },
+      {
+        question: 'Are affiliate links safe for SEO?',
+        answer: 'The outbound-link component is prepared to use sponsored/nofollow attributes for commercial links.'
+      }
+    ]
+  },
+  {
     slug: 'v29-homepage-partner-showcase-mobile-fullscreen',
     title: 'V29 homepage partner showcase and mobile fullscreen gameplay',
     date: '2026-07-02',

@@ -1,0 +1,48 @@
+GR8 GAMZ V30 Revenue Engine + Affiliate Application Pack upload instructions
+
+Use the update zip, not the full repository, unless something goes wrong.
+
+Upload the contents of the extracted V30 folder to the root of your GitHub repository.
+
+Important: drag the contents, not the outer folder.
+
+Correct paths:
+- src/data/affiliateGuides.js
+- src/components/affiliate/AffiliateButton.js
+- src/app/gaming-deals/page.js
+- src/app/affiliate-disclosure/page.js
+- src/app/partners/page.js
+- src/app/best-gaming-accessories/page.js
+- src/app/best-mobile-game-controllers/page.js
+
+Wrong path:
+- gr8gamz-v30-revenue-engine-affiliate-application-pack-update/src/...
+
+Suggested commit message:
+Add V30 revenue engine and affiliate application pack
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/gaming-deals
+https://www.gr8gamz.com/affiliate-disclosure
+https://www.gr8gamz.com/partners
+https://www.gr8gamz.com/best-gaming-accessories
+https://www.gr8gamz.com/best-mobile-game-controllers
+https://www.gr8gamz.com/best-budget-gaming-headsets
+https://www.gr8gamz.com/best-gifts-for-gamers
+https://www.gr8gamz.com/best-razer-gaming-gear
+https://www.gr8gamz.com/advertise
+https://www.gr8gamz.com/updates/v30-revenue-engine-affiliate-application-pack
+https://www.gr8gamz.com/sitemap.xml
+https://www.gr8gamz.com/indexnow-urls.json
+
+After deployment:
+1. Run IndexNow:
+https://www.gr8gamz.com/api/indexnow/bulk?scope=content&limit=40
+
+2. Request indexing in Google Search Console for:
+https://www.gr8gamz.com/gaming-deals
+https://www.gr8gamz.com/best-gaming-accessories
+https://www.gr8gamz.com/best-mobile-game-controllers
+https://www.gr8gamz.com/best-budget-gaming-headsets
+https://www.gr8gamz.com/best-gifts-for-gamers
+https://www.gr8gamz.com/partners

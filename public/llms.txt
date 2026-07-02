@@ -134,3 +134,21 @@ V28 global Search Console CTR and keyword engine:
 - New global search-intent pages: /browser-games-online, /play-online-games-free, /instant-games-online.
 - Core keyword clusters: free online games, browser games, no download games, mobile games online, quick games, HTML5 games.
 - /updates/v28-global-search-console-ctr-keyword-engine - Search Console CTR and global keyword update.
+
+
+V30 Revenue Engine + Affiliate Application Pack:
+- /gaming-deals - central gaming deals and buyer guide hub
+- /affiliate-disclosure - commercial transparency and affiliate link policy
+- /partners - affiliate and brand partnership media page
+- /best-gaming-accessories - gaming accessory buyer guide
+- /best-mobile-game-controllers - mobile controller buyer guide
+- /best-budget-gaming-headsets - headset buyer guide
+- /best-gaming-keyboards - keyboard buyer guide
+- /best-gaming-mice - mouse buyer guide
+- /best-gifts-for-gamers - gamer gift guide
+- /best-gaming-gifts-under-25 - budget gamer gifts guide
+- /best-gaming-gifts-under-50 - mid-budget gamer gifts guide
+- /best-controller-games-online - controller games and setup guide
+- /best-accessories-for-browser-games - browser-game accessory guide
+- /best-razer-gaming-gear - premium Razer gear comparison guide
+- /best-logitech-gaming-gear - Logitech gaming gear comparison guide

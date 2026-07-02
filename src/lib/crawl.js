@@ -2,6 +2,7 @@ import { siteConfig } from '../data/site';
 import { getAllGames, getAllTags } from './games';
 import { getAllContentCollections, getAllUpdatePosts } from './content';
 import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/partnerGameProfiles';
+import { getFeaturedBuyerGuides } from '../data/affiliateGuides';
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '470561d472ec49aca5a704b6d8a3eac0';
 
@@ -58,6 +59,20 @@ export function getCoreRoutes() {
     '/privacy',
     '/gaming-deals',
     '/guides',
+    '/best-logitech-gaming-gear',
+    '/best-razer-gaming-gear',
+    '/best-accessories-for-browser-games',
+    '/best-controller-games-online',
+    '/best-gaming-gifts-under-50',
+    '/best-gaming-gifts-under-25',
+    '/best-gifts-for-gamers',
+    '/best-gaming-mice',
+    '/best-gaming-keyboards',
+    '/best-budget-gaming-headsets',
+    '/best-mobile-game-controllers',
+    '/best-gaming-accessories',
+    '/partners',
+    '/affiliate-disclosure',
     '/partner-disclosure'
   ];
 }
@@ -175,6 +190,16 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Original game guide page'
   }));
 
+
+  const buyerGuides = getFeaturedBuyerGuides(12).map((guide) => ({
+    path: guide.path,
+    title: guide.title,
+    type: 'Affiliate buyer guide',
+    changed: '2026-07-02',
+    priority: 0.91,
+    reason: 'Revenue-ready gaming buyer guide'
+  }));
+
   const games = getAllGames().slice(0, 15).map((game) => ({
     path: `/arcade/${game.id}`,
     title: game.name,
@@ -184,7 +209,7 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Playable game page'
   }));
 
-  return [...core, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
+  return [...core, ...buyerGuides, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
     .sort((a, b) => new Date(b.changed) - new Date(a.changed) || b.priority - a.priority)
     .slice(0, limit);
 }
