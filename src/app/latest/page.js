@@ -4,8 +4,8 @@ import { getFreshChangedPages } from '../../lib/crawl';
 import { buildPageMetadata, collectionPageJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Latest Changed Pages and Fresh GR8 GAMZ Content',
-  description: 'A fresh crawl hub showing recently changed GR8 GAMZ pages, updates, collections and important game routes.',
+  title: 'New Free Games & Latest Updates | GR8 GAMZ',
+  description: 'See the latest GR8 GAMZ free games, new game profiles, platform updates, hot picks and fresh browser-game discovery pages worldwide.',
   path: '/latest'
 });
 

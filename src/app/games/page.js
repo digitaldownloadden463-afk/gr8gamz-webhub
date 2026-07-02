@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import GameGrid from '../../components/GameGrid';
 import JsonLd from '../../components/JsonLd';
+import GlobalKeywordPanel from '../../components/seo/GlobalKeywordPanel';
 import { siteConfig } from '../../data/site';
 import { filterGames, getAllTags } from '../../lib/games';
 import { buildPageMetadata, itemListJsonLd } from '../../lib/seo';
@@ -9,8 +10,8 @@ import { buildPageMetadata, itemListJsonLd } from '../../lib/seo';
 export function generateMetadata({ searchParams }) {
   const hasFilters = Boolean(searchParams?.q || searchParams?.category || searchParams?.platform || searchParams?.control || searchParams?.difficulty || (searchParams?.sort && searchParams.sort !== 'launch'));
   return buildPageMetadata({
-    title: hasFilters ? 'Filtered Game Results' : 'All Free Online Games',
-    description: 'Browse and filter all GR8 GAMZ mobile-first browser games by category, control type, difficulty and popularity.',
+    title: hasFilters ? 'Filtered Game Results' : 'Free Online Games | Play Browser Games Instantly',
+    description: 'Play free online games worldwide on GR8 GAMZ. Browse instant browser games, mobile games, no-download arcade games and quick games by category, controls and difficulty.',
     path: '/games',
     noIndex: hasFilters
   });
@@ -38,12 +39,14 @@ export default function GamesPage({ searchParams }) {
     <main>
       <JsonLd data={itemListJsonLd(games, '/games')} />
       <div className="page-title">
-        <span className="eyebrow">Game catalogue engine</span>
-        <h1>Find your next run.</h1>
+        <span className="eyebrow">Free online games</span>
+        <h1>Play free online games instantly, wherever you are.</h1>
         <p>
-          Filter the GR8 GAMZ library by play style, category, difficulty and control type. This turns the site from a simple list into a real game discovery system.
+          Browse the GR8 GAMZ worldwide game catalogue: free browser games, mobile games, no-download arcade games, quick games and original neon games built for fast play.
         </p>
       </div>
+
+      <GlobalKeywordPanel active={['free-online-games', 'browser-games', 'no-download-games']} compact />
 
       <section className="content-panel filter-panel">
         <form className="search-form" action="/games">

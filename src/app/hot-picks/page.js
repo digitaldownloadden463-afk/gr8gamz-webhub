@@ -8,8 +8,8 @@ import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { buildPageMetadata, itemListJsonLd, breadcrumbJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Hot Picks',
-  description: 'Featured GR8 GAMZ hot picks, popular games and new browser games to play now.',
+  title: 'Hot Picks | Free Online Games Trending on GR8 GAMZ',
+  description: 'Play GR8 GAMZ Hot Picks: featured free online games, browser games, mobile games, new games and quick arcade picks for players worldwide.',
   path: '/hot-picks'
 });
 
@@ -27,9 +27,9 @@ export default function HotPicksPage() {
       ])} />
       <div className="page-title page-title-network">
         <span className="eyebrow">Featured now</span>
-        <h1>Hot picks from the GR8 GAMZ arcade.</h1>
+        <h1>Hot picks from the GR8 GAMZ free online games network.</h1>
         <p>
-          A stronger discovery page for popular games, new games and featured quick-play routes. As analytics grows, this can become a live trending page.
+          A worldwide discovery page for featured free online games, popular browser games, new mobile games and quick-play routes. As analytics grows, this can become a live trending page.
         </p>
       </div>
       <AiSummaryBox

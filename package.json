@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "audit:partner-profiles": "node scripts/audit-partner-profiles.mjs"
+    "audit:partner-profiles": "node scripts/audit-partner-profiles.mjs",
+    "audit:global-seo": "node scripts/audit-global-seo.mjs"
   },
   "dependencies": {
     "next": "14.2.3",

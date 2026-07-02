@@ -4,8 +4,8 @@ import { getNewGames } from '../../lib/games';
 import { buildPageMetadata, itemListJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'New Free Online Games',
-  description: 'Play the newest mobile-first GR8 GAMZ browser games, including arcade, racing, sports, skill and action games.',
+  title: 'New Free Online Games | Fresh Browser Games',
+  description: 'Play new free online games on GR8 GAMZ: fresh browser games, mobile games, arcade games, racing games, sports games and quick-play picks worldwide.',
   path: '/new'
 });
 
@@ -16,8 +16,8 @@ export default function NewGamesPage() {
       <JsonLd data={itemListJsonLd(games, '/new')} />
       <div className="page-title">
         <span className="eyebrow">New games</span>
-        <h1>New GR8 drops.</h1>
-        <p>Fresh browser games added to the GR8 GAMZ launch library.</p>
+        <h1>New free browser games added to GR8 GAMZ.</h1>
+        <p>Fresh online games, mobile-ready arcade picks and quick-play routes added for players worldwide.</p>
       </div>
       <GameGrid games={games} />
     </main>

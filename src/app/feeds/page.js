@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { buildPageMetadata } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'GR8 GAMZ Feeds and Crawl Endpoints',
-  description: 'RSS, JSON feed, grouped sitemaps and IndexNow endpoints for GR8 GAMZ discovery automation.',
+  title: 'GR8 GAMZ Feeds | RSS, Sitemaps and Game Updates',
+  description: 'Official GR8 GAMZ RSS feed, JSON feed, game sitemaps, image sitemaps and update feeds for free browser game discovery.',
   path: '/feeds'
 });
 
@@ -22,10 +22,10 @@ export default function FeedsPage() {
   return (
     <main>
       <div className="page-title">
-        <span className="eyebrow">Growth automation</span>
-        <h1>Feeds, sitemaps and crawl endpoints.</h1>
+        <span className="eyebrow">GR8 feed and sitemaps</span>
+        <h1>GR8 GAMZ feeds, sitemaps and latest game update routes.</h1>
         <p>
-          These routes help search engines, AI discovery systems and future publishing workflows find fresh GR8 GAMZ content quickly.
+          These official GR8 GAMZ feed routes help players, search engines and discovery systems find fresh free games, updates, game profiles and sitemap endpoints.
         </p>
       </div>
 

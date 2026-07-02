@@ -1,5 +1,39 @@
 export const updatePosts = [
   {
+    slug: 'v28-global-search-console-ctr-keyword-engine',
+    title: 'V28 global Search Console CTR and keyword engine',
+    date: '2026-07-02',
+    category: 'SEO Growth',
+    description: 'V28 strengthens GR8 GAMZ for worldwide free online games, browser games, mobile games, no-download games and Search Console click-through growth.',
+    tags: ['global-seo', 'search-console', 'free-online-games', 'browser-games', 'mobile-games'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'Key pages now use stronger worldwide free-game titles and descriptions.',
+      'The update strengthens pages already receiving Search Console impressions, including Games, Mobile Games, Quick Games, Latest and Feeds.',
+      'New global search-intent hub pages target browser games online, play online games free and instant games online.'
+    ],
+    sections: [
+      {
+        heading: 'Why this update matters',
+        body: 'Early Search Console data showed the homepage getting clicks and several discovery pages getting impressions. V28 focuses on improving click-through rate and global keyword relevance before scaling more content.'
+      },
+      {
+        heading: 'What changed',
+        body: 'The update rewrites priority metadata, adds global keyword panels, strengthens worldwide discovery copy, improves the GR8 feeds page for the “gr8 feed” query and adds three global search-intent hubs.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Is GR8 GAMZ only for UK players?',
+        answer: 'No. GR8 GAMZ is positioned for players worldwide. The site is in English and playable globally through modern browsers.'
+      },
+      {
+        question: 'Does V28 add more games?',
+        answer: 'V28 focuses on stronger search titles, global keywords, click-through improvement and priority hub pages rather than adding more raw game volume.'
+      }
+    ]
+  },
+  {
     slug: 'v27-launch-compliance-trust-polish-hardening',
     title: 'V27 launch compliance, trust and polish hardening',
     date: '2026-06-30',

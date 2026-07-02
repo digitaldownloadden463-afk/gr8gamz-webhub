@@ -126,3 +126,11 @@ V27 launch compliance, trust and polish hardening:
 - /contact - contact route for privacy, game issues, advertising and partner feedback
 - /gaming-deals - soft-launch buyer-guide and affiliate disclosure hub
 - /updates/v27-launch-compliance-trust-polish-hardening - V27 launch QA update
+
+
+V28 global Search Console CTR and keyword engine:
+- Global targeting strengthened across title tags, meta descriptions and page intros.
+- Priority pages: /games, /free-online-games, /free-browser-games, /no-download-games, /mobile-games, /quick-games, /hot-picks, /latest and /feeds.
+- New global search-intent pages: /browser-games-online, /play-online-games-free, /instant-games-online.
+- Core keyword clusters: free online games, browser games, no download games, mobile games online, quick games, HTML5 games.
+- /updates/v28-global-search-console-ctr-keyword-engine - Search Console CTR and global keyword update.

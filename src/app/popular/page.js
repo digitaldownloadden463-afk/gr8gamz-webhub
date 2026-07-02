@@ -4,8 +4,8 @@ import { getPopularGames } from '../../lib/games';
 import { buildPageMetadata, itemListJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Popular Free Online Games',
-  description: 'Play the most popular GR8 GAMZ browser games, built for mobile controls, fast retries and high-score chasing.',
+  title: 'Popular Free Online Games | Play Browser Games Now',
+  description: 'Play popular free online games on GR8 GAMZ, including browser games, mobile games, quick arcade games and high-score challenges available worldwide.',
   path: '/popular'
 });
 

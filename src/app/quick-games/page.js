@@ -2,6 +2,7 @@ import Link from 'next/link';
 import GameGrid from '../../components/GameGrid';
 import JsonLd from '../../components/JsonLd';
 import AiSummaryBox from '../../components/seo/AiSummaryBox';
+import GlobalKeywordPanel from '../../components/seo/GlobalKeywordPanel';
 import { siteConfig } from '../../data/site';
 import { filterGames } from '../../lib/games';
 import { buildPageMetadata, collectionPageJsonLd, itemListJsonLd } from '../../lib/seo';
@@ -30,11 +31,13 @@ export default function SeoHubPage() {
         title={`${hub.title} summary`}
         bullets={[
           `${hub.title} on GR8 GAMZ are free to play in a browser.`,
-          'The page is curated as a focused search and player discovery landing page.',
-          'Games include mobile-first controls, short sessions and fast replay loops.',
+          'The page is curated for worldwide player discovery and focused search intent.',
+          'Games include mobile-first controls, no-download play, short sessions and fast replay loops.',
           `Current matching games: ${games.length}.`
         ]}
       />
+
+      <GlobalKeywordPanel active={['quick-games', 'browser-games', 'no-download-games']} compact />
 
       <GameGrid games={games} />
 

@@ -10,7 +10,7 @@ export const metadataBase = new URL(siteConfig.siteUrl);
 
 export const metadata = {
   ...buildPageMetadata({
-    title: 'Free Browser Games, XP Streaks and Daily Challenges',
+    title: 'Free Online Games Worldwide | Browser Games & Mobile Games',
     description: siteConfig.description,
     path: '/'
   }),

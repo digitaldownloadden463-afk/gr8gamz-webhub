@@ -3,9 +3,9 @@ export const siteConfig = {
   legalName: 'GR8 GAMZ',
   shortName: 'GR8',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.gr8gamz.com',
-  tagline: 'Free browser gaming network: originals, hot picks and more free games.',
+  tagline: 'Free online games for players worldwide: browser games, mobile games, hot picks and GR8 Originals.',
   description:
-    'Play free mobile-first browser games on GR8 GAMZ: original arcade games, hot picks, more free games, daily challenges, XP streaks and helpful game collections.',
+    'Play free online games worldwide on GR8 GAMZ: instant browser games, mobile games, no-download arcade games, GR8 Originals, hot picks and more free game profiles.',
   defaultLocale: 'en',
   locales: ['en', 'es', 'fr', 'de'],
   localeNames: {
@@ -172,10 +172,10 @@ export const siteConfig = {
     {
       id: 'original-games',
       path: '/original-games',
-      title: 'GR8 Originals',
-      headline: 'GR8 original browser games built for repeat play.',
+      title: 'GR8 Originals | Free Browser Arcade Games',
+      headline: 'GR8 original browser games built for instant worldwide play.',
       eyebrow: 'GR8 Originals',
-      description: 'Play original GR8 GAMZ browser games with mobile-first controls, quick restarts, XP hooks and premium neon arcade styling.',
+      description: 'Play original GR8 GAMZ browser games worldwide with mobile-first controls, quick restarts, XP hooks and premium neon arcade styling.',
       filter: { platform: 'originals' },
       seoCopy: 'GR8 Originals are the brand-owned core of the site. These games are self-hosted, crawlable, mobile-friendly and designed to make the platform feel like a real gaming network instead of a borrowed game list.',
       gameSectionTitle: 'Original games to start with.',
@@ -187,10 +187,10 @@ export const siteConfig = {
     {
       id: 'free-online-games',
       path: '/free-online-games',
-      title: 'Free Online Games',
-      headline: 'Free online games you can play instantly.',
+      title: 'Free Online Games | Play Instantly Worldwide',
+      headline: 'Free online games you can play instantly worldwide.',
       eyebrow: 'Free online games',
-      description: 'Find free online games on GR8 GAMZ, including original arcade games, quick mobile games and more free games from the GR8 Game Network.',
+      description: 'Play free online games worldwide on GR8 GAMZ: browser arcade games, mobile games, no-download games, hot picks and more free game profiles.',
       filter: { platform: 'html5' },
       seoCopy: 'This page targets broad free-online-games discovery while still linking to real playable games and useful internal routes. It gives Google a clear page about the full GR8 GAMZ offer.',
       gameSectionTitle: 'Free online games to play now.'
@@ -198,10 +198,10 @@ export const siteConfig = {
     {
       id: 'play-free-games',
       path: '/play-free-games',
-      title: 'Play Free Games',
-      headline: 'Play free games without downloads.',
+      title: 'Play Free Games Online | No Download Browser Games',
+      headline: 'Play free games online without downloads.',
       eyebrow: 'Instant play',
-      description: 'Play free browser games with no installation, no app store friction and quick mobile-friendly sessions.',
+      description: 'Play free games online worldwide with no installation, no app store friction and quick mobile-friendly browser sessions.',
       filter: { platform: 'html5' },
       seoCopy: 'Players searching to play free games want speed and simplicity. This page makes the no-download benefit clear while pushing users into GR8 Originals, Hot Picks and More Free Games.',
       gameSectionTitle: 'Free games ready to play.'
@@ -209,10 +209,10 @@ export const siteConfig = {
     {
       id: 'html5-games',
       path: '/html5-games',
-      title: 'HTML5 Games',
-      headline: 'HTML5 games for modern browsers.',
+      title: 'HTML5 Games Online | Free Browser Games',
+      headline: 'HTML5 games for modern browsers worldwide.',
       eyebrow: 'HTML5 games',
-      description: 'Browse HTML5 games that run in modern mobile and desktop browsers without plugin downloads.',
+      description: 'Browse free HTML5 games that run in modern mobile and desktop browsers worldwide without plugin downloads.',
       filter: { platform: 'html5' },
       seoCopy: 'HTML5 game pages help search engines understand that GR8 GAMZ is built for modern browser play, not legacy downloads or blocked plugins.',
       gameSectionTitle: 'HTML5 games on GR8 GAMZ.'
@@ -264,10 +264,10 @@ export const siteConfig = {
     {
       id: 'no-download-games',
       path: '/no-download-games',
-      title: 'No Download Games',
-      headline: 'No download games you can play in your browser.',
+      title: 'No Download Games | Play Free Browser Games Instantly',
+      headline: 'No download games you can play instantly in your browser.',
       eyebrow: 'No downloads',
-      description: 'Play browser games without downloading an app, installing software or signing up before you start.',
+      description: 'Play free no-download games worldwide without installing apps, software or signing up before you start.',
       filter: { platform: 'html5' },
       seoCopy: 'No-download intent is one of the clearest advantages of a browser arcade. This page explains that benefit and routes visitors into real playable games.',
       gameSectionTitle: 'No-download games to play now.'
@@ -286,10 +286,10 @@ export const siteConfig = {
     {
       id: 'games-for-mobile',
       path: '/games-for-mobile',
-      title: 'Games for Mobile',
-      headline: 'Games for mobile browsers.',
+      title: 'Mobile Games Online | Free Phone Browser Games',
+      headline: 'Mobile games online for phone and tablet browsers.',
       eyebrow: 'Mobile browser games',
-      description: 'Play mobile browser games with tap, swipe, drag and hold controls built for touchscreen sessions.',
+      description: 'Play mobile games online worldwide with tap, swipe, drag and hold controls built for phone and tablet browser sessions.',
       filter: { platform: 'mobile' },
       seoCopy: 'This page gives Google another clear mobile-game route while serving players who are specifically looking for games that work well on a phone.',
       gameSectionTitle: 'Mobile-ready games.'
@@ -308,10 +308,10 @@ export const siteConfig = {
     {
       id: 'best-free-browser-games',
       path: '/best-free-browser-games',
-      title: 'Best Free Browser Games',
-      headline: 'Best free browser games on GR8 GAMZ.',
+      title: 'Best Free Browser Games | Play Online Instantly',
+      headline: 'Best free browser games to play instantly worldwide.',
       eyebrow: 'Best games list',
-      description: 'A curated starting point for the strongest free browser games, quick-play picks and GR8 original arcade loops.',
+      description: 'A curated worldwide starting point for the strongest free browser games, quick-play picks, no-download games and GR8 original arcade loops.',
       filter: { platform: 'html5' },
       limit: 12,
       seoCopy: 'Best-game pages help players choose faster. This page should grow over time using real player data, but it already provides a curated path through the strongest launch games.',
@@ -320,20 +320,20 @@ export const siteConfig = {
     {
       id: 'mobile-games',
       path: '/mobile-games',
-      title: 'Mobile Games',
-      headline: 'Free mobile browser games.',
+      title: 'Mobile Games Online | Play Free Phone Games',
+      headline: 'Free mobile games online for phones and tablets.',
       eyebrow: 'Mobile-first games',
-      description: 'Play GR8 GAMZ mobile games directly in your phone browser with tap, swipe, hold and drag controls. No app download required.',
+      description: 'Play free mobile games online directly in your phone or tablet browser with tap, swipe, hold and drag controls. No app download required.',
       filter: { platform: 'mobile' },
       seoCopy: 'This page groups the GR8 GAMZ games that are strongest for touchscreen play. It is designed as a clear mobile-games landing page for players and search engines.'
     },
     {
       id: 'quick-games',
       path: '/quick-games',
-      title: 'Quick Games',
-      headline: 'Quick games for short sessions.',
+      title: 'Quick Games Online | Fast Free Browser Games',
+      headline: 'Quick games online for short sessions and fast breaks.',
       eyebrow: 'Fast play',
-      description: 'Open a quick GR8 GAMZ game, learn the controls in seconds and chase a better score in short repeatable runs.',
+      description: 'Play quick games online worldwide, learn the controls in seconds and chase a better score in short repeatable browser runs.',
       filter: { control: 'tap' },
       seoCopy: 'Quick games work well for repeat visits because they reduce friction: simple controls, fast restarts and clear high-score targets.'
     },
@@ -468,12 +468,48 @@ export const siteConfig = {
           "gameSectionTitle": "Simple browser games to start with."
     },
     {
+      id: 'browser-games-online',
+      path: '/browser-games-online',
+      title: 'Browser Games Online | Free Instant Web Games',
+      headline: 'Browser games online you can play instantly.',
+      eyebrow: 'Browser games online',
+      description: 'Play browser games online worldwide with no installation, no app-store download and quick mobile-friendly sessions.',
+      filter: { platform: 'html5' },
+      seoCopy: 'This page strengthens GR8 GAMZ for broad global browser-game searches. It gives players a clear path to instant web games, original arcade pages, no-download routes and partner-powered game profiles.',
+      gameSectionTitle: 'Browser games to play now.',
+      keywordFocus: ['browser-games', 'free-online-games', 'no-download-games']
+    },
+    {
+      id: 'play-online-games-free',
+      path: '/play-online-games-free',
+      title: 'Play Online Games Free | Instant Browser Games',
+      headline: 'Play online games free without downloads.',
+      eyebrow: 'Play online free',
+      description: 'Play online games free worldwide on GR8 GAMZ, including quick arcade games, mobile games, no-download games and hot picks.',
+      filter: { platform: 'html5' },
+      seoCopy: 'Players searching to play online games free want speed, clarity and no forced installs. This page routes them into real playable game pages and the GR8-branded game network.',
+      gameSectionTitle: 'Online games ready to play.',
+      keywordFocus: ['free-online-games', 'browser-games', 'quick-games']
+    },
+    {
+      id: 'instant-games-online',
+      path: '/instant-games-online',
+      title: 'Instant Games Online | Play Free No Download Games',
+      headline: 'Instant games online with no download.',
+      eyebrow: 'Instant games',
+      description: 'Play instant games online worldwide: quick browser games, mobile-ready games and no-download arcade picks on GR8 GAMZ.',
+      filter: { platform: 'html5' },
+      seoCopy: 'Instant-play intent is a perfect fit for GR8 GAMZ. This page makes the fast-loading, no-download benefit explicit and links to playable games and related discovery hubs.',
+      gameSectionTitle: 'Instant games to start with.',
+      keywordFocus: ['no-download-games', 'quick-games', 'html5-games']
+    },
+    {
       id: 'free-browser-games',
       path: '/free-browser-games',
-      title: 'Free Browser Games',
-      headline: 'Free browser games with no download.',
+      title: 'Free Browser Games | No Download Online Games',
+      headline: 'Free browser games with no download and instant play.',
       eyebrow: 'Instant play',
-      description: 'Browse free GR8 GAMZ browser games built with HTML5, mobile-first controls, replay loops and no app installation.',
+      description: 'Browse free browser games worldwide built with HTML5, mobile-first controls, replay loops and no app installation.',
       filter: { platform: 'html5' },
       seoCopy: 'Free browser games are the core GR8 GAMZ format: accessible in modern browsers, quick to load and built around replayable arcade loops.'
     }

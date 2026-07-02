@@ -6,7 +6,7 @@ import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/
 export default function sitemap() {
   const now = new Date();
   const base = siteConfig.siteUrl.replace(/\/$/, '');
-  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/free-online-games', '/play-free-games', '/html5-games', '/arcade-games', '/action-games', '/puzzle-games', '/racing-games', '/no-download-games', '/one-tap-games', '/games-for-mobile', '/safe-browser-games', '/best-free-browser-games', '/original-games', '/more-free-games', '/more-free-games/trending', '/more-free-games/popular', '/more-free-games/new', '/play-next', '/hot-picks', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/contact', '/privacy', '/gaming-deals', '/partner-disclosure', '/guides'];
+  const staticRoutes = ['/', '/games', '/popular', '/new', '/a-z', '/search', '/mobile-games', '/quick-games', '/free-browser-games', '/free-online-games', '/play-free-games', '/html5-games', '/arcade-games', '/action-games', '/puzzle-games', '/racing-games', '/no-download-games', '/one-tap-games', '/games-for-mobile', '/safe-browser-games', '/best-free-browser-games', '/instant-games-online', '/play-online-games-free', '/browser-games-online', '/original-games', '/more-free-games', '/more-free-games/trending', '/more-free-games/popular', '/more-free-games/new', '/play-next', '/hot-picks', '/updates', '/collections', '/new-this-week', '/latest', '/feeds', '/seo-status', '/advertise', '/contact', '/privacy', '/gaming-deals', '/partner-disclosure', '/guides'];
   const routes = [
     ...staticRoutes,
     ...siteConfig.categories.map((category) => `/categories/${category.id}`),

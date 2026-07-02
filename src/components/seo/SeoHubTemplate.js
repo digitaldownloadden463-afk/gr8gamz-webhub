@@ -3,6 +3,7 @@ import GameGrid from '../GameGrid';
 import PartnerProfileGrid from '../partner/PartnerProfileGrid';
 import JsonLd from '../JsonLd';
 import AiSummaryBox from './AiSummaryBox';
+import GlobalKeywordPanel from './GlobalKeywordPanel';
 import { filterGames, getAllGames } from '../../lib/games';
 import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { collectionPageJsonLd, itemListJsonLd, faqJsonLd } from '../../lib/seo';
@@ -31,12 +32,14 @@ export default function SeoHubTemplate({ hub }) {
       <AiSummaryBox
         title={`${hub.title} quick summary`}
         bullets={[
-          `${hub.title} is part of the GR8 GAMZ game discovery network.`,
-          'The page links to real playable game pages and related discovery routes.',
-          'The layout combines playable game cards, context, FAQs and helpful internal links.',
+          `${hub.title} is built for worldwide free-game discovery on GR8 GAMZ.`,
+          'Players can open real playable browser-game pages with no forced app download.',
+          'The layout connects original games, partner profiles, hot picks and no-download routes.',
           `Current featured games: ${games.length}.`
         ]}
       />
+
+      <GlobalKeywordPanel active={hub.keywordFocus || []} compact />
 
       <section>
         <div className="section-heading section-heading-primary">
@@ -57,11 +60,11 @@ export default function SeoHubTemplate({ hub }) {
       />
 
       <section className="content-panel seo-detail-panel">
-        <span className="eyebrow">Why this page exists</span>
+        <span className="eyebrow">Worldwide discovery route</span>
         <h2>{hub.detailTitle || 'Built to help players choose faster.'}</h2>
         <p>{hub.seoCopy}</p>
         <p>
-          GR8 GAMZ uses focused hub pages to help players find the right game faster and to keep the arcade network easy to browse.
+          GR8 GAMZ uses focused discovery pages to help players worldwide find the right game faster, whether they want no-download games, mobile games, quick games or classic browser arcade picks.
         </p>
         <div className="quick-link-grid network-mini-links">
           <Link href="/original-games" className="quick-link-card"><strong>GR8 Originals</strong><small>Self-hosted original games</small></Link>

@@ -45,6 +45,8 @@ export function websiteJsonLd() {
     name: siteConfig.name,
     url: siteConfig.siteUrl,
     description: siteConfig.description,
+    inLanguage: 'en',
+    keywords: 'free online games, browser games, mobile games, no download games, HTML5 games, quick games, arcade games',
     potentialAction: {
       '@type': 'SearchAction',
       target: `${siteConfig.siteUrl}/search?q={search_term_string}`,
@@ -78,7 +80,7 @@ export function gameJsonLd(game, path) {
     genre: game.genre,
     playMode: 'SinglePlayer',
     operatingSystem: 'Any',
-    inLanguage: 'en-GB',
+    inLanguage: 'en',
     isAccessibleForFree: true,
     keywords: (game.tags || []).join(', '),
     aggregateRating: game.rating ? {

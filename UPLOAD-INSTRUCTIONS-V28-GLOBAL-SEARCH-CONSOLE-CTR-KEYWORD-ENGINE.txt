@@ -1,0 +1,38 @@
+GR8 GAMZ V28 upload instructions
+
+Use the update zip, not the full repository, unless something goes wrong.
+
+1. Download the V28 update zip.
+2. Unzip it on your computer.
+3. Open your GitHub repository root:
+   github.com/digitaldownloaden463-afk/gr8gamz-webhub
+4. Make sure you are on the main branch.
+5. Click Add file > Upload files.
+6. Drag the CONTENTS of the extracted V28 folder into GitHub.
+7. Do not upload the outer folder itself.
+8. Commit directly to main.
+
+Suggested commit message:
+Add V28 global Search Console CTR and keyword engine
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/
+https://www.gr8gamz.com/games
+https://www.gr8gamz.com/free-online-games
+https://www.gr8gamz.com/free-browser-games
+https://www.gr8gamz.com/no-download-games
+https://www.gr8gamz.com/mobile-games
+https://www.gr8gamz.com/quick-games
+https://www.gr8gamz.com/browser-games-online
+https://www.gr8gamz.com/play-online-games-free
+https://www.gr8gamz.com/instant-games-online
+https://www.gr8gamz.com/hot-picks
+https://www.gr8gamz.com/latest
+https://www.gr8gamz.com/feeds
+https://www.gr8gamz.com/updates/v28-global-search-console-ctr-keyword-engine
+https://www.gr8gamz.com/sitemap.xml
+https://www.gr8gamz.com/indexnow-urls.json
+
+After deploy, run IndexNow:
+https://www.gr8gamz.com/api/indexnow/bulk?scope=content&limit=40
+https://www.gr8gamz.com/api/indexnow/bulk?scope=games&limit=40
