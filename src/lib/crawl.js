@@ -3,6 +3,7 @@ import { getAllGames, getAllTags } from './games';
 import { getAllContentCollections, getAllUpdatePosts } from './content';
 import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/partnerGameProfiles';
 import { getFeaturedBuyerGuides } from '../data/affiliateGuides';
+import { communityRooms } from '../data/community';
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '470561d472ec49aca5a704b6d8a3eac0';
 
@@ -61,8 +62,10 @@ export function getCoreRoutes() {
     '/passport',
     '/badges',
     '/daily-challenge',
+    '/live',
     '/community',
     '/community-guidelines',
+    ...communityRooms.map((room) => room.href),
     '/guides',
     '/best-logitech-gaming-gear',
     '/best-razer-gaming-gear',
@@ -171,8 +174,9 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/gaming-deals', title: 'Gaming Deals and Buyer Guides', type: 'Monetisation', changed: '2026-07-02', priority: 0.88, reason: 'Affiliate disclosure and buyer-guide hub' },
     { path: '/passport', title: 'GR8 Passport', type: 'Player platform', changed: '2026-07-02', priority: 0.93, reason: 'In-house player account foundation' },
     { path: '/badges', title: 'GR8 Badges', type: 'Player platform', changed: '2026-07-02', priority: 0.89, reason: 'Player progression layer' },
-    { path: '/daily-challenge', title: 'GR8 Daily Challenge', type: 'Player platform', changed: '2026-07-02', priority: 0.9, reason: 'Daily missions and XP retention layer' },
-    { path: '/community', title: 'GR8 Clubhouse', type: 'Community', changed: '2026-07-02', priority: 0.88, reason: 'Controlled in-house community foundation' },
+    { path: '/daily-challenge', title: 'GR8 Daily Challenge', type: 'Player platform', changed: '2026-07-02', priority: 0.91, reason: 'Claimable daily missions and XP retention layer' },
+    { path: '/live', title: 'GR8 Arcade Pulse', type: 'Player platform', changed: '2026-07-02', priority: 0.91, reason: 'Live activity layer for sessions, missions and community signals' },
+    { path: '/community', title: 'GR8 Clubhouse', type: 'Community', changed: '2026-07-02', priority: 0.89, reason: 'Controlled in-house community foundation' },
     { path: '/contact', title: 'Contact GR8 GAMZ', type: 'Trust', changed: '2026-06-30', priority: 0.78, reason: 'Contact and support route' },
     { path: '/free-online-games', title: 'Free online games', type: 'SEO hub', changed: '2026-06-30', priority: 0.93, reason: 'Important search landing page' },
     { path: '/new-this-week', title: 'New this week', type: 'Fresh hub', changed: '2026-06-28', priority: 0.95, reason: 'Fresh crawl hub' },
@@ -209,6 +213,15 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Revenue-ready gaming buyer guide'
   }));
 
+  const community = communityRooms.map((room) => ({
+    path: room.href,
+    title: room.title,
+    type: 'Community room',
+    changed: '2026-07-02',
+    priority: 0.86,
+    reason: 'Controlled in-house Clubhouse submission room'
+  }));
+
   const games = getAllGames().slice(0, 15).map((game) => ({
     path: `/arcade/${game.id}`,
     title: game.name,
@@ -218,7 +231,7 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Playable game page'
   }));
 
-  return [...core, ...buyerGuides, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
+  return [...core, ...community, ...buyerGuides, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
     .sort((a, b) => new Date(b.changed) - new Date(a.changed) || b.priority - a.priority)
     .slice(0, limit);
 }

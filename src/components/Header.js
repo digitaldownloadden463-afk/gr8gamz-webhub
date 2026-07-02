@@ -11,6 +11,7 @@ export default function Header() {
         <Link href="/original-games">Originals</Link>
         <Link href="/more-free-games">More Free Games</Link>
         <Link href="/hot-picks">Hot Picks</Link>
+        <Link href="/live">Live</Link>
         <Link href="/gaming-deals">Gaming Deals</Link>
         <Link href="/community">Clubhouse</Link>
         <PassportNavBadge />

@@ -13,6 +13,7 @@ import NetworkMegaPanel from '../components/NetworkMegaPanel';
 import PartnerHeroShowcase from '../components/partner/PartnerHeroShowcase';
 import PassportHeroCard from '../components/passport/PassportHeroCard';
 import LiveActionPanel from '../components/passport/LiveActionPanel';
+import ArcadePulsePanel from '../components/passport/ArcadePulsePanel';
 import { siteConfig } from '../data/site';
 import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
 import { getFeaturedUpdatePosts } from '../lib/content';
@@ -78,6 +79,8 @@ export default function HomePage() {
         <LiveActionPanel />
       </section>
 
+      <ArcadePulsePanel compact />
+
       <DailyReward />
 
       <section id="games">
@@ -118,7 +121,7 @@ export default function HomePage() {
           <span className="eyebrow">Built to become a live player platform</span>
           <h2>A premium neon arcade brand built for discovery and repeat play.</h2>
           <p>
-            The next stage is owned player identity: GR8 Passport, saved games, XP, daily missions, badges and a controlled community layer that makes the arcade feel active without relying on third-party platforms.
+            The next stage is live owned activity: GR8 Passport, saved games, XP missions, badges, Arcade Pulse and a controlled community layer that makes the arcade feel active without relying on third-party platforms.
           </p>
         </div>
         <div className="immersive-banner-actions">

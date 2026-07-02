@@ -27,7 +27,7 @@ export default function LiveActionPanel() {
     <section className="live-action-panel content-panel compact-panel">
       <div className="section-heading compact">
         <span>Live-feeling player layer</span>
-        <h2>GR8 Passport activity starts here.</h2>
+        <h2>Passport activity is now feeding the Arcade Pulse.</h2>
       </div>
       <div className="passport-stat-grid">
         <div><strong>{state.plays || 0}</strong><span>Tracked plays</span></div>
@@ -44,10 +44,10 @@ export default function LiveActionPanel() {
           ))}
         </div>
       ) : (
-        <p className="muted-copy">Create a Passport, play games and save favourites to make this panel come alive.</p>
+        <p className="muted-copy">Create a Passport, play games, claim missions and submit Clubhouse notes to make this panel come alive.</p>
       )}
       <div className="passport-actions">
-        <Link href="/passport" className="secondary-cta">GR8 Passport</Link>
+        <Link href="/live" className="secondary-cta">Arcade Pulse</Link>
         <Link href="/community" className="secondary-cta">GR8 Clubhouse</Link>
       </div>
     </section>

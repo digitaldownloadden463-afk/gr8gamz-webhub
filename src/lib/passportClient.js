@@ -8,6 +8,8 @@ export const RECENT_KEY = 'gr8gamz_recent_games';
 export const FAV_KEY = 'gr8gamz_favourites';
 export const ACTIVITY_KEY = 'gr8gamz_activity';
 export const DAILY_KEY = 'gr8gamz_daily_reward';
+export const MISSION_CLAIMS_KEY = 'gr8gamz_mission_claims';
+export const CLUBHOUSE_KEY = 'gr8gamz_clubhouse_submissions';
 
 function canUseStorage() {
   return typeof window !== 'undefined' && Boolean(window.localStorage);
@@ -191,6 +193,106 @@ export function claimDailyReward() {
   return { claimed: true, alreadyClaimed: false, profile: nextProfile };
 }
 
+
+export function getMissionClaimMap() {
+  return readJson(MISSION_CLAIMS_KEY, {});
+}
+
+export function getClaimedMissionIds(date = todayKey()) {
+  const claims = getMissionClaimMap();
+  return Array.isArray(claims[date]) ? claims[date] : [];
+}
+
+export function claimMissionReward(mission = {}) {
+  if (!mission.id) return { ok: false, reason: 'missing-mission', profile: getProfile() };
+  const snapshot = getPassportSnapshot();
+  const complete = typeof mission.test === 'function' ? mission.test(snapshot.state || {}) : false;
+  if (!complete) return { ok: false, reason: 'not-complete', profile: snapshot.profile || getProfile() };
+
+  const today = todayKey();
+  const claims = getMissionClaimMap();
+  const claimedToday = Array.isArray(claims[today]) ? claims[today] : [];
+  if (claimedToday.includes(mission.id)) {
+    return { ok: true, alreadyClaimed: true, profile: snapshot.profile || getProfile() };
+  }
+
+  const profile = getProfile();
+  const xp = Number(mission.xp || 0);
+  const nextProfile = {
+    ...profile,
+    xp: Number(profile.xp || 0) + xp,
+    missionClaims: Number(profile.missionClaims || 0) + 1,
+    claimedMissionsByDay: {
+      ...(profile.claimedMissionsByDay || {}),
+      [today]: [...claimedToday, mission.id]
+    },
+    updatedAt: new Date().toISOString()
+  };
+  writeJson(PROFILE_KEY, nextProfile);
+  writeJson(MISSION_CLAIMS_KEY, { ...claims, [today]: [...claimedToday, mission.id] });
+  pushActivity({ type: 'mission_claim', label: `Claimed ${mission.label || 'mission'} reward (+${xp} XP)`, href: '/daily-challenge' });
+  return { ok: true, alreadyClaimed: false, profile: nextProfile };
+}
+
+export function getClubhouseSubmissions(roomId = null) {
+  const all = readJson(CLUBHOUSE_KEY, []);
+  return roomId ? all.filter((item) => item.roomId === roomId) : all;
+}
+
+export function submitClubhousePost(roomId, values = {}) {
+  const passport = getPassport();
+  const safeTitle = String(values.title || '').trim().replace(/[<>]/g, '').slice(0, 90);
+  const safeBody = String(values.body || '').trim().replace(/[<>]/g, '').slice(0, 900);
+  const safeGame = String(values.game || '').trim().replace(/[<>]/g, '').slice(0, 60);
+  if (!roomId || !safeTitle || !safeBody) {
+    return { ok: false, reason: 'missing-fields', submissions: getClubhouseSubmissions(roomId) };
+  }
+  const all = getClubhouseSubmissions();
+  const post = {
+    id: `club_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`,
+    roomId,
+    title: safeTitle,
+    body: safeBody,
+    game: safeGame,
+    status: 'queued-local',
+    author: passport ? { id: passport.id, username: passport.username, avatar: passport.avatar } : { username: 'Guest Player', avatar: '🕹️' },
+    createdAt: new Date().toISOString(),
+    version: 32
+  };
+  const next = [post, ...all].slice(0, 80);
+  writeJson(CLUBHOUSE_KEY, next);
+  pushActivity({ type: 'clubhouse_submission', label: `Submitted ${safeTitle} to GR8 Clubhouse`, href: `/community/${roomId}` });
+  return { ok: true, post, submissions: next.filter((item) => item.roomId === roomId) };
+}
+
+export function clearLocalClubhousePost(id) {
+  const next = getClubhouseSubmissions().filter((item) => item.id !== id);
+  writeJson(CLUBHOUSE_KEY, next);
+  return next;
+}
+
+export function getPulseSnapshot() {
+  const snapshot = getPassportSnapshot();
+  const clubhouse = getClubhouseSubmissions();
+  const recent = snapshot.recent || [];
+  const activity = snapshot.activity || [];
+  const state = snapshot.state || {};
+  const activeSignals = [
+    state.playsToday ? `${state.playsToday} tracked play${state.playsToday === 1 ? '' : 's'} today on this device` : 'Start a game to activate today’s play pulse',
+    state.favouriteCount ? `${state.favouriteCount} saved game${state.favouriteCount === 1 ? '' : 's'} in My Arcade` : 'Save a game to build your return list',
+    state.streak ? `${state.streak}-day daily reward streak` : 'Claim daily XP to start a streak',
+    clubhouse.length ? `${clubhouse.length} local Clubhouse submission${clubhouse.length === 1 ? '' : 's'} queued` : 'Submit a request to activate Clubhouse feedback'
+  ];
+
+  return {
+    ...snapshot,
+    clubhouse,
+    activeSignals,
+    latestGame: recent[0] || null,
+    latestActivity: activity[0] || null
+  };
+}
+
 export function getPassportSnapshot() {
   const passport = getPassport();
   const profile = getProfile();
@@ -204,10 +306,12 @@ export function getPassportSnapshot() {
     recentCount: recent.length,
     favouriteCount: favourites.length,
     dailyClaims: Number(profile.dailyClaims || 0),
+    missionClaims: Number(profile.missionClaims || 0),
     streak: Number(profile.streak || 0),
     playsToday: Number(profile.playsByDay?.[today] || 0),
     gamesTriedToday: Number(profile.gamesByDay?.[today]?.length || 0),
-    claimedToday: canUseStorage() ? window.localStorage.getItem(DAILY_KEY) === today : false
+    claimedToday: canUseStorage() ? window.localStorage.getItem(DAILY_KEY) === today : false,
+    claimedMissionIds: getClaimedMissionIds(today)
   };
 
   const unlocked = getUnlockedBadges(state);

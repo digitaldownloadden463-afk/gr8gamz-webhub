@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v32-arcade-pulse-missions-clubhouse-action-layer',
+    title: 'V32 Arcade Pulse, claimable missions and Clubhouse action layer',
+    date: '2026-07-02',
+    category: 'Player Activity',
+    description: 'V32 makes GR8 GAMZ feel more alive with an in-house Arcade Pulse page, claimable XP missions and controlled GR8 Clubhouse room submissions.',
+    tags: ['arcade-pulse', 'daily-missions', 'community', 'clubhouse', 'player-retention'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'GR8 Arcade Pulse shows player activity signals from real on-device actions instead of fake online counters.',
+      'Daily missions now have claimable XP rewards, adding a stronger reason to return and complete goals.',
+      'GR8 Clubhouse now has controlled room pages for game requests, high-score notes, bug reports, favourite-game picks and deal ideas.'
+    ],
+    sections: [
+      {
+        heading: 'Why V32 matters',
+        body: 'GR8 GAMZ now feels more active without relying on third-party chat, forum or account platforms. The site uses player sessions, saved games, mission claims and controlled Clubhouse submissions to create a live action layer.'
+      },
+      {
+        heading: 'No fake activity',
+        body: 'The Arcade Pulse is designed to avoid fake online counters. It starts from real local player actions now and is ready to connect to a GR8-owned database later.'
+      },
+      {
+        heading: 'Community, but controlled',
+        body: 'The Clubhouse rooms collect structured feedback locally first. Backend sync, admin moderation, reports and public publishing can be added in the next database phase.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Is the Arcade Pulse a third-party live chat system?',
+        answer: 'No. V32 keeps the activity layer in-house and does not add third-party chat, forum or account platforms.'
+      },
+      {
+        question: 'Are Clubhouse posts public yet?',
+        answer: 'No. V32 stores controlled local submissions and prepares the moderation workflow before public posting is enabled.'
+      }
+    ]
+  },
+  {
     slug: 'v31-in-house-gr8-passport-player-platform',
     title: 'V31 in-house GR8 Passport player platform foundation',
     date: '2026-07-02',

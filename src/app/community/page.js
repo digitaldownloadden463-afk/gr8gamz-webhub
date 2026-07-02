@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import JsonLd from '../../components/JsonLd';
+import { communityRooms } from '../../data/community';
 import { buildPageMetadata, breadcrumbJsonLd } from '../../lib/seo';
 
 export const metadata = buildPageMetadata({
@@ -8,12 +9,6 @@ export const metadata = buildPageMetadata({
   path: '/community'
 });
 
-const rooms = [
-  { title: 'Game requests', emoji: '🎮', description: 'Suggest new game types, categories and originals.', href: '/contact?topic=game-request' },
-  { title: 'High-score talk', emoji: '🏆', description: 'A future home for score challenges and player achievements.', href: '/daily-challenge' },
-  { title: 'Bug reports', emoji: '🛠️', description: 'Report gameplay issues, broken cards or mobile layout problems.', href: '/contact?topic=bug-report' },
-  { title: 'Gaming deals feedback', emoji: '🛒', description: 'Tell us what gear guides and gaming deal pages should come next.', href: '/gaming-deals' }
-];
 
 export default function CommunityPage() {
   return (
@@ -35,7 +30,7 @@ export default function CommunityPage() {
       </section>
 
       <section className="passport-feature-grid clubhouse-grid">
-        {rooms.map((room) => (
+        {communityRooms.map((room) => (
           <Link key={room.title} href={room.href} className="clubhouse-room">
             <strong>{room.emoji} {room.title}</strong>
             <p>{room.description}</p>
@@ -50,7 +45,7 @@ export default function CommunityPage() {
           <h2>Public posting comes after controls are ready.</h2>
         </div>
         <p>
-          The next community phase should include account-only posting, report buttons, spam controls, admin moderation, no private messaging at launch and no image uploads until the safety layer is mature.
+          V32 now adds controlled room pages for requests, score notes, bug reports, favourite-game picks and deal ideas. The next database phase should add account-only posting, report buttons, spam controls, admin moderation, no private messaging at launch and no image uploads until the safety layer is mature.
         </p>
       </section>
     </main>

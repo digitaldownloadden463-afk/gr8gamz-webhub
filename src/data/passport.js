@@ -54,6 +54,20 @@ export const passportBadges = [
     emoji: '🏆',
     description: 'Complete 15 tracked game sessions.',
     test: (state) => Number(state.plays || 0) >= 15
+  },
+  {
+    id: 'mission-claimer',
+    name: 'Mission Claimer',
+    emoji: '✅',
+    description: 'Claim your first mission reward.',
+    test: (state) => Number(state.missionClaims || 0) >= 1
+  },
+  {
+    id: 'today-active',
+    name: 'Today Active',
+    emoji: '📡',
+    description: 'Play 2 games in one day.',
+    test: (state) => Number(state.playsToday || 0) >= 2
   }
 ];
 
@@ -86,6 +100,25 @@ export const dailyMissions = [
     xp: 75,
     test: (state) => Boolean(state.claimedToday)
   }
+];
+
+export const weeklyChallenge = {
+  id: 'weekly-arcade-sprint',
+  title: 'Weekly Arcade Sprint',
+  emoji: '⚡',
+  description: 'Play 5 sessions, save 2 games and claim a daily XP reward to complete the weekly sprint loop.',
+  goals: [
+    { label: '5 tracked plays', test: (state) => Number(state.plays || 0) >= 5 },
+    { label: '2 saved games', test: (state) => Number(state.favouriteCount || 0) >= 2 },
+    { label: 'Daily XP claimed', test: (state) => Boolean(state.claimedToday) }
+  ]
+};
+
+export const pulseCards = [
+  { title: 'Hot today', emoji: '🔥', description: 'Play sessions, saved games and missions feed the GR8 Arcade Pulse.' },
+  { title: 'Daily target', emoji: '🎯', description: 'Short missions create a return habit without needing a third-party platform.' },
+  { title: 'Clubhouse queue', emoji: '💬', description: 'Controlled submissions prepare the forum layer before public posting goes live.' },
+  { title: 'My Arcade', emoji: '⭐', description: 'Saved and recently played games make every player dashboard feel personal.' }
 ];
 
 export const avatarOptions = ['🕹️', '⚡', '👾', '🚀', '🐍', '🏆', '🔥', '💚', '🎯', '🧩', '🏎️', '⭐'];

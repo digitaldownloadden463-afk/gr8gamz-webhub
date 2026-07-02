@@ -9,7 +9,8 @@
     "audit:partner-profiles": "node scripts/audit-partner-profiles.mjs",
     "audit:global-seo": "node scripts/audit-global-seo.mjs",
     "audit:affiliate-engine": "node scripts/audit-affiliate-engine.mjs",
-    "audit:passport-platform": "node scripts/audit-passport-platform.mjs"
+    "audit:passport-platform": "node scripts/audit-passport-platform.mjs",
+    "audit:v32-live-action": "node scripts/audit-v32-live-action.mjs"
   },
   "dependencies": {
     "next": "14.2.3",

@@ -6,6 +6,7 @@ import { getNextLevelXp } from '../../data/passport';
 import { getPassportSnapshot } from '../../lib/passportClient';
 import DailyMissionsPanel from './DailyMissionsPanel';
 import PassportBadgeGrid from './PassportBadgeGrid';
+import ArcadePulsePanel from './ArcadePulsePanel';
 
 export default function MyArcadeDashboard({ games = [] }) {
   const [snapshot, setSnapshot] = useState(null);
@@ -66,6 +67,8 @@ export default function MyArcadeDashboard({ games = [] }) {
           <Link href="/account" className="secondary-cta">Edit Passport</Link>
         </div>
       </section>
+
+      <ArcadePulsePanel compact />
 
       <DailyMissionsPanel />
 
