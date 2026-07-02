@@ -16,6 +16,12 @@ export default function Footer() {
         <Link href="/more-free-games">More free games</Link>
         <Link href="/hot-picks">Hot picks</Link>
         <Link href="/gaming-deals">Gaming deals</Link>
+        <Link href="/passport">GR8 Passport</Link>
+        <Link href="/my-arcade">My Arcade</Link>
+        <Link href="/badges">Badges</Link>
+        <Link href="/daily-challenge">Daily challenge</Link>
+        <Link href="/community">GR8 Clubhouse</Link>
+        <Link href="/community-guidelines">Community guidelines</Link>
         <Link href="/partner-disclosure">Partner disclosure</Link>
         <Link href="/affiliate-disclosure">Affiliate disclosure</Link>
         <Link href="/partners">Partners</Link>

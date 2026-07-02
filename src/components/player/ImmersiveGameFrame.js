@@ -66,12 +66,15 @@ export default function ImmersiveGameFrame({ game, nextGame }) {
         const currentBest = Number(gameScores[game.id] || 0);
         const nextScore = Number(data.score || 0);
         gameScores[game.id] = Math.max(currentBest, nextScore);
-        window.localStorage.setItem('gr8gamz_profile', JSON.stringify({
+        const nextProfile = {
           ...profile,
           xp: Number(profile.xp || 0) + Math.max(25, Math.min(250, Math.round(nextScore / 12) || 25)),
           lastScoreGame: game.id,
-          gameScores
-        }));
+          gameScores,
+          updatedAt: new Date().toISOString()
+        };
+        window.localStorage.setItem('gr8gamz_profile', JSON.stringify(nextProfile));
+        window.dispatchEvent(new CustomEvent('gr8-passport-change', { detail: { key: 'gr8gamz_profile', value: nextProfile } }));
       } catch {}
     }
     window.addEventListener('message', onMessage);

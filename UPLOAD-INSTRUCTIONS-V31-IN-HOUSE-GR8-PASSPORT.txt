@@ -1,0 +1,52 @@
+GR8 GAMZ V31 — Upload Instructions
+
+1. Download and unzip the V31 update pack.
+
+2. Open GitHub:
+   github.com/digitaldownloaden463-afk/gr8gamz-webhub
+
+3. Confirm branch:
+   main
+
+4. Click:
+   Add file → Upload files
+
+5. Drag the CONTENTS of the unzipped V31 folder into GitHub.
+   Do not upload the outer folder itself.
+
+Correct paths should look like:
+   src/app/passport/page.js
+   src/app/my-arcade/page.js
+   src/components/passport/PassportHeroCard.js
+   src/lib/passportClient.js
+   database/gr8-passport-schema.sql
+
+Wrong paths look like:
+   gr8gamz-v31-in-house-gr8-passport-player-platform-update/src/app/passport/page.js
+
+6. Commit message:
+   Add V31 in-house GR8 Passport player platform foundation
+
+7. Wait for Vercel to deploy.
+
+8. Test these URLs:
+   https://www.gr8gamz.com/passport
+   https://www.gr8gamz.com/passport/signup
+   https://www.gr8gamz.com/my-arcade
+   https://www.gr8gamz.com/badges
+   https://www.gr8gamz.com/daily-challenge
+   https://www.gr8gamz.com/community
+   https://www.gr8gamz.com/community-guidelines
+   https://www.gr8gamz.com/api/passport/status
+   https://www.gr8gamz.com/updates/v31-in-house-gr8-passport-player-platform
+
+9. Test player flow:
+   - Create a Passport
+   - Open a game
+   - Save the game
+   - Claim daily XP
+   - Open My Arcade
+   - Check saved games, recent games, XP and badges
+
+10. After deploy, run IndexNow:
+   https://www.gr8gamz.com/api/indexnow/bulk?scope=content&limit=40

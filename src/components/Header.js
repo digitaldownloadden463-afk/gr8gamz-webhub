@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import BrandLogo from './BrandLogo';
+import PassportNavBadge from './passport/PassportNavBadge';
 
 export default function Header() {
   return (
@@ -11,7 +12,8 @@ export default function Header() {
         <Link href="/more-free-games">More Free Games</Link>
         <Link href="/hot-picks">Hot Picks</Link>
         <Link href="/gaming-deals">Gaming Deals</Link>
-        <Link href="/updates">Updates</Link>
+        <Link href="/community">Clubhouse</Link>
+        <PassportNavBadge />
       </nav>
     </header>
   );

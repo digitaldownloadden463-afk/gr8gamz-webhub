@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v31-in-house-gr8-passport-player-platform',
+    title: 'V31 in-house GR8 Passport player platform foundation',
+    date: '2026-07-02',
+    category: 'Player Platform',
+    description: 'V31 adds the GR8 Passport player identity layer, My Arcade dashboard, local saved games, XP, badges, daily missions and a controlled GR8 Clubhouse community foundation.',
+    tags: ['passport', 'player-accounts', 'my-arcade', 'badges', 'community', 'retention'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'GR8 Passport introduces an in-house player identity layer without third-party account platforms.',
+      'My Arcade now brings saved games, recent sessions, XP, levels, badges and daily missions together.',
+      'GR8 Clubhouse prepares a controlled community foundation before public forum posting goes live.'
+    ],
+    sections: [
+      {
+        heading: 'Why V31 matters',
+        body: 'GR8 GAMZ now starts becoming a live player platform, not only a game catalogue. GR8 Passport gives players a reason to return by connecting saved games, XP, badges and daily missions to one branded player layer.'
+      },
+      {
+        heading: 'In-house first',
+        body: 'The foundation avoids third-party account, forum and chat platforms. It stores the first Passport layer on-device and includes a database-ready schema for the next backend phase.'
+      },
+      {
+        heading: 'Community without chaos',
+        body: 'GR8 Clubhouse starts as a controlled community hub for game requests, high-score talk, bug reports and feedback. Public posting can follow once moderation, reporting and admin tools are ready.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Is GR8 Passport a full server account yet?',
+        answer: 'V31 is the foundation. It works on-device now and includes the schema needed for an in-house database-backed account system later.'
+      },
+      {
+        question: 'Does V31 rely on Clerk, Discourse, Crisp or other community platforms?',
+        answer: 'No. V31 is built as a GR8-owned product layer and avoids third-party account, forum and chat dependencies.'
+      }
+    ]
+  },
+  {
     slug: 'v30-revenue-engine-affiliate-application-pack',
     title: 'V30 revenue engine and affiliate application pack',
     date: '2026-07-02',

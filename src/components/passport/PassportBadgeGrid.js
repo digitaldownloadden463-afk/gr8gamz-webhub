@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { passportBadges } from '../../data/passport';
 import { getPassportSnapshot } from '../../lib/passportClient';
 
-export default function AchievementBadges() {
+export default function PassportBadgeGrid() {
   const [snapshot, setSnapshot] = useState(null);
 
   useEffect(() => {
@@ -23,19 +23,19 @@ export default function AchievementBadges() {
   const unlockedIds = new Set((snapshot?.unlockedBadges || []).map((badge) => badge.id));
 
   return (
-    <section className="content-panel achievement-panel">
+    <section className="content-panel compact-panel passport-badges-panel">
       <div className="section-heading compact">
-        <span>GR8 Passport badges</span>
-        <h2>Unlock player progress.</h2>
+        <span>GR8 Badges</span>
+        <h2>Unlock progress markers.</h2>
       </div>
-      <div className="achievement-grid">
-        {passportBadges.slice(0, 5).map((achievement) => {
-          const unlocked = unlockedIds.has(achievement.id);
+      <div className="passport-badge-grid">
+        {passportBadges.map((badge) => {
+          const unlocked = unlockedIds.has(badge.id);
           return (
-            <div key={achievement.name} className={`achievement-badge ${unlocked ? 'unlocked' : ''}`}>
-              <strong>{unlocked ? achievement.emoji : '🔒'} {achievement.name}</strong>
-              <span>{achievement.description}</span>
-            </div>
+            <article key={badge.id} className={`passport-badge ${unlocked ? 'unlocked' : ''}`}>
+              <strong>{unlocked ? badge.emoji : '🔒'} {badge.name}</strong>
+              <span>{badge.description}</span>
+            </article>
           );
         })}
       </div>

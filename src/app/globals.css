@@ -3255,3 +3255,368 @@ article.game-card .thumb-status-badge {
     grid-template-columns: 1fr;
   }
 }
+
+/* V31 — GR8 Passport in-house player platform */
+.passport-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  border: 1px solid rgba(53,255,141,.22);
+  border-radius: 999px;
+  padding: 8px 13px !important;
+  background: rgba(53,255,141,.075);
+  color: #eafff3 !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.passport-nav-link-active {
+  background: linear-gradient(135deg, rgba(53,255,141,.22), rgba(113,92,255,.18));
+  box-shadow: 0 10px 30px rgba(53,255,141,.1);
+}
+.passport-nav-link strong {
+  max-width: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.passport-nav-link em {
+  color: var(--brand);
+  font-size: .72rem;
+  font-style: normal;
+  font-weight: 950;
+}
+.homepage-passport-grid,
+.passport-landing-hero,
+.passport-form-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+  gap: 22px;
+  align-items: stretch;
+  margin: 28px 0;
+}
+.passport-landing-hero,
+.passport-form-shell {
+  align-items: center;
+  min-height: 52vh;
+}
+.passport-landing-hero h1,
+.passport-form-shell h1,
+.passport-dashboard-hero h1,
+.passport-empty-state h1 {
+  margin: 10px 0 14px;
+  font-size: clamp(2.7rem, 7vw, 5.6rem);
+  line-height: .9;
+  letter-spacing: -.08em;
+}
+.passport-card,
+.passport-landing-hero > div:first-child,
+.passport-form-shell > div:first-child,
+.passport-dashboard-hero,
+.daily-mission-panel,
+.passport-feature-grid article,
+.clubhouse-room,
+.passport-empty-state {
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(53,255,141,.12), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+  box-shadow: 0 24px 60px rgba(0,0,0,.2);
+}
+.passport-card,
+.passport-landing-hero > div:first-child,
+.passport-form-shell > div:first-child,
+.passport-dashboard-hero,
+.daily-mission-panel,
+.passport-empty-state {
+  padding: clamp(22px, 4vw, 38px);
+}
+.passport-card h2,
+.daily-mission-panel h2 {
+  margin: 10px 0;
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  letter-spacing: -.06em;
+}
+.passport-card p,
+.passport-landing-hero p,
+.passport-form-shell p,
+.daily-mission-panel p,
+.passport-feature-grid p,
+.clubhouse-room p,
+.muted-copy {
+  color: var(--muted);
+  line-height: 1.62;
+}
+.passport-card-active {
+  border-color: rgba(53,255,141,.22);
+}
+.passport-player-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.passport-avatar {
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(53,255,141,.35);
+  border-radius: 22px;
+  background: rgba(53,255,141,.1);
+  font-size: 2rem;
+  box-shadow: inset 0 0 30px rgba(53,255,141,.08);
+}
+.passport-avatar.giant {
+  width: 92px;
+  height: 92px;
+  font-size: 3rem;
+  border-radius: 30px;
+}
+.passport-progress {
+  position: relative;
+  height: 10px;
+  overflow: hidden;
+  margin: 22px 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+}
+.passport-progress span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand), #7dffbf, #7c5cff);
+  box-shadow: 0 0 24px rgba(53,255,141,.3);
+}
+.passport-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+.passport-stat-grid.big {
+  grid-template-columns: repeat(4, 1fr);
+}
+.passport-stat-grid div {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,.04);
+}
+.passport-stat-grid strong {
+  display: block;
+  color: #fff;
+  font-size: 1.55rem;
+  letter-spacing: -.05em;
+}
+.passport-stat-grid span {
+  color: var(--muted);
+  font-size: .82rem;
+}
+.passport-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.passport-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.passport-feature-grid article,
+.clubhouse-room {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+  color: var(--text);
+  text-decoration: none;
+}
+.clubhouse-room:hover {
+  border-color: rgba(53,255,141,.28);
+  transform: translateY(-3px);
+}
+.clubhouse-room span {
+  margin-top: auto;
+  color: var(--brand);
+  font-weight: 950;
+}
+.passport-form {
+  display: grid;
+  gap: 18px;
+  border: 1px solid rgba(53,255,141,.18);
+  border-radius: 28px;
+  padding: clamp(22px, 4vw, 34px);
+  background: linear-gradient(180deg, rgba(53,255,141,.065), rgba(255,255,255,.025));
+}
+.passport-form label,
+.passport-form fieldset {
+  display: grid;
+  gap: 9px;
+  color: #fff;
+  font-weight: 900;
+}
+.passport-form input {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 16px;
+  padding: 0 16px;
+  background: rgba(0,0,0,.22);
+  color: #fff;
+  font: inherit;
+}
+.passport-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.avatar-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.avatar-picker button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-size: 1.45rem;
+  cursor: pointer;
+}
+.avatar-picker button.selected,
+.avatar-picker button:hover {
+  border-color: rgba(53,255,141,.55);
+  background: rgba(53,255,141,.16);
+}
+.form-note {
+  color: var(--brand);
+  font-size: .92rem;
+  font-weight: 800;
+}
+.muted-note {
+  color: var(--muted);
+  font-weight: 600;
+}
+.my-arcade-dashboard {
+  display: grid;
+  gap: 22px;
+}
+.passport-empty-state {
+  margin: 48px auto;
+  max-width: 840px;
+  text-align: center;
+}
+.daily-mission-panel {
+  display: grid;
+  gap: 18px;
+  border-color: rgba(53,255,141,.18);
+}
+.mission-grid,
+.passport-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.mission-card,
+.passport-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 128px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 18px;
+  background: rgba(255,255,255,.04);
+}
+.mission-card.complete,
+.passport-badge.unlocked {
+  border-color: rgba(53,255,141,.28);
+  background: rgba(53,255,141,.08);
+}
+.mission-card strong,
+.passport-badge strong {
+  color: #fff;
+}
+.mission-card span,
+.passport-badge span,
+.activity-feed-list span {
+  color: var(--muted);
+  line-height: 1.45;
+}
+.mission-card em {
+  margin-top: auto;
+  color: var(--brand);
+  font-style: normal;
+  font-weight: 950;
+}
+.activity-feed-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.activity-feed-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+  padding: 13px 15px;
+  background: rgba(255,255,255,.035);
+  color: var(--text);
+  text-decoration: none;
+}
+.activity-feed-list a:hover {
+  border-color: rgba(53,255,141,.24);
+}
+.guideline-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 22px;
+  padding-left: 22px;
+  color: rgba(255,255,255,.84);
+  line-height: 1.55;
+}
+@media (max-width: 1100px) {
+  .homepage-passport-grid,
+  .passport-landing-hero,
+  .passport-form-shell {
+    grid-template-columns: 1fr;
+  }
+  .passport-feature-grid,
+  .mission-grid,
+  .passport-badge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .passport-stat-grid,
+  .passport-stat-grid.big {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .passport-player-row {
+    align-items: flex-start;
+  }
+  .passport-feature-grid,
+  .mission-grid,
+  .passport-badge-grid {
+    grid-template-columns: 1fr;
+  }
+  .passport-landing-hero h1,
+  .passport-form-shell h1,
+  .passport-dashboard-hero h1,
+  .passport-empty-state h1 {
+    font-size: clamp(2.4rem, 14vw, 4.2rem);
+  }
+  .activity-feed-list a {
+    flex-direction: column;
+  }
+}

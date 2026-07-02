@@ -8,7 +8,8 @@ export const metadata = buildPageMetadata({
 });
 
 const storageRows = [
-  ['Local progression', 'XP, streaks, favourites, recently viewed games and saved games can be stored in your browser so the arcade feels more personal without requiring an account.'],
+  ['GR8 Passport', 'Your player name, avatar, XP, streaks, badges, favourites, recently played games and local activity can be stored in your browser during the Passport foundation phase.'],
+  ['Local progression', 'XP, streaks, favourites, recently viewed games and saved games can be stored in your browser so the arcade feels more personal without requiring a server account yet.'],
   ['Partner games', 'Some games in More Free Games are provided through approved partner networks. Those partners may process gameplay, advertising or reporting data when their game loads.'],
   ['Advertising', 'GR8 GAMZ may show labelled ad spaces, sponsored placements and partner-powered advertising. Ads should never be disguised as gameplay controls.'],
   ['Affiliate links', 'Some buyer-guide or deal links may be affiliate links. If you click and buy, GR8 GAMZ may earn a commission at no extra cost to you.'],
@@ -39,7 +40,7 @@ export default function PrivacyPage() {
           <span className="eyebrow">What may be used</span>
           <h2>Data and storage used by the arcade.</h2>
           <p>
-            GR8 GAMZ aims to keep the core play experience simple. Most launch features use browser-side storage rather than requiring a player account.
+            GR8 GAMZ aims to keep the core play experience simple. V31 adds the GR8 Passport foundation. It uses browser-side storage first, while the in-house database schema prepares cross-device accounts and community features for a later backend phase.
           </p>
         </div>
         <div className="privacy-row-grid">
@@ -55,7 +56,7 @@ export default function PrivacyPage() {
       <section className="content-panel">
         <h2>Local storage features</h2>
         <p>
-          The site may use browser local storage for features such as recently played games, saved games, XP-style progress, daily rewards, streaks, basic preferences and display choices. This information is stored on your device and can usually be cleared by clearing site data in your browser.
+          The site may use browser local storage for GR8 Passport features such as player name, avatar, recently played games, saved games, XP-style progress, badges, daily rewards, streaks, local activity, basic preferences and display choices. This information is stored on your device and can usually be cleared by clearing site data in your browser. It is not the same as a cross-device server account yet.
         </p>
       </section>
 
@@ -83,9 +84,9 @@ export default function PrivacyPage() {
       <section className="content-panel">
         <h2>Contact and updates</h2>
         <p>
-          Questions about privacy, advertising, partner-game listings or content can be sent through the <Link href="/contact">contact page</Link>. This policy may be updated as GR8 GAMZ adds analytics, advertising partners, affiliate programmes, account features or new game networks.
+          Questions about privacy, advertising, partner-game listings or content can be sent through the <Link href="/contact">contact page</Link>. This policy may be updated as GR8 GAMZ adds analytics, advertising partners, affiliate programmes, GR8 Passport, community features, account features or new game networks.
         </p>
-        <p><strong>Last updated:</strong> 30 June 2026.</p>
+        <p><strong>Last updated:</strong> 2 July 2026.</p>
       </section>
     </main>
   );

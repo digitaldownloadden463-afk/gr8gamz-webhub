@@ -11,6 +11,8 @@ import ContentRail from '../components/content/ContentRail';
 import JsonLd from '../components/JsonLd';
 import NetworkMegaPanel from '../components/NetworkMegaPanel';
 import PartnerHeroShowcase from '../components/partner/PartnerHeroShowcase';
+import PassportHeroCard from '../components/passport/PassportHeroCard';
+import LiveActionPanel from '../components/passport/LiveActionPanel';
 import { siteConfig } from '../data/site';
 import { getFeaturedGames, getNewGames, getPopularGames, getAllTags, getQuickPlayGames, getHardModeGames } from '../lib/games';
 import { getFeaturedUpdatePosts } from '../lib/content';
@@ -41,6 +43,7 @@ export default function HomePage() {
             <Link href="/original-games" className="cta">Play GR8 Originals</Link>
             <Link href="/more-free-games" className="secondary-cta">More Free Games</Link>
             <Link href="/hot-picks" className="secondary-cta">Hot Picks</Link>
+            <Link href="/passport" className="secondary-cta">GR8 Passport</Link>
           </div>
           <div className="hero-support-grid" aria-label="GR8 GAMZ network highlights">
             <div className="hero-support-card">
@@ -69,6 +72,11 @@ export default function HomePage() {
       </section>
 
       <NetworkMegaPanel />
+
+      <section className="homepage-passport-grid" aria-label="GR8 Passport player system">
+        <PassportHeroCard />
+        <LiveActionPanel />
+      </section>
 
       <DailyReward />
 
@@ -107,10 +115,10 @@ export default function HomePage() {
 
       <section className="immersive-banner" aria-label="GR8 GAMZ market growth banner">
         <div className="immersive-banner-copy">
-          <span className="eyebrow">Built to outgrow a simple game list</span>
+          <span className="eyebrow">Built to become a live player platform</span>
           <h2>A premium neon arcade brand built for discovery and repeat play.</h2>
           <p>
-            The next stage is about scale with quality: more useful pages, stronger internal links, clear branding, live-feeling discovery and a revenue path that does not damage the player experience.
+            The next stage is owned player identity: GR8 Passport, saved games, XP, daily missions, badges and a controlled community layer that makes the arcade feel active without relying on third-party platforms.
           </p>
         </div>
         <div className="immersive-banner-actions">

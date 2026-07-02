@@ -58,6 +58,11 @@ export function getCoreRoutes() {
     '/contact',
     '/privacy',
     '/gaming-deals',
+    '/passport',
+    '/badges',
+    '/daily-challenge',
+    '/community',
+    '/community-guidelines',
     '/guides',
     '/best-logitech-gaming-gear',
     '/best-razer-gaming-gear',
@@ -153,7 +158,7 @@ export function getFreshChangedPages(limit = 40) {
   }));
 
   const core = [
-    { path: '/', title: 'Homepage', type: 'Core', changed: '2026-06-30', priority: 1, reason: 'Primary platform entry point' },
+    { path: '/', title: 'Homepage', type: 'Core', changed: '2026-07-02', priority: 1, reason: 'Primary platform entry point with GR8 Passport layer' },
     { path: '/games', title: 'All games', type: 'Core', changed: '2026-06-30', priority: 0.98, reason: 'Main game catalogue' },
     { path: '/original-games', title: 'GR8 Originals', type: 'SEO hub', changed: '2026-06-30', priority: 0.96, reason: 'Brand-owned game hub' },
     { path: '/more-free-games', title: 'More Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.97, reason: 'Main branded partner-game hub' },
@@ -163,7 +168,11 @@ export function getFreshChangedPages(limit = 40) {
     { path: '/more-free-games/new', title: 'New Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Fresh partner game discovery route' },
     { path: '/hot-picks', title: 'Hot Picks', type: 'Fresh hub', changed: '2026-06-30', priority: 0.94, reason: 'Featured game discovery hub' },
     { path: '/privacy', title: 'Privacy, Cookies and Advertising', type: 'Trust', changed: '2026-06-30', priority: 0.88, reason: 'Launch trust and compliance page' },
-    { path: '/gaming-deals', title: 'Gaming Deals and Buyer Guides', type: 'Monetisation', changed: '2026-06-30', priority: 0.88, reason: 'Affiliate disclosure and buyer-guide hub' },
+    { path: '/gaming-deals', title: 'Gaming Deals and Buyer Guides', type: 'Monetisation', changed: '2026-07-02', priority: 0.88, reason: 'Affiliate disclosure and buyer-guide hub' },
+    { path: '/passport', title: 'GR8 Passport', type: 'Player platform', changed: '2026-07-02', priority: 0.93, reason: 'In-house player account foundation' },
+    { path: '/badges', title: 'GR8 Badges', type: 'Player platform', changed: '2026-07-02', priority: 0.89, reason: 'Player progression layer' },
+    { path: '/daily-challenge', title: 'GR8 Daily Challenge', type: 'Player platform', changed: '2026-07-02', priority: 0.9, reason: 'Daily missions and XP retention layer' },
+    { path: '/community', title: 'GR8 Clubhouse', type: 'Community', changed: '2026-07-02', priority: 0.88, reason: 'Controlled in-house community foundation' },
     { path: '/contact', title: 'Contact GR8 GAMZ', type: 'Trust', changed: '2026-06-30', priority: 0.78, reason: 'Contact and support route' },
     { path: '/free-online-games', title: 'Free online games', type: 'SEO hub', changed: '2026-06-30', priority: 0.93, reason: 'Important search landing page' },
     { path: '/new-this-week', title: 'New this week', type: 'Fresh hub', changed: '2026-06-28', priority: 0.95, reason: 'Fresh crawl hub' },

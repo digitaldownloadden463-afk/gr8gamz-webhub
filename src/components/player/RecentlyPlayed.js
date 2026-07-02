@@ -2,16 +2,22 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { getRecentGames } from '../../lib/passportClient';
 
 export default function RecentlyPlayed() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    try {
-      setItems(JSON.parse(window.localStorage.getItem('gr8gamz_recent_games') || '[]').slice(0, 5));
-    } catch {
-      setItems([]);
+    function sync() {
+      setItems(getRecentGames().slice(0, 5));
     }
+    sync();
+    window.addEventListener('gr8-passport-change', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('gr8-passport-change', sync);
+      window.removeEventListener('storage', sync);
+    };
   }, []);
 
   if (!items.length) return null;
@@ -26,7 +32,7 @@ export default function RecentlyPlayed() {
         {items.map((item) => (
           <Link key={item.id} href={item.href} className="quick-link-card">
             <strong>{item.emoji} {item.name}</strong>
-            <small>Resume game</small>
+            <small>Resume game from My Arcade</small>
           </Link>
         ))}
       </div>

@@ -1,69 +1,44 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-
-const REWARD_KEY = 'gr8gamz_daily_reward';
-const XP_KEY = 'gr8gamz_profile';
-
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function readProfile() {
-  try {
-    return JSON.parse(window.localStorage.getItem(XP_KEY) || '{}');
-  } catch {
-    return {};
-  }
-}
-
-function writeProfile(profile) {
-  window.localStorage.setItem(XP_KEY, JSON.stringify(profile));
-}
+import { useEffect, useState } from 'react';
+import { claimDailyReward, getPassportSnapshot } from '../../lib/passportClient';
 
 export default function DailyReward() {
-  const [claimed, setClaimed] = useState(false);
-  const [xp, setXp] = useState(0);
-  const today = useMemo(() => todayKey(), []);
+  const [snapshot, setSnapshot] = useState(null);
+  const state = snapshot?.state || {};
 
   useEffect(() => {
-    try {
-      setClaimed(window.localStorage.getItem(REWARD_KEY) === today);
-      const profile = readProfile();
-      setXp(Number(profile.xp || 0));
-    } catch {}
-  }, [today]);
+    function sync() {
+      setSnapshot(getPassportSnapshot());
+    }
+    sync();
+    window.addEventListener('gr8-passport-change', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('gr8-passport-change', sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
 
   function claimReward() {
-    if (claimed) return;
-    const profile = readProfile();
-    const nextXp = Number(profile.xp || 0) + 75;
-    const next = {
-      ...profile,
-      xp: nextXp,
-      lastDailyReward: today,
-      dailyClaims: Number(profile.dailyClaims || 0) + 1
-    };
-    writeProfile(next);
-    window.localStorage.setItem(REWARD_KEY, today);
-    setXp(nextXp);
-    setClaimed(true);
+    claimDailyReward();
+    setSnapshot(getPassportSnapshot());
   }
 
   return (
     <section className="reward-card">
       <div>
-        <span className="eyebrow">Daily reward</span>
-        <h2>{claimed ? 'Reward locked in.' : 'Claim today’s XP boost.'}</h2>
+        <span className="eyebrow">GR8 Passport daily reward</span>
+        <h2>{state.claimedToday ? 'Reward locked in.' : 'Claim today’s XP boost.'}</h2>
         <p>
           Keep returning to build the habit loop. Claim your daily XP, then jump into a quick-play challenge.
         </p>
       </div>
       <div className="reward-side">
-        <strong>{claimed ? '+75 XP claimed' : '+75 XP'}</strong>
-        <span>Total local XP: {xp}</span>
-        <button type="button" className="cta session-button" onClick={claimReward} disabled={claimed}>
-          {claimed ? 'Come back tomorrow' : 'Claim daily reward'}
+        <strong>{state.claimedToday ? '+75 XP claimed' : '+75 XP'}</strong>
+        <span>Total Passport XP: {state.xp || 0}</span>
+        <button type="button" className="cta session-button" onClick={claimReward} disabled={state.claimedToday}>
+          {state.claimedToday ? 'Come back tomorrow' : 'Claim daily reward'}
         </button>
       </div>
     </section>
