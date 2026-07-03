@@ -45,8 +45,16 @@ export default function CommunityPage() {
           <h2>Public posting comes after controls are ready.</h2>
         </div>
         <p>
-          V32 now adds controlled room pages for requests, score notes, bug reports, favourite-game picks and deal ideas. The next database phase should add account-only posting, report buttons, spam controls, admin moderation, no private messaging at launch and no image uploads until the safety layer is mature.
+          V33 adds room boards, starter prompts, report flows and a GR8 Control Room so the community can feel active while moderation remains controlled. The next database phase should add account-only posting, persistent admin roles, spam controls, no private messaging at launch and no image uploads until the safety layer is mature.
         </p>
+      </section>
+
+      <section className="content-panel compact-panel">
+        <div className="section-heading compact">
+          <span>Control Room ready</span>
+          <h2>Review feedback before public publishing.</h2>
+        </div>
+        <p>Open the noindex <Link href="/admin">GR8 Control Room</Link> to review local Clubhouse submissions, support messages and reports before the backend database phase.</p>
       </section>
     </main>
   );

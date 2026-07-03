@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v33-control-room-moderation-support-foundation',
+    title: 'V33 Control Room, moderation and support foundation',
+    date: '2026-07-02',
+    category: 'Community Safety',
+    description: 'V33 adds the in-house GR8 Control Room, Clubhouse moderation queue, report centre, support inbox foundation and safer room boards.',
+    tags: ['control-room', 'moderation', 'support', 'reports', 'clubhouse', 'community-safety'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'GR8 Control Room gives the site a noindex admin foundation for reviewing local Clubhouse submissions, support messages and reports.',
+      'Clubhouse rooms now feel more active with starter board prompts and visible local submissions that can be reviewed safely.',
+      'Support and report routes keep player feedback in-house instead of relying on third-party live chat or forum widgets.'
+    ],
+    sections: [
+      {
+        heading: 'Why V33 matters',
+        body: 'GR8 GAMZ is moving from a game catalogue into a live platform. Before opening full public forums, the site now has an in-house workflow for moderation, player reports, support messages and controlled community boards.'
+      },
+      {
+        heading: 'Community without chaos',
+        body: 'The Clubhouse remains controlled. Starter prompts and local room boards create activity, while report buttons and Control Room review prepare the safety layer before wider public posting is enabled.'
+      },
+      {
+        heading: 'No third-party live chat dependency',
+        body: 'V33 adds support and report forms that feed the GR8 workflow. The next backend phase can store those messages in a GR8-owned database with secure admin roles.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Is the Control Room public?',
+        answer: 'No. The admin routes are noindex and built as an operating foundation. They should be secured with backend admin roles in the database phase.'
+      },
+      {
+        question: 'Does V33 use a third-party forum or chat platform?',
+        answer: 'No. V33 keeps the workflow in-house and avoids Clerk, Discourse, Crisp, Tawk or similar community/chat dependencies.'
+      }
+    ]
+  },
+  {
     slug: 'v32-arcade-pulse-missions-clubhouse-action-layer',
     title: 'V32 Arcade Pulse, claimable missions and Clubhouse action layer',
     date: '2026-07-02',

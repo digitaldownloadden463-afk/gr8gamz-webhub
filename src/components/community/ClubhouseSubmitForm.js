@@ -39,7 +39,7 @@ export default function ClubhouseSubmitForm({ room }) {
     setForm({ title: '', game: '', body: '' });
     setSubmissions(result.submissions);
     setSnapshot(getPassportSnapshot());
-    setMessage('Submitted to the local moderation queue. Backend sync comes in the next database phase.');
+    setMessage('Submitted to the local moderation queue. Open the GR8 Control Room to review it.');
   }
 
   const passport = snapshot?.passport;
@@ -79,7 +79,7 @@ export default function ClubhouseSubmitForm({ room }) {
       <aside className="clubhouse-local-queue">
         <span className="eyebrow">Local queue</span>
         <h2>Submissions on this device</h2>
-        <p>V32 keeps this controlled and local while the in-house database, moderation dashboard and admin tools are prepared.</p>
+        <p>V33 keeps this controlled and local while the in-house database, secure admin roles and persistent moderation records are prepared.</p>
         {submissions.length ? (
           <div className="activity-feed-list">
             {submissions.slice(0, 6).map((item) => (

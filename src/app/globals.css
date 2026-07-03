@@ -3819,3 +3819,228 @@ article.game-card .thumb-status-badge {
     flex-direction: column;
   }
 }
+
+/* V33 — In-house Control Room, support inbox and safer Clubhouse boards */
+.clubhouse-board-shell,
+.admin-control-room,
+.support-form-shell {
+  display: grid;
+  gap: 18px;
+  margin: 28px 0;
+}
+.clubhouse-board-grid,
+.admin-card-grid,
+.admin-stat-grid,
+.admin-two-column {
+  display: grid;
+  gap: 14px;
+}
+.clubhouse-board-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.clubhouse-board-card,
+.admin-warning-card,
+.admin-action-card,
+.admin-panel-card,
+.support-side-card {
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top left, rgba(124,92,255,.14), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+}
+.clubhouse-board-card,
+.admin-warning-card,
+.admin-action-card,
+.admin-panel-card,
+.support-side-card {
+  padding: clamp(18px, 3vw, 28px);
+}
+.clubhouse-board-card.starter {
+  border-color: rgba(53,255,141,.18);
+  background:
+    radial-gradient(circle at top left, rgba(53,255,141,.13), transparent 34%),
+    rgba(255,255,255,.04);
+}
+.clubhouse-board-card.approved {
+  border-color: rgba(53,255,141,.32);
+}
+.clubhouse-board-card.hidden {
+  opacity: .55;
+}
+.board-card-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--brand);
+  font-size: .78rem;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.clubhouse-board-card h3,
+.admin-warning-card h2,
+.admin-action-card strong,
+.admin-panel-card h2,
+.support-side-card h2,
+.admin-review-item strong {
+  color: #fff;
+}
+.clubhouse-board-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+.clubhouse-board-card p,
+.clubhouse-board-card small,
+.admin-warning-card p,
+.admin-action-card p,
+.admin-panel-card p,
+.support-side-card p,
+.admin-review-item p,
+.admin-review-item span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+.mini-admin-button {
+  justify-self: start;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+.mini-admin-button:hover {
+  border-color: rgba(53,255,141,.34);
+}
+.admin-stat-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.admin-stat-grid.small {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+}
+.admin-stat-grid div {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 18px;
+  background: rgba(255,255,255,.04);
+}
+.admin-stat-grid strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  letter-spacing: -.07em;
+}
+.admin-stat-grid span {
+  color: var(--muted);
+  font-weight: 800;
+}
+.admin-card-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.admin-action-card {
+  color: var(--text);
+  text-decoration: none;
+}
+.admin-action-card:hover {
+  border-color: rgba(53,255,141,.28);
+  transform: translateY(-2px);
+}
+.admin-action-card span {
+  color: var(--brand);
+  font-weight: 950;
+}
+.admin-review-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.admin-review-list.small {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 4px;
+}
+.admin-review-item {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 16px;
+  background: rgba(0,0,0,.18);
+}
+.admin-review-item span {
+  display: block;
+  margin-top: 4px;
+  font-size: .92rem;
+}
+.admin-review-item p {
+  margin: 0;
+}
+.admin-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-button-row button {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 9px 11px;
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+.admin-button-row button.active,
+.admin-button-row button:hover {
+  border-color: rgba(53,255,141,.36);
+  background: rgba(53,255,141,.1);
+}
+.admin-button-row button.danger:hover {
+  border-color: rgba(255,91,111,.45);
+  background: rgba(255,91,111,.12);
+}
+.admin-two-column,
+.support-form-shell {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .75fr);
+  align-items: start;
+}
+.clubhouse-submit-form select {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(0,0,0,.22);
+  color: #fff;
+  font: inherit;
+}
+@media (max-width: 1100px) {
+  .admin-card-grid,
+  .admin-stat-grid,
+  .clubhouse-board-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-two-column,
+  .support-form-shell {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .admin-card-grid,
+  .admin-stat-grid,
+  .admin-stat-grid.small,
+  .clubhouse-board-grid {
+    grid-template-columns: 1fr;
+  }
+  .clubhouse-board-card,
+  .admin-warning-card,
+  .admin-action-card,
+  .admin-panel-card,
+  .support-side-card {
+    border-radius: 22px;
+    padding: 18px;
+  }
+}

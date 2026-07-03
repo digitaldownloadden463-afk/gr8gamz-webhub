@@ -126,3 +126,6 @@ create table if not exists gr8_clubhouse_submissions (
 
 create index if not exists gr8_clubhouse_room_status_idx on gr8_clubhouse_submissions(room_id, status, created_at desc);
 create index if not exists gr8_mission_claims_player_date_idx on gr8_mission_claims(player_id, claim_date desc);
+
+-- V33 extension: Control Room, reports and support inbox are defined in database/gr8-control-room-schema.sql.
+-- Keep those tables protected by admin roles before enabling public database-backed community posting.

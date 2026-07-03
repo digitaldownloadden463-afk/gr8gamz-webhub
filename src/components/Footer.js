@@ -21,6 +21,8 @@ export default function Footer() {
         <Link href="/badges">Badges</Link>
         <Link href="/daily-challenge">Daily challenge</Link>
         <Link href="/community">GR8 Clubhouse</Link>
+        <Link href="/support">Support</Link>
+        <Link href="/report">Report issue</Link>
         <Link href="/community-guidelines">Community guidelines</Link>
         <Link href="/partner-disclosure">Partner disclosure</Link>
         <Link href="/affiliate-disclosure">Affiliate disclosure</Link>

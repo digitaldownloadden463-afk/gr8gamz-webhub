@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '../../../components/JsonLd';
+import ClubhouseRoomBoard from '../../../components/community/ClubhouseRoomBoard';
 import ClubhouseSubmitForm from '../../../components/community/ClubhouseSubmitForm';
 import { communityRooms, getCommunityRoom } from '../../../data/community';
 import { buildPageMetadata, breadcrumbJsonLd } from '../../../lib/seo';
@@ -40,13 +41,14 @@ export default function CommunityRoomPage({ params }) {
           <Link href="/passport/signup" className="cta">Create Passport</Link>
         </div>
       </section>
+      <ClubhouseRoomBoard room={room} />
       <ClubhouseSubmitForm room={room} />
       <section className="content-panel compact-panel">
         <div className="section-heading compact">
           <span>Moderation-first</span>
           <h2>This room is controlled until the backend moderation dashboard goes live.</h2>
         </div>
-        <p>V32 stores submissions locally and prepares the workflow. The next backend phase can sync them to a GR8-owned database with admin review, reports and publish controls.</p>
+        <p>V33 stores submissions locally and adds starter boards, reports and Control Room review. The next backend phase can sync them to a GR8-owned database with secure admin roles and persistent publish controls.</p>
       </section>
     </main>
   );

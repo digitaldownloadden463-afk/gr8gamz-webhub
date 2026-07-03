@@ -14,6 +14,7 @@ export default function Header() {
         <Link href="/live">Live</Link>
         <Link href="/gaming-deals">Gaming Deals</Link>
         <Link href="/community">Clubhouse</Link>
+        <Link href="/support">Support</Link>
         <PassportNavBadge />
       </nav>
     </header>
