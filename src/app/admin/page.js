@@ -20,10 +20,11 @@ export default function AdminPage() {
       <section className="page-title">
         <span className="eyebrow">Private operating layer</span>
         <h1>GR8 Control Room keeps the community active, safe and in-house.</h1>
-        <p>This noindex admin foundation reviews local Clubhouse notes, reports and support messages before the database-backed admin system goes live.</p>
+        <p>This noindex admin foundation reviews local Clubhouse notes, reports and support messages while the V34 database bridge prepares persistent player, support and moderation data.</p>
         <div className="hero-actions">
           <Link href="/admin/moderation" className="cta">Moderation queue</Link>
           <Link href="/admin/support" className="secondary-cta">Support inbox</Link>
+          <Link href="/admin/database" className="secondary-cta">Database core</Link>
           <Link href="/community" className="secondary-cta">Clubhouse</Link>
         </div>
       </section>

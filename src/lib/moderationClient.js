@@ -1,7 +1,8 @@
 'use client';
 
 import { reportReasons } from '../data/moderation';
-import { CLUBHOUSE_KEY, getClubhouseSubmissions, readJson, writeJson, pushActivity } from './passportClient';
+import { CLUBHOUSE_KEY, getClubhouseSubmissions, readJson, writeJson, pushActivity, getPassport, getProfile } from './passportClient';
+import { postToGr8 } from './gr8SyncClient';
 
 export const REPORTS_KEY = 'gr8gamz_reports';
 export const SUPPORT_KEY = 'gr8gamz_support_messages';
@@ -64,6 +65,7 @@ export function submitReport(values = {}) {
   const next = [report, ...getReports()].slice(0, 80);
   writeJson(REPORTS_KEY, next);
   pushActivity({ type: 'report_submitted', label: `Submitted report: ${reason}`, href: '/report' });
+  postToGr8('/api/gr8/reports', { passport: getPassport(), profile: getProfile(), report });
   return { ok: true, report, reports: next };
 }
 
@@ -94,6 +96,7 @@ export function submitSupportMessage(values = {}) {
   const next = [supportMessage, ...getSupportMessages()].slice(0, 80);
   writeJson(SUPPORT_KEY, next);
   pushActivity({ type: 'support_message', label: `Support message: ${subject}`, href: '/support' });
+  postToGr8('/api/gr8/support/messages', { passport: getPassport(), profile: getProfile(), message: supportMessage });
   return { ok: true, message: supportMessage, messages: next };
 }
 

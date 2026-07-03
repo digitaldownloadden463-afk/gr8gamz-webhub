@@ -68,3 +68,5 @@ create index if not exists gr8_clubhouse_posts_room_status_idx on gr8_clubhouse_
 create index if not exists gr8_reports_status_idx on gr8_reports(status, created_at desc);
 create index if not exists gr8_support_messages_status_idx on gr8_support_messages(status, created_at desc);
 create index if not exists gr8_admin_roles_user_idx on gr8_admin_roles(user_id, role);
+
+-- V34 database core: for the unified persistent platform schema, use database/gr8-v34-database-core-schema.sql.

@@ -11,11 +11,13 @@
     "audit:affiliate-engine": "node scripts/audit-affiliate-engine.mjs",
     "audit:passport-platform": "node scripts/audit-passport-platform.mjs",
     "audit:v32-live-action": "node scripts/audit-v32-live-action.mjs",
-    "audit:v33-control-room": "node scripts/audit-v33-control-room.mjs"
+    "audit:v33-control-room": "node scripts/audit-v33-control-room.mjs",
+    "audit:v34-database-core": "node scripts/audit-v34-database-core.mjs"
   },
   "dependencies": {
     "next": "14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "pg": "^8.13.1"
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { avatarOptions, getLevelFromXp, getUnlockedBadges } from '../data/passport';
+import { postToGr8 } from './gr8SyncClient';
 
 export const PASSPORT_KEY = 'gr8gamz_passport';
 export const PROFILE_KEY = 'gr8gamz_profile';
@@ -67,6 +68,20 @@ export function getActivity() {
   return readJson(ACTIVITY_KEY, []);
 }
 
+
+function syncPassportSnapshot(extra = {}) {
+  const payload = {
+    passport: getPassport(),
+    profile: getProfile(),
+    recent: getRecentGames(),
+    favourites: getFavouriteIds(),
+    activity: getActivity(),
+    ...extra
+  };
+  postToGr8('/api/gr8/passport/sync', payload);
+  return payload;
+}
+
 export function createPassport({ username, avatar } = {}) {
   const now = new Date().toISOString();
   const selectedAvatar = avatarOptions.includes(avatar) ? avatar : avatarOptions[0];
@@ -95,6 +110,7 @@ export function createPassport({ username, avatar } = {}) {
     updatedAt: now
   });
   pushActivity({ type: 'passport_created', label: `${passport.username} joined the GR8 Passport beta`, href: '/my-arcade' });
+  syncPassportSnapshot({ eventType: 'passport_created' });
   return passport;
 }
 
@@ -111,6 +127,7 @@ export function updatePassport(updates = {}) {
   const profile = getProfile();
   writeJson(PROFILE_KEY, { ...profile, username: next.username, avatar: next.avatar, updatedAt: next.updatedAt });
   pushActivity({ type: 'passport_updated', label: 'Passport profile updated', href: '/account' });
+  syncPassportSnapshot({ eventType: 'passport_updated' });
   return next;
 }
 
@@ -159,6 +176,8 @@ export function recordGamePlay(game = {}) {
   };
   writeJson(PROFILE_KEY, nextProfile);
   pushActivity({ type: 'game_play', label: `Played ${game.name}`, href: game.href || `/arcade/${game.id}` });
+  postToGr8('/api/gr8/events', { passport: getPassport(), profile: nextProfile, game, eventType: 'game_play', xpAwarded: 25 });
+  syncPassportSnapshot({ eventType: 'game_play' });
   return { recent: nextRecent, profile: nextProfile, playsForGame: gamePlays[game.id] };
 }
 
@@ -168,6 +187,7 @@ export function toggleFavouriteGame(game = {}) {
   const next = exists ? favourites.filter((id) => id !== game.id) : [game.id, ...favourites.filter((id) => id !== game.id)].slice(0, 30);
   writeJson(FAV_KEY, next);
   pushActivity({ type: exists ? 'game_unsaved' : 'game_saved', label: `${exists ? 'Removed' : 'Saved'} ${game.name}`, href: game.href || `/arcade/${game.id}` });
+  postToGr8('/api/gr8/passport/sync', { passport: getPassport(), profile: getProfile(), game, gameId: game.id, favourite: !exists, favourites: next, eventType: exists ? 'game_unsaved' : 'game_saved' });
   return { favourite: !exists, favourites: next };
 }
 
@@ -190,6 +210,7 @@ export function claimDailyReward() {
   writeJson(PROFILE_KEY, nextProfile);
   if (canUseStorage()) window.localStorage.setItem(DAILY_KEY, today);
   pushActivity({ type: 'daily_reward', label: `Claimed daily reward (+75 XP)`, href: '/daily-challenge' });
+  syncPassportSnapshot({ eventType: 'daily_reward', xpAwarded: 75 });
   return { claimed: true, alreadyClaimed: false, profile: nextProfile };
 }
 
@@ -231,6 +252,7 @@ export function claimMissionReward(mission = {}) {
   writeJson(PROFILE_KEY, nextProfile);
   writeJson(MISSION_CLAIMS_KEY, { ...claims, [today]: [...claimedToday, mission.id] });
   pushActivity({ type: 'mission_claim', label: `Claimed ${mission.label || 'mission'} reward (+${xp} XP)`, href: '/daily-challenge' });
+  syncPassportSnapshot({ eventType: 'mission_claim', missionId: mission.id, xpAwarded: xp });
   return { ok: true, alreadyClaimed: false, profile: nextProfile };
 }
 
@@ -262,6 +284,7 @@ export function submitClubhousePost(roomId, values = {}) {
   const next = [post, ...all].slice(0, 80);
   writeJson(CLUBHOUSE_KEY, next);
   pushActivity({ type: 'clubhouse_submission', label: `Submitted ${safeTitle} to GR8 Clubhouse`, href: `/community/${roomId}` });
+  postToGr8('/api/gr8/community/posts', { passport: getPassport(), profile: getProfile(), post, roomId });
   return { ok: true, post, submissions: next.filter((item) => item.roomId === roomId) };
 }
 

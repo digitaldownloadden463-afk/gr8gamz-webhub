@@ -127,10 +127,10 @@ export const adminConsoleCards = [
     href: '/community-guidelines'
   },
   {
-    title: 'Backend bridge',
+    title: 'Database core',
     emoji: '🧱',
-    description: 'Prepare the same workflow for the future GR8-owned database and admin roles.',
-    href: '/api/gr8/control-room'
+    description: 'Check the V34 PostgreSQL bridge, fallback mode and persistent data setup.',
+    href: '/admin/database'
   }
 ];
 

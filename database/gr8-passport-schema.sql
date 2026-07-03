@@ -129,3 +129,5 @@ create index if not exists gr8_mission_claims_player_date_idx on gr8_mission_cla
 
 -- V33 extension: Control Room, reports and support inbox are defined in database/gr8-control-room-schema.sql.
 -- Keep those tables protected by admin roles before enabling public database-backed community posting.
+
+-- V34 database core: for the unified persistent platform schema, use database/gr8-v34-database-core-schema.sql.

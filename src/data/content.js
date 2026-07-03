@@ -1,5 +1,43 @@
 export const updatePosts = [
   {
+    slug: 'v34-database-core-persistent-platform-api',
+    title: 'V34 database core and persistent platform API',
+    date: '2026-07-03',
+    category: 'Platform Infrastructure',
+    description: 'V34 adds the PostgreSQL-ready database bridge, persistent API routes and safe fallback mode for GR8 Passport, Clubhouse, reports and support.',
+    tags: ['database', 'platform', 'passport', 'clubhouse', 'support', 'persistence'],
+    relatedGameIds: ['neon-snake-rush', 'stack-tower-rush', 'turbo-drift-grid'],
+    summary: [
+      'GR8 GAMZ now has a PostgreSQL-ready persistence layer for player identity, saved games, XP, game events, Clubhouse posts, reports and support messages.',
+      'The site keeps working safely in browser storage until DATABASE_URL or GR8_DATABASE_URL is added in Vercel.',
+      'New noindex Control Room tools show database status and setup guidance without exposing admin data publicly.'
+    ],
+    sections: [
+      {
+        heading: 'Why V34 matters',
+        body: 'GR8 GAMZ is moving from a front-end player experience into a real platform. V34 adds the database bridge and persistent API routes needed before full cross-device accounts, public Clubhouse posts and real admin moderation go live.'
+      },
+      {
+        heading: 'Safe fallback first',
+        body: 'Nothing breaks if the database is not connected yet. Player actions continue to work locally, while API routes return safe fallback responses until the PostgreSQL schema and Vercel environment variables are ready.'
+      },
+      {
+        heading: 'Owned product layer',
+        body: 'The account, activity, support and Clubhouse logic remains GR8-owned. The database is infrastructure; the player system, community model, moderation workflow and platform data structure are built in-house.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does V34 force the site to use a third-party account or forum platform?',
+        answer: 'No. V34 keeps the product layer in-house and adds a PostgreSQL-ready persistence bridge for the GR8-owned Passport, Clubhouse and Control Room system.'
+      },
+      {
+        question: 'Will the site break if the database is not connected immediately?',
+        answer: 'No. V34 has safe fallback mode, so the current on-device Passport and Clubhouse workflow keeps working until the database URL is added.'
+      }
+    ]
+  },
+  {
     slug: 'v33-control-room-moderation-support-foundation',
     title: 'V33 Control Room, moderation and support foundation',
     date: '2026-07-02',

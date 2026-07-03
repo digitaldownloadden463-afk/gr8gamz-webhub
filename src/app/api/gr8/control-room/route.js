@@ -3,10 +3,10 @@ export const dynamic = 'force-static';
 export function GET() {
   return Response.json({
     ok: true,
-    version: 'v33',
+    version: 'v34',
     product: 'GR8 Control Room',
     mode: 'in-house-admin-moderation-foundation',
-    storageNow: 'on-device-local-storage-workflow',
+    storageNow: 'on-device-fallback-with-database-bridge',
     databaseReady: true,
     noThirdPartyLiveChat: true,
     noThirdPartyForum: true,
@@ -18,9 +18,12 @@ export function GET() {
       'report-centre',
       'public-room-starter-prompts',
       'moderation-status-workflow',
-      'database-schema-ready'
+      'database-schema-ready',
+      'persistent-api-routes',
+      'postgresql-status-check',
+      'safe-fallback-mode'
     ],
-    next: 'Connect the Control Room workflow to the GR8-owned database, secure admin roles and persistent moderation records.'
+    next: 'Run the V34 SQL schema, add DATABASE_URL or GR8_DATABASE_URL in Vercel and then enable persistent player/community/admin records.'
   }, {
     headers: {
       'cache-control': 'public, max-age=1800'
