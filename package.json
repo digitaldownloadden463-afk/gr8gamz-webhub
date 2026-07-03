@@ -1,23 +1,22 @@
 {
-  "name": "gr8-gamz-webhub",
+  "name": "gr8gamz-webhub",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "audit:partner-profiles": "node scripts/audit-partner-profiles.mjs",
-    "audit:global-seo": "node scripts/audit-global-seo.mjs",
-    "audit:affiliate-engine": "node scripts/audit-affiliate-engine.mjs",
-    "audit:passport-platform": "node scripts/audit-passport-platform.mjs",
-    "audit:v32-live-action": "node scripts/audit-v32-live-action.mjs",
-    "audit:v33-control-room": "node scripts/audit-v33-control-room.mjs",
-    "audit:v34-database-core": "node scripts/audit-v34-database-core.mjs"
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "pg": "^8.13.1"
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "lucide-react": "0.468.0"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.5",
+    "typescript": "5.5.4"
   }
 }
