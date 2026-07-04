@@ -1,0 +1,17 @@
+GR8 GAMZ V35.10 — NPM Registry Lockfile Hotfix
+
+This fixes the Vercel npm install timeout caused by package-lock.json containing internal registry URLs.
+
+Upload these files to the GitHub root:
+
+.npmrc
+package-lock.json
+
+Commit message:
+
+Fix npm registry lockfile URLs
+
+After deploy, check the Vercel install step no longer tries to fetch from:
+packages.applied-caas-gateway1.internal.api.openai.org
+
+It should use the public npm registry instead.
