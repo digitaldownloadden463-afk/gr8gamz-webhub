@@ -1,0 +1,14 @@
+GR8 GAMZ V35.2 — lucide-react dependency hotfix
+
+This fixes the Vercel build error:
+Module not found: Can't resolve 'lucide-react'
+
+Upload the CONTENTS of this folder to the GitHub repository root.
+
+Correct path:
+package.json
+
+Commit message:
+Fix lucide-react missing dependency
+
+Do not run npm audit fix --force in GitHub/Vercel. That is a separate upgrade task.
