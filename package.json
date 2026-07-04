@@ -1,12 +1,12 @@
 {
-  "name": "gr8gamz-matrix",
+  "name": "gr8gamz-webhub-stabilised",
   "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "audit:v35-auth": "node scripts/audit-v35-auth.mjs"
+    "audit:v35-8-stabilise": "node scripts/audit-v35-8-stabilise.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -15,8 +15,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
     "@types/node": "^20.17.6",
-    "@types/react": "^18.3.12"
+    "@types/react": "^18.3.12",
+    "typescript": "^5.6.3"
   }
 }

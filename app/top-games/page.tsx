@@ -1,30 +1,17 @@
-import type { Metadata } from "next";
-import { GameCard } from "@/components/GameCard";
-import { games } from "@/lib/games";
-
-export const metadata: Metadata = {
-  title: "Top Games",
-  description: "Browse featured and trending free online games on GR8 GAMZ."
-};
+import GameCard from '@/components/GameCard';
+import { games } from '@/lib/games';
 
 export default function TopGamesPage() {
-  const ordered = [...games].sort((a, b) => Number(Boolean(b.isFeatured)) - Number(Boolean(a.isFeatured)));
-
+  const ordered = [...games].sort((a, b) => Number(Boolean(b.isFeatured || b.featured)) - Number(Boolean(a.isFeatured || a.featured)) || Number(b.plays || 0) - Number(a.plays || 0));
   return (
-    <div className="page-shell">
-      <section className="section-heading standalone">
-        <p className="eyebrow">Top games</p>
-        <h1>Games to push hardest for traffic</h1>
-        <p>
-          A simple ranking page for your most important arcade games. In the backend phase this can sort by real plays,
-          likes, ratings and revenue.
-        </p>
+    <main>
+      <section className="page-title">
+        <h1>Top games</h1>
+        <p>Featured and high-replay games in the GR8 arcade.</p>
       </section>
-      <div className="game-grid">
-        {ordered.map((game) => (
-          <GameCard key={game.slug} game={game} />
-        ))}
-      </div>
-    </div>
+      <section className="game-grid">
+        {ordered.map((game) => <GameCard key={game.id} game={game} />)}
+      </section>
+    </main>
   );
 }

@@ -1,10 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import type { Game } from '@/lib/games';
 
-type GameLike = { id?: string; slug?: string; name?: string; title?: string };
+type GameActionsProps = {
+  game?: Partial<Game>;
+  compact?: boolean;
+  className?: string;
+};
 
-export function GameActions({ game }: { game?: GameLike }) {
+export function GameActions({ game, compact = false, className = '' }: GameActionsProps) {
   const id = game?.slug || game?.id || '';
   function saveGame() {
     try {
@@ -17,8 +22,8 @@ export function GameActions({ game }: { game?: GameLike }) {
   }
 
   return (
-    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', margin: '18px 0' }}>
-      <button onClick={saveGame} style={{ border: '1px solid rgba(53,255,141,.35)', background: 'rgba(53,255,141,.12)', color: '#fff', borderRadius: 999, padding: '10px 14px', fontWeight: 900, cursor: 'pointer' }}>Save to My Arcade</button>
+    <div className={`game-actions ${className}`} style={{ display: 'flex', gap: 10, flexWrap: 'wrap', margin: compact ? '12px 0' : '18px 0' }}>
+      <button type="button" onClick={saveGame} style={{ border: '1px solid rgba(53,255,141,.35)', background: 'rgba(53,255,141,.12)', color: '#fff', borderRadius: 999, padding: '10px 14px', fontWeight: 900, cursor: 'pointer' }}>Save to My Arcade</button>
       <Link href="/my-arcade" style={{ border: '1px solid rgba(255,255,255,.14)', color: '#fff', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}>My Arcade</Link>
       <Link href="/daily-challenge" style={{ border: '1px solid rgba(255,255,255,.14)', color: '#fff', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}>Daily Challenge</Link>
     </div>

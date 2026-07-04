@@ -1,110 +1,26 @@
-"use client";
+'use client';
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
-import { LogOut, Sparkles, UserRound } from "lucide-react";
-import { addActivity, clearPlayer, getPlayer, savePlayer } from "@/lib/clientStorage";
-import { avatars, type Player } from "@/lib/community";
+import Link from 'next/link';
+import { UserRound, BadgeCheck, Flame } from 'lucide-react';
 
-export function PlayerPanel() {
-  const [player, setPlayer] = useState<Player | null>(null);
-  const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState(avatars[0]);
+type PlayerPanelProps = {
+  compact?: boolean;
+  className?: string;
+};
 
-  useEffect(() => {
-    setPlayer(getPlayer());
-    const sync = () => setPlayer(getPlayer());
-    window.addEventListener("gr8gamz-storage", sync);
-    return () => window.removeEventListener("gr8gamz-storage", sync);
-  }, []);
-
-  const greeting = useMemo(() => {
-    if (!player) return "Create your player profile";
-    return `Welcome back, ${player.username}`;
-  }, [player]);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const cleanUsername = username.trim().replace(/[^a-zA-Z0-9_ -]/g, "").slice(0, 18);
-    if (!cleanUsername) return;
-
-    const nextPlayer: Player = {
-      username: cleanUsername,
-      avatar,
-      joinedAt: new Date().toISOString()
-    };
-
-    savePlayer(nextPlayer);
-    addActivity({
-      type: "join",
-      username: cleanUsername,
-      message: `${cleanUsername} joined GR8 GAMZ`
-    });
-    setPlayer(nextPlayer);
-    setUsername("");
-  }
-
-  function signOut() {
-    clearPlayer();
-    setPlayer(null);
-  }
-
+export function PlayerPanel({ compact = false, className = '' }: PlayerPanelProps) {
   return (
-    <section className="panel player-panel">
-      <div className="panel-heading">
-        <span className="icon-bubble">
-          <UserRound size={18} aria-hidden="true" />
-        </span>
-        <div>
-          <p className="eyebrow">Player hub</p>
-          <h2>{greeting}</h2>
-        </div>
+    <section className={`player-panel ${compact ? 'player-panel--compact' : ''} ${className}`} style={{ border: '1px solid rgba(53,255,141,.2)', borderRadius: 24, padding: compact ? 16 : 22, background: 'linear-gradient(135deg, rgba(53,255,141,.12), rgba(124,92,255,.08))' }}>
+      <span style={{ color: '#35ff8d', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '.08em' }}>GR8 Passport</span>
+      <h2 style={{ margin: '10px 0', color: '#fff', fontSize: compact ? '1.6rem' : '2.2rem', letterSpacing: '-.05em' }}>Build your player identity.</h2>
+      <p style={{ color: '#a1a1aa', lineHeight: 1.55 }}>Save games, collect XP, unlock badges and return for daily missions.</p>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 16 }}>
+        <Link href="/passport" style={{ color: '#07110b', background: '#35ff8d', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 950 }}><UserRound size={16} /> Passport</Link>
+        <Link href="/my-arcade" style={{ color: '#fff', border: '1px solid rgba(255,255,255,.14)', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}><BadgeCheck size={16} /> My Arcade</Link>
+        <Link href="/daily-challenge" style={{ color: '#fff', border: '1px solid rgba(255,255,255,.14)', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}><Flame size={16} /> Daily</Link>
       </div>
-
-      {player ? (
-        <div className="signed-in-box">
-          <div className="player-avatar-large" aria-hidden="true">
-            {player.avatar}
-          </div>
-          <div>
-            <strong>{player.username}</strong>
-            <p>Favourites, likes, comments and recently played games now save on this device.</p>
-          </div>
-          <button type="button" className="ghost-button" onClick={signOut}>
-            <LogOut size={16} aria-hidden="true" /> Reset local profile
-          </button>
-        </div>
-      ) : (
-        <form className="signup-form" onSubmit={handleSubmit}>
-          <label htmlFor="username">Choose a player name</label>
-          <input
-            id="username"
-            name="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            placeholder="ArcadeLegend"
-            maxLength={18}
-          />
-          <div className="avatar-picker" aria-label="Choose avatar">
-            {avatars.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className={item === avatar ? "avatar-option active" : "avatar-option"}
-                onClick={() => setAvatar(item)}
-                aria-label={`Choose avatar ${item}`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          <button type="submit" className="primary-button">
-            <Sparkles size={16} aria-hidden="true" /> Create profile
-          </button>
-          <p className="helper-text">
-            Phase 3 uses an in-browser profile first. The next backend phase can turn this into real user accounts.
-          </p>
-        </form>
-      )}
     </section>
   );
 }
+
+export default PlayerPanel;

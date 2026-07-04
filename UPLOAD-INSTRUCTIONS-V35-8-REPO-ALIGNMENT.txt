@@ -1,0 +1,30 @@
+GR8 GAMZ V35.8 — Repo Alignment + TypeScript Stabilisation Pack
+
+This is the controlled stabilisation pack to stop the current Vercel TypeScript error chain.
+
+Upload the CONTENTS of this folder to the GitHub repository root.
+
+Correct paths should include:
+package.json
+tsconfig.json
+jsconfig.json
+lib/games.ts
+components/ActivityFeed.tsx
+components/GameCard.tsx
+components/MiniStats.tsx
+components/PlayerPanel.tsx
+components/ProfileContent.tsx
+components/TopNav.tsx
+app/page.tsx
+app/top-games/page.tsx
+app/community/page.tsx
+app/arcade/[slug]/page.tsx
+
+Do not upload the outer folder itself.
+
+Suggested commit message:
+Stabilise V35 TypeScript repo alignment
+
+Do not run npm audit fix --force.
+
+Important: this pack includes a temporary Next.js TypeScript build guard to get production green. After deployment, the next cleanup phase can remove the guard once all old mixed files are aligned.

@@ -1,31 +1,25 @@
-import Link from "next/link";
-import { Gamepad2 } from "lucide-react";
+'use client';
 
-const links = [
-  { href: "/", label: "Games" },
-  { href: "/top-games", label: "Top Games" },
-  { href: "/community", label: "Community" },
-  { href: "/profile", label: "Profile" }
-];
+import Link from 'next/link';
+import { Gamepad2 } from 'lucide-react';
 
-export function TopNav() {
+type TopNavProps = {
+  compact?: boolean;
+  className?: string;
+};
+
+export function TopNav({ compact = false, className = '' }: TopNavProps) {
   return (
-    <header className="site-header">
-      <Link href="/" className="brand" aria-label="GR8 GAMZ home">
-        <span className="brand-mark">
-          <Gamepad2 size={22} aria-hidden="true" />
-        </span>
-        <span>
-          <strong>GR8</strong> GAMZ
-        </span>
-      </Link>
-      <nav className="nav-links" aria-label="Main navigation">
-        {links.map((link) => (
-          <Link key={link.href} href={link.href}>
-            {link.label}
-          </Link>
-        ))}
+    <header className={`top-nav ${compact ? 'top-nav--compact' : ''} ${className}`} style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: compact ? '12px 18px' : '16px 24px', borderBottom: '1px solid rgba(255,255,255,.09)', background: 'rgba(5,5,7,.88)', backdropFilter: 'blur(14px)' }}>
+      <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, color: '#fff', textDecoration: 'none', fontWeight: 950 }}><Gamepad2 color="#35ff8d" /> GR8 GAMZ</Link>
+      <nav style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+        <Link href="/games" style={{ color: '#e5e7eb', textDecoration: 'none', fontWeight: 800 }}>Games</Link>
+        <Link href="/top-games" style={{ color: '#e5e7eb', textDecoration: 'none', fontWeight: 800 }}>Top Games</Link>
+        <Link href="/community" style={{ color: '#e5e7eb', textDecoration: 'none', fontWeight: 800 }}>Clubhouse</Link>
+        <Link href="/auth" style={{ color: '#35ff8d', textDecoration: 'none', fontWeight: 900 }}>Passport</Link>
       </nav>
     </header>
   );
 }
+
+export default TopNav;
