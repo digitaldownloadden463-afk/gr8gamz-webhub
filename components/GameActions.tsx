@@ -1,74 +1,26 @@
-"use client";
+'use client';
 
-import { Heart, Star } from "lucide-react";
-import { useEffect, useState } from "react";
-import type { Game } from "@/lib/games";
-import {
-  addActivity,
-  getFavourites,
-  getGameStats,
-  getPlayer,
-  incrementLike,
-  toggleFavourite
-} from "@/lib/clientStorage";
+import Link from 'next/link';
 
-export function GameActions({ game }: { game: Game }) {
-  const [isFavourite, setIsFavourite] = useState(false);
-  const [stats, setStats] = useState({ plays: 0, likes: 0 });
+type GameLike = { id?: string; slug?: string; name?: string; title?: string };
 
-  useEffect(() => {
-    const sync = () => {
-      setIsFavourite(getFavourites().includes(game.slug));
-      setStats(getGameStats(game.slug));
-    };
-    sync();
-    window.addEventListener("gr8gamz-storage", sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener("gr8gamz-storage", sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, [game.slug]);
-
-  function handleFavourite() {
-    const favourites = toggleFavourite(game.slug);
-    const player = getPlayer();
-    const nowFavourite = favourites.includes(game.slug);
-    setIsFavourite(nowFavourite);
-
-    if (nowFavourite) {
-      addActivity({
-        type: "favourite",
-        username: player?.username ?? "Guest Player",
-        gameTitle: game.title,
-        gameSlug: game.slug,
-        message: `${player?.username ?? "Guest Player"} added ${game.title} to favourites`
-      });
-    }
-  }
-
-  function handleLike() {
-    incrementLike(game.slug);
-    const player = getPlayer();
-    addActivity({
-      type: "like",
-      username: player?.username ?? "Guest Player",
-      gameTitle: game.title,
-      gameSlug: game.slug,
-      message: `${player?.username ?? "Guest Player"} liked ${game.title}`
-    });
-    setStats(getGameStats(game.slug));
+export default function GameActions({ game }: { game?: GameLike }) {
+  const id = game?.slug || game?.id || '';
+  function saveGame() {
+    try {
+      const key = 'gr8gamz_favourites';
+      const current = JSON.parse(window.localStorage.getItem(key) || '[]');
+      const next = id && !current.includes(id) ? [id, ...current].slice(0, 30) : current;
+      window.localStorage.setItem(key, JSON.stringify(next));
+      window.dispatchEvent(new CustomEvent('gr8-passport-change', { detail: { key, value: next } }));
+    } catch {}
   }
 
   return (
-    <div className="game-actions">
-      <button type="button" className="action-button" onClick={handleFavourite}>
-        <Star size={18} aria-hidden="true" /> {isFavourite ? "Favourited" : "Favourite"}
-      </button>
-      <button type="button" className="action-button" onClick={handleLike}>
-        <Heart size={18} aria-hidden="true" /> Like {stats.likes > 0 ? `(${stats.likes})` : ""}
-      </button>
-      <span className="play-count">{stats.plays} plays on this device</span>
+    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', margin: '18px 0' }}>
+      <button onClick={saveGame} style={{ border: '1px solid rgba(53,255,141,.35)', background: 'rgba(53,255,141,.12)', color: '#fff', borderRadius: 999, padding: '10px 14px', fontWeight: 900, cursor: 'pointer' }}>Save to My Arcade</button>
+      <Link href="/my-arcade" style={{ border: '1px solid rgba(255,255,255,.14)', color: '#fff', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}>My Arcade</Link>
+      <Link href="/daily-challenge" style={{ border: '1px solid rgba(255,255,255,.14)', color: '#fff', borderRadius: 999, padding: '10px 14px', textDecoration: 'none', fontWeight: 900 }}>Daily Challenge</Link>
     </div>
   );
 }

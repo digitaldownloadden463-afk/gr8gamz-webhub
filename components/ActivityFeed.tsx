@@ -1,61 +1,25 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Radio } from "lucide-react";
-import { getActivity } from "@/lib/clientStorage";
-import type { Activity } from "@/lib/community";
+import Link from 'next/link';
 
-function formatTime(value: string) {
-  const date = new Date(value);
-  const diff = Date.now() - date.getTime();
-  const minutes = Math.max(1, Math.round(diff / 60000));
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.round(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  return date.toLocaleDateString();
-}
-
-export function ActivityFeed({ compact = false }: { compact?: boolean }) {
-  const [activity, setActivity] = useState<Activity[]>([]);
-
-  useEffect(() => {
-    const sync = () => setActivity(getActivity());
-    sync();
-    window.addEventListener("gr8gamz-storage", sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener("gr8gamz-storage", sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, []);
+export default function ActivityFeed({ items = [] }: { items?: Array<any> }) {
+  const fallback = [
+    { id: 'pulse', label: 'GR8 Arcade Pulse is active', href: '/live' },
+    { id: 'passport', label: 'Create a GR8 Passport to save progress', href: '/passport' },
+    { id: 'clubhouse', label: 'Submit feedback in GR8 Clubhouse', href: '/community' }
+  ];
+  const feed = items.length ? items : fallback;
 
   return (
-    <section className={compact ? "panel activity-feed compact" : "panel activity-feed"}>
-      <div className="panel-heading">
-        <span className="live-dot" aria-hidden="true" />
-        <div>
-          <p className="eyebrow">Live action</p>
-          <h2>What players are doing</h2>
-        </div>
-      </div>
-      <ul className="activity-list">
-        {activity.slice(0, compact ? 5 : 10).map((item) => (
-          <li key={item.id}>
-            <span className="activity-icon">
-              <Radio size={14} aria-hidden="true" />
-            </span>
-            <div>
-              {item.gameSlug ? (
-                <Link href={`/arcade/${item.gameSlug}`}>{item.message}</Link>
-              ) : (
-                <strong>{item.message}</strong>
-              )}
-              <small>{formatTime(item.createdAt)}</small>
-            </div>
-          </li>
+    <aside style={{ border: '1px solid rgba(255,255,255,.1)', borderRadius: 22, padding: 18, background: 'rgba(255,255,255,.04)' }}>
+      <strong style={{ display: 'block', marginBottom: 12 }}>Live activity</strong>
+      <div style={{ display: 'grid', gap: 10 }}>
+        {feed.slice(0, 5).map((item) => (
+          <Link key={item.id || item.label} href={item.href || '/live'} style={{ color: '#e5e7eb', textDecoration: 'none', border: '1px solid rgba(255,255,255,.08)', borderRadius: 14, padding: 12 }}>
+            {item.label || item.title || 'GR8 activity'}
+          </Link>
         ))}
-      </ul>
-    </section>
+      </div>
+    </aside>
   );
 }

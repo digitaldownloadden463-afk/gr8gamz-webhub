@@ -1,109 +1,94 @@
-export type GameCategory =
-  | "Arcade"
-  | "Puzzle"
-  | "Racing"
-  | "Sports"
-  | "Action"
-  | "Strategy";
-
-export type Game = {
-  slug: string;
-  title: string;
-  category: GameCategory;
-  description: string;
-  shortDescription: string;
-  accent: string;
-  controls: string[];
-  tags: string[];
-  isFeatured?: boolean;
-  embedUrl?: string;
+export type Gr8Game = {
+  id: string;
+  slug?: string;
+  name: string;
+  title?: string;
+  genre?: string;
+  description?: string;
+  iframeUrl?: string;
+  url?: string;
+  thumbnail?: string;
+  emoji?: string;
 };
 
-export const games: Game[] = [
+export const games: Gr8Game[] = [
   {
-    slug: "neon-runner",
-    title: "Neon Runner",
-    category: "Arcade",
-    shortDescription: "Fast reflex arcade runner built for quick mobile sessions.",
-    description:
-      "Dash, dodge, and chase a high score in a bright arcade runner. This page is ready for a Gamepix or HTML5 iframe embed, while the engagement layer tracks plays, favourites, likes, comments, and recent activity.",
-    accent: "#7c3aed",
-    controls: ["Tap to jump", "Swipe down to slide", "Large mobile buttons"],
-    tags: ["runner", "mobile", "high score", "quick play"],
-    isFeatured: true
+    id: 'slope',
+    slug: 'slope',
+    name: 'Retro Snake Run',
+    title: 'Retro Snake Run',
+    genre: 'Arcade',
+    description: 'A fast arcade run built for instant browser play.',
+    emoji: '🐍'
   },
   {
-    slug: "bubble-blitz",
-    title: "Bubble Blitz",
-    category: "Puzzle",
-    shortDescription: "A colourful bubble shooter page for relaxed repeat plays.",
-    description:
-      "Aim, match, and clear bubbles in a bright puzzle game layout. Designed for strong conversion from casual mobile visitors who want instant play without friction.",
-    accent: "#06b6d4",
-    controls: ["Tap to aim", "Drag to fine tune", "Release to shoot"],
-    tags: ["bubble", "puzzle", "casual", "relaxing"],
-    isFeatured: true
+    id: 'tetris',
+    slug: 'tetris',
+    name: 'Matrix Blocks',
+    title: 'Matrix Blocks',
+    genre: 'Puzzle',
+    description: 'Stack blocks, clear lines and chase a better score.',
+    emoji: '🧩'
   },
   {
-    slug: "turbo-track",
-    title: "Turbo Track",
-    category: "Racing",
-    shortDescription: "High-energy racing game page with touch controls highlighted.",
-    description:
-      "A racing game page template with clear mobile control instructions, play tracking, comments, likes, and favourites already wired in on the frontend.",
-    accent: "#f97316",
-    controls: ["Left/right touch pads", "Tap boost", "Tilt-ready layout"],
-    tags: ["racing", "speed", "cars", "boost"]
+    id: 'tiny-fishing',
+    slug: 'tiny-fishing',
+    name: 'Quantum Click Fishing',
+    title: 'Quantum Click Fishing',
+    genre: 'Casual',
+    description: 'A quick clicker-style fishing loop for short sessions.',
+    emoji: '🎣'
   },
   {
-    slug: "goal-hero",
-    title: "Goal Hero",
-    category: "Sports",
-    shortDescription: "Quick-play football style challenge for competitive sessions.",
-    description:
-      "Score, save, and replay. This sports game page is built for social hooks, comments, ratings, repeat visits, and future leaderboards.",
-    accent: "#22c55e",
-    controls: ["Swipe to shoot", "Tap to pass", "Hold for power"],
-    tags: ["football", "sports", "challenge", "score"]
+    id: 'neon-snake-rush',
+    slug: 'neon-snake-rush',
+    name: 'Neon Snake Rush',
+    title: 'Neon Snake Rush',
+    genre: 'Arcade',
+    description: 'A neon arcade snake challenge for quick replay sessions.',
+    emoji: '⚡'
   },
   {
-    slug: "block-battle",
-    title: "Block Battle",
-    category: "Strategy",
-    shortDescription: "A tactical block game page for longer play sessions.",
-    description:
-      "A simple strategy-focused game landing page with community tools underneath. Ideal for building up comments, tips, and game requests later.",
-    accent: "#eab308",
-    controls: ["Tap blocks", "Drag to place", "Pinch-friendly board"],
-    tags: ["blocks", "strategy", "brain", "logic"]
+    id: 'stack-tower-rush',
+    slug: 'stack-tower-rush',
+    name: 'Stack Tower Rush',
+    title: 'Stack Tower Rush',
+    genre: 'Skill',
+    description: 'Stack carefully, keep the tower steady and push for height.',
+    emoji: '🏗️'
   },
   {
-    slug: "sky-defender",
-    title: "Sky Defender",
-    category: "Action",
-    shortDescription: "Action game page with arcade-style replay appeal.",
-    description:
-      "Defend the skies and come back for a better score. This template is set up for favourites, recent plays, comments, and future leaderboard expansion.",
-    accent: "#ef4444",
-    controls: ["Drag to move", "Auto fire", "Tap special attack"],
-    tags: ["action", "arcade", "shooter", "fast"],
-    isFeatured: true
+    id: 'turbo-drift-grid',
+    slug: 'turbo-drift-grid',
+    name: 'Turbo Drift Grid',
+    title: 'Turbo Drift Grid',
+    genre: 'Racing',
+    description: 'A fast racing-style game page for GR8 GAMZ players.',
+    emoji: '🏎️'
   }
 ];
 
-export const categories: GameCategory[] = [
-  "Arcade",
-  "Puzzle",
-  "Racing",
-  "Sports",
-  "Action",
-  "Strategy"
-];
-
-export function getGameBySlug(slug: string) {
-  return games.find((game) => game.slug === slug);
+export function normaliseSlug(value: string | string[] | undefined) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return String(raw || '').replace(/-unblocked$/i, '').trim().toLowerCase();
 }
 
-export function getFeaturedGames() {
-  return games.filter((game) => game.isFeatured);
+export function getAllGames() {
+  return games;
 }
+
+export function getGameBySlug(slug: string | string[] | undefined) {
+  const clean = normaliseSlug(slug);
+  return games.find((game) => game.slug === clean || game.id === clean) || null;
+}
+
+export function getGameById(id: string | string[] | undefined) {
+  return getGameBySlug(id);
+}
+
+export function findGameBySlug(slug: string | string[] | undefined) {
+  return getGameBySlug(slug);
+}
+
+export const featuredGames = games;
+export default games;
