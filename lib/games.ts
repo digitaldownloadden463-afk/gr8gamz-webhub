@@ -24,13 +24,18 @@ export type Gr8Game = {
   featured?: boolean;
 };
 
-export const categories: Gr8Category[] = [
+export const categoryObjects: Gr8Category[] = [
   { id: 'arcade', slug: 'arcade', name: 'Arcade', title: 'Arcade Games', emoji: '🕹️', description: 'Fast browser games built for instant play.' },
   { id: 'puzzle', slug: 'puzzle', name: 'Puzzle', title: 'Puzzle Games', emoji: '🧩', description: 'Quick thinking, matching and block games.' },
   { id: 'racing', slug: 'racing', name: 'Racing', title: 'Racing Games', emoji: '🏎️', description: 'Speed, drift and reflex games for mobile and desktop.' },
   { id: 'skill', slug: 'skill', name: 'Skill', title: 'Skill Games', emoji: '🎯', description: 'Tap, time and precision challenges.' },
   { id: 'casual', slug: 'casual', name: 'Casual', title: 'Casual Games', emoji: '⚡', description: 'Easy games for short repeat sessions.' }
 ];
+
+// The root app/page.tsx renders categories directly as text:
+//   categories.map((category) => <span key={category}>{category}</span>)
+// so this export must be a simple string array, not an object array.
+export const categories: string[] = categoryObjects.map((category) => category.name);
 
 export const games: Gr8Game[] = [
   { id: 'slope', slug: 'slope', name: 'Retro Snake Run', title: 'Retro Snake Run', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A fast arcade run built for instant browser play.', emoji: '🐍', featured: true },
@@ -57,7 +62,12 @@ export function getFeaturedGames(limit?: number) {
 
 export function getGamesByCategory(category: string) {
   const clean = normaliseSlug(category);
-  return games.filter((game) => game.categorySlug === clean || game.category.toLowerCase() === clean);
+  return games.filter((game) => game.categorySlug === clean || String(game.category || '').toLowerCase() === clean);
+}
+
+export function getCategoryBySlug(slug: string | string[] | undefined) {
+  const clean = normaliseSlug(slug);
+  return categoryObjects.find((category) => category.slug === clean || category.id === clean || category.name.toLowerCase() === clean) || null;
 }
 
 export function getGameBySlug(slug: string | string[] | undefined) {
