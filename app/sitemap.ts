@@ -1,10 +1,25 @@
-import type { MetadataRoute } from "next";
-import { games } from "@/lib/games";
+import type { MetadataRoute } from 'next';
+import { games } from '@/lib/games';
 
-const baseUrl = "https://www.gr8gamz.com";
+const baseUrl = 'https://www.gr8gamz.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/top-games", "/community", "/profile", "/privacy", "/terms"].map((path) => ({
+  const staticPaths = [
+    '',
+    '/games',
+    '/top-games',
+    '/community',
+    '/passport',
+    '/my-arcade',
+    '/daily-challenge',
+    '/live',
+    '/profile',
+    '/privacy',
+    '/terms',
+    '/community-guidelines'
+  ];
+
+  const staticRoutes = staticPaths.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date()
   }));

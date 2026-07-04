@@ -1,0 +1,28 @@
+GR8 GAMZ V35.11 — Active Route Recovery + Auth/Backend Restore
+
+1. Unzip this package.
+2. Upload the CONTENTS into the GitHub repo root.
+3. Do not upload the outer folder itself.
+4. Keep all folders exactly as supplied:
+   app/
+   components/
+   lib/
+   database/
+   scripts/
+   .npmrc
+5. Commit message:
+   Restore active routes and auth backend pages
+
+After Vercel deploys, test:
+https://www.gr8gamz.com/auth
+https://www.gr8gamz.com/passport
+https://www.gr8gamz.com/my-arcade
+https://www.gr8gamz.com/daily-challenge
+https://www.gr8gamz.com/live
+https://www.gr8gamz.com/report
+https://www.gr8gamz.com/backend
+https://www.gr8gamz.com/admin
+https://www.gr8gamz.com/admin/auth
+https://www.gr8gamz.com/admin/backend
+https://www.gr8gamz.com/api/gr8/auth/status
+https://www.gr8gamz.com/api/gr8/backend/status
