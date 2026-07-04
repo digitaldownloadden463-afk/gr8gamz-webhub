@@ -1,0 +1,35 @@
+GR8 GAMZ V35 — Upload Instructions
+
+1. Download and unzip the V35 update pack.
+2. Open GitHub:
+   github.com/digitaldownloaden463-afk/gr8gamz-webhub
+3. Make sure branch is main.
+4. Click Add file → Upload files.
+5. Drag the CONTENTS of the unzipped V35 folder.
+
+Correct paths should look like:
+
+src/app/auth/page.js
+src/app/api/gr8/auth/register/route.js
+src/lib/server/gr8AuthStore.js
+src/components/auth/AuthDashboard.js
+database/v35-gr8-auth-accounts-schema.sql
+
+Do NOT upload the outer folder itself.
+
+Suggested commit message:
+
+Add V35 real GR8 Passport auth foundation
+
+Test after deploy:
+
+https://www.gr8gamz.com/auth
+https://www.gr8gamz.com/admin/auth
+https://www.gr8gamz.com/api/gr8/auth/status
+https://www.gr8gamz.com/api/gr8/auth/me
+https://www.gr8gamz.com/updates/v35-real-gr8-passport-auth-foundation
+
+Suggested Vercel env vars before real users:
+
+GR8_SESSION_SECRET
+GR8_ADMIN_KEY

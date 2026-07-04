@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 
 const GLOBAL_KEY = '__GR8_GAMZ_BACKEND_BRIDGE_STORE__';
-const VERSION = 'v34';
+const VERSION = 'v35';
 
 function getMemoryStore() {
   if (!globalThis[GLOBAL_KEY]) {
