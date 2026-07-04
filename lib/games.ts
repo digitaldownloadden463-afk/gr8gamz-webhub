@@ -22,6 +22,7 @@ export type Gr8Game = {
   thumbnail?: string;
   emoji: string;
   featured?: boolean;
+  isFeatured?: boolean;
 };
 
 export const categoryObjects: Gr8Category[] = [
@@ -32,18 +33,20 @@ export const categoryObjects: Gr8Category[] = [
   { id: 'casual', slug: 'casual', name: 'Casual', title: 'Casual Games', emoji: '⚡', description: 'Easy games for short repeat sessions.' }
 ];
 
+// Compatibility note:
+// Some live pages use game.featured and others use game.isFeatured. Keep both.
 // The root app/page.tsx renders categories directly as text:
 //   categories.map((category) => <span key={category}>{category}</span>)
 // so this export must be a simple string array, not an object array.
 export const categories: string[] = categoryObjects.map((category) => category.name);
 
 export const games: Gr8Game[] = [
-  { id: 'slope', slug: 'slope', name: 'Retro Snake Run', title: 'Retro Snake Run', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A fast arcade run built for instant browser play.', emoji: '🐍', featured: true },
-  { id: 'tetris', slug: 'tetris', name: 'Matrix Blocks', title: 'Matrix Blocks', genre: 'Puzzle', category: 'Puzzle', categorySlug: 'puzzle', description: 'Stack blocks, clear lines and chase a better score.', emoji: '🧩', featured: true },
-  { id: 'tiny-fishing', slug: 'tiny-fishing', name: 'Quantum Click Fishing', title: 'Quantum Click Fishing', genre: 'Casual', category: 'Casual', categorySlug: 'casual', description: 'A quick clicker-style fishing loop for short sessions.', emoji: '🎣', featured: true },
-  { id: 'neon-snake-rush', slug: 'neon-snake-rush', name: 'Neon Snake Rush', title: 'Neon Snake Rush', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A neon arcade snake challenge for quick replay sessions.', emoji: '⚡', featured: true },
-  { id: 'stack-tower-rush', slug: 'stack-tower-rush', name: 'Stack Tower Rush', title: 'Stack Tower Rush', genre: 'Skill', category: 'Skill', categorySlug: 'skill', description: 'Stack carefully, keep the tower steady and push for height.', emoji: '🏗️', featured: true },
-  { id: 'turbo-drift-grid', slug: 'turbo-drift-grid', name: 'Turbo Drift Grid', title: 'Turbo Drift Grid', genre: 'Racing', category: 'Racing', categorySlug: 'racing', description: 'A fast racing-style game page for GR8 GAMZ players.', emoji: '🏎️', featured: true }
+  { id: 'slope', slug: 'slope', name: 'Retro Snake Run', title: 'Retro Snake Run', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A fast arcade run built for instant browser play.', emoji: '🐍', featured: true, isFeatured: true },
+  { id: 'tetris', slug: 'tetris', name: 'Matrix Blocks', title: 'Matrix Blocks', genre: 'Puzzle', category: 'Puzzle', categorySlug: 'puzzle', description: 'Stack blocks, clear lines and chase a better score.', emoji: '🧩', featured: true, isFeatured: true },
+  { id: 'tiny-fishing', slug: 'tiny-fishing', name: 'Quantum Click Fishing', title: 'Quantum Click Fishing', genre: 'Casual', category: 'Casual', categorySlug: 'casual', description: 'A quick clicker-style fishing loop for short sessions.', emoji: '🎣', featured: true, isFeatured: true },
+  { id: 'neon-snake-rush', slug: 'neon-snake-rush', name: 'Neon Snake Rush', title: 'Neon Snake Rush', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A neon arcade snake challenge for quick replay sessions.', emoji: '⚡', featured: true, isFeatured: true },
+  { id: 'stack-tower-rush', slug: 'stack-tower-rush', name: 'Stack Tower Rush', title: 'Stack Tower Rush', genre: 'Skill', category: 'Skill', categorySlug: 'skill', description: 'Stack carefully, keep the tower steady and push for height.', emoji: '🏗️', featured: true, isFeatured: true },
+  { id: 'turbo-drift-grid', slug: 'turbo-drift-grid', name: 'Turbo Drift Grid', title: 'Turbo Drift Grid', genre: 'Racing', category: 'Racing', categorySlug: 'racing', description: 'A fast racing-style game page for GR8 GAMZ players.', emoji: '🏎️', featured: true, isFeatured: true }
 ];
 
 export function normaliseSlug(value: string | string[] | undefined) {
@@ -56,7 +59,7 @@ export function getAllGames() {
 }
 
 export function getFeaturedGames(limit?: number) {
-  const featured = games.filter((game) => game.featured);
+  const featured = games.filter((game) => game.featured || game.isFeatured);
   return typeof limit === 'number' ? featured.slice(0, limit) : featured;
 }
 
