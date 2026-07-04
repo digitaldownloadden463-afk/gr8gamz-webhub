@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 type GameLike = { id?: string; slug?: string; name?: string; title?: string };
 
-export default function GameActions({ game }: { game?: GameLike }) {
+export function GameActions({ game }: { game?: GameLike }) {
   const id = game?.slug || game?.id || '';
   function saveGame() {
     try {
@@ -24,3 +24,5 @@ export default function GameActions({ game }: { game?: GameLike }) {
     </div>
   );
 }
+
+export default GameActions;

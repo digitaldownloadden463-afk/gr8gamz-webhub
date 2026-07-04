@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-type GameLike = {
+export type GameLike = {
   id?: string;
   slug?: string;
   name?: string;
@@ -10,13 +10,14 @@ type GameLike = {
   genre?: string;
   description?: string;
   iframeUrl?: string;
+  embedUrl?: string;
   url?: string;
   emoji?: string;
 };
 
-export default function GamePlayerFrame({ game }: { game?: GameLike }) {
+export function GamePlayerFrame({ game }: { game?: GameLike }) {
   const title = game?.name || game?.title || 'GR8 Game';
-  const src = game?.iframeUrl || game?.url || '';
+  const src = game?.iframeUrl || game?.embedUrl || game?.url || '';
 
   return (
     <section style={{ border: '1px solid rgba(255,255,255,.12)', borderRadius: 24, overflow: 'hidden', background: '#050507', minHeight: 420 }}>
@@ -47,3 +48,5 @@ export default function GamePlayerFrame({ game }: { game?: GameLike }) {
     </section>
   );
 }
+
+export default GamePlayerFrame;
