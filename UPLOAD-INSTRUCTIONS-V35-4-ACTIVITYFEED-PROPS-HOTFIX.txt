@@ -1,0 +1,12 @@
+GR8 GAMZ V35.4 — ActivityFeed TypeScript props hotfix
+
+This fixes the Vercel TypeScript error:
+Property 'compact' does not exist on ActivityFeed props.
+
+Upload the CONTENTS of this folder to the GitHub repository root.
+
+Correct path:
+components/ActivityFeed.tsx
+
+Commit message:
+Fix ActivityFeed compact prop type
