@@ -1,22 +1,23 @@
 {
-  "name": "gr8gamz-webhub-stabilised",
-  "version": "2.0.0",
+  "name": "gr8gamz-webhub",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "audit:v35-8-stabilise": "node scripts/audit-v35-8-stabilise.mjs"
+    "audit:v35-8-stabilise": "node scripts/audit-v35-8-stabilise.mjs",
+    "audit:v35-9-security-upgrade": "node scripts/audit-v35-9-security-upgrade.mjs"
   },
   "dependencies": {
-    "lucide-react": "^0.468.0",
-    "next": "14.2.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "lucide-react": "0.468.0",
+    "next": "14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@types/node": "^20.17.6",
-    "@types/react": "^18.3.12",
-    "typescript": "^5.6.3"
+    "@types/node": "20.17.6",
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
   }
 }
