@@ -11,7 +11,7 @@ type MiniStatsProps = {
 };
 
 export function MiniStats({ items, stats, compact = false, className = '' }: MiniStatsProps) {
-  const fallback = items || (stats ? Object.entries(stats).map(([label, value]) => ({ label, value })) : [
+  const fallback: NonNullable<MiniStatsProps['items']> = items || (stats ? Object.entries(stats).map(([label, value]) => ({ label, value })) : [
     { label: 'Games', value: '100+', icon: <Gamepad2 size={18} /> },
     { label: 'Hot picks', value: 'Daily', icon: <Zap size={18} /> },
     { label: 'Badges', value: 'Live', icon: <Trophy size={18} /> },

@@ -128,9 +128,13 @@ export const categories: string[] = categoryObjects.map((category) => category.n
  * This is the single source of truth for all games.
  * Games are cast to Gr8Game type and sorted by launch order.
  */
-export const games: Gr8Game[] = (gamesData as Gr8Game[]).sort(
-  (a, b) => (a.launchOrder ?? 999) - (b.launchOrder ?? 999)
-);
+export const games: Gr8Game[] = (gamesData as unknown as Gr8Game[])
+  .map((game) => ({
+    ...game,
+    slug: game.slug || game.id,
+    categorySlug: game.categorySlug || String(game.category || '').toLowerCase()
+  }))
+  .sort((a, b) => (a.launchOrder ?? 999) - (b.launchOrder ?? 999));
 
 /**
  * Normalize a slug by removing common suffixes and lowercasing.
