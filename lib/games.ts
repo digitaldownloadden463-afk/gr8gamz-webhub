@@ -1,5 +1,19 @@
+/**
+ * Game data management and filtering utilities for GR8 GAMZ.
+ * This module provides type-safe access to the game catalog with helper functions
+ * for filtering, searching, and retrieving game/category data.
+ *
+ * Data is loaded from `src/data/games.json` (single source of truth).
+ * @see src/data/games.json
+ */
+
+import gamesData from '@/src/data/games.json';
+
+/**
+ * Represents a game category in the GR8 GAMZ catalog.
+ * Categories are used for browsing, filtering, and navigation.
+ */
 export type Gr8Category = {
-  [key: string]: any;
   id: string;
   slug: string;
   name: string;
@@ -8,10 +22,14 @@ export type Gr8Category = {
   description?: string;
 };
 
+/** Alias for backward compatibility */
 export type Category = Gr8Category;
 
+/**
+ * Represents a playable game in the GR8 GAMZ catalog.
+ * Contains all metadata needed for display, embedding, and tracking.
+ */
 export type Gr8Game = {
-  [key: string]: any;
   id: string;
   slug: string;
   name: string;
@@ -32,72 +50,230 @@ export type Gr8Game = {
   plays?: number;
   rating?: number;
   difficulty?: string;
+  // Extended metadata from games.json
+  playStyle?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  baseTrivia?: string;
+  longDescription?: string;
+  controls?: string[];
+  engagementHooks?: string[];
+  tags?: string[];
+  platforms?: string[];
+  status?: string;
+  dateAdded?: string;
+  launchOrder?: number;
+  translations?: Record<string, { name?: string; description?: string }>;
 };
 
+/** Alias for backward compatibility */
 export type Game = Gr8Game;
 
+/**
+ * Category definitions for the GR8 GAMZ arcade.
+ * These are the primary browse categories used in navigation and filtering.
+ */
 export const categoryObjects: Gr8Category[] = [
-  { id: 'arcade', slug: 'arcade', name: 'Arcade', title: 'Arcade Games', emoji: '🕹️', description: 'Fast browser games built for instant play.' },
-  { id: 'puzzle', slug: 'puzzle', name: 'Puzzle', title: 'Puzzle Games', emoji: '🧩', description: 'Quick thinking, matching and block games.' },
-  { id: 'racing', slug: 'racing', name: 'Racing', title: 'Racing Games', emoji: '🏎️', description: 'Speed, drift and reflex games for mobile and desktop.' },
-  { id: 'skill', slug: 'skill', name: 'Skill', title: 'Skill Games', emoji: '🎯', description: 'Tap, time and precision challenges.' },
-  { id: 'casual', slug: 'casual', name: 'Casual', title: 'Casual Games', emoji: '⚡', description: 'Easy games for short repeat sessions.' }
+  {
+    id: 'arcade',
+    slug: 'arcade',
+    name: 'Arcade',
+    title: 'Arcade Games',
+    emoji: '🕹️',
+    description: 'Fast browser games built for instant play.'
+  },
+  {
+    id: 'puzzle',
+    slug: 'puzzle',
+    name: 'Puzzle',
+    title: 'Puzzle Games',
+    emoji: '🧩',
+    description: 'Quick thinking, matching and block games.'
+  },
+  {
+    id: 'racing',
+    slug: 'racing',
+    name: 'Racing',
+    title: 'Racing Games',
+    emoji: '🏎️',
+    description: 'Speed, drift and reflex games for mobile and desktop.'
+  },
+  {
+    id: 'skill',
+    slug: 'skill',
+    name: 'Skill',
+    title: 'Skill Games',
+    emoji: '🎯',
+    description: 'Tap, time and precision challenges.'
+  },
+  {
+    id: 'casual',
+    slug: 'casual',
+    name: 'Casual',
+    title: 'Casual Games',
+    emoji: '⚡',
+    description: 'Easy games for short repeat sessions.'
+  }
 ];
 
-// Keep this as strings because the live app/page.tsx maps these directly into <span key={category}>.
+/**
+ * Array of category names for simple iteration.
+ * Used in navigation and category strip rendering.
+ * @see app/page.tsx
+ */
 export const categories: string[] = categoryObjects.map((category) => category.name);
 
-export const games: Gr8Game[] = [
-  { id: 'neon-snake-rush', slug: 'neon-snake-rush', name: 'Neon Snake Rush', title: 'Neon Snake Rush', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A neon arcade snake challenge for quick replay sessions.', emoji: '⚡', featured: true, isFeatured: true, plays: 1240, rating: 4.8, difficulty: 'Easy', href: '/arcade/neon-snake-rush' },
-  { id: 'stack-tower-rush', slug: 'stack-tower-rush', name: 'Stack Tower Rush', title: 'Stack Tower Rush', genre: 'Skill', category: 'Skill', categorySlug: 'skill', description: 'Stack carefully, keep the tower steady and push for height.', emoji: '🏗️', featured: true, isFeatured: true, plays: 990, rating: 4.7, difficulty: 'Medium', href: '/arcade/stack-tower-rush' },
-  { id: 'turbo-drift-grid', slug: 'turbo-drift-grid', name: 'Turbo Drift Grid', title: 'Turbo Drift Grid', genre: 'Racing', category: 'Racing', categorySlug: 'racing', description: 'A fast racing-style game page for GR8 GAMZ players.', emoji: '🏎️', featured: true, isFeatured: true, plays: 875, rating: 4.7, difficulty: 'Medium', href: '/arcade/turbo-drift-grid' },
-  { id: 'retro-snake-run', slug: 'retro-snake-run', name: 'Retro Snake Run', title: 'Retro Snake Run', genre: 'Arcade', category: 'Arcade', categorySlug: 'arcade', description: 'A fast arcade run built for instant browser play.', emoji: '🐍', featured: true, isFeatured: true, plays: 820, rating: 4.6, difficulty: 'Easy', href: '/arcade/retro-snake-run' },
-  { id: 'matrix-blocks', slug: 'matrix-blocks', name: 'Matrix Blocks', title: 'Matrix Blocks', genre: 'Puzzle', category: 'Puzzle', categorySlug: 'puzzle', description: 'Stack blocks, clear lines and chase a better score.', emoji: '🧩', featured: false, isFeatured: false, plays: 770, rating: 4.5, difficulty: 'Medium', href: '/arcade/matrix-blocks' },
-  { id: 'quantum-click-fishing', slug: 'quantum-click-fishing', name: 'Quantum Click Fishing', title: 'Quantum Click Fishing', genre: 'Casual', category: 'Casual', categorySlug: 'casual', description: 'A quick clicker-style fishing loop for short sessions.', emoji: '🎣', featured: false, isFeatured: false, plays: 650, rating: 4.4, difficulty: 'Easy', href: '/arcade/quantum-click-fishing' }
-];
+/**
+ * Complete game catalog, loaded from src/data/games.json.
+ * This is the single source of truth for all games.
+ * Games are cast to Gr8Game type and sorted by launch order.
+ */
+export const games: Gr8Game[] = (gamesData as Gr8Game[]).sort(
+  (a, b) => (a.launchOrder ?? 999) - (b.launchOrder ?? 999)
+);
 
-export function normaliseSlug(value: string | string[] | undefined | null) {
+/**
+ * Normalize a slug by removing common suffixes and lowercasing.
+ * Handles both string and array inputs (from Next.js dynamic params).
+ *
+ * @param value - The slug to normalize (string, array, or nullish)
+ * @returns Normalized slug string
+ * @example
+ * normaliseSlug('neon-snake-rush') // 'neon-snake-rush'
+ * normaliseSlug(['neon-snake-rush']) // 'neon-snake-rush'
+ * normaliseSlug(null) // ''
+ */
+export function normaliseSlug(value: string | string[] | undefined | null): string {
   const raw = Array.isArray(value) ? value[0] : value;
   return String(raw || '').replace(/-unblocked$/i, '').trim().toLowerCase();
 }
 
+/**
+ * Get all games in the catalog.
+ * @returns Array of all Gr8Game objects, sorted by launch order
+ */
 export function getAllGames(): Gr8Game[] {
   return games;
 }
 
+/**
+ * Get featured games, optionally limited to a count.
+ * Featured games are marked with `featured: true` or `isFeatured: true`.
+ *
+ * @param limit - Maximum number of games to return
+ * @returns Array of featured games
+ */
 export function getFeaturedGames(limit?: number): Gr8Game[] {
   const featured = games.filter((game) => Boolean(game.featured || game.isFeatured));
   return typeof limit === 'number' ? featured.slice(0, limit) : featured;
 }
 
+/**
+ * Get top-ranked games, optionally limited to a count.
+ * Games are sorted by featured status first, then by play count.
+ *
+ * @param limit - Maximum number of games to return
+ * @returns Array of top-ranked games
+ */
 export function getTopGames(limit?: number): Gr8Game[] {
-  const ordered = [...games].sort((a, b) => Number(Boolean(b.isFeatured || b.featured)) - Number(Boolean(a.isFeatured || a.featured)) || Number(b.plays || 0) - Number(a.plays || 0));
+  const ordered = [...games].sort(
+    (a, b) =>
+      Number(Boolean(b.isFeatured || b.featured)) -
+        Number(Boolean(a.isFeatured || a.featured)) ||
+      Number(b.plays || 0) - Number(a.plays || 0)
+  );
   return typeof limit === 'number' ? ordered.slice(0, limit) : ordered;
 }
 
-export function getGamesByCategory(category: string | string[] | undefined): Gr8Game[] {
+/**
+ * Get games filtered by category.
+ * Matches against categorySlug, category, or genre fields.
+ *
+ * @param category - Category slug or name
+ * @returns Array of games in the specified category
+ * @example
+ * getGamesByCategory('arcade')
+ * getGamesByCategory(['puzzle'])
+ */
+export function getGamesByCategory(
+  category: string | string[] | undefined
+): Gr8Game[] {
   const clean = normaliseSlug(category);
-  return games.filter((game) => game.categorySlug === clean || String(game.category || '').toLowerCase() === clean || String(game.genre || '').toLowerCase() === clean);
+  return games.filter(
+    (game) =>
+      game.categorySlug === clean ||
+      String(game.category || '').toLowerCase() === clean ||
+      String(game.genre || '').toLowerCase() === clean
+  );
 }
 
-export function getCategoryBySlug(slug: string | string[] | undefined): Gr8Category | null {
+/**
+ * Get a category by slug or name.
+ *
+ * @param slug - Category slug or name
+ * @returns Gr8Category object or null if not found
+ */
+export function getCategoryBySlug(
+  slug: string | string[] | undefined
+): Gr8Category | null {
   const clean = normaliseSlug(slug);
-  return categoryObjects.find((category) => category.slug === clean || category.id === clean || category.name.toLowerCase() === clean) || null;
+  return (
+    categoryObjects.find(
+      (category) =>
+        category.slug === clean ||
+        category.id === clean ||
+        category.name.toLowerCase() === clean
+    ) || null
+  );
 }
 
-export function getGameBySlug(slug: string | string[] | undefined): Gr8Game | null {
+/**
+ * Get a game by slug or ID.
+ * Handles both direct slugs and URL-safe parameters.
+ *
+ * @param slug - Game slug or ID
+ * @returns Gr8Game object or null if not found
+ * @example
+ * getGameBySlug('neon-snake-rush')
+ * getGameBySlug(['neon-snake-rush'])
+ */
+export function getGameBySlug(
+  slug: string | string[] | undefined
+): Gr8Game | null {
   const clean = normaliseSlug(slug);
-  return games.find((game) => game.slug === clean || game.id === clean) || null;
+  return (
+    games.find(
+      (game) => game.slug === clean || game.id === clean
+    ) || null
+  );
 }
 
+/**
+ * Get a game by ID.
+ * @param id - Game ID
+ * @returns Gr8Game object or null if not found
+ * @deprecated Use getGameBySlug() instead
+ */
 export function getGameById(id: string | string[] | undefined): Gr8Game | null {
   return getGameBySlug(id);
 }
 
-export function findGameBySlug(slug: string | string[] | undefined): Gr8Game | null {
+/**
+ * Find a game by slug.
+ * @param slug - Game slug
+ * @returns Gr8Game object or null if not found
+ * @deprecated Use getGameBySlug() instead
+ */
+export function findGameBySlug(
+  slug: string | string[] | undefined
+): Gr8Game | null {
   return getGameBySlug(slug);
 }
 
+/** Precomputed featured games for quick access */
 export const featuredGames = getFeaturedGames();
+
+/** Precomputed top games for quick access */
 export const topGames = getTopGames();
+
 export default games;
