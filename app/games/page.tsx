@@ -2,15 +2,32 @@ import GameCard from '@/components/GameCard';
 import { getAllGames } from '@/lib/games';
 
 export default function GamesPage() {
+  const games = getAllGames();
+  const grouped = games.reduce<Record<string, typeof games>>((groups, game) => {
+    const key = game.categorySlug || game.category || 'arcade';
+    groups[key] = groups[key] || [];
+    groups[key].push(game);
+    return groups;
+  }, {});
+
   return (
     <main>
       <section className="page-title">
-        <h1>All GR8 games</h1>
-        <p>Browse the stabilised GR8 GAMZ arcade.</p>
+        <span className="eyebrow">Game library</span>
+        <h1>One clean arcade, {games.length} instant games.</h1>
+        <p>Browse the real GR8 GAMZ catalog by category. Every card links to a playable browser game, with no dead branches or duplicate fake entries.</p>
       </section>
-      <section className="game-grid">
-        {getAllGames().map((game) => <GameCard key={game.id} game={game} />)}
-      </section>
+      {Object.entries(grouped).map(([category, items]) => (
+        <section className="game-section" key={category}>
+          <div className="section-heading">
+            <span className="eyebrow">{items.length} games</span>
+            <h2>{category.replaceAll('-', ' ')}</h2>
+          </div>
+          <div className="game-grid">
+            {items.map((game) => <GameCard key={game.id} game={game} />)}
+          </div>
+        </section>
+      ))}
     </main>
   );
 }

@@ -1,37 +1,70 @@
 import Link from 'next/link';
+import { ArrowRight, Gamepad2, Sparkles, Trophy, UserRound } from 'lucide-react';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import GameCard from '@/components/GameCard';
 import PlayerPanel from '@/components/PlayerPanel';
-import { categories, getFeaturedGames } from '@/lib/games';
+import { getAllGames, getFeaturedGames } from '@/lib/games';
 
 export default function HomePage() {
+  const allGames = getAllGames();
   const featured = getFeaturedGames(6);
+  const heroGame = featured[0] || allGames[0];
+  const categoryStats = Array.from(
+    allGames.reduce((map, game) => {
+      const key = game.categorySlug || game.category || 'arcade';
+      map.set(key, (map.get(key) || 0) + 1);
+      return map;
+    }, new Map<string, number>())
+  ).slice(0, 6);
+
   return (
     <main>
-      <section className="hero">
-        <span style={{ color: '#35ff8d', fontWeight: 950, textTransform: 'uppercase', letterSpacing: '.08em' }}>GR8 GAMZ</span>
-        <h1>Free online games. Fast arcade action.</h1>
-        <p>Play instant browser games, save favourites, build your GR8 Passport and explore the Clubhouse.</p>
+      <section
+        className="hero hero--home"
+        style={{
+          backgroundImage: heroGame?.thumbnail
+            ? `linear-gradient(90deg, rgba(5,5,7,.97) 0%, rgba(5,5,7,.84) 48%, rgba(5,5,7,.48) 100%), url("${heroGame.thumbnail}")`
+            : undefined
+        }}
+      >
+        <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ arcade</span>
+        <h1>Free browser games that load fast and play clean.</h1>
+        <p>Jump straight into 25 original arcade, racing, sports, puzzle and skill games. No downloads, no clutter, just quick sessions that work on phone or desktop.</p>
         <div className="cta-row">
-          <Link href="/games" className="cta">Play games</Link>
-          <Link href="/auth" className="secondary-cta">GR8 Passport</Link>
-          <Link href="/community" className="secondary-cta">Clubhouse</Link>
+          <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Browse games</Link>
+          <Link href={`/arcade/${heroGame?.slug || heroGame?.id || 'neon-snake-rush'}`} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Start featured</Link>
         </div>
       </section>
 
-      <section className="home-grid">
-        <PlayerPanel />
-        <ActivityFeed compact />
+      <section className="arcade-strip" aria-label="Catalog snapshot">
+        <div>
+          <strong>{allGames.length}</strong>
+          <span>instant games</span>
+        </div>
+        {categoryStats.map(([category, count]) => (
+          <Link href="/games" key={category}>
+            <strong>{count}</strong>
+            <span>{category.replaceAll('-', ' ')}</span>
+          </Link>
+        ))}
       </section>
 
-      <section className="category-strip" aria-label="Game categories">
-        {categories.map((category) => (
-          <span key={category}>{category}</span>
-        ))}
+      <section className="section-heading">
+        <span className="eyebrow"><Trophy size={18} aria-hidden="true" /> Featured picks</span>
+        <h2>Start with the games that show GR8 GAMZ at its best.</h2>
+        <Link href="/top-games">View top games <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
 
       <section className="game-grid">
         {featured.map((game) => <GameCard key={game.id} game={game} />)}
+      </section>
+
+      <section className="home-grid home-grid--support">
+        <PlayerPanel>
+          <p className="panel-copy">Create a GR8 Passport when you want saved favourites, XP and badges across sessions.</p>
+          <Link href="/auth" className="text-link"><UserRound size={18} aria-hidden="true" /> Open Passport</Link>
+        </PlayerPanel>
+        <ActivityFeed compact title="Live hub" />
       </section>
     </main>
   );

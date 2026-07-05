@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const gamesPath = path.join(__dirname, '../src/data/games.json');
 
-const REQUIRED_FIELDS = ['id', 'slug', 'name', 'genre', 'category', 'categorySlug', 'iframeUrl', 'thumbnail'];
+const REQUIRED_FIELDS = ['id', 'name', 'genre', 'category', 'iframeUrl', 'thumbnail'];
 const VALID_CATEGORIES = ['arcade', 'puzzle', 'racing', 'skill', 'casual', 'sports', 'action', 'shooter', 'adventure', 'strategy'];
 const VALID_PLATFORMS = ['html5', 'mobile', 'desktop', 'originals', 'retro-inspired'];
 
@@ -67,14 +67,19 @@ try {
     }
     seenIds.add(game.id);
 
-    if (seenSlugs.has(game.slug)) {
-      error(`${gameRef}: duplicate slug '${game.slug}'`);
+    const slug = game.slug || game.id;
+    const categorySlug = game.categorySlug || String(game.category || '').toLowerCase();
+
+    if (!slug) {
+      error(`${gameRef}: missing playable slug/id`);
+    } else if (seenSlugs.has(slug)) {
+      error(`${gameRef}: duplicate slug '${slug}'`);
     }
-    seenSlugs.add(game.slug);
+    seenSlugs.add(slug);
 
     // Validate category
-    if (game.categorySlug && !VALID_CATEGORIES.includes(game.categorySlug)) {
-      warn(`${gameRef}: unknown categorySlug '${game.categorySlug}'`);
+    if (categorySlug && !VALID_CATEGORIES.includes(categorySlug)) {
+      warn(`${gameRef}: unknown category '${categorySlug}'`);
     }
 
     // Check iframe URL format

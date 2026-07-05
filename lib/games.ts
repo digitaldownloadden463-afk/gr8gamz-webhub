@@ -50,6 +50,11 @@ export type Gr8Game = {
   plays?: number;
   rating?: number;
   difficulty?: string;
+  isPopular?: boolean;
+  isNew?: boolean;
+  playsLabel?: string;
+  shortControls?: string;
+  thumbnailAlt?: string;
   // Extended metadata from games.json
   playStyle?: string;
   seoTitle?: string;
@@ -168,7 +173,7 @@ export function getAllGames(): Gr8Game[] {
  * @returns Array of featured games
  */
 export function getFeaturedGames(limit?: number): Gr8Game[] {
-  const featured = games.filter((game) => Boolean(game.featured || game.isFeatured));
+  const featured = games.filter((game) => Boolean(game.featured || game.isFeatured || game.isPopular || game.isNew));
   return typeof limit === 'number' ? featured.slice(0, limit) : featured;
 }
 
@@ -182,8 +187,9 @@ export function getFeaturedGames(limit?: number): Gr8Game[] {
 export function getTopGames(limit?: number): Gr8Game[] {
   const ordered = [...games].sort(
     (a, b) =>
-      Number(Boolean(b.isFeatured || b.featured)) -
-        Number(Boolean(a.isFeatured || a.featured)) ||
+      Number(Boolean(b.isFeatured || b.featured || b.isPopular)) -
+        Number(Boolean(a.isFeatured || a.featured || a.isPopular)) ||
+      Number(Boolean(b.isNew)) - Number(Boolean(a.isNew)) ||
       Number(b.plays || 0) - Number(a.plays || 0)
   );
   return typeof limit === 'number' ? ordered.slice(0, limit) : ordered;

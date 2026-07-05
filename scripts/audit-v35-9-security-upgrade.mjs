@@ -19,8 +19,8 @@ check('React DOM should be pinned, not ranged', pkg.dependencies?.['react-dom'] 
 check('lucide-react should be pinned, not ranged', pkg.dependencies?.['lucide-react'] === '0.468.0');
 check('TypeScript should be pinned', pkg.devDependencies?.typescript === '5.6.3');
 check('package-lock.json should exist', fs.existsSync(lockPath));
-check('Next config keeps temporary V35.8 TS guard until full cleanup', nextConfig.includes('ignoreBuildErrors: true'));
-check('Next config ignores ESLint during build until cleanup', nextConfig.includes('ignoreDuringBuilds: true'));
+check('Next config should not ignore TypeScript build errors', !nextConfig.includes('ignoreBuildErrors: true'));
+check('Next config should not ignore ESLint during build', !nextConfig.includes('ignoreDuringBuilds: true'));
 check('tsconfig keeps @ alias support', tsconfig.includes('"@/*"'));
 check('stabilised lib/games.ts should exist', fs.existsSync(path.join(root, 'lib/games.ts')));
 check('ActivityFeed compatibility component should exist', fs.existsSync(path.join(root, 'components/ActivityFeed.tsx')));
