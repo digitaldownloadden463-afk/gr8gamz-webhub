@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Gamepad2, Trophy, UsersRound, UserRound } from 'lucide-react';
+import { Gamepad2, Sparkles, Trophy, UsersRound, UserRound } from 'lucide-react';
 
 type TopNavProps = {
   compact?: boolean;
@@ -19,6 +19,10 @@ export function TopNav({ compact = false, className = '' }: TopNavProps) {
         <Link href="/games">
           <Gamepad2 size={18} aria-hidden="true" />
           Games
+        </Link>
+        <Link href="/more-free-games">
+          <Sparkles size={18} aria-hidden="true" />
+          Network
         </Link>
         <Link href="/top-games">
           <Trophy size={18} aria-hidden="true" />

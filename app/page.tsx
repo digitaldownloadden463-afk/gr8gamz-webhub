@@ -2,12 +2,16 @@ import Link from 'next/link';
 import { ArrowRight, Gamepad2, Sparkles, Trophy, UserRound } from 'lucide-react';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import GameCard from '@/components/GameCard';
+import PartnerGameCard from '@/components/PartnerGameCard';
 import PlayerPanel from '@/components/PlayerPanel';
 import { getAllGames, getFeaturedGames } from '@/lib/games';
+import { getFeaturedPartnerGameProfiles, getTrendingPartnerProfiles } from '@/src/data/partnerGameProfiles';
 
 export default function HomePage() {
   const allGames = getAllGames();
   const featured = getFeaturedGames(6);
+  const partnerGames = getTrendingPartnerProfiles(6);
+  const spotlightPartners = getFeaturedPartnerGameProfiles(3);
   const heroGame = featured[0] || allGames[0];
   const categoryStats = Array.from(
     allGames.reduce((map, game) => {
@@ -39,8 +43,12 @@ export default function HomePage() {
       <section className="arcade-strip" aria-label="Catalog snapshot">
         <div>
           <strong>{allGames.length}</strong>
-          <span>instant games</span>
+          <span>original games</span>
         </div>
+        <Link href="/more-free-games">
+          <strong>40</strong>
+          <span>partner games</span>
+        </Link>
         {categoryStats.map(([category, count]) => (
           <Link href="/games" key={category}>
             <strong>{count}</strong>
@@ -57,6 +65,38 @@ export default function HomePage() {
 
       <section className="game-grid">
         {featured.map((game) => <GameCard key={game.id} game={game} />)}
+      </section>
+
+      <section className="network-showcase">
+        <div className="network-showcase__copy">
+          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> Revenue game network</span>
+          <h2>Partner games belong in front of players.</h2>
+          <p>GR8 GAMZ now pushes the partner network into the main player journey with high-action profile cards, Play Now routes and worldwide no-download discovery.</p>
+          <div className="cta-row">
+            <Link href="/more-free-games" className="cta">Explore partner games</Link>
+            <Link href={spotlightPartners[0]?.playPath || '/more-free-games'} className="secondary-cta">Play revenue pick</Link>
+          </div>
+        </div>
+        <div className="network-showcase__rail">
+          {spotlightPartners.map((profile) => (
+            <Link href={profile.playPath || `${profile.path}/play`} key={profile.slug}>
+              <span>{profile.category}</span>
+              <strong>{profile.title}</strong>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-heading">
+        <span className="eyebrow">Worldwide play feed</span>
+        <h2>More free games from the GR8 Game Network.</h2>
+        <Link href="/more-free-games">Open the full network <ArrowRight size={18} aria-hidden="true" /></Link>
+      </section>
+
+      <section className="partner-grid">
+        {partnerGames.map((profile, index) => (
+          <PartnerGameCard key={profile.slug} profile={profile} priority={index < 2} />
+        ))}
       </section>
 
       <section className="home-grid home-grid--support">
