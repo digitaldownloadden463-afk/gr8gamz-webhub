@@ -625,6 +625,28 @@ main,
   border: 0;
 }
 
+.gamepix-player {
+  aspect-ratio: calc(1 / var(--gamepix-ratio, .5625));
+  min-height: min(72vh, 720px);
+}
+
+.gamepix-play-actions,
+.pagination-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.pagination-row span {
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
 .partner-feed-fallback {
   display: grid;
   grid-template-columns: minmax(280px, .95fr) minmax(0, 1.05fr);

@@ -5,6 +5,7 @@ import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import PlayerPanel from '@/components/PlayerPanel';
 import { getAllGames, getFeaturedGames } from '@/lib/games';
+import { getGameMonetizeCmsStats } from '@/src/data/gamemonetizeCms';
 import { getFeaturedPartnerGameProfiles, getTrendingPartnerProfiles } from '@/src/data/partnerGameProfiles';
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
   const featured = getFeaturedGames(6);
   const partnerGames = getTrendingPartnerProfiles(6);
   const spotlightPartners = getFeaturedPartnerGameProfiles(3);
+  const cmsStats = getGameMonetizeCmsStats();
   const heroGame = featured[0] || allGames[0];
   const categoryStats = Array.from(
     allGames.reduce((map, game) => {
@@ -49,6 +51,10 @@ export default function HomePage() {
           <strong>40</strong>
           <span>partner games</span>
         </Link>
+        <Link href="/gamemonetize-games">
+          <strong>{cmsStats.games.toLocaleString()}</strong>
+          <span>GameMonetize CMS</span>
+        </Link>
         {categoryStats.map(([category, count]) => (
           <Link href="/games" key={category}>
             <strong>{count}</strong>
@@ -74,7 +80,7 @@ export default function HomePage() {
           <p>GR8 GAMZ now pushes the partner network into the main player journey with high-action profile cards, Play Now routes and worldwide no-download discovery.</p>
           <div className="cta-row">
             <Link href="/more-free-games" className="cta">Explore partner games</Link>
-            <Link href={spotlightPartners[0]?.playPath || '/more-free-games'} className="secondary-cta">Play revenue pick</Link>
+            <Link href="/gamemonetize-games" className="secondary-cta">Open CMS arcade</Link>
           </div>
         </div>
         <div className="network-showcase__rail">

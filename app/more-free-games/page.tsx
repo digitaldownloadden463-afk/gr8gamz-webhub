@@ -29,13 +29,15 @@ export default function MoreFreeGamesPage() {
         <p>Partner-powered action, puzzle, racing, sports and arcade games now sit inside the main GR8 GAMZ journey, with fast Play Now prompts and branded profile pages that keep players moving.</p>
         <div className="cta-row">
           <Link href={featured[0]?.playPath || '/more-free-games'} className="cta"><Play size={20} aria-hidden="true" /> Play top partner game</Link>
-          <Link href="/games" className="secondary-cta">GR8 originals</Link>
+          <Link href="/gamemonetize-games" className="secondary-cta">GameMonetize CMS</Link>
         </div>
       </section>
 
       <section className="arcade-strip" aria-label="Partner network snapshot">
         <div><strong>{allProfiles.length}</strong><span>partner profiles</span></div>
         <div><strong>2</strong><span>revenue feeds</span></div>
+        <Link href="/gamepix-games"><strong>GamePix</strong><span>live feed</span></Link>
+        <Link href="/gamemonetize-games"><strong>CMS</strong><span>GameMonetize</span></Link>
         {clusters.slice(0, 5).map((cluster) => (
           <a href={`#${cluster.slug}`} key={cluster.slug}>
             <strong>{cluster.categories.length}</strong>
