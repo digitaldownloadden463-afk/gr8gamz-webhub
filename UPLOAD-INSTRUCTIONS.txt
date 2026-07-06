@@ -1,77 +1,19 @@
-Upload these items to GitHub and let them overwrite/add files:
+Upload this to GitHub and let it overwrite/add files:
 
-- src
 - public
-- README.md
-- GR8-GAMZ-V17-GROWTH-AUTOMATION-FEED-ENGINE-SPEC.md
-- UPLOAD-INSTRUCTIONS.txt
 
-Suggested commit message:
-Add V17 growth automation and feed engine
+This adds the IndexNow key file at:
+
+public/470561d472ec49aca5a704b6d8a3eac0.txt
 
 After Vercel redeploys, test:
 
-https://www.gr8gamz.com/rss.xml
-https://www.gr8gamz.com/feed.json
-https://www.gr8gamz.com/sitemap-index.xml
-https://www.gr8gamz.com/sitemap-games.xml
-https://www.gr8gamz.com/sitemap-content.xml
-https://www.gr8gamz.com/sitemap-discovery.xml
-https://www.gr8gamz.com/indexnow-urls.json
-https://www.gr8gamz.com/latest
-https://www.gr8gamz.com/feeds
-https://www.gr8gamz.com/seo-status
-https://www.gr8gamz.com/api/indexnow/bulk?scope=content&dryRun=1
+https://www.gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
 
+It should show exactly:
 
-V18 + V19 documentation included:
-- GR8-GAMZ-V18-GAMEPLAY-ART-POLISH-SPEC.md
-- GR8-GAMZ-V19-FULL-GAMEPLAY-QA-PREMIUM-POLISH-SPEC.md
-- GR8-GAMZ-V19-QA-MATRIX.md
+470561d472ec49aca5a704b6d8a3eac0
 
-Suggested commit message:
-Add V18 gameplay art polish and V19 QA plan
+Then use Bing/IndexNow with the key location:
 
-
-V19 implementation upload:
-- src
-- public
-- README.md
-- UPLOAD-INSTRUCTIONS.txt
-- GR8-GAMZ-V19-IMPLEMENTATION-SPEC.md
-
-Suggested commit message:
-Implement V19 gameplay QA and premium polish
-
-After deployment, test:
-https://www.gr8gamz.com/arcade/zombie-lane-runner
-https://www.gr8gamz.com/arcade/traffic-tap-chaos
-https://www.gr8gamz.com/arcade/rocket-fuel-frenzy
-https://www.gr8gamz.com/arcade/neon-air-hockey
-https://www.gr8gamz.com/arcade/cyber-basketball-shots
-https://www.gr8gamz.com/updates/v19-gameplay-qa-premium-polish-implementation
-
-
-V20 third premium game drop upload:
-- src
-- public
-- README.md
-- UPLOAD-INSTRUCTIONS.txt
-- GR8-GAMZ-V20-THIRD-PREMIUM-GAME-DROP-SPEC.md
-
-Suggested commit message:
-Add V20 third premium game drop
-
-After deployment, test:
-https://www.gr8gamz.com/arcade/neon-pinball-rush
-https://www.gr8gamz.com/arcade/cyber-bowling-blitz
-https://www.gr8gamz.com/arcade/lava-tile-escape
-https://www.gr8gamz.com/arcade/galaxy-golf-putt
-https://www.gr8gamz.com/arcade/monster-truck-tap
-https://www.gr8gamz.com/arcade/fruit-slice-fever
-https://www.gr8gamz.com/arcade/shadow-ninja-leap
-https://www.gr8gamz.com/arcade/cannon-coin-blast
-https://www.gr8gamz.com/arcade/ice-slide-puzzle
-https://www.gr8gamz.com/arcade/astro-memory-grid
-https://www.gr8gamz.com/updates/v20-third-premium-game-drop
-https://www.gr8gamz.com/collections/v20-third-game-drop
+https://www.gr8gamz.com/470561d472ec49aca5a704b6d8a3eac0.txt
