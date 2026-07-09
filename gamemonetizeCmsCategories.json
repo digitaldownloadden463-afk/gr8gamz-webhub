@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "slug": "action-games",
+    "name": "Action Games",
+    "image": "/cat/action-games.jpg",
+    "description": "In the realm of gaming, action represents a genre synonymous with heart-pounding excitement and relentless challenges that keep players on the edge of their seats. Action games are renowned for their fast-paced gameplay, where every moment counts and decisions can mean the difference between victory and defeat. Whether you're scaling towering cliffs in a high-octane environment or battling hordes of enemies in intense combat sequences, action games provide a visceral experience that draws players into a world of danger and thrill. Looking for an adrenaline rush and a place to indulge in action-packed entertainment? Look no further than Action Games , where you’ll find a massive selection of ",
+    "showHome": true,
+    "totalGames": 2100
+  },
+  {
+    "id": 2,
+    "slug": "racing-games",
+    "name": "Racing Games",
+    "image": "/cat/racing-games.png",
+    "description": "\"Racing\" is an exhilarating genre that encapsulates high-speed competition, adrenaline-pumping action, and an insatiable drive for victory. Whether you're navigating sharp turns on a dirt track or speeding down a sleek highway, the essence of racing lies in its ability to push both man and machine to their limits. Racing games offer players the chance to indulge in their need for speed from the comfort of their own homes, featuring stunning graphics, realistic physics, and a variety of vehicles that range from nimble sports cars to powerful trucks. Gamers can choose from several racing modes, including time trials, traditional circuit races, and even thrilling off-road adventures. The divers",
+    "showHome": true,
+    "totalGames": 4457
+  },
+  {
+    "id": 3,
+    "slug": "shooting-games",
+    "name": "Shooting Games",
+    "image": "/cat/shooting-games.jpg",
+    "description": "Shooting is a dynamic and adrenaline-pumping activity that captivates enthusiasts across various domains, from sports to gaming and even cinematic experiences. At its core, shooting involves the precision use of firearms or projectile-launching devices to hit targeted objects. This multifaceted discipline can cater to different interests, whether one is drawn to the precision of marksmanship, the strategy behind tactical shooting, or the thrill of competitive events. In the realm of sports, shooting has evolved into a recognized discipline often featured in global competitions, such as the Olympics. Here, athletes showcase their skills in air rifle, pistol shooting, and shotgun events, where",
+    "showHome": true,
+    "totalGames": 3319
+  },
+  {
+    "id": 4,
+    "slug": "arcade-games",
+    "name": "Arcade Games",
+    "image": "/cat/arcade-games.jpg",
+    "description": "Arcade is a vibrant and exhilarating world where the nostalgic charm of classic gaming meets the thrill of modern entertainment. It serves as a haven for gamers of all ages, providing an immersive experience that combines retro aesthetics with cutting-edge technology. When you step into an arcade, you’re greeted by the blaring melodies of coin-operated machines, the flashing lights that beckon you closer, and the palpable excitement of competition and camaraderie. At the heart of every arcade are its iconic games, from timeless classics like \"Pac-Man,\" \"Street Fighter,\" and \"Donkey Kong\" to the latest high-tech creations that push the boundaries of interactive gaming. Each machine stands as ",
+    "showHome": true,
+    "totalGames": 7982
+  },
+  {
+    "id": 5,
+    "slug": "puzzle-games",
+    "name": "Puzzle Games",
+    "image": "/cat/puzzle-games.jpg",
+    "description": "Puzzle games have captivated players for centuries, offering a unique blend of challenge and entertainment. As one of the most versatile genres in the gaming world, puzzles come in various forms, from traditional jigsaw puzzles to intricate logic challenges and beyond. Engaging with puzzles is not just about solving problems; it's an immersive experience that stimulates the mind and encourages creative thinking. At its core, a puzzle game entices players to think critically and strategically. Each challenge presents an opportunity to explore different pathways, encouraging experimentation and perseverance. Whether you’re maneuvering pieces on a board or deciphering complex codes, the satisfa",
+    "showHome": true,
+    "totalGames": 5904
+  },
+  {
+    "id": 6,
+    "slug": "strategy-games",
+    "name": "Strategy Games",
+    "image": "/cat/strategy-games.png",
+    "description": "In the dynamic world of gaming, strategy forms the backbone of success. It encompasses the meticulous planning and clever execution needed to outsmart opponents, conquer challenges, and achieve victory. Whether you’re navigating a battlefield, managing resources in a civilization, or devising intricate tactics in a card game, mastering strategy is essential for gamers who aspire to elevate their gameplay. At its core, strategy is about understanding the landscape of the game, analyzing your options, and making informed decisions to gain an advantage. Players must identify their strengths and weaknesses while adapting to the evolving circumstances that unfold during competition. Successful st",
+    "showHome": true,
+    "totalGames": 0
+  },
+  {
+    "id": 7,
+    "slug": "multiplayer-games",
+    "name": "Multiplayer Games",
+    "image": "/cat/multiplayer-games.jpg",
+    "description": "Multiplayer Gaming: A Thrilling Collective Experience Multiplayer gaming has transformed the landscape of interactive entertainment, offering players the chance to dive into worlds filled with action, strategy, and camaraderie. Whether you’re teaming up with friends or facing off against rivals from around the globe, multiplayer experiences elevate the excitement and engagement of gameplay. With the advent of online connectivity, gamers can connect, communicate, and compete in real-time, creating a dynamic environment that fosters teamwork and competition. In multiplayer formats, players often assume various roles within a game, making strategic decisions that can influence the outcome of ma",
+    "showHome": true,
+    "totalGames": 644
+  },
+  {
+    "id": 8,
+    "slug": "sports-games",
+    "name": "Sports Games",
+    "image": "/cat/sports-games.png",
+    "description": "Sports is a dynamic and exhilarating aspect of human culture that transcends boundaries and unites individuals from diverse backgrounds. As an organized form of physical activity, sports encompass a wide array of disciplines and skills, ranging from team games like soccer and basketball to individual competitions such as athletics and gymnastics. The fundamental appeal of sports lies in their ability to foster a sense of camaraderie, build discipline, and promote physical fitness. At the heart of sports is the spirit of competition. Athletes train rigorously, often dedicating countless hours to perfect their skills and techniques. This commitment not only enhances their physical abilities bu",
+    "showHome": false,
+    "totalGames": 1949
+  },
+  {
+    "id": 9,
+    "slug": "fighting-games",
+    "name": "Fighting Games",
+    "image": "/cat/fighting-games.png",
+    "description": "Fighting: A Journey into the Heart of Combat Fighting is an ancient practice that transcends cultures and eras, embodying the spirit of resilience and the quest for mastery. From the primal instincts of self-defense to organized sports showcasing discipline and skill, the world of fighting encompasses a wide range of techniques, styles, and philosophies. At its core, fighting is a form of expression—one that communicates strength, strategy, and endurance. It has evolved from the raw bouts seen in prehistoric times to a refined array of martial arts, including boxing, wrestling, Brazilian Jiu-Jitsu, Muay Thai, and mixed martial arts (MMA). Each discipline offers its unique approaches, trainin",
+    "showHome": false,
+    "totalGames": 324
+  },
+  {
+    "id": 10,
+    "slug": "girls-games",
+    "name": "Girls Games",
+    "image": "/cat/girls-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 249
+  },
+  {
+    "id": 11,
+    "slug": "hypercasual-games",
+    "name": "Hypercasual Games",
+    "image": "/cat/hypercasual-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 1121
+  },
+  {
+    "id": 12,
+    "slug": "boys-games",
+    "name": "Boys Games",
+    "image": "/cat/boys-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 22
+  },
+  {
+    "id": 13,
+    "slug": "adventure-games",
+    "name": "Adventure Games",
+    "image": "/cat/adventure-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 392
+  },
+  {
+    "id": 14,
+    "slug": "bejeweled-games",
+    "name": "Bejeweled Games",
+    "image": "/cat/bejeweled-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 2
+  },
+  {
+    "id": 15,
+    "slug": "clicker-games",
+    "name": "Clicker Games",
+    "image": "/cat/clicker-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 181
+  },
+  {
+    "id": 16,
+    "slug": "cooking-games",
+    "name": "Cooking Games",
+    "image": "/cat/cooking-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 15
+  },
+  {
+    "id": 17,
+    "slug": "soccer-games",
+    "name": "Soccer Games",
+    "image": "/cat/soccer-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 8
+  },
+  {
+    "id": 18,
+    "slug": "stickman-games",
+    "name": "Stickman Games",
+    "image": "/cat/stickman-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 0
+  },
+  {
+    "id": 19,
+    "slug": "io-games",
+    "name": ".IO Games",
+    "image": "/cat/io-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 3
+  },
+  {
+    "id": 20,
+    "slug": "3d-games",
+    "name": "3D Games",
+    "image": "/cat/3d-games.jpg",
+    "description": "",
+    "showHome": false,
+    "totalGames": 34
+  }
+]
