@@ -74,9 +74,9 @@ export default function HomePage() {
           <GameCard 
             key={game.id} 
             id={game.id}
-            title={game.title}
-            category={game.category || 'Arcade'}
-            imageUrl={game.thumbnail || '/placeholder.png'}
+            title={game.title || game.name || ''}
+            category={game.category || game.genre || 'Arcade'}
+            imageUrl={game.thumbnail || game.image || '/placeholder.png'}
             url={`/arcade/${game.slug || game.id}`}
             isNew={game.isNew}
           />
