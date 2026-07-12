@@ -80,7 +80,13 @@ export default function PartnerRetentionPanel({
         {items.map((item) => (
           <article className="partner-retention-card" key={item.slug}>
             <Link href={item.path} className="partner-retention-thumb" aria-label={`Open ${item.title}`}>
-              {item.image ? <img src={item.image} alt={`${item.title} game artwork`} loading="lazy" /> : <span>G8</span>}
+              {item.image ? (
+                <>
+                  {/* Saved partner images may come from runtime feeds. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.image} alt={`${item.title} game artwork`} loading="lazy" />
+                </>
+              ) : <span>G8</span>}
             </Link>
             <div className="partner-retention-copy">
               <strong>{item.title}</strong>

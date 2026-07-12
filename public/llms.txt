@@ -1,154 +1,94 @@
 # GR8 GAMZ
 
-GR8 GAMZ is a mobile-first browser games hub for free HTML5 arcade games, quick-play games, daily challenges, selection labs and repeat-play loops.
+GR8 GAMZ is a mobile-first browser game hub for original HTML5 games and curated partner-powered games.
 
 Primary site: https://www.gr8gamz.com
 
-Important routes:
-- /games - full game catalogue
-- /mobile-games - mobile-first browser games collection
-- /quick-games - short-session quick games collection
-- /free-browser-games - free no-download browser games collection
-- /popular - popular games
-- /new - new games
-- /controls/tap - tap games
-- /controls/swipe - swipe games
-- /controls/drag - drag games
-- /difficulty/easy - easy games
-- /difficulty/medium - medium games
+## Active original-game routes
 
-Game pages use /arcade/{game-slug} and include visible instructions, controls, summary content, FAQs and related-game links.
+- / - homepage and featured games
+- /games - canonical catalogue of 26 original games
+- /top-games - featured and high-replay original games
+- /arcade/{game-slug} - indexable original-game profile and play page
 
+Canonical original-game slugs:
 
-Authority and content routes:
-- /updates - GR8 GAMZ updates, game guides and developer notes
-- /updates/gr8-gamz-launch-announcement - launch announcement
-- /updates/first-15-games-guide - launch game guide
-- /updates/mobile-first-browser-game-design-notes - mobile-first design notes
-- /updates/gr8-focus-mode-explained - fullscreen play feature notes
-- /updates/seo-and-ai-visibility-foundation - SEO and AI visibility notes
-- /collections - curated game collections
-- /collections/best-mobile-browser-games - mobile browser game collection
-- /collections/best-quick-games - quick game collection
-- /collections/best-arcade-games - arcade game collection
-- /collections/games-with-selection-labs - games with loadouts and selection systems
-- /new-this-week - fresh weekly-style hub for new games and updates
+- neon-snake-rush
+- stack-tower-rush
+- turbo-drift-grid
+- pixel-goal-hero
+- space-tap-survival
+- neon-breakout-rush
+- cyber-basketball-shots
+- zombie-lane-runner
+- bubble-pop-blitz
+- neon-air-hockey
+- alien-invader-swarm
+- crystal-match-quest
+- dungeon-door-dash
+- traffic-tap-chaos
+- rocket-fuel-frenzy
+- neon-pinball-rush
+- cyber-bowling-blitz
+- lava-tile-escape
+- galaxy-golf-putt
+- monster-truck-tap
+- fruit-slice-fever
+- shadow-ninja-leap
+- cannon-coin-blast
+- ice-slide-puzzle
+- astro-memory-grid
+- slope
 
-Update pages include visible summaries, article sections, FAQs, related game links and Article schema.
-Collection pages include real playable game lists, summary content and CollectionPage schema.
+## Active partner-game routes
 
+- /more-free-games - curated GR8 Game Network catalogue
+- /more-free-games/{game-slug} - indexable partner-game profile
+- /more-free-games/{game-slug}/play - noindex live partner play route
+- /more-free-games/categories/action-games
+- /more-free-games/categories/puzzle-games
+- /more-free-games/categories/racing-games
+- /more-free-games/categories/sports-games
+- /more-free-games/categories/arcade-games
+- /more-free-games/categories/strategy-games
+- /gamepix-games - GamePix partner overview
+- /gamemonetize-games - GameMonetize CMS catalogue
+- /gamemonetize-games/{game-slug} - indexable GameMonetize profile
+- /gamemonetize-games/{game-slug}/play - noindex GameMonetize play route
 
-Growth automation and feeds:
-- /latest - latest changed pages and fresh crawl map
-- /feeds - RSS, JSON Feed, grouped sitemaps and IndexNow endpoint list
-- /seo-status - operational search/indexing checklist
-- /rss.xml - RSS feed for update posts
-- /feed.json - JSON Feed for update posts
-- /sitemap-index.xml - grouped sitemap index
-- /sitemap-games.xml - playable game sitemap
-- /sitemap-content.xml - updates and collections sitemap
-- /sitemap-discovery.xml - core, category, tag and discovery route sitemap
-- /indexnow-urls.json - machine-readable IndexNow URL list
+Partner profile and category slugs are finite catalogue values. Unknown slugs return a real 404 response.
 
+## Community and player routes
 
-V19 implementation:
-- /updates/v19-gameplay-qa-premium-polish-implementation - gameplay QA and premium polish update
-- Second-drop games now include stronger shared engine behaviour, score result posting, pause/resume support and improved controls.
+- /community
+- /community/game-requests
+- /community/high-scores
+- /community/bug-reports
+- /community/favourite-games
+- /community/deal-ideas
+- /auth
+- /passport
+- /my-arcade
+- /daily-challenge
+- /live
+- /profile
 
+## Trust and support routes
 
-V20 third game drop:
-- /updates/v20-third-premium-game-drop - announcement for the 10-game V20 premium drop
-- /collections/v20-third-game-drop - curated V20 game collection
-- /arcade/neon-pinball-rush
-- /arcade/cyber-bowling-blitz
-- /arcade/lava-tile-escape
-- /arcade/galaxy-golf-putt
-- /arcade/monster-truck-tap
-- /arcade/fruit-slice-fever
-- /arcade/shadow-ninja-leap
-- /arcade/cannon-coin-blast
-- /arcade/ice-slide-puzzle
-- /arcade/astro-memory-grid
+- /privacy
+- /terms
+- /community-guidelines
+- /support
+- /report
 
+## Machine-readable and feed routes
 
-V21 GamePix monetisation foundation:
-- /gamepix-games - GamePix partner games feed page
-- /gamepix-games/play - noindex partner game embed route
-- /gaming-deals - future affiliate buyer guide hub
-- /partner-disclosure - partner and affiliate disclosure
-- /updates/v21-gamepix-feed-integration - V21 update announcement
+- /sitemap.xml
+- /robots.txt
+- /ads.txt
+- /manifest.webmanifest
+- /api/gamepix/feed
+- /api/gamemonetize/feed
+- /api/partner-games/{game-slug}
 
-
-V22 GameMonetize network integration:
-- /gamemonetize-games - GameMonetize partner games feed page
-- /gamemonetize-games/play - noindex GameMonetize partner game embed route
-- /api/gamemonetize/feed - server-side proxy for the GameMonetize JSON/RSS feed
-- /updates/v22-gamemonetize-network-integration - V22 update announcement
-
-V23 brand identity, network visibility and game discovery engine:
-- /original-games - GR8 Originals brand-owned game hub
-- /more-free-games - GR8 Game Network page combining partner-powered game feeds under one player-facing brand
-- /hot-picks - featured now / hot picks discovery page
-- /free-online-games, /play-free-games, /html5-games, /arcade-games, /action-games, /puzzle-games, /racing-games, /no-download-games, /one-tap-games, /games-for-mobile, /safe-browser-games, /best-free-browser-games - helpful SEO hub pages for market coverage
-- public/favicon.ico, /icon.png, /apple-touch-icon.png, /android-chrome-192x192.png, /android-chrome-512x512.png and /manifest.webmanifest - Google/browser/app identity system
-- /brand/gr8-gamz-google-logo.png - Organization logo structured-data asset
-- /og/gr8gamz-og.png - social preview asset
-- Supplier-specific partner routes are kept available for attribution/testing but hidden from main navigation and marked noindex.
-
-
-V24 Game Profile Engine and search footprint expansion:
-- /more-free-games/[slug] - curated GR8-branded partner game profile pages
-- /guides - original game guide hub
-- /guides/[slug] - how-to-play guides for GR8 original games
-- /sitemap-partner-games.xml - partner profile sitemap
-- /sitemap-images.xml - branded partner profile image sitemap
-- /updates/v24-game-profile-engine-search-footprint-expansion - V24 release note
-
-
-V25 partner game playability and real artwork fix:
-- /more-free-games/[slug]/play - noindex GR8-branded partner game play routes
-- /api/partner-games/[slug] - live supplier artwork and play URL resolver for partner profiles
-- Partner game profiles now include direct Play Now CTAs and live artwork panels
-- Supplier route tabs remain hidden from the main public journey; /more-free-games remains the branded indexable hub
-
-
-V26 retention and network cluster engine:
-- /play-next - one-more-game retention hub
-- /more-free-games/trending - trending-style GR8 Game Network profile page
-- /more-free-games/popular - popular partner profile discovery page
-- /more-free-games/new - fresh network profile route
-- /more-free-games/categories/[slug] - partner game category clusters
-- Partner play pages remain noindex; profile and cluster pages are the indexable layer.
-
-
-V27 launch compliance, trust and polish hardening:
-- /privacy - live privacy, cookies, advertising and local storage information
-- /contact - contact route for privacy, game issues, advertising and partner feedback
-- /gaming-deals - soft-launch buyer-guide and affiliate disclosure hub
-- /updates/v27-launch-compliance-trust-polish-hardening - V27 launch QA update
-
-
-V28 global Search Console CTR and keyword engine:
-- Global targeting strengthened across title tags, meta descriptions and page intros.
-- Priority pages: /games, /free-online-games, /free-browser-games, /no-download-games, /mobile-games, /quick-games, /hot-picks, /latest and /feeds.
-- New global search-intent pages: /browser-games-online, /play-online-games-free, /instant-games-online.
-- Core keyword clusters: free online games, browser games, no download games, mobile games online, quick games, HTML5 games.
-- /updates/v28-global-search-console-ctr-keyword-engine - Search Console CTR and global keyword update.
-
-
-V30 Revenue Engine + Affiliate Application Pack:
-- /gaming-deals - central gaming deals and buyer guide hub
-- /affiliate-disclosure - commercial transparency and affiliate link policy
-- /partners - affiliate and brand partnership media page
-- /best-gaming-accessories - gaming accessory buyer guide
-- /best-mobile-game-controllers - mobile controller buyer guide
-- /best-budget-gaming-headsets - headset buyer guide
-- /best-gaming-keyboards - keyboard buyer guide
-- /best-gaming-mice - mouse buyer guide
-- /best-gifts-for-gamers - gamer gift guide
-- /best-gaming-gifts-under-25 - budget gamer gifts guide
-- /best-gaming-gifts-under-50 - mid-budget gamer gifts guide
-- /best-controller-games-online - controller games and setup guide
-- /best-accessories-for-browser-games - browser-game accessory guide
-- /best-razer-gaming-gear - premium Razer gear comparison guide
-- /best-logitech-gaming-gear - Logitech gaming gear comparison guide
+Original-game metadata comes from the canonical src/data/games.json catalogue. Partner profile metadata comes from src/data/partnerGameProfiles.js.

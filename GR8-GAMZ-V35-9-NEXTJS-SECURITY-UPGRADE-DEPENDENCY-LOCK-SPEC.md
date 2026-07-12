@@ -1,5 +1,7 @@
 # GR8 GAMZ V35.9 — Next.js Security Upgrade + Dependency Lock
 
+> Historical release note: the active project has since moved to Next.js 16.2.10, ESLint 9, and the committed pnpm lockfile. See `README.md` and `package.json` for the current release process.
+
 ## Purpose
 
 V35.9 is a controlled maintenance phase after the V35.8 stabilisation pack. It upgrades the project away from the vulnerable Next.js 14.2.3 release while keeping the successful repo alignment intact.

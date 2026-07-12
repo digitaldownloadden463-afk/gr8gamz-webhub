@@ -12,7 +12,7 @@ const checks = [
   ['src/app/page.js', 'ArcadePulsePanel'],
   ['src/components/Header.js', '/live'],
   ['src/data/content.js', 'v32-arcade-pulse-missions-clubhouse-action-layer'],
-  ['src/lib/crawl.js', '/live']
+  ['src/lib/activeRoutes.js', '/live']
 ];
 
 const failures = [];

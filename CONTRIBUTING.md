@@ -12,7 +12,7 @@ Thank you for your interest in contributing! Please follow these guidelines to e
 
 2. **Install dependencies**
    ```bash
-   npm install
+   pnpm install --frozen-lockfile
    ```
 
 3. **Set up environment variables**
@@ -23,7 +23,7 @@ Thank you for your interest in contributing! Please follow these guidelines to e
 
 4. **Start the development server**
    ```bash
-   npm run dev
+   pnpm dev
    ```
    Open [http://localhost:3000](http://localhost:3000)
 
@@ -31,22 +31,22 @@ Thank you for your interest in contributing! Please follow these guidelines to e
 
 ### Type Safety
 - All new code must include TypeScript types
-- Run `npm run build` to verify no type errors
+- Run `pnpm build` to verify no type errors
 - Never use `any` — use proper types or `unknown` with narrowing
 
 ### Linting & Formatting
 ```bash
 # Check for linting issues
-npm run lint
+pnpm lint
 
 # Auto-fix formatting
-npm run format
+pnpm format
 ```
 
 ### Testing
 ```bash
-# Run any available test suite
-npm test
+# Run the complete release gate
+pnpm check
 ```
 
 ## Development Workflow
@@ -63,8 +63,7 @@ npm test
 
 3. **Validate your changes**
    ```bash
-   npm run build
-   npm run lint
+   pnpm check
    ```
 
 4. **Commit with clear messages**
@@ -99,7 +98,7 @@ npm test
 
 2. Validate the data:
    ```bash
-   npm run validate:games
+   pnpm validate:games
    ```
 
 3. Test the game page renders correctly

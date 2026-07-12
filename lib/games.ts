@@ -118,6 +118,46 @@ export const categoryObjects: Gr8Category[] = [
     title: 'Casual Games',
     emoji: '⚡',
     description: 'Easy games for short repeat sessions.'
+  },
+  {
+    id: 'sports',
+    slug: 'sports',
+    name: 'Sports',
+    title: 'Sports Games',
+    emoji: '🏀',
+    description: 'Quick scoring, aiming and sports challenges.'
+  },
+  {
+    id: 'action',
+    slug: 'action',
+    name: 'Action',
+    title: 'Action Games',
+    emoji: '⚔️',
+    description: 'Fast survival, movement and reaction games.'
+  },
+  {
+    id: 'shooter',
+    slug: 'shooter',
+    name: 'Shooter',
+    title: 'Shooter Games',
+    emoji: '🚀',
+    description: 'Aim, dodge and clear fast browser-game waves.'
+  },
+  {
+    id: 'adventure',
+    slug: 'adventure',
+    name: 'Adventure',
+    title: 'Adventure Games',
+    emoji: '🧭',
+    description: 'Explore risk-and-reward challenges and quick quests.'
+  },
+  {
+    id: 'strategy',
+    slug: 'strategy',
+    name: 'Strategy',
+    title: 'Strategy Games',
+    emoji: '♟️',
+    description: 'Plan ahead in tactical and timing-based games.'
   }
 ];
 

@@ -29,6 +29,7 @@ const supportPage = fs.readFileSync(path.join(root, 'src/app/support/page.js'), 
 const reportPage = fs.readFileSync(path.join(root, 'src/app/report/page.js'), 'utf8');
 const communityRoomPage = fs.readFileSync(path.join(root, 'src/app/community/[room]/page.js'), 'utf8');
 const moderationClient = fs.readFileSync(path.join(root, 'src/lib/moderationClient.js'), 'utf8');
+const controlRoomApi = fs.readFileSync(path.join(root, 'src/app/api/gr8/control-room/route.js'), 'utf8');
 
 const checks = [
   ['admin noindex metadata', adminPage.includes('noIndex: true')],
@@ -37,7 +38,7 @@ const checks = [
   ['room board added', communityRoomPage.includes('<ClubhouseRoomBoard')],
   ['no third party support tooling', !moderationClient.includes('crisp') && !moderationClient.includes('tawk') && !moderationClient.includes('discourse')],
   ['safe outbound links in text removed', moderationClient.includes("'[link removed]'" )],
-  ['control room api mentions v33', fs.readFileSync(path.join(root, 'src/app/api/gr8/control-room/route.js'), 'utf8').includes("version: 'v33'")],
+  ['control room api is v33 or newer', /version:\s*'v(?:3[3-9]|[4-9]\d)'/.test(controlRoomApi)],
   ['content post added', fs.readFileSync(path.join(root, 'src/data/content.js'), 'utf8').includes('v33-control-room-moderation-support-foundation')]
 ];
 

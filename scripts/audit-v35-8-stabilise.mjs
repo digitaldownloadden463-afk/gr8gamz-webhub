@@ -13,7 +13,7 @@ const checks = [
   ['components/PlayerPanel.tsx', 'export function PlayerPanel'],
   ['components/ProfileContent.tsx', 'export function ProfileContent'],
   ['components/TopNav.tsx', 'export function TopNav'],
-  ['app/page.tsx', '<ActivityFeed compact />'],
+  ['app/page.tsx', '<ActivityFeed compact'],
   ['app/top-games/page.tsx', 'isFeatured'],
   ['app/arcade/[slug]/page.tsx', 'generateStaticParams']
 ];

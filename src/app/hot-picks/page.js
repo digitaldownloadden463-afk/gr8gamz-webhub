@@ -3,7 +3,7 @@ import GameGrid from '../../components/GameGrid';
 import PartnerProfileGrid from '../../components/partner/PartnerProfileGrid';
 import JsonLd from '../../components/JsonLd';
 import AiSummaryBox from '../../components/seo/AiSummaryBox';
-import { getFeaturedGames, getNewGames, getPopularGames } from '../../lib/games';
+import { getNewGames, getPopularGames } from '../../lib/games';
 import { getFeaturedPartnerGameProfiles } from '../../data/partnerGameProfiles';
 import { buildPageMetadata, itemListJsonLd, breadcrumbJsonLd } from '../../lib/seo';
 
@@ -16,7 +16,6 @@ export const metadata = buildPageMetadata({
 export default function HotPicksPage() {
   const hot = getPopularGames(9);
   const newest = getNewGames(6);
-  const featured = getFeaturedGames(6);
   const partnerProfiles = getFeaturedPartnerGameProfiles(8);
   return (
     <main>

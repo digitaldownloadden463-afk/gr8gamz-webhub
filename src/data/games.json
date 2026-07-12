@@ -61,7 +61,7 @@
     "rating": 4.8,
     "shortControls": "Swipe to turn",
     "launchOrder": 1,
-    "longDescription": "Neon Snake Rush V4 upgrades the original GR8 GAMZ snake loop with a cinematic neon arena, richer particle effects, stronger start instructions, combo scoring, speed ramps, new-best celebrations and a bigger game-over reward screen. It is built mobile-first for swipe controls and quick replay sessions.",
+    "longDescription": "Neon Snake Rush V8 upgrades the original GR8 GAMZ snake loop with a cinematic neon arena, richer particle effects, stronger start instructions, combo scoring, speed ramps, new-best celebrations and a bigger game-over reward screen. It is built mobile-first for swipe controls and quick replay sessions.",
     "thumbnailAlt": "Neon Snake Rush neon arcade game thumbnail"
   },
   {
@@ -1560,5 +1560,54 @@
     "shortControls": "Tap pairs",
     "launchOrder": 25,
     "longDescription": "Flip cosmic tiles, match glowing symbols and build a perfect memory streak. Built as part of the V20 third premium game drop with mobile-first controls, score saving, GR8 Focus Mode support and fast replay loops."
+  },
+  {
+    "id": "slope",
+    "name": "Slope",
+    "genre": "Arcade",
+    "category": "arcade",
+    "emoji": "🟢",
+    "difficulty": "Hard",
+    "playStyle": "3D reflex runner",
+    "iframeUrl": "/games/slope/index.html?v=gr8-slope-restored-20260706",
+    "thumbnail": "/art/homepage-neon-horizon.webp",
+    "description": "Roll into a fast 3D slope run, dodge the gaps and chase a clean survival streak in this restored GR8 GAMZ arcade favourite.",
+    "seoTitle": "Play Slope Online Free | GR8 GAMZ 3D Reflex Runner",
+    "seoDescription": "Play Slope free online on GR8 GAMZ. Roll through a fast 3D track, dodge gaps and test your reactions in a no-download browser game.",
+    "baseTrivia": "Restored from the site files and added back to the official game catalogue so players can find it from the arcade.",
+    "controls": [
+      "Desktop: arrow keys or A/D to steer",
+      "Mobile: follow the on-screen controls if available",
+      "Stay centered and make small corrections"
+    ],
+    "engagementHooks": [
+      "Restored arcade favourite",
+      "High-speed 3D track",
+      "Instant restart loop",
+      "Reaction challenge"
+    ],
+    "tags": [
+      "slope",
+      "3d",
+      "arcade",
+      "runner",
+      "reflex",
+      "high-score"
+    ],
+    "platforms": [
+      "html5",
+      "desktop",
+      "originals"
+    ],
+    "status": "Live",
+    "isPopular": true,
+    "isNew": true,
+    "dateAdded": "2026-07-06",
+    "playsLabel": "Restored favourite",
+    "rating": 4.8,
+    "shortControls": "Steer to survive",
+    "launchOrder": 26,
+    "longDescription": "Slope has been restored as a real GR8 GAMZ catalogue game. It gives players a fast 3D reflex challenge with simple steering, quick restarts and high-score pressure.",
+    "thumbnailAlt": "Slope 3D arcade runner thumbnail"
   }
 ]

@@ -1,38 +1,44 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import ActivityFeed from '@/components/ActivityFeed';
 import GameActions from '@/components/GameActions';
 import GameComments from '@/components/GameComments';
 import GamePlayerFrame from '@/components/GamePlayerFrame';
 import { getAllGames, getGameBySlug } from '@/lib/games';
 
-type PageProps = { params: { slug: string } };
+type PageProps = { params: Promise<{ slug: string }> };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getAllGames().map((game) => ({ slug: game.slug || game.id }));
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const game = getGameBySlug(params.slug);
-  const title = game?.name || game?.title || 'GR8 Game';
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
+  if (!game) notFound();
+  const name = game.name || game.title || 'GR8 Game';
+  const title = game.seoTitle || `${name} | GR8 GAMZ`;
+  const description = game.seoDescription || game.description || `Play ${name} on GR8 GAMZ.`;
+  const canonical = `/arcade/${game.slug || game.id}`;
   return {
-    title: `${title} | GR8 GAMZ`,
-    description: game?.description || `Play ${title} on GR8 GAMZ.`
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: game.thumbnail ? [{ url: game.thumbnail, alt: game.thumbnailAlt || `${name} artwork` }] : undefined
+    }
   };
 }
 
-export default function ArcadeGamePage({ params }: PageProps) {
-  const game = getGameBySlug(params.slug);
-  if (!game) {
-    return (
-      <main>
-        <section className="page-title">
-          <h1>Game not found</h1>
-          <p>This arcade page could not find a matching game slug.</p>
-          <Link href="/games" className="cta">Browse games</Link>
-        </section>
-      </main>
-    );
-  }
+export default async function ArcadeGamePage({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
+  if (!game) notFound();
   return (
     <main>
       <Link href="/games" className="secondary-cta">← Back to games</Link>
@@ -42,9 +48,33 @@ export default function ArcadeGamePage({ params }: PageProps) {
       </section>
       <GameActions game={game} />
       <GamePlayerFrame game={game} />
+      <section className="content-panel" style={{ marginTop: 18 }}>
+        <span className="eyebrow">Game guide</span>
+        <h2>How to play {game.name || game.title}</h2>
+        <p>{game.longDescription || game.description}</p>
+        {game.controls?.length ? (
+          <div className="home-grid" style={{ marginTop: 16 }}>
+            <article>
+              <h3>Controls</h3>
+              <ul>
+                {game.controls.map((control) => <li key={control}>{control}</li>)}
+              </ul>
+            </article>
+            {game.engagementHooks?.length ? (
+              <article>
+                <h3>Why play another round</h3>
+                <ul>
+                  {game.engagementHooks.map((hook) => <li key={hook}>{hook}</li>)}
+                </ul>
+              </article>
+            ) : null}
+          </div>
+        ) : null}
+        {game.baseTrivia ? <p><strong>Did you know?</strong> {game.baseTrivia}</p> : null}
+      </section>
       <section className="home-grid" style={{ marginTop: 18 }}>
         <ActivityFeed />
-        <GameComments slug={params.slug} game={game} />
+        <GameComments slug={slug} game={game} />
       </section>
     </main>
   );

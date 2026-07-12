@@ -20,7 +20,7 @@ GR8_BACKEND_TOKEN=private-shared-token
 
 ## Current behaviour
 
-Without database variables, V34 APIs still work as contracts and use temporary in-memory storage per server instance. This is enough to test routes and payloads, but it is not persistent.
+Without database variables, public submission APIs use a bounded temporary-memory fallback per server instance. Account persistence is not considered production-ready until the canonical database schemas are applied. Admin APIs always fail closed unless `GR8_ADMIN_KEY` is configured.
 
 ## Main routes
 
@@ -41,5 +41,8 @@ Without database variables, V34 APIs still work as contracts and use temporary i
 Use this schema when provisioning the database:
 
 ```txt
-database/v34-gr8-backend-bridge-schema.sql
+database/gr8-v34-database-core-schema.sql
+database/v35-gr8-auth-accounts-schema.sql
 ```
+
+The older `database/v34-gr8-backend-bridge-schema.sql` filename is retained only for compatibility and mirrors the canonical V34 core schema. Do not mix independently versioned table definitions.

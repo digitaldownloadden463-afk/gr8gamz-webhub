@@ -13,8 +13,8 @@ export function GET() {
     requiredEnv: [
       'GR8_SESSION_SECRET for signed session cookies',
       'GR8_ADMIN_KEY for admin account review APIs',
-      'GR8_DATABASE_URL or DATABASE_URL or POSTGRES_URL for persistent accounts in the next SQL adapter step'
+      'GR8_DATABASE_URL or DATABASE_URL or POSTGRES_URL for persistent accounts'
     ],
-    message: 'V35 adds in-house account registration, login, signed sessions and Passport sync contracts. Memory fallback is temporary until database persistence is connected.'
+    message: 'GR8 Passport uses PostgreSQL-backed accounts and signed cookie sessions in production. Ephemeral auth is available only in development unless explicitly enabled.'
   });
 }

@@ -7,7 +7,8 @@ Correct example paths:
 src/app/backend/page.js
 src/app/api/gr8/backend/status/route.js
 src/lib/server/gr8BackendStore.js
-database/v34-gr8-backend-bridge-schema.sql
+database/gr8-v34-database-core-schema.sql
+database/v35-gr8-auth-accounts-schema.sql
 
 Do not upload the outer zip folder itself.
 
@@ -25,4 +26,4 @@ https://www.gr8gamz.com/updates/v34-backend-database-bridge
 
 Important:
 
-The first deployment will use temporary memory fallback unless database environment variables are added in Vercel.
+The first deployment will use bounded temporary memory fallback unless database environment variables are added in Vercel and both canonical schemas are applied. Admin APIs remain unavailable until GR8_ADMIN_KEY is configured.

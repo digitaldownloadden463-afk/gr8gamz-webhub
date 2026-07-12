@@ -8,6 +8,12 @@ const rooms = [
   ['Favourite games', '/community/favourite-games']
 ];
 
+export const metadata = {
+  title: 'GR8 Clubhouse | GR8 GAMZ',
+  description: 'Join controlled GR8 GAMZ community rooms for requests, high scores, bug reports and player feedback.',
+  alternates: { canonical: '/community' }
+};
+
 export default function CommunityPage() {
   return (
     <main>

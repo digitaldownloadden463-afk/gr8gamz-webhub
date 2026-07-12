@@ -1,6 +1,12 @@
 import GameCard from '@/components/GameCard';
 import { getAllGames } from '@/lib/games';
 
+export const metadata = {
+  title: 'Free Browser Games | GR8 GAMZ',
+  description: 'Browse every original GR8 GAMZ arcade, puzzle, racing, sports, action and skill game.',
+  alternates: { canonical: '/games' }
+};
+
 export default function GamesPage() {
   const games = getAllGames();
   const grouped = games.reduce<Record<string, typeof games>>((groups, game) => {

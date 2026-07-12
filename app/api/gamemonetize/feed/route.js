@@ -2,11 +2,21 @@ import { NextResponse } from 'next/server';
 import { gameMonetizeCategories, gameMonetizeConfig, gameMonetizePopularity } from '../../../../src/data/gamemonetize';
 
 export const dynamic = 'force-dynamic';
+const MAX_FEED_BYTES = 2 * 1024 * 1024;
+const FEED_TIMEOUT_MS = 10_000;
 
 function clampNumber(value, fallback, min, max) {
   const number = Number.parseInt(value, 10);
   if (Number.isNaN(number)) return fallback;
   return Math.max(min, Math.min(max, number));
+}
+
+async function readFeed(response) {
+  const declaredLength = Number(response.headers.get('content-length') || 0);
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_FEED_BYTES) throw new Error('feed-too-large');
+  const raw = await response.text();
+  if (Buffer.byteLength(raw, 'utf8') > MAX_FEED_BYTES) throw new Error('feed-too-large');
+  return JSON.parse(raw);
 }
 
 export async function GET(request) {
@@ -30,12 +40,13 @@ export async function GET(request) {
   try {
     const response = await fetch(feed.toString(), {
       next: { revalidate: 1800 },
-      headers: { accept: 'application/json' }
+      headers: { accept: 'application/json' },
+      signal: AbortSignal.timeout(FEED_TIMEOUT_MS)
     });
     if (!response.ok) {
       return NextResponse.json({ ok: false, error: `GameMonetize feed returned ${response.status}`, items: [] }, { status: 502 });
     }
-    const data = await response.json();
+    const data = await readFeed(response);
     return NextResponse.json(
       {
         ok: true,
@@ -43,17 +54,15 @@ export async function GET(request) {
         amount,
         category: safeCategory,
         popularity: safePopularity,
-        feed_url: feed.toString(),
-        items: Array.isArray(data) ? data : data?.items || []
+        items: (Array.isArray(data) ? data : data?.items || []).slice(0, amount)
       },
       { headers: { 'cache-control': 'public, s-maxage=1800, stale-while-revalidate=86400' } }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json({
       ok: false,
       error: 'Unable to load the GameMonetize feed right now.',
-      detail: error?.message || 'Unknown feed error',
       items: []
-    }, { status: 500 });
+    }, { status: 502 });
   }
 }

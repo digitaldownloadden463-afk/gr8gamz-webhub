@@ -1,151 +1,86 @@
-# GR8 GAMZ V8 Selection Labs Update
+# GR8 GAMZ Web Hub
 
-This update adds the same deeper player-choice idea from Turbo Drift Garage into the other launched games.
+GR8 GAMZ is a Next.js browser-game hub with 26 self-hosted games, 40 curated partner profiles, six partner categories, and a restored GameMonetize CMS catalogue of 26,357 games.
 
-## Updated games
+## Requirements
 
-- Neon Snake Rush now has **Snake Lab**
-- Stack Tower Rush now has **Build Mode**
-- Pixel Goal Hero now has **Team Locker**
-- Space Tap Survival now has **Space Hangar**
+- Node.js 24.x
+- pnpm 11
+- PostgreSQL for persistent GR8 Passport accounts
+- A protected backend bridge endpoint for persistent community, support, and report submissions
 
-## What changed
+## Local setup
 
-- Selection menus before play
-- Different play styles with visible stats
-- More replay value
-- Better mobile-first instructions
-- Stronger game-over messaging
-- Updated cache-busted iframe URLs in `src/data/games.json`
+```bash
+pnpm install --frozen-lockfile
+cp .env.example .env.local
+pnpm dev
+```
 
-## Upload
+The local site starts at `http://localhost:3000`.
 
-Upload these folders/files to GitHub and allow overwrite:
+## Release checks
 
-- `public`
-- `src`
-- `README.md`
-- `UPLOAD-INSTRUCTIONS.txt`
+Run the complete release gate before deployment:
 
-Commit message:
+```bash
+pnpm check
+```
 
-`Add V8 selection labs to launched games`
+That command runs strict TypeScript, ESLint, game-data validation, active-route and IndexNow validation, security regression tests, all historical release audits, and a production build.
 
-Then wait for Vercel to redeploy.
+Useful individual commands:
 
+```bash
+pnpm type-check
+pnpm lint
+pnpm validate:games
+pnpm validate:active-routes
+pnpm test:security
+pnpm audit:releases
+pnpm build
+```
 
-## V9 Homepage Artwork Pass
-- Added premium homepage hero artwork and supporting neon landscape section background.
-- Improved first-impression messaging and launch highlight panels.
-- Added local artwork assets under `public/art/`.
+## Production configuration
 
+Copy `.env.example` and configure these server-only values:
 
-## V10 Conversion + Speed Polish
-- Fixed oversized thumbnail control labels.
-- Reordered homepage sections for stronger conversion and repeat-play flow.
-- Improved CTA wording and headline hierarchy.
-- Added compressed WebP homepage artwork references for faster loading.
+- `GR8_SESSION_SECRET`: long random secret used to hash session tokens
+- `GR8_ADMIN_KEY`: protects moderation and account-administration reads
+- `GR8_DATABASE_URL`: PostgreSQL connection string for persistent Passport accounts
+- `GR8_DATABASE_CA_CERT`: optional escaped PEM CA certificate when required by the database provider
+- `GR8_BACKEND_ENDPOINT` and `GR8_BACKEND_TOKEN`: persistent submission bridge
+- `INDEXNOW_SUBMIT_TOKEN`: protects every mutating IndexNow request
 
+Apply these schemas before enabling persistent services:
 
-## V11 Immersive Play System
-- Added branded GR8 Focus Mode for fullscreen play.
-- Added pause overlay, sound toggle, quick restart and mobile rotate suggestion.
-- Added post-game result overlay with Play Again and Next Game flow.
+1. `database/gr8-v34-database-core-schema.sql`
+2. `database/v35-gr8-auth-accounts-schema.sql`
 
+Ephemeral account and backend storage are disabled in production unless their explicit development-only flags are enabled. Keep those flags `false` in deployed environments.
 
-## V12 Second Game Drop
-Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch games with new puzzle, shooter, adventure and strategy coverage.
+## Project layout
 
+- `app/`: active Next.js application and API routes
+- `components/`: active shared UI
+- `lib/`: active game and server services
+- `src/data/`: canonical game, partner, and CMS catalogue data
+- `src/lib/activeRoutes.js`: shared sitemap and IndexNow route manifest
+- `public/games/`: self-hosted HTML5 games
+- `database/`: PostgreSQL schemas
+- `scripts/`: validation, regression, and historical release audits
 
-## V13 Second Drop Polish
-- Upgraded the V12 second-drop thumbnails to premium neon artwork consistent with the first five games.
-- Fixed oversized thumbnail control badges with stronger CSS targeting.
-- Fixed Zombie Lane Runner arrow key / A-D lane switching.
+The root `app/` tree is the production application. Older `src/app/` and flattened release files are retained only for historical audit compatibility; new work should target the active root directories.
 
+## Security model
 
-## V14 Retention + Discovery Engine
-- Added daily XP reward card.
-- Added local achievement badges.
-- Added recommended horizontal game rails.
-- Improved `/games` filtering by category, control type, difficulty and sort order.
-- Added `/controls/[slug]` landing pages.
-- Added `/difficulty/[slug]` landing pages.
-- Updated sitemap to include new discovery routes.
-- Improved game session tracking for favourites, plays, recent games and local XP.
+- Session tokens are random, HMAC-hashed at rest, stored only in `HttpOnly` cookies, and never returned in JSON.
+- Admin routes fail closed when `GR8_ADMIN_KEY` is missing.
+- Production authentication requires PostgreSQL and a session secret.
+- Public writes are size-limited, rate-limited, and sanitized.
+- Partner game URLs are restricted to approved HTTPS domains and run in sandboxed iframes.
+- IndexNow GET routes are dry-run/status-only; POST routes require `INDEXNOW_SUBMIT_TOKEN`.
 
+## Deployment
 
-## V15 SEO + AI Visibility Layer
-- Added advanced crawl/AI visibility structure.
-- Added `/mobile-games`, `/quick-games` and `/free-browser-games` SEO hubs.
-- Added richer visible game-page SEO content and FAQs.
-- Added IndexNow-ready routes and environment-variable setup.
-- Added `llms.txt` and sitemap updates.
-- Added Google/Bing verification metadata support.
-
-
-## V16 Authority + Content Engine
-- Added `/updates` content hub.
-- Added update/article pages with Article and FAQ schema.
-- Added `/collections` guide hub.
-- Added curated collection pages with CollectionPage and ItemList schema.
-- Added `/new-this-week` fresh crawl hub.
-- Added homepage latest-updates section.
-- Added header links for Updates and Collections.
-- Updated sitemap and llms.txt with the new authority/content routes.
-
-
-## V17 Growth Automation + Feed Engine
-- Added RSS and JSON feeds for update posts.
-- Added grouped sitemaps and a sitemap index.
-- Added `/latest`, `/feeds` and `/seo-status` hubs.
-- Added IndexNow URL list and bulk submission route.
-- Added root IndexNow key fallback file/route.
-- Updated robots.txt and llms.txt with feed/sitemap routes.
-- Added homepage links into the freshness and crawl automation layer.
-
-
-## V18 gameplay + art polish
-- Larger arcade viewport heights for better in-game visibility.
-- Premium neon artwork refresh for the last ten games.
-- Zombie Lane Runner control reliability patch with touch lane buttons.
-
-
-## V19 included planning docs
-This package now includes the V19 planning layer:
-- `GR8-GAMZ-V19-FULL-GAMEPLAY-QA-PREMIUM-POLISH-SPEC.md`
-- `GR8-GAMZ-V19-QA-MATRIX.md`
-
-V19 is the next implementation phase after V18: full testing, balancing, mechanic polish and premium QA across all 15 existing games.
-
-
-## V19 implementation
-V19 upgrades the second-drop gameplay engine and strengthens quality across the existing 15-game arcade library.
-
-Key implementation points:
-- Score/result posting added to the last ten games.
-- Pause/resume/mute handling added for GR8 Focus Mode.
-- Better mobile and keyboard control handling.
-- Fairer collision and spawn behaviour.
-- Stronger combo/scoring feedback.
-- New V19 update article added to the content engine.
-
-
-## V20 third premium game drop
-V20 adds 10 new premium mobile-first browser games:
-- Neon Pinball Rush
-- Cyber Bowling Blitz
-- Lava Tile Escape
-- Galaxy Golf Putt
-- Monster Truck Tap
-- Fruit Slice Fever
-- Shadow Ninja Leap
-- Cannon Coin Blast
-- Ice Slide Puzzle
-- Astro Memory Grid
-
-Also adds:
-- V20 update article
-- V20 curated collection
-- premium thumbnails
-- score/result posting
-- GR8 Focus Mode pause/resume support
+Install with the committed pnpm lockfile, configure the production environment, apply the database schemas, run `pnpm check`, and deploy the resulting Next.js application. Do not expose server-only environment values through `NEXT_PUBLIC_*` variables.

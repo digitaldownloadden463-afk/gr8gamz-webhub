@@ -30,6 +30,8 @@ export default function PartnerLiveGamePanel({ profile }) {
   return (
     <aside className="partner-live-panel" aria-label={`${profile.title} live game preview panel`}>
       <div className="partner-live-screen">
+        {/* Runtime-resolved partner images cannot be safely proxied through Next.js. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={previewImage} alt={`${profile.title} actual game preview`} loading="eager" />
         <span>{live.image || live.bannerImage ? 'Actual game artwork' : 'GR8 branded preview'}</span>
       </div>

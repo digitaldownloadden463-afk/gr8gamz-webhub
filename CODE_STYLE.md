@@ -103,7 +103,7 @@ function displayGame(game: any): void { }
 TypeScript strict mode is enabled (`tsconfig.json`). Fix all errors before committing:
 
 ```bash
-npm run build  # Will fail if there are type errors
+pnpm build  # Will fail if there are type errors
 ```
 
 ## Naming Conventions

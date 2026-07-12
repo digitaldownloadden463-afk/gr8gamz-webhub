@@ -4,8 +4,7 @@ import PartnerPlayLauncher from '../../../components/partner/PartnerPlayLauncher
 import PartnerLiveGamePanel from '../../../components/partner/PartnerLiveGamePanel';
 import PartnerProfileGrid from '../../../components/partner/PartnerProfileGrid';
 import PartnerRetentionPanel from '../../../components/partner/PartnerRetentionPanel';
-import { getAllGames } from '../../../lib/games';
-import { getFeaturedPartnerGameProfiles, getPartnerGameProfile, getPartnerGameProfiles, getRelatedPartnerGameProfiles } from '../../../data/partnerGameProfiles';
+import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '../../../data/partnerGameProfiles';
 import { absoluteUrl, breadcrumbJsonLd, buildPageMetadata, faqJsonLd, imageObjectJsonLd } from '../../../lib/seo';
 
 export function generateMetadata({ params }) {
@@ -64,8 +63,6 @@ export default function PartnerGameProfilePage({ params }) {
   }
 
   const relatedProfiles = getRelatedPartnerGameProfiles(profile, 8);
-  const originals = getAllGames().slice(0, 6);
-
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd([

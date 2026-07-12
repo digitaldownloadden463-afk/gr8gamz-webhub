@@ -8,7 +8,11 @@ export default function GameCard({ game, localePathPrefix = '' }) {
       <Link href={href} className="game-card-link" aria-label={`Play ${game.name}`}>
         <div className="game-thumb">
           {game.thumbnail ? (
-            <img src={game.thumbnail} alt={game.thumbnailAlt || `${game.name} game thumbnail`} loading="lazy" />
+            <>
+              {/* Legacy catalog cards support arbitrary self-hosted artwork paths. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={game.thumbnail} alt={game.thumbnailAlt || `${game.name} game thumbnail`} loading="lazy" />
+            </>
           ) : (
             <span aria-hidden="true">{game.emoji}</span>
           )}

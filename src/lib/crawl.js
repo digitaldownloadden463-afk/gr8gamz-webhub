@@ -1,9 +1,13 @@
 import { siteConfig } from '../data/site';
-import { getAllGames, getAllTags } from './games';
-import { getAllContentCollections, getAllUpdatePosts } from './content';
+import { getAllGames } from './games';
 import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '../data/partnerGameProfiles';
-import { getFeaturedBuyerGuides } from '../data/affiliateGuides';
-import { communityRooms } from '../data/community';
+import {
+  ACTIVE_STATIC_ROUTES,
+  buildActiveIndexableRoutes,
+  buildOriginalGameRoutes,
+  buildPartnerClusterRoutes,
+  buildPartnerProfileRoutes
+} from './activeRoutes';
 
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '470561d472ec49aca5a704b6d8a3eac0';
 
@@ -17,124 +21,39 @@ export function absolutePath(path = '/') {
 }
 
 export function getCoreRoutes() {
-  return [
-    '/',
-    '/games',
-    '/popular',
-    '/new',
-    '/a-z',
-    '/search',
-    '/mobile-games',
-    '/quick-games',
-    '/free-browser-games',
-    '/free-online-games',
-    '/play-free-games',
-    '/html5-games',
-    '/arcade-games',
-    '/action-games',
-    '/puzzle-games',
-    '/racing-games',
-    '/no-download-games',
-    '/one-tap-games',
-    '/games-for-mobile',
-    '/safe-browser-games',
-    '/best-free-browser-games',
-    '/instant-games-online',
-    '/play-online-games-free',
-    '/browser-games-online',
-    '/original-games',
-    '/more-free-games',
-    '/more-free-games/trending',
-    '/more-free-games/popular',
-    '/more-free-games/new',
-    '/play-next',
-    '/hot-picks',
-    '/updates',
-    '/collections',
-    '/new-this-week',
-    '/latest',
-    '/feeds',
-    '/seo-status',
-    '/advertise',
-    '/contact',
-    '/privacy',
-    '/gaming-deals',
-    '/passport',
-    '/badges',
-    '/daily-challenge',
-    '/live',
-    '/community',
-    '/community-guidelines',
-    ...communityRooms.map((room) => room.href),
-    '/guides',
-    '/best-logitech-gaming-gear',
-    '/best-razer-gaming-gear',
-    '/best-accessories-for-browser-games',
-    '/best-controller-games-online',
-    '/best-gaming-gifts-under-50',
-    '/best-gaming-gifts-under-25',
-    '/best-gifts-for-gamers',
-    '/best-gaming-mice',
-    '/best-gaming-keyboards',
-    '/best-budget-gaming-headsets',
-    '/best-mobile-game-controllers',
-    '/best-gaming-accessories',
-    '/partners',
-    '/affiliate-disclosure',
-    '/partner-disclosure'
-  ];
+  return [...ACTIVE_STATIC_ROUTES];
 }
 
 export function getGameRoutes() {
-  return getAllGames().map((game) => `/arcade/${game.id}`);
+  return buildOriginalGameRoutes(getAllGames());
 }
 
 export function getGameGuideRoutes() {
-  return getAllGames().map((game) => `/guides/${game.id}`);
+  return [];
 }
 
 export function getDiscoveryRoutes() {
-  return [
-    ...siteConfig.categories.map((category) => `/categories/${category.id}`),
-    ...siteConfig.platforms.map((platform) => `/platforms/${platform.id}`),
-    ...(siteConfig.seoHubs || []).map((hub) => hub.path),
-    ...(siteConfig.controlTypes || []).map((control) => `/controls/${control.id}`),
-    ...(siteConfig.difficulties || []).map((difficulty) => `/difficulty/${difficulty.id}`),
-    ...getAllTags().map((tag) => `/tags/${tag}`)
-  ];
+  return buildPartnerClusterRoutes(getPartnerNetworkClusterRoutes());
 }
 
 export function getPartnerGameProfileRoutes() {
-  return getPartnerGameProfiles().map((profile) => profile.path);
+  return buildPartnerProfileRoutes(getPartnerGameProfiles());
 }
 
 export function getPartnerNetworkRoutes() {
-  return [
-    '/more-free-games/trending',
-    '/more-free-games/popular',
-    '/more-free-games/new',
-    '/play-next',
-    ...getPartnerNetworkClusterRoutes()
-  ];
+  return getDiscoveryRoutes();
 }
 
 export function getContentRoutes() {
-  return [
-    ...getAllUpdatePosts().map((post) => `/updates/${post.slug}`),
-    ...getAllContentCollections().map((collection) => `/collections/${collection.slug}`),
-    ...getPartnerGameProfileRoutes(),
-    ...getPartnerNetworkRoutes()
-  ];
+  return getPartnerGameProfileRoutes();
 }
 
 export function getAllIndexableRoutes() {
-  return Array.from(new Set([
-    ...getCoreRoutes(),
-    ...getDiscoveryRoutes(),
-    ...getContentRoutes(),
-    ...getGameRoutes(),
-    ...getGameGuideRoutes()
-  ]));
+  return buildActiveIndexableRoutes({
+    games: getAllGames(),
+    profiles: getPartnerGameProfiles(),
+    clusterRoutes: getPartnerNetworkClusterRoutes()
+  });
 }
 
 export function getIndexNowUrlList() {
@@ -142,48 +61,14 @@ export function getIndexNowUrlList() {
 }
 
 export function getFreshChangedPages(limit = 40) {
-  const updates = getAllUpdatePosts().map((post) => ({
-    path: `/updates/${post.slug}`,
-    title: post.title,
-    type: 'Update',
-    changed: post.updatedAt || post.date,
-    priority: 0.92,
-    reason: 'Fresh content article'
+  const core = getCoreRoutes().map((path, index) => ({
+    path,
+    title: path === '/' ? 'Homepage' : path.slice(1).replaceAll('-', ' '),
+    type: 'Core',
+    changed: '2026-07-11',
+    priority: index === 0 ? 1 : 0.9,
+    reason: 'Active GR8 GAMZ route'
   }));
-
-  const collections = getAllContentCollections().map((collection) => ({
-    path: `/collections/${collection.slug}`,
-    title: collection.title,
-    type: 'Collection',
-    changed: '2026-06-28',
-    priority: 0.86,
-    reason: 'Curated game collection'
-  }));
-
-  const core = [
-    { path: '/', title: 'Homepage', type: 'Core', changed: '2026-07-02', priority: 1, reason: 'Primary platform entry point with GR8 Passport layer' },
-    { path: '/games', title: 'All games', type: 'Core', changed: '2026-06-30', priority: 0.98, reason: 'Main game catalogue' },
-    { path: '/original-games', title: 'GR8 Originals', type: 'SEO hub', changed: '2026-06-30', priority: 0.96, reason: 'Brand-owned game hub' },
-    { path: '/more-free-games', title: 'More Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.97, reason: 'Main branded partner-game hub' },
-    { path: '/play-next', title: 'Play Next', type: 'Retention hub', changed: '2026-06-30', priority: 0.95, reason: 'One-more-game retention page' },
-    { path: '/more-free-games/trending', title: 'Trending Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Partner game discovery route' },
-    { path: '/more-free-games/popular', title: 'Popular Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Partner game discovery route' },
-    { path: '/more-free-games/new', title: 'New Free Games', type: 'Network hub', changed: '2026-06-30', priority: 0.94, reason: 'Fresh partner game discovery route' },
-    { path: '/hot-picks', title: 'Hot Picks', type: 'Fresh hub', changed: '2026-06-30', priority: 0.94, reason: 'Featured game discovery hub' },
-    { path: '/privacy', title: 'Privacy, Cookies and Advertising', type: 'Trust', changed: '2026-06-30', priority: 0.88, reason: 'Launch trust and compliance page' },
-    { path: '/gaming-deals', title: 'Gaming Deals and Buyer Guides', type: 'Monetisation', changed: '2026-07-02', priority: 0.88, reason: 'Affiliate disclosure and buyer-guide hub' },
-    { path: '/passport', title: 'GR8 Passport', type: 'Player platform', changed: '2026-07-02', priority: 0.93, reason: 'In-house player account foundation' },
-    { path: '/badges', title: 'GR8 Badges', type: 'Player platform', changed: '2026-07-02', priority: 0.89, reason: 'Player progression layer' },
-    { path: '/daily-challenge', title: 'GR8 Daily Challenge', type: 'Player platform', changed: '2026-07-02', priority: 0.91, reason: 'Claimable daily missions and XP retention layer' },
-    { path: '/live', title: 'GR8 Arcade Pulse', type: 'Player platform', changed: '2026-07-02', priority: 0.91, reason: 'Live activity layer for sessions, missions and community signals' },
-    { path: '/community', title: 'GR8 Clubhouse', type: 'Community', changed: '2026-07-02', priority: 0.89, reason: 'Controlled in-house community foundation' },
-    { path: '/contact', title: 'Contact GR8 GAMZ', type: 'Trust', changed: '2026-06-30', priority: 0.78, reason: 'Contact and support route' },
-    { path: '/free-online-games', title: 'Free online games', type: 'SEO hub', changed: '2026-06-30', priority: 0.93, reason: 'Important search landing page' },
-    { path: '/new-this-week', title: 'New this week', type: 'Fresh hub', changed: '2026-06-28', priority: 0.95, reason: 'Fresh crawl hub' },
-    { path: '/mobile-games', title: 'Mobile games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' },
-    { path: '/quick-games', title: 'Quick games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' },
-    { path: '/free-browser-games', title: 'Free browser games', type: 'SEO hub', changed: '2026-06-28', priority: 0.9, reason: 'Important search landing page' }
-  ];
 
   const partnerProfiles = getPartnerGameProfiles().slice(0, 24).map((profile) => ({
     path: profile.path,
@@ -194,32 +79,13 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'GR8-branded partner game profile'
   }));
 
-  const guides = getAllGames().slice(0, 12).map((game) => ({
-    path: `/guides/${game.id}`,
-    title: `${game.name} Guide`,
-    type: 'Game guide',
-    changed: game.dateAdded || '2026-06-30',
+  const clusters = getPartnerNetworkClusterRoutes().map((path) => ({
+    path,
+    title: path.split('/').at(-1).replaceAll('-', ' '),
+    type: 'Partner category',
+    changed: '2026-07-11',
     priority: 0.88,
-    reason: 'Original game guide page'
-  }));
-
-
-  const buyerGuides = getFeaturedBuyerGuides(12).map((guide) => ({
-    path: guide.path,
-    title: guide.title,
-    type: 'Affiliate buyer guide',
-    changed: '2026-07-02',
-    priority: 0.91,
-    reason: 'Revenue-ready gaming buyer guide'
-  }));
-
-  const community = communityRooms.map((room) => ({
-    path: room.href,
-    title: room.title,
-    type: 'Community room',
-    changed: '2026-07-02',
-    priority: 0.86,
-    reason: 'Controlled in-house Clubhouse submission room'
+    reason: 'Active partner-game discovery route'
   }));
 
   const games = getAllGames().slice(0, 15).map((game) => ({
@@ -231,7 +97,7 @@ export function getFreshChangedPages(limit = 40) {
     reason: 'Playable game page'
   }));
 
-  return [...core, ...community, ...buyerGuides, ...partnerProfiles, ...guides, ...updates, ...collections, ...games]
+  return [...core, ...partnerProfiles, ...clusters, ...games]
     .sort((a, b) => new Date(b.changed) - new Date(a.changed) || b.priority - a.priority)
     .slice(0, limit);
 }
