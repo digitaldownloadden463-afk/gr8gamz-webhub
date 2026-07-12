@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <main>
       <section
-        className="hero hero--home"
+        className="hero hero--home glass-panel"
         style={{
           backgroundImage: heroGame?.thumbnail
             ? `linear-gradient(90deg, rgba(5,5,7,.97) 0%, rgba(5,5,7,.84) 48%, rgba(5,5,7,.48) 100%), url("${heroGame.thumbnail}")`
@@ -70,7 +70,17 @@ export default function HomePage() {
       </section>
 
       <section className="game-grid">
-        {featured.map((game) => <GameCard key={game.id} game={game} />)}
+        {featured.map((game) => (
+          <GameCard 
+            key={game.id} 
+            id={game.id}
+            title={game.title}
+            category={game.category || 'Arcade'}
+            imageUrl={game.thumbnail || '/placeholder.png'}
+            url={`/arcade/${game.slug || game.id}`}
+            isNew={game.isNew}
+          />
+        ))}
       </section>
 
       <section className="network-showcase">
