@@ -4,7 +4,7 @@ GR8 GAMZ is a Next.js browser-game hub with 26 self-hosted games, 40 curated par
 
 ## Requirements
 
-- Node.js 20.9 or newer
+- Node.js 24.x
 - pnpm 11
 - PostgreSQL for persistent GR8 Passport accounts
 - A protected backend bridge endpoint for persistent community, support, and report submissions

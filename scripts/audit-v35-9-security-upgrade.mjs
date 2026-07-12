@@ -7,6 +7,22 @@ const npmLockPath = path.join(root, 'package-lock.json');
 const pnpmLockPath = path.join(root, 'pnpm-lock.yaml');
 const nextConfig = fs.readFileSync(path.join(root, 'next.config.js'), 'utf8');
 const tsconfig = fs.readFileSync(path.join(root, 'tsconfig.json'), 'utf8');
+const pnpmWorkspacePath = path.join(root, 'pnpm-workspace.yaml');
+const pnpmWorkspace = fs.existsSync(pnpmWorkspacePath)
+  ? fs.readFileSync(pnpmWorkspacePath, 'utf8')
+  : '';
+const workspaceLines = pnpmWorkspace.split(/\r?\n/);
+const allowBuildsStart = workspaceLines.findIndex((line) => /^allowBuilds[ \t]*:/.test(line));
+const allowBuildLines = [];
+
+if (allowBuildsStart >= 0) {
+  for (const line of workspaceLines.slice(allowBuildsStart + 1)) {
+    if (/^[^\s#]/.test(line)) break;
+    allowBuildLines.push(line);
+  }
+}
+
+const allowBuilds = allowBuildLines.join('\n');
 
 const failures = [];
 
@@ -25,6 +41,18 @@ check('Next config should not ignore ESLint during build', !nextConfig.includes(
 check('tsconfig keeps @ alias support', tsconfig.includes('"@/*"'));
 check('stabilised lib/games.ts should exist', fs.existsSync(path.join(root, 'lib/games.ts')));
 check('ActivityFeed compatibility component should exist', fs.existsSync(path.join(root, 'components/ActivityFeed.tsx')));
+check('pnpm 11 build policy should use allowBuilds', allowBuildsStart >= 0);
+check('sharp build scripts should be allowed', /^[ \t]+sharp:[ \t]*true[ \t]*(?:#.*)?$/m.test(allowBuilds));
+check(
+  'unrs-resolver build scripts should be allowed',
+  /^[ \t]+unrs-resolver:[ \t]*true[ \t]*(?:#.*)?$/m.test(allowBuilds)
+);
+check(
+  'retired pnpm build policy keys should be absent',
+  !/^\s*(?:onlyBuiltDependencies|onlyBuiltDependenciesFile|neverBuiltDependencies|ignoredBuiltDependencies|ignoreDepScripts):/m.test(
+    pnpmWorkspace
+  )
+);
 
 if (fs.existsSync(npmLockPath)) {
   const lock = JSON.parse(fs.readFileSync(npmLockPath, 'utf8'));

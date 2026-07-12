@@ -3,7 +3,7 @@
 ## Local Setup
 
 ### Prerequisites
-- Node.js 20.9+ ([download](https://nodejs.org))
+- Node.js 24.x ([download](https://nodejs.org))
 - pnpm 11
 - Git
 
