@@ -10,7 +10,17 @@ export default function TopGamesPage() {
         <p>Featured and high-replay games in the GR8 arcade.</p>
       </section>
       <section className="game-grid">
-        {ordered.map((game) => <GameCard key={game.id} game={game} />)}
+        {ordered.map((game) => (
+          <GameCard 
+            key={game.id} 
+            id={game.id}
+            title={game.title || game.name}
+            category={game.category || game.genre || 'Arcade'}
+            imageUrl={game.thumbnail || game.image || '/placeholder.png'}
+            url={`/arcade/${game.slug || game.id}`}
+            isNew={game.isNew}
+          />
+        ))}
       </section>
     </main>
   );
