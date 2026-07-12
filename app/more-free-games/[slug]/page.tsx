@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
@@ -9,35 +10,37 @@ import {
   getRelatedPartnerGameProfiles
 } from '@/src/data/partnerGameProfiles';
 
-type PageProps = { params: { slug: string } };
+type PageProps = { params: Promise<{ slug: string }> };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getPartnerGameProfiles().map((profile: { slug: string }) => ({ slug: profile.slug }));
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const profile = getPartnerGameProfile(params.slug);
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const profile = getPartnerGameProfile(slug);
+  if (!profile) notFound();
+  const title = `${profile.title} | GR8 Game Network`;
   return {
-    title: profile ? `${profile.title} | GR8 Game Network` : 'Partner Game | GR8 GAMZ',
-    description: profile?.description || 'Play more free games through the GR8 Game Network.'
+    title,
+    description: profile.description,
+    alternates: { canonical: profile.path },
+    openGraph: {
+      title,
+      description: profile.description,
+      url: profile.path,
+      images: [{ url: profile.image, alt: `${profile.title} artwork` }]
+    }
   };
 }
 
-export default function PartnerProfilePage({ params }: PageProps) {
-  const profile = getPartnerGameProfile(params.slug);
+export default async function PartnerProfilePage({ params }: PageProps) {
+  const { slug } = await params;
+  const profile = getPartnerGameProfile(slug);
 
-  if (!profile) {
-    return (
-      <main>
-        <section className="page-title">
-          <span className="eyebrow">Not found</span>
-          <h1>This partner game is not active.</h1>
-          <p>Return to the GR8 Game Network for live partner games.</p>
-          <Link href="/more-free-games" className="cta">More Free Games</Link>
-        </section>
-      </main>
-    );
-  }
+  if (!profile) notFound();
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
   const playPath = profile.playPath || `${profile.path}/play`;

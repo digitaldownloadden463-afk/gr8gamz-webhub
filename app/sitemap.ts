@@ -2,52 +2,43 @@ import type { MetadataRoute } from 'next';
 import { games } from '@/lib/games';
 import { getGameMonetizeCmsSitemapGames } from '@/src/data/gamemonetizeCms';
 import { getPartnerGameProfiles, getPartnerNetworkClusterRoutes } from '@/src/data/partnerGameProfiles';
+import {
+  ACTIVE_STATIC_ROUTES,
+  buildCmsGameRoutes,
+  buildOriginalGameRoutes,
+  buildPartnerClusterRoutes,
+  buildPartnerProfileRoutes
+} from '@/src/lib/activeRoutes';
 
 const baseUrl = 'https://www.gr8gamz.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = [
-    '',
-    '/games',
-    '/top-games',
-    '/more-free-games',
-    '/gamepix-games',
-    '/gamemonetize-games',
-    '/community',
-    '/passport',
-    '/my-arcade',
-    '/daily-challenge',
-    '/live',
-    '/profile',
-    '/privacy',
-    '/terms',
-    '/community-guidelines',
-    '/support',
-    '/report'
-  ];
+  const staticRoutes = ACTIVE_STATIC_ROUTES.map((path) => ({
+    url: path === '/' ? baseUrl : `${baseUrl}${path}`,
+    lastModified: new Date()
+  }));
 
-  const staticRoutes = staticPaths.map((path) => ({
+  const gameRoutes = buildOriginalGameRoutes(games).map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date()
   }));
 
-  const gameRoutes = games.map((game) => ({
-    url: `${baseUrl}/arcade/${game.slug}`,
-    lastModified: new Date()
-  }));
-
   const partnerRoutes = [
-    ...getPartnerGameProfiles().map((profile) => profile.path),
-    ...getPartnerNetworkClusterRoutes()
+    ...buildPartnerProfileRoutes(getPartnerGameProfiles()),
+    ...buildPartnerClusterRoutes(getPartnerNetworkClusterRoutes())
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date()
   }));
 
-  const cmsRoutes = getGameMonetizeCmsSitemapGames().map((game) => ({
-    url: `${baseUrl}/gamemonetize-games/${game.slug}`,
-    lastModified: game.dateAdded ? new Date(game.dateAdded) : new Date()
-  }));
+  const cmsGames = getGameMonetizeCmsSitemapGames();
+  const cmsRoutes = buildCmsGameRoutes(cmsGames).map((path, index) => {
+    const game = cmsGames[index];
+    return {
+      url: `${baseUrl}${path}`,
+      lastModified: game?.dateAdded ? new Date(game.dateAdded) : new Date()
+    };
+  });
 
   return [...staticRoutes, ...gameRoutes, ...partnerRoutes, ...cmsRoutes];
 }

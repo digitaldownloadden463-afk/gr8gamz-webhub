@@ -7,7 +7,8 @@ import { getFeaturedPartnerGameProfiles, getPartnerGameProfilesByCategory } from
 export const metadata = {
   title: 'GamePix Games | GR8 GAMZ',
   description:
-    'Explore GamePix-powered partner games on GR8 GAMZ, including action, racing, sports, puzzle and arcade browser games.'
+    'Explore GamePix-powered partner games on GR8 GAMZ, including action, racing, sports, puzzle and arcade browser games.',
+  alternates: { canonical: '/gamepix-games' }
 };
 
 export default function GamePixGamesPage() {

@@ -7,15 +7,19 @@ Required before real users:
 ```txt
 GR8_SESSION_SECRET=<long random secret>
 GR8_ADMIN_KEY=<long private admin key>
-```
-
-Recommended when the SQL adapter is connected:
-
-```txt
 GR8_DATABASE_URL=<postgres connection string>
 ```
 
-Optional external bridge still supported from V34:
+Apply both canonical schemas before enabling production traffic:
+
+```txt
+database/gr8-v34-database-core-schema.sql
+database/v35-gr8-auth-accounts-schema.sql
+```
+
+If your PostgreSQL provider uses a private certificate authority, set `GR8_DATABASE_CA_CERT` to its PEM certificate. Publicly trusted providers do not need this override.
+
+The external bridge is required for persistent support, report, Clubhouse and backend-sync submissions in production:
 
 ```txt
 GR8_BACKEND_ENDPOINT=<your own backend endpoint>
@@ -24,8 +28,7 @@ GR8_BACKEND_TOKEN=<private bridge token>
 
 ## Behaviour
 
-Without `GR8_DATABASE_URL`, V35 uses signed HTTP-only cookies and temporary server memory fallback.
-That is good enough to test the routes and forms, but accounts will not survive deployments or serverless restarts.
+With `GR8_DATABASE_URL`, V35 stores password hashes, accounts and hashed session tokens in PostgreSQL. Without it, account registration is unavailable in production. Temporary memory fallback remains available in local development only; do not enable `GR8_ALLOW_EPHEMERAL_AUTH` or `GR8_ALLOW_EPHEMERAL_BACKEND` in production.
 
 ## New test routes
 

@@ -11,23 +11,25 @@ import {
 export const metadata = {
   title: 'GameMonetize Games | GR8 GAMZ',
   description:
-    'Explore the GR8 GAMZ GameMonetize arcade catalogue with thousands of partner-powered HTML5 browser games ready for global players.'
+    'Explore the GR8 GAMZ GameMonetize arcade catalogue with thousands of partner-powered HTML5 browser games ready for global players.',
+  alternates: { canonical: '/gamemonetize-games' }
 };
 
 type PageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     category?: string;
     q?: string;
     page?: string;
-  };
+  }>;
 };
 
-export default function GameMonetizeGamesPage({ searchParams }: PageProps) {
+export default async function GameMonetizeGamesPage({ searchParams }: PageProps) {
+  const resolvedSearchParams = await searchParams;
   const stats = getGameMonetizeCmsStats();
   const categories = getGameMonetizeCmsCategories();
-  const category = searchParams?.category || '';
-  const query = searchParams?.q || '';
-  const page = Number(searchParams?.page || 1) || 1;
+  const category = resolvedSearchParams?.category || '';
+  const query = resolvedSearchParams?.q || '';
+  const page = Number(resolvedSearchParams?.page || 1) || 1;
   const featured = getFeaturedGameMonetizeCmsGames(8);
   const listing = getGameMonetizeCmsGames({ category, query, page, pageSize: 48 });
 

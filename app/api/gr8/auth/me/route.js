@@ -4,8 +4,8 @@ import { getAccountForRequest } from '../../../../../lib/server/gr8AuthStore';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-export function GET(request) {
-  const auth = getAccountForRequest(request);
+export async function GET(request) {
+  const auth = await getAccountForRequest(request);
   return jsonResponse({
     ok: Boolean(auth.account),
     authenticated: Boolean(auth.account),

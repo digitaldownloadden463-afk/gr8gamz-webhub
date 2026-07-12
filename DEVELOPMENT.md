@@ -3,8 +3,8 @@
 ## Local Setup
 
 ### Prerequisites
-- Node.js 18+ ([download](https://nodejs.org))
-- npm or yarn
+- Node.js 20.9+ ([download](https://nodejs.org))
+- pnpm 11
 - Git
 
 ### Quick Start
@@ -13,10 +13,10 @@
 # Clone and install
 git clone https://github.com/digitaldownloadden463-afk/gr8gamz-webhub.git
 cd gr8gamz-webhub
-npm install
+pnpm install --frozen-lockfile
 
 # Start dev server
-npm run dev
+pnpm dev
 
 # Open http://localhost:3000
 ```
@@ -25,20 +25,22 @@ npm run dev
 
 ```bash
 # Development
-npm run dev              # Start dev server with hot reload
+pnpm dev              # Start dev server with hot reload
 
 # Building
-npm run build            # Build for production
-npm run start            # Start production server
+pnpm build            # Build for production
+pnpm start            # Start production server
 
 # Quality
-npm run lint             # Run ESLint
-npm run lint -- --fix    # Auto-fix lint issues
+pnpm lint             # Run ESLint
+pnpm lint -- --fix    # Auto-fix lint issues
 
 # Validation
-npm run validate:games   # Audit game data consistency
-npm run audit:v35-8-stabilise      # Deprecated: old audit
-npm run audit:v35-9-security-upgrade # Deprecated: old audit
+pnpm validate:games   # Audit game data consistency
+pnpm validate:active-routes # Audit active API, sitemap and IndexNow routes
+pnpm test:security    # Run security regression tests
+pnpm audit:releases  # Run all historical release audits
+pnpm check            # Run the complete release gate
 ```
 
 ## Common Tasks
@@ -65,7 +67,7 @@ npm run audit:v35-9-security-upgrade # Deprecated: old audit
 
 2. **Validate:**
    ```bash
-   npm run validate:games
+   pnpm validate:games
    ```
 
 3. **Test the page:**
@@ -125,14 +127,14 @@ npm run audit:v35-9-security-upgrade # Deprecated: old audit
 
 ### Build Errors
 
-**Problem:** `npm run build` fails with TypeScript errors
+**Problem:** `pnpm build` fails with TypeScript errors
 
 **Solution:**
 ```bash
 # Check tsconfig.json has strict: true
 # Fix all type errors (never use any)
 # Run build again
-npm run build
+pnpm build
 ```
 
 ### Dev Server Won't Start
@@ -142,7 +144,7 @@ npm run build
 **Solution:**
 ```bash
 # Start on different port
-npm run dev -- -p 3001
+pnpm dev -- -p 3001
 
 # Or kill process on 3000
 lsof -i :3000
@@ -167,7 +169,7 @@ kill -9 <PID>
 ```bash
 # Hard refresh (Cmd+Shift+R or Ctrl+Shift+R)
 # Or clear browser cache and restart dev server
-npm run dev
+pnpm dev
 ```
 
 ## Environment Variables
@@ -189,10 +191,10 @@ Available variables:
 
 ```bash
 # Build for production
-npm run build
+pnpm build
 
 # Test production build locally
-npm run start
+pnpm start
 
 # Open http://localhost:3000
 ```
@@ -218,7 +220,7 @@ The app is configured for Vercel deployment:
 
 ```bash
 # Analyze bundle size
-NEXT_PUBLIC_ANALYZE=true npm run build
+NEXT_PUBLIC_ANALYZE=true pnpm build
 ```
 
 ## Git Workflow

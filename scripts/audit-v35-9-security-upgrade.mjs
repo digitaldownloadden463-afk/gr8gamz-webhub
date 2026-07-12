@@ -3,7 +3,8 @@ import path from 'node:path';
 
 const root = process.cwd();
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-const lockPath = path.join(root, 'package-lock.json');
+const npmLockPath = path.join(root, 'package-lock.json');
+const pnpmLockPath = path.join(root, 'pnpm-lock.yaml');
 const nextConfig = fs.readFileSync(path.join(root, 'next.config.js'), 'utf8');
 const tsconfig = fs.readFileSync(path.join(root, 'tsconfig.json'), 'utf8');
 
@@ -13,22 +14,31 @@ function check(name, ok) {
   if (!ok) failures.push(name);
 }
 
-check('Next.js should be pinned to patched 14.2.35', pkg.dependencies?.next === '14.2.35');
+check('Next.js should be pinned to patched 16.2.10', pkg.dependencies?.next === '16.2.10');
 check('React should be pinned, not ranged', pkg.dependencies?.react === '18.3.1');
 check('React DOM should be pinned, not ranged', pkg.dependencies?.['react-dom'] === '18.3.1');
 check('lucide-react should be pinned, not ranged', pkg.dependencies?.['lucide-react'] === '0.468.0');
 check('TypeScript should be pinned', pkg.devDependencies?.typescript === '5.6.3');
-check('package-lock.json should exist', fs.existsSync(lockPath));
+check('a supported dependency lockfile should exist', fs.existsSync(npmLockPath) || fs.existsSync(pnpmLockPath));
 check('Next config should not ignore TypeScript build errors', !nextConfig.includes('ignoreBuildErrors: true'));
 check('Next config should not ignore ESLint during build', !nextConfig.includes('ignoreDuringBuilds: true'));
 check('tsconfig keeps @ alias support', tsconfig.includes('"@/*"'));
 check('stabilised lib/games.ts should exist', fs.existsSync(path.join(root, 'lib/games.ts')));
 check('ActivityFeed compatibility component should exist', fs.existsSync(path.join(root, 'components/ActivityFeed.tsx')));
 
-if (fs.existsSync(lockPath)) {
-  const lock = JSON.parse(fs.readFileSync(lockPath, 'utf8'));
-  check('lockfile root next should be 14.2.35', lock.packages?.['']?.dependencies?.next === '14.2.35');
-  check('lockfile node_modules/next should be 14.2.35', lock.packages?.['node_modules/next']?.version === '14.2.35');
+if (fs.existsSync(npmLockPath)) {
+  const lock = JSON.parse(fs.readFileSync(npmLockPath, 'utf8'));
+  check('lockfile root next should be 16.2.10', lock.packages?.['']?.dependencies?.next === '16.2.10');
+  check('lockfile node_modules/next should be 16.2.10', lock.packages?.['node_modules/next']?.version === '16.2.10');
+}
+
+if (fs.existsSync(pnpmLockPath)) {
+  const lock = fs.readFileSync(pnpmLockPath, 'utf8');
+  check(
+    'pnpm lockfile root next should be 16.2.10',
+    /next:\s*\n\s+specifier:\s*16\.2\.10\s*\n\s+version:\s*16\.2\.10(?:\(|\s|$)/m.test(lock)
+  );
+  check('pnpm lockfile should contain Next.js 16.2.10', /^  next@16\.2\.10:$/m.test(lock));
 }
 
 if (failures.length) {
@@ -37,4 +47,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('V35.9 security upgrade audit passed. Next.js is pinned to 14.2.35 and dependency lock is present.');
+console.log('Security upgrade audit passed. Next.js is pinned to 16.2.10 and a dependency lock is present.');

@@ -1,15 +1,30 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 const rooms = ['game-requests', 'high-scores', 'bug-reports', 'favourite-games', 'deal-ideas'];
 
-type PageProps = { params: { room: string } };
+type PageProps = { params: Promise<{ room: string }> };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return rooms.map((room) => ({ room }));
 }
 
-export default function CommunityRoomPage({ params }: PageProps) {
-  const label = params.room.replace(/-/g, ' ');
+export async function generateMetadata({ params }: PageProps) {
+  const { room } = await params;
+  if (!rooms.includes(room)) notFound();
+  const label = room.replace(/-/g, ' ');
+  return {
+    title: `GR8 ${label} | GR8 GAMZ`,
+    alternates: { canonical: `/community/${room}` }
+  };
+}
+
+export default async function CommunityRoomPage({ params }: PageProps) {
+  const { room } = await params;
+  if (!rooms.includes(room)) notFound();
+  const label = room.replace(/-/g, ' ');
   return (
     <main>
       <section className="page-title">

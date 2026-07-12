@@ -1,2 +1,8 @@
-allowBuilds:
-  unrs-resolver: set this to true or false
+packages:
+  - '.'
+
+overrides:
+  postcss: 8.5.10
+
+onlyBuiltDependencies:
+  - unrs-resolver

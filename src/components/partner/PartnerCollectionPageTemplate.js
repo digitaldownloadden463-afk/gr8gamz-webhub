@@ -2,7 +2,7 @@ import Link from 'next/link';
 import JsonLd from '../JsonLd';
 import PartnerProfileGrid from './PartnerProfileGrid';
 import PartnerRetentionPanel from './PartnerRetentionPanel';
-import { breadcrumbJsonLd, faqJsonLd, itemListJsonLd } from '../../lib/seo';
+import { breadcrumbJsonLd, faqJsonLd } from '../../lib/seo';
 import { getPartnerNetworkClusters } from '../../data/partnerGameProfiles';
 
 function partnerItemList(profiles, path) {

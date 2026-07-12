@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 type PlayerPanelProps = {
@@ -29,12 +30,12 @@ export function PlayerPanel({ children, compact = false, className = '' }: Playe
           <>
             <div style={{ color: '#a1a1aa', lineHeight: 1.55 }}>
               <p style={{ margin: 0 }}>No GR8 Passport yet</p>
-              <a
+              <Link
                 href="/auth"
                 style={{ color: '#35ff8d', fontWeight: 900, textDecoration: 'none' }}
               >
                 Create one to save progress
-              </a>
+              </Link>
             </div>
           </>
         )}

@@ -1,44 +1,15 @@
 
-const POOL_KEY = '__gr8DatabasePoolV34';
+import {
+  getDatabasePool,
+  getDatabaseUrl,
+  getVercelDatabaseStatus,
+  isDatabaseConfigured
+} from '../../lib/server/gr8DatabaseStatus.js';
 
-export function getDatabaseUrl() {
-  return process.env.GR8_DATABASE_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL || '';
-}
-
-export function isDatabaseConfigured() {
-  return Boolean(getDatabaseUrl());
-}
-
-function getSafeDatabaseHost() {
-  try {
-    const value = getDatabaseUrl();
-    if (!value) return null;
-    const url = new URL(value);
-    return url.hostname;
-  } catch {
-    return 'configured';
-  }
-}
-
-async function importPg() {
-  const dynamicImport = new Function('moduleName', 'return import(moduleName);');
-  return dynamicImport('pg');
-}
+export { getDatabaseUrl, isDatabaseConfigured };
 
 export async function getPool() {
-  const connectionString = getDatabaseUrl();
-  if (!connectionString) return null;
-  if (!globalThis[POOL_KEY]) {
-    const { Pool } = await importPg();
-    globalThis[POOL_KEY] = new Pool({
-      connectionString,
-      max: Number(process.env.GR8_DATABASE_POOL_SIZE || 3),
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 5000,
-      ssl: connectionString.includes('sslmode=disable') ? false : { rejectUnauthorized: false }
-    });
-  }
-  return globalThis[POOL_KEY];
+  return getDatabasePool();
 }
 
 export async function queryDatabase(text, params = []) {
@@ -64,44 +35,7 @@ export async function queryDatabase(text, params = []) {
 }
 
 export async function getDatabaseStatus() {
-  const configured = isDatabaseConfigured();
-  if (!configured) {
-    return {
-      ok: true,
-      version: 'v34',
-      configured: false,
-      connected: false,
-      storageMode: 'on-device-fallback',
-      host: null,
-      message: 'No database URL is configured yet. The site continues using safe browser storage until PostgreSQL is connected.'
-    };
-  }
-
-  try {
-    const result = await queryDatabase('select now() as now');
-    return {
-      ok: true,
-      version: 'v34',
-      configured: true,
-      connected: true,
-      storageMode: 'database-ready',
-      host: getSafeDatabaseHost(),
-      serverTime: result.rows?.[0]?.now || null,
-      durationMs: result.durationMs || null,
-      message: 'PostgreSQL connection is working.'
-    };
-  } catch (error) {
-    return {
-      ok: false,
-      version: 'v34',
-      configured: true,
-      connected: false,
-      storageMode: 'on-device-fallback',
-      host: getSafeDatabaseHost(),
-      error: error?.message || 'Database connection failed.',
-      message: 'Database URL is present, but the connection or schema is not ready yet. The site keeps its local fallback.'
-    };
-  }
+  return { version: 'v34', ...(await getVercelDatabaseStatus()) };
 }
 
 export function cleanText(value = '', limit = 500) {

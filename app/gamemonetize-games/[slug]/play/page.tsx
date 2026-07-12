@@ -1,38 +1,32 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import type { CSSProperties } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { getFeaturedGameMonetizeCmsGames, getGameMonetizeCmsGame } from '@/src/data/gamemonetizeCms';
 import { isSafeGameMonetizeUrl } from '@/src/data/gamemonetize';
 
-type PageProps = { params: { slug: string } };
+type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-export function generateMetadata({ params }: PageProps) {
-  const game = getGameMonetizeCmsGame(params.slug);
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameMonetizeCmsGame(slug);
+  if (!game) notFound();
   return {
-    title: game ? `Play ${game.title} | GR8 GAMZ` : 'Play GameMonetize Game | GR8 GAMZ',
+    title: `Play ${game.title} | GR8 GAMZ`,
     description: 'Launch a GameMonetize HTML5 partner game through GR8 GAMZ.',
-    robots: { index: false, follow: true }
+    robots: { index: false, follow: true },
+    alternates: { canonical: `/gamemonetize-games/${game.slug}` }
   };
 }
 
-export default function GameMonetizeCmsPlayPage({ params }: PageProps) {
-  const game = getGameMonetizeCmsGame(params.slug);
+export default async function GameMonetizeCmsPlayPage({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameMonetizeCmsGame(slug);
+  if (!game) notFound();
   const related = getFeaturedGameMonetizeCmsGames(6);
-
-  if (!game) {
-    return (
-      <main>
-        <section className="page-title">
-          <span className="eyebrow">Not found</span>
-          <h1>This GameMonetize play route is not active.</h1>
-          <Link href="/gamemonetize-games" className="cta">Browse GameMonetize games</Link>
-        </section>
-      </main>
-    );
-  }
 
   const safe = isSafeGameMonetizeUrl(game.playUrl);
   const ratio = Math.max(0.45, Math.min(1.8, game.height / game.width));
@@ -56,10 +50,11 @@ export default function GameMonetizeCmsPlayPage({ params }: PageProps) {
           <iframe
             title={game.title}
             src={game.playUrl}
-            allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write"
+            allow="autoplay; fullscreen; gamepad"
             allowFullScreen
             loading="eager"
             referrerPolicy="strict-origin-when-cross-origin"
+            sandbox="allow-scripts allow-same-origin allow-pointer-lock"
           />
         </section>
       ) : (

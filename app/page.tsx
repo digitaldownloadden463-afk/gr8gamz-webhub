@@ -8,6 +8,10 @@ import { getAllGames, getFeaturedGames } from '@/lib/games';
 import { getGameMonetizeCmsStats } from '@/src/data/gamemonetizeCms';
 import { getFeaturedPartnerGameProfiles, getTrendingPartnerProfiles } from '@/src/data/partnerGameProfiles';
 
+export const metadata = {
+  alternates: { canonical: '/' }
+};
+
 export default function HomePage() {
   const allGames = getAllGames();
   const featured = getFeaturedGames(6);
@@ -35,7 +39,7 @@ export default function HomePage() {
       >
         <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ arcade</span>
         <h1>Free browser games that load fast and play clean.</h1>
-        <p>Jump straight into 25 original arcade, racing, sports, puzzle and skill games. No downloads, no clutter, just quick sessions that work on phone or desktop.</p>
+        <p>Jump straight into {allGames.length} original arcade, racing, sports, puzzle and skill games. No downloads, no clutter, just quick sessions that work on phone or desktop.</p>
         <div className="cta-row">
           <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Browse games</Link>
           <Link href={`/arcade/${heroGame?.slug || heroGame?.id || 'neon-snake-rush'}`} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Start featured</Link>

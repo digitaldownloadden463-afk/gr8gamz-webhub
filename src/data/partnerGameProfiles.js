@@ -733,7 +733,7 @@ export const partnerGameProfiles = [
     ],
     "rank": 19,
     "slug": "rocket-bot-royale",
-    "image": "/partner-games/rocket-bot-royale/cover.webp",
+    "image": "/art/homepage-neon-horizon.webp",
     "path": "/more-free-games/rocket-bot-royale",
     "playPath": "/more-free-games/rocket-bot-royale/play",
     "providerLabel": "GR8 Game Network",
@@ -1653,11 +1653,11 @@ export const partnerNetworkClusters = [
   },
   {
     slug: 'strategy-games',
-    title: 'Strategy & Battle Games',
-    eyebrow: 'Strategy partner picks',
-    description: 'Turn-based battles, multiplayer choices, tactics and strategy-style network games.',
-    categories: ['Strategy', 'Multiplayer'],
-    intent: 'free strategy games online, multiplayer browser games and battle games no download'
+    title: 'Strategy & Simulation Games',
+    eyebrow: 'Strategy and simulation picks',
+    description: 'Card choices, planning and simulation games that reward thoughtful experimentation.',
+    categories: ['Card', 'Simulation'],
+    intent: 'free strategy games online, card games and browser simulation games'
   }
 ];
 

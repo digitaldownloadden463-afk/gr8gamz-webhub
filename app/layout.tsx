@@ -15,9 +15,6 @@ export const metadata: Metadata = {
   description:
     'Play free browser games worldwide on GR8 GAMZ, including original arcade games, GamePix partner games and GameMonetize HTML5 games.',
   applicationName: 'GR8 GAMZ',
-  alternates: {
-    canonical: '/'
-  },
   icons: {
     icon: [
       { url: '/icon.png', type: 'image/png', sizes: '512x512' },

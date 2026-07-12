@@ -26,14 +26,14 @@ if (missing.length) {
 }
 
 const header = fs.readFileSync(path.join(root, 'src/components/Header.js'), 'utf8');
-const crawl = fs.readFileSync(path.join(root, 'src/lib/crawl.js'), 'utf8');
+const activeRoutes = fs.readFileSync(path.join(root, 'src/lib/activeRoutes.js'), 'utf8');
 const privacy = fs.readFileSync(path.join(root, 'src/app/privacy/page.js'), 'utf8');
 const passportClient = fs.readFileSync(path.join(root, 'src/lib/passportClient.js'), 'utf8');
 
 const checks = [
   ['Header links GR8 Passport component', header.includes('PassportNavBadge')],
-  ['Sitemap includes /passport', crawl.includes("'/passport'")],
-  ['Sitemap includes /community', crawl.includes("'/community'")],
+  ['Sitemap includes /passport', activeRoutes.includes("'/passport'")],
+  ['Sitemap includes /community', activeRoutes.includes("'/community'")],
   ['Privacy mentions GR8 Passport', privacy.includes('GR8 Passport')],
   ['Passport does not import third-party auth', !passportClient.includes('@clerk') && !passportClient.includes('supabase') && !passportClient.includes('firebase')],
   ['Passport has local storage keys', passportClient.includes('gr8gamz_passport') && passportClient.includes('gr8gamz_favourites')]

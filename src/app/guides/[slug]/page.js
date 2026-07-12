@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import GameGrid from '../../../components/GameGrid';
 import JsonLd from '../../../components/JsonLd';
-import { getAllGames, getGameBySlug, getRelatedGames } from '../../../lib/games';
+import { getGameBySlug, getRelatedGames } from '../../../lib/games';
 import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata, faqJsonLd } from '../../../lib/seo';
 
 export function generateMetadata({ params }) {
