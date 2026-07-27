@@ -3,9 +3,9 @@
   "version": "2.0.1",
   "description": "GR8 GAMZ - A premium HTML5 arcade game hub with 25+ free browser games",
   "private": true,
-  "packageManager": "pnpm@11.9.0",
+  "packageManager": "pnpm@10.28.0",
   "engines": {
-    "node": ">=22.0.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",
