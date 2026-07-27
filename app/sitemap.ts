@@ -6,7 +6,7 @@ import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 const staticLastModified = new Date('2026-07-27T00:00:00.000Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['/', '/games', '/top-games', '/more-free-games', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure'];
+  const staticRoutes = ['/', '/games', '/gr8-originals', '/gr8-select', '/gr8-trending', '/gr8-daily', '/top-games', '/more-free-games', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure'];
   const originals = getAllGames().map((game) => ({
     url: `${siteUrl}/arcade/${game.slug || game.id}`,
     lastModified: game.dateAdded ? new Date(game.dateAdded) : staticLastModified,

@@ -444,6 +444,14 @@ main {
   gap: 10px;
 }
 
+.daily-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  margin: 18px 0 40px;
+}
+
 .live-catalogue {
   display: grid;
   gap: 18px;
@@ -831,6 +839,7 @@ main {
   .partner-grid--large,
   .live-game-grid,
   .live-play-panel,
+  .daily-feature,
   .filter-panel,
   .game-hero,
   .partner-profile-hero,

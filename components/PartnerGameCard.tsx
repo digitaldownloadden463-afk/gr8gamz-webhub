@@ -39,7 +39,7 @@ export function PartnerGameCard({ profile, priority = false }: { profile: Partne
         <span>{profile.category}</span>
       </Link>
       <div className="partner-card__body">
-        <span className="game-card__kicker">{profile.provider === 'gamemonetize' ? 'GameMonetize partner' : 'GamePix partner'}</span>
+        <span className="game-card__kicker">GR8 Select</span>
         <h3><Link href={profile.path}>{profile.title}</Link></h3>
         <p>{profile.description}</p>
         <div className="partner-card__meta">

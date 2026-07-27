@@ -14,7 +14,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/original-games', destination: '/games', permanent: true },
+      { source: '/original-games', destination: '/gr8-originals', permanent: true },
       { source: '/free-online-games', destination: '/games', permanent: true },
       { source: '/quick-games', destination: '/games', permanent: true },
       { source: '/free-browser-games', destination: '/games', permanent: true },

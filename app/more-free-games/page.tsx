@@ -6,8 +6,8 @@ import { canonical } from '@/lib/features';
 import { getFeaturedPartnerGameProfiles, getPartnerGameProfiles, getPartnerNetworkClusters } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
-  title: 'More Games',
-  description: 'Curated partner browser games with clear provider disclosure and consent before embedded play.',
+  title: 'More Games | GR8 Select',
+  description: 'Browse GR8 Select browser games with real artwork, scrolling discovery and clear load choices.',
   alternates: { canonical: canonical('/more-free-games') }
 };
 
@@ -19,16 +19,16 @@ export default function MoreFreeGamesPage() {
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">Partner games</span>
-        <h1>Scroll through the wider partner catalogue.</h1>
-        <p>Browse real GamePix and GameMonetize feed artwork. Partner games still load only after you choose to open one.</p>
+        <span className="eyebrow">GR8 Select</span>
+        <h1>Scroll through the wider game catalogue.</h1>
+        <p>Browse real game artwork and keep loading more as you go. External games still load only after you choose to open one.</p>
       </section>
       <LivePartnerCatalogue />
       <section className="game-section" id="curated-partner-guides">
         <div className="section-heading">
-          <span className="eyebrow">Curated guides</span>
-          <h2>Featured partner picks with extra notes.</h2>
-          <Link href="/partner-disclosure">How partner games load <ArrowRight size={18} aria-hidden="true" /></Link>
+          <span className="eyebrow">Featured guides</span>
+          <h2>GR8 Select picks with extra notes.</h2>
+          <Link href="/partner-disclosure">How external games load <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
       </section>
       <section className="partner-grid partner-grid--large">
@@ -36,9 +36,9 @@ export default function MoreFreeGamesPage() {
       </section>
       <section className="game-section" id="all-partner-games">
         <div className="section-heading">
-          <span className="eyebrow">Full partner shelf</span>
-          <h2>Keep scrolling for every partner game we currently list.</h2>
-          <Link href="/partner-disclosure">How partner games load <ArrowRight size={18} aria-hidden="true" /></Link>
+          <span className="eyebrow">Full Select shelf</span>
+          <h2>Keep scrolling for every extra game we currently list.</h2>
+          <Link href="/partner-disclosure">How external games load <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className="partner-grid">
           {allProfiles.map((profile, index) => (

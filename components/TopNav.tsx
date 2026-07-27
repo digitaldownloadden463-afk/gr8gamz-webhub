@@ -3,8 +3,11 @@ import Link from 'next/link';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/games', label: 'Games' },
-  { href: '/more-free-games', label: 'More Games' },
-  { href: '/my-arcade', label: 'My Arcade' }
+  { href: '/gr8-originals', label: 'GR8 Originals' },
+  { href: '/gr8-select', label: 'GR8 Select' },
+  { href: '/gr8-trending', label: 'Trending' },
+  { href: '/gr8-daily', label: 'Daily' },
+  { href: '/my-arcade', label: 'My GR8 Arcade' }
 ];
 
 export function TopNav() {

@@ -7,6 +7,10 @@ const viewports = [
 const routes = [
   '/',
   '/games',
+  '/gr8-originals',
+  '/gr8-select',
+  '/gr8-trending',
+  '/gr8-daily',
   '/arcade/neon-snake-rush',
   '/more-free-games',
   '/more-free-games/body-drop-3d',

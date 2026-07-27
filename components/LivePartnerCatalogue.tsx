@@ -114,24 +114,24 @@ export function LivePartnerCatalogue() {
   };
 
   return (
-    <section className="live-catalogue" aria-label="Live partner game catalogue">
+    <section className="live-catalogue" aria-label="GR8 Select game catalogue">
       <div className="section-heading">
-        <span className="eyebrow">Real partner catalogue</span>
-        <h2>Actual game artwork from the partner feeds.</h2>
+        <span className="eyebrow">GR8 Select catalogue</span>
+        <h2>Real game artwork. More games keep loading as you browse.</h2>
       </div>
-      <div className="catalogue-toolbar" aria-label="Partner catalogue controls">
+      <div className="catalogue-toolbar" aria-label="GR8 Select catalogue controls">
         <button type="button" className={provider === 'gamepix' ? 'is-active' : ''} onClick={() => chooseProvider('gamepix')}>GamePix</button>
         <button type="button" className={provider === 'gamemonetize' ? 'is-active' : ''} onClick={() => chooseProvider('gamemonetize')}>GameMonetize</button>
-        <span>{totalEstimate ? `${totalEstimate.toLocaleString()}+ ${providerName(provider)} games available from feed` : `${providerName(provider)} feed`}</span>
+        <span>{totalEstimate ? `${totalEstimate.toLocaleString()}+ games available in this source` : `${providerName(provider)} source`}</span>
       </div>
 
       {selected ? (
-        <section className="live-play-panel" aria-label={`Selected partner game ${selected.title}`}>
+        <section className="live-play-panel" aria-label={`Selected GR8 Select game ${selected.title}`}>
           <Image src={selected.image} alt={`${selected.title} artwork`} width={640} height={384} unoptimized sizes="(max-width: 900px) 92vw, 420px" />
           <div>
-            <span className="eyebrow">{selected.providerLabel} partner</span>
+            <span className="eyebrow">GR8 Select</span>
             <h3>{selected.title}</h3>
-            <p>{loadSelected ? `Loading ${selected.title} from ${selected.providerLabel}.` : `Choose Load game to open this ${selected.providerLabel} game. The provider iframe only loads after this action.`}</p>
+            <p>{loadSelected ? `Loading ${selected.title}.` : `Choose Load game to open ${selected.title}. The external game only loads after this action.`}</p>
             {!loadSelected ? (
               <button type="button" className="cta-button" onClick={() => setLoadSelected(true)}>
                 <Play size={18} aria-hidden="true" /> Load game
@@ -170,7 +170,7 @@ export function LivePartnerCatalogue() {
                 <span>{game.category}</span>
               </span>
               <span className="live-game-card__body">
-                <span className="game-card__kicker">{game.providerLabel} partner</span>
+                <span className="game-card__kicker">GR8 Select</span>
                 <strong>{game.title}</strong>
                 <span>{game.description}</span>
                 <span className="game-card__button"><Play size={18} aria-hidden="true" /> Play</span>
@@ -181,11 +181,11 @@ export function LivePartnerCatalogue() {
       </div>
 
       {error ? <p className="status-message" role="status">{error}</p> : null}
-      {loading ? <p className="status-message" role="status"><RotateCw size={18} aria-hidden="true" /> Loading more {providerName(provider)} games...</p> : null}
+      {loading ? <p className="status-message" role="status"><RotateCw size={18} aria-hidden="true" /> Loading more games...</p> : null}
       <div ref={sentinelRef} className="catalogue-sentinel" aria-hidden="true" />
       {hasMore && !loading ? (
         <button type="button" className="secondary-button catalogue-load-more" onClick={() => loadPage(page + 1)}>
-          Load more {providerName(provider)} games
+          Load more games
         </button>
       ) : null}
     </section>

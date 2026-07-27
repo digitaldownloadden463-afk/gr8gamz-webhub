@@ -1,7 +1,7 @@
 {
-  "name": "GR8 GAMZ - Free Browser Gaming Network",
+  "name": "GR8 GAMZ - Free Browser Games",
   "short_name": "GR8 GAMZ",
-  "description": "Play free mobile-first browser games, GR8 originals, hot picks and partner-powered arcade games.",
+  "description": "Play GR8 Originals, GR8 Select games, daily picks and saved-on-this-device arcade favourites.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
