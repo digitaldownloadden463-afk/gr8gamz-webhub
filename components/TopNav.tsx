@@ -7,6 +7,7 @@ const links = [
   { href: '/gr8-select', label: 'GR8 Select' },
   { href: '/gr8-trending', label: 'Trending' },
   { href: '/gr8-daily', label: 'Daily' },
+  { href: '/new-games', label: 'New' },
   { href: '/my-arcade', label: 'My GR8 Arcade' }
 ];
 

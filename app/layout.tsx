@@ -11,11 +11,8 @@ export const metadata: Metadata = {
     default: 'GR8 GAMZ | Free Browser Games',
     template: '%s | GR8 GAMZ'
   },
-  description: 'Play original mobile-first browser games and curated partner games on GR8 GAMZ. No downloads, clear privacy controls.',
+  description: 'Play GR8 Originals and GR8 Select browser games on GR8 GAMZ. No downloads, clear privacy controls.',
   applicationName: 'GR8 GAMZ',
-  alternates: {
-    canonical: canonical('/')
-  },
   icons: {
     icon: [{ url: '/favicon.ico' }, { url: '/icon.png', type: 'image/png', sizes: '512x512' }],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }]
@@ -25,13 +22,13 @@ export const metadata: Metadata = {
     url: canonical('/'),
     siteName: 'GR8 GAMZ',
     title: 'GR8 GAMZ | Free Browser Games',
-    description: 'Original arcade games and curated partner games with honest privacy controls.',
+    description: 'GR8 Originals and GR8 Select browser games with honest privacy controls.',
     images: [{ url: '/og/gr8gamz-og.png', width: 1200, height: 630, alt: 'GR8 GAMZ arcade' }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GR8 GAMZ | Free Browser Games',
-    description: 'Play free original and curated partner browser games.',
+    description: 'Play free GR8 Originals and GR8 Select browser games.',
     images: ['/og/gr8gamz-og.png']
   },
   verification: {

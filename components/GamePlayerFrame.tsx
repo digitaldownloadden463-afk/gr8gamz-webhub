@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import ChallengeShare from '@/components/ChallengeShare';
 import type { Gr8Game } from '@/lib/games';
 
 type GamePlayerFrameProps = {
@@ -60,6 +61,7 @@ export function GamePlayerFrame({ game }: GamePlayerFrameProps) {
         allowFullScreen
         referrerPolicy="same-origin"
       />
+      <ChallengeShare gameSlug={slug} />
     </section>
   );
 }

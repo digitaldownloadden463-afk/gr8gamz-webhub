@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import GamePlayerFrame from '@/components/GamePlayerFrame';
+import GameShare from '@/components/GameShare';
 import { getAllGames, getGameBySlug } from '@/lib/games';
 import { canonical } from '@/lib/features';
 
@@ -22,7 +23,14 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: game.name,
       description: game.description,
+      url: canonical(`/arcade/${game.slug || game.id}`),
       images: game.thumbnail ? [{ url: game.thumbnail, width: 640, height: 360, alt: `${game.name} artwork` }] : undefined
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: game.name,
+      description: game.description || `Play ${game.name} on GR8 GAMZ.`,
+      images: game.thumbnail ? [game.thumbnail] : ['/og/gr8gamz-og.png']
     }
   };
 }
@@ -64,6 +72,11 @@ export default async function ArcadeGamePage({ params }: PageProps) {
         ) : null}
       </section>
       <GamePlayerFrame game={game} />
+      <GameShare
+        title={game.name}
+        url={canonical(`/arcade/${game.slug || game.id}`)}
+        text={`Think you can master ${game.name}? Play it on GR8 GAMZ.`}
+      />
       <section className="content-panel">
         <h2>How to play</h2>
         <ul className="clean-list">

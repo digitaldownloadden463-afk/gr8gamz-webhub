@@ -11,6 +11,10 @@ Main player routes:
 - /gr8-select - large scrolling Select catalogue with real artwork
 - /gr8-trending - focused high-action picks
 - /gr8-daily - daily GR8 game spotlight
+- /new-games - fresh GR8 Originals and Select picks
+- /popular-games - strong repeat-play picks
+- /quick-games - short-session GR8 Originals
+- /mobile-games - touch-friendly GR8 Originals
 - /more-free-games - legacy More Games route for GR8 Select discovery
 - /my-arcade - favourites and recently played games saved on this device
 
@@ -26,10 +30,21 @@ Trust and policy routes:
 - /terms
 - /partner-disclosure
 - /affiliate-disclosure
+- /about
+- /contact
+- /accessibility
+- /child-safety
+- /copyright
+- /report-a-game
+- /editorial-policy
 
 Machine-readable routes:
 - /sitemap.xml - indexable canonical URLs only
+- /sitemap-images.xml - game artwork sitemap
 - /robots.txt - crawl rules
+- /feed.xml - RSS feed
+- /feed.json - JSON feed
+- /game-catalog.json - public game catalogue generated from the registry
 - /api/partner-catalog - read-only catalogue data for the GR8 Select interface; not an indexable public page
 
 Current public behaviour:

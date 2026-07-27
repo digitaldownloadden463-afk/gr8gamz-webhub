@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PartnerGameCard from '@/components/PartnerGameCard';
+import GameShare from '@/components/GameShare';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { getPartnerGameProfile, getPartnerGameProfiles, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
@@ -23,7 +24,14 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: profile.title,
       description: profile.description,
+      url: canonical(`/more-free-games/${profile.slug}`),
       images: [{ url: profile.image, width: 480, height: 270, alt: `${profile.title} artwork` }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: profile.title,
+      description: profile.description,
+      images: [profile.image]
     }
   };
 }
@@ -50,7 +58,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="partner-profile-hero">
         <div className="partner-profile-copy">
-          <span className="eyebrow">{profile.provider === 'gamemonetize' ? 'GameMonetize partner' : 'GamePix partner'}</span>
+          <span className="eyebrow">GR8 Select</span>
           <h1>{profile.title}</h1>
           <p>{profile.description}</p>
           <dl className="fact-list">
@@ -60,7 +68,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
           </dl>
           <div className="cta-row">
             <Link href={playPath} className="cta">Play</Link>
-            <Link href="/partner-disclosure" className="secondary-cta">Provider disclosure</Link>
+            <Link href="/partner-disclosure" className="secondary-cta">Game information</Link>
           </div>
         </div>
         <Image src={profile.image} alt={`${profile.title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 640px" />
@@ -68,8 +76,13 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       <section className="content-panel">
         <h2>Tips before you play</h2>
         <p>{profile.howToPlay || profile.description}</p>
-        <p className="fine-print">The partner iframe loads only on the Play page after you choose to load this provider.</p>
+        <p className="fine-print">This external game loads on the Play page after you choose to open it.</p>
       </section>
+      <GameShare
+        title={profile.title}
+        url={canonical(profile.path)}
+        text={`Find your next game with ${profile.title} on GR8 GAMZ.`}
+      />
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>

@@ -12,10 +12,10 @@ export default function NotFound() {
       <section className="page-title">
         <span className="eyebrow">404</span>
         <h1>That page is not available.</h1>
-        <p>Try the game library or the curated partner games instead.</p>
+        <p>Try the game library or GR8 Select instead.</p>
         <div className="cta-row">
           <Link href="/games" className="cta">Browse games</Link>
-          <Link href="/more-free-games" className="secondary-cta">More games</Link>
+          <Link href="/gr8-select" className="secondary-cta">GR8 Select</Link>
         </div>
       </section>
     </main>

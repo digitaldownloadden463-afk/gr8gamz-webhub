@@ -15,12 +15,10 @@ export default function robots(): MetadataRoute.Robots {
         '/passport/',
         '/profile/',
         '/community/',
-        '/report/',
-        '/privacy-choices',
-        '/more-free-games/*/play'
+        '/privacy-choices'
       ]
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: [`${siteUrl}/sitemap.xml`, `${siteUrl}/sitemap-images.xml`],
     host: siteUrl
   };
 }

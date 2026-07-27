@@ -1,23 +1,16 @@
 import type { MetadataRoute } from 'next';
-import { getAllGames } from '@/lib/games';
 import { siteUrl } from '@/lib/features';
-import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getIndexableRegistryGames } from '@/lib/gameRegistry';
 
 const staticLastModified = new Date('2026-07-27T00:00:00.000Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['/', '/games', '/gr8-originals', '/gr8-select', '/gr8-trending', '/gr8-daily', '/top-games', '/more-free-games', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure'];
-  const originals = getAllGames().map((game) => ({
-    url: `${siteUrl}/arcade/${game.slug || game.id}`,
-    lastModified: game.dateAdded ? new Date(game.dateAdded) : staticLastModified,
+  const staticRoutes = ['/', '/games', '/gr8-originals', '/gr8-select', '/gr8-trending', '/gr8-daily', '/new-games', '/popular-games', '/quick-games', '/mobile-games', '/more-free-games', '/about', '/contact', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
+  const games = getIndexableRegistryGames().map((game) => ({
+    url: `${siteUrl}${game.url}`,
+    lastModified: game.lastModified ? new Date(game.lastModified) : staticLastModified,
     changeFrequency: 'monthly' as const,
-    priority: 0.8
-  }));
-  const partnerProfiles = getFeaturedPartnerGameProfiles(24).map((profile) => ({
-    url: `${siteUrl}${profile.path}`,
-    lastModified: staticLastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6
+    priority: game.source === 'gr8-originals' ? 0.8 : 0.6
   }));
 
   return [
@@ -27,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: route === '/' ? ('weekly' as const) : ('monthly' as const),
       priority: route === '/' ? 1 : 0.7
     })),
-    ...originals,
-    ...partnerProfiles
+    ...games
   ];
 }

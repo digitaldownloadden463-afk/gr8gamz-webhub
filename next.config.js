@@ -16,8 +16,8 @@ const nextConfig = {
     return [
       { source: '/original-games', destination: '/gr8-originals', permanent: true },
       { source: '/free-online-games', destination: '/games', permanent: true },
-      { source: '/quick-games', destination: '/games', permanent: true },
       { source: '/free-browser-games', destination: '/games', permanent: true },
+      { source: '/top-games', destination: '/gr8-trending', permanent: true },
       { source: '/gamepix-games', destination: '/more-free-games', permanent: true },
       { source: '/gamemonetize-games', destination: '/more-free-games', permanent: true },
       { source: '/passport', destination: '/my-arcade', permanent: true },

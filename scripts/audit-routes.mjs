@@ -16,7 +16,7 @@ for (const route of forbiddenRoutes) {
 const apiDir = path.join(root, 'app/api');
 if (fs.existsSync(apiDir)) {
   const apiFiles = fs.readdirSync(apiDir, { recursive: true }).map((file) => String(file));
-  const allowedApiFiles = new Set(['partner-catalog', 'partner-catalog/route.js']);
+  const allowedApiFiles = new Set(['partner-catalog', 'partner-catalog/route.js', 'challenge', 'challenge/route.ts']);
   for (const file of apiFiles) {
     if (!allowedApiFiles.has(file)) {
       failures.push(`Unexpected public API route remains: app/api/${file}`);
@@ -41,10 +41,13 @@ for (const file of source) {
 
 const nextConfigPath = path.join(root, 'next.config.js');
 const nextConfig = fs.readFileSync(nextConfigPath, 'utf8');
-for (const legacy of ['/original-games', '/free-online-games', '/quick-games']) {
+for (const legacy of ['/original-games', '/free-online-games']) {
   if (!nextConfig.includes(`source: '${legacy}'`)) {
     failures.push(`Missing permanent redirect for ${legacy}`);
   }
+}
+if (!fs.existsSync(path.join(root, 'app/quick-games/page.tsx'))) {
+  failures.push('Missing active /quick-games hub');
 }
 
 const sitemapSource = fs.readFileSync(path.join(appDir, 'sitemap.ts'), 'utf8');
