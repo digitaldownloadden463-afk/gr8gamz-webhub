@@ -25,7 +25,17 @@ export default function MyArcadePage() {
       </section>
       <ProfileContent />
       <section className="game-grid" style={{ marginTop: 24 }}>
-        {games.map((game) => <GameCard key={game.id} game={game} />)}
+        {games.map((game) => (
+          <GameCard 
+            key={game.id} 
+            id={game.id}
+            title={game.title || game.name}
+            category={game.category || game.genre || 'Arcade'}
+            imageUrl={game.thumbnail || game.image || '/placeholder.png'}
+            url={`/arcade/${game.slug || game.id}`}
+            isNew={game.isNew}
+          />
+        ))}
       </section>
     </main>
   );

@@ -24,7 +24,17 @@ export default function GamesPage() {
             <h2>{category.replaceAll('-', ' ')}</h2>
           </div>
           <div className="game-grid">
-            {items.map((game) => <GameCard key={game.id} game={game} />)}
+            {items.map((game) => (
+              <GameCard 
+                key={game.id} 
+                id={game.id}
+                title={game.title || game.name}
+                category={game.category || game.genre || 'Arcade'}
+                imageUrl={game.thumbnail || game.image || '/placeholder.png'}
+                url={`/arcade/${game.slug || game.id}`}
+                isNew={game.isNew}
+              />
+            ))}
           </div>
         </section>
       ))}

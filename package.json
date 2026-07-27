@@ -15,8 +15,10 @@
     "audit:v35-9-security-upgrade": "node scripts/audit-v35-9-security-upgrade.mjs"
   },
   "dependencies": {
+    "framer-motion": "^11.0.0",
     "lucide-react": "0.468.0",
     "next": "14.2.35",
+    "next-auth": "^4.24.5",
     "pg": "^8.13.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"

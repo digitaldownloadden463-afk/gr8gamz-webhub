@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import TopNav from '@/components/TopNav';
+import PageTransition from '@/components/PageTransition';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.gr8gamz.com';
 const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
@@ -60,7 +61,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ) : null}
         <TopNav />
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   );
