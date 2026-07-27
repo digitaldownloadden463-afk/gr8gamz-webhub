@@ -30,6 +30,11 @@ export default function HomePage() {
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      <nav className="home-play-menu" aria-label="Homepage play menu">
+        <Link href="/games"><Gamepad2 size={18} aria-hidden="true" /> Original games</Link>
+        <Link href="/more-free-games"><Star size={18} aria-hidden="true" /> Partner games</Link>
+        <Link href="/my-arcade"><ShieldCheck size={18} aria-hidden="true" /> My Arcade</Link>
+      </nav>
       <section className="hero hero--home">
         <div className="hero__content">
           <span className="eyebrow"><Gamepad2 size={18} aria-hidden="true" /> Free browser arcade</span>

@@ -25,6 +25,18 @@ export default function MoreFreeGamesPage() {
       <section className="partner-grid partner-grid--large">
         {featured.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 4} />)}
       </section>
+      <section className="game-section" id="all-partner-games">
+        <div className="section-heading">
+          <span className="eyebrow">Full partner shelf</span>
+          <h2>Keep scrolling for every partner game we currently list.</h2>
+          <Link href="/partner-disclosure">How partner games load <ArrowRight size={18} aria-hidden="true" /></Link>
+        </div>
+        <div className="partner-grid">
+          {allProfiles.map((profile, index) => (
+            <PartnerGameCard key={profile.slug} profile={profile} priority={index < 6} />
+          ))}
+        </div>
+      </section>
       {clusters.map((cluster) => (
         <section className="game-section" id={cluster.slug} key={cluster.slug}>
           <div className="section-heading">
@@ -33,16 +45,10 @@ export default function MoreFreeGamesPage() {
             <Link href="/partner-disclosure">Provider details <ArrowRight size={18} aria-hidden="true" /></Link>
           </div>
           <p className="section-copy">{cluster.description}</p>
-          <div className="compact-link-list">
+          <div className="partner-rail" aria-label={`${cluster.title} partner games`}>
             {allProfiles
               .filter((profile) => cluster.categories.map((item) => item.toLowerCase()).includes(String(profile.category).toLowerCase()))
-              .slice(0, 8)
-              .map((profile) => (
-                <Link href={profile.path} key={profile.slug}>
-                  <span>{profile.category}</span>
-                  <strong>{profile.title}</strong>
-                </Link>
-              ))}
+              .map((profile) => <PartnerGameCard key={profile.slug} profile={profile} />)}
           </div>
         </section>
       ))}

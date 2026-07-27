@@ -733,7 +733,7 @@ export const partnerGameProfiles = [
     ],
     "rank": 19,
     "slug": "rocket-bot-royale",
-    "image": "/partner-games/rocket-bot-royale/cover.webp",
+    "image": "/partner-games/rocket-bot-royale/cover.jpg",
     "path": "/more-free-games/rocket-bot-royale",
     "playPath": "/more-free-games/rocket-bot-royale/play",
     "providerLabel": "GR8 Game Network",
