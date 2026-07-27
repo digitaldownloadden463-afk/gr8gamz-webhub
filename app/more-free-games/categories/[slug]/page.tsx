@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { ArrowRight, Play } from 'lucide-react';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import {
@@ -8,32 +7,35 @@ import {
   getPartnerNetworkClusters
 } from '@/src/data/partnerGameProfiles';
 
-type PageProps = { params: Promise<{ slug: string }> };
-
-export const dynamicParams = false;
+type PageProps = { params: { slug: string } };
 
 export function generateStaticParams() {
   return getPartnerNetworkClusters().map((cluster) => ({ slug: cluster.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const cluster = getPartnerNetworkCluster(slug);
-  if (!cluster) notFound();
-  const title = `${cluster.title} | GR8 Game Network`;
+export function generateMetadata({ params }: PageProps) {
+  const cluster = getPartnerNetworkCluster(params.slug);
   return {
-    title,
-    description: cluster.description,
-    alternates: { canonical: `/more-free-games/categories/${cluster.slug}` }
+    title: cluster ? `${cluster.title} | GR8 Game Network` : 'Partner Game Category | GR8 GAMZ',
+    description: cluster?.description || 'Browse partner-powered free browser games on GR8 GAMZ.'
   };
 }
 
-export default async function PartnerCategoryPage({ params }: PageProps) {
-  const { slug } = await params;
-  const cluster = getPartnerNetworkCluster(slug);
-  const games = getPartnerGameProfilesByCluster(slug, 36);
+export default function PartnerCategoryPage({ params }: PageProps) {
+  const cluster = getPartnerNetworkCluster(params.slug);
+  const games = getPartnerGameProfilesByCluster(params.slug, 36);
 
-  if (!cluster || games.length === 0) notFound();
+  if (!cluster) {
+    return (
+      <main>
+        <section className="page-title">
+          <span className="eyebrow">Not found</span>
+          <h1>This partner category is not active.</h1>
+          <Link href="/more-free-games" className="cta">More Free Games</Link>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main>

@@ -44,9 +44,7 @@ export function normaliseGamePixGame(game = {}) {
 export function isSafeGamePixUrl(url) {
   try {
     const parsed = new URL(url);
-    const hostname = parsed.hostname.toLowerCase();
-    const isAllowedHost = hostname === 'gamepix.com' || hostname.endsWith('.gamepix.com');
-    return parsed.protocol === 'https:' && isAllowedHost;
+    return parsed.protocol === 'https:' && parsed.hostname.includes('gamepix.com');
   } catch {
     return false;
   }

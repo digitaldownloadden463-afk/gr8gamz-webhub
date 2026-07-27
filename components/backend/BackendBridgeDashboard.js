@@ -83,21 +83,9 @@ export default function BackendBridgeDashboard({ admin = false }) {
   }
 
   useEffect(() => {
-    let cancelled = false;
-
-    fetch('/api/gr8/backend/status', { cache: 'no-store' })
-      .then((response) => response.json())
-      .then((data) => {
-        if (!cancelled) setStatus(data);
-      })
-      .catch(() => {
-        if (!cancelled) setStatus({ ok: false, error: 'Unable to load backend status' });
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    loadStatus();
+    if (admin) loadQueue();
+  }, [admin]);
 
   const mode = status?.status || status?.mode || {};
   const local = typeof window !== 'undefined' ? getLocalSnapshot() : {};

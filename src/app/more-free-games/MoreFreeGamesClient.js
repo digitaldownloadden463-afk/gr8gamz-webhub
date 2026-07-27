@@ -119,13 +119,7 @@ export default function MoreFreeGamesClient() {
         {games.map((game) => (
           <article className="gamepix-card partner-network-card" key={game.key}>
             <div className="gamepix-thumb">
-              {game.image ? (
-                <>
-                  {/* Third-party feed images are intentionally rendered without Next.js proxying. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={game.image} alt={`${game.title} preview`} loading="lazy" />
-                </>
-              ) : <span>G8</span>}
+              {game.image ? <img src={game.image} alt={`${game.title} preview`} loading="lazy" /> : <span>G8</span>}
               <small>{game.category}</small>
             </div>
             <div className="gamepix-card-body">

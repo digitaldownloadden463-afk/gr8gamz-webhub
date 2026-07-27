@@ -117,11 +117,7 @@ export default function GamePixGamesClient() {
               <article className="gamepix-card" key={`${game.id}-${game.namespace}-${game.title}`}>
                 <div className="gamepix-thumb">
                   {game.bannerImage || game.image ? (
-                    <>
-                      {/* Third-party feed images are intentionally rendered without Next.js proxying. */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={game.bannerImage || game.image} alt={`${game.title} game artwork`} loading="lazy" />
-                    </>
+                    <img src={game.bannerImage || game.image} alt={`${game.title} game artwork`} loading="lazy" />
                   ) : (
                     <span>{game.title.slice(0, 2).toUpperCase()}</span>
                   )}

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const localKeys = {
@@ -66,24 +65,8 @@ export default function AuthDashboard({ admin = false }) {
   }
 
   useEffect(() => {
-    let cancelled = false;
-
-    Promise.all([
-      fetch('/api/gr8/auth/status', { cache: 'no-store' }).then((response) => response.json()),
-      fetch('/api/gr8/auth/me', { cache: 'no-store' }).then((response) => response.json().catch(() => ({})))
-    ])
-      .then(([nextStatus, nextMe]) => {
-        if (cancelled) return;
-        setStatus(nextStatus);
-        setMe(nextMe);
-      })
-      .catch(() => {
-        if (!cancelled) setStatus({ ok: false, error: 'Unable to load account status' });
-      });
-
-    return () => {
-      cancelled = true;
-    };
+    loadStatus();
+    loadMe();
   }, []);
 
   function handleChange(event) {
@@ -199,7 +182,7 @@ export default function AuthDashboard({ admin = false }) {
       </div>
 
       {result ? <pre style={preStyle}>{JSON.stringify(result, null, 2)}</pre> : null}
-      {admin ? <p style={mutedStyle}>Admin account review lives at <Link href="/admin/auth" style={{ color: '#35ff8d' }}>/admin/auth</Link>.</p> : null}
+      {admin ? <p style={mutedStyle}>Admin account review lives at <a href="/admin/auth" style={{ color: '#35ff8d' }}>/admin/auth</a>.</p> : null}
     </section>
   );
 }

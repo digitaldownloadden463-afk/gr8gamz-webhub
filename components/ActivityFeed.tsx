@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 export type ActivityFeedItem = {
-  [key: string]: unknown;
+  [key: string]: any;
   id?: string | number;
   label?: ReactNode;
   title?: ReactNode;

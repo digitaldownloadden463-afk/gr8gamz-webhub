@@ -2,42 +2,40 @@ export const dynamic = 'force-dynamic';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { ExternalLink, Play } from 'lucide-react';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import {
   getPartnerGameProfile,
-  getPartnerGameProfiles,
   getRelatedPartnerGameProfiles
 } from '@/src/data/partnerGameProfiles';
 import { resolvePartnerGame } from '@/src/lib/partnerFeedResolver';
 
-type PageProps = { params: Promise<{ slug: string }> };
+type PageProps = { params: { slug: string } };
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return getPartnerGameProfiles().map((profile: { slug: string }) => ({ slug: profile.slug }));
-}
-
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const profile = getPartnerGameProfile(slug);
-  if (!profile) notFound();
+export function generateMetadata({ params }: PageProps) {
+  const profile = getPartnerGameProfile(params.slug);
   return {
-    title: `Play ${profile.title} | GR8 GAMZ`,
+    title: profile ? `Play ${profile.title} | GR8 GAMZ` : 'Play Partner Game | GR8 GAMZ',
     description: 'Launch a partner-powered browser game through the GR8 Game Network.',
-    robots: { index: false, follow: true },
-    alternates: { canonical: profile.path }
+    robots: { index: false, follow: true }
   };
 }
 
 export default async function PartnerPlayPage({ params }: PageProps) {
-  const { slug } = await params;
-  const profile = getPartnerGameProfile(slug);
+  const profile = getPartnerGameProfile(params.slug);
 
-  if (!profile) notFound();
+  if (!profile) {
+    return (
+      <main>
+        <section className="page-title">
+          <span className="eyebrow">Not found</span>
+          <h1>This play route is not active.</h1>
+          <Link href="/more-free-games" className="cta">More Free Games</Link>
+        </section>
+      </main>
+    );
+  }
 
   let resolved = null;
   try {
@@ -64,11 +62,10 @@ export default async function PartnerPlayPage({ params }: PageProps) {
           <iframe
             title={profile.title}
             src={liveUrl}
-            allow="autoplay; fullscreen; gamepad"
+            allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write"
             allowFullScreen
             loading="eager"
             referrerPolicy="strict-origin-when-cross-origin"
-            sandbox="allow-scripts allow-same-origin allow-pointer-lock"
           />
         </section>
       ) : (

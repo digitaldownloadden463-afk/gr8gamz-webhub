@@ -1,36 +1,35 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import { getFeaturedGameMonetizeCmsGames, getGameMonetizeCmsGame } from '@/src/data/gamemonetizeCms';
 
-type PageProps = { params: Promise<{ slug: string }> };
+type PageProps = { params: { slug: string } };
 
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const game = getGameMonetizeCmsGame(slug);
-  if (!game) notFound();
-  const title = `${game.title} | GameMonetize Games | GR8 GAMZ`;
+export function generateMetadata({ params }: PageProps) {
+  const game = getGameMonetizeCmsGame(params.slug);
   return {
-    title,
-    description: game.description,
-    alternates: { canonical: `/gamemonetize-games/${game.slug}` },
-    openGraph: {
-      title,
-      description: game.description,
-      url: `/gamemonetize-games/${game.slug}`,
-      images: game.image ? [{ url: game.image, alt: `${game.title} artwork` }] : undefined
-    }
+    title: game ? `${game.title} | GameMonetize Games | GR8 GAMZ` : 'GameMonetize Game | GR8 GAMZ',
+    description: game?.description || 'Play GameMonetize partner games through the GR8 GAMZ arcade network.'
   };
 }
 
-export default async function GameMonetizeCmsGamePage({ params }: PageProps) {
-  const { slug } = await params;
-  const game = getGameMonetizeCmsGame(slug);
-  if (!game) notFound();
+export default function GameMonetizeCmsGamePage({ params }: PageProps) {
+  const game = getGameMonetizeCmsGame(params.slug);
   const related = getFeaturedGameMonetizeCmsGames(6);
+
+  if (!game) {
+    return (
+      <main>
+        <section className="page-title">
+          <span className="eyebrow">Not found</span>
+          <h1>This GameMonetize game is not active.</h1>
+          <Link href="/gamemonetize-games" className="cta">Browse GameMonetize games</Link>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main>

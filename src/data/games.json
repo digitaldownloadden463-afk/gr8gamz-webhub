@@ -4,7 +4,7 @@
     "name": "Neon Snake Rush",
     "genre": "Arcade",
     "category": "arcade",
-    "emoji": "\ud83d\udc0d",
+    "emoji": "🐍",
     "difficulty": "Easy",
     "playStyle": "Swipe survival",
     "iframeUrl": "/games/neon-snake-rush/index.html?v=gr8-v8-selection-labs-20260628",
@@ -28,11 +28,11 @@
     "translations": {
       "es": {
         "name": "Neon Snake Rush",
-        "description": "Desliza por una cuadr\u00edcula de ne\u00f3n, recoge orbes brillantes y busca tu mejor puntuaci\u00f3n."
+        "description": "Desliza por una cuadrícula de neón, recoge orbes brillantes y busca tu mejor puntuación."
       },
       "fr": {
         "name": "Neon Snake Rush",
-        "description": "Glisse sur une grille n\u00e9on, collecte des orbes lumineux et vise un nouveau record."
+        "description": "Glisse sur une grille néon, collecte des orbes lumineux et vise un nouveau record."
       },
       "de": {
         "name": "Neon Snake Rush",
@@ -61,7 +61,7 @@
     "rating": 4.8,
     "shortControls": "Swipe to turn",
     "launchOrder": 1,
-    "longDescription": "Neon Snake Rush V8 upgrades the original GR8 GAMZ snake loop with a cinematic neon arena, richer particle effects, stronger start instructions, combo scoring, speed ramps, new-best celebrations and a bigger game-over reward screen. It is built mobile-first for swipe controls and quick replay sessions.",
+    "longDescription": "Neon Snake Rush V4 upgrades the original GR8 GAMZ snake loop with a cinematic neon arena, richer particle effects, stronger start instructions, combo scoring, speed ramps, new-best celebrations and a bigger game-over reward screen. It is built mobile-first for swipe controls and quick replay sessions.",
     "thumbnailAlt": "Neon Snake Rush neon arcade game thumbnail"
   },
   {
@@ -69,7 +69,7 @@
     "name": "Stack Tower Rush",
     "genre": "Skill",
     "category": "skill",
-    "emoji": "\u25a5",
+    "emoji": "▥",
     "difficulty": "Easy",
     "playStyle": "One-tap stacker",
     "iframeUrl": "/games/stack-tower-rush/index.html?v=gr8-v8-selection-labs-20260628",
@@ -93,15 +93,15 @@
     "translations": {
       "es": {
         "name": "Stack Tower Rush",
-        "description": "Toca para soltar bloques, consigue apilados perfectos y construye la torre m\u00e1s alta."
+        "description": "Toca para soltar bloques, consigue apilados perfectos y construye la torre más alta."
       },
       "fr": {
         "name": "Stack Tower Rush",
-        "description": "Tape pour l\u00e2cher les blocs, r\u00e9ussis des placements parfaits et construis la plus haute tour."
+        "description": "Tape pour lâcher les blocs, réussis des placements parfaits et construis la plus haute tour."
       },
       "de": {
         "name": "Stack Tower Rush",
-        "description": "Tippe, um Bl\u00f6cke fallen zu lassen, perfekte Stapel zu schaffen und den h\u00f6chsten Turm zu bauen."
+        "description": "Tippe, um Blöcke fallen zu lassen, perfekte Stapel zu schaffen und den höchsten Turm zu bauen."
       }
     },
     "tags": [
@@ -134,7 +134,7 @@
     "name": "Turbo Drift Grid",
     "genre": "Racing",
     "category": "racing",
-    "emoji": "\ud83c\udfce\ufe0f",
+    "emoji": "🏎️",
     "difficulty": "Medium",
     "playStyle": "Hold-to-steer racer",
     "iframeUrl": "/games/turbo-drift-grid/index.html?v=gr8-v7-drift-garage-20260628",
@@ -161,11 +161,11 @@
     "translations": {
       "es": {
         "name": "Turbo Drift Grid",
-        "description": "Mant\u00e9n izquierda o derecha para derrapar por una pista de ne\u00f3n y recoger impulsos."
+        "description": "Mantén izquierda o derecha para derrapar por una pista de neón y recoger impulsos."
       },
       "fr": {
         "name": "Turbo Drift Grid",
-        "description": "Maintiens gauche ou droite pour drifter sur une grille n\u00e9on et collecter des boosts."
+        "description": "Maintiens gauche ou droite pour drifter sur une grille néon et collecter des boosts."
       },
       "de": {
         "name": "Turbo Drift Grid",
@@ -206,7 +206,7 @@
     "name": "Pixel Goal Hero",
     "genre": "Sports",
     "category": "sports",
-    "emoji": "\u26bd",
+    "emoji": "⚽",
     "difficulty": "Easy",
     "playStyle": "Drag-and-shoot football",
     "iframeUrl": "/games/pixel-goal-hero/index.html?v=gr8-v8-selection-labs-20260628",
@@ -230,11 +230,11 @@
     "translations": {
       "es": {
         "name": "Pixel Goal Hero",
-        "description": "Arrastra para apuntar, suelta para disparar y vence al portero en penaltis r\u00e1pidos."
+        "description": "Arrastra para apuntar, suelta para disparar y vence al portero en penaltis rápidos."
       },
       "fr": {
         "name": "Pixel Goal Hero",
-        "description": "Glisse pour viser, rel\u00e2che pour tirer et bats le gardien dans un d\u00e9fi de penalty."
+        "description": "Glisse pour viser, relâche pour tirer et bats le gardien dans un défi de penalty."
       },
       "de": {
         "name": "Pixel Goal Hero",
@@ -271,7 +271,7 @@
     "name": "Space Tap Survival",
     "genre": "Action",
     "category": "action",
-    "emoji": "\ud83d\ude80",
+    "emoji": "🚀",
     "difficulty": "Medium",
     "playStyle": "Hold-to-fly survival",
     "iframeUrl": "/games/space-tap-survival/index.html?v=gr8-v8-selection-labs-20260628",
@@ -295,15 +295,15 @@
     "translations": {
       "es": {
         "name": "Space Tap Survival",
-        "description": "Mant\u00e9n pulsado para subir, suelta para caer, esquiva asteroides y recoge escudos."
+        "description": "Mantén pulsado para subir, suelta para caer, esquiva asteroides y recoge escudos."
       },
       "fr": {
         "name": "Space Tap Survival",
-        "description": "Maintiens pour monter, rel\u00e2che pour descendre, \u00e9vite les ast\u00e9ro\u00efdes et r\u00e9cup\u00e8re des boucliers."
+        "description": "Maintiens pour monter, relâche pour descendre, évite les astéroïdes et récupère des boucliers."
       },
       "de": {
         "name": "Space Tap Survival",
-        "description": "Halte gedr\u00fcckt zum Steigen, lasse los zum Fallen, weiche Asteroiden aus und sammle Schilde."
+        "description": "Halte gedrückt zum Steigen, lasse los zum Fallen, weiche Asteroiden aus und sammle Schilde."
       }
     },
     "tags": [
@@ -336,7 +336,7 @@
     "name": "Neon Breakout Rush",
     "genre": "Arcade",
     "category": "arcade",
-    "emoji": "\ud83d\udfea",
+    "emoji": "🟪",
     "difficulty": "Easy",
     "playStyle": "Paddle brick breaker",
     "iframeUrl": "/games/neon-breakout-rush/index.html?v=gr8-v12-second-drop-20260628",
@@ -398,7 +398,7 @@
     "name": "Cyber Basketball Shots",
     "genre": "Sports",
     "category": "sports",
-    "emoji": "\ud83c\udfc0",
+    "emoji": "🏀",
     "difficulty": "Easy",
     "playStyle": "Drag-and-release shots",
     "iframeUrl": "/games/cyber-basketball-shots/index.html?v=gr8-v12-second-drop-20260628",
@@ -460,7 +460,7 @@
     "name": "Zombie Lane Runner",
     "genre": "Action",
     "category": "action",
-    "emoji": "\ud83e\udddf",
+    "emoji": "🧟",
     "difficulty": "Medium",
     "playStyle": "Lane-switch survival",
     "iframeUrl": "/games/zombie-lane-runner/index.html?v=gr8-v12-second-drop-20260628",
@@ -522,7 +522,7 @@
     "name": "Bubble Pop Blitz",
     "genre": "Puzzle",
     "category": "puzzle",
-    "emoji": "\ud83e\udee7",
+    "emoji": "🫧",
     "difficulty": "Easy",
     "playStyle": "Tap combo popper",
     "iframeUrl": "/games/bubble-pop-blitz/index.html?v=gr8-v12-second-drop-20260628",
@@ -584,7 +584,7 @@
     "name": "Neon Air Hockey",
     "genre": "Sports",
     "category": "sports",
-    "emoji": "\ud83c\udfd2",
+    "emoji": "🏒",
     "difficulty": "Medium",
     "playStyle": "Drag paddle duel",
     "iframeUrl": "/games/neon-air-hockey/index.html?v=gr8-v12-second-drop-20260628",
@@ -646,7 +646,7 @@
     "name": "Alien Invader Swarm",
     "genre": "Shooter",
     "category": "shooter",
-    "emoji": "\ud83d\udc7e",
+    "emoji": "👾",
     "difficulty": "Medium",
     "playStyle": "Auto-fire space shooter",
     "iframeUrl": "/games/alien-invader-swarm/index.html?v=gr8-v12-second-drop-20260628",
@@ -708,7 +708,7 @@
     "name": "Crystal Match Quest",
     "genre": "Puzzle",
     "category": "puzzle",
-    "emoji": "\ud83d\udc8e",
+    "emoji": "💎",
     "difficulty": "Easy",
     "playStyle": "Tap-match puzzle",
     "iframeUrl": "/games/crystal-match-quest/index.html?v=gr8-v12-second-drop-20260628",
@@ -770,7 +770,7 @@
     "name": "Dungeon Door Dash",
     "genre": "Adventure",
     "category": "adventure",
-    "emoji": "\ud83d\udeaa",
+    "emoji": "🚪",
     "difficulty": "Easy",
     "playStyle": "Risk-choice treasure run",
     "iframeUrl": "/games/dungeon-door-dash/index.html?v=gr8-v12-second-drop-20260628",
@@ -832,7 +832,7 @@
     "name": "Traffic Tap Chaos",
     "genre": "Strategy",
     "category": "strategy",
-    "emoji": "\ud83d\udea6",
+    "emoji": "🚦",
     "difficulty": "Medium",
     "playStyle": "Tap traffic control",
     "iframeUrl": "/games/traffic-tap-chaos/index.html?v=gr8-v12-second-drop-20260628",
@@ -894,7 +894,7 @@
     "name": "Rocket Fuel Frenzy",
     "genre": "Arcade",
     "category": "arcade",
-    "emoji": "\ud83d\ude80",
+    "emoji": "🚀",
     "difficulty": "Medium",
     "playStyle": "Fuel collection flyer",
     "iframeUrl": "/games/rocket-fuel-frenzy/index.html?v=gr8-v12-second-drop-20260628",
@@ -956,7 +956,7 @@
     "name": "Neon Pinball Rush",
     "genre": "Arcade",
     "category": "arcade",
-    "emoji": "\ud83d\udfe3",
+    "emoji": "🟣",
     "difficulty": "Medium",
     "playStyle": "Pinball score chase",
     "iframeUrl": "/games/neon-pinball-rush/index.html?v=gr8-v20-third-drop-20260628",
@@ -1017,7 +1017,7 @@
     "name": "Cyber Bowling Blitz",
     "genre": "Sports",
     "category": "sports",
-    "emoji": "\ud83c\udfb3",
+    "emoji": "🎳",
     "difficulty": "Easy",
     "playStyle": "Drag-to-roll bowling",
     "iframeUrl": "/games/cyber-bowling-blitz/index.html?v=gr8-v20-third-drop-20260628",
@@ -1078,7 +1078,7 @@
     "name": "Lava Tile Escape",
     "genre": "Puzzle",
     "category": "puzzle",
-    "emoji": "\ud83c\udf0b",
+    "emoji": "🌋",
     "difficulty": "Medium",
     "playStyle": "Tile escape puzzle",
     "iframeUrl": "/games/lava-tile-escape/index.html?v=gr8-v20-third-drop-20260628",
@@ -1139,7 +1139,7 @@
     "name": "Galaxy Golf Putt",
     "genre": "Sports",
     "category": "sports",
-    "emoji": "\u26f3",
+    "emoji": "⛳",
     "difficulty": "Easy",
     "playStyle": "Drag-to-putt golf",
     "iframeUrl": "/games/galaxy-golf-putt/index.html?v=gr8-v20-third-drop-20260628",
@@ -1200,7 +1200,7 @@
     "name": "Monster Truck Tap",
     "genre": "Racing",
     "category": "racing",
-    "emoji": "\ud83d\ude99",
+    "emoji": "🚙",
     "difficulty": "Medium",
     "playStyle": "Tap-to-jump truck run",
     "iframeUrl": "/games/monster-truck-tap/index.html?v=gr8-v20-third-drop-20260628",
@@ -1261,7 +1261,7 @@
     "name": "Fruit Slice Fever",
     "genre": "Skill",
     "category": "skill",
-    "emoji": "\ud83c\udf49",
+    "emoji": "🍉",
     "difficulty": "Easy",
     "playStyle": "Swipe slicing reflex",
     "iframeUrl": "/games/fruit-slice-fever/index.html?v=gr8-v20-third-drop-20260628",
@@ -1322,7 +1322,7 @@
     "name": "Shadow Ninja Leap",
     "genre": "Action",
     "category": "action",
-    "emoji": "\ud83e\udd77",
+    "emoji": "🥷",
     "difficulty": "Hard",
     "playStyle": "Tap-to-leap action",
     "iframeUrl": "/games/shadow-ninja-leap/index.html?v=gr8-v20-third-drop-20260628",
@@ -1383,7 +1383,7 @@
     "name": "Cannon Coin Blast",
     "genre": "Arcade",
     "category": "arcade",
-    "emoji": "\ud83e\ude99",
+    "emoji": "🪙",
     "difficulty": "Medium",
     "playStyle": "Aim-and-fire cannon",
     "iframeUrl": "/games/cannon-coin-blast/index.html?v=gr8-v20-third-drop-20260628",
@@ -1444,7 +1444,7 @@
     "name": "Ice Slide Puzzle",
     "genre": "Puzzle",
     "category": "puzzle",
-    "emoji": "\ud83e\uddca",
+    "emoji": "🧊",
     "difficulty": "Medium",
     "playStyle": "Sliding ice puzzle",
     "iframeUrl": "/games/ice-slide-puzzle/index.html?v=gr8-v20-third-drop-20260628",
@@ -1505,7 +1505,7 @@
     "name": "Astro Memory Grid",
     "genre": "Puzzle",
     "category": "puzzle",
-    "emoji": "\ud83e\udde0",
+    "emoji": "🧠",
     "difficulty": "Easy",
     "playStyle": "Memory matching grid",
     "iframeUrl": "/games/astro-memory-grid/index.html?v=gr8-v20-third-drop-20260628",

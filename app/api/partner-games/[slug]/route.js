@@ -5,8 +5,7 @@ import { resolvePartnerGame } from '../../../../src/lib/partnerFeedResolver';
 export const dynamic = 'force-dynamic';
 
 export async function GET(_request, { params }) {
-  const { slug } = await params;
-  const profile = getPartnerGameProfile(slug);
+  const profile = getPartnerGameProfile(params.slug);
   if (!profile) {
     return NextResponse.json({ ok: false, error: 'Partner game profile not found' }, { status: 404 });
   }
@@ -18,10 +17,12 @@ export async function GET(_request, { params }) {
         'cache-control': 'public, s-maxage=900, stale-while-revalidate=3600'
       }
     });
-  } catch {
+  } catch (error) {
     return NextResponse.json({
       ok: false,
-      error: 'Unable to resolve live partner game data'
+      error: 'Unable to resolve live partner game data',
+      detail: error?.message || 'Unknown resolver error',
+      profile
     }, { status: 502 });
   }
 }

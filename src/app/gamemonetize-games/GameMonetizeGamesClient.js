@@ -25,10 +25,6 @@ const POPULARITY = [
   { id: 'nobranding', label: 'No Branding' }
 ];
 
-function textOnly(value = '') {
-  return String(value).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
 function trackGameMonetizeEvent(name, payload = {}) {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
@@ -39,7 +35,7 @@ function normalise(game) {
   return {
     id: String(game?.id || game?.title || ''),
     title: game?.title || 'GameMonetize Game',
-    description: textOnly(game?.description || 'Play this partner HTML5 game through GR8 GAMZ.'),
+    description: game?.description || 'Play this partner HTML5 game through GR8 GAMZ.',
     instructions: game?.instructions || '',
     category: game?.category || 'Partner Game',
     tags: game?.tags || '',
@@ -155,11 +151,7 @@ export default function GameMonetizeGamesClient() {
               <article className="gamepix-card partner-network-card" key={`${game.id}-${game.title}`}>
                 <div className="gamepix-thumb">
                   {game.thumb ? (
-                    <>
-                      {/* Third-party feed images are intentionally rendered without Next.js proxying. */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={game.thumb} alt={`${game.title} game artwork`} loading="lazy" />
-                    </>
+                    <img src={game.thumb} alt={`${game.title} game artwork`} loading="lazy" />
                   ) : (
                     <span>{game.title.slice(0, 2).toUpperCase()}</span>
                   )}
@@ -167,7 +159,7 @@ export default function GameMonetizeGamesClient() {
                 </div>
                 <div className="gamepix-card-body">
                   <h3>{game.title}</h3>
-                  <p>{game.description}</p>
+                  <p dangerouslySetInnerHTML={{ __html: game.description }} />
                   <div className="gamepix-meta">
                     <span>{game.width}×{game.height}</span>
                     {game.tags ? <span>{String(game.tags).split(',')[0]}</span> : null}

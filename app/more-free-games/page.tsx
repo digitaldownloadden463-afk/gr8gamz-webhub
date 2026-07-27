@@ -11,8 +11,7 @@ import {
 
 export const metadata = {
   title: 'More Free Games | GR8 Game Network',
-  description: 'Play partner-powered free browser games through the GR8 Game Network, with action, racing, sports, puzzle and arcade games for worldwide players.',
-  alternates: { canonical: '/more-free-games' }
+  description: 'Play partner-powered free browser games through the GR8 Game Network, with action, racing, sports, puzzle and arcade games for worldwide players.'
 };
 
 export default function MoreFreeGamesPage() {

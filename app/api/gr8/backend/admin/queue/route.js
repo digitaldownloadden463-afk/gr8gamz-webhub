@@ -5,6 +5,6 @@ export const dynamic = 'force-dynamic';
 
 export function GET(request) {
   const admin = requireAdmin(request);
-  if (!admin.ok) return jsonResponse({ ok: false, code: admin.code, error: admin.reason }, { status: admin.status });
+  if (!admin.ok) return jsonResponse({ ok: false, error: admin.reason }, { status: 401 });
   return jsonResponse({ ok: true, admin, ...getQueueSnapshot() });
 }

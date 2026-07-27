@@ -1,9 +1,6 @@
 import { gamePixConfig, isSafeGamePixUrl } from '../data/gamepix';
 import { gameMonetizeConfig, isSafeGameMonetizeUrl } from '../data/gamemonetize';
 
-const MAX_FEED_BYTES = 2 * 1024 * 1024;
-const FEED_TIMEOUT_MS = 10_000;
-
 export function cleanPartnerText(value = '') {
   return String(value || '')
     .toLowerCase()
@@ -48,15 +45,10 @@ function gameMonetizeUrl(popularity = 'newest') {
 async function fetchJson(url) {
   const response = await fetch(url, {
     next: { revalidate: 900 },
-    headers: { accept: 'application/json' },
-    signal: AbortSignal.timeout(FEED_TIMEOUT_MS)
+    headers: { accept: 'application/json' }
   });
   if (!response.ok) throw new Error(`Feed returned ${response.status}`);
-  const declaredLength = Number(response.headers.get('content-length') || 0);
-  if (Number.isFinite(declaredLength) && declaredLength > MAX_FEED_BYTES) throw new Error('Feed is too large');
-  const raw = await response.text();
-  if (Buffer.byteLength(raw, 'utf8') > MAX_FEED_BYTES) throw new Error('Feed is too large');
-  return JSON.parse(raw);
+  return response.json();
 }
 
 function titleScore(profile, item) {

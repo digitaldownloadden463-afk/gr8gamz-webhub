@@ -27,8 +27,6 @@ export default function PartnerProfileLiveImage({ profile, className = '', showL
 
   return (
     <div className={`partner-live-image ${stateClass} ${className}`.trim()} data-image-state={hasLiveImage ? 'live' : 'fallback'}>
-      {/* Runtime-resolved partner images cannot be safely proxied through Next.js. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={image}
         alt={`${profile.title} ${hasLiveImage ? 'actual game preview' : 'GR8 GAMZ branded artwork'}`}
