@@ -13,7 +13,7 @@ interface GameCardProps {
   isNew?: boolean;
 }
 
-export default function GameCard({ id, title, category, imageUrl, url, isNew }: GameCardProps) {
+export function GameCard({ id: _id, title, category, imageUrl, url, isNew }: GameCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -66,3 +66,5 @@ export default function GameCard({ id, title, category, imageUrl, url, isNew }: 
     </motion.div>
   );
 }
+
+export default GameCard;

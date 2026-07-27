@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, UserRound } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AuthPage() {
@@ -54,7 +54,7 @@ export default function AuthPage() {
 
             <div className="mt-8 text-center">
               <p className="text-white/50 text-sm">
-                Don't have a Passport? <Link href="#" className="text-brand font-bold hover:underline">Create one</Link>
+                Don&apos;t have a Passport? <Link href="#" className="text-brand font-bold hover:underline">Create one</Link>
               </p>
             </div>
           </div>
