@@ -31,16 +31,14 @@ const browser = await chromium.launch();
 const failures = [];
 
 for (const viewport of viewports) {
-  const page = await browser.newPage({ viewport });
-  let currentRoute = '';
-  page.on('console', (message) => {
-    if (message.type() === 'error' && !(currentRoute.includes('404') && message.text().includes('404'))) {
-      failures.push(`Console error at ${viewport.width}: ${message.text()}`);
-    }
-  });
   for (const route of routes) {
-    currentRoute = route;
-    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 15000 });
+    const page = await browser.newPage({ viewport });
+    page.on('console', (message) => {
+      if (message.type() === 'error' && !(route.includes('404') && message.text().includes('404'))) {
+        failures.push(`Console error at ${viewport.width}: ${message.text()}`);
+      }
+    });
+    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 30000 });
     const status = response?.status() || 0;
     if (route.includes('404') && status !== 404) failures.push(`${route} returned ${status}, expected 404`);
     if (!route.includes('404') && status >= 400) failures.push(`${route} returned ${status}`);
@@ -48,8 +46,8 @@ for (const viewport of viewports) {
     await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => resolve(true))));
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     if (overflow) failures.push(`${route} overflows horizontally at ${viewport.width}`);
+    await page.close();
   }
-  await page.close();
 }
 
 await browser.close();

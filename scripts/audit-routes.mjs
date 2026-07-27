@@ -3,13 +3,24 @@ import path from 'node:path';
 
 const root = process.cwd();
 const appDir = path.join(root, 'app');
-const forbiddenRoutes = ['app/api', 'app/admin', 'app/backend', 'app/auth', 'app/passport', 'app/community', 'src/app'];
+const forbiddenRoutes = ['app/admin', 'app/backend', 'app/auth', 'app/passport', 'app/community', 'src/app'];
 
 const failures = [];
 
 for (const route of forbiddenRoutes) {
   if (fs.existsSync(path.join(root, route))) {
     failures.push(`Forbidden route tree still exists: ${route}`);
+  }
+}
+
+const apiDir = path.join(root, 'app/api');
+if (fs.existsSync(apiDir)) {
+  const apiFiles = fs.readdirSync(apiDir, { recursive: true }).map((file) => String(file));
+  const allowedApiFiles = new Set(['partner-catalog', 'partner-catalog/route.js']);
+  for (const file of apiFiles) {
+    if (!allowedApiFiles.has(file)) {
+      failures.push(`Unexpected public API route remains: app/api/${file}`);
+    }
   }
 }
 

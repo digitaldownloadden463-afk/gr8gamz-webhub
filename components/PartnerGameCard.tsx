@@ -18,17 +18,23 @@ export type PartnerGameProfile = {
 
 export function PartnerGameCard({ profile, priority = false }: { profile: PartnerGameProfile; priority?: boolean }) {
   const playPath = profile.playPath || `${profile.path}/play`;
+  const artwork =
+    profile.provider === 'gamepix'
+      ? `https://img.gamepix.com/games/${profile.slug}/cover/${profile.slug}.png?w=480`
+      : profile.image;
+  const isRemoteArtwork = artwork.startsWith('https://');
 
   return (
     <article className="partner-card">
       <Link href={profile.path} className="partner-card__image" aria-label={`Open ${profile.title}`}>
         <Image
-          src={profile.image}
+          src={artwork}
           alt={`${profile.title} game artwork`}
           width={480}
           height={270}
           sizes="(max-width: 620px) 92vw, (max-width: 1024px) 44vw, 320px"
           priority={priority}
+          unoptimized={isRemoteArtwork}
         />
         <span>{profile.category}</span>
       </Link>

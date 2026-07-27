@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import LivePartnerCatalogue from '@/components/LivePartnerCatalogue';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { getFeaturedPartnerGameProfiles, getPartnerGameProfiles, getPartnerNetworkClusters } from '@/src/data/partnerGameProfiles';
@@ -18,9 +19,17 @@ export default function MoreFreeGamesPage() {
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">Curated partner games</span>
-        <h1>More games when you want a bigger library.</h1>
-        <p>These partner games are presented with clear provider labels. The embedded game does not load until you choose to load it.</p>
+        <span className="eyebrow">Partner games</span>
+        <h1>Scroll through the wider partner catalogue.</h1>
+        <p>Browse real GamePix and GameMonetize feed artwork. Partner games still load only after you choose to open one.</p>
+      </section>
+      <LivePartnerCatalogue />
+      <section className="game-section" id="curated-partner-guides">
+        <div className="section-heading">
+          <span className="eyebrow">Curated guides</span>
+          <h2>Featured partner picks with extra notes.</h2>
+          <Link href="/partner-disclosure">How partner games load <ArrowRight size={18} aria-hidden="true" /></Link>
+        </div>
       </section>
       <section className="partner-grid partner-grid--large">
         {featured.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 4} />)}
