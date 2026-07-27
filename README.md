@@ -1,151 +1,64 @@
-# GR8 GAMZ V8 Selection Labs Update
+# GR8 GAMZ
 
-This update adds the same deeper player-choice idea from Turbo Drift Garage into the other launched games.
+GR8 GAMZ is a production-focused Next.js gaming platform for original browser games and curated partner games.
 
-## Updated games
+## Current Architecture
 
-- Neon Snake Rush now has **Snake Lab**
-- Stack Tower Rush now has **Build Mode**
-- Pixel Goal Hero now has **Team Locker**
-- Space Tap Survival now has **Space Hangar**
+- `app/` is the only App Router tree.
+- `components/` contains the active UI components.
+- `lib/` contains feature flags, game helpers and safe partner-feed resolution.
+- `src/data/games.json` is the source of truth for the 26 original games.
+- `src/data/partnerGameProfiles.js` contains curated partner profiles.
+- `public/games/` contains runtime files for original HTML5 games.
+- `public/partner-games/` contains curated local partner cover artwork.
 
-## What changed
+Disabled until production persistence and moderation are configured:
 
-- Selection menus before play
-- Different play styles with visible stats
-- More replay value
-- Better mobile-first instructions
-- Stronger game-over messaging
-- Updated cache-busted iframe URLs in `src/data/games.json`
+- Accounts / Passport
+- Public chat / Clubhouse
+- Admin dashboards
+- Public report, queue, session and diagnostic APIs
 
-## Upload
+My Arcade is intentionally local-device only and uses browser localStorage.
 
-Upload these folders/files to GitHub and allow overwrite:
+## Local Setup
 
-- `public`
-- `src`
-- `README.md`
-- `UPLOAD-INSTRUCTIONS.txt`
+Use Node.js 22+ and pnpm 11.
 
-Commit message:
+```bash
+pnpm install
+pnpm run dev
+```
 
-`Add V8 selection labs to launched games`
+## Validation
 
-Then wait for Vercel to redeploy.
+Run these before opening a PR:
 
+```bash
+pnpm run type-check
+pnpm run lint
+pnpm run validate:games
+pnpm run audit:routes
+pnpm run build
+pnpm run check:bundle-size
+pnpm audit --prod
+```
 
-## V9 Homepage Artwork Pass
-- Added premium homepage hero artwork and supporting neon landscape section background.
-- Improved first-impression messaging and launch highlight panels.
-- Added local artwork assets under `public/art/`.
+Optional smoke checks:
 
+```bash
+pnpm run smoke:playwright
+pnpm run lhci
+```
 
-## V10 Conversion + Speed Polish
-- Fixed oversized thumbnail control labels.
-- Reordered homepage sections for stronger conversion and repeat-play flow.
-- Improved CTA wording and headline hierarchy.
-- Added compressed WebP homepage artwork references for faster loading.
+## Deployment
 
+Production currently deploys from GitHub `main` to Vercel. Use feature branches and draft pull requests for substantial work. Do not commit secrets or environment values.
 
-## V11 Immersive Play System
-- Added branded GR8 Focus Mode for fullscreen play.
-- Added pause overlay, sound toggle, quick restart and mobile rotate suggestion.
-- Added post-game result overlay with Play Again and Next Game flow.
+Important environment values:
 
+- `NEXT_PUBLIC_SITE_URL=https://www.gr8gamz.com`
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` when available
+- `NEXT_PUBLIC_BING_SITE_VERIFICATION` when available
 
-## V12 Second Game Drop
-Added 10 new self-hosted HTML5 games, expanding GR8 GAMZ from 5 to 15 launch games with new puzzle, shooter, adventure and strategy coverage.
-
-
-## V13 Second Drop Polish
-- Upgraded the V12 second-drop thumbnails to premium neon artwork consistent with the first five games.
-- Fixed oversized thumbnail control badges with stronger CSS targeting.
-- Fixed Zombie Lane Runner arrow key / A-D lane switching.
-
-
-## V14 Retention + Discovery Engine
-- Added daily XP reward card.
-- Added local achievement badges.
-- Added recommended horizontal game rails.
-- Improved `/games` filtering by category, control type, difficulty and sort order.
-- Added `/controls/[slug]` landing pages.
-- Added `/difficulty/[slug]` landing pages.
-- Updated sitemap to include new discovery routes.
-- Improved game session tracking for favourites, plays, recent games and local XP.
-
-
-## V15 SEO + AI Visibility Layer
-- Added advanced crawl/AI visibility structure.
-- Added `/mobile-games`, `/quick-games` and `/free-browser-games` SEO hubs.
-- Added richer visible game-page SEO content and FAQs.
-- Added IndexNow-ready routes and environment-variable setup.
-- Added `llms.txt` and sitemap updates.
-- Added Google/Bing verification metadata support.
-
-
-## V16 Authority + Content Engine
-- Added `/updates` content hub.
-- Added update/article pages with Article and FAQ schema.
-- Added `/collections` guide hub.
-- Added curated collection pages with CollectionPage and ItemList schema.
-- Added `/new-this-week` fresh crawl hub.
-- Added homepage latest-updates section.
-- Added header links for Updates and Collections.
-- Updated sitemap and llms.txt with the new authority/content routes.
-
-
-## V17 Growth Automation + Feed Engine
-- Added RSS and JSON feeds for update posts.
-- Added grouped sitemaps and a sitemap index.
-- Added `/latest`, `/feeds` and `/seo-status` hubs.
-- Added IndexNow URL list and bulk submission route.
-- Added root IndexNow key fallback file/route.
-- Updated robots.txt and llms.txt with feed/sitemap routes.
-- Added homepage links into the freshness and crawl automation layer.
-
-
-## V18 gameplay + art polish
-- Larger arcade viewport heights for better in-game visibility.
-- Premium neon artwork refresh for the last ten games.
-- Zombie Lane Runner control reliability patch with touch lane buttons.
-
-
-## V19 included planning docs
-This package now includes the V19 planning layer:
-- `GR8-GAMZ-V19-FULL-GAMEPLAY-QA-PREMIUM-POLISH-SPEC.md`
-- `GR8-GAMZ-V19-QA-MATRIX.md`
-
-V19 is the next implementation phase after V18: full testing, balancing, mechanic polish and premium QA across all 15 existing games.
-
-
-## V19 implementation
-V19 upgrades the second-drop gameplay engine and strengthens quality across the existing 15-game arcade library.
-
-Key implementation points:
-- Score/result posting added to the last ten games.
-- Pause/resume/mute handling added for GR8 Focus Mode.
-- Better mobile and keyboard control handling.
-- Fairer collision and spawn behaviour.
-- Stronger combo/scoring feedback.
-- New V19 update article added to the content engine.
-
-
-## V20 third premium game drop
-V20 adds 10 new premium mobile-first browser games:
-- Neon Pinball Rush
-- Cyber Bowling Blitz
-- Lava Tile Escape
-- Galaxy Golf Putt
-- Monster Truck Tap
-- Fruit Slice Fever
-- Shadow Ninja Leap
-- Cannon Coin Blast
-- Ice Slide Puzzle
-- Astro Memory Grid
-
-Also adds:
-- V20 update article
-- V20 curated collection
-- premium thumbnails
-- score/result posting
-- GR8 Focus Mode pause/resume support
+Accounts/community routes remain hidden unless a real persistent database, session secret and moderation design are implemented and tested.

@@ -1,126 +1,82 @@
 import Link from 'next/link';
-import { ArrowRight, Gamepad2, Sparkles, Trophy, UserRound } from 'lucide-react';
-import { ActivityFeed } from '@/components/ActivityFeed';
+import { ArrowRight, Gamepad2, ShieldCheck, Star } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
-import PlayerPanel from '@/components/PlayerPanel';
 import { getAllGames, getFeaturedGames } from '@/lib/games';
-import { getGameMonetizeCmsStats } from '@/src/data/gamemonetizeCms';
-import { getFeaturedPartnerGameProfiles, getTrendingPartnerProfiles } from '@/src/data/partnerGameProfiles';
+import { canonical, gameCountLabel } from '@/lib/features';
+import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+
+export const metadata = {
+  alternates: { canonical: canonical('/') }
+};
 
 export default function HomePage() {
-  const allGames = getAllGames();
+  const games = getAllGames();
   const featured = getFeaturedGames(6);
-  const partnerGames = getTrendingPartnerProfiles(6);
-  const spotlightPartners = getFeaturedPartnerGameProfiles(3);
-  const cmsStats = getGameMonetizeCmsStats();
-  const heroGame = featured[0] || allGames[0];
-  const categoryStats = Array.from(
-    allGames.reduce((map, game) => {
-      const key = game.categorySlug || game.category || 'arcade';
-      map.set(key, (map.get(key) || 0) + 1);
-      return map;
-    }, new Map<string, number>())
-  ).slice(0, 6);
+  const partners = getFeaturedPartnerGameProfiles(6);
+
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GR8 GAMZ',
+    url: canonical('/'),
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${canonical('/games')}?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    }
+  };
 
   return (
     <main>
-      <section
-        className="hero hero--home glass-panel"
-        style={{
-          backgroundImage: heroGame?.thumbnail
-            ? `linear-gradient(90deg, rgba(5,5,7,.97) 0%, rgba(5,5,7,.84) 48%, rgba(5,5,7,.48) 100%), url("${heroGame.thumbnail}")`
-            : undefined
-        }}
-      >
-        <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ arcade</span>
-        <h1>Free browser games that load fast and play clean.</h1>
-        <p>Jump straight into 25 original arcade, racing, sports, puzzle and skill games. No downloads, no clutter, just quick sessions that work on phone or desktop.</p>
-        <div className="cta-row">
-          <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Browse games</Link>
-          <Link href={`/arcade/${heroGame?.slug || heroGame?.id || 'neon-snake-rush'}`} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Start featured</Link>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      <section className="hero hero--home">
+        <div className="hero__content">
+          <span className="eyebrow"><Gamepad2 size={18} aria-hidden="true" /> Free browser arcade</span>
+          <h1>Play fast, polished games without downloads.</h1>
+          <p>Start with {gameCountLabel(games.length)} original GR8 GAMZ games built for phone, tablet and desktop. Browse curated partner games when you want more.</p>
+          <div className="cta-row">
+            <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Browse games</Link>
+            <Link href="/more-free-games" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> More games</Link>
+          </div>
         </div>
       </section>
 
-      <section className="arcade-strip" aria-label="Catalog snapshot">
-        <div>
-          <strong>{allGames.length}</strong>
-          <span>original games</span>
-        </div>
-        <Link href="/more-free-games">
-          <strong>40</strong>
-          <span>partner games</span>
-        </Link>
-        <Link href="/gamemonetize-games">
-          <strong>{cmsStats.games.toLocaleString()}</strong>
-          <span>GameMonetize CMS</span>
-        </Link>
-        {categoryStats.map(([category, count]) => (
-          <Link href="/games" key={category}>
-            <strong>{count}</strong>
-            <span>{category.replaceAll('-', ' ')}</span>
-          </Link>
-        ))}
+      <section className="value-grid" aria-label="Why play here">
+        <article><Star aria-hidden="true" /><strong>Original games</strong><span>26 mobile-first arcade games with real playable routes.</span></article>
+        <article><ShieldCheck aria-hidden="true" /><strong>Honest privacy</strong><span>My Arcade saves on this device. Partner games load only after you choose.</span></article>
+        <article><Gamepad2 aria-hidden="true" /><strong>Quick starts</strong><span>Stable cards, clear controls and no fake chat, counters or leaderboards.</span></article>
       </section>
 
       <section className="section-heading">
-        <span className="eyebrow"><Trophy size={18} aria-hidden="true" /> Featured picks</span>
-        <h2>Start with the games that show GR8 GAMZ at its best.</h2>
-        <Link href="/top-games">View top games <ArrowRight size={18} aria-hidden="true" /></Link>
+        <span className="eyebrow">Start here</span>
+        <h2>Featured original games.</h2>
+        <Link href="/games">View all <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
-
       <section className="game-grid">
-        {featured.map((game) => (
-          <GameCard 
-            key={game.id} 
+        {featured.map((game, index) => (
+          <GameCard
+            key={game.id}
             id={game.id}
-            title={game.title || game.name || ''}
+            title={game.name}
             category={game.category || game.genre || 'Arcade'}
-            imageUrl={game.thumbnail || game.image || '/placeholder.png'}
+            imageUrl={game.thumbnail || '/placeholder.png'}
             url={`/arcade/${game.slug || game.id}`}
-            isNew={game.isNew}
+            dateAdded={game.dateAdded}
+            controls={game.shortControls || game.controls?.[0]}
+            difficulty={game.difficulty}
+            priority={index < 3}
           />
         ))}
       </section>
 
-      <section className="network-showcase">
-        <div className="network-showcase__copy">
-          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> Revenue game network</span>
-          <h2>Partner games belong in front of players.</h2>
-          <p>GR8 GAMZ now pushes the partner network into the main player journey with high-action profile cards, Play Now routes and worldwide no-download discovery.</p>
-          <div className="cta-row">
-            <Link href="/more-free-games" className="cta">Explore partner games</Link>
-            <Link href="/gamemonetize-games" className="secondary-cta">Open CMS arcade</Link>
-          </div>
-        </div>
-        <div className="network-showcase__rail">
-          {spotlightPartners.map((profile) => (
-            <Link href={profile.playPath || `${profile.path}/play`} key={profile.slug}>
-              <span>{profile.category}</span>
-              <strong>{profile.title}</strong>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <section className="section-heading">
-        <span className="eyebrow">Worldwide play feed</span>
-        <h2>More free games from the GR8 Game Network.</h2>
-        <Link href="/more-free-games">Open the full network <ArrowRight size={18} aria-hidden="true" /></Link>
+        <span className="eyebrow">Curated partner games</span>
+        <h2>More games, loaded with clear consent.</h2>
+        <Link href="/more-free-games">Explore more <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
-
       <section className="partner-grid">
-        {partnerGames.map((profile, index) => (
-          <PartnerGameCard key={profile.slug} profile={profile} priority={index < 2} />
-        ))}
-      </section>
-
-      <section className="home-grid home-grid--support">
-        <PlayerPanel>
-          <p className="panel-copy">Create a GR8 Passport when you want saved favourites, XP and badges across sessions.</p>
-          <Link href="/auth" className="text-link"><UserRound size={18} aria-hidden="true" /> Open Passport</Link>
-        </PlayerPanel>
-        <ActivityFeed compact title="Live hub" />
+        {partners.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 3} />)}
       </section>
     </main>
   );

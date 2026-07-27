@@ -10,7 +10,6 @@ export type PartnerGameProfile = {
   playPath?: string;
   provider?: string;
   category: string;
-  sourceRank?: string;
   difficulty?: string;
   bestFor?: string;
   description: string;
@@ -26,24 +25,24 @@ export function PartnerGameCard({ profile, priority = false }: { profile: Partne
         <Image
           src={profile.image}
           alt={`${profile.title} game artwork`}
-          width={640}
-          height={360}
-          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+          width={480}
+          height={270}
+          sizes="(max-width: 620px) 92vw, (max-width: 1024px) 44vw, 320px"
           priority={priority}
         />
         <span>{profile.category}</span>
       </Link>
       <div className="partner-card__body">
-        <span className="game-card__kicker">{profile.sourceRank || 'GR8 Game Network'}</span>
+        <span className="game-card__kicker">{profile.provider === 'gamemonetize' ? 'GameMonetize partner' : 'GamePix partner'}</span>
         <h3><Link href={profile.path}>{profile.title}</Link></h3>
         <p>{profile.description}</p>
         <div className="partner-card__meta">
           <span>{profile.difficulty || 'Instant play'}</span>
-          <span>{profile.provider === 'gamemonetize' ? 'GameMonetize' : 'GamePix'}</span>
+          <span>{profile.bestFor || 'quick browser sessions'}</span>
         </div>
         <div className="partner-card__actions">
-          <Link href={playPath} className="cta"><Play size={18} aria-hidden="true" /> Play Now</Link>
-          <Link href={profile.path} className="secondary-cta">Profile <ArrowRight size={18} aria-hidden="true" /></Link>
+          <Link href={playPath} className="cta"><Play size={18} aria-hidden="true" /> Play</Link>
+          <Link href={profile.path} className="secondary-cta">Details <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
       </div>
     </article>

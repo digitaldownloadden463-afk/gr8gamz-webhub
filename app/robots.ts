@@ -1,12 +1,26 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
+import { siteUrl } from '@/lib/features';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/auth/", "/admin/"]
+      userAgent: '*',
+      allow: '/',
+      disallow: [
+        '/api/',
+        '/admin/',
+        '/backend/',
+        '/account/',
+        '/auth/',
+        '/passport/',
+        '/profile/',
+        '/community/',
+        '/report/',
+        '/privacy-choices',
+        '/more-free-games/*/play'
+      ]
     },
-    sitemap: "https://www.gr8gamz.com/sitemap.xml"
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl
   };
 }

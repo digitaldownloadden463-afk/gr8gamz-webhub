@@ -1,50 +1,74 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import ActivityFeed from '@/components/ActivityFeed';
-import GameActions from '@/components/GameActions';
-import GameComments from '@/components/GameComments';
+import { notFound } from 'next/navigation';
 import GamePlayerFrame from '@/components/GamePlayerFrame';
 import { getAllGames, getGameBySlug } from '@/lib/games';
+import { canonical } from '@/lib/features';
 
-type PageProps = { params: { slug: string } };
+type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return getAllGames().map((game) => ({ slug: game.slug || game.id }));
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const game = getGameBySlug(params.slug);
-  const title = game?.name || game?.title || 'GR8 Game';
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
+  if (!game) return {};
   return {
-    title: `${title} | GR8 GAMZ`,
-    description: game?.description || `Play ${title} on GR8 GAMZ.`
+    title: game.seoTitle || game.name,
+    description: game.seoDescription || game.description || `Play ${game.name} on GR8 GAMZ.`,
+    alternates: { canonical: canonical(`/arcade/${game.slug || game.id}`) },
+    openGraph: {
+      title: game.name,
+      description: game.description,
+      images: game.thumbnail ? [{ url: game.thumbnail, width: 640, height: 360, alt: `${game.name} artwork` }] : undefined
+    }
   };
 }
 
-export default function ArcadeGamePage({ params }: PageProps) {
-  const game = getGameBySlug(params.slug);
-  if (!game) {
-    return (
-      <main>
-        <section className="page-title">
-          <h1>Game not found</h1>
-          <p>This arcade page could not find a matching game slug.</p>
-          <Link href="/games" className="cta">Browse games</Link>
-        </section>
-      </main>
-    );
-  }
+export default async function ArcadeGamePage({ params }: PageProps) {
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
+  if (!game) notFound();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: game.name,
+    description: game.description,
+    url: canonical(`/arcade/${game.slug || game.id}`),
+    gamePlatform: 'Web browser',
+    applicationCategory: 'Game',
+    genre: game.genre || game.category,
+    datePublished: game.dateAdded
+  };
+  const thumbnail = game.thumbnail?.split('?')[0];
+
   return (
     <main>
-      <Link href="/games" className="secondary-cta">← Back to games</Link>
-      <section className="page-title" style={{ marginTop: 18 }}>
-        <h1>{game.emoji || '🎮'} {game.name || game.title}</h1>
-        <p>{game.description || 'Play this free GR8 GAMZ browser game.'}</p>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Link href="/games" className="text-link">Back to games</Link>
+      <section className="game-hero">
+        <div>
+          <span className="eyebrow">{game.category || game.genre || 'Arcade'}</span>
+          <h1>{game.name}</h1>
+          <p>{game.description}</p>
+          <dl className="fact-list">
+            <div><dt>Controls</dt><dd>{game.shortControls || game.controls?.[0] || 'Touch and keyboard'}</dd></div>
+            <div><dt>Difficulty</dt><dd>{game.difficulty || 'Quick play'}</dd></div>
+          </dl>
+        </div>
+        {thumbnail ? (
+          <Image src={thumbnail} alt={`${game.name} artwork`} width={640} height={360} priority sizes="(max-width: 900px) 92vw, 520px" />
+        ) : null}
       </section>
-      <GameActions game={game} />
       <GamePlayerFrame game={game} />
-      <section className="home-grid" style={{ marginTop: 18 }}>
-        <ActivityFeed />
-        <GameComments slug={params.slug} game={game} />
+      <section className="content-panel">
+        <h2>How to play</h2>
+        <ul className="clean-list">
+          {(game.controls || ['Use the on-screen controls to play.']).map((item) => <li key={item}>{item}</li>)}
+        </ul>
       </section>
     </main>
   );

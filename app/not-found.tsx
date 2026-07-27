@@ -1,17 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  robots: { index: false, follow: false }
+};
 
 export default function NotFound() {
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">Page not found</span>
-        <h1>This GR8 GAMZ page is not active yet.</h1>
-        <p>The main arcade routes are ready. Use the buttons below to return to a working section.</p>
+        <span className="eyebrow">404</span>
+        <h1>That page is not available.</h1>
+        <p>Try the game library or the curated partner games instead.</p>
         <div className="cta-row">
-          <Link href="/" className="cta">Home</Link>
-          <Link href="/games" className="secondary-cta">Games</Link>
-          <Link href="/community" className="secondary-cta">Clubhouse</Link>
-          <Link href="/auth" className="secondary-cta">GR8 Passport</Link>
+          <Link href="/games" className="cta">Browse games</Link>
+          <Link href="/more-free-games" className="secondary-cta">More games</Link>
         </div>
       </section>
     </main>

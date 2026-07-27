@@ -1,43 +1,23 @@
-import GameCard from '@/components/GameCard';
+import GameFilters from '@/components/GameFilters';
 import { getAllGames } from '@/lib/games';
+import { canonical, gameCountLabel } from '@/lib/features';
+
+export const metadata = {
+  title: 'Games',
+  description: 'Browse every original GR8 GAMZ browser game by search, category, controls and difficulty.',
+  alternates: { canonical: canonical('/games') }
+};
 
 export default function GamesPage() {
   const games = getAllGames();
-  const grouped = games.reduce<Record<string, typeof games>>((groups, game) => {
-    const key = game.categorySlug || game.category || 'arcade';
-    groups[key] = groups[key] || [];
-    groups[key].push(game);
-    return groups;
-  }, {});
-
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">Game library</span>
-        <h1>One clean arcade, {games.length} instant games.</h1>
-        <p>Browse the real GR8 GAMZ catalog by category. Every card links to a playable browser game, with no dead branches or duplicate fake entries.</p>
+        <span className="eyebrow">Original games</span>
+        <h1>{gameCountLabel(games.length)} ready to play.</h1>
+        <p>Search the original GR8 GAMZ library. Every result is a real game route with touch-friendly controls and a stable play screen.</p>
       </section>
-      {Object.entries(grouped).map(([category, items]) => (
-        <section className="game-section" key={category}>
-          <div className="section-heading">
-            <span className="eyebrow">{items.length} games</span>
-            <h2>{category.replaceAll('-', ' ')}</h2>
-          </div>
-          <div className="game-grid">
-            {items.map((game) => (
-              <GameCard 
-                key={game.id} 
-                id={game.id}
-                title={game.title || game.name}
-                category={game.category || game.genre || 'Arcade'}
-                imageUrl={game.thumbnail || game.image || '/placeholder.png'}
-                url={`/arcade/${game.slug || game.id}`}
-                isNew={game.isNew}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
+      <GameFilters games={games} />
     </main>
   );
 }

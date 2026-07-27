@@ -1,42 +1,28 @@
 import Link from 'next/link';
-import ProfileContent from '@/components/ProfileContent';
-import GameCard from '@/components/GameCard';
-import { getFeaturedGames } from '@/lib/games';
+import MyArcadeClient from '@/components/MyArcadeClient';
+import { getAllGames } from '@/lib/games';
+import { canonical } from '@/lib/features';
 
 export const metadata = {
-  title: 'My Arcade | GR8 GAMZ',
-  description: 'Your saved games, profile, XP and favourite GR8 GAMZ arcade picks.',
-  robots: { index: false, follow: true }
+  title: 'My Arcade',
+  description: 'Local favourites and recent games saved on this device only.',
+  robots: { index: false, follow: true },
+  alternates: { canonical: canonical('/my-arcade') }
 };
 
 export default function MyArcadePage() {
-  const games = getFeaturedGames(3);
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">My Arcade</span>
-        <h1>Return to your GR8 games.</h1>
-        <p>This page is the safe active route for saved games, XP, badges and the GR8 Passport profile layer.</p>
+        <span className="eyebrow">Saved on this device</span>
+        <h1>My Arcade is local and private.</h1>
+        <p>Favourites and recent games are saved in this browser only. There is no account system, public profile or cross-device sync in this production-safe version.</p>
         <div className="cta-row">
-          <Link href="/auth" className="cta">Open account</Link>
-          <Link href="/daily-challenge" className="secondary-cta">Daily challenge</Link>
-          <Link href="/games" className="secondary-cta">All games</Link>
+          <Link href="/games" className="cta">Browse games</Link>
+          <Link href="/privacy" className="secondary-cta">Privacy details</Link>
         </div>
       </section>
-      <ProfileContent />
-      <section className="game-grid" style={{ marginTop: 24 }}>
-        {games.map((game) => (
-          <GameCard 
-            key={game.id} 
-            id={game.id}
-            title={game.title || game.name}
-            category={game.category || game.genre || 'Arcade'}
-            imageUrl={game.thumbnail || game.image || '/placeholder.png'}
-            url={`/arcade/${game.slug || game.id}`}
-            isNew={game.isNew}
-          />
-        ))}
-      </section>
+      <MyArcadeClient games={getAllGames()} />
     </main>
   );
 }

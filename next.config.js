@@ -1,55 +1,59 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  typescript: {
-    // Strict type checking enabled; fix all errors before deploying
-    ignoreBuildErrors: false
-  },
-  eslint: {
-    // ESLint validation enabled; run 'npm run lint -- --fix' to auto-fix
-    ignoreDuringBuilds: false
-  },
-  // Performance optimization
   compress: true,
-  // Optimize image handling
+  poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [390, 640, 768, 1024, 1280, 1440],
+    imageSizes: [48, 96, 160, 240, 320, 480],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'img.gamemonetize.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'img.gamepix.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.gamepix.com'
-      }
+      { protocol: 'https', hostname: 'img.gamepix.com', pathname: '/games/**' },
+      { protocol: 'https', hostname: 'img.gamemonetize.com', pathname: '/**' }
     ]
   },
-  // Security headers
+  async redirects() {
+    return [
+      { source: '/original-games', destination: '/games', permanent: true },
+      { source: '/free-online-games', destination: '/games', permanent: true },
+      { source: '/quick-games', destination: '/games', permanent: true },
+      { source: '/free-browser-games', destination: '/games', permanent: true },
+      { source: '/gamepix-games', destination: '/more-free-games', permanent: true },
+      { source: '/gamemonetize-games', destination: '/more-free-games', permanent: true },
+      { source: '/passport', destination: '/my-arcade', permanent: true },
+      { source: '/auth', destination: '/my-arcade', permanent: true },
+      { source: '/community', destination: '/games', permanent: true }
+    ];
+  },
   async headers() {
+    const csp = [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "frame-ancestors 'self'",
+      "form-action 'self'",
+      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com",
+      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://html5.gamemonetize.com",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self' data:",
+      "connect-src 'self' https://feeds.gamepix.com https://gamemonetize.com https://html5.gamemonetize.com",
+      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.com https://*.gamemonetize.com"
+    ].join('; ');
+
     return [
       {
         source: '/:path*',
         headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          }
+          { key: 'Content-Security-Policy', value: csp },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' }
         ]
+      },
+      {
+        source: '/games/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
       }
     ];
   }

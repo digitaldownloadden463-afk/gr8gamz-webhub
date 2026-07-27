@@ -1,22 +1,31 @@
-import type { Metadata } from "next";
+import { canonical } from '@/lib/features';
 
-export const metadata: Metadata = {
-  title: "Terms",
-  description: "GR8 GAMZ website terms."
+export const metadata = {
+  title: 'Terms of Use',
+  description: 'Plain-English GR8 GAMZ terms for browser games, partner games and local-device features.',
+  alternates: { canonical: canonical('/terms') }
 };
 
 export default function TermsPage() {
   return (
-    <div className="page-shell legal-page">
-      <h1>Terms</h1>
-      <p>
-        GR8 GAMZ provides access to free online game pages and community-style features. Players should use the site
-        respectfully and avoid posting anything abusive, offensive, illegal or spammy.
-      </p>
-      <p>
-        Game pages in this package are prepared for HTML5 or partner iframe embeds. Check the terms of any game partner
-        before publishing their games, adverts, logos or affiliate links.
-      </p>
-    </div>
+    <main className="legal-page">
+      <section className="page-title">
+        <span className="eyebrow">Terms</span>
+        <h1>Terms of Use</h1>
+        <p>Last updated: 27 July 2026. These terms require final owner/legal review before commercial launch.</p>
+      </section>
+      <section className="content-panel">
+        <h2>Using GR8 GAMZ</h2>
+        <p>GR8 GAMZ provides free browser games for personal entertainment. Original games are hosted by GR8 GAMZ. Partner games may be provided by third-party game networks and are loaded only after a deliberate player action.</p>
+      </section>
+      <section className="content-panel">
+        <h2>Children and safety</h2>
+        <p>This production-safe version does not provide open chat, public profiles, personalised advertising by default or account data collection. Parents and guardians should supervise game choices for younger players.</p>
+      </section>
+      <section className="content-panel">
+        <h2>Availability</h2>
+        <p>Games may change, fail to load or be removed when partner feeds change. GR8 GAMZ does not promise uninterrupted service or that every partner game will be available on every device.</p>
+      </section>
+    </main>
   );
 }

@@ -1,42 +1,25 @@
-'use client';
-
 import Link from 'next/link';
-import { Gamepad2, Sparkles, Trophy, UsersRound, UserRound } from 'lucide-react';
 
-type TopNavProps = {
-  compact?: boolean;
-  className?: string;
-};
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/games', label: 'Games' },
+  { href: '/more-free-games', label: 'More Games' },
+  { href: '/my-arcade', label: 'My Arcade' }
+];
 
-export function TopNav({ compact = false, className = '' }: TopNavProps) {
+export function TopNav() {
   return (
-    <header className={`top-nav ${compact ? 'top-nav--compact' : ''} ${className}`}>
+    <header className="top-nav">
       <Link href="/" className="brand-mark" aria-label="GR8 GAMZ home">
-        <Gamepad2 size={30} aria-hidden="true" />
+        <span aria-hidden="true" className="brand-mark__icon">G8</span>
         <span>GR8 GAMZ</span>
       </Link>
-      <nav className="nav-links" aria-label="Primary navigation">
-        <Link href="/games">
-          <Gamepad2 size={18} aria-hidden="true" />
-          Games
-        </Link>
-        <Link href="/more-free-games">
-          <Sparkles size={18} aria-hidden="true" />
-          Network
-        </Link>
-        <Link href="/top-games">
-          <Trophy size={18} aria-hidden="true" />
-          Top
-        </Link>
-        <Link href="/community">
-          <UsersRound size={18} aria-hidden="true" />
-          Clubhouse
-        </Link>
-        <Link href="/auth" className="nav-cta">
-          <UserRound size={18} aria-hidden="true" />
-          Passport
-        </Link>
-      </nav>
+      <details className="nav-menu">
+        <summary aria-label="Menu">Menu</summary>
+        <nav className="nav-links" aria-label="Primary navigation">
+          {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+        </nav>
+      </details>
     </header>
   );
 }
