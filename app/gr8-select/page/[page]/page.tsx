@@ -6,8 +6,7 @@ import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 type PageProps = { params: Promise<{ page: string }> };
 
 export function generateStaticParams() {
-  const { totalPages } = getPartnerCataloguePage(1);
-  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({ page: String(index + 2) }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps) {
