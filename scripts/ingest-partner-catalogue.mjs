@@ -291,6 +291,12 @@ async function main() {
     }
   }
 
+  const duplicateCount = statusCounts.duplicate || 0;
+  const nonDuplicateQuarantineCount = quarantine.length - duplicateCount;
+  const nonDuplicateQuarantineCounts = Object.fromEntries(
+    Object.entries(quarantineCounts).filter(([status]) => status !== 'duplicate')
+  );
+
   const payload = {
     generatedAt: today,
     minimumIndexableTarget: 2000,
@@ -298,13 +304,13 @@ async function main() {
       raw: raw.length,
       verifiedIndexable: games.length,
       verifiedNoindex: 0,
-      duplicates: statusCounts.duplicate || 0,
-      quarantined: quarantine.length
+      duplicates: duplicateCount,
+      quarantined: nonDuplicateQuarantineCount
     },
     supplierTotals,
     pagesProcessed,
     statusCounts,
-    quarantineCounts,
+    quarantineCounts: nonDuplicateQuarantineCounts,
     games,
     quarantine
   };

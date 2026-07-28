@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
+import PartnerArtwork from '@/components/PartnerArtwork';
 
 export type PartnerGameProfile = {
   title: string;
@@ -18,22 +18,11 @@ export type PartnerGameProfile = {
 
 export function PartnerGameCard({ profile, priority = false }: { profile: PartnerGameProfile; priority?: boolean }) {
   const playPath = profile.playPath || `${profile.path}/play`;
-  const artwork = profile.image;
-  const isRemoteArtwork = artwork.startsWith('https://');
 
   return (
     <article className="partner-card">
       <Link href={profile.path} className="partner-card__image" aria-label={`Open ${profile.title}`}>
-        <Image
-          src={artwork}
-          alt={`${profile.title} game artwork`}
-          width={480}
-          height={270}
-          sizes="(max-width: 620px) 92vw, (max-width: 1024px) 44vw, 320px"
-          priority={priority}
-          unoptimized={isRemoteArtwork}
-        />
-        <span>{profile.category}</span>
+        <PartnerArtwork src={profile.image} title={profile.title} category={profile.category} priority={priority} />
       </Link>
       <div className="partner-card__body">
         <span className="game-card__kicker">GR8 Select</span>

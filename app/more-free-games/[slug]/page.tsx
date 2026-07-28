@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import GameShare from '@/components/GameShare';
+import PartnerArtwork from '@/components/PartnerArtwork';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
@@ -76,9 +76,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
             <Link href="/partner-disclosure" className="secondary-cta">Game information</Link>
           </div>
         </div>
-        <div className="partner-profile-artwork">
-          <Image src={profile.image} alt={`${profile.title} artwork`} fill priority sizes="(max-width: 900px) 92vw, 640px" />
-        </div>
+        <PartnerArtwork src={profile.image} title={profile.title} category={profile.category} priority variant="profile" sizes="(max-width: 900px) 92vw, 640px" />
       </section>
       <section className="content-panel">
         <h2>Tips before you play</h2>

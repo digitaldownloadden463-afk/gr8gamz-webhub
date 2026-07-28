@@ -7,6 +7,11 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [390, 640, 768, 1024, 1280, 1440],
     imageSizes: [48, 96, 160, 240, 320, 480],
+    localPatterns: [
+      { pathname: '/games/**' },
+      { pathname: '/art/**' },
+      { pathname: '/og/**' }
+    ],
     remotePatterns: [
       { protocol: 'https', hostname: 'img.gamepix.com', pathname: '/games/**' },
       { protocol: 'https', hostname: 'img.gamemonetize.com', pathname: '/**' }

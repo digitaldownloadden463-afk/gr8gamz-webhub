@@ -9,6 +9,17 @@ const fingerprints = new Set();
 if (!Array.isArray(catalogue.games)) errors.push('Generated catalogue games array is missing.');
 if ((catalogue.totals?.verifiedIndexable || 0) < minimum) errors.push(`Only ${catalogue.totals?.verifiedIndexable || 0} verified-indexable partner profiles; expected ${minimum}.`);
 
+const raw = catalogue.totals?.raw || 0;
+const duplicates = catalogue.totals?.duplicates || 0;
+const quarantined = catalogue.totals?.quarantined || 0;
+const verified = catalogue.totals?.verifiedIndexable || 0;
+if (raw - duplicates - quarantined !== verified) {
+  errors.push(`Catalogue arithmetic does not reconcile: ${raw} raw - ${duplicates} duplicates - ${quarantined} quarantined != ${verified} verified-indexable.`);
+}
+if ((catalogue.games || []).length !== verified) {
+  errors.push(`Catalogue game count ${catalogue.games?.length || 0} does not match verified-indexable total ${verified}.`);
+}
+
 for (const game of catalogue.games || []) {
   if (game.status !== 'verified-indexable' || !game.indexable) errors.push(`${game.slug}: not marked verified-indexable.`);
   if (!game.slug || slugs.has(game.slug)) errors.push(`${game.slug}: duplicate or missing slug.`);

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gr8-gamz-shell-v1';
+const CACHE_NAME = 'gr8-gamz-shell-v2-artwork-repair';
 const SHELL_ASSETS = [
   '/',
   '/games',
@@ -28,7 +28,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (request.method !== 'GET') return;
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith('/api/') || url.pathname.includes('/play')) return;
+  if (url.pathname.startsWith('/api/') || url.pathname.includes('/play') || url.pathname.startsWith('/_next/image')) return;
 
   if (request.mode === 'navigate') {
     event.respondWith(
@@ -43,13 +43,29 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  if (/\/(?:_next\/static|icon|manifest|art\/|og\/|games\/.*thumb)/.test(url.pathname)) {
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        const network = fetch(request).then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        });
+        return cached || network;
+      })
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(request).then((cached) => cached || fetch(request).then((response) => {
-      if (response.ok && /\/(?:_next\/static|icon|manifest|art\/|og\/|games\/.*thumb|partner-games\/.*cover)/.test(url.pathname)) {
+    fetch(request).then((response) => {
+      if (response.ok && /\/(?:partner-games\/.*cover)/.test(url.pathname)) {
         const copy = response.clone();
         caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
       }
       return response;
-    }))
+    }).catch(() => caches.match(request))
   );
 });

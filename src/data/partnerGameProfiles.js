@@ -1597,13 +1597,37 @@ function generatedPartnerProfile(record) {
 
 const generatedPartnerGameProfiles = (generatedPartnerCatalogue.games || []).map(generatedPartnerProfile);
 const partnerProfileMap = new Map();
-for (const profile of [...partnerGameProfiles, ...generatedPartnerGameProfiles]) {
-  if (!partnerProfileMap.has(profile.slug)) partnerProfileMap.set(profile.slug, profile);
+const curatedBySlug = new Map(partnerGameProfiles.map((profile) => [profile.slug, profile]));
+for (const profile of generatedPartnerGameProfiles) {
+  const curated = curatedBySlug.get(profile.slug);
+  partnerProfileMap.set(
+    profile.slug,
+    curated
+      ? {
+          ...profile,
+          ...curated,
+          image: profile.image,
+          artwork: profile.artwork,
+          playUrl: profile.playUrl,
+          width: profile.width,
+          height: profile.height,
+          sourceId: profile.sourceId,
+          sourceAttribution: profile.sourceAttribution,
+          lastChecked: profile.lastChecked,
+          qaStatus: profile.qaStatus
+        }
+      : profile
+  );
 }
 export const allPartnerGameProfiles = [...partnerProfileMap.values()];
 export const partnerCatalogueReport = {
   generatedAt: generatedPartnerCatalogue.generatedAt,
-  totals: generatedPartnerCatalogue.totals,
+  totals: {
+    ...generatedPartnerCatalogue.totals,
+    verifiedIndexable: allPartnerGameProfiles.length,
+    canonicalPartnerProfiles: allPartnerGameProfiles.length,
+    totalIndexableWithOriginals: allPartnerGameProfiles.length + 26
+  },
   supplierTotals: generatedPartnerCatalogue.supplierTotals,
   pagesProcessed: generatedPartnerCatalogue.pagesProcessed,
   statusCounts: generatedPartnerCatalogue.statusCounts,

@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-07-28T19:54:14.426Z",
+  "totalIndexablePartnerGames": 2824,
+  "totalImageUrlsChecked": 2824,
+  "validImageResponses": 2824,
+  "invalidResponses": 0,
+  "unsupportedContentTypes": 0,
+  "zeroByteResponses": 0,
+  "fetchErrors": 0,
+  "duplicateImageUrls": 0,
+  "gamesUsingBrandedFallback": 0,
+  "gamesQuarantinedForArtwork": 0,
+  "invalid": []
+}

@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getConsentChoice } from '@/components/ConsentBanner';
+import PartnerArtwork from '@/components/PartnerArtwork';
 
 type PartnerPlayClientProps = {
   title: string;
@@ -27,7 +27,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   if (!playUrl) {
     return (
       <section className="partner-consent-panel">
-        <Image src={image} alt={`${title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 720px" />
+        <PartnerArtwork src={image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
         <div>
           <span className="eyebrow">Game unavailable</span>
           <h2>{title} could not be loaded right now.</h2>
@@ -41,7 +41,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   if (!loaded) {
     return (
       <section className="partner-consent-panel">
-        <Image src={image} alt={`${title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 720px" />
+        <PartnerArtwork src={image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
         <div>
           <span className="eyebrow">Load game</span>
           <h2>{title}</h2>
