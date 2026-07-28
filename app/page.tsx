@@ -1,5 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Gamepad2, ShieldCheck, Star } from 'lucide-react';
+import { ArrowRight, Flame, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import { getAllGames, getFeaturedGames } from '@/lib/games';
@@ -36,21 +37,39 @@ export default function HomePage() {
         <Link href="/my-arcade"><ShieldCheck size={18} aria-hidden="true" /> My GR8 Arcade</Link>
       </nav>
       <section className="hero hero--home">
+        <Image
+          src="/art/homepage-hero-arena.webp"
+          alt="GR8 GAMZ neon arcade arena"
+          fill
+          priority
+          sizes="100vw"
+          className="hero__image"
+        />
+        <div className="hero__motion" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
         <div className="hero__content">
-          <span className="eyebrow"><Gamepad2 size={18} aria-hidden="true" /> Free browser arcade</span>
-          <h1>Play fast, polished games without downloads.</h1>
-          <p>Start with {gameCountLabel(games.length)} original GR8 GAMZ games built for phone, tablet and desktop. Open GR8 Select when you want a much bigger scrolling catalogue.</p>
+          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ</span>
+          <h1>Thousands of games. One place to play.</h1>
+          <p>Pick a game. Chase the score. Go again. Start with {gameCountLabel(games.length)} GR8 Originals or open GR8 Select for a bigger arcade shelf.</p>
           <div className="cta-row">
             <Link href="/gr8-originals" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Play originals</Link>
             <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Open GR8 Select</Link>
+          </div>
+          <div className="hero__stats" aria-label="GR8 GAMZ highlights">
+            <span><strong>{games.length}</strong> Originals</span>
+            <span><strong>66</strong> Game pages</span>
+            <span><strong>Daily</strong> Challenge</span>
           </div>
         </div>
       </section>
 
       <section className="value-grid" aria-label="Why play here">
-        <article><Star aria-hidden="true" /><strong>Original games</strong><span>26 mobile-first arcade games with real playable routes.</span></article>
+        <article><Flame aria-hidden="true" /><strong>Fast starts</strong><span>Jump in quickly, learn the controls and take another run.</span></article>
         <article><ShieldCheck aria-hidden="true" /><strong>Honest privacy</strong><span>My GR8 Arcade saves on this device. External games load only after you choose.</span></article>
-        <article><Gamepad2 aria-hidden="true" /><strong>Quick starts</strong><span>Stable cards, clear controls and no fake chat, counters or leaderboards.</span></article>
+        <article><Star aria-hidden="true" /><strong>Built to browse</strong><span>Originals, Select picks, categories, controls and daily challenges.</span></article>
       </section>
 
       <section className="section-heading">
