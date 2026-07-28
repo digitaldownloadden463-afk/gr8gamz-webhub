@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { canonical } from '@/lib/features';
+import { siteIdentity } from '@/lib/siteIdentity';
 
 export const metadata = {
   title: 'Privacy Policy',
@@ -13,7 +14,7 @@ export default function PrivacyPage() {
       <section className="page-title">
         <span className="eyebrow">Privacy</span>
         <h1>Privacy Policy</h1>
-        <p>Last updated: 27 July 2026. This page describes the production-safe GR8 GAMZ site as implemented in this repository.</p>
+        <p>Last updated: 28 July 2026. This page explains how GR8 GAMZ handles privacy, storage and external games.</p>
       </section>
       <section className="content-panel">
         <h2>What GR8 GAMZ collects</h2>
@@ -30,7 +31,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Rights and contact details</h2>
-        <p>You may clear local GR8 GAMZ storage at any time from My Arcade or your browser settings. Formal privacy requests require the site owner to provide a confirmed legal identity and contact route before launch. This legal text needs final owner/legal review.</p>
+        <p>You may clear local GR8 GAMZ storage at any time from My Arcade or your browser settings. Privacy requests can be sent to {siteIdentity.privacyEmail}. Operator: {siteIdentity.legalOperatorName}, {siteIdentity.country}.</p>
         <Link href="/privacy-choices" className="cta">Privacy Choices</Link>
       </section>
     </main>

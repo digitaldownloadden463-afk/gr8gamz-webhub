@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section className="content-panel">
         <h2>How games are chosen</h2>
         <p>Games are selected for clear play value, visible artwork, mobile usability, stable loading and a good fit for fast browser sessions.</p>
-        <p>{siteIdentity.legalOperatorName ? `Operator: ${siteIdentity.legalOperatorName}.` : 'The public legal operator name must be confirmed by the site owner before final launch.'}</p>
+        <p>Operator: {siteIdentity.legalOperatorName}. Country of operation: {siteIdentity.country}.</p>
       </section>
     </main>
   );

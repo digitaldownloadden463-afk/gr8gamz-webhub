@@ -1,5 +1,5 @@
 import { canonical } from '@/lib/features';
-import { publicContactLabel } from '@/lib/siteIdentity';
+import { publicContactLabel, siteIdentity } from '@/lib/siteIdentity';
 
 export const metadata = {
   title: 'Contact',
@@ -19,6 +19,7 @@ export default function ContactPage() {
       <section className="content-panel">
         <h2>Contact details</h2>
         <p>{contact}</p>
+        <p>Operator: {siteIdentity.legalOperatorName}. Country of operation: {siteIdentity.country}.</p>
         <p className="fine-print">No public account, chat or profile system is currently enabled.</p>
       </section>
     </main>

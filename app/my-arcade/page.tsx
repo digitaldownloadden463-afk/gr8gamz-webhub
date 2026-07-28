@@ -16,7 +16,7 @@ export default function MyArcadePage() {
       <section className="page-title">
         <span className="eyebrow">Saved on this device</span>
         <h1>My Arcade is local and private.</h1>
-        <p>Favourites and recent games are saved in this browser only. There is no account system, public profile or cross-device sync in this production-safe version.</p>
+        <p>Favourites and recent games are saved in this browser only. There is no account system, public profile or cross-device sync.</p>
         <div className="cta-row">
           <Link href="/games" className="cta">Browse games</Link>
           <Link href="/privacy" className="secondary-cta">Privacy details</Link>

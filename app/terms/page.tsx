@@ -1,4 +1,5 @@
 import { canonical } from '@/lib/features';
+import { siteIdentity } from '@/lib/siteIdentity';
 
 export const metadata = {
   title: 'Terms of Use',
@@ -12,7 +13,7 @@ export default function TermsPage() {
       <section className="page-title">
         <span className="eyebrow">Terms</span>
         <h1>Terms of Use</h1>
-        <p>Last updated: 27 July 2026. These terms require final owner/legal review before commercial launch.</p>
+        <p>Last updated: 28 July 2026. These terms apply to GR8 GAMZ, operated as {siteIdentity.legalOperatorName} in the {siteIdentity.country}.</p>
       </section>
       <section className="content-panel">
         <h2>Using GR8 GAMZ</h2>
@@ -20,7 +21,7 @@ export default function TermsPage() {
       </section>
       <section className="content-panel">
         <h2>Children and safety</h2>
-        <p>This production-safe version does not provide open chat, public profiles, personalised advertising by default or account data collection. Parents and guardians should supervise game choices for younger players.</p>
+        <p>GR8 GAMZ does not provide open chat, public profiles, personalised advertising by default or account data collection. Parents and guardians should supervise game choices for younger players.</p>
       </section>
       <section className="content-panel">
         <h2>Availability</h2>

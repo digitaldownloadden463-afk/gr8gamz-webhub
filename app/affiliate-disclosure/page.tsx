@@ -16,7 +16,7 @@ export default function AffiliateDisclosurePage() {
       </section>
       <section className="content-panel">
         <h2>Player-first labelling</h2>
-        <p>Any future affiliate link should be clearly labelled before the player clicks it. The site owner must confirm commercial relationships before launch.</p>
+        <p>Affiliate links, sponsored placements or paid recommendations are labelled when they appear. Ordinary game cards are not presented as paid recommendations unless the page says so.</p>
       </section>
     </main>
   );
