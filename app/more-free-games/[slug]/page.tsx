@@ -5,12 +5,12 @@ import PartnerGameCard from '@/components/PartnerGameCard';
 import GameShare from '@/components/GameShare';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
-import { getPartnerGameProfile, getPartnerGameProfiles, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getPartnerGameProfiles().slice(0, 120).map((profile: { slug: string }) => ({ slug: profile.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps) {
