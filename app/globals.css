@@ -567,6 +567,8 @@ main {
 
 .partner-profile-artwork {
   position: relative;
+  width: 100%;
+  max-width: 100%;
   min-height: 320px;
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -843,6 +845,7 @@ main {
 .fact-list dd {
   margin: 4px 0 0;
   color: #fff;
+  overflow-wrap: anywhere;
 }
 
 .game-player-frame,
@@ -1062,6 +1065,7 @@ main {
   .game-hero h1 { font-size: clamp(2.15rem, 12vw, 3.35rem); }
   .fact-list,
   .compact-link-list { grid-template-columns: 1fr; }
+  .partner-profile-artwork { min-height: 240px; }
   .consent-banner { left: 10px; right: 10px; bottom: 10px; }
   .cta-row,
   .consent-banner__actions,
