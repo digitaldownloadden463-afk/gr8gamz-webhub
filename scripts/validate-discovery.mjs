@@ -5,8 +5,8 @@ const root = process.cwd();
 const failures = [];
 const llms = fs.readFileSync(path.join(root, 'public/llms.txt'), 'utf8');
 const routes = [...llms.matchAll(/^- (\/[^\s]+) /gm)].map((match) => match[1]);
-const dynamicPrefixes = ['/arcade/{slug}', '/more-free-games/{slug}', '/more-free-games/{slug}/play'];
-const allowedMachineRoutes = ['/sitemap.xml', '/sitemap-images.xml', '/robots.txt', '/feed.xml', '/feed.json', '/game-catalog.json', '/api/partner-catalog'];
+const dynamicPrefixes = ['/arcade/{slug}', '/more-free-games/{slug}', '/more-free-games/{slug}/play', '/categories/{slug}', '/controls/{slug}'];
+const allowedMachineRoutes = ['/sitemap.xml', '/sitemap-index.xml', '/sitemap-images.xml', '/robots.txt', '/feed.xml', '/feed.json', '/game-catalog.json', '/api/partner-catalog'];
 
 function routeExists(route) {
   if (allowedMachineRoutes.includes(route)) return true;

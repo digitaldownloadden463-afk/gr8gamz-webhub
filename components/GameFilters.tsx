@@ -7,6 +7,7 @@ import { gameCountLabel } from '@/lib/features';
 
 type GameFiltersProps = {
   games: Gr8Game[];
+  initialQuery?: string;
 };
 
 const allValue = 'all';
@@ -15,8 +16,8 @@ function unique(values: Array<string | undefined>) {
   return Array.from(new Set(values.filter(Boolean) as string[])).sort((a, b) => a.localeCompare(b));
 }
 
-export function GameFilters({ games }: GameFiltersProps) {
-  const [query, setQuery] = useState('');
+export function GameFilters({ games, initialQuery = '' }: GameFiltersProps) {
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(allValue);
   const [controls, setControls] = useState(allValue);
   const [difficulty, setDifficulty] = useState(allValue);

@@ -118,3 +118,43 @@ export function registryJson() {
     }))
   };
 }
+
+export function slugifyRegistryValue(value: string) {
+  return value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+export function getRegistryCategories(minimumGames = 4) {
+  const counts = new Map<string, { slug: string; name: string; count: number }>();
+  for (const game of getIndexableRegistryGames()) {
+    const name = game.category || 'Arcade';
+    const slug = slugifyRegistryValue(name);
+    const current = counts.get(slug) || { slug, name, count: 0 };
+    current.count += 1;
+    counts.set(slug, current);
+  }
+  return [...counts.values()].filter((item) => item.count >= minimumGames).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
+export function getRegistryGamesByCategory(slug: string) {
+  return getIndexableRegistryGames().filter((game) => slugifyRegistryValue(game.category) === slug);
+}
+
+export const controlHubs = [
+  { slug: 'tap', name: 'Tap', pattern: /tap|click|one-tap/i },
+  { slug: 'swipe', name: 'Swipe', pattern: /swipe/i },
+  { slug: 'drag', name: 'Drag', pattern: /drag|aim/i },
+  { slug: 'keyboard', name: 'Keyboard', pattern: /keyboard|arrow|wasd|space/i },
+  { slug: 'mouse', name: 'Mouse', pattern: /mouse|click|drag/i }
+];
+
+export function getRegistryControlHubs(minimumGames = 4) {
+  return controlHubs
+    .map((hub) => ({ ...hub, count: getRegistryGamesByControl(hub.slug).length }))
+    .filter((hub) => hub.count >= minimumGames);
+}
+
+export function getRegistryGamesByControl(slug: string) {
+  const hub = controlHubs.find((item) => item.slug === slug);
+  if (!hub) return [];
+  return getIndexableRegistryGames().filter((game) => hub.pattern.test(`${game.controls} ${game.tags.join(' ')} ${game.sessionLength}`));
+}

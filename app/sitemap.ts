@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { siteUrl } from '@/lib/features';
-import { getIndexableRegistryGames } from '@/lib/gameRegistry';
+import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHubs } from '@/lib/gameRegistry';
 
 const staticLastModified = new Date('2026-07-27T00:00:00.000Z');
 
@@ -12,6 +12,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: game.source === 'gr8-originals' ? 0.8 : 0.6
   }));
+  const categories = getRegistryCategories().map((category) => ({
+    url: `${siteUrl}/categories/${category.slug}`,
+    lastModified: staticLastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.65
+  }));
+  const controls = getRegistryControlHubs().map((hub) => ({
+    url: `${siteUrl}/controls/${hub.slug}`,
+    lastModified: staticLastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.6
+  }));
 
   return [
     ...staticRoutes.map((route) => ({
@@ -20,6 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: route === '/' ? ('weekly' as const) : ('monthly' as const),
       priority: route === '/' ? 1 : 0.7
     })),
-    ...games
+    ...games,
+    ...categories,
+    ...controls
   ];
 }

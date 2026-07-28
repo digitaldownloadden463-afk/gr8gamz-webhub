@@ -26,6 +26,6 @@ export function isRecentlyAdded(dateAdded?: string) {
   if (!dateAdded) return false;
   const added = new Date(dateAdded).getTime();
   if (!Number.isFinite(added)) return false;
-  const ninetyDays = 90 * 24 * 60 * 60 * 1000;
-  return Date.now() - added <= ninetyDays;
+  const fourteenDays = 14 * 24 * 60 * 60 * 1000;
+  return Date.now() - added <= fourteenDays;
 }

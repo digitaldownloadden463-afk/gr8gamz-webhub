@@ -17,6 +17,11 @@ export function Footer() {
         <Link href="/popular-games">Popular Games</Link>
         <Link href="/quick-games">Quick Games</Link>
         <Link href="/mobile-games">Mobile Games</Link>
+        <Link href="/categories/arcade">Arcade</Link>
+        <Link href="/categories/puzzle">Puzzle</Link>
+        <Link href="/categories/racing">Racing</Link>
+        <Link href="/controls/tap">Tap Games</Link>
+        <Link href="/controls/swipe">Swipe Games</Link>
         <Link href="/my-arcade">My GR8 Arcade</Link>
         <Link href="/more-free-games">More Games</Link>
         <Link href="/about">About</Link>

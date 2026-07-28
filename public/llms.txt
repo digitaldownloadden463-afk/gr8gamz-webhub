@@ -15,6 +15,8 @@ Main player routes:
 - /popular-games - strong repeat-play picks
 - /quick-games - short-session GR8 Originals
 - /mobile-games - touch-friendly GR8 Originals
+- /categories/{slug} - substantial category hubs generated from the registry
+- /controls/{slug} - control-focused hubs generated from the registry
 - /more-free-games - legacy More Games route for GR8 Select discovery
 - /my-arcade - favourites and recently played games saved on this device
 
@@ -40,6 +42,7 @@ Trust and policy routes:
 
 Machine-readable routes:
 - /sitemap.xml - indexable canonical URLs only
+- /sitemap-index.xml - sitemap index
 - /sitemap-images.xml - game artwork sitemap
 - /robots.txt - crawl rules
 - /feed.xml - RSS feed
