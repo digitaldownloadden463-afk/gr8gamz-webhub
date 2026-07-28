@@ -18,10 +18,7 @@ export type PartnerGameProfile = {
 
 export function PartnerGameCard({ profile, priority = false }: { profile: PartnerGameProfile; priority?: boolean }) {
   const playPath = profile.playPath || `${profile.path}/play`;
-  const artwork =
-    profile.provider === 'gamepix'
-      ? `https://img.gamepix.com/games/${profile.slug}/cover/${profile.slug}.png?w=480`
-      : profile.image;
+  const artwork = profile.image;
   const isRemoteArtwork = artwork.startsWith('https://');
 
   return (

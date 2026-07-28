@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import LivePartnerCatalogue from '@/components/LivePartnerCatalogue';
 import PartnerGameCard from '@/components/PartnerGameCard';
+import PartnerCatalogueGrid from '@/components/PartnerCatalogueGrid';
 import { canonical } from '@/lib/features';
-import { getFeaturedPartnerGameProfiles, getPartnerGameProfiles, getPartnerNetworkClusters } from '@/src/data/partnerGameProfiles';
+import { getFeaturedPartnerGameProfiles, getPartnerNetworkClusters } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'More Games | GR8 Select',
@@ -13,7 +14,6 @@ export const metadata = {
 
 export default function MoreFreeGamesPage() {
   const featured = getFeaturedPartnerGameProfiles(12);
-  const allProfiles = getPartnerGameProfiles();
   const clusters = getPartnerNetworkClusters();
 
   return (
@@ -24,6 +24,7 @@ export default function MoreFreeGamesPage() {
         <p>Browse real game artwork and keep loading more as you go. External games still load only after you choose to open one.</p>
       </section>
       <LivePartnerCatalogue />
+      <PartnerCatalogueGrid page={1} />
       <section className="game-section" id="curated-partner-guides">
         <div className="section-heading">
           <span className="eyebrow">Featured guides</span>
@@ -37,11 +38,11 @@ export default function MoreFreeGamesPage() {
       <section className="game-section" id="all-partner-games">
         <div className="section-heading">
           <span className="eyebrow">Full Select shelf</span>
-          <h2>Keep scrolling for every extra game we currently list.</h2>
+          <h2>Keep browsing every extra game we currently list.</h2>
           <Link href="/partner-disclosure">How external games load <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className="partner-grid">
-          {allProfiles.map((profile, index) => (
+          {featured.map((profile, index) => (
             <PartnerGameCard key={profile.slug} profile={profile} priority={index < 6} />
           ))}
         </div>
@@ -51,11 +52,11 @@ export default function MoreFreeGamesPage() {
           <div className="section-heading">
             <span className="eyebrow">{cluster.eyebrow}</span>
             <h2>{cluster.title}</h2>
-            <Link href="/partner-disclosure">Provider details <ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link href="/partner-disclosure">How game loading works <ArrowRight size={18} aria-hidden="true" /></Link>
           </div>
           <p className="section-copy">{cluster.description}</p>
           <div className="partner-rail" aria-label={`${cluster.title} partner games`}>
-            {allProfiles
+            {featured
               .filter((profile) => cluster.categories.map((item) => item.toLowerCase()).includes(String(profile.category).toLowerCase()))
               .map((profile) => <PartnerGameCard key={profile.slug} profile={profile} />)}
           </div>

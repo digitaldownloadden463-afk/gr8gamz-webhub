@@ -29,9 +29,7 @@ type CatalogueResponse = {
   items: LivePartnerGame[];
 };
 
-function providerName(provider: Provider) {
-  return provider === 'gamemonetize' ? 'GameMonetize' : 'GamePix';
-}
+const categoryFilters = ['All GR8 Select', 'Action', 'Puzzle', 'Racing', 'Sports', 'Arcade', 'Adventure', 'Multiplayer'];
 
 export function LivePartnerCatalogue() {
   const [provider, setProvider] = useState<Provider>('gamepix');
@@ -43,6 +41,7 @@ export function LivePartnerCatalogue() {
   const [totalEstimate, setTotalEstimate] = useState<number | null>(null);
   const [selected, setSelected] = useState<LivePartnerGame | null>(null);
   const [loadSelected, setLoadSelected] = useState(false);
+  const [category, setCategory] = useState('All GR8 Select');
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const activeProviderRef = useRef<Provider>('gamepix');
 
@@ -72,7 +71,7 @@ export function LivePartnerCatalogue() {
       setHasMore(payload.hasMore);
       setTotalEstimate(payload.totalEstimate);
     } catch {
-      setError('The partner feed did not respond. Please try again in a moment.');
+      setError('The catalogue did not respond. Please try again in a moment.');
       setHasMore(false);
     } finally {
       setLoading(false);
@@ -113,6 +112,10 @@ export function LivePartnerCatalogue() {
     setProvider(nextProvider);
   };
 
+  const filteredGames = category === 'All GR8 Select'
+    ? games
+    : games.filter((game) => String(game.category).toLowerCase() === category.toLowerCase() || (category === 'Multiplayer' && /\.io|multi/i.test(`${game.category} ${game.title} ${game.description}`)));
+
   return (
     <section className="live-catalogue" aria-label="GR8 Select game catalogue">
       <div className="section-heading">
@@ -120,9 +123,11 @@ export function LivePartnerCatalogue() {
         <h2>Real game artwork. More games keep loading as you browse.</h2>
       </div>
       <div className="catalogue-toolbar" aria-label="GR8 Select catalogue controls">
-        <button type="button" className={provider === 'gamepix' ? 'is-active' : ''} onClick={() => chooseProvider('gamepix')}>GamePix</button>
-        <button type="button" className={provider === 'gamemonetize' ? 'is-active' : ''} onClick={() => chooseProvider('gamemonetize')}>GameMonetize</button>
-        <span>{totalEstimate ? `${totalEstimate.toLocaleString()}+ games available in this source` : `${providerName(provider)} source`}</span>
+        {categoryFilters.map((item) => (
+          <button type="button" key={item} className={category === item ? 'is-active' : ''} onClick={() => setCategory(item)}>{item}</button>
+        ))}
+        <button type="button" onClick={() => chooseProvider(provider === 'gamepix' ? 'gamemonetize' : 'gamepix')}>More fresh picks</button>
+        <span>{totalEstimate ? `${totalEstimate.toLocaleString()}+ games available` : 'Fresh GR8 Select shelf'}</span>
       </div>
 
       {selected ? (
@@ -154,7 +159,7 @@ export function LivePartnerCatalogue() {
       ) : null}
 
       <div className="live-game-grid">
-        {games.map((game, index) => (
+        {filteredGames.map((game, index) => (
           <article className="live-game-card" key={`${game.provider}-${game.id}-${game.slug}`}>
             <button type="button" className="live-game-card__button" onClick={() => openGame(game)}>
               <span className="live-game-card__image">

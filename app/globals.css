@@ -565,6 +565,39 @@ main {
   gap: 10px;
 }
 
+.partner-profile-artwork {
+  position: relative;
+  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #05070c;
+}
+
+.partner-profile-artwork img {
+  object-fit: cover;
+}
+
+.pagination-nav {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pagination-nav span {
+  color: var(--muted);
+  font-weight: 900;
+  text-align: center;
+}
+
+.pagination-nav .cta:last-child,
+.pagination-nav .secondary-cta:last-child {
+  justify-self: end;
+}
+
 .share-panel,
 .challenge-panel {
   display: grid;
@@ -1011,6 +1044,13 @@ main {
   .game-player-frame__bar { align-items: stretch; flex-direction: column; }
   .game-player-frame__actions { justify-content: flex-start; }
   .site-footer nav { justify-content: flex-start; }
+  .pagination-nav {
+    grid-template-columns: 1fr;
+  }
+  .pagination-nav .cta,
+  .pagination-nav .secondary-cta {
+    justify-self: stretch;
+  }
 }
 
 @media (max-width: 520px) {

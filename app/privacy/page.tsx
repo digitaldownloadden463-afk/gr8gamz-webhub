@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Partner games</h2>
-        <p>Partner game pages disclose the provider before loading an iframe. If you choose to load a GamePix or GameMonetize game, that provider may process device, usage, advertising and security data under its own policies.</p>
+        <p>GR8 Select play pages explain that an external iframe will load only after a deliberate player choice. If you choose to load games supplied through GamePix or GameMonetize, that external game service may process device, usage, advertising and security data under its own policies.</p>
       </section>
       <section className="content-panel">
         <h2>Purposes, lawful bases and retention</h2>

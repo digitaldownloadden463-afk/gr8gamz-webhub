@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import LivePartnerCatalogue from '@/components/LivePartnerCatalogue';
 import PartnerGameCard from '@/components/PartnerGameCard';
+import PartnerCatalogueGrid from '@/components/PartnerCatalogueGrid';
 import { canonical } from '@/lib/features';
-import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getFeaturedPartnerGameProfiles, partnerCatalogueReport } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'GR8 Select',
-  description: 'Browse a large scrolling catalogue of selected free browser games with real artwork and clear load choices.',
+  description: 'Browse the GR8 Select catalogue of checked free browser games with real artwork and clear load choices.',
   alternates: { canonical: canonical('/gr8-select') }
 };
 
@@ -18,9 +19,11 @@ export default function Gr8SelectPage() {
     <main>
       <section className="page-title">
         <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 Select</span>
-        <h1>Thousands of extra games with real artwork up front.</h1>
-        <p>Keep scrolling through the wider game catalogue. Each game opens only after you choose to load it, so players stay in control.</p>
+        <h1>{partnerCatalogueReport.totals.verifiedIndexable.toLocaleString()} checked games with real artwork up front.</h1>
+        <p>Browse action, puzzle, racing, sports, arcade and adventure picks. Each game opens only after you choose to load it, so players stay in control.</p>
       </section>
+
+      <PartnerCatalogueGrid page={1} />
 
       <LivePartnerCatalogue />
 

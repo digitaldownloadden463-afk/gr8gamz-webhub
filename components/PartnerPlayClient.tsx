@@ -7,7 +7,6 @@ import { getConsentChoice } from '@/components/ConsentBanner';
 
 type PartnerPlayClientProps = {
   title: string;
-  provider: string;
   profilePath: string;
   image: string;
   playUrl: string;
@@ -15,7 +14,7 @@ type PartnerPlayClientProps = {
   height: number;
 };
 
-export function PartnerPlayClient({ title, provider, profilePath, image, playUrl, width, height }: PartnerPlayClientProps) {
+export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height }: PartnerPlayClientProps) {
   const [loaded, setLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
 
@@ -30,9 +29,9 @@ export function PartnerPlayClient({ title, provider, profilePath, image, playUrl
       <section className="partner-consent-panel">
         <Image src={image} alt={`${title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 720px" />
         <div>
-          <span className="eyebrow">Partner game unavailable</span>
-          <h2>{title} could not be loaded from the partner feed.</h2>
-          <p>Try another curated game while the provider feed refreshes.</p>
+          <span className="eyebrow">Game unavailable</span>
+          <h2>{title} could not be loaded right now.</h2>
+          <p>Try another GR8 Select game while the catalogue refreshes.</p>
           <Link href="/more-free-games" className="cta">More Games</Link>
         </div>
       </section>
@@ -44,12 +43,12 @@ export function PartnerPlayClient({ title, provider, profilePath, image, playUrl
       <section className="partner-consent-panel">
         <Image src={image} alt={`${title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 720px" />
         <div>
-          <span className="eyebrow">Load partner game</span>
+          <span className="eyebrow">Load game</span>
           <h2>{title}</h2>
-          <p>This will load an embedded game from {provider}. That provider may process device, usage and advertising data under its own terms.</p>
+          <p>This opens an embedded game outside the core GR8 Originals library. Extra device, usage or advertising data may be processed by the game service under its own terms.</p>
           <div className="cta-row">
             <button type="button" className="cta-button" onClick={() => setLoaded(true)}>
-              Load {provider} game
+              Load game
             </button>
             <Link href={profilePath} className="secondary-cta">Back to profile</Link>
           </div>

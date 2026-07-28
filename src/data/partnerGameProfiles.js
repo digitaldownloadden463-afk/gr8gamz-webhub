@@ -1,3 +1,5 @@
+import generatedPartnerCatalogue from './partnerCatalog.generated.json';
+
 export const partnerGameProfiles = [
   {
     "title": "Body Drop 3D",
@@ -1561,21 +1563,86 @@ export const partnerGameProfiles = [
   }
 ];
 
+function generatedPartnerProfile(record) {
+  return {
+    title: record.title,
+    provider: record.source,
+    category: record.category,
+    intent: `${record.category} browser game`,
+    sourceRank: 'GR8 Select catalogue',
+    keywords: [],
+    rank: 1000 + Number(record.sourcePage || 0),
+    slug: record.slug,
+    image: record.artwork,
+    artwork: record.artwork,
+    playUrl: record.playUrl,
+    width: record.width,
+    height: record.height,
+    path: record.path,
+    playPath: record.playPath,
+    providerLabel: 'GR8 Select',
+    difficulty: 'Browser play',
+    bestFor: record.deviceSupport || 'players browsing GR8 Select',
+    controls: record.controls || 'Use the controls shown inside the game.',
+    description: record.description,
+    whyPicked: `${record.title} is included because it passed GR8 Select catalogue checks for artwork, category, a safe play URL and a unique profile.`,
+    howToPlay: record.controls || 'Open the game, read the on-screen prompts and use the controls provided in the player.',
+    deviceFit: record.deviceSupport || 'Phone, tablet and desktop support depends on the loaded game.',
+    lastChecked: record.lastChecked,
+    qaStatus: record.qaStatus,
+    sourceId: record.sourceId,
+    sourceAttribution: record.sourceAttribution
+  };
+}
+
+const generatedPartnerGameProfiles = (generatedPartnerCatalogue.games || []).map(generatedPartnerProfile);
+const partnerProfileMap = new Map();
+for (const profile of [...partnerGameProfiles, ...generatedPartnerGameProfiles]) {
+  if (!partnerProfileMap.has(profile.slug)) partnerProfileMap.set(profile.slug, profile);
+}
+export const allPartnerGameProfiles = [...partnerProfileMap.values()];
+export const partnerCatalogueReport = {
+  generatedAt: generatedPartnerCatalogue.generatedAt,
+  totals: generatedPartnerCatalogue.totals,
+  supplierTotals: generatedPartnerCatalogue.supplierTotals,
+  pagesProcessed: generatedPartnerCatalogue.pagesProcessed,
+  statusCounts: generatedPartnerCatalogue.statusCounts,
+  quarantineCounts: generatedPartnerCatalogue.quarantineCounts
+};
+
+export const partnerCataloguePageSize = 48;
+
+export function getPartnerCataloguePage(page = 1, pageSize = partnerCataloguePageSize) {
+  const safePageSize = Math.max(12, Math.min(96, Number(pageSize) || partnerCataloguePageSize));
+  const totalGames = allPartnerGameProfiles.length;
+  const totalPages = Math.max(1, Math.ceil(totalGames / safePageSize));
+  const safePage = Math.max(1, Math.min(totalPages, Number(page) || 1));
+  const start = (safePage - 1) * safePageSize;
+  return {
+    games: allPartnerGameProfiles.slice(start, start + safePageSize),
+    page: safePage,
+    pageSize: safePageSize,
+    totalGames,
+    totalPages,
+    previousPath: safePage > 1 ? (safePage === 2 ? '/gr8-select' : `/gr8-select/page/${safePage - 1}`) : null,
+    nextPath: safePage < totalPages ? `/gr8-select/page/${safePage + 1}` : null
+  };
+}
 
 export function getPartnerGameProfiles() {
-  return partnerGameProfiles;
+  return allPartnerGameProfiles;
 }
 
 export function getPartnerGameProfile(slug) {
-  return partnerGameProfiles.find((game) => game.slug === slug);
+  return partnerProfileMap.get(slug);
 }
 
 export function getFeaturedPartnerGameProfiles(limit = 12) {
-  return partnerGameProfiles.slice(0, limit);
+  return allPartnerGameProfiles.slice(0, limit);
 }
 
 export function getPartnerGameProfilesByCategory(category, limit = 12) {
-  return partnerGameProfiles.filter((game) => game.category.toLowerCase() === String(category).toLowerCase()).slice(0, limit);
+  return allPartnerGameProfiles.filter((game) => game.category.toLowerCase() === String(category).toLowerCase()).slice(0, limit);
 }
 
 function normalisePartnerTitle(value = '') {
@@ -1584,13 +1651,13 @@ function normalisePartnerTitle(value = '') {
 
 export function getPartnerProfileUrl(title = '') {
   const target = normalisePartnerTitle(title);
-  const game = partnerGameProfiles.find((item) => normalisePartnerTitle(item.title) === target || normalisePartnerTitle(item.title).includes(target) || target.includes(normalisePartnerTitle(item.title)));
+  const game = allPartnerGameProfiles.find((item) => normalisePartnerTitle(item.title) === target || normalisePartnerTitle(item.title).includes(target) || target.includes(normalisePartnerTitle(item.title)));
   return game ? game.path : null;
 }
 
 export function getPartnerPlayUrl(title = '') {
   const target = normalisePartnerTitle(title);
-  const game = partnerGameProfiles.find((item) => normalisePartnerTitle(item.title) === target || normalisePartnerTitle(item.title).includes(target) || target.includes(normalisePartnerTitle(item.title)));
+  const game = allPartnerGameProfiles.find((item) => normalisePartnerTitle(item.title) === target || normalisePartnerTitle(item.title).includes(target) || target.includes(normalisePartnerTitle(item.title)));
   return game ? (game.playPath || `${game.path}/play`) : null;
 }
 
@@ -1677,21 +1744,21 @@ export function getPartnerGameProfilesByCluster(slug, limit = 24) {
   const cluster = getPartnerNetworkCluster(slug);
   if (!cluster) return [];
   const categories = new Set(cluster.categories.map((category) => category.toLowerCase()));
-  return partnerGameProfiles
+  return allPartnerGameProfiles
     .filter((game) => categories.has(String(game.category).toLowerCase()))
     .slice(0, limit);
 }
 
 export function getRelatedPartnerGameProfiles(profile, limit = 6) {
   if (!profile) return getFeaturedPartnerGameProfiles(limit);
-  const sameCategory = partnerGameProfiles
+  const sameCategory = allPartnerGameProfiles
     .filter((game) => game.slug !== profile.slug && String(game.category).toLowerCase() === String(profile.category).toLowerCase());
-  const different = partnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game));
+  const different = allPartnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game));
   return [...sameCategory, ...different].slice(0, limit);
 }
 
 export function getTrendingPartnerProfiles(limit = 12) {
-  return partnerGameProfiles
+  return allPartnerGameProfiles
     .slice()
     .sort((a, b) => {
       const scoreA = (String(a.sourceRank).toLowerCase().includes('most played') ? 4 : 0) + (String(a.sourceRank).toLowerCase().includes('current') ? 2 : 0) + (a.provider === 'gamepix' ? 1 : 0);
@@ -1702,16 +1769,16 @@ export function getTrendingPartnerProfiles(limit = 12) {
 }
 
 export function getNewPartnerProfiles(limit = 12) {
-  return partnerGameProfiles.slice().sort((a, b) => b.rank - a.rank).slice(0, limit);
+  return allPartnerGameProfiles.slice().sort((a, b) => b.rank - a.rank).slice(0, limit);
 }
 
 export function getPopularPartnerProfiles(limit = 12) {
-  return partnerGameProfiles.slice(0, limit);
+  return allPartnerGameProfiles.slice(0, limit);
 }
 
 export function getPlayNextPartnerProfiles(limit = 12) {
   const rhythm = ['body-drop-3d', 'tentrix', 'basketball-stars', 'shell-shockers', 'madalin-stunt-cars-2', '100-doors-escape-from-prison', 'monster-survivors-game', 'cannon-shot-online', 'rocket-bot-royale', 'hexa-color-sort', 'city-ride', 'bubble-invasion-3d'];
   const mapped = rhythm.map((slug) => getPartnerGameProfile(slug)).filter(Boolean);
-  const rest = partnerGameProfiles.filter((game) => !rhythm.includes(game.slug));
+  const rest = allPartnerGameProfiles.filter((game) => !rhythm.includes(game.slug));
   return [...mapped, ...rest].slice(0, limit);
 }

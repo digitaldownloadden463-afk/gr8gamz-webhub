@@ -10,7 +10,7 @@ import { getPartnerGameProfile, getPartnerGameProfiles, getRelatedPartnerGamePro
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getPartnerGameProfiles().map((profile: { slug: string }) => ({ slug: profile.slug }));
+  return getPartnerGameProfiles().slice(0, 120).map((profile: { slug: string }) => ({ slug: profile.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -51,7 +51,10 @@ export default async function PartnerProfilePage({ params }: PageProps) {
     description: profile.description,
     url: canonical(profile.path),
     gamePlatform: 'Web browser',
-    provider: profile.provider === 'gamemonetize' ? 'GameMonetize' : 'GamePix'
+    provider: {
+      '@type': 'Organization',
+      name: 'GR8 Select'
+    }
   };
 
   return (
@@ -66,13 +69,16 @@ export default async function PartnerProfilePage({ params }: PageProps) {
             <div><dt>Category</dt><dd>{profile.category}</dd></div>
             <div><dt>Best for</dt><dd>{profile.bestFor}</dd></div>
             <div><dt>Controls</dt><dd>{profile.controls}</dd></div>
+            {profile.lastChecked ? <div><dt>Checked</dt><dd>{new Date(profile.lastChecked).toLocaleDateString('en-GB')}</dd></div> : null}
           </dl>
           <div className="cta-row">
             <Link href={playPath} className="cta">Play</Link>
             <Link href="/partner-disclosure" className="secondary-cta">Game information</Link>
           </div>
         </div>
-        <Image src={profile.image} alt={`${profile.title} artwork`} width={900} height={506} priority sizes="(max-width: 900px) 92vw, 640px" />
+        <div className="partner-profile-artwork">
+          <Image src={profile.image} alt={`${profile.title} artwork`} fill priority sizes="(max-width: 900px) 92vw, 640px" />
+        </div>
       </section>
       <section className="content-panel">
         <h2>Tips before you play</h2>

@@ -25,7 +25,7 @@ export default function TermsPage() {
       </section>
       <section className="content-panel">
         <h2>Availability</h2>
-        <p>Games may change, fail to load or be removed when partner feeds change. GR8 GAMZ does not promise uninterrupted service or that every partner game will be available on every device.</p>
+        <p>Games may change, fail to load or be removed when the catalogue changes. GR8 GAMZ does not promise uninterrupted service or that every GR8 Select game will be available on every device.</p>
       </section>
     </main>
   );

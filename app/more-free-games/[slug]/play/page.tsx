@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!profile) return {};
   return {
     title: `Play ${profile.title}`,
-    description: `Load ${profile.title} from its partner provider after a clear player choice.`,
+    description: `Load ${profile.title} after a clear player choice.`,
     robots: { index: false, follow: true },
     alternates: { canonical: canonical(profile.path) }
   };
@@ -25,10 +25,12 @@ export default async function PartnerPlayPage({ params }: PageProps) {
   const profile = getPartnerGameProfile(slug);
   if (!profile) notFound();
 
-  let resolved = { found: false, provider: profile.provider || 'gamepix', title: profile.title, category: profile.category, url: '', width: 960, height: 540 };
+  let resolved = { found: Boolean(profile.playUrl), provider: profile.provider || 'gamepix', title: profile.title, category: profile.category, url: profile.playUrl || '', width: profile.width || 960, height: profile.height || 540 };
   try {
-    const result = await resolvePartnerGame(profile);
-    resolved = result.resolved;
+    if (!profile.playUrl) {
+      const result = await resolvePartnerGame(profile);
+      resolved = result.resolved;
+    }
   } catch {
     resolved = { ...resolved };
   }
@@ -38,13 +40,12 @@ export default async function PartnerPlayPage({ params }: PageProps) {
     <main>
       <Link href={profile.path} className="text-link">Back to profile</Link>
       <section className="page-title">
-        <span className="eyebrow">{profile.provider === 'gamemonetize' ? 'GameMonetize partner' : 'GamePix partner'}</span>
+        <span className="eyebrow">GR8 Select</span>
         <h1>Play {profile.title}</h1>
-        <p>The partner game loads only after you choose to load the provider iframe.</p>
+        <p>The game loads only after you choose to open it.</p>
       </section>
       <PartnerPlayClient
         title={profile.title}
-        provider={profile.provider === 'gamemonetize' ? 'GameMonetize' : 'GamePix'}
         profilePath={profile.path}
         image={profile.image}
         playUrl={resolved.found ? resolved.url : ''}
