@@ -16,21 +16,23 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) return {};
+  const gamePath = `/arcade/${game.slug || game.id}`;
+  const ogImage = `/og/game/${game.slug || game.id}`;
   return {
     title: game.seoTitle || game.name,
     description: game.seoDescription || game.description || `Play ${game.name} on GR8 GAMZ.`,
-    alternates: { canonical: canonical(`/arcade/${game.slug || game.id}`) },
+    alternates: { canonical: canonical(gamePath) },
     openGraph: {
       title: game.name,
       description: game.description,
-      url: canonical(`/arcade/${game.slug || game.id}`),
-      images: game.thumbnail ? [{ url: game.thumbnail, width: 640, height: 360, alt: `${game.name} artwork` }] : undefined
+      url: canonical(gamePath),
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${game.name} on GR8 GAMZ` }]
     },
     twitter: {
       card: 'summary_large_image',
       title: game.name,
       description: game.description || `Play ${game.name} on GR8 GAMZ.`,
-      images: game.thumbnail ? [game.thumbnail] : ['/og/gr8gamz-og.png']
+      images: [ogImage]
     }
   };
 }

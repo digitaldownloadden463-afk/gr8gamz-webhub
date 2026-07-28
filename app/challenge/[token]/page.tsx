@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Challenge unavailable', robots: { index: false, follow: true } };
   }
   const url = canonical(`/challenge/${token}`);
+  const image = `/og/challenge/${token}`;
   const title = `Beat ${challenge.score.toLocaleString()} on ${game.name}`;
   const description = `Can you beat this GR8 GAMZ score? Open ${game.name} and take the challenge.`;
   return {
@@ -27,13 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: 'website',
-      images: [{ url: game.thumbnail || '/og/gr8gamz-og.png', width: 1200, height: 630, alt: `${game.name} challenge` }]
+      images: [{ url: image, width: 1200, height: 630, alt: `${game.name} challenge` }]
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [game.thumbnail || '/og/gr8gamz-og.png']
+      images: [image]
     }
   };
 }

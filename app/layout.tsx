@@ -3,6 +3,7 @@ import './globals.css';
 import TopNav from '@/components/TopNav';
 import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
+import PwaRegister from '@/components/PwaRegister';
 import { canonical, siteUrl } from '@/lib/features';
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   description: 'Play GR8 Originals and GR8 Select browser games on GR8 GAMZ. No downloads, clear privacy controls.',
   applicationName: 'GR8 GAMZ',
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: [{ url: '/favicon.ico' }, { url: '/icon.png', type: 'image/png', sizes: '512x512' }],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }]
@@ -46,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div id="main-content">{children}</div>
         <Footer />
         <ConsentBanner />
+        <PwaRegister />
       </body>
     </html>
   );

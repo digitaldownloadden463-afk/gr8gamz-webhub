@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) return {};
+  const ogImage = `/og/game/${profile.slug}`;
   return {
     title: profile.title,
     description: profile.description,
@@ -25,13 +26,13 @@ export async function generateMetadata({ params }: PageProps) {
       title: profile.title,
       description: profile.description,
       url: canonical(`/more-free-games/${profile.slug}`),
-      images: [{ url: profile.image, width: 480, height: 270, alt: `${profile.title} artwork` }]
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${profile.title} on GR8 GAMZ` }]
     },
     twitter: {
       card: 'summary_large_image',
       title: profile.title,
       description: profile.description,
-      images: [profile.image]
+      images: [ogImage]
     }
   };
 }

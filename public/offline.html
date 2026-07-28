@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,follow">
+    <title>GR8 GAMZ offline</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: radial-gradient(circle at 20% 10%, rgba(53,255,141,.18), transparent 18rem), #050507;
+        color: #f8fafc;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(720px, 100%);
+        border: 1px solid rgba(207,239,255,.16);
+        border-radius: 8px;
+        padding: clamp(22px, 6vw, 48px);
+        background: rgba(255,255,255,.06);
+        box-shadow: 0 24px 80px rgba(0,0,0,.42);
+      }
+      h1 { margin: 0; font-size: clamp(2.2rem, 9vw, 4.8rem); line-height: .95; }
+      p { color: #c3d0df; line-height: 1.6; }
+      a {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        padding: 11px 14px;
+        border-radius: 8px;
+        background: #35ff8d;
+        color: #061109;
+        font-weight: 950;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>You are offline.</h1>
+      <p>GR8 GAMZ saved the shell, but this page needs a connection. Reconnect and jump back in.</p>
+      <a href="/">Return home</a>
+    </main>
+  </body>
+</html>

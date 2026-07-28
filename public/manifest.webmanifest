@@ -5,8 +5,30 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#050507",
   "theme_color": "#35ff8d",
+  "categories": ["games", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "GR8 Originals",
+      "short_name": "Originals",
+      "url": "/gr8-originals",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "GR8 Select",
+      "short_name": "Select",
+      "url": "/gr8-select",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "My GR8 Arcade",
+      "short_name": "My Arcade",
+      "url": "/my-arcade",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
