@@ -52,14 +52,18 @@ for (const viewport of viewports) {
         failures.push(`Console error at ${viewport.width}: ${message.text()}`);
       }
     });
-    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 30000 });
+    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
     const status = response?.status() || 0;
     if (route.includes('404') && status !== 404) failures.push(`${route} returned ${status}, expected 404`);
     if (!route.includes('404') && status >= 400) failures.push(`${route} returned ${status}`);
-    await page.locator('main').first().waitFor({ state: 'visible', timeout: 10000 });
-    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => resolve(true))));
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
-    if (overflow) failures.push(`${route} overflows horizontally at ${viewport.width}`);
+    try {
+      await page.locator('main').first().waitFor({ state: 'visible', timeout: 10000 });
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => resolve(true))));
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+      if (overflow) failures.push(`${route} overflows horizontally at ${viewport.width}`);
+    } catch (error) {
+      failures.push(`${route} did not render visible main content at ${viewport.width}: ${error.message}`);
+    }
     await page.close();
   }
 }

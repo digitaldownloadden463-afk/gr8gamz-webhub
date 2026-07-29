@@ -1,3 +1,4 @@
+import { localizedSitemapPaths } from '@/lib/localizedSitemaps';
 import { partnerSitemapCount, sitemapEntry } from '@/lib/sitemapXml';
 
 export function GET() {
@@ -6,7 +7,8 @@ export function GET() {
     '/sitemaps/original-games.xml',
     '/sitemaps/collections.xml',
     ...Array.from({ length: partnerSitemapCount() }, (_, index) => `/sitemaps/partner-games-${index + 1}.xml`),
-    '/sitemap-images.xml'
+    '/sitemap-images.xml',
+    ...localizedSitemapPaths()
   ];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

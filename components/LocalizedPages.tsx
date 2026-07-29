@@ -1,0 +1,208 @@
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import GameShare from '@/components/GameShare';
+import LocalizedGameCard from '@/components/LocalizedGameCard';
+import PartnerArtwork from '@/components/PartnerArtwork';
+import PartnerPlayClient from '@/components/PartnerPlayClient';
+import type { RegistryGame } from '@/lib/gameRegistry';
+import { getIndexableRegistryGames, getRegistryCategories, slugifyRegistryValue } from '@/lib/gameRegistry';
+import { categoryName, localeInfo, localizedCanonical, pathForLocale, tr, type Locale } from '@/lib/i18n';
+import { getGlobalLaunchGames, getLocalizedGameText } from '@/lib/globalLaunch';
+import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+
+const pageSize = 48;
+
+export function localizedRelated(game: RegistryGame, limit = 6) {
+  const launch = getGlobalLaunchGames();
+  const same = launch.filter((item) => item.slug !== game.slug && item.category === game.category);
+  const other = launch.filter((item) => item.slug !== game.slug && item.category !== game.category);
+  return [...same, ...other].slice(0, limit);
+}
+
+export function LocalizedHomePage({ locale }: { locale: Locale }) {
+  const text = tr(locale);
+  const info = localeInfo(locale);
+  const launch = getGlobalLaunchGames();
+  const featured = launch.slice(0, 12);
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GR8 GAMZ',
+    url: localizedCanonical(locale, '/'),
+    inLanguage: locale
+  };
+
+  return (
+    <main lang={locale} dir={info.dir}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      <nav className="home-play-menu" aria-label={text.hubs.launchTitle}>
+        <Link href={pathForLocale(locale, '/gr8-originals')}><Gamepad2 size={18} aria-hidden="true" /> {text.nav.originals}</Link>
+        <Link href={pathForLocale(locale, '/gr8-select')}><Star size={18} aria-hidden="true" /> {text.nav.select}</Link>
+        <Link href={pathForLocale(locale, '/my-arcade')}><ShieldCheck size={18} aria-hidden="true" /> {text.nav.arcade}</Link>
+      </nav>
+      <section className="hero hero--home">
+        <div className="hero__motion" aria-hidden="true"><span /><span /><span /></div>
+        <div className="hero__content">
+          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> {text.home.eyebrow}</span>
+          <h1>{text.home.title}</h1>
+          <p>{text.home.intro}</p>
+          <div className="cta-row">
+            <Link href={pathForLocale(locale, '/gr8-originals')} className="cta"><Gamepad2 size={20} aria-hidden="true" /> {text.home.originalsCta}</Link>
+            <Link href={pathForLocale(locale, '/gr8-select')} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> {text.home.selectCta}</Link>
+          </div>
+          <div className="hero__stats" aria-label="GR8 GAMZ">
+            <span><strong>26</strong> {text.nav.originals}</span>
+            <span><strong>226</strong> {text.hubs.launchTitle}</span>
+            <span><strong>12</strong> locales</span>
+          </div>
+        </div>
+      </section>
+      <section className="value-grid" aria-label={text.hubs.gamesTitle}>
+        <article><Gamepad2 aria-hidden="true" /><strong>{text.home.fast}</strong><span>{text.hubs.gamesIntro}</span></article>
+        <article><ShieldCheck aria-hidden="true" /><strong>{text.home.privacy}</strong><span>{text.profile.external}</span></article>
+        <article><Star aria-hidden="true" /><strong>{text.home.browse}</strong><span>{text.hubs.launchIntro}</span></article>
+      </section>
+      <section className="section-heading">
+        <span className="eyebrow">{text.hubs.launchTitle}</span>
+        <h2>{text.hubs.gamesTitle}</h2>
+        <Link href={pathForLocale(locale, '/gr8-select')}>{text.common.details} <ArrowRight size={18} aria-hidden="true" /></Link>
+      </section>
+      <section className="game-grid">
+        {featured.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 12} />)}
+      </section>
+    </main>
+  );
+}
+
+export function LocalizedCollectionPage({ locale, page = 1, categorySlug, source }: { locale: Locale; page?: number; categorySlug?: string; source?: RegistryGame['source'] }) {
+  const text = tr(locale);
+  const info = localeInfo(locale);
+  const launch = getGlobalLaunchGames().filter((game) => (!categorySlug || slugifyRegistryValue(game.category) === categorySlug) && (!source || game.source === source));
+  const totalPages = Math.max(1, Math.ceil(launch.length / pageSize));
+  const safePage = Math.min(Math.max(page, 1), totalPages);
+  const games = launch.slice((safePage - 1) * pageSize, safePage * pageSize);
+  const category = categorySlug ? getRegistryCategories(1).find((item) => item.slug === categorySlug) : null;
+  const basePath = categorySlug ? `/categories/${categorySlug}` : (source === 'gr8-originals' ? '/gr8-originals' : '/gr8-select');
+
+  return (
+    <main lang={locale} dir={info.dir}>
+      <section className="page-title">
+        <span className="eyebrow">{category ? categoryName(locale, category.name) : text.hubs.launchTitle}</span>
+        <h1>{category ? `${categoryName(locale, category.name)} ${text.hubs.categoryTitle}` : (source === 'gr8-originals' ? text.hubs.originalsTitle : text.hubs.selectTitle)}</h1>
+        <p>{category ? text.hubs.gamesIntro : (source === 'gr8-originals' ? text.hubs.gamesIntro : text.hubs.selectIntro)}</p>
+      </section>
+      <section className="game-grid">
+        {games.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 56} />)}
+      </section>
+      {totalPages > 1 ? (
+        <nav className="pagination-nav" aria-label={text.common.page}>
+          {safePage > 1 ? <Link className="secondary-cta" href={pathForLocale(locale, safePage === 2 ? basePath : `${basePath}/page/${safePage - 1}`)}><ArrowLeft size={18} aria-hidden="true" /> {text.common.previous}</Link> : <span />}
+          <span>{text.common.page} {safePage} / {totalPages}</span>
+          {safePage < totalPages ? <Link className="cta" href={pathForLocale(locale, `${basePath}/page/${safePage + 1}`)}>{text.common.next} <ArrowRight size={18} aria-hidden="true" /></Link> : <span />}
+        </nav>
+      ) : null}
+    </main>
+  );
+}
+
+export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: RegistryGame }) {
+  const text = tr(locale);
+  const info = localeInfo(locale);
+  const copy = getLocalizedGameText(game, locale, text.profile);
+  const related = localizedRelated(game, 6);
+  const playPath = pathForLocale(locale, game.playUrl);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: game.title,
+    description: copy.description,
+    url: localizedCanonical(locale, game.url),
+    image: game.artwork,
+    gamePlatform: 'Web browser',
+    genre: copy.category,
+    inLanguage: locale,
+    provider: { '@type': 'Organization', name: 'GR8 GAMZ' }
+  };
+
+  return (
+    <main lang={locale} dir={info.dir}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <Link href={pathForLocale(locale, '/')}>{text.nav.home}</Link>
+        <span>/</span>
+        <Link href={pathForLocale(locale, '/gr8-select')}>{text.hubs.launchTitle}</Link>
+        <span>/</span>
+        <span>{game.title}</span>
+      </nav>
+      <section className="partner-profile-hero">
+        <div className="partner-profile-copy">
+          <span className="eyebrow">{copy.category}</span>
+          <h1>{game.title}</h1>
+          <p>{copy.description}</p>
+          <dl className="fact-list">
+            <div><dt>{text.common.officialTitle}</dt><dd>{game.title}</dd></div>
+            <div><dt>{text.common.category}</dt><dd>{copy.category}</dd></div>
+            <div><dt>{text.common.bestFor}</dt><dd>{copy.fit}</dd></div>
+            <div><dt>{text.common.controls}</dt><dd>{copy.controls}</dd></div>
+          </dl>
+          <div className="cta-row">
+            <Link href={playPath} className="cta">{text.common.play}</Link>
+            <Link href={pathForLocale(locale, `/categories/${slugifyRegistryValue(game.category)}`)} className="secondary-cta">{copy.category}</Link>
+          </div>
+        </div>
+        <PartnerArtwork src={game.artwork} title={game.title} category={copy.category} priority variant="profile" sizes="(max-width: 900px) 92vw, 640px" />
+      </section>
+      <section className="content-panel">
+        <h2>{text.profile.why.replace('{fit}', copy.fit).replace('{title}', game.title).replace('{category}', copy.category)}</h2>
+        <p>{copy.tips}</p>
+        <p className="fine-print">{copy.external}</p>
+      </section>
+      <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} />
+      <section className="section-heading">
+        <span className="eyebrow">{text.common.related}</span>
+        <h2>{text.common.related}.</h2>
+      </section>
+      <section className="game-grid">
+        {related.map((item) => <LocalizedGameCard key={item.id} game={item} locale={locale} />)}
+      </section>
+    </main>
+  );
+}
+
+export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slug: string }) {
+  const text = tr(locale);
+  const info = localeInfo(locale);
+  const profile = getPartnerGameProfile(slug);
+  if (!profile) return null;
+  const related = getRelatedPartnerGameProfiles(profile, 4);
+  const localizedProfilePath = pathForLocale(locale, profile.path);
+
+  return (
+    <main lang={locale} dir={info.dir}>
+      <Link href={localizedProfilePath} className="text-link">{text.common.previous}</Link>
+      <section className="page-title">
+        <span className="eyebrow">{text.nav.select}</span>
+        <h1>{text.common.play} {profile.title}</h1>
+        <p>{text.profile.external}</p>
+      </section>
+      <PartnerPlayClient
+        title={profile.title}
+        profilePath={localizedProfilePath}
+        image={profile.image}
+        playUrl={profile.playUrl || ''}
+        width={profile.width || 960}
+        height={profile.height || 540}
+      />
+      <section className="section-heading">
+        <span className="eyebrow">{text.common.related}</span>
+        <h2>{text.common.related}.</h2>
+      </section>
+      <section className="partner-grid">
+        {related.map((item) => {
+          const game = getIndexableRegistryGames().find((entry) => entry.slug === item.slug && entry.source === 'gr8-select');
+          return game ? <LocalizedGameCard key={game.id} game={game} locale={locale} /> : null;
+        })}
+      </section>
+    </main>
+  );
+}

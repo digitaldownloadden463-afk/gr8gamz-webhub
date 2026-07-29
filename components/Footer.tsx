@@ -1,42 +1,43 @@
-import Link from 'next/link';
+'use client';
 
-export function Footer() {
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { defaultLocale, isLocale, pathForLocale, tr, type Locale } from '@/lib/i18n';
+
+function localeFromPath(pathname: string): Locale {
+  const first = pathname.split('/').filter(Boolean)[0];
+  return isLocale(first) ? first : defaultLocale;
+}
+
+export function Footer({ locale }: { locale?: Locale }) {
+  const pathname = usePathname();
+  const activeLocale = locale || localeFromPath(pathname || '/');
+  const text = tr(activeLocale);
+  const links = [
+    ['/games', text.nav.games],
+    ['/gr8-originals', text.nav.originals],
+    ['/gr8-select', text.nav.select],
+    ['/gr8-trending', text.nav.trending],
+    ['/gr8-daily', text.nav.daily],
+    ['/new-games', text.nav.new],
+    ['/my-arcade', text.nav.arcade],
+    ['/categories/arcade', text.categories.Arcade],
+    ['/categories/puzzle', text.categories.Puzzle],
+    ['/categories/racing', text.categories.Racing],
+    ['/privacy', text.legal.privacyTitle],
+    ['/terms', text.legal.termsTitle],
+    ['/privacy-choices', text.common.privacyChoice],
+    ['/contact', 'Contact']
+  ] as const;
+
   return (
     <footer className="site-footer">
       <div>
         <strong>GR8 GAMZ</strong>
-        <p>Free browser games with GR8 Originals, GR8 Select, local-device saves and clear privacy controls.</p>
+        <p>{text.home.intro}</p>
       </div>
       <nav aria-label="Footer navigation">
-        <Link href="/games">Games</Link>
-        <Link href="/gr8-originals">GR8 Originals</Link>
-        <Link href="/gr8-select">GR8 Select</Link>
-        <Link href="/gr8-trending">Trending</Link>
-        <Link href="/gr8-daily">Daily</Link>
-        <Link href="/new-games">New Games</Link>
-        <Link href="/popular-games">Popular Games</Link>
-        <Link href="/quick-games">Quick Games</Link>
-        <Link href="/mobile-games">Mobile Games</Link>
-        <Link href="/categories/arcade">Arcade</Link>
-        <Link href="/categories/puzzle">Puzzle</Link>
-        <Link href="/categories/racing">Racing</Link>
-        <Link href="/controls/tap">Tap Games</Link>
-        <Link href="/controls/swipe">Swipe Games</Link>
-        <Link href="/my-arcade">My GR8 Arcade</Link>
-        <Link href="/more-free-games">More Games</Link>
-        <Link href="/about">About</Link>
-        <Link href="/contact">Contact</Link>
-        <Link href="/privacy">Privacy</Link>
-        <Link href="/privacy-choices">Privacy Choices</Link>
-        <Link href="/cookie-policy">Cookies</Link>
-        <Link href="/terms">Terms</Link>
-        <Link href="/partner-disclosure">Partners</Link>
-        <Link href="/affiliate-disclosure">Affiliates</Link>
-        <Link href="/accessibility">Accessibility</Link>
-        <Link href="/child-safety">Child Safety</Link>
-        <Link href="/copyright">Copyright</Link>
-        <Link href="/report-a-game">Report a Game</Link>
-        <Link href="/editorial-policy">Game Selection</Link>
+        {links.map(([href, label]) => <Link key={href} href={pathForLocale(activeLocale, href)}>{label}</Link>)}
       </nav>
     </footer>
   );
