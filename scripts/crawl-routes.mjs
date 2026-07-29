@@ -1,14 +1,20 @@
 const baseUrl = process.argv[2] || process.env.CRAWL_BASE_URL || 'http://127.0.0.1:3000';
 const failures = [];
 const concurrency = Number.parseInt(process.env.GR8_CRAWL_CONCURRENCY || '12', 10);
+const requestTimeoutMs = Number.parseInt(process.env.GR8_CRAWL_TIMEOUT_MS || '15000', 10);
 
 function sameOriginUrl(pathOrUrl) {
   return new URL(pathOrUrl, baseUrl);
 }
 
 async function text(url) {
-  const response = await fetch(url, { redirect: 'manual' });
-  return { response, body: await response.text().catch(() => '') };
+  try {
+    const response = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(requestTimeoutMs) });
+    return { response, body: await response.text().catch(() => '') };
+  } catch {
+    failures.push(`${new URL(url).pathname} failed to respond within ${requestTimeoutMs}ms`);
+    return { response: { status: 0, headers: new Headers() }, body: '' };
+  }
 }
 
 function xmlLocs(xml) {
@@ -93,10 +99,17 @@ await mapLimit(routes, concurrency, async (route) => {
 });
 
 await mapLimit([...checkedLinks].filter((link) => !link.startsWith('/challenge/')), concurrency, async (link) => {
-  const linkResponse = await fetch(sameOriginUrl(link), { redirect: 'manual' });
-  if (linkResponse.status >= 400) failures.push(`Broken internal link ${link} (${linkResponse.status})`);
-  if ([301, 302, 307, 308].includes(linkResponse.status) && routes.includes(link)) {
-    failures.push(`Redirecting sitemap URL ${link}`);
+  try {
+    const linkResponse = await fetch(sameOriginUrl(link), {
+      redirect: 'manual',
+      signal: AbortSignal.timeout(requestTimeoutMs)
+    });
+    if (linkResponse.status >= 400) failures.push(`Broken internal link ${link} (${linkResponse.status})`);
+    if ([301, 302, 307, 308].includes(linkResponse.status) && routes.includes(link)) {
+      failures.push(`Redirecting sitemap URL ${link}`);
+    }
+  } catch {
+    failures.push(`Internal link ${link} failed to respond within ${requestTimeoutMs}ms`);
   }
 });
 
