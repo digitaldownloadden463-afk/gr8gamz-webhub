@@ -17,7 +17,7 @@ export function PartnerCatalogueGrid({ page = 1 }: { page?: number }) {
         Every game in this shelf has a unique profile, a checked artwork URL, a safe play route and crawlable links from GR8 GAMZ.
       </p>
       <div className="partner-grid partner-grid--large">
-        {catalogue.games.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 6} />)}
+        {catalogue.games.map((profile) => <PartnerGameCard key={profile.slug} profile={profile} priority />)}
       </div>
       <nav className="pagination-nav" aria-label="GR8 Select pages">
         {catalogue.previousPath ? <Link className="secondary-cta" href={catalogue.previousPath}><ArrowLeft size={18} aria-hidden="true" /> Previous</Link> : <span />}

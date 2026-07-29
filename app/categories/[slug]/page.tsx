@@ -64,7 +64,7 @@ export default async function CategoryPage({ params }: PageProps) {
         <p>Play {category.count} {category.name.toLowerCase()} games from GR8 Originals and GR8 Select.</p>
       </section>
       <section className="game-grid">
-        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 6} />)}
+        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 56} />)}
       </section>
     </main>
   );
