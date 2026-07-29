@@ -467,6 +467,13 @@ main {
   transition: transform .2s ease;
 }
 
+.partner-artwork > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .game-card:hover img,
 .partner-card:hover img { transform: scale(1.035); }
 

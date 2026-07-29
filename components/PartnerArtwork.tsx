@@ -25,10 +25,23 @@ export function PartnerArtwork({
   showBadge = true
 }: PartnerArtworkProps) {
   const [failed, setFailed] = useState(!src);
+  const isRemote = Boolean(src?.startsWith('https://'));
 
   return (
     <span className={`partner-artwork partner-artwork--${variant} ${failed ? 'partner-artwork--fallback' : ''} ${className}`}>
-      {!failed && src ? (
+      {!failed && src && isRemote ? (
+        // Supplier images are already size-bounded by ingestion; direct loading avoids production optimizer proxy failures.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={`${title} ${category} game artwork`}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={priority ? 'high' : 'auto'}
+          referrerPolicy="no-referrer"
+          onError={() => setFailed(true)}
+        />
+      ) : !failed && src ? (
         <Image
           src={src}
           alt={`${title} ${category} game artwork`}
