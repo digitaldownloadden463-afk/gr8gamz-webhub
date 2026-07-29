@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LocalizedGameProfile } from '@/components/LocalizedPages';
-import { getGlobalLaunchGame, getGlobalLaunchGames } from '@/lib/globalLaunch';
+import { getGlobalLaunchGame } from '@/lib/globalLaunch';
 import { getIndexableRegistryGames } from '@/lib/gameRegistry';
 import { canonical } from '@/lib/features';
 import { localizedAlternates, localizedCanonical, tr, type Locale } from '@/lib/i18n';

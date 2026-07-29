@@ -392,6 +392,16 @@ main {
   box-shadow: 0 18px 46px rgba(0,0,0,.24), 0 0 28px rgba(73,215,255,.12);
 }
 
+.cta-button:disabled,
+.secondary-button:disabled,
+.cta-button[aria-disabled="true"],
+.secondary-button[aria-disabled="true"] {
+  cursor: wait;
+  opacity: .72;
+  transform: none;
+  box-shadow: none;
+}
+
 .hero__stats {
   display: flex;
   flex-wrap: wrap;
