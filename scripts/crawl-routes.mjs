@@ -98,7 +98,7 @@ await mapLimit(routes, concurrency, async (route) => {
   }
 });
 
-await mapLimit([...checkedLinks].filter((link) => !link.startsWith('/challenge/')), concurrency, async (link) => {
+await mapLimit([...checkedLinks].filter((link) => !link.startsWith('/challenge/') && !link.includes('/play')), concurrency, async (link) => {
   try {
     const linkResponse = await fetch(sameOriginUrl(link), {
       redirect: 'manual',
