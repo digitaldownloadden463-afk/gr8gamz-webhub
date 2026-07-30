@@ -38,11 +38,11 @@ const nextConfig = {
       "frame-ancestors 'self'",
       "form-action 'self'",
       "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com",
-      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://html5.gamemonetize.com",
+      "script-src 'self' 'unsafe-inline' https://play.gamepix.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
-      "connect-src 'self' https://feeds.gamepix.com https://gamemonetize.com https://html5.gamemonetize.com",
-      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.com https://*.gamemonetize.com"
+      "connect-src 'self' https://feeds.gamepix.com",
+      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co"
     ].join('; ');
 
     return [

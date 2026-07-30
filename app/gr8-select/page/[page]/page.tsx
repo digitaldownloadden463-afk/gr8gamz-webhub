@@ -31,7 +31,7 @@ export default async function Gr8SelectPagedPage({ params }: PageProps) {
     <main>
       <section className="page-title">
         <span className="eyebrow">GR8 Select</span>
-        <h1>More checked games.</h1>
+        <h1>More GR8 Select games.</h1>
         <p>Keep browsing unique game profiles with clean artwork, clear categories and a deliberate Play step.</p>
       </section>
       <PartnerCatalogueGrid page={catalogue.page} />

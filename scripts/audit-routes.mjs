@@ -50,7 +50,12 @@ if (!fs.existsSync(path.join(root, 'app/quick-games/page.tsx'))) {
   failures.push('Missing active /quick-games hub');
 }
 
-const sitemapSource = fs.readFileSync(path.join(appDir, 'sitemap.ts'), 'utf8');
+const sitemapSource = [
+  'lib/masterSitemap.ts',
+  'lib/sitemapXml.ts',
+  'app/sitemap.xml/route.ts',
+  'app/sitemap-index.xml/route.ts'
+].map((file) => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
 const noindexFragments = ['/my-arcade', '/privacy-choices', '/play'];
 for (const fragment of noindexFragments) {
   if (sitemapSource.includes(fragment)) {

@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
 import PwaRegister from '@/components/PwaRegister';
 import { canonical, siteUrl } from '@/lib/features';
+import { headers } from 'next/headers';
+import { defaultLocale, isLocale, localeInfo, type Locale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -39,9 +41,15 @@ export const metadata: Metadata = {
   }
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headerList = await headers();
+  const requestedLocale = headerList.get('x-gr8-locale') || defaultLocale;
+  const locale: Locale = isLocale(requestedLocale) ? requestedLocale : defaultLocale;
+  const info = localeInfo(locale);
   return (
-    <html lang="en" dir="ltr">
+    <html lang={locale} dir={info.dir}>
       <body>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <TopNav />

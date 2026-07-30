@@ -18,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         '/privacy-choices'
       ]
     },
-    sitemap: [`${siteUrl}/sitemap-index.xml`, `${siteUrl}/sitemap.xml`, `${siteUrl}/sitemap-images.xml`],
+    sitemap: `${siteUrl}/sitemap.xml`,
     host: siteUrl
   };
 }

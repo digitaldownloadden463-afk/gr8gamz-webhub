@@ -1,5 +1,33 @@
 import generatedPartnerCatalogue from './partnerCatalog.generated.json';
 
+function cleanPublicText(value = '') {
+  return String(value)
+    .replace(/GR8 Game Network/gi, 'GR8 Select')
+    .replace(/partner-powered/gi, 'GR8 Select')
+    .replace(/partner-game/gi, 'GR8 Select game')
+    .replace(/partner game/gi, 'GR8 Select game')
+    .replace(/partner catalogue/gi, 'GR8 Select catalogue')
+    .replace(/partner profile/gi, 'game profile')
+    .replace(/GamePix|GameMonetize/gi, 'GR8 Select')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function cleanProfile(profile) {
+  return {
+    ...profile,
+    title: cleanPublicText(profile.title),
+    providerLabel: 'GR8 Select',
+    difficulty: cleanPublicText(profile.difficulty),
+    bestFor: cleanPublicText(profile.bestFor),
+    controls: cleanPublicText(profile.controls),
+    description: cleanPublicText(profile.description),
+    whyPicked: cleanPublicText(profile.whyPicked),
+    howToPlay: cleanPublicText(profile.howToPlay),
+    deviceFit: cleanPublicText(profile.deviceFit)
+  };
+}
+
 export const partnerGameProfiles = [
   {
     "title": "Body Drop 3D",
@@ -1564,6 +1592,8 @@ export const partnerGameProfiles = [
 ];
 
 function generatedPartnerProfile(record) {
+  const controls = record.controls || 'Use the on-screen instructions after the game opens.';
+  const deviceFit = record.deviceSupport || 'Phone, tablet and desktop support depends on the loaded game.';
   return {
     title: record.title,
     provider: record.source,
@@ -1581,13 +1611,13 @@ function generatedPartnerProfile(record) {
     path: record.path,
     playPath: record.playPath,
     providerLabel: 'GR8 Select',
-    difficulty: 'Browser play',
-    bestFor: record.deviceSupport || 'players browsing GR8 Select',
-    controls: record.controls || 'Use the controls shown inside the game.',
+    difficulty: 'Quick browser play',
+    bestFor: record.deviceSupport || 'players browsing GR8 Select for a quick session',
+    controls,
     description: record.description,
-    whyPicked: `${record.title} is included because it passed GR8 Select catalogue checks for artwork, category, a safe play URL and a unique profile.`,
-    howToPlay: record.controls || 'Open the game, read the on-screen prompts and use the controls provided in the player.',
-    deviceFit: record.deviceSupport || 'Phone, tablet and desktop support depends on the loaded game.',
+    whyPicked: `${record.title} fits GR8 Select because it has clear artwork, a usable category and a focused browser-game profile.`,
+    howToPlay: controls,
+    deviceFit,
     lastChecked: record.lastChecked,
     qaStatus: record.qaStatus,
     sourceId: record.sourceId,
@@ -1603,7 +1633,7 @@ for (const profile of generatedPartnerGameProfiles) {
   partnerProfileMap.set(
     profile.slug,
     curated
-      ? {
+      ? cleanProfile({
           ...profile,
           ...curated,
           image: profile.image,
@@ -1615,8 +1645,8 @@ for (const profile of generatedPartnerGameProfiles) {
           sourceAttribution: profile.sourceAttribution,
           lastChecked: profile.lastChecked,
           qaStatus: profile.qaStatus
-        }
-      : profile
+        })
+      : cleanProfile(profile)
   );
 }
 export const allPartnerGameProfiles = [...partnerProfileMap.values()];
@@ -1777,8 +1807,17 @@ export function getRelatedPartnerGameProfiles(profile, limit = 6) {
   if (!profile) return getFeaturedPartnerGameProfiles(limit);
   const sameCategory = allPartnerGameProfiles
     .filter((game) => game.slug !== profile.slug && String(game.category).toLowerCase() === String(profile.category).toLowerCase());
-  const different = allPartnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game));
-  return [...sameCategory, ...different].slice(0, limit);
+  const relatedControls = String(profile.controls || '').toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const controlMatches = allPartnerGameProfiles
+    .filter((game) => game.slug !== profile.slug && !sameCategory.includes(game))
+    .filter((game) => relatedControls.some((word) => String(game.controls || '').toLowerCase().includes(word)));
+  const different = allPartnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game) && !controlMatches.includes(game));
+  const seen = new Set();
+  return [...sameCategory, ...controlMatches, ...different].filter((game) => {
+    if (seen.has(game.slug)) return false;
+    seen.add(game.slug);
+    return true;
+  }).slice(0, limit);
 }
 
 export function getTrendingPartnerProfiles(limit = 12) {

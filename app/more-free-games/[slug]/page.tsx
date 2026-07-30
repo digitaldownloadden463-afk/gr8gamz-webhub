@@ -5,6 +5,7 @@ import GameShare from '@/components/GameShare';
 import PartnerArtwork from '@/components/PartnerArtwork';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
+import { slugifyRegistryValue } from '@/lib/gameRegistry';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -44,6 +45,19 @@ export default async function PartnerProfilePage({ params }: PageProps) {
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
   const playPath = profile.playPath || `${profile.path}/play`;
+  const categoryPath = `/categories/${slugifyRegistryValue(profile.category)}`;
+  const controls = profile.controls || 'Use the on-screen instructions after the game opens.';
+  const deviceFit = profile.deviceFit || 'Phone, tablet and desktop support depends on the loaded game.';
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') },
+      { '@type': 'ListItem', position: 2, name: 'GR8 Select', item: canonical('/gr8-select') },
+      { '@type': 'ListItem', position: 3, name: profile.category, item: canonical(categoryPath) },
+      { '@type': 'ListItem', position: 4, name: profile.title, item: canonical(profile.path) }
+    ]
+  };
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
@@ -51,15 +65,26 @@ export default async function PartnerProfilePage({ params }: PageProps) {
     description: profile.description,
     url: canonical(profile.path),
     gamePlatform: 'Web browser',
+    genre: profile.category,
     provider: {
       '@type': 'Organization',
-      name: 'GR8 Select'
+      name: 'GR8 GAMZ'
     }
   };
 
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <Link href="/">Home</Link>
+        <span>/</span>
+        <Link href="/gr8-select">GR8 Select</Link>
+        <span>/</span>
+        <Link href={categoryPath}>{profile.category}</Link>
+        <span>/</span>
+        <span>{profile.title}</span>
+      </nav>
       <section className="partner-profile-hero">
         <div className="partner-profile-copy">
           <span className="eyebrow">GR8 Select</span>
@@ -68,20 +93,23 @@ export default async function PartnerProfilePage({ params }: PageProps) {
           <dl className="fact-list">
             <div><dt>Category</dt><dd>{profile.category}</dd></div>
             <div><dt>Best for</dt><dd>{profile.bestFor}</dd></div>
-            <div><dt>Controls</dt><dd>{profile.controls}</dd></div>
+            <div><dt>Controls</dt><dd>{controls}</dd></div>
+            <div><dt>Device fit</dt><dd>{deviceFit}</dd></div>
             {profile.lastChecked ? <div><dt>Checked</dt><dd>{new Date(profile.lastChecked).toLocaleDateString('en-GB')}</dd></div> : null}
           </dl>
           <div className="cta-row">
             <Link href={playPath} className="cta">Play</Link>
-            <Link href="/partner-disclosure" className="secondary-cta">Game information</Link>
+            <Link href={categoryPath} className="secondary-cta">{profile.category} games</Link>
           </div>
         </div>
         <PartnerArtwork src={profile.image} title={profile.title} category={profile.category} priority variant="profile" sizes="(max-width: 900px) 92vw, 640px" />
       </section>
       <section className="content-panel">
-        <h2>Tips before you play</h2>
-        <p>{profile.howToPlay || profile.description}</p>
-        <p className="fine-print">This external game loads on the Play page after you choose to open it.</p>
+        <h2>How to start</h2>
+        <p>{profile.howToPlay || controls}</p>
+        <h2>Why it fits this session</h2>
+        <p>{profile.whyPicked || `${profile.title} is a ${profile.category.toLowerCase()} game for quick browser play on GR8 GAMZ.`}</p>
+        <p className="fine-print">The game itself loads on the Play page only after you choose to open it.</p>
       </section>
       <GameShare
         title={profile.title}

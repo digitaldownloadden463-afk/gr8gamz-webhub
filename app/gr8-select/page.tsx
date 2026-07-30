@@ -14,7 +14,7 @@ export default function Gr8SelectPage() {
     <main>
       <section className="page-title">
         <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 Select</span>
-        <h1>{partnerCatalogueReport.totals.verifiedIndexable.toLocaleString()} checked games with real artwork up front.</h1>
+        <h1>{partnerCatalogueReport.totals.verifiedIndexable.toLocaleString()} GR8 Select games with real artwork up front.</h1>
         <p>Browse action, puzzle, racing, sports, arcade and adventure picks. Each game opens only after you choose to load it, so players stay in control.</p>
       </section>
 

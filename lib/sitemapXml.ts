@@ -32,6 +32,11 @@ export function originalGameEntries() {
   return getAllGames().map((game) => urlEntry(`/arcade/${game.slug || game.id}`, game.dateAdded || sitemapDate, '0.8')).join('');
 }
 
+export function coreEntries() {
+  const staticRoutes = ['/', '/about', '/contact', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
+  return staticRoutes.map((route) => urlEntry(route, '2026-07-27', route === '/' ? '1.0' : '0.7')).join('');
+}
+
 export function partnerGames() {
   return getIndexableRegistryGames().filter((game) => game.source === 'gr8-select');
 }
@@ -62,4 +67,11 @@ export function collectionEntries() {
     ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
   ];
   return routes.map((route) => urlEntry(route, sitemapDate, route === '/games' ? '0.85' : '0.65')).join('');
+}
+
+export function sitemapIndex(paths: string[]) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+  <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${paths.map((path) => sitemapEntry(path)).join('\n')}
+  </sitemapindex>`;
 }

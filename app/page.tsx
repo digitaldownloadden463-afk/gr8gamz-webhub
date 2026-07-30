@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ArrowRight, Flame, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
-import { getAllGames, getFeaturedGames } from '@/lib/games';
-import { canonical, gameCountLabel } from '@/lib/features';
+import { getFeaturedGames } from '@/lib/games';
+import { canonical } from '@/lib/features';
+import { getCatalogueStats } from '@/lib/catalogueStats';
 import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
@@ -12,9 +13,9 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  const games = getAllGames();
   const featured = getFeaturedGames(6);
   const partners = getFeaturedPartnerGameProfiles(6);
+  const stats = getCatalogueStats();
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -53,14 +54,16 @@ export default function HomePage() {
         <div className="hero__content">
           <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ</span>
           <h1>Thousands of games. One place to play.</h1>
-          <p>Pick a game. Chase the score. Go again. Start with {gameCountLabel(games.length)} GR8 Originals or open GR8 Select for a bigger arcade shelf.</p>
+          <p>Pick a game. Chase the score. Go again. Start with {stats.originals.toLocaleString()} GR8 Originals or open {stats.select.toLocaleString()} GR8 Select games built for quick browser play.</p>
           <div className="cta-row">
             <Link href="/gr8-originals" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Play originals</Link>
             <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Open GR8 Select</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ highlights">
-            <span><strong>{games.length}</strong> Originals</span>
-            <span><strong>66</strong> Game pages</span>
+            <span><strong>{stats.originals.toLocaleString()}</strong> Originals</span>
+            <span><strong>{stats.select.toLocaleString()}</strong> GR8 Select</span>
+            <span><strong>{stats.playable.toLocaleString()}</strong> Playable games</span>
+            <span><strong>{stats.locales.toLocaleString()}</strong> Languages</span>
             <span><strong>Daily</strong> Challenge</span>
           </div>
         </div>
