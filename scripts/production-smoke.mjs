@@ -1,7 +1,13 @@
 import { spawnSync } from 'node:child_process';
 
 const baseUrl = process.argv[2] || 'https://www.gr8gamz.com';
-const env = { ...process.env, PLAYWRIGHT_BASE_URL: baseUrl, CRAWL_BASE_URL: baseUrl };
+const env = {
+  ...process.env,
+  PLAYWRIGHT_BASE_URL: baseUrl,
+  CRAWL_BASE_URL: baseUrl,
+  GR8_CRAWL_CONCURRENCY: process.env.GR8_CRAWL_CONCURRENCY || '4',
+  GR8_CRAWL_TIMEOUT_MS: process.env.GR8_CRAWL_TIMEOUT_MS || '30000'
+};
 
 const commands = [
   ['node', ['scripts/playwright-smoke.mjs']],

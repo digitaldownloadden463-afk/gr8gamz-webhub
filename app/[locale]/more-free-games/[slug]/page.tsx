@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LocalizedGameProfile } from '@/components/LocalizedPages';
-import { getGlobalLaunchGame } from '@/lib/globalLaunch';
+import { getGlobalLaunchGame, getGlobalLaunchGames } from '@/lib/globalLaunch';
 import { getIndexableRegistryGames } from '@/lib/gameRegistry';
 import { canonical } from '@/lib/features';
-import { localizedAlternates, localizedCanonical, tr, type Locale } from '@/lib/i18n';
+import { localizedAlternates, localizedCanonical, nonEnglishLocales, tr, type Locale } from '@/lib/i18n';
 
 type PageProps = { params: Promise<{ locale: Locale; slug: string }> };
 
 export const revalidate = 86400;
+
+export function generateStaticParams() {
+  const partners = getGlobalLaunchGames().filter((game) => game.source === 'gr8-select');
+  return nonEnglishLocales.flatMap((locale) => partners.map((game) => ({ locale, slug: game.slug })));
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
