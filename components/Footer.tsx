@@ -44,11 +44,12 @@ export function Footer({ locale }: { locale?: Locale }) {
 
   return (
     <footer className="site-footer">
-      <div>
+      <div className="site-footer__brand">
+        <span className="brand-mark__icon" aria-hidden="true">G8</span>
         <strong>GR8 GAMZ</strong>
-        <p>{text.home.intro}</p>
+        <p>Original worlds, instant browser play and a global GR8 Select arcade built for quick starts.</p>
       </div>
-      <nav aria-label="Footer navigation">
+      <nav className="site-footer__links" aria-label="Footer navigation">
         {links.map(([href, label, localize]) => (
           <Link key={href} href={localize ? pathForLocale(activeLocale, href) : href}>{label}</Link>
         ))}

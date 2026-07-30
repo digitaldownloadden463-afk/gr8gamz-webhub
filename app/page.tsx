@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Flame, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, CalendarDays, Compass, Flame, Gamepad2, Globe2, Search, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import { getFeaturedGames } from '@/lib/games';
 import { canonical } from '@/lib/features';
 import { getCatalogueStats } from '@/lib/catalogueStats';
 import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getRegistryCategories } from '@/lib/gameRegistry';
 
 export const metadata = {
   alternates: { canonical: canonical('/') }
@@ -14,8 +15,9 @@ export const metadata = {
 
 export default function HomePage() {
   const featured = getFeaturedGames(6);
-  const partners = getFeaturedPartnerGameProfiles(6);
+  const partners = getFeaturedPartnerGameProfiles(8);
   const stats = getCatalogueStats();
+  const categories = getRegistryCategories(1).slice(0, 8);
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -52,33 +54,53 @@ export default function HomePage() {
           <span />
         </div>
         <div className="hero__content">
-          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> GR8 GAMZ</span>
-          <h1>Thousands of games. One place to play.</h1>
-          <p>Pick a game. Chase the score. Go again. Start with {stats.originals.toLocaleString()} GR8 Originals or open {stats.select.toLocaleString()} GR8 Select games built for quick browser play.</p>
+          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> The global browser arcade</span>
+          <h1>Enter GR8 GAMZ.</h1>
+          <p>{stats.playable.toLocaleString()} playable games. Original worlds. Instant play across {stats.locales.toLocaleString()} languages.</p>
           <div className="cta-row">
-            <Link href="/gr8-originals" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Play originals</Link>
-            <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Open GR8 Select</Link>
+            <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Start playing</Link>
+            <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Explore GR8 Select</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ highlights">
             <span><strong>{stats.originals.toLocaleString()}</strong> Originals</span>
             <span><strong>{stats.select.toLocaleString()}</strong> GR8 Select</span>
             <span><strong>{stats.playable.toLocaleString()}</strong> Playable games</span>
             <span><strong>{stats.locales.toLocaleString()}</strong> Languages</span>
-            <span><strong>Daily</strong> Challenge</span>
+            <span><strong>Worldwide</strong> Arcade</span>
           </div>
         </div>
       </section>
 
       <section className="value-grid" aria-label="Why play here">
         <article><Flame aria-hidden="true" /><strong>Fast starts</strong><span>Jump in quickly, learn the controls and take another run.</span></article>
-        <article><ShieldCheck aria-hidden="true" /><strong>Honest privacy</strong><span>My GR8 Arcade saves on this device. External games load only after you choose.</span></article>
-        <article><Star aria-hidden="true" /><strong>Built to browse</strong><span>Originals, Select picks, categories, controls and daily challenges.</span></article>
+        <article><ShieldCheck aria-hidden="true" /><strong>Player choice</strong><span>My GR8 Arcade saves on this device. External games load only after you choose.</span></article>
+        <article><Globe2 aria-hidden="true" /><strong>Global play</strong><span>Browse GR8 GAMZ across 13 supported language experiences.</span></article>
+      </section>
+
+      <section className="portal-stage" aria-label="Choose a way to play">
+        <div className="portal-stage__copy">
+          <span className="eyebrow"><Compass size={18} aria-hidden="true" /> Pick your route</span>
+          <h2>Originals, Select picks and quick categories are ready from the first screen.</h2>
+          <p>Start with a made-by-GR8 game, scan the wider GR8 Select wall, or jump straight into the style you feel like playing.</p>
+          <div className="cta-row">
+            <Link href="/gr8-originals" className="cta">Made by GR8 <ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link href="/games" className="secondary-cta"><Search size={18} aria-hidden="true" /> Search games</Link>
+          </div>
+        </div>
+        <div className="portal-links" aria-label="Featured categories">
+          {categories.map((category) => (
+            <Link key={category.slug} href={`/categories/${category.slug}`}>
+              <strong>{category.name}</strong>
+              <span>{category.count.toLocaleString()} games</span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="section-heading">
-        <span className="eyebrow">Start here</span>
-        <h2>Featured original games.</h2>
-        <Link href="/games">View all <ArrowRight size={18} aria-hidden="true" /></Link>
+        <span className="eyebrow"><Gamepad2 size={18} aria-hidden="true" /> Made by GR8</span>
+        <h2>Original games with their own arcade pulse.</h2>
+        <Link href="/gr8-originals">View originals <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
       <section className="game-grid">
         {featured.map((game, index) => (
@@ -97,13 +119,37 @@ export default function HomePage() {
         ))}
       </section>
 
+      <section className="spotlight-band" aria-label="Daily and trending games">
+        <Link href="/gr8-trending" className="spotlight-card">
+          <Flame size={22} aria-hidden="true" />
+          <span>GR8 Trending</span>
+          <strong>High-energy picks for the next run.</strong>
+        </Link>
+        <Link href="/gr8-daily" className="spotlight-card">
+          <CalendarDays size={22} aria-hidden="true" />
+          <span>GR8 Daily</span>
+          <strong>A fresh original challenge every day.</strong>
+        </Link>
+        <Link href="/new-games" className="spotlight-card">
+          <Sparkles size={22} aria-hidden="true" />
+          <span>Fresh Games</span>
+          <strong>New starts when you want something different.</strong>
+        </Link>
+      </section>
+
       <section className="section-heading">
-        <span className="eyebrow">GR8 Select</span>
-        <h2>More games, loaded with clear choice.</h2>
+        <span className="eyebrow"><Star size={18} aria-hidden="true" /> GR8 Select</span>
+        <h2>A wider arcade wall, still built around clear play choices.</h2>
         <Link href="/gr8-select">Explore more <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
-      <section className="partner-grid">
+      <section className="partner-rail" aria-label="Featured GR8 Select games">
         {partners.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 3} />)}
+      </section>
+
+      <section className="final-play-cta">
+        <span className="eyebrow">Ready when you are</span>
+        <h2>Find one game. Take one run. Then chase the next one.</h2>
+        <Link href="/games" className="cta">Start playing <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
     </main>
   );

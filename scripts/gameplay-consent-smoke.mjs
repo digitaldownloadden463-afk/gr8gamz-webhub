@@ -48,7 +48,10 @@ async function clickCatalogueLink(page, name) {
     const link = links.nth(index);
     if (await link.isVisible().catch(() => false)) {
       await link.scrollIntoViewIfNeeded().catch(() => {});
-      await link.click({ timeout: 10000 });
+      await Promise.all([
+        page.waitForURL(/\/(?:gr8-select|more-free-games)/, { timeout: 10000 }).catch(() => null),
+        link.click({ timeout: 10000 })
+      ]);
       return;
     }
   }
