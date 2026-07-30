@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://127.0.0.1:3011",
+  "sitemapFiles": 43,
+  "regularUrls": 5463,
+  "imageEntries": 5138,
+  "emittedLastmods": 26,
+  "duplicateSitemapChildren": 0,
+  "duplicateRegularUrls": 0,
+  "staleSharedLastmods": 0,
+  "sampleFailures": []
+}

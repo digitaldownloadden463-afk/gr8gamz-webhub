@@ -27,7 +27,19 @@ export function Footer({ locale }: { locale?: Locale }) {
     ['/privacy', text.legal.privacyTitle, true],
     ['/terms', text.legal.termsTitle, true],
     ['/privacy-choices', text.common.privacyChoice, false],
-    ['/contact', 'Contact', false]
+    ['/contact', 'Contact', false],
+    ['/about', 'About', false],
+    ['/accessibility', 'Accessibility', false],
+    ['/affiliate-disclosure', 'Affiliate disclosure', false],
+    ['/child-safety', 'Child safety', false],
+    ['/cookie-policy', 'Cookie policy', false],
+    ['/copyright', 'Copyright', false],
+    ['/editorial-policy', 'Editorial policy', false],
+    ['/mobile-games', 'Mobile games', false],
+    ['/more-free-games', 'More games', false],
+    ['/popular-games', 'Popular games', false],
+    ['/quick-games', 'Quick games', false],
+    ['/report-a-game', 'Report a game', false]
   ] as const;
 
   return (

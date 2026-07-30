@@ -40,8 +40,6 @@ export type RegistryGame = {
   lastModified: string;
 };
 
-const registryDate = '2026-07-27';
-
 function uniqueByUrl(games: RegistryGame[]) {
   const seen = new Set<string>();
   return games.filter((game) => {
@@ -72,7 +70,7 @@ export function getRegistryGames(): RegistryGame[] {
     sessionLength: game.playStyle || 'Short arcade run',
     summary: game.description || game.longDescription || `Play ${game.name} on GR8 GAMZ.`,
     artwork: game.thumbnail || '/og/gr8gamz-og.png',
-    lastModified: game.dateAdded || registryDate
+    lastModified: game.dateAdded || ''
   }));
 
   const select = (getPartnerGameProfiles() as PartnerProfile[]).map((profile) => ({
@@ -94,7 +92,7 @@ export function getRegistryGames(): RegistryGame[] {
     sessionLength: profile.bestFor || 'Quick browser session',
     summary: profile.description,
     artwork: profile.image || '/og/gr8gamz-og.png',
-    lastModified: registryDate
+    lastModified: ''
   }));
 
   return uniqueByUrl([...originals, ...select]);
@@ -106,7 +104,7 @@ export function getIndexableRegistryGames() {
 
 export function registryJson() {
   return {
-    generatedAt: registryDate,
+    generatedAt: '',
     site: canonical('/'),
     totals: {
       all: getRegistryGames().length,

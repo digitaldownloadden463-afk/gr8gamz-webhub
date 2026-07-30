@@ -2,7 +2,7 @@ import { canonical } from '@/lib/features';
 import { getGlobalLaunchGames } from '@/lib/globalLaunch';
 import { categoryName, localizedCanonical, nonEnglishLocales, pathForLocale, tr, type NonEnglishLocale } from '@/lib/i18n';
 import { getRegistryCategories, slugifyRegistryValue } from '@/lib/gameRegistry';
-import { sitemapDate, urlEntry, xmlEscape } from '@/lib/sitemapXml';
+import { urlEntry, xmlEscape } from '@/lib/sitemapXml';
 
 export const localizedGameSitemapSize = 500;
 
@@ -41,12 +41,12 @@ export function localizedSitemapPaths() {
 }
 
 export function localizedHubEntries(locale: NonEnglishLocale) {
-  return localizedHubPaths(locale).map((path) => urlEntry(path, sitemapDate, path.endsWith('/games') ? '0.8' : '0.65')).join('');
+  return localizedHubPaths(locale).map((path) => urlEntry(path, undefined, path.endsWith('/games') ? '0.8' : '0.65')).join('');
 }
 
 export function localizedGameEntries(locale: NonEnglishLocale, page: number) {
   const start = (page - 1) * localizedGameSitemapSize;
-  return localizedGamePaths(locale).slice(start, start + localizedGameSitemapSize).map((path) => urlEntry(path, sitemapDate, '0.6')).join('');
+  return localizedGamePaths(locale).slice(start, start + localizedGameSitemapSize).map((path) => urlEntry(path, undefined, '0.6')).join('');
 }
 
 export function localizedImageEntries(locale: NonEnglishLocale) {

@@ -4,10 +4,18 @@ import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHub
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 
 export const partnerSitemapSize = 1000;
-export const sitemapDate = '2026-07-28';
 
 export function xmlEscape(value: string) {
   return value.replace(/[<>&'"]/g, (char) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[char] || char));
+}
+
+export function validLastmod(value?: string) {
+  if (!value) return '';
+  const text = String(value).trim();
+  if (!/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z)?$/.test(text)) return '';
+  const date = new Date(text);
+  if (Number.isNaN(date.getTime()) || date.getTime() > Date.now()) return '';
+  return text;
 }
 
 export function xmlResponse(body: string) {
@@ -20,21 +28,23 @@ export function urlset(entries: string) {
   </urlset>`;
 }
 
-export function sitemapEntry(path: string) {
-  return `<sitemap><loc>${siteUrl}${path}</loc><lastmod>${sitemapDate}</lastmod></sitemap>`;
+export function sitemapEntry(path: string, lastmod?: string) {
+  const safeLastmod = validLastmod(lastmod);
+  return `<sitemap><loc>${siteUrl}${path}</loc>${safeLastmod ? `<lastmod>${safeLastmod}</lastmod>` : ''}</sitemap>`;
 }
 
-export function urlEntry(path: string, lastmod = sitemapDate, priority = '0.7') {
-  return `<url><loc>${canonical(path)}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>${priority}</priority></url>`;
+export function urlEntry(path: string, lastmod?: string, priority = '0.7') {
+  const safeLastmod = validLastmod(lastmod);
+  return `<url><loc>${canonical(path)}</loc>${safeLastmod ? `<lastmod>${safeLastmod}</lastmod>` : ''}<changefreq>monthly</changefreq><priority>${priority}</priority></url>`;
 }
 
 export function originalGameEntries() {
-  return getAllGames().map((game) => urlEntry(`/arcade/${game.slug || game.id}`, game.dateAdded || sitemapDate, '0.8')).join('');
+  return getAllGames().map((game) => urlEntry(`/arcade/${game.slug || game.id}`, game.dateAdded, '0.8')).join('');
 }
 
 export function coreEntries() {
   const staticRoutes = ['/', '/about', '/contact', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
-  return staticRoutes.map((route) => urlEntry(route, '2026-07-27', route === '/' ? '1.0' : '0.7')).join('');
+  return staticRoutes.map((route) => urlEntry(route, undefined, route === '/' ? '1.0' : '0.7')).join('');
 }
 
 export function partnerGames() {
@@ -47,7 +57,7 @@ export function partnerSitemapCount() {
 
 export function partnerGameEntries(page: number) {
   const start = (page - 1) * partnerSitemapSize;
-  return partnerGames().slice(start, start + partnerSitemapSize).map((game) => urlEntry(game.url, game.lastModified || sitemapDate, '0.6')).join('');
+  return partnerGames().slice(start, start + partnerSitemapSize).map((game) => urlEntry(game.url, game.lastModified, '0.6')).join('');
 }
 
 export function collectionEntries() {
@@ -66,7 +76,7 @@ export function collectionEntries() {
     ...getRegistryControlHubs().map((hub) => `/controls/${hub.slug}`),
     ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
   ];
-  return routes.map((route) => urlEntry(route, sitemapDate, route === '/games' ? '0.85' : '0.65')).join('');
+  return routes.map((route) => urlEntry(route, undefined, route === '/games' ? '0.85' : '0.65')).join('');
 }
 
 export function sitemapIndex(paths: string[]) {

@@ -42,13 +42,17 @@ async function clickConsent(page, choice, name, keyboard = false) {
 }
 
 async function clickCatalogueLink(page, name) {
-  const link = page.getByRole('link', { name: /^Open GR8 Select$/i }).first();
-  if (!(await link.isVisible().catch(() => false))) {
-    await page.locator('a[href="/gr8-select"]').filter({ hasText: /GR8 Select/i }).last().scrollIntoViewIfNeeded().catch(() => {});
+  const links = page.locator('a[href="/gr8-select"]');
+  const count = await links.count();
+  for (let index = 0; index < count; index += 1) {
+    const link = links.nth(index);
+    if (await link.isVisible().catch(() => false)) {
+      await link.scrollIntoViewIfNeeded().catch(() => {});
+      await link.click({ timeout: 10000 });
+      return;
+    }
   }
-  await link.click({ timeout: 10000 }).catch((error) => {
-    failures.push(`${name}: could not click visible GR8 Select link (${error.message.split('\n')[0]})`);
-  });
+  failures.push(`${name}: could not find a visible GR8 Select link`);
 }
 
 async function checkPersistence(browser, choice, { keyboard = false, setup } = {}) {

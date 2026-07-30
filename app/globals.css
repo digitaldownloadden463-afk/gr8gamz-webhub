@@ -729,6 +729,36 @@ main {
   justify-self: end;
 }
 
+.pagination-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pagination-list a,
+.pagination-list span {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.055);
+  color: var(--text);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.pagination-list a:hover,
+.pagination-list a:focus-visible,
+.pagination-list span[aria-current="page"] {
+  border-color: rgba(50,255,129,.75);
+  background: rgba(50,255,129,.14);
+  color: var(--brand);
+}
+
 .share-panel,
 .challenge-panel {
   display: grid;

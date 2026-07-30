@@ -1,30 +1,178 @@
-import generatedPartnerCatalogue from './partnerCatalog.generated.json';
+import generatedPartnerCatalogue from './partnerCatalog.generated.json' with { type: 'json' };
 
-function cleanPublicText(value = '') {
+const prohibitedPublicPhrases = [
+  /high-intent/gi,
+  /related routes/gi,
+  /selected for the GR8 Select/gi,
+  /selected for the GR8 Game Network/gi,
+  /clear artwork, a usable category and a focused browser-game profile/gi,
+  /This profile gives players a branded overview/gi,
+  /quick-play context/gi,
+  /browser-game profile/gi,
+  /browser-based game profile/gi,
+  /app-store installation/gi,
+  /search(?:es|able| intent| targets?)/gi,
+  /SEO/gi,
+  /indexable|indexed|canonical|optimized|metadata|feeds?|suppliers?|provider validation|artwork eligibility/gi,
+  /GamePix|GameMonetize/gi,
+  /GR8 Game Network/gi,
+  /\bpartner-powered\b/gi,
+  /\bpartner games?\b/gi,
+  /\bpartner profile\b/gi,
+  /\bpartner catalogue\b/gi
+];
+
+const categoryFits = {
+  Action: 'fast reactions, bold moves and quick retries',
+  Adventure: 'exploration, discovery and a longer-feeling session',
+  Arcade: 'simple rules, short runs and instant replay energy',
+  Puzzle: 'smart moves, calm focus and satisfying clears',
+  Racing: 'speed, timing and sharp steering',
+  Sports: 'quick scoring, timing and skill challenges',
+  Multiplayer: 'competitive-feeling browser sessions',
+  '.IO': 'arena-style play and bigger sessions',
+  Simulation: 'experiments, systems and playful testing',
+  Strategy: 'planning ahead and careful choices'
+};
+
+const categorySessionStyles = {
+  Action: ['fast retries', 'reactive play', 'bold moves', 'short bursts', 'quick pressure', 'reflex practice', 'direct action', 'high-energy rounds'],
+  Adventure: ['exploration', 'discovery', 'longer runs', 'curious play', 'steady progress', 'new scenes', 'quest-style play', 'open-ended sessions'],
+  Arcade: ['quick starts', 'simple rules', 'score chasing', 'repeat attempts', 'short breaks', 'tap-and-play energy', 'light challenges', 'fast resets', 'easy warm-ups', 'pick-up-and-play sessions', 'bright arcade runs', 'casual retries'],
+  Puzzle: ['calm focus', 'smart placement', 'careful choices', 'satisfying clears', 'logic practice', 'pattern spotting', 'slow planning', 'relaxed problem solving'],
+  Racing: ['speed runs', 'clean timing', 'steering practice', 'instant retries', 'fast corners', 'reaction tests', 'driving rhythm', 'chase-style play'],
+  Sports: ['timing challenges', 'quick scoring', 'skill shots', 'match-style play', 'short competitions', 'aim practice', 'sports pressure', 'fast rounds'],
+  Multiplayer: ['competitive energy', 'arena-style sessions', 'shared-feeling play', 'quick rematches', 'busy rounds', 'social-feeling play', 'rival pressure', 'repeat sessions'],
+  '.IO': ['arena-style sessions', 'bigger runs', 'competitive movement', 'repeat attempts', 'survival pressure', 'quick rematches', 'map awareness', 'open arena play'],
+  Simulation: ['experimentation', 'testing ideas', 'system play', 'curious sessions', 'sandbox-style thinking', 'hands-on practice', 'trial runs', 'creative testing'],
+  Strategy: ['planning ahead', 'careful choices', 'tactical thinking', 'patient play', 'positioning', 'smart sequencing', 'slower decisions', 'measured moves']
+};
+
+function stripUnsafeMarkup(value = '') {
   return String(value)
-    .replace(/GR8 Game Network/gi, 'GR8 Select')
-    .replace(/partner-powered/gi, 'GR8 Select')
-    .replace(/partner-game/gi, 'GR8 Select game')
-    .replace(/partner game/gi, 'GR8 Select game')
-    .replace(/partner catalogue/gi, 'GR8 Select catalogue')
-    .replace(/partner profile/gi, 'game profile')
-    .replace(/GamePix|GameMonetize/gi, 'GR8 Select')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ');
+}
+
+function normalizeSentence(value = '') {
+  return stripUnsafeMarkup(value)
+    .replace(/&nbsp;|&#160;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&rsquo;|&lsquo;|’|‘/g, "'")
+    .replace(/&rdquo;|&ldquo;|“|”/g, '"')
+    .replace(/&mdash;|&ndash;|mdash|ndash/gi, '-')
+    .replace(/\bno-download\b/gi, 'instant')
+    .replace(/\bbrowser-game\b/gi, 'browser game')
+    .replace(/\bPlay Now route\b/gi, 'Play page')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
+function cleanPublicText(value = '') {
+  let text = normalizeSentence(value)
+    .replace(/GR8 Game Network/gi, 'GR8 Select')
+    .replace(/\bthe GR8 Select\b/gi, 'GR8 Select')
+    .replace(/\bpartner-powered\b/gi, 'GR8 Select')
+    .replace(/\bpartner-game\b/gi, 'GR8 Select game')
+    .replace(/\bpartner games?\b/gi, 'GR8 Select games')
+    .replace(/\bpartner catalogue\b/gi, 'GR8 Select catalogue')
+    .replace(/\bpartner profile\b/gi, 'game page')
+    .replace(/GamePix|GameMonetize/gi, 'GR8 Select');
+  for (const phrase of prohibitedPublicPhrases) text = text.replace(phrase, ' ');
+  return text.replace(/\s+/g, ' ').replace(/\s+([,.!?])/g, '$1').trim();
+}
+
+function hasProhibitedPublicText(value = '') {
+  return prohibitedPublicPhrases.some((phrase) => {
+    phrase.lastIndex = 0;
+    return phrase.test(String(value));
+  });
+}
+
+function firstUsefulSentence(value = '') {
+  const cleaned = cleanPublicText(value);
+  if (!cleaned || hasProhibitedPublicText(cleaned)) return '';
+  const sentences = cleaned.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const useful = sentences.find((sentence) => sentence.length >= 45 && sentence.length <= 220) || sentences[0] || cleaned;
+  return useful.replace(/[.!?]*$/, '.');
+}
+
+function categoryFit(category = '') {
+  return categoryFits[category] || 'a quick session with clear goals and easy browsing';
+}
+
+function categoryStyle(category = '') {
+  const lower = String(category || 'arcade').toLowerCase();
+  return /^[aeiou]/.test(lower) ? `an ${lower} game` : `a ${lower} game`;
+}
+
+function hashIndex(value = '', length = 1) {
+  let hash = 0;
+  Array.from(String(value)).forEach((char, index) => {
+    hash += char.charCodeAt(0) * (index + 3);
+  });
+  return hash % Math.max(1, length);
+}
+
+function sessionStyle(profile) {
+  const options = categorySessionStyles[profile.category] || categorySessionStyles.Arcade;
+  return options[hashIndex(profile.slug || profile.title, options.length)];
+}
+
+function buildBestFor(profile) {
+  const cleaned = cleanPublicText(profile.bestFor || '');
+  if (cleaned && !hasProhibitedPublicText(cleaned) && !/^(designed for|best on|phone, tablet|desktop|browser support|playable in modern browsers)/i.test(cleaned)) return cleaned;
+  return `players who want ${categoryFit(profile.category)}`;
+}
+
+function buildDescription(profile) {
+  const source = firstUsefulSentence(profile.description || '');
+  if (source && !/selected|profile|routes?|search|SEO|metadata|supplier|provider|browser game in GR8 Select|browser game selected/i.test(source)) return source;
+  const bestFor = buildBestFor(profile).replace(/^players who want\s+/i, '');
+  const style = sessionStyle(profile);
+  return `${profile.title} is ${categoryStyle(profile.category)} for ${bestFor}. It is a good pick for ${style} when you want something quick to open on GR8 GAMZ.`;
+}
+
+function buildWhyPlay(profile) {
+  const bestFor = buildBestFor(profile)
+    .replace(/^players who want\s+/i, '')
+    .replace(/^designed for\s+/i, '')
+    .replace(/\.$/, '');
+  const style = sessionStyle(profile);
+  const fit = bestFor.includes(style) ? bestFor : `${style} and ${bestFor}`;
+  return `Choose ${profile.title} for ${fit}. The Play page opens the game only when you are ready.`;
+}
+
+function buildHowToPlay(profile) {
+  const controls = cleanPublicText(profile.controls || '');
+  if (controls && !hasProhibitedPublicText(controls)) return controls;
+  return 'Open the game, read the on-screen instructions, then use the controls shown inside the play area.';
+}
+
+function buildDeviceFit(profile) {
+  const cleaned = cleanPublicText(profile.deviceFit || profile.deviceSupport || '');
+  if (cleaned && !hasProhibitedPublicText(cleaned)) return cleaned;
+  return 'Playable in modern browsers; the loaded game shows the controls that fit your device.';
+}
+
 function cleanProfile(profile) {
-  return {
+  const base = {
     ...profile,
     title: cleanPublicText(profile.title),
     providerLabel: 'GR8 Select',
-    difficulty: cleanPublicText(profile.difficulty),
-    bestFor: cleanPublicText(profile.bestFor),
-    controls: cleanPublicText(profile.controls),
-    description: cleanPublicText(profile.description),
-    whyPicked: cleanPublicText(profile.whyPicked),
-    howToPlay: cleanPublicText(profile.howToPlay),
-    deviceFit: cleanPublicText(profile.deviceFit)
+    difficulty: cleanPublicText(profile.difficulty) || 'Quick play',
+    controls: cleanPublicText(profile.controls) || 'Use the on-screen instructions after the game opens.'
+  };
+  base.bestFor = buildBestFor(base);
+  base.description = buildDescription(base);
+  base.whyPicked = buildWhyPlay(base);
+  base.howToPlay = buildHowToPlay(base);
+  base.deviceFit = buildDeviceFit(base);
+  return {
+    ...base
   };
 }
 
@@ -1594,11 +1742,11 @@ export const partnerGameProfiles = [
 function generatedPartnerProfile(record) {
   const controls = record.controls || 'Use the on-screen instructions after the game opens.';
   const deviceFit = record.deviceSupport || 'Phone, tablet and desktop support depends on the loaded game.';
-  return {
+  return cleanProfile({
     title: record.title,
     provider: record.source,
     category: record.category,
-    intent: `${record.category} browser game`,
+    intent: `${record.category} game`,
     sourceRank: 'GR8 Select catalogue',
     keywords: [],
     rank: 1000 + Number(record.sourcePage || 0),
@@ -1611,18 +1759,18 @@ function generatedPartnerProfile(record) {
     path: record.path,
     playPath: record.playPath,
     providerLabel: 'GR8 Select',
-    difficulty: 'Quick browser play',
-    bestFor: record.deviceSupport || 'players browsing GR8 Select for a quick session',
+    difficulty: 'Quick play',
+    bestFor: '',
     controls,
     description: record.description,
-    whyPicked: `${record.title} fits GR8 Select because it has clear artwork, a usable category and a focused browser-game profile.`,
+    whyPicked: '',
     howToPlay: controls,
     deviceFit,
     lastChecked: record.lastChecked,
     qaStatus: record.qaStatus,
     sourceId: record.sourceId,
     sourceAttribution: record.sourceAttribution
-  };
+  });
 }
 
 const generatedPartnerGameProfiles = (generatedPartnerCatalogue.games || []).map(generatedPartnerProfile);
@@ -1735,50 +1883,50 @@ export const partnerNetworkClusters = [
   {
     slug: 'action-games',
     title: 'Action Games',
-    eyebrow: 'Action partner picks',
-    description: 'Fast, reactive partner-powered games with fighting, survival, shooting, physics and arcade pressure.',
+    eyebrow: 'Action picks',
+    description: 'Fast, reactive GR8 Select games with fighting, survival, shooting, physics and arcade pressure.',
     categories: ['Action', 'Shooting', '.IO'],
-    intent: 'free action games online, no download action games and quick browser combat games'
+    intent: 'action games for quick browser combat'
   },
   {
     slug: 'puzzle-games',
     title: 'Puzzle Games',
-    eyebrow: 'Puzzle partner picks',
-    description: 'Block puzzles, sorting games, escape logic and thinking games from the GR8 Game Network.',
+    eyebrow: 'Puzzle picks',
+    description: 'Block puzzles, sorting games, escape logic and thinking games from GR8 Select.',
     categories: ['Puzzle', 'Educational'],
-    intent: 'free puzzle games online, block puzzle browser games and no-download thinking games'
+    intent: 'puzzle games for short thinking sessions'
   },
   {
     slug: 'racing-games',
     title: 'Racing & Driving Games',
-    eyebrow: 'Driving partner picks',
+    eyebrow: 'Driving picks',
     description: 'Cars, crash tests, stunt runs, 3D racing and fast driving games for instant browser play.',
     categories: ['Racing'],
-    intent: 'free racing games online, car games no download and fast driving browser games'
+    intent: 'racing and driving games for fast sessions'
   },
   {
     slug: 'sports-games',
     title: 'Sports Games',
-    eyebrow: 'Sports partner picks',
+    eyebrow: 'Sports picks',
     description: 'Basketball, football, pinball sports and skill-based sports games with short-session replay value.',
     categories: ['Sports'],
-    intent: 'free sports games online, basketball browser games and quick sports games'
+    intent: 'sports games for quick skill challenges'
   },
   {
     slug: 'arcade-games',
     title: 'Arcade Games',
-    eyebrow: 'Arcade partner picks',
-    description: 'Simple, addictive partner-powered arcade games selected for quick starts and repeated plays.',
+    eyebrow: 'Arcade picks',
+    description: 'Simple arcade games built for quick starts and repeated plays.',
     categories: ['Arcade'],
-    intent: 'free arcade games online, mobile arcade games and no-download browser arcade games'
+    intent: 'arcade games for quick starts'
   },
   {
     slug: 'strategy-games',
     title: 'Strategy & Battle Games',
-    eyebrow: 'Strategy partner picks',
+    eyebrow: 'Strategy picks',
     description: 'Turn-based battles, multiplayer choices, tactics and strategy-style network games.',
     categories: ['Strategy', 'Multiplayer'],
-    intent: 'free strategy games online, multiplayer browser games and battle games no download'
+    intent: 'strategy and battle games for careful choices'
   }
 ];
 

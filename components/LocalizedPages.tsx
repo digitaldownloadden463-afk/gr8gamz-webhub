@@ -83,6 +83,13 @@ export function LocalizedCollectionPage({ locale, page = 1, categorySlug, source
   const games = launch.slice((safePage - 1) * pageSize, safePage * pageSize);
   const category = categorySlug ? getRegistryCategories(1).find((item) => item.slug === categorySlug) : null;
   const basePath = categorySlug ? `/categories/${categorySlug}` : (source === 'gr8-originals' ? '/gr8-originals' : '/gr8-select');
+  const pageLinks = Array.from({ length: totalPages }, (_, index) => {
+    const pageNumber = index + 1;
+    return {
+      pageNumber,
+      href: pathForLocale(locale, pageNumber === 1 ? basePath : `${basePath}/page/${pageNumber}`)
+    };
+  });
 
   return (
     <main lang={locale} dir={info.dir}>
@@ -99,6 +106,15 @@ export function LocalizedCollectionPage({ locale, page = 1, categorySlug, source
           {safePage > 1 ? <Link className="secondary-cta" href={pathForLocale(locale, safePage === 2 ? basePath : `${basePath}/page/${safePage - 1}`)}><ArrowLeft size={18} aria-hidden="true" /> {text.common.previous}</Link> : <span />}
           <span>{text.common.page} {safePage} / {totalPages}</span>
           {safePage < totalPages ? <Link className="cta" href={pathForLocale(locale, `${basePath}/page/${safePage + 1}`)}>{text.common.next} <ArrowRight size={18} aria-hidden="true" /></Link> : <span />}
+        </nav>
+      ) : null}
+      {totalPages > 1 ? (
+        <nav className="pagination-list" aria-label={text.common.page}>
+          {pageLinks.map((item) => (
+            item.pageNumber === safePage
+              ? <span key={item.pageNumber} aria-current="page">{item.pageNumber}</span>
+              : <Link key={item.pageNumber} href={item.href}>{item.pageNumber}</Link>
+          ))}
         </nav>
       ) : null}
     </main>

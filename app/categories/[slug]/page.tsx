@@ -6,12 +6,12 @@ import { getRegistryCategories, getRegistryGamesByCategory } from '@/lib/gameReg
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getRegistryCategories().map((category) => ({ slug: category.slug }));
+  return getRegistryCategories(1).map((category) => ({ slug: category.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const category = getRegistryCategories().find((item) => item.slug === slug);
+  const category = getRegistryCategories(1).find((item) => item.slug === slug);
   if (!category) return {};
   return {
     title: `${category.name} Games`,
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CategoryPage({ params }: PageProps) {
   const { slug } = await params;
-  const category = getRegistryCategories().find((item) => item.slug === slug);
+  const category = getRegistryCategories(1).find((item) => item.slug === slug);
   if (!category) notFound();
   const games = getRegistryGamesByCategory(slug);
 
