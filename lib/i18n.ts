@@ -216,8 +216,13 @@ export function hasLocalizedRoute(path = '/') {
 }
 
 export function switchLocalePath(locale: Locale, path = '/') {
+  const firstSegment = path.split('/').filter(Boolean)[0];
+  const alreadyLocalized = isLocale(firstSegment);
   const clean = stripLocale(path);
   if (locale === defaultLocale) return clean;
+  if (!alreadyLocalized && /^\/more-free-games\/[a-z0-9-]+(?:\/play)?\/?$/.test(clean)) {
+    return pathForLocale(locale, '/');
+  }
   return pathForLocale(locale, hasLocalizedRoute(clean) ? clean : '/');
 }
 
