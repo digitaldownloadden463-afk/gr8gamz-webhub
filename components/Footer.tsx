@@ -14,20 +14,20 @@ export function Footer({ locale }: { locale?: Locale }) {
   const activeLocale = locale || localeFromPath(pathname || '/');
   const text = tr(activeLocale);
   const links = [
-    ['/games', text.nav.games],
-    ['/gr8-originals', text.nav.originals],
-    ['/gr8-select', text.nav.select],
-    ['/gr8-trending', text.nav.trending],
-    ['/gr8-daily', text.nav.daily],
-    ['/new-games', text.nav.new],
-    ['/my-arcade', text.nav.arcade],
-    ['/categories/arcade', text.categories.Arcade],
-    ['/categories/puzzle', text.categories.Puzzle],
-    ['/categories/racing', text.categories.Racing],
-    ['/privacy', text.legal.privacyTitle],
-    ['/terms', text.legal.termsTitle],
-    ['/privacy-choices', text.common.privacyChoice],
-    ['/contact', 'Contact']
+    ['/games', text.nav.games, true],
+    ['/gr8-originals', text.nav.originals, true],
+    ['/gr8-select', text.nav.select, true],
+    ['/gr8-trending', text.nav.trending, true],
+    ['/gr8-daily', text.nav.daily, true],
+    ['/new-games', text.nav.new, true],
+    ['/my-arcade', text.nav.arcade, true],
+    ['/categories/arcade', text.categories.Arcade, true],
+    ['/categories/puzzle', text.categories.Puzzle, true],
+    ['/categories/racing', text.categories.Racing, true],
+    ['/privacy', text.legal.privacyTitle, true],
+    ['/terms', text.legal.termsTitle, true],
+    ['/privacy-choices', text.common.privacyChoice, false],
+    ['/contact', 'Contact', false]
   ] as const;
 
   return (
@@ -37,7 +37,9 @@ export function Footer({ locale }: { locale?: Locale }) {
         <p>{text.home.intro}</p>
       </div>
       <nav aria-label="Footer navigation">
-        {links.map(([href, label]) => <Link key={href} href={pathForLocale(activeLocale, href)}>{label}</Link>)}
+        {links.map(([href, label, localize]) => (
+          <Link key={href} href={localize ? pathForLocale(activeLocale, href) : href}>{label}</Link>
+        ))}
       </nav>
     </footer>
   );
