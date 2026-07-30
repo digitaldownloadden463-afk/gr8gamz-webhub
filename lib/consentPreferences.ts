@@ -7,6 +7,7 @@ export type ConsentSnapshot = ConsentChoice | null | 'unknown';
 
 const legacyStorageKey = 'gr8:privacy-consent';
 const storageKey = 'gr8:privacy-consent:v1';
+const signalStorageKey = 'gr8:privacy-consent:signal';
 const cookieName = 'gr8_consent';
 const version = 'v1';
 const maxAgeSeconds = 60 * 60 * 24 * 180;
@@ -122,6 +123,7 @@ export function setConsentChoice(choice: ConsentChoice) {
   safeCookieWrite(choice);
   safeLocalStorageSet(storageKey, `${version}.${choice}`);
   safeLocalStorageSet(legacyStorageKey, choice);
+  safeLocalStorageSet(signalStorageKey, `${version}.${choice}.${Date.now()}`);
   emitConsentChange();
 }
 
@@ -129,8 +131,8 @@ export function subscribeConsentChoice(listener: () => void) {
   listeners.add(listener);
   const notify = () => listener();
   const storageNotify = (event: StorageEvent) => {
-    if (event.key === storageKey || event.key === legacyStorageKey) {
-      const next = parseStored(event.newValue);
+    if (event.key === storageKey || event.key === legacyStorageKey || event.key === signalStorageKey) {
+      const next = parseStored(event.newValue) || parseStored(event.newValue?.split('.').slice(0, 2).join('.'));
       if (next) memoryChoice = next;
     }
     listener();
@@ -186,6 +188,7 @@ export const consentPreferenceMeta = {
   cookieName,
   storageKey,
   legacyStorageKey,
+  signalStorageKey,
   version,
   eventName,
   maxAgeSeconds
