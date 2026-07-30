@@ -1747,30 +1747,6 @@ main {
   box-shadow: var(--shadow-soft), var(--glow-mint);
 }
 
-@supports (animation-timeline: view()) {
-  .value-grid article,
-  .section-heading,
-  .portal-stage,
-  .spotlight-card,
-  .content-panel,
-  .game-card,
-  .partner-card,
-  .share-panel,
-  .final-play-cta {
-    animation-name: gr8-section-rise;
-    animation-duration: 1ms;
-    animation-fill-mode: both;
-    animation-timing-function: var(--ease-out);
-    animation-timeline: view();
-    animation-range: entry 0% cover 28%;
-  }
-}
-
-@keyframes gr8-section-rise {
-  from { opacity: .45; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (hover: hover) and (pointer: fine) {
   .hero__image {
     transform: scale(1.04);
@@ -1844,18 +1820,5 @@ main {
   .game-card::after,
   .partner-card::after {
     display: none;
-  }
-  @supports (animation-timeline: view()) {
-    .value-grid article,
-    .section-heading,
-    .portal-stage,
-    .spotlight-card,
-    .content-panel,
-    .game-card,
-    .partner-card,
-    .share-panel,
-    .final-play-cta {
-      animation: none;
-    }
   }
 }

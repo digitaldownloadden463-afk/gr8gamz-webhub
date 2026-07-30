@@ -45,6 +45,7 @@ export default function HomePage() {
           alt="GR8 GAMZ neon arcade arena"
           fill
           priority
+          unoptimized
           sizes="100vw"
           className="hero__image"
         />
@@ -114,7 +115,7 @@ export default function HomePage() {
             dateAdded={game.dateAdded}
             controls={game.shortControls || game.controls?.[0]}
             difficulty={game.difficulty}
-            priority={index < 3}
+            priority={false}
           />
         ))}
       </section>
@@ -143,7 +144,7 @@ export default function HomePage() {
         <Link href="/gr8-select">Explore more <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
       <section className="partner-rail" aria-label="Featured GR8 Select games">
-        {partners.map((profile, index) => <PartnerGameCard key={profile.slug} profile={profile} priority={index < 3} />)}
+        {partners.map((profile) => <PartnerGameCard key={profile.slug} profile={profile} />)}
       </section>
 
       <section className="final-play-cta">
