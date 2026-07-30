@@ -39,6 +39,11 @@ const unsafeMarkup = /<[^>]+>|javascript:|onerror\s*=|onload\s*=/i;
 const placeholder = /\{[a-z0-9_.-]+\}|\[[A-Z_]+\]|TODO|TBD|lorem ipsum/i;
 const supplierLeak = /\b(GamePix|GameMonetize|supplier|provider validation|GR8 Game Network)\b/i;
 const developerLanguage = /\b(indexable|indexed|canonical|metadata|SEO|search intent|crawler|crawl layer|route|routes|feed|registry|profile pages?)\b/i;
+const joinedAudiencePhrase = /\bfor\b[^.?!]*\band\s+(players who|players looking|people who|fans of|anyone who)/i;
+const loadingLanguage = /\b(Play page|loads?|when you are ready|when ready|select Play|choose to open it)\b/i;
+const audiencePhrase = '(?:players who want|players who like|players who enjoy|players looking for|people who want|anyone who enjoys|fans of)';
+const approvedWhyPattern = new RegExp(`^Choose .+ (?:when you want [^.?!]+\\. It suits ${audiencePhrase} [^.?!]+\\.|for [^.?!]+\\.)$`, 'i');
+const regressionSlugs = new Set(['tentrix', 'body-drop-3d', 'prism-match-3d', 'twin-peeks', 'war-the-knights', 'car-crash-test']);
 
 function normalize(value = '') {
   return String(value).replace(/\s+/g, ' ').trim();
@@ -75,6 +80,10 @@ let supplierLeaks = 0;
 let placeholderMatches = 0;
 let unsafeMatches = 0;
 let unsupportedClaimFailures = 0;
+let whyPickedChecked = 0;
+let whyPickedGrammarFailures = 0;
+let duplicateLoadingExplanations = 0;
+let regressionAssertions = 0;
 
 for (const profile of allPartnerGameProfiles) {
   const publicText = textForProfile(profile);
@@ -106,6 +115,37 @@ for (const profile of allPartnerGameProfiles) {
   if (unsafeMarkup.test(publicText)) {
     unsafeMatches += 1;
     failures.push(`${profile.slug}: unsafe markup`);
+  }
+
+  const whyPicked = normalize(profile.whyPicked || '');
+  whyPickedChecked += 1;
+  if (!whyPicked) {
+    whyPickedGrammarFailures += 1;
+    failures.push(`${profile.slug}: empty whyPicked`);
+  } else {
+    const sentences = whyPicked.match(/[^.!?]+[.!?]/g) || [];
+    const duplicateConsecutiveSentence = sentences.some((sentence, index) => index > 0 && normalize(sentence).toLowerCase() === normalize(sentences[index - 1]).toLowerCase());
+    if (joinedAudiencePhrase.test(whyPicked)) {
+      whyPickedGrammarFailures += 1;
+      failures.push(`${profile.slug}: joined audience phrase in whyPicked`);
+    }
+    if (loadingLanguage.test(whyPicked)) {
+      whyPickedGrammarFailures += 1;
+      duplicateLoadingExplanations += 1;
+      failures.push(`${profile.slug}: loading behaviour included in whyPicked`);
+    }
+    if (!/[.!?]$/.test(whyPicked) || !approvedWhyPattern.test(whyPicked) || duplicateConsecutiveSentence || placeholder.test(whyPicked)) {
+      whyPickedGrammarFailures += 1;
+      failures.push(`${profile.slug}: malformed whyPicked "${whyPicked}"`);
+    }
+  }
+
+  if (regressionSlugs.has(profile.slug)) {
+    regressionAssertions += 1;
+    if (joinedAudiencePhrase.test(whyPicked) || loadingLanguage.test(whyPicked) || !approvedWhyPattern.test(whyPicked)) {
+      whyPickedGrammarFailures += 1;
+      failures.push(`${profile.slug}: named regression assertion failed`);
+    }
   }
 
   const controls = normalize(profile.controls || '');
@@ -164,6 +204,10 @@ const report = {
   unsafeMarkupMatches: unsafeMatches,
   unsupportedClaimFailures,
   localizedTemplateFailures: localeTemplateFailures,
+  whyPickedChecked,
+  whyPickedGrammarFailures,
+  duplicateLoadingExplanations,
+  regressionAssertions,
   sampleFailures: failures.slice(0, 80)
 };
 

@@ -122,6 +122,39 @@ function sessionStyle(profile) {
   return options[hashIndex(profile.slug || profile.title, options.length)];
 }
 
+const audiencePhrasePattern = /^(players who want|players who like|players who enjoy|players looking for|people who want|anyone who enjoys|fans of)\s+/i;
+
+function trimPhrase(value = '') {
+  return cleanPublicText(value).replace(/[.!?]+$/, '').trim();
+}
+
+function isAudiencePhrase(value = '') {
+  return audiencePhrasePattern.test(trimPhrase(value));
+}
+
+function audienceFit(profile) {
+  const bestFor = trimPhrase(buildBestFor(profile));
+  if (isAudiencePhrase(bestFor)) return bestFor;
+  return '';
+}
+
+function wantPhrase(profile) {
+  const style = sessionStyle(profile);
+  const category = String(profile.category || '').toLowerCase();
+  const title = String(profile.title || '').toLowerCase();
+  const source = `${profile.description || ''} ${profile.intent || ''}`.toLowerCase();
+  if (category === 'puzzle') return /logic|planning|strategy|block|grid/.test(source) ? 'a calm logic challenge' : 'a quick puzzle';
+  if (category === 'action') return /physics|ragdoll|stunt|crash/.test(source) ? 'bold, physics-based action' : 'quick action';
+  if (category === 'racing') return 'speed, timing and sharp steering';
+  if (category === 'sports') return 'a quick scoring challenge';
+  if (category === 'arcade' && /logic|match|prism|cube|grid|tile|quiz|flow/.test(`${title} ${profile.intent || ''}`.toLowerCase())) return 'a quick puzzle';
+  if (category === 'adventure') return 'exploration and discovery';
+  if (category === 'multiplayer' || category === '.io') return 'competitive-feeling play';
+  if (category === 'simulation') return 'hands-on experimenting';
+  if (category === 'strategy') return 'planning and careful choices';
+  return style;
+}
+
 function buildBestFor(profile) {
   const cleaned = cleanPublicText(profile.bestFor || '');
   if (cleaned && !hasProhibitedPublicText(cleaned) && !/^(designed for|best on|phone, tablet|desktop|browser support|playable in modern browsers)/i.test(cleaned)) return cleaned;
@@ -137,13 +170,10 @@ function buildDescription(profile) {
 }
 
 function buildWhyPlay(profile) {
-  const bestFor = buildBestFor(profile)
-    .replace(/^players who want\s+/i, '')
-    .replace(/^designed for\s+/i, '')
-    .replace(/\.$/, '');
-  const style = sessionStyle(profile);
-  const fit = bestFor.includes(style) ? bestFor : `${style} and ${bestFor}`;
-  return `Choose ${profile.title} for ${fit}. The Play page opens the game only when you are ready.`;
+  const bestFor = trimPhrase(buildBestFor(profile).replace(/^designed for\s+/i, ''));
+  const audience = audienceFit(profile);
+  if (audience) return `Choose ${profile.title} when you want ${wantPhrase(profile)}. It suits ${audience}.`;
+  return `Choose ${profile.title} for ${bestFor || wantPhrase(profile)}.`;
 }
 
 function buildHowToPlay(profile) {

@@ -10,5 +10,9 @@
   "unsafeMarkupMatches": 0,
   "unsupportedClaimFailures": 0,
   "localizedTemplateFailures": 0,
+  "whyPickedChecked": 2400,
+  "whyPickedGrammarFailures": 0,
+  "duplicateLoadingExplanations": 0,
+  "regressionAssertions": 6,
   "sampleFailures": []
 }

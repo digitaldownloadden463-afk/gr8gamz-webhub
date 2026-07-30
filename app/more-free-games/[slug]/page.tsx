@@ -107,9 +107,9 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       <section className="content-panel">
         <h2>How to start</h2>
         <p>{profile.howToPlay || controls}</p>
-        <h2>Why it fits this session</h2>
+        <h2>Why you might like it</h2>
         <p>{profile.whyPicked || `${profile.title} is a ${profile.category.toLowerCase()} game for quick browser play on GR8 GAMZ.`}</p>
-        <p className="fine-print">The game itself loads on the Play page only after you choose to open it.</p>
+        <p className="fine-print">The game loads only after you select Play.</p>
       </section>
       <GameShare
         title={profile.title}
