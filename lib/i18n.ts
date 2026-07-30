@@ -191,6 +191,36 @@ export function pathForLocale(locale: Locale, path = '/') {
   return `/${locale}${clean === '/' ? '' : clean}`;
 }
 
+const localizedRoutePatterns = [
+  /^\/$/,
+  /^\/games\/?$/,
+  /^\/gr8-select\/?$/,
+  /^\/gr8-select\/page\/[1-9][0-9]*\/?$/,
+  /^\/gr8-originals\/?$/,
+  /^\/gr8-trending\/?$/,
+  /^\/gr8-daily\/?$/,
+  /^\/new-games\/?$/,
+  /^\/my-arcade\/?$/,
+  /^\/privacy\/?$/,
+  /^\/terms\/?$/,
+  /^\/categories\/[a-z0-9.-]+\/?$/,
+  /^\/categories\/[a-z0-9.-]+\/page\/[1-9][0-9]*\/?$/,
+  /^\/arcade\/[a-z0-9-]+\/?$/,
+  /^\/more-free-games\/[a-z0-9-]+\/?$/,
+  /^\/more-free-games\/[a-z0-9-]+\/play\/?$/
+];
+
+export function hasLocalizedRoute(path = '/') {
+  const clean = stripLocale(path).split('?')[0] || '/';
+  return localizedRoutePatterns.some((pattern) => pattern.test(clean));
+}
+
+export function switchLocalePath(locale: Locale, path = '/') {
+  const clean = stripLocale(path);
+  if (locale === defaultLocale) return clean;
+  return pathForLocale(locale, hasLocalizedRoute(clean) ? clean : '/');
+}
+
 export function localizedCanonical(locale: Locale, path = '/') {
   return canonical(pathForLocale(locale, path));
 }

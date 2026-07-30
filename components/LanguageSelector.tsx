@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { localeInfo, locales, pathForLocale, stripLocale, type Locale } from '@/lib/i18n';
+import { localeInfo, locales, switchLocalePath, type Locale } from '@/lib/i18n';
 
 export function LanguageSelector({ currentLocale, label }: { currentLocale: Locale; label: string }) {
   const pathname = usePathname() || '/';
@@ -17,7 +17,7 @@ export function LanguageSelector({ currentLocale, label }: { currentLocale: Loca
         {locales.map((locale) => (
           <a
             key={locale.code}
-            href={pathForLocale(locale.code, stripLocale(pathname))}
+            href={switchLocalePath(locale.code, pathname)}
             hrefLang={locale.code}
             lang={locale.code}
             dir={locale.dir}
