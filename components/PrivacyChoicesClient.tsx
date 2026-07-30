@@ -1,24 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import { getConsentChoice, setConsentChoice } from '@/components/ConsentBanner';
+import { setConsentChoice, useConsentChoice } from '@/lib/consentPreferences';
 
 export default function PrivacyChoicesClient() {
-  const [choice, setChoice] = useState<string>(() => getConsentChoice() || 'not set');
+  const choice = useConsentChoice();
 
   function choose(next: 'accepted' | 'rejected') {
     setConsentChoice(next);
-    setChoice(next);
   }
 
   function clearArcadeStorage() {
-    window.localStorage.removeItem('gr8:favourites');
-    window.localStorage.removeItem('gr8:recent');
+    try {
+      window.localStorage.removeItem('gr8:favourites');
+      window.localStorage.removeItem('gr8:recent');
+    } catch {}
   }
 
   return (
     <section className="content-panel">
-      <p>Current optional resource choice: <strong>{choice}</strong></p>
+      <p>Current optional resource choice: <strong>{choice === 'unknown' ? 'loading' : choice || 'not set'}</strong></p>
       <div className="cta-row">
         <button type="button" className="cta-button" onClick={() => choose('accepted')}>Accept All</button>
         <button type="button" className="secondary-button" onClick={() => choose('rejected')}>Reject All</button>

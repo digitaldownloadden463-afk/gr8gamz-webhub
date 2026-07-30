@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import { getConsentChoice } from '@/components/ConsentBanner';
+import { getConsentSnapshot, getServerConsentSnapshot, subscribeConsentChoice } from '@/lib/consentPreferences';
 import PartnerArtwork from '@/components/PartnerArtwork';
 
 type PartnerPlayClientProps = {
@@ -26,26 +26,9 @@ function getServerHydrationSnapshot() {
   return false;
 }
 
-function subscribeConsent(listener: () => void) {
-  window.addEventListener('gr8-consent-change', listener);
-  window.addEventListener('storage', listener);
-  return () => {
-    window.removeEventListener('gr8-consent-change', listener);
-    window.removeEventListener('storage', listener);
-  };
-}
-
-function getConsentSnapshot() {
-  return getConsentChoice();
-}
-
-function getServerConsentSnapshot() {
-  return null;
-}
-
 export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height }: PartnerPlayClientProps) {
   const hydrated = useSyncExternalStore(subscribeHydration, getHydratedSnapshot, getServerHydrationSnapshot);
-  const consentChoice = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerConsentSnapshot);
+  const consentChoice = useSyncExternalStore(subscribeConsentChoice, getConsentSnapshot, getServerConsentSnapshot);
   const [loaded, setLoaded] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);

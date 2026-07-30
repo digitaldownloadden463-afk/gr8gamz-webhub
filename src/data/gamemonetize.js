@@ -7,6 +7,8 @@ export const gameMonetizeConfig = {
   defaultCategory: 'All',
   defaultCompany: 'All',
   defaultPopularity: 'newest',
+  approvedEmbedHosts: ['html5.gamemonetize.co'],
+  approvedArtworkHosts: ['img.gamemonetize.com'],
   partnerName: 'GameMonetize',
   partnerGamesPath: '/gamemonetize-games',
   playPath: '/gamemonetize-games/play',
@@ -55,12 +57,16 @@ export function normaliseGameMonetizeGame(game = {}) {
 export function isSafeGameMonetizeUrl(url) {
   try {
     const parsed = new URL(url);
-    return parsed.protocol === 'https:' && (
-      parsed.hostname === 'gamemonetize.com' ||
-      parsed.hostname.endsWith('.gamemonetize.com') ||
-      parsed.hostname === 'gamemonetize.co' ||
-      parsed.hostname.endsWith('.gamemonetize.co')
-    );
+    return parsed.protocol === 'https:' && gameMonetizeConfig.approvedEmbedHosts.includes(parsed.hostname) && /^\/[a-z0-9]+\/$/i.test(parsed.pathname);
+  } catch {
+    return false;
+  }
+}
+
+export function isSafeGameMonetizeArtworkUrl(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' && gameMonetizeConfig.approvedArtworkHosts.includes(parsed.hostname) && /^\/[a-z0-9]+\/\d+x\d+\.(?:jpg|jpeg|png|webp)$/i.test(parsed.pathname);
   } catch {
     return false;
   }

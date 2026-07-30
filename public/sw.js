@@ -1,9 +1,6 @@
-const CACHE_NAME = 'gr8-gamz-shell-v2-artwork-repair';
+const CACHE_NAME = 'gr8-gamz-shell-v3-consent-gameplay-repair';
+const GR8_CACHE_PREFIX = 'gr8-gamz-shell-';
 const SHELL_ASSETS = [
-  '/',
-  '/games',
-  '/gr8-originals',
-  '/my-arcade',
   '/offline.html',
   '/manifest.webmanifest',
   '/icon.png',
@@ -11,61 +8,85 @@ const SHELL_ASSETS = [
   '/og/gr8gamz-og.png'
 ];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_ASSETS)).then(() => self.skipWaiting())
+async function cacheShellAssets() {
+  const cache = await caches.open(CACHE_NAME);
+  await Promise.allSettled(
+    SHELL_ASSETS.map(async (asset) => {
+      const response = await fetch(asset, { cache: 'reload' });
+      if (response.ok) await cache.put(asset, response);
+    })
   );
+}
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(cacheShellAssets().finally(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim())
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key.startsWith(GR8_CACHE_PREFIX) && key !== CACHE_NAME)
+            .map((key) => caches.delete(key))
+        )
+      )
+      .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
   const request = event.request;
-  const url = new URL(request.url);
   if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith('/api/') || url.pathname.includes('/play') || url.pathname.startsWith('/_next/image')) return;
+  if (
+    url.pathname.startsWith('/api/') ||
+    url.pathname.includes('/play') ||
+    url.pathname.startsWith('/_next/data') ||
+    url.pathname.startsWith('/_next/image') ||
+    request.headers.get('accept')?.includes('text/x-component')
+  ) {
+    return;
+  }
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-          return response;
-        })
-        .catch(() => caches.match(request).then((cached) => cached || caches.match('/offline.html')))
+      fetch(request).catch(() => caches.match('/offline.html'))
     );
     return;
   }
 
-  if (/\/(?:_next\/static|icon|manifest|art\/|og\/|games\/.*thumb)/.test(url.pathname)) {
+  if (/^\/_next\/static\//.test(url.pathname)) {
     event.respondWith(
       caches.match(request).then((cached) => {
-        const network = fetch(request).then((response) => {
+        if (cached) return cached;
+        return fetch(request).then((response) => {
           if (response.ok) {
             const copy = response.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
           return response;
         });
-        return cached || network;
       })
     );
     return;
   }
 
-  event.respondWith(
-    fetch(request).then((response) => {
-      if (response.ok && /\/(?:partner-games\/.*cover)/.test(url.pathname)) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-      }
-      return response;
-    }).catch(() => caches.match(request))
-  );
+  if (/^\/(?:icon|manifest|art\/|og\/)/.test(url.pathname)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+  }
 });

@@ -7,6 +7,7 @@ const gamePixPageSize = 48;
 const gamePixPages = Number.parseInt(process.env.GR8_GAMEPIX_PAGES || String(Math.ceil(targetIndexable / gamePixPageSize) + 4), 10);
 const requestTimeoutMs = 12000;
 const today = new Date().toISOString();
+const gameMonetizeEmbedsEnabled = process.env.GR8_ENABLE_GAMEMONETIZE_EMBEDS === 'true';
 
 const allowedCategories = new Map([
   ['action', 'Action'],
@@ -199,12 +200,13 @@ function validate(record) {
   if (!record.category) return 'invalid-metadata';
   if (!safeUrl(record.artwork, [
     (url) => record.source === 'gamepix' && url.hostname === 'img.gamepix.com' && url.pathname.startsWith('/games/'),
-    (url) => record.source === 'gamemonetize' && url.hostname === 'img.gamemonetize.com'
+    (url) => record.source === 'gamemonetize' && url.hostname === 'img.gamemonetize.com' && /^\/[a-z0-9]+\/\d+x\d+\.(?:jpg|jpeg|png|webp)$/i.test(url.pathname)
   ])) return 'broken-artwork';
   if (!safeUrl(record.playUrl, [
     (url) => record.source === 'gamepix' && url.hostname === 'play.gamepix.com' && url.pathname.endsWith('/embed'),
-    (url) => record.source === 'gamemonetize' && (url.hostname === 'html5.gamemonetize.co' || url.hostname === 'html5.gamemonetize.com')
+    (url) => record.source === 'gamemonetize' && url.hostname === 'html5.gamemonetize.co' && /^\/[a-z0-9]+\/$/i.test(url.pathname)
   ])) return 'broken-play-url';
+  if (record.source === 'gamemonetize' && !gameMonetizeEmbedsEnabled) return 'blocked';
   return 'verified-indexable';
 }
 
