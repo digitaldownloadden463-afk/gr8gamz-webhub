@@ -69,21 +69,38 @@ function safeCookieWrite(choice: ConsentChoice) {
 function readPersistedChoice(): ConsentChoice | null {
   if (typeof window === 'undefined') return null;
   if (memoryChoice) return memoryChoice;
+
+  const fromExternal = readExternalChoice();
+  if (fromExternal) {
+    memoryChoice = fromExternal;
+    if (!parseStored(safeCookieRead())) safeCookieWrite(fromExternal);
+    if (!parseStored(safeLocalStorageGet(storageKey))) safeLocalStorageSet(storageKey, `${version}.${fromExternal}`);
+    return fromExternal;
+  }
+
+  return memoryChoice;
+}
+
+function readExternalChoice(): ConsentChoice | null {
   const fromCookie = parseStored(safeCookieRead());
   if (fromCookie) {
-    memoryChoice = fromCookie;
     return fromCookie;
   }
 
   const fromStorage = parseStored(safeLocalStorageGet(storageKey)) || parseStored(safeLocalStorageGet(legacyStorageKey));
   if (fromStorage) {
-    memoryChoice = fromStorage;
-    safeCookieWrite(fromStorage);
-    safeLocalStorageSet(storageKey, `${version}.${fromStorage}`);
     return fromStorage;
   }
 
-  return memoryChoice;
+  return null;
+}
+
+function syncFromExternalChoice() {
+  const next = readExternalChoice();
+  if (next && next !== memoryChoice) {
+    memoryChoice = next;
+    for (const storedListener of listeners) storedListener();
+  }
 }
 
 function emitConsentChange() {
@@ -135,12 +152,21 @@ export function subscribeConsentChoice(listener: () => void) {
     window.addEventListener(eventName, notify);
     window.addEventListener('storage', storageNotify);
   } catch {}
+  const interval = window.setInterval(syncFromExternalChoice, 1000);
+  const focusNotify = () => syncFromExternalChoice();
+  try {
+    window.addEventListener('focus', focusNotify);
+    document.addEventListener('visibilitychange', focusNotify);
+  } catch {}
   return () => {
     listeners.delete(listener);
     try {
       window.removeEventListener(eventName, notify);
       window.removeEventListener('storage', storageNotify);
+      window.removeEventListener('focus', focusNotify);
+      document.removeEventListener('visibilitychange', focusNotify);
     } catch {}
+    window.clearInterval(interval);
   };
 }
 
