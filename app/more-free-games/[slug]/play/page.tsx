@@ -37,7 +37,7 @@ export default async function PartnerPlayPage({ params }: PageProps) {
   const related = getRelatedPartnerGameProfiles(profile, 4);
 
   return (
-    <main>
+    <main className="partner-play-page">
       <Link href={profile.path} className="text-link">Back to profile</Link>
       <section className="page-title">
         <span className="eyebrow">GR8 Select</span>

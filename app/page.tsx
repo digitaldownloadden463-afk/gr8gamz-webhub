@@ -104,7 +104,7 @@ export default function HomePage() {
         <Link href="/gr8-originals">View originals <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
       <section className="game-grid">
-        {featured.map((game, index) => (
+        {featured.map((game) => (
           <GameCard
             key={game.id}
             id={game.id}

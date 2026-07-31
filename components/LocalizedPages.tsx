@@ -155,18 +155,18 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
           <span className="eyebrow">{copy.category}</span>
           <h1>{game.title}</h1>
           <p>{copy.description}</p>
-          <dl className="fact-list">
-            <div><dt>{text.common.officialTitle}</dt><dd>{game.title}</dd></div>
-            <div><dt>{text.common.category}</dt><dd>{copy.category}</dd></div>
-            <div><dt>{text.common.bestFor}</dt><dd>{copy.fit}</dd></div>
-            <div><dt>{text.common.controls}</dt><dd>{copy.controls}</dd></div>
-          </dl>
-          <div className="cta-row">
+          <div className="cta-row profile-cta-row">
             <Link href={playPath} className="cta">{text.common.play}</Link>
             <Link href={pathForLocale(locale, `/categories/${slugifyRegistryValue(game.category)}`)} className="secondary-cta">{copy.category}</Link>
           </div>
         </div>
         <PartnerArtwork src={game.artwork} title={game.title} category={copy.category} priority variant="profile" sizes="(max-width: 900px) 92vw, 640px" />
+        <dl className="fact-list profile-facts">
+          <div><dt>{text.common.officialTitle}</dt><dd>{game.title}</dd></div>
+          <div><dt>{text.common.category}</dt><dd>{copy.category}</dd></div>
+          <div><dt>{text.common.bestFor}</dt><dd>{copy.fit}</dd></div>
+          <div><dt>{text.common.controls}</dt><dd>{copy.controls}</dd></div>
+        </dl>
       </section>
       <section className="content-panel">
         <h2>{text.profile.why.replace('{fit}', copy.fit).replace('{title}', game.title).replace('{category}', copy.category)}</h2>
@@ -194,7 +194,7 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
   const localizedProfilePath = pathForLocale(locale, profile.path);
 
   return (
-    <main lang={locale} dir={info.dir}>
+    <main lang={locale} dir={info.dir} className="partner-play-page">
       <Link href={localizedProfilePath} className="text-link">{text.common.previous}</Link>
       <section className="page-title">
         <span className="eyebrow">{text.nav.select}</span>

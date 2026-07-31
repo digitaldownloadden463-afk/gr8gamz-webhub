@@ -49,11 +49,21 @@ function canonicalPath(html) {
 }
 
 async function fetchText(pathname) {
-  const response = await fetch(`${origin}${pathname}`, {
-    headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' }
-  });
-  const text = await response.text();
-  return { response, text };
+  let lastError;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const response = await fetch(`${origin}${pathname}`, {
+        headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' }
+      });
+      const text = await response.text();
+      return { response, text };
+    } catch (error) {
+      lastError = error;
+      await new Promise((resolve) => setTimeout(resolve, 200 * (attempt + 1)));
+    }
+  }
+  failures.push(`${pathname} failed to fetch: ${lastError?.message || 'unknown fetch error'}`);
+  return { response: { status: 0, headers: new Headers() }, text: '' };
 }
 
 async function mapLimit(items, limit, worker) {

@@ -90,19 +90,19 @@ export default async function PartnerProfilePage({ params }: PageProps) {
           <span className="eyebrow">GR8 Select</span>
           <h1>{profile.title}</h1>
           <p>{profile.description}</p>
-          <dl className="fact-list">
-            <div><dt>Category</dt><dd>{profile.category}</dd></div>
-            <div><dt>Best for</dt><dd>{profile.bestFor}</dd></div>
-            <div><dt>Controls</dt><dd>{controls}</dd></div>
-            <div><dt>Device fit</dt><dd>{deviceFit}</dd></div>
-            {profile.lastChecked ? <div><dt>Checked</dt><dd>{new Date(profile.lastChecked).toLocaleDateString('en-GB')}</dd></div> : null}
-          </dl>
-          <div className="cta-row">
+          <div className="cta-row profile-cta-row">
             <Link href={playPath} className="cta">Play</Link>
             <Link href={categoryPath} className="secondary-cta">{profile.category} games</Link>
           </div>
         </div>
         <PartnerArtwork src={profile.image} title={profile.title} category={profile.category} priority variant="profile" sizes="(max-width: 900px) 92vw, 640px" />
+        <dl className="fact-list profile-facts">
+          <div><dt>Category</dt><dd>{profile.category}</dd></div>
+          <div><dt>Best for</dt><dd>{profile.bestFor}</dd></div>
+          <div><dt>Controls</dt><dd>{controls}</dd></div>
+          <div><dt>Device fit</dt><dd>{deviceFit}</dd></div>
+          {profile.lastChecked ? <div><dt>Checked</dt><dd>{new Date(profile.lastChecked).toLocaleDateString('en-GB')}</dd></div> : null}
+        </dl>
       </section>
       <section className="content-panel">
         <h2>How to start</h2>

@@ -1497,7 +1497,7 @@ main {
 .portal-stage__copy h2,
 .final-play-cta h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3.15rem);
   line-height: .96;
   text-wrap: balance;
 }
@@ -1820,5 +1820,475 @@ main {
   .game-card::after,
   .partner-card::after {
     display: none;
+  }
+}
+
+/* Phase 3A.1 responsive shell and motion polish */
+.nav-menu {
+  display: none;
+}
+
+.nav-links--desktop {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.nav-links--compact {
+  display: none;
+}
+
+.top-nav {
+  gap: 12px;
+}
+
+.nav-menu summary {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  line-height: 1;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-search:hover,
+.nav-search:focus-visible,
+.language-selector summary:hover,
+.language-selector summary:focus-visible,
+.home-play-menu a:hover,
+.home-play-menu a:focus-visible,
+.portal-links a:hover,
+.portal-links a:focus-visible,
+.cta:hover,
+.cta:focus-visible,
+.secondary-cta:hover,
+.secondary-cta:focus-visible {
+  transform: translateY(-1px);
+}
+
+.top-nav,
+.home-play-menu,
+.hero__content,
+.value-grid article,
+.portal-stage,
+.spotlight-card,
+.game-card,
+.partner-card,
+.partner-profile-hero,
+.game-hero,
+.partner-player,
+.consent-banner,
+.site-footer {
+  animation: gr8-rise-in .62s var(--ease-out) both;
+}
+
+.value-grid article:nth-child(2),
+.spotlight-card:nth-child(2),
+.game-card:nth-child(2),
+.partner-card:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.value-grid article:nth-child(3),
+.spotlight-card:nth-child(3),
+.game-card:nth-child(3),
+.partner-card:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+@keyframes gr8-rise-in {
+  from {
+    opacity: .001;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+main .portal-links a {
+  display: grid !important;
+  align-content: center;
+  gap: 6px;
+  min-height: 96px;
+  padding: 16px;
+  text-decoration: none;
+}
+
+main .portal-links strong {
+  display: block;
+  font-size: clamp(1.05rem, 1.6vw, 1.32rem);
+  line-height: 1.08;
+  text-transform: capitalize;
+}
+
+main .portal-links span {
+  display: block;
+  color: var(--muted);
+  font-size: .92rem;
+  font-weight: 850;
+}
+
+.profile-facts {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+
+.profile-cta-row .cta {
+  min-width: 136px;
+  min-height: 52px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 1180px) {
+  .top-nav {
+    min-height: 68px;
+  }
+
+  .nav-links--desktop {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+    order: 2;
+  }
+
+  .nav-menu summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    min-height: 44px;
+    padding-inline: 14px;
+  }
+
+  .nav-links--compact {
+    position: fixed;
+    inset: 76px max(12px, env(safe-area-inset-right)) auto max(12px, env(safe-area-inset-left));
+    z-index: 100;
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: calc(100svh - 92px);
+    overflow: auto;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(135deg, rgba(5, 7, 12, .98), rgba(18, 22, 38, .98)),
+      radial-gradient(circle at 0 0, rgba(53, 255, 141, .14), transparent 18rem);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-menu[open] .nav-links--compact {
+    display: grid;
+    animation: gr8-menu-open .22s var(--ease-out) both;
+  }
+
+  .nav-links--compact a {
+    justify-content: flex-start;
+    border: 1px solid rgba(199, 244, 255, .12);
+    background: rgba(255, 255, 255, .04);
+  }
+
+  @keyframes gr8-menu-open {
+    from {
+      opacity: .001;
+      transform: translateY(-8px) scale(.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .nav-search span {
+    display: inline;
+  }
+}
+
+@media (max-width: 900px) {
+  .top-nav {
+    min-height: 68px;
+    padding-block: 10px;
+  }
+
+  .nav-menu summary {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    position: static;
+    inset: auto;
+  }
+
+  .nav-links--compact {
+    position: fixed;
+    inset: 72px max(12px, env(safe-area-inset-right)) auto max(12px, env(safe-area-inset-left));
+  }
+
+  .home-play-menu {
+    top: 68px;
+    grid-template-columns: repeat(3, minmax(155px, 1fr));
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    margin: -4px 0 12px;
+    padding: 6px;
+  }
+
+  .home-play-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-play-menu a {
+    min-height: 46px;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+
+  .partner-profile-hero,
+  .game-hero {
+    align-items: start;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .partner-profile-copy,
+  .game-hero > div:first-child {
+    gap: 10px;
+  }
+
+  .partner-profile-hero h1,
+  .game-hero h1 {
+    font-size: clamp(2.2rem, 9vw, 3.35rem);
+  }
+
+  .partner-profile-copy p {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-height: 1.48;
+  }
+
+  .profile-cta-row {
+    margin-top: 2px;
+  }
+
+  .partner-artwork--profile {
+    min-height: 168px;
+  }
+
+  .partner-consent-panel > div {
+    order: 1;
+  }
+
+  .partner-consent-panel .partner-artwork {
+    order: 2;
+  }
+
+  .profile-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  main {
+    width: min(100% - 20px, 760px);
+    padding-top: 10px;
+  }
+
+  .top-nav {
+    min-height: 64px;
+    gap: 8px;
+    padding: 8px max(10px, env(safe-area-inset-left)) 8px max(10px, env(safe-area-inset-right));
+  }
+
+  .brand-mark {
+    flex: 0 0 auto;
+    gap: 7px;
+  }
+
+  .brand-mark__icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-mark__text {
+    font-size: .9rem;
+    max-width: 92px;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    order: 4;
+  }
+
+  .nav-menu summary {
+    min-width: 64px;
+    padding-inline: 10px;
+    font-size: .9rem;
+  }
+
+  .nav-search,
+  .language-selector summary {
+    width: 44px;
+    padding-inline: 0;
+  }
+
+  .language-selector summary span:not(:first-child) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .language-selector__menu {
+    inset-inline-end: 0;
+    width: min(92vw, 360px);
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links--compact {
+    inset: 66px max(10px, env(safe-area-inset-right)) auto max(10px, env(safe-area-inset-left));
+    grid-template-columns: 1fr;
+    max-height: calc(100svh - 78px);
+  }
+
+  .home-play-menu {
+    top: 64px;
+    grid-template-columns: repeat(3, minmax(142px, 1fr));
+    gap: 6px;
+  }
+
+  .hero--home {
+    min-height: 500px;
+  }
+
+  .hero__content {
+    padding: 22px;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portal-stage__copy h2,
+  .final-play-cta h2 {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+    line-height: 1.02;
+  }
+
+  .portal-links a {
+    min-height: 82px;
+    padding: 14px;
+  }
+
+  .partner-profile-hero,
+  .game-hero {
+    padding: 16px;
+  }
+
+  .partner-play-page .page-title {
+    margin-bottom: 10px;
+    padding: 16px;
+  }
+
+  .partner-play-page .page-title h1 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .partner-play-page .page-title p {
+    margin-bottom: 0;
+  }
+
+  .partner-play-page .partner-consent-panel {
+    margin-top: 10px;
+  }
+
+  .profile-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-mark__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .hero--home {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 340px) {
+  .top-nav {
+    gap: 6px;
+  }
+
+  .nav-menu summary {
+    min-width: 60px;
+    padding-inline: 8px;
+  }
+
+  .brand-mark__icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+html[dir="rtl"] .nav-links--compact a,
+main[dir="rtl"] .nav-links--compact a {
+  justify-content: flex-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-nav,
+  .home-play-menu,
+  .hero__content,
+  .value-grid article,
+  .portal-stage,
+  .spotlight-card,
+  .game-card,
+  .partner-card,
+  .partner-profile-hero,
+  .game-hero,
+  .partner-player,
+  .consent-banner,
+  .site-footer,
+  .nav-menu[open] .nav-links--compact {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible,
+  .nav-search:hover,
+  .nav-search:focus-visible,
+  .language-selector summary:hover,
+  .language-selector summary:focus-visible,
+  .home-play-menu a:hover,
+  .home-play-menu a:focus-visible,
+  .portal-links a:hover,
+  .portal-links a:focus-visible,
+  .cta:hover,
+  .cta:focus-visible,
+  .secondary-cta:hover,
+  .secondary-cta:focus-visible,
+  .hero__image,
+  .hero:hover .hero__image {
+    transform: none !important;
   }
 }

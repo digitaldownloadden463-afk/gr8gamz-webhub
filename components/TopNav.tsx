@@ -27,6 +27,14 @@ export function TopNav({ locale }: { locale?: Locale }) {
   const activeLocale = locale || localeFromPath(pathname || '/');
   const text = tr(activeLocale);
   const localizedPath = pathname?.replace(new RegExp(`^/${activeLocale}(?=/|$)`), '') || '/';
+  const navLinks = links.map((link) => {
+    const active = link.href === '/' ? localizedPath === '/' : localizedPath === link.href || localizedPath.startsWith(`${link.href}/`);
+    return (
+      <Link key={link.href} href={pathForLocale(activeLocale, link.href)} aria-current={active ? 'page' : undefined}>
+        {text.nav[link.key]}
+      </Link>
+    );
+  });
 
   return (
     <header className="top-nav">
@@ -34,13 +42,13 @@ export function TopNav({ locale }: { locale?: Locale }) {
         <span aria-hidden="true" className="brand-mark__icon">G8</span>
         <span className="brand-mark__text">GR8 GAMZ</span>
       </Link>
+      <nav className="nav-links nav-links--desktop" aria-label="Primary navigation">
+        {navLinks}
+      </nav>
       <details className="nav-menu">
         <summary aria-label="Menu">Menu</summary>
-        <nav className="nav-links" aria-label="Primary navigation">
-          {links.map((link) => {
-            const active = link.href === '/' ? localizedPath === '/' : localizedPath === link.href || localizedPath.startsWith(`${link.href}/`);
-            return <Link key={link.href} href={pathForLocale(activeLocale, link.href)} aria-current={active ? 'page' : undefined}>{text.nav[link.key]}</Link>;
-          })}
+        <nav className="nav-links nav-links--compact" aria-label="Compact navigation">
+          {navLinks}
         </nav>
       </details>
       <Link href={pathForLocale(activeLocale, '/games')} className="nav-search" aria-label={text.common.search}>
