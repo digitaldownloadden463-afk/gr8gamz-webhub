@@ -2,6 +2,7 @@ import Link from 'next/link';
 import MyArcadeClient from '@/components/MyArcadeClient';
 import { getAllGames } from '@/lib/games';
 import { canonical } from '@/lib/features';
+import { getPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'My Arcade',
@@ -11,6 +12,10 @@ export const metadata = {
 };
 
 export default function MyArcadePage() {
+  const games = [
+    ...getAllGames().map((game) => ({ ...game, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` })),
+    ...getPartnerGameProfiles().map((game) => ({ ...game, id: game.slug, name: game.title, kind: 'select' as const }))
+  ];
   return (
     <main>
       <section className="page-title">
@@ -22,7 +27,7 @@ export default function MyArcadePage() {
           <Link href="/privacy" className="secondary-cta">Privacy details</Link>
         </div>
       </section>
-      <MyArcadeClient games={getAllGames()} />
+      <MyArcadeClient games={games} />
     </main>
   );
 }

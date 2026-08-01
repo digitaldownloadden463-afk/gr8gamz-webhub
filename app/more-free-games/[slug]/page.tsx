@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PartnerGameCard from '@/components/PartnerGameCard';
+import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import PartnerArtwork from '@/components/PartnerArtwork';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
@@ -116,6 +117,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         url={canonical(profile.path)}
         text={`Find your next game with ${profile.title} on GR8 GAMZ.`}
       />
+      <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" />
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>

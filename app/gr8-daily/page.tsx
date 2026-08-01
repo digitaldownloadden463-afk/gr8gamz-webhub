@@ -18,10 +18,17 @@ function getDailyIndex(count: number) {
   return count > 0 ? utcDay % count : 0;
 }
 
+function getWeeklyIndex(count: number) {
+  const now = new Date();
+  const utcWeek = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) / (86400000 * 7));
+  return count > 0 ? (utcWeek * 7 + 3) % count : 0;
+}
+
 export default function Gr8DailyPage() {
   const games = getAllGames();
   const dailyGame = games[getDailyIndex(games.length)];
-  const nextGames = games.filter((game) => game.id !== dailyGame?.id).slice(0, 6);
+  const weeklyGame = games[getWeeklyIndex(games.length)];
+  const nextGames = games.filter((game) => game.id !== dailyGame?.id && game.id !== weeklyGame?.id).slice(0, 6);
 
   return (
     <main>
@@ -50,6 +57,15 @@ export default function Gr8DailyPage() {
             <p>{dailyGame.description || dailyGame.longDescription || 'Jump into a fast original browser game built for GR8 GAMZ players.'}</p>
             <Link href={`/arcade/${dailyGame.slug || dailyGame.id}`} className="cta">Play today&apos;s pick <ArrowRight size={18} aria-hidden="true" /></Link>
           </div>
+        </section>
+      ) : null}
+
+      {weeklyGame ? (
+        <section className="content-panel">
+          <span className="eyebrow">Weekly run</span>
+          <h2>{weeklyGame.name}</h2>
+          <p>A stable weekly GR8 Original for return visits. Try it once, save it locally and come back for another run when you want.</p>
+          <Link href={`/arcade/${weeklyGame.slug || weeklyGame.id}`} className="secondary-cta">Play weekly pick <ArrowRight size={18} aria-hidden="true" /></Link>
         </section>
       ) : null}
 

@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>What GR8 GAMZ collects</h2>
-        <p>GR8 GAMZ does not run production accounts, public chat, public profiles or server-side player leaderboards in this version. My Arcade favourites and recent games are stored in your browser using localStorage and stay on your device.</p>
+        <p>GR8 GAMZ does not run production accounts, public chat, public profiles or server-side player leaderboards in this version. My GR8 Arcade favourites, recent games, XP, streaks, supported original-game results, achievements and challenge history are stored in your browser and stay on your device.</p>
         <p>Essential technical cookies may be set by hosting infrastructure. Optional analytics, advertising or partner game resources must not load before consent or a deliberate partner-game launch choice.</p>
       </section>
       <section className="content-panel">
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Purposes, lawful bases and retention</h2>
-        <p>Essential processing keeps the site available and secure. Local-device storage supports your saved games and recent games until you clear it. Optional analytics or advertising, if later enabled, requires consent and must be described before loading.</p>
+        <p>Essential processing keeps the site available and secure. Local-device storage supports saved games, recent games and honest local progress until you clear it. Stateless challenge links contain only validated game details, timestamps and a non-personal score when a supported GR8 Original reports one. Optional analytics or advertising, if later enabled, requires consent and must be described before loading.</p>
       </section>
       <section className="content-panel">
         <h2>Rights and contact details</h2>

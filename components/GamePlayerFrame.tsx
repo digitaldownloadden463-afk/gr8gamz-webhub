@@ -1,40 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import ChallengeShare from '@/components/ChallengeShare';
 import type { Gr8Game } from '@/lib/games';
+import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, recordGameStarted, saveFavourite, subscribePlayerEngagement } from '@/lib/playerEngagement';
 
 type GamePlayerFrameProps = {
   game: Gr8Game;
 };
 
-const favouritesKey = 'gr8:favourites';
-const recentKey = 'gr8:recent';
-
-function updateStoredList(key: string, slug: string) {
-  const now = new Date().toISOString();
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(key) || '[]');
-    const list = Array.isArray(parsed) ? parsed : [];
-    const next = [{ slug, savedAt: now }, ...list.filter((item) => item?.slug !== slug)].slice(0, 24);
-    window.localStorage.setItem(key, JSON.stringify(next));
-  } catch {
-    window.localStorage.setItem(key, JSON.stringify([{ slug, savedAt: now }]));
-  }
-}
-
 export function GamePlayerFrame({ game }: GamePlayerFrameProps) {
   const [saved, setSaved] = useState(false);
+  const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
   const title = game.name || game.title || 'GR8 Game';
   const slug = game.slug || game.id;
+  const gameProgress = progress.games[slug];
+  const level = levelFromXp(progress.xp);
 
   useEffect(() => {
-    updateStoredList(recentKey, slug);
+    recordGameStarted(slug, 'original');
   }, [slug]);
 
   function saveGame() {
-    updateStoredList(favouritesKey, slug);
+    saveFavourite(slug, 'original');
     setSaved(true);
   }
 
@@ -61,7 +50,19 @@ export function GamePlayerFrame({ game }: GamePlayerFrameProps) {
         allowFullScreen
         referrerPolicy="same-origin"
       />
-      <ChallengeShare gameSlug={slug} />
+      <section className="progress-panel" aria-live="polite">
+        <div>
+          <span className="eyebrow">Local progress</span>
+          <h2>Level {level}</h2>
+          <p>{progress.xp.toLocaleString()} XP saved on this device. {gameProgress?.bestScore ? `Best score here: ${gameProgress.bestScore.toLocaleString()}.` : 'Finish a supported run to save a real result.'}</p>
+        </div>
+        <div className="progress-panel__stats">
+          <span><strong>{gameProgress?.starts || 1}</strong> starts</span>
+          <span><strong>{gameProgress?.completions || 0}</strong> finished</span>
+          <span><strong>{progress.currentStreak}</strong> day streak</span>
+        </div>
+      </section>
+      <ChallengeShare gameSlug={slug} gameTitle={title} />
     </section>
   );
 }

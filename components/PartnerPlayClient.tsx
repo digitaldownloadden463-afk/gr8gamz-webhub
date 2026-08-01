@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { getConsentSnapshot, getServerConsentSnapshot, subscribeConsentChoice } from '@/lib/consentPreferences';
 import PartnerArtwork from '@/components/PartnerArtwork';
+import ChallengeShare from '@/components/ChallengeShare';
+import GameShare from '@/components/GameShare';
+import { recordGameStarted } from '@/lib/playerEngagement';
 
 type PartnerPlayClientProps = {
   title: string;
@@ -33,6 +36,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   const [iframeReady, setIframeReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
+  const gameSlug = profilePath.split('/').filter(Boolean).pop() || title.toLowerCase().replace(/\s+/g, '-');
 
   useEffect(() => {
     if (!loaded || iframeReady) return undefined;
@@ -44,6 +48,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
     if (!hydrated) return;
     setTimedOut(false);
     setIframeReady(false);
+    recordGameStarted(gameSlug, 'select');
     setLoaded(true);
   }
 
@@ -116,6 +121,10 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
           setTimedOut(false);
         }}
       />
+      <section className="partner-afterplay">
+        <GameShare title={title} url={profilePath} text={`Challenge a friend to try ${title} on GR8 GAMZ.`} />
+        <ChallengeShare gameSlug={gameSlug} gameTitle={title} kind="select" />
+      </section>
     </section>
   );
 }

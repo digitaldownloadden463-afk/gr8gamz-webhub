@@ -798,7 +798,8 @@ main summary {
 }
 
 .share-panel,
-.challenge-panel {
+.challenge-panel,
+.progress-panel {
   display: grid;
   gap: 14px;
   margin: 18px 0;
@@ -809,7 +810,8 @@ main summary {
 }
 
 .share-panel h2,
-.challenge-panel h2 {
+.challenge-panel h2,
+.progress-panel h2 {
   margin: 4px 0 0;
   font-size: clamp(1.35rem, 3vw, 2.2rem);
 }
@@ -818,6 +820,53 @@ main summary {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.progress-panel__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.progress-panel__stats span,
+.progress-summary {
+  min-width: 0;
+}
+
+.progress-panel__stats span {
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.045);
+  color: var(--muted);
+}
+
+.progress-panel__stats strong {
+  color: var(--brand);
+  font-size: 1.35rem;
+}
+
+.xp-meter {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(50,255,129,.35);
+  background: rgba(255,255,255,.06);
+}
+
+.xp-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand), var(--cyan), var(--pink));
+}
+
+.partner-afterplay {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .daily-feature {
@@ -1611,7 +1660,8 @@ main {
 .filter-panel,
 .partner-consent-panel,
 .share-panel,
-.challenge-panel {
+.challenge-panel,
+.progress-panel {
   position: relative;
   border-radius: var(--radius);
   background:

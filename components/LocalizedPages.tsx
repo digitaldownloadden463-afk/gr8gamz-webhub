@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import LocalizedGameCard from '@/components/LocalizedGameCard';
 import PartnerArtwork from '@/components/PartnerArtwork';
@@ -174,6 +175,7 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
         <p className="fine-print">{copy.external}</p>
       </section>
       <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} />
+      {game.source === 'gr8-select' ? <ChallengeShare gameSlug={game.slug} gameTitle={game.title} kind="select" /> : null}
       <section className="section-heading">
         <span className="eyebrow">{text.common.related}</span>
         <h2>{text.common.related}.</h2>
