@@ -5,6 +5,9 @@ import { getRegistryCategories, getRegistryGamesByCategory } from '@/lib/gameReg
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getRegistryCategories(1).map((category) => ({ slug: category.slug }));
 }

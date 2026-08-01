@@ -4,6 +4,8 @@ import { localizedAlternates, localizedCanonical, tr, type Locale } from '@/lib/
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
+export const dynamic = 'force-static';
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const text = tr(locale);

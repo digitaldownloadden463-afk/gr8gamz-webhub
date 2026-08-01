@@ -7,6 +7,9 @@ import { categoryName, localizedAlternates, localizedCanonical, nonEnglishLocale
 
 type PageProps = { params: Promise<{ locale: Locale; slug: string }> };
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const slugs = [...new Set(getGlobalLaunchGames().map((game) => slugifyRegistryValue(game.category)))];
   return nonEnglishLocales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));

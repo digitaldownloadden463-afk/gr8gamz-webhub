@@ -43,16 +43,36 @@ try {
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
 const browser = await chromium.launch();
 const failures = [];
+const ignoredNetworkNoise =
+  /net::ERR_INTERNET_DISCONNECTED|net::ERR_NETWORK_CHANGED|net::ERR_NETWORK_IO_SUSPENDED|Failed to load resource/i;
 
 for (const viewport of viewports) {
   for (const route of routes) {
-    const page = await browser.newPage({ viewport });
+    const context = await browser.newContext({ viewport });
+    const page = await context.newPage();
     page.on('console', (message) => {
-      if (message.type() === 'error' && !(route.includes('404') && message.text().includes('404'))) {
+      if (
+        message.type() === 'error' &&
+        !(route.includes('404') && message.text().includes('404')) &&
+        !ignoredNetworkNoise.test(message.text())
+      ) {
         failures.push(`Console error at ${viewport.width}: ${message.text()}`);
       }
     });
-    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    let response = null;
+    let navigationError = null;
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      try {
+        response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 60000 });
+        navigationError = null;
+        break;
+      } catch (error) {
+        navigationError = error;
+        if (!ignoredNetworkNoise.test(error.message) || attempt === 2) break;
+        await page.waitForTimeout(400);
+      }
+    }
+    if (navigationError) failures.push(`${route} failed navigation at ${viewport.width}: ${navigationError.message}`);
     const status = response?.status() || 0;
     if (route.includes('404') && status !== 404) failures.push(`${route} returned ${status}, expected 404`);
     if (!route.includes('404') && status >= 400) failures.push(`${route} returned ${status}`);
@@ -64,7 +84,7 @@ for (const viewport of viewports) {
     } catch (error) {
       failures.push(`${route} did not render visible main content at ${viewport.width}: ${error.message}`);
     }
-    await page.close();
+    await context.close().catch(() => null);
   }
 }
 

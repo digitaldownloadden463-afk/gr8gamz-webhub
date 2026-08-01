@@ -13,6 +13,8 @@ export const metadata = {
   alternates: { canonical: canonical('/') }
 };
 
+export const dynamic = 'force-static';
+
 export default function HomePage() {
   const featured = getFeaturedGames(6);
   const partners = getFeaturedPartnerGameProfiles(8);

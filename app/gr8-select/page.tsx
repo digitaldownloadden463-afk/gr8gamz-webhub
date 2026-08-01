@@ -9,6 +9,8 @@ export const metadata = {
   alternates: { canonical: canonical('/gr8-select') }
 };
 
+export const dynamic = 'force-static';
+
 export default function Gr8SelectPage() {
   return (
     <main>

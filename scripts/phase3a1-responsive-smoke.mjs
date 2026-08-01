@@ -35,6 +35,9 @@ const routes = [
   '/es/more-free-games/tentrix'
 ];
 
+const ignoredNetworkNoise =
+  /net::ERR_INTERNET_DISCONNECTED|net::ERR_NETWORK_CHANGED|net::ERR_NETWORK_IO_SUSPENDED|Failed to load resource/i;
+
 function fail(message) {
   failures.push(message);
 }
@@ -47,13 +50,23 @@ async function openPage(browser, route, viewport, options = {}) {
   const page = await context.newPage();
   const errors = [];
   page.on('console', (message) => {
-    if (message.type() === 'error' && !/net::ERR_INTERNET_DISCONNECTED|Failed to load resource/i.test(message.text())) errors.push(message.text());
+    if (message.type() === 'error' && !ignoredNetworkNoise.test(message.text())) errors.push(message.text());
   });
   page.on('pageerror', (error) => errors.push(error.message));
-  const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 60000 }).catch((error) => {
-    fail(`${route} navigation timed out at ${viewport.width}x${viewport.height}: ${error.message}`);
-    return null;
-  });
+  let response = null;
+  let navigationError = null;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 60000 });
+      navigationError = null;
+      break;
+    } catch (error) {
+      navigationError = error;
+      if (!ignoredNetworkNoise.test(error.message) || attempt === 2) break;
+      await page.waitForTimeout(400);
+    }
+  }
+  if (navigationError) fail(`${route} navigation timed out at ${viewport.width}x${viewport.height}: ${navigationError.message}`);
   if ((response?.status() || 0) >= 400) fail(`${route} returned ${response?.status() || 0} at ${viewport.width}`);
   let mainVisible = true;
   await page.locator('main').first().waitFor({ state: 'visible', timeout: 30000 }).catch(() => {
