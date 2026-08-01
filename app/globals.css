@@ -799,6 +799,7 @@ main summary {
 
 .share-panel,
 .challenge-panel,
+.after-play-panel,
 .progress-panel {
   display: grid;
   gap: 14px;
@@ -811,6 +812,7 @@ main summary {
 
 .share-panel h2,
 .challenge-panel h2,
+.after-play-panel h2,
 .progress-panel h2 {
   margin: 4px 0 0;
   font-size: clamp(1.35rem, 3vw, 2.2rem);
@@ -1661,6 +1663,7 @@ main {
 .partner-consent-panel,
 .share-panel,
 .challenge-panel,
+.after-play-panel,
 .progress-panel {
   position: relative;
   border-radius: var(--radius);

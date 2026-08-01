@@ -5,6 +5,7 @@ import GamePlayerFrame from '@/components/GamePlayerFrame';
 import GameShare from '@/components/GameShare';
 import { getAllGames, getGameBySlug } from '@/lib/games';
 import { canonical } from '@/lib/features';
+import { tr } from '@/lib/i18n';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -41,6 +42,7 @@ export default async function ArcadeGamePage({ params }: PageProps) {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) notFound();
+  const text = tr('en');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -73,11 +75,12 @@ export default async function ArcadeGamePage({ params }: PageProps) {
           <Image src={thumbnail} alt={`${game.name} artwork`} width={640} height={360} priority sizes="(max-width: 900px) 92vw, 520px" />
         ) : null}
       </section>
-      <GamePlayerFrame game={game} />
+      <GamePlayerFrame game={game} labels={text.engagement} />
       <GameShare
         title={game.name}
         url={canonical(`/arcade/${game.slug || game.id}`)}
         text={`Think you can master ${game.name}? Play it on GR8 GAMZ.`}
+        labels={text.engagement}
       />
       <section className="content-panel">
         <h2>How to play</h2>

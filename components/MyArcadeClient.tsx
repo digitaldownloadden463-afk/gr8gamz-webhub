@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useSyncExternalStore, useState } from 'react';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, nextLevelXp, resetPlayerEngagement, subscribePlayerEngagement } from '@/lib/playerEngagement';
+import type { EngagementText } from '@/lib/i18n';
 
 export type ArcadeLookupGame = {
   id: string;
@@ -16,9 +17,10 @@ export type ArcadeLookupGame = {
 
 type MyArcadeClientProps = {
   games: ArcadeLookupGame[];
+  labels: EngagementText;
 };
 
-export function MyArcadeClient({ games }: MyArcadeClientProps) {
+export function MyArcadeClient({ games, labels }: MyArcadeClientProps) {
   const [confirmReset, setConfirmReset] = useState(false);
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
 
@@ -42,22 +44,22 @@ export function MyArcadeClient({ games }: MyArcadeClientProps) {
   return (
     <section className="local-arcade" aria-live="polite">
       <div className="content-panel">
-        <span className="eyebrow">Saved on this device</span>
-        <h2>Your My Arcade data stays in this browser.</h2>
-        <p>Favourites, recent games, XP, streaks, personal bests and challenge history are local only. They are not account data and are not synced to a GR8 GAMZ server.</p>
-        <button type="button" className="secondary-button" onClick={clearLocalData}>{confirmReset ? 'Confirm reset' : 'Reset local progress'}</button>
+        <span className="eyebrow">{labels.savedEyebrow}</span>
+        <h2>{labels.localTitle}</h2>
+        <p>{labels.localDescription}</p>
+        <button type="button" className="secondary-button" onClick={clearLocalData}>{confirmReset ? labels.confirmReset : labels.reset}</button>
       </div>
       <section className="content-panel progress-summary">
-        <span className="eyebrow">Local level</span>
-        <h2>Level {level}</h2>
-        <p>{progress.xp.toLocaleString()} XP on this device. Current streak: {progress.currentStreak} day{progress.currentStreak === 1 ? '' : 's'}.</p>
-        <div className="xp-meter" aria-label={`${pct}% progress to the next level`}><span style={{ width: `${pct}%` }} /></div>
+        <span className="eyebrow">{labels.localLevel}</span>
+        <h2>{labels.level} {level}</h2>
+        <p>{labels.xpLine.replace('{xp}', progress.xp.toLocaleString()).replace('{streak}', progress.currentStreak.toLocaleString()).replace(/\s*\{dayLabel\}/g, '').replace(/\s+\./g, '.')}</p>
+        <div className="xp-meter" role="progressbar" aria-label={labels.progressToNext.replace('{pct}', String(pct))} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}><span style={{ width: `${pct}%` }} /></div>
       </section>
-      <LocalProgressList title="Personal bests" items={personalBests.map((item) => ({ slug: item.slug, label: `${item.bestScore?.toLocaleString()} points`, kind: item.kind }))} empty="Finish a supported GR8 Original run to save a personal best." bySlug={bySlug} />
-      <LocalChallengeList challenges={progress.challenges} />
-      <LocalAchievements achievements={progress.achievements} />
-      <LocalList title="Favourites" games={favouriteGames} empty="Save games from an arcade page to see them here." />
-      <LocalList title="Recent games" games={recentGames} empty="Play an original game and it will appear here on this device." />
+      <LocalProgressList title={labels.personalBests} items={personalBests.map((item) => ({ slug: item.slug, label: `${item.bestScore?.toLocaleString()} points`, kind: item.kind }))} empty={labels.personalBestEmpty} bySlug={bySlug} />
+      <LocalChallengeList challenges={progress.challenges} labels={labels} />
+      <LocalAchievements achievements={progress.achievements} labels={labels} />
+      <LocalList title={labels.favourites} games={favouriteGames} empty={labels.favouritesEmpty} />
+      <LocalList title={labels.recentGames} games={recentGames} empty={labels.recentEmpty} />
     </section>
   );
 }
@@ -105,33 +107,33 @@ function LocalProgressList({ title, items, empty, bySlug }: { title: string; ite
   );
 }
 
-function LocalChallengeList({ challenges }: { challenges: { id: string; url: string; label: string }[] }) {
+function LocalChallengeList({ challenges, labels }: { challenges: { id: string; url: string; label: string }[]; labels: EngagementText }) {
   return (
     <section className="content-panel">
-      <h2>Challenges</h2>
+      <h2>{labels.challenges}</h2>
       {challenges.length ? (
         <div className="compact-link-list">
           {challenges.slice(0, 8).map((challenge) => (
             <Link key={challenge.id} href={challenge.url}>
-              <span>Challenge link</span>
+              <span>{labels.challengeLink}</span>
               <strong>{challenge.label}</strong>
             </Link>
           ))}
         </div>
-      ) : <p>Create a challenge from a game page to keep it here on this device.</p>}
+      ) : <p>{labels.challengeEmpty}</p>}
     </section>
   );
 }
 
-function LocalAchievements({ achievements }: { achievements: { id: string; label: string; earnedAt: string }[] }) {
+function LocalAchievements({ achievements, labels }: { achievements: { id: string; label: string; earnedAt: string }[]; labels: EngagementText }) {
   return (
     <section className="content-panel">
-      <h2>Achievements</h2>
+      <h2>{labels.achievements}</h2>
       {achievements.length ? (
         <ul className="clean-list">
           {achievements.slice(0, 8).map((achievement) => <li key={achievement.id}>{achievement.label}</li>)}
         </ul>
-      ) : <p>Achievements unlock from real local play events.</p>}
+      ) : <p>{labels.achievementsEmpty}</p>}
     </section>
   );
 }

@@ -7,6 +7,7 @@ import PartnerArtwork from '@/components/PartnerArtwork';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { slugifyRegistryValue } from '@/lib/gameRegistry';
+import { tr } from '@/lib/i18n';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -43,6 +44,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) notFound();
+  const text = tr('en');
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
   const playPath = profile.playPath || `${profile.path}/play`;
@@ -116,8 +118,9 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         title={profile.title}
         url={canonical(profile.path)}
         text={`Find your next game with ${profile.title} on GR8 GAMZ.`}
+        labels={text.engagement}
       />
-      <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" />
+      <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" labels={text.engagement} />
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>

@@ -24,5 +24,5 @@ export default async function Page({ params }: PageProps) {
     ...getAllGames().map((game) => ({ id: game.id, slug: game.slug || game.id, name: game.name, category: game.category, genre: game.genre, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` })),
     ...getPartnerGameProfiles().map((game) => ({ id: game.slug, slug: game.slug, name: game.title, category: game.category, kind: 'select' as const, path: game.path }))
   ];
-  return <main lang={locale} dir={info.dir}><section className="page-title"><span className="eyebrow">{text.nav.arcade}</span><h1>{text.nav.arcade}</h1><p>{text.home.privacy}</p></section><MyArcadeClient games={games} /></main>;
+  return <main lang={locale} dir={info.dir}><section className="page-title"><span className="eyebrow">{text.nav.arcade}</span><h1>{text.nav.arcade}</h1><p>{text.home.privacy}</p></section><MyArcadeClient games={games} labels={text.engagement} /></main>;
 }

@@ -7,6 +7,7 @@ import PartnerArtwork from '@/components/PartnerArtwork';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import { recordGameStarted } from '@/lib/playerEngagement';
+import { tr, type EngagementText, type Locale } from '@/lib/i18n';
 
 type PartnerPlayClientProps = {
   title: string;
@@ -15,6 +16,8 @@ type PartnerPlayClientProps = {
   playUrl: string;
   width: number;
   height: number;
+  locale?: Locale;
+  labels?: EngagementText;
 };
 
 function subscribeHydration() {
@@ -29,9 +32,10 @@ function getServerHydrationSnapshot() {
   return false;
 }
 
-export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height }: PartnerPlayClientProps) {
+export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height, locale = 'en', labels }: PartnerPlayClientProps) {
   const hydrated = useSyncExternalStore(subscribeHydration, getHydratedSnapshot, getServerHydrationSnapshot);
   const consentChoice = useSyncExternalStore(subscribeConsentChoice, getConsentSnapshot, getServerConsentSnapshot);
+  const copy = labels || tr(locale).engagement;
   const [loaded, setLoaded] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
@@ -122,8 +126,8 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
         }}
       />
       <section className="partner-afterplay">
-        <GameShare title={title} url={profilePath} text={`Challenge a friend to try ${title} on GR8 GAMZ.`} />
-        <ChallengeShare gameSlug={gameSlug} gameTitle={title} kind="select" />
+        <GameShare title={title} url={profilePath} text={`Challenge a friend to try ${title} on GR8 GAMZ.`} labels={copy} />
+        <ChallengeShare gameSlug={gameSlug} gameTitle={title} kind="select" locale={locale} labels={copy} />
       </section>
     </section>
   );

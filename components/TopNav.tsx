@@ -38,7 +38,7 @@ export function TopNav({ locale }: { locale?: Locale }) {
 
   return (
     <header className="top-nav">
-      <Link href={pathForLocale(activeLocale, '/')} className="brand-mark" aria-label="GR8 GAMZ home">
+      <Link href={pathForLocale(activeLocale, '/')} className="brand-mark" aria-label="G8 GR8 GAMZ home">
         <span aria-hidden="true" className="brand-mark__icon">G8</span>
         <span className="brand-mark__text">GR8 GAMZ</span>
       </Link>

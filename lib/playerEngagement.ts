@@ -61,9 +61,14 @@ const legacyRecentKey = 'gr8:recent';
 const channelName = 'gr8:player-engagement';
 const maxItems = 48;
 const maxEvents = 120;
+const maxSlugLength = 110;
+const maxScore = 100000000;
+const completionXpPerGameDailyLimit = 3;
+const globalCompletionXpDailyLimit = 20;
 const subscribers = new Set<() => void>();
 let memoryState: PlayerEngagementState | null = null;
 let channel: BroadcastChannel | null = null;
+let storageListenerAttached = false;
 
 function emptyState(): PlayerEngagementState {
   return {
@@ -127,21 +132,103 @@ function parseStoredList(value: string | null, kind?: EngagementGameKind): Store
   }
 }
 
+function cleanSlug(value: unknown) {
+  if (typeof value !== 'string') return '';
+  const slug = value.trim().toLowerCase();
+  return /^[a-z0-9-]{1,110}$/.test(slug) ? slug : '';
+}
+
+function cleanDate(value: unknown) {
+  if (typeof value !== 'string') return new Date().toISOString();
+  const time = Date.parse(value);
+  if (!Number.isFinite(time) || time > Date.now() + 60_000) return new Date().toISOString();
+  return new Date(time).toISOString();
+}
+
+function cleanCount(value: unknown, max = 100000) {
+  const count = Math.floor(Number(value));
+  return Number.isFinite(count) && count >= 0 ? Math.min(max, count) : 0;
+}
+
+function cleanKind(value: unknown): EngagementGameKind {
+  return value === 'select' ? 'select' : 'original';
+}
+
+function cleanStoredRefs(value: unknown): StoredGameRef[] {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set<string>();
+  return value.reduce<StoredGameRef[]>((items, item) => {
+    const slug = cleanSlug((item as StoredGameRef)?.slug);
+    if (!slug || seen.has(slug)) return items;
+    seen.add(slug);
+    items.push({ slug, kind: cleanKind((item as StoredGameRef)?.kind), savedAt: cleanDate((item as StoredGameRef)?.savedAt) });
+    return items;
+  }, []).slice(0, maxItems);
+}
+
+function cleanChallengeUrl(value: unknown) {
+  if (typeof value !== 'string' || !canUseBrowser()) return '';
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin) return '';
+    if (!/^\/challenge\/[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(url.pathname)) return '';
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return '';
+  }
+}
+
+function cleanLabel(value: unknown) {
+  if (typeof value !== 'string') return 'GR8 challenge';
+  return value.replace(/[<>]/g, '').trim().slice(0, 120) || 'GR8 challenge';
+}
+
 function normalizeState(value: unknown): PlayerEngagementState {
   const parsed = value && typeof value === 'object' ? value as Partial<PlayerEngagementState> : {};
   const base = emptyState();
+  const games = Object.entries(parsed.games && typeof parsed.games === 'object' ? parsed.games : {}).reduce<Record<string, GameProgress>>((acc, [key, item]) => {
+    const data = item as Partial<GameProgress>;
+    const slug = cleanSlug(data.slug || key);
+    if (!slug) return acc;
+    const bestScore = cleanCount(data.bestScore, maxScore);
+    acc[slug] = {
+      slug,
+      kind: cleanKind(data.kind),
+      starts: cleanCount(data.starts),
+      replays: cleanCount(data.replays),
+      completions: cleanCount(data.completions),
+      lastPlayedAt: cleanDate(data.lastPlayedAt),
+      ...(bestScore > 0 ? { bestScore } : {})
+    };
+    return acc;
+  }, {});
   return {
     ...base,
     xp: Number.isFinite(parsed.xp) && Number(parsed.xp) > 0 ? Math.floor(Number(parsed.xp)) : 0,
     currentStreak: Number.isFinite(parsed.currentStreak) ? Math.max(0, Math.floor(Number(parsed.currentStreak))) : 0,
     bestStreak: Number.isFinite(parsed.bestStreak) ? Math.max(0, Math.floor(Number(parsed.bestStreak))) : 0,
-    lastPlayDate: typeof parsed.lastPlayDate === 'string' ? parsed.lastPlayDate : undefined,
-    games: parsed.games && typeof parsed.games === 'object' ? parsed.games : {},
-    recent: Array.isArray(parsed.recent) ? parsed.recent.filter((item) => item && typeof item.slug === 'string').slice(0, maxItems) : [],
-    favourites: Array.isArray(parsed.favourites) ? parsed.favourites.filter((item) => item && typeof item.slug === 'string').slice(0, maxItems) : [],
-    achievements: Array.isArray(parsed.achievements) ? parsed.achievements.filter((item) => item && typeof item.id === 'string').slice(0, maxItems) : [],
-    challenges: Array.isArray(parsed.challenges) ? parsed.challenges.filter((item) => item && typeof item.url === 'string').slice(0, maxItems) : [],
-    eventIds: Array.isArray(parsed.eventIds) ? parsed.eventIds.filter((item) => typeof item === 'string').slice(-maxEvents) : []
+    lastPlayDate: typeof parsed.lastPlayDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(parsed.lastPlayDate) ? parsed.lastPlayDate : undefined,
+    games,
+    recent: cleanStoredRefs(parsed.recent),
+    favourites: cleanStoredRefs(parsed.favourites),
+    achievements: Array.isArray(parsed.achievements)
+      ? parsed.achievements.map((item) => ({
+        id: cleanLabel((item as Achievement).id).toLowerCase().replace(/[^a-z0-9:-]+/g, '-').slice(0, 80),
+        label: cleanLabel((item as Achievement).label),
+        earnedAt: cleanDate((item as Achievement).earnedAt)
+      })).filter((item) => item.id).slice(0, maxItems)
+      : [],
+    challenges: Array.isArray(parsed.challenges)
+      ? parsed.challenges.map((item) => ({
+        id: cleanLabel((item as ChallengeHistoryItem).id).toLowerCase().replace(/[^a-z0-9:-]+/g, '-').slice(0, 80),
+        slug: cleanSlug((item as ChallengeHistoryItem).slug),
+        kind: cleanKind((item as ChallengeHistoryItem).kind),
+        url: cleanChallengeUrl((item as ChallengeHistoryItem).url),
+        label: cleanLabel((item as ChallengeHistoryItem).label),
+        createdAt: cleanDate((item as ChallengeHistoryItem).createdAt)
+      })).filter((item) => item.id && item.slug && item.url).slice(0, maxItems)
+      : [],
+    eventIds: Array.isArray(parsed.eventIds) ? parsed.eventIds.filter((item) => typeof item === 'string' && item.length <= 180).slice(-maxEvents) : []
   };
 }
 
@@ -179,9 +266,22 @@ function getChannel() {
   if (!canUseBrowser() || typeof BroadcastChannel === 'undefined') return null;
   if (!channel) {
     channel = new BroadcastChannel(channelName);
-    channel.onmessage = () => subscribers.forEach((listener) => listener());
+    channel.onmessage = () => {
+      memoryState = null;
+      subscribers.forEach((listener) => listener());
+    };
   }
   return channel;
+}
+
+function attachStorageListener() {
+  if (!canUseBrowser() || storageListenerAttached) return;
+  storageListenerAttached = true;
+  window.addEventListener('storage', (event) => {
+    if (event.key !== storageKey && event.key !== legacyFavouritesKey && event.key !== legacyRecentKey) return;
+    memoryState = null;
+    subscribers.forEach((listener) => listener());
+  });
 }
 
 function clone(state: PlayerEngagementState): PlayerEngagementState {
@@ -240,18 +340,21 @@ export function getServerPlayerEngagementSnapshot() {
 export function subscribePlayerEngagement(listener: () => void) {
   subscribers.add(listener);
   getChannel();
+  attachStorageListener();
   return () => subscribers.delete(listener);
 }
 
 export function recordGameStarted(slug: string, kind: EngagementGameKind): EngagementResult {
+  const clean = cleanSlug(slug);
+  if (!clean) return { state: readStoredState(), xpEarned: 0 };
   const state = clone(readStoredState());
-  const progress = progressFor(state, slug, kind);
-  const firstStartTodayId = `start:${kind}:${slug}:${todayIso()}`;
+  const progress = progressFor(state, clean, kind);
+  const firstStartTodayId = `start:${kind}:${clean}:${todayIso()}`;
   const duplicate = state.eventIds.includes(firstStartTodayId);
   progress.starts += 1;
   progress.replays = Math.max(0, progress.starts - 1);
   progress.lastPlayedAt = new Date().toISOString();
-  upsertRecent(state, slug, kind);
+  upsertRecent(state, clean, kind);
   updateStreak(state);
   const xpEarned = duplicate ? 0 : (kind === 'original' ? 8 : 3);
   if (!duplicate) {
@@ -264,37 +367,53 @@ export function recordGameStarted(slug: string, kind: EngagementGameKind): Engag
 }
 
 export function recordOriginalResult(slug: string, score: number, eventId?: string): EngagementResult {
+  const clean = cleanSlug(slug);
+  if (!clean) return { state: readStoredState(), xpEarned: 0 };
   const state = clone(readStoredState());
-  const boundedScore = Math.max(0, Math.min(100000000, Math.floor(Number(score) || 0)));
-  const id = eventId || `result:${slug}:${boundedScore}:${todayIso()}`;
+  const boundedScore = Math.max(0, Math.min(maxScore, Math.floor(Number(score) || 0)));
+  if (boundedScore <= 0) return { state, xpEarned: 0 };
+  const cleanEvent = typeof eventId === 'string' && eventId.length <= maxSlugLength ? eventId.replace(/[^a-zA-Z0-9:._-]/g, '') : '';
+  const id = cleanEvent ? `run:${clean}:${cleanEvent}` : `result:${clean}:${boundedScore}:${todayIso()}`;
   if (state.eventIds.includes(id)) return { state, xpEarned: 0 };
-  const progress = progressFor(state, slug, 'original');
+  const progress = progressFor(state, clean, 'original');
   const personalBest = boundedScore > Number(progress.bestScore || 0);
   progress.completions += 1;
   progress.bestScore = personalBest ? boundedScore : progress.bestScore;
   progress.lastPlayedAt = new Date().toISOString();
-  upsertRecent(state, slug, 'original');
+  upsertRecent(state, clean, 'original');
   updateStreak(state);
-  const xpEarned = 25 + (personalBest ? 15 : 0);
+  const day = todayIso();
+  const perGameAwarded = state.eventIds.filter((item) => item.startsWith(`complete-xp:original:${clean}:${day}:`)).length;
+  const globalAwarded = state.eventIds.filter((item) => item.startsWith(`complete-xp:original:*:${day}:`)).length;
+  const completionXpAllowed = perGameAwarded < completionXpPerGameDailyLimit && globalAwarded < globalCompletionXpDailyLimit;
+  const baseXp = completionXpAllowed ? 25 : 0;
+  const bestXp = personalBest ? 15 : 0;
+  const xpEarned = baseXp + bestXp;
   state.xp += xpEarned;
-  state.eventIds = [...state.eventIds, id].slice(-maxEvents);
-  const achievement = personalBest ? maybeAchievement(state, `best:${slug}`, `New best in ${slug.replace(/-/g, ' ')}`) : undefined;
+  const xpMarkers = completionXpAllowed ? [`complete-xp:original:${clean}:${day}:${perGameAwarded + 1}`, `complete-xp:original:*:${day}:${globalAwarded + 1}`] : [];
+  state.eventIds = [...state.eventIds, id, ...xpMarkers].slice(-maxEvents);
+  const achievement = personalBest ? maybeAchievement(state, `best:${clean}`, `New best in ${clean.replace(/-/g, ' ')}`) : undefined;
   persist(state);
   return { state, xpEarned, achievement, personalBest };
 }
 
 export function saveFavourite(slug: string, kind: EngagementGameKind) {
+  const clean = cleanSlug(slug);
+  if (!clean) return readStoredState();
   const state = clone(readStoredState());
   const now = new Date().toISOString();
-  state.favourites = [{ slug, kind, savedAt: now }, ...state.favourites.filter((item) => item.slug !== slug)].slice(0, maxItems);
+  state.favourites = [{ slug: clean, kind, savedAt: now }, ...state.favourites.filter((item) => item.slug !== clean)].slice(0, maxItems);
   persist(state);
   return state;
 }
 
 export function recordChallengeHistory(item: Omit<ChallengeHistoryItem, 'id' | 'createdAt'>) {
+  const slug = cleanSlug(item.slug);
+  const url = cleanChallengeUrl(item.url);
+  if (!slug || !url) return readStoredState();
   const state = clone(readStoredState());
-  const id = `${item.slug}:${Date.now()}`;
-  state.challenges = [{ ...item, id, createdAt: new Date().toISOString() }, ...state.challenges.filter((challenge) => challenge.url !== item.url)].slice(0, maxItems);
+  const id = `${slug}:${Date.now()}`;
+  state.challenges = [{ ...item, slug, url, label: cleanLabel(item.label), id, createdAt: new Date().toISOString() }, ...state.challenges.filter((challenge) => challenge.url !== url)].slice(0, maxItems);
   persist(state);
   return state;
 }

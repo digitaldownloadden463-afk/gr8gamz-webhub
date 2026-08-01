@@ -27,7 +27,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Purposes, lawful bases and retention</h2>
-        <p>Essential processing keeps the site available and secure. Local-device storage supports saved games, recent games and honest local progress until you clear it. Stateless challenge links contain only validated game details, timestamps and a non-personal score when a supported GR8 Original reports one. Optional analytics or advertising, if later enabled, requires consent and must be described before loading.</p>
+        <p>Essential processing keeps the site available and secure. Local-device storage supports saved games, recent games and honest local progress until you clear it. Stateless challenge links contain only validated game details, timestamps and a non-personal, player-reported local score when a supported GR8 Original reports one in this browser. The signature prevents a challenge link being changed after creation, but it is not a server-authoritative score system. Optional analytics or advertising, if later enabled, requires consent and must be described before loading.</p>
       </section>
       <section className="content-panel">
         <h2>Rights and contact details</h2>

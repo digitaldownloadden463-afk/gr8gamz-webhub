@@ -10,19 +10,12 @@ export const contentType = 'image/png';
 
 type RouteProps = { params: Promise<{ slug: string }> };
 
-function titleFromSlug(slug: string) {
-  return slug
-    .replace(/-/g, ' ')
-    .replace(/\bio\b/gi, 'IO')
-    .replace(/\b\w/g, (char) => char.toUpperCase())
-    .slice(0, 72);
-}
-
 export async function GET(_request: Request, { params }: RouteProps) {
   const { slug } = await params;
   const original = getGameBySlug(slug);
   const partner = getPartnerGameProfile(slug);
-  const title = original?.name || partner?.title || titleFromSlug(slug) || 'GR8 GAMZ';
+  if (!original && !partner) return new Response('Not found', { status: 404 });
+  const title = original?.name || partner?.title || 'GR8 GAMZ';
   const collection = original ? 'GR8 Originals' : 'GR8 Select';
   const category = original?.category || original?.genre || partner?.category || 'Browser game';
   const artwork = original?.thumbnail || original?.image || partner?.image;

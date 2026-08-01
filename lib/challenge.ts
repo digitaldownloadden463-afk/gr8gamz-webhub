@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import { getGameBySlug } from '@/lib/games';
+import { defaultLocale, isLocale, type Locale } from '@/lib/i18n';
 import { getPartnerGameProfile } from '@/src/data/partnerGameProfiles';
 
 export type ChallengePayload = {
@@ -8,6 +9,8 @@ export type ChallengePayload = {
   kind: 'original' | 'select';
   score: number;
   scoreUnit: 'points';
+  claim: 'local-game-result' | 'game-invite';
+  locale: Locale;
   best?: number;
   issuedAt: number;
   expiresAt: number;
@@ -58,11 +61,18 @@ export function resolveChallengeGame(slug: string, kind?: ChallengePayload['kind
 export function signChallenge(payload: ChallengePayload) {
   if (!challengesEnabled()) return null;
   const now = Date.now();
+  const allowedKeys = new Set(['version', 'game', 'kind', 'score', 'scoreUnit', 'claim', 'locale', 'best', 'issuedAt', 'expiresAt', 'wording']);
+  if (Object.keys(payload).some((key) => !allowedKeys.has(key))) return null;
   if (payload.version !== 1) return null;
   if (!resolveChallengeGame(payload.game, payload.kind)) return null;
   if (!Number.isInteger(payload.score) || payload.score < 0 || payload.score > 100000000) return null;
+  if (payload.kind === 'select' && payload.score !== 0) return null;
+  if (payload.kind === 'select' && payload.claim !== 'game-invite') return null;
+  if (payload.kind === 'original' && payload.score > 0 && payload.claim !== 'local-game-result') return null;
+  if (!isLocale(payload.locale)) return null;
   if (!Number.isInteger(payload.issuedAt) || !Number.isInteger(payload.expiresAt)) return null;
   if (payload.issuedAt > now + 60_000 || payload.expiresAt <= now || payload.expiresAt - payload.issuedAt > maxAgeMs) return null;
+  if (payload.best !== undefined && (!Number.isInteger(payload.best) || payload.best < 0 || payload.best > 100000000)) return null;
   const body = base64url(JSON.stringify(payload));
   const signature = crypto.createHmac('sha256', secret).update(body).digest('base64url');
   return `${body}.${signature}`;
@@ -71,23 +81,36 @@ export function signChallenge(payload: ChallengePayload) {
 export function verifyChallenge(token: string): ChallengePayload | null {
   if (!challengesEnabled()) return null;
   if (!token || token.length > maxTokenLength) return null;
-  const [body, signature] = token.split('.');
+  const segments = token.split('.');
+  if (segments.length !== 2) return null;
+  const [body, signature] = segments;
   if (!body || !signature) return null;
   const expected = crypto.createHmac('sha256', secret).update(body).digest('base64url');
   if (signature.length !== expected.length) return null;
   if (!crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) return null;
   try {
-    const parsed = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as ChallengePayload;
+    const parsed = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as Partial<ChallengePayload>;
+    const allowedKeys = new Set(['version', 'game', 'kind', 'score', 'scoreUnit', 'claim', 'locale', 'best', 'issuedAt', 'expiresAt', 'wording']);
+    if (Object.keys(parsed).some((key) => !allowedKeys.has(key))) return null;
     if (parsed.version !== 1) return null;
     if (parsed.kind !== 'original' && parsed.kind !== 'select') return null;
-    if (!resolveChallengeGame(parsed.game, parsed.kind)) return null;
-    if (!Number.isFinite(parsed.score) || parsed.score < 0 || parsed.score > 100000000) return null;
+    if (typeof parsed.game !== 'string' || !resolveChallengeGame(parsed.game, parsed.kind)) return null;
+    const score = parsed.score;
+    if (typeof score !== 'number' || !Number.isFinite(score) || !Number.isInteger(score) || score < 0 || score > 100000000) return null;
+    if (parsed.kind === 'select' && score !== 0) return null;
     if (parsed.scoreUnit !== 'points') return null;
-    if (!Number.isInteger(parsed.issuedAt) || !Number.isInteger(parsed.expiresAt)) return null;
-    if (parsed.expiresAt <= Date.now()) return null;
-    if (parsed.expiresAt - parsed.issuedAt > maxAgeMs) return null;
+    if (parsed.claim !== 'local-game-result' && parsed.claim !== 'game-invite') return null;
+    if (parsed.kind === 'select' && parsed.claim !== 'game-invite') return null;
+    if (parsed.kind === 'original' && score > 0 && parsed.claim !== 'local-game-result') return null;
+    if (!isLocale(parsed.locale)) parsed.locale = defaultLocale;
+    const issuedAt = parsed.issuedAt;
+    const expiresAt = parsed.expiresAt;
+    if (typeof issuedAt !== 'number' || typeof expiresAt !== 'number' || !Number.isInteger(issuedAt) || !Number.isInteger(expiresAt)) return null;
+    if (expiresAt <= Date.now()) return null;
+    if (expiresAt - issuedAt > maxAgeMs) return null;
+    if (parsed.best !== undefined && (!Number.isInteger(parsed.best) || parsed.best < 0 || parsed.best > 100000000)) return null;
     if (parsed.wording !== 'beat-score' && parsed.wording !== 'play-game') return null;
-    return parsed;
+    return parsed as ChallengePayload;
   } catch {
     return null;
   }

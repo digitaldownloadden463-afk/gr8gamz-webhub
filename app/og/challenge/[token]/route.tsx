@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { canonical } from '@/lib/features';
+import { tr } from '@/lib/i18n';
 import { resolveChallengeGame, verifyChallenge } from '@/lib/challenge';
 
 export const runtime = 'nodejs';
@@ -13,7 +14,9 @@ export async function GET(_request: Request, { params }: RouteProps) {
   const { token } = await params;
   const challenge = verifyChallenge(token);
   const game = challenge ? resolveChallengeGame(challenge.game, challenge.kind) : null;
-  const headline = challenge && game && challenge.score > 0 ? `Beat ${challenge.score.toLocaleString()}` : 'Can you beat it?';
+  if (!challenge || !game) return new Response('Not found', { status: 404 });
+  const text = tr(challenge.locale).engagement;
+  const headline = challenge.score > 0 ? `${text.sharedScore}: ${challenge.score.toLocaleString()}` : text.challengeInviteTitle.replace('{title}', game.title);
   const subline = game ? `${game.title} on GR8 GAMZ` : 'Play the challenge on GR8 GAMZ.';
   const image = game?.image ? canonical(game.image) : null;
 

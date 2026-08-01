@@ -182,7 +182,10 @@ const i18nSource = fs.readFileSync(path.join(root, 'lib/i18n.ts'), 'utf8');
 const i18nTextValues = [...i18nSource.matchAll(/:\s*'([^']*)'/g)].map((match) => match[1]).join('\n');
 let localeTemplateFailures = 0;
 for (const phrase of prohibited) {
-  if (i18nTextValues.toLowerCase().includes(phrase.toLowerCase())) {
+  const matched = phrase === 'SEO'
+    ? /\bSEO\b/i.test(i18nTextValues)
+    : i18nTextValues.toLowerCase().includes(phrase.toLowerCase());
+  if (matched) {
     localeTemplateFailures += 1;
     failures.push(`Localized templates contain prohibited phrase "${phrase}"`);
   }

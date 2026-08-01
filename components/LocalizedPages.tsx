@@ -174,8 +174,8 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
         <p>{copy.tips}</p>
         <p className="fine-print">{copy.external}</p>
       </section>
-      <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} />
-      {game.source === 'gr8-select' ? <ChallengeShare gameSlug={game.slug} gameTitle={game.title} kind="select" /> : null}
+      <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} labels={text.engagement} />
+      {game.source === 'gr8-select' ? <ChallengeShare gameSlug={game.slug} gameTitle={game.title} kind="select" locale={locale} labels={text.engagement} /> : null}
       <section className="section-heading">
         <span className="eyebrow">{text.common.related}</span>
         <h2>{text.common.related}.</h2>
@@ -210,6 +210,8 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
         playUrl={profile.playUrl || ''}
         width={profile.width || 960}
         height={profile.height || 540}
+        locale={locale}
+        labels={text.engagement}
       />
       <section className="section-heading">
         <span className="eyebrow">{text.common.related}</span>
