@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
   const kind = body.kind === 'select' ? 'select' : body.kind === 'original' ? 'original' : null;
   if (!kind) return NextResponse.json({ error: 'Invalid challenge' }, { status: 400 });
   const game = resolveChallengeGame(String(body.game || ''), kind);
-  const score = Number(body.score);
+  const score = body.score === undefined && kind === 'select' ? 0 : Number(body.score);
   const locale = typeof body.locale === 'string' && isLocale(body.locale) ? body.locale : defaultLocale;
   const claim = body.claim === 'game-invite' || body.claim === 'local-game-result' ? body.claim : (kind === 'select' ? 'game-invite' : 'local-game-result');
   if (!game || !Number.isInteger(score) || score < 0 || score > 100000000) {
