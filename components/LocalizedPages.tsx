@@ -51,9 +51,9 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
             <Link href={pathForLocale(locale, '/gr8-select')} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> {text.home.selectCta}</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ">
-            <span><strong>26</strong> {text.nav.originals}</span>
-            <span><strong>226</strong> {text.hubs.launchTitle}</span>
-            <span><strong>12</strong> locales</span>
+            <span className="hero-stat"><strong>26</strong><span>{text.nav.originals}</span></span>
+            <span className="hero-stat"><strong>226</strong><span>{text.hubs.launchTitle}</span></span>
+            <span className="hero-stat hero-stat--wide"><strong>12</strong><span>locales</span></span>
           </div>
         </div>
       </section>

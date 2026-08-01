@@ -101,6 +101,21 @@ async function screenshot(page, name) {
   await page.screenshot({ path: path.join(screenshotDir, `${name}.png`), fullPage: false });
 }
 
+async function assertHeroStats(page, label) {
+  const stats = page.locator('.hero__stats .hero-stat');
+  const count = await stats.count();
+  if (count < 3) fail(`${label} has only ${count} hero stats`);
+  for (let index = 0; index < count; index += 1) {
+    const stat = stats.nth(index);
+    const box = await rect(page, stat);
+    const value = await rect(page, stat.locator('strong'));
+    const text = await rect(page, stat.locator(':scope > span'));
+    if (box.width <= 0 || box.height <= 0) fail(`${label} stat ${index + 1} has no rendered size`);
+    if (value.bottom > text.top + 2) fail(`${label} stat ${index + 1} value and label overlap`);
+    if (text.right > box.right + 1 || text.left < box.left - 1) fail(`${label} stat ${index + 1} label escapes its tile`);
+  }
+}
+
 const browser = await chromium.launch();
 
 for (const viewport of viewports) {
@@ -153,6 +168,10 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }
 }
 
 {
+  const compactPair = await openPage(browser, '/', { width: 320, height: 568 });
+  await assertHeroStats(compactPair.page, 'homepage 320px');
+  await closePair(compactPair);
+
   const pair = await openPage(browser, '/', { width: 390, height: 844 });
   const page = pair.page;
   const heroTop = (await rect(page, page.locator('.hero--home'))).top;
@@ -164,8 +183,18 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }
   }
   if (heroTop > 170) fail(`homepage hero starts too low at 390px: ${heroTop}`);
   if (start.top < 0 || start.bottom > 844) fail(`Start Playing is not visible in first mobile viewport: ${JSON.stringify(start)}`);
+  await assertHeroStats(page, 'homepage 390px');
   metrics.mobileHomeHeroTop = Math.round(heroTop);
   await screenshot(page, 'home-mobile');
+  await closePair(pair);
+}
+
+{
+  const pair = await openPage(browser, '/ar', { width: 390, height: 844 });
+  const page = pair.page;
+  const dir = await page.locator('main').first().getAttribute('dir');
+  if (dir !== 'rtl') fail(`Arabic homepage did not preserve RTL direction: ${dir}`);
+  await assertHeroStats(page, 'Arabic homepage 390px');
   await closePair(pair);
 }
 

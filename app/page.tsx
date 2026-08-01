@@ -65,11 +65,11 @@ export default function HomePage() {
             <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Explore GR8 Select</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ highlights">
-            <span><strong>{stats.originals.toLocaleString()}</strong> Originals</span>
-            <span><strong>{stats.select.toLocaleString()}</strong> GR8 Select</span>
-            <span><strong>{stats.playable.toLocaleString()}</strong> Playable games</span>
-            <span><strong>{stats.locales.toLocaleString()}</strong> Languages</span>
-            <span><strong>Worldwide</strong> Arcade</span>
+            <span className="hero-stat"><strong>{stats.originals.toLocaleString()}</strong><span>Originals</span></span>
+            <span className="hero-stat"><strong>{stats.select.toLocaleString()}</strong><span>GR8 Select</span></span>
+            <span className="hero-stat"><strong>{stats.playable.toLocaleString()}</strong><span>Playable games</span></span>
+            <span className="hero-stat"><strong>{stats.locales.toLocaleString()}</strong><span>Languages</span></span>
+            <span className="hero-stat hero-stat--wide"><strong>Worldwide</strong><span>Arcade</span></span>
           </div>
         </div>
       </section>

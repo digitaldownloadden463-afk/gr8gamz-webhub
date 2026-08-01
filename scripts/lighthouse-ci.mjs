@@ -3,7 +3,9 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const baseUrl = process.env.LIGHTHOUSE_BASE_URL || 'http://127.0.0.1:3000';
-const routes = ['/', '/games', '/gr8-select', '/categories/action', '/arcade/neon-snake-rush', '/more-free-games/war-the-knights', '/es/gr8-select'];
+const routes = (process.env.LIGHTHOUSE_ROUTES
+  ? process.env.LIGHTHOUSE_ROUTES.split(',').map((route) => route.trim()).filter(Boolean)
+  : ['/', '/games', '/games?q=snake', '/gr8-select', '/categories/action', '/arcade/neon-snake-rush', '/more-free-games/war-the-knights', '/es/gr8-select']);
 const outDir = join(process.cwd(), 'lighthouse-results');
 mkdirSync(outDir, { recursive: true });
 

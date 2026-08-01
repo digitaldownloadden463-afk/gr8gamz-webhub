@@ -7,6 +7,7 @@ const viewports = [
 const routes = [
   '/',
   '/games',
+  '/games?q=snake',
   '/gr8-originals',
   '/gr8-select',
   '/gr8-trending',

@@ -10,20 +10,30 @@ export const metadata = {
   alternates: { canonical: canonical('/games') }
 };
 
-export const dynamic = 'force-static';
+type GamesPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
 
-export default function GamesPage() {
+function sanitizeQuery(value: string | string[] | undefined) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return String(raw || '').trim().slice(0, 80);
+}
+
+export default async function GamesPage({ searchParams }: GamesPageProps) {
+  const params = await searchParams;
+  const query = sanitizeQuery(params?.q);
   const games = getAllGames();
   const categories = getRegistryCategories();
   const controls = getRegistryControlHubs();
+  const queryCopy = query ? `Showing results for "${query}".` : 'Search the original GR8 GAMZ library. Every result has touch-friendly controls and a stable play screen.';
   return (
     <main>
       <section className="page-title">
         <span className="eyebrow">Original games</span>
         <h1>{gameCountLabel(games.length)} ready to play.</h1>
-        <p>Search the original GR8 GAMZ library. Every result has touch-friendly controls and a stable play screen.</p>
+        <p>{queryCopy}</p>
       </section>
-      <GameFilters games={games} />
+      <GameFilters games={games} initialQuery={query} />
       <section className="content-panel" aria-label="Browse by category">
         <span className="eyebrow">Browse by style</span>
         <h2>Find a game by category.</h2>

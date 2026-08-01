@@ -17,11 +17,7 @@ function unique(values: Array<string | undefined>) {
 }
 
 export function GameFilters({ games, initialQuery = '' }: GameFiltersProps) {
-  const [query, setQuery] = useState(() => {
-    if (typeof window === 'undefined') return initialQuery;
-    const params = new URLSearchParams(window.location.search);
-    return String(params.get('q') || initialQuery).slice(0, 80);
-  });
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(allValue);
   const [controls, setControls] = useState(allValue);
   const [difficulty, setDifficulty] = useState(allValue);
