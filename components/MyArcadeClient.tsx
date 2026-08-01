@@ -2,13 +2,20 @@
 
 import Link from 'next/link';
 import { useMemo, useSyncExternalStore, useState } from 'react';
-import type { Gr8Game } from '@/lib/games';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, nextLevelXp, resetPlayerEngagement, subscribePlayerEngagement } from '@/lib/playerEngagement';
 
-type ArcadeGame = Gr8Game & { path?: string; kind?: 'original' | 'select' };
+export type ArcadeLookupGame = {
+  id: string;
+  slug: string;
+  name: string;
+  category?: string;
+  genre?: string;
+  path: string;
+  kind: 'original' | 'select';
+};
 
 type MyArcadeClientProps = {
-  games: ArcadeGame[];
+  games: ArcadeLookupGame[];
 };
 
 export function MyArcadeClient({ games }: MyArcadeClientProps) {
@@ -16,8 +23,8 @@ export function MyArcadeClient({ games }: MyArcadeClientProps) {
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
 
   const bySlug = useMemo(() => new Map(games.map((game) => [game.slug || game.id, game])), [games]);
-  const favouriteGames = progress.favourites.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeGame[];
-  const recentGames = progress.recent.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeGame[];
+  const favouriteGames = progress.favourites.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeLookupGame[];
+  const recentGames = progress.recent.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeLookupGame[];
   const level = levelFromXp(progress.xp);
   const target = nextLevelXp(level);
   const pct = Math.min(100, Math.round((progress.xp / target) * 100));
@@ -55,11 +62,11 @@ export function MyArcadeClient({ games }: MyArcadeClientProps) {
   );
 }
 
-function gameHref(game: ArcadeGame) {
-  return game.path || (game.kind === 'select' ? `/more-free-games/${game.slug || game.id}` : `/arcade/${game.slug || game.id}`);
+function gameHref(game: ArcadeLookupGame) {
+  return game.path;
 }
 
-function LocalList({ title, games, empty }: { title: string; games: ArcadeGame[]; empty: string }) {
+function LocalList({ title, games, empty }: { title: string; games: ArcadeLookupGame[]; empty: string }) {
   return (
     <section className="content-panel">
       <h2>{title}</h2>
@@ -68,7 +75,7 @@ function LocalList({ title, games, empty }: { title: string; games: ArcadeGame[]
           {games.map((game) => (
             <Link key={game.id} href={gameHref(game)}>
               <span>{game.category || game.genre || 'Arcade'}</span>
-              <strong>{game.name || game.title}</strong>
+              <strong>{game.name}</strong>
             </Link>
           ))}
         </div>
@@ -79,7 +86,7 @@ function LocalList({ title, games, empty }: { title: string; games: ArcadeGame[]
   );
 }
 
-function LocalProgressList({ title, items, empty, bySlug }: { title: string; items: { slug: string; label: string; kind?: string }[]; empty: string; bySlug: Map<string, ArcadeGame> }) {
+function LocalProgressList({ title, items, empty, bySlug }: { title: string; items: { slug: string; label: string; kind?: string }[]; empty: string; bySlug: Map<string, ArcadeLookupGame> }) {
   const games = items.map((item) => ({ item, game: bySlug.get(item.slug) })).filter((entry) => entry.game);
   return (
     <section className="content-panel">
@@ -89,7 +96,7 @@ function LocalProgressList({ title, items, empty, bySlug }: { title: string; ite
           {games.map(({ item, game }) => game ? (
             <Link key={item.slug} href={gameHref(game)}>
               <span>{item.label}</span>
-              <strong>{game.name || game.title}</strong>
+              <strong>{game.name}</strong>
             </Link>
           ) : null)}
         </div>
