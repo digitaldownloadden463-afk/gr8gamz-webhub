@@ -4,6 +4,7 @@ import TopNav from '@/components/TopNav';
 import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
 import PwaRegister from '@/components/PwaRegister';
+import VercelObservability from '@/components/VercelObservability';
 import { canonical, siteUrl } from '@/lib/features';
 import { headers } from 'next/headers';
 import { defaultLocale, isLocale, localeInfo, type Locale } from '@/lib/i18n';
@@ -57,6 +58,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Footer />
         <ConsentBanner />
         <PwaRegister />
+        <VercelObservability />
       </body>
     </html>
   );
