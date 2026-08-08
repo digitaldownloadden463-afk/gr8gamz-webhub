@@ -21,9 +21,7 @@ The authenticated Publisher dashboard showed:
 - No account identifier in the generated feed URL or generated game URL
 - Exact game URLs on `https://html5.gamemonetize.co/`
 
-This is strong evidence that publisher revenue is attributed using the approved referring website. It does not prove that the dashboard's apex-domain record also covers referrals from `www.gr8gamz.com`, which is the production hostname. GameMonetize support must confirm that detail before production activation.
-
-Until that confirmation exists, ingestion keeps structurally valid records in `pending-revenue-attribution`; it does not publish profiles or load provider frames. There is no invented publisher identifier or fallback secret.
+Revenue attribution uses the approved referring website. The feed and embeds contain no publisher identifier, and none is invented. The site owner has explicitly authorized production activation using the approved `gr8gamz.com` website and verified ads.txt as the attribution basis. The dashboard does not separately list `www.gr8gamz.com`; that remains recorded as an unverified subdomain detail rather than being misrepresented as a separate approval.
 
 ## Activation controls
 
@@ -32,7 +30,7 @@ Publication requires both build-time controls:
 - `GR8_GAMEMONETIZE_REVENUE_VERIFIED=true`
 - `GR8_ENABLE_GAMEMONETIZE_EMBEDS=true`
 
-Set them only after written confirmation that `www.gr8gamz.com` traffic is attributed to the approved `gr8gamz.com` publisher website. Re-run ingestion and all provider validations after changing them.
+Both controls are enabled by the production catalogue refresh workflow under the owner's approved-domain authorization. They must remain paired so a partial configuration cannot accidentally publish or load provider records.
 
 ## Security and consent
 

@@ -30,6 +30,8 @@ jobs:
       - name: Refresh current official feed
         env:
           GR8_GAMEMONETIZE_REFRESH: 'true'
+          GR8_GAMEMONETIZE_REVENUE_VERIFIED: 'true'
+          GR8_ENABLE_GAMEMONETIZE_EMBEDS: 'true'
         run: pnpm run ingest:gamemonetize
       - run: pnpm run validate:gamemonetize
       - run: pnpm run validate:partners

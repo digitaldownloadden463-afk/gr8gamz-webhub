@@ -61,6 +61,14 @@ export function partnerGameEntries(page: number) {
 }
 
 export function collectionEntries() {
+  const categoryRoutes = getRegistryCategories().flatMap((category) => [
+    `/categories/${category.slug}`,
+    ...Array.from({ length: Math.max(0, Math.ceil(category.count / 48) - 1) }, (_, index) => `/categories/${category.slug}/page/${index + 2}`)
+  ]);
+  const controlRoutes = getRegistryControlHubs().flatMap((hub) => [
+    `/controls/${hub.slug}`,
+    ...Array.from({ length: Math.max(0, Math.ceil(hub.count / 48) - 1) }, (_, index) => `/controls/${hub.slug}/page/${index + 2}`)
+  ]);
   const routes = [
     '/games',
     '/gr8-originals',
@@ -72,8 +80,8 @@ export function collectionEntries() {
     '/popular-games',
     '/quick-games',
     '/mobile-games',
-    ...getRegistryCategories().map((category) => `/categories/${category.slug}`),
-    ...getRegistryControlHubs().map((hub) => `/controls/${hub.slug}`),
+    ...categoryRoutes,
+    ...controlRoutes,
     ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
   ];
   return routes.map((route) => urlEntry(route, undefined, route === '/games' ? '0.85' : '0.65')).join('');

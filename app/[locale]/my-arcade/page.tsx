@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import MyArcadeClient from '@/components/MyArcadeClient';
 import { getAllGames } from '@/lib/games';
 import { localizedAlternates, localizedCanonical, localeInfo, tr, type Locale } from '@/lib/i18n';
-import { getPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -21,8 +20,7 @@ export default async function Page({ params }: PageProps) {
   const text = tr(locale);
   const info = localeInfo(locale);
   const games = [
-    ...getAllGames().map((game) => ({ id: game.id, slug: game.slug || game.id, name: game.name, category: game.category, genre: game.genre, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` })),
-    ...getPartnerGameProfiles().map((game) => ({ id: game.slug, slug: game.slug, name: game.title, category: game.category, kind: 'select' as const, path: game.path }))
+    ...getAllGames().map((game) => ({ id: game.id, slug: game.slug || game.id, name: game.name, category: game.category, genre: game.genre, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` }))
   ];
   return <main lang={locale} dir={info.dir}><section className="page-title"><span className="eyebrow">{text.nav.arcade}</span><h1>{text.nav.arcade}</h1><p>{text.home.privacy}</p></section><MyArcadeClient games={games} labels={text.engagement} /></main>;
 }

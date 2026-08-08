@@ -3,7 +3,6 @@ import MyArcadeClient from '@/components/MyArcadeClient';
 import { getAllGames } from '@/lib/games';
 import { canonical } from '@/lib/features';
 import { tr } from '@/lib/i18n';
-import { getPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'My Arcade',
@@ -15,8 +14,7 @@ export const metadata = {
 export default function MyArcadePage() {
   const text = tr('en');
   const games = [
-    ...getAllGames().map((game) => ({ id: game.id, slug: game.slug || game.id, name: game.name, category: game.category, genre: game.genre, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` })),
-    ...getPartnerGameProfiles().map((game) => ({ id: game.slug, slug: game.slug, name: game.title, category: game.category, kind: 'select' as const, path: game.path }))
+    ...getAllGames().map((game) => ({ id: game.id, slug: game.slug || game.id, name: game.name, category: game.category, genre: game.genre, kind: 'original' as const, path: `/arcade/${game.slug || game.id}` }))
   ];
   return (
     <main>

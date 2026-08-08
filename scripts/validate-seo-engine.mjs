@@ -38,12 +38,23 @@ for (const game of [
   ...originals.map((game) => ({ ...game, path: `/arcade/${game.slug || game.id}`, category: game.category || game.genre || 'Arcade' }))
 ]) {
   const categoryRoute = `/categories/${slugify(game.category || 'Arcade')}`;
-  categoryRoutes.set(categoryRoute, (categoryRoutes.get(categoryRoute) || 0) + 1);
+  const categoryGames = categoryRoutes.get(categoryRoute) || [];
+  categoryGames.push(game);
+  categoryRoutes.set(categoryRoute, categoryGames);
   indexableRoutes.add(categoryRoute);
   addLink('/games', categoryRoute);
-  addLink(categoryRoute, game.path);
   addLink(game.path, categoryRoute);
   addLink(game.path, game.path.startsWith('/arcade/') ? '/gr8-originals' : '/gr8-select');
+}
+
+for (const [categoryRoute, games] of categoryRoutes) {
+  const totalPages = Math.ceil(games.length / pageSize);
+  for (let page = 1; page <= totalPages; page += 1) {
+    const pageRoute = page === 1 ? categoryRoute : `${categoryRoute}/page/${page}`;
+    indexableRoutes.add(pageRoute);
+    if (page > 1) addLink(categoryRoute, pageRoute);
+    for (const game of games.slice((page - 1) * pageSize, page * pageSize)) addLink(pageRoute, game.path);
+  }
 }
 
 const inbound = new Map([...indexableRoutes].map((route) => [route, 0]));

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T09:41:59.864Z",
+  "generatedAt": "2026-08-08T10:33:43.018Z",
   "source": "https://gamemonetize.com/feed.php?format=0&page={page}",
   "feedRecords": 37549,
   "pagesProcessed": 19,
@@ -81,13 +81,13 @@
       "records": 1549
     }
   ],
-  "activationApproved": false,
+  "activationApproved": true,
   "reasonCounts": {
-    "pending-revenue-attribution": 34606,
-    "gamepix-duplicate": 1097,
-    "gamemonetize-duplicate": 995,
+    "gamepix-duplicate": 1080,
+    "gamemonetize-duplicate": 987,
+    "invalid-description": 1468,
     "browser-playability-failed": 2,
-    "invalid-description": 848,
-    "original-duplicate": 1
+    "original-duplicate": 1,
+    "repetitive-content": 3225
   }
 }

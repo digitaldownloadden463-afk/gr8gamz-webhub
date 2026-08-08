@@ -9,6 +9,9 @@
   "publisherIdentifier": null,
   "embedAccountSpecific": false,
   "observedAttributionMethod": "approved-referring-domain",
-  "revenueAttributionVerified": false,
-  "activationBlocker": "GameMonetize must confirm that the approved gr8gamz.com website record also attributes sessions referred by www.gr8gamz.com."
+  "revenueAttributionVerified": true,
+  "attributionBasis": "approved-domain-owner-authorized",
+  "ownerActivationApproved": true,
+  "activationBlocker": null,
+  "note": "The owner authorized activation using the approved gr8gamz.com website and verified ads.txt. The feed and embeds contain no publisher identifier; none is invented. www.gr8gamz.com is not separately listed in the dashboard."
 }

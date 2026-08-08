@@ -16,9 +16,11 @@ const reportPath = path.join(root, 'reports/partner-catalogue-report.json');
 const providerReportPath = path.join(root, 'reports/gamemonetize-ingestion-report.json');
 const providerCatalogueDirectory = path.join(root, 'src/data/providers/gamemonetize');
 const providerManifestPath = path.join(providerCatalogueDirectory, 'manifest.json');
+const providerBlockedIdsPath = path.join(providerCatalogueDirectory, 'blocked-source-ids.json');
 const cacheDirectory = path.join(root, '.cache/gamemonetize-feed');
 const checkedAt = new Date().toISOString();
 const activationApproved = process.env.GR8_GAMEMONETIZE_REVENUE_VERIFIED === 'true' && process.env.GR8_ENABLE_GAMEMONETIZE_EMBEDS === 'true';
+const attributionBasis = 'approved-domain-owner-authorized';
 const maximumPages = 100;
 const pageDelayMs = Number.parseInt(process.env.GR8_GAMEMONETIZE_PAGE_DELAY_MS || '2500', 10);
 
@@ -141,6 +143,21 @@ function compactProviderRecord(record) {
   return compact;
 }
 
+function contentTemplateKey(record) {
+  const title = String(record.title || '').trim();
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const sentences = String(record.description || '').split(/(?<=[.!?])\s+/).filter(Boolean);
+  const publicDescription = sentences.find((sentence) => sentence.length >= 45 && sentence.length <= 220) || sentences[0] || '';
+  return publicDescription
+    .toLowerCase()
+    .replace(escapedTitle ? new RegExp(escapedTitle, 'gi') : /$^/, '{title}')
+    .replace(/\b(?:action|adventure|arcade|puzzle|racing|sports|multiplayer|simulation|strategy|io)\b/g, '{category}')
+    .replace(/\b\d+\b/g, '{number}')
+    .replace(/[^a-z{}]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 async function writeProviderChunks(records, pagesProcessed, reasonCounts) {
   await fs.mkdir(providerCatalogueDirectory, { recursive: true });
   const existingFiles = await fs.readdir(providerCatalogueDirectory).catch(() => []);
@@ -171,7 +188,11 @@ async function main() {
   const gamePixGames = previous.games.filter((game) => game.source === 'gamepix');
   const previousGameMonetize = [...previous.games, ...(previous.quarantine || [])].filter((game) => game.source === 'gamemonetize');
   const previousById = new Map(previousGameMonetize.map((game) => [String(game.sourceId), game]));
-  const failedBrowserIds = new Set();
+  const failedBrowserIds = new Set(previousGameMonetize.filter((game) => game.status === 'browser-playability-failed').map((game) => String(game.sourceId)));
+  try {
+    const blockedRecords = JSON.parse(await fs.readFile(providerBlockedIdsPath, 'utf8'));
+    for (const record of blockedRecords) if (record.status === 'browser-playability-failed' && record.sourceId) failedBrowserIds.add(String(record.sourceId));
+  } catch {}
   try {
     const browserReport = JSON.parse(await fs.readFile(path.join(root, 'reports/gamemonetize-browser-sample.json'), 'utf8'));
     for (const result of browserReport.results || []) if (!result.passed && result.supplierId) failedBrowserIds.add(String(result.supplierId));
@@ -182,6 +203,7 @@ async function main() {
   const seenEmbeds = new Set();
   const seenArtwork = new Set();
   const seenTitles = new Set();
+  const seenSlugs = new Set();
   const publishedGameMonetize = [];
   const gameMonetizeQuarantine = [];
   const fallbackProviders = [];
@@ -191,13 +213,14 @@ async function main() {
     let reason = '';
     if (failedBrowserIds.has(record.sourceId)) reason = 'browser-playability-failed';
     else if (record.validationErrors.length) reason = record.validationErrors[0];
-    else if (seenIds.has(record.sourceId) || seenEmbeds.has(embedHash(record.embedUrl)) || seenArtwork.has(artworkHash(record.artworkUrl)) || seenTitles.has(normalizedGameTitle(record.title))) reason = 'gamemonetize-duplicate';
+    else if (seenIds.has(record.sourceId) || seenEmbeds.has(embedHash(record.embedUrl)) || seenArtwork.has(artworkHash(record.artworkUrl)) || seenTitles.has(normalizedGameTitle(record.title)) || seenSlugs.has(record.slug)) reason = 'gamemonetize-duplicate';
     else if (existing.titles.has(normalizedGameTitle(record.title)) || existing.slugs.has(record.slug)) reason = originalGames.some((game) => normalizedGameTitle(game.name || game.title) === normalizedGameTitle(record.title) || (game.slug || game.id) === record.slug) ? 'original-duplicate' : 'gamepix-duplicate';
 
     seenIds.add(record.sourceId);
     if (record.embedHash) seenEmbeds.add(record.embedHash);
     if (record.artworkHash) seenArtwork.add(record.artworkHash);
     if (normalizedGameTitle(record.title)) seenTitles.add(normalizedGameTitle(record.title));
+    if (record.slug) seenSlugs.add(record.slug);
 
     if (reason) {
       reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
@@ -222,6 +245,34 @@ async function main() {
       continue;
     }
     publishedGameMonetize.push(enrichPublished(record, previousById));
+  }
+
+  if (activationApproved) {
+    const templateGroups = new Map();
+    for (const record of publishedGameMonetize) {
+      const key = contentTemplateKey(record);
+      if (!key) continue;
+      const group = templateGroups.get(key) || [];
+      group.push(record);
+      templateGroups.set(key, group);
+    }
+    const repetitiveIds = new Set(
+      [...templateGroups.values()]
+        .filter((group) => group.length >= 8)
+        .flatMap((group) => group.map((record) => record.sourceId))
+    );
+    if (repetitiveIds.size) {
+      const retained = [];
+      for (const record of publishedGameMonetize) {
+        if (!repetitiveIds.has(record.sourceId)) {
+          retained.push(record);
+          continue;
+        }
+        reasonCounts['repetitive-content'] = (reasonCounts['repetitive-content'] || 0) + 1;
+        gameMonetizeQuarantine.push(quarantine(record, 'repetitive-content', previousById));
+      }
+      publishedGameMonetize.splice(0, publishedGameMonetize.length, ...retained);
+    }
   }
 
   const disappeared = previousGameMonetize.filter((game) => !seenIds.has(String(game.sourceId))).map((game) => quarantine({ ...game, lastChecked: checkedAt }, 'unavailable', previousById));
@@ -250,6 +301,8 @@ async function main() {
     providerActivation: {
       gamemonetize: {
         revenueAttributionVerified: activationApproved,
+        attributionBasis,
+        ownerActivationApproved: true,
         approvedDomain: 'gr8gamz.com',
         wwwCoverageVerified: false,
         feedAccountSpecific: false,
@@ -269,6 +322,8 @@ async function main() {
     feedRecordsReceived: records.length,
     pagesProcessed,
     activationApproved,
+    attributionBasis,
+    ownerActivationApproved: true,
     published: publishedGameMonetize.length,
     quarantined: gameMonetizeQuarantine.length,
     fallbackProviderMappings: fallbackProviders.length,

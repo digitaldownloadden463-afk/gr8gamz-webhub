@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LocalizedGameProfile } from '@/components/LocalizedPages';
 import { getGlobalLaunchGame, getGlobalLaunchGames } from '@/lib/globalLaunch';
-import { getIndexableRegistryGames } from '@/lib/gameRegistry';
+import { getRegistryGameBySlug } from '@/lib/gameRegistry';
 import { canonical } from '@/lib/features';
 import { localizedAlternates, localizedCanonical, nonEnglishLocales, tr, type Locale } from '@/lib/i18n';
 
@@ -17,7 +17,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const game = getGlobalLaunchGame(slug, 'gr8-select') || getIndexableRegistryGames().find((item) => item.slug === slug && item.source === 'gr8-select');
+  const game = getGlobalLaunchGame(slug, 'gr8-select') || getRegistryGameBySlug(slug, 'gr8-select');
   if (!game) return {};
   const text = tr(locale);
   const inLaunch = Boolean(getGlobalLaunchGame(slug, 'gr8-select'));
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
-  const game = getGlobalLaunchGame(slug, 'gr8-select') || getIndexableRegistryGames().find((item) => item.slug === slug && item.source === 'gr8-select');
+  const game = getGlobalLaunchGame(slug, 'gr8-select') || getRegistryGameBySlug(slug, 'gr8-select');
   if (!game) notFound();
   return <LocalizedGameProfile locale={locale} game={game} />;
 }

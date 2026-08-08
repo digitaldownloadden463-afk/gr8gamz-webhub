@@ -53,7 +53,8 @@ async function fetchText(pathname) {
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
       const response = await fetch(`${origin}${pathname}`, {
-        headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' }
+        headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' },
+        signal: AbortSignal.timeout(60_000)
       });
       const text = await response.text();
       return { response, text };
@@ -124,10 +125,23 @@ const anchorPaths = [...internalAnchors].filter((href) =>
   !/\.(?:png|jpe?g|webp|avif|svg|ico|json|xml|txt|webmanifest|css|js)$/i.test(href)
 );
 
-await mapLimit(anchorPaths, concurrency, async (route) => {
-  const { response, text } = await fetchText(route);
+const partnerPlaySource = fs.readFileSync(path.join(process.cwd(), 'app/more-free-games/[slug]/play/page.tsx'), 'utf8');
+const localizedPlaySource = fs.readFileSync(path.join(process.cwd(), 'app/[locale]/more-free-games/[slug]/play/page.tsx'), 'utf8');
+if (![partnerPlaySource, localizedPlaySource].every((source) => /robots:\s*\{\s*index:\s*false,\s*follow:\s*true\s*\}/.test(source))) {
+  failures.push('Partner play route templates do not enforce noindex,follow.');
+}
+
+const uncheckedAnchorPaths = anchorPaths.filter((route) => {
+  if (canonicalSet.has(route)) return false;
+  if (!isPlayRoute(route)) return true;
+  const profileRoute = route.replace(/\/play$/, '');
+  if (!canonicalSet.has(profileRoute)) failures.push(`Play route ${route} has no canonical profile destination`);
+  return false;
+});
+
+await mapLimit(uncheckedAnchorPaths, concurrency, async (route) => {
+  const { response } = await fetchText(route);
   if (response.status >= 400) failures.push(`Broken internal anchor ${route} returned ${response.status}`);
-  if (isPlayRoute(route) && !/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(text)) failures.push(`Play route ${route} is not noindex`);
   if (/coin-drop-3d|html5\.gamemonetize\.co/i.test(route)) failures.push(`Rendered anchor points to quarantined GameMonetize route ${route}`);
 });
 

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import RegistryGameCard from '@/components/RegistryGameCard';
+import CategoryDirectory from '@/components/CategoryDirectory';
 import { canonical } from '@/lib/features';
 import { getRegistryCategories, getRegistryGamesByCategory } from '@/lib/gameRegistry';
 
@@ -7,6 +7,7 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
+const pageSize = 48;
 
 export function generateStaticParams() {
   return getRegistryCategories(1).map((category) => ({ slug: category.slug }));
@@ -40,6 +41,8 @@ export default async function CategoryPage({ params }: PageProps) {
   const category = getRegistryCategories(1).find((item) => item.slug === slug);
   if (!category) notFound();
   const games = getRegistryGamesByCategory(slug);
+  const pageGames = games.slice(0, pageSize);
+  const totalPages = Math.max(1, Math.ceil(games.length / pageSize));
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -61,14 +64,7 @@ export default async function CategoryPage({ params }: PageProps) {
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <section className="page-title">
-        <span className="eyebrow">Category</span>
-        <h1>{category.name} games.</h1>
-        <p>Play {category.count} {category.name.toLowerCase()} games from GR8 Originals and GR8 Select.</p>
-      </section>
-      <section className="game-grid">
-        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 56} />)}
-      </section>
+      <CategoryDirectory category={category} games={pageGames} page={1} totalPages={totalPages} />
     </main>
   );
 }

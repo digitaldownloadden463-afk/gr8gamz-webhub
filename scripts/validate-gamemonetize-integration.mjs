@@ -16,6 +16,8 @@ if (records.length !== report.feedRecordsReceived) errors.push('GameMonetize fee
 if (catalogue.supplierTotals?.gamemonetize !== report.feedRecordsReceived) errors.push('Supplier total does not match the current feed count.');
 if (catalogue.providerActivation?.gamemonetize?.feedAccountSpecific !== false) errors.push('Publisher feed attribution is incorrectly marked account-specific.');
 if (catalogue.providerActivation?.gamemonetize?.wwwCoverageVerified !== false) errors.push('www coverage must remain unverified until GameMonetize confirms it.');
+if (published.length && catalogue.providerActivation?.gamemonetize?.attributionBasis !== 'approved-domain-owner-authorized') errors.push('Published GameMonetize games are missing the approved-domain attribution basis.');
+if (published.length && catalogue.providerActivation?.gamemonetize?.ownerActivationApproved !== true) errors.push('Published GameMonetize games are missing explicit owner activation approval.');
 if (!/frame-src[^;]*https:\/\/html5\.gamemonetize\.co/.test(nextConfig)) errors.push('CSP is missing the exact GameMonetize frame origin.');
 if (!/img-src[^;]*https:\/\/img\.gamemonetize\.com/.test(nextConfig)) errors.push('CSP is missing the exact GameMonetize artwork origin.');
 const cspLines = nextConfig.split('\n').map((line) => line.trim());
@@ -37,6 +39,7 @@ for (const game of records) {
 if (published.length && !catalogue.providerActivation?.gamemonetize?.revenueAttributionVerified) {
   errors.push(`${published.length} GameMonetize games are public without verified revenue attribution.`);
 }
+if (published.length !== report.published) errors.push('Published GameMonetize count does not match the ingestion report.');
 
 if (errors.length) {
   console.error(errors.slice(0, 100).join('\n'));

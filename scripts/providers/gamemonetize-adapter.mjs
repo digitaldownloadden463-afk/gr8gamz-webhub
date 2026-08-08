@@ -125,7 +125,7 @@ export function normalizeGameMonetizeRecord(item, page, checkedAt) {
 
   if (!/^\d+$/.test(supplierId)) validationErrors.push('invalid-supplier-id');
   if (title.length < 2 || title.length > 160 || !slug) validationErrors.push('invalid-title');
-  if (description.length < 60) validationErrors.push('invalid-description');
+  if (description.length < 80) validationErrors.push('invalid-description');
   if (!isApprovedGameMonetizeEmbed(embedUrl)) validationErrors.push('invalid-embed-url');
   if (!isApprovedGameMonetizeArtwork(artworkUrl)) validationErrors.push('invalid-artwork-url');
   if (!hash || hash !== artwork) validationErrors.push('asset-hash-mismatch');

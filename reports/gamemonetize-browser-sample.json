@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-08-08T09:45:03.558Z",
+  "checkedAt": "2026-08-08T10:22:06.138Z",
   "sampleSize": 40,
   "passed": 40,
   "failed": 0,
@@ -15,10 +15,10 @@
       "errors": []
     },
     {
-      "supplierId": "31257",
-      "slug": "star-quest",
+      "supplierId": "32053",
+      "slug": "spongebob-bubble-shoot",
       "category": "Action",
-      "viewport": "desktop",
+      "viewport": "mobile",
       "passed": true,
       "status": 200,
       "errors": []
@@ -42,8 +42,8 @@
       "errors": []
     },
     {
-      "supplierId": "29295",
-      "slug": "ben-10-subway-ultimate-alien",
+      "supplierId": "29387",
+      "slug": "sonic-subway-supe-rush",
       "category": "Adventure",
       "viewport": "mobile",
       "passed": true,
@@ -69,10 +69,10 @@
       "errors": []
     },
     {
-      "supplierId": "32722",
-      "slug": "two-walls",
+      "supplierId": "33248",
+      "slug": "one-line-draw",
       "category": "Arcade",
-      "viewport": "desktop",
+      "viewport": "mobile",
       "passed": true,
       "status": 200,
       "errors": []
@@ -105,8 +105,8 @@
       "errors": []
     },
     {
-      "supplierId": "498",
-      "slug": "stickworld-io",
+      "supplierId": "555",
+      "slug": "ludo-wars",
       "category": "Multiplayer",
       "viewport": "desktop",
       "passed": true,
@@ -123,8 +123,8 @@
       "errors": []
     },
     {
-      "supplierId": "24915",
-      "slug": "up-color-game",
+      "supplierId": "24903",
+      "slug": "lucky-tap-game",
       "category": "Puzzle",
       "viewport": "mobile",
       "passed": true,
@@ -150,14 +150,14 @@
       "errors": []
     },
     {
-      "supplierId": "26837",
-      "slug": "little-uboat",
+      "supplierId": "27624",
+      "slug": "cross-sprint",
       "category": "Racing",
       "viewport": "desktop",
       "passed": true,
       "status": 200,
       "errors": [
-        "play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD"
+        "Cannot read properties of undefined (reading 'startup')"
       ]
     },
     {
@@ -179,15 +179,13 @@
       "errors": []
     },
     {
-      "supplierId": "25479",
-      "slug": "rocket-soccer-derby",
+      "supplierId": "26257",
+      "slug": "darts-501-and-more",
       "category": "Sports",
       "viewport": "desktop",
       "passed": true,
       "status": 200,
-      "errors": [
-        "Unexpected identifier 'Content'"
-      ]
+      "errors": []
     },
     {
       "supplierId": "133",
@@ -199,17 +197,26 @@
       "errors": []
     },
     {
-      "supplierId": "74703",
-      "slug": "alphabet-merge-challenge",
-      "category": "Puzzle",
+      "supplierId": "78442",
+      "slug": "scars",
+      "category": "Sports",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "69318",
+      "slug": "funny-crazy-watermelon",
+      "category": "Arcade",
       "viewport": "desktop",
       "passed": true,
       "status": 200,
       "errors": []
     },
     {
-      "supplierId": "75616",
-      "slug": "deep-digger-tycoon",
+      "supplierId": "71509",
+      "slug": "frozen-race-3d",
       "category": "Arcade",
       "viewport": "mobile",
       "passed": true,
@@ -217,8 +224,8 @@
       "errors": []
     },
     {
-      "supplierId": "71547",
-      "slug": "ice-cream-toppings",
+      "supplierId": "65800",
+      "slug": "shoguns-reckoning",
       "category": "Arcade",
       "viewport": "desktop",
       "passed": true,
@@ -226,64 +233,73 @@
       "errors": []
     },
     {
-      "supplierId": "65987",
-      "slug": "graduation-makeup-trends",
-      "category": "Arcade",
+      "supplierId": "61752",
+      "slug": "chipi-chipi-chapa-chapa-cat-highway-racing",
+      "category": "Racing",
       "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "42423",
+      "slug": "puzzleopolis-iq-puzzle",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "53501",
+      "slug": "smash-the-ant",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "51795",
+      "slug": "parking-order",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "49250",
+      "slug": "battling-zombies",
+      "category": "Adventure",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "46751",
+      "slug": "dots-rescue",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "43365",
+      "slug": "happy-glass-3",
+      "category": "Puzzle",
+      "viewport": "mobile",
       "passed": true,
       "status": 200,
       "errors": [
-        "gameWidth is not defined"
+        "play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD"
       ]
     },
     {
-      "supplierId": "61334",
-      "slug": "sprunki-s-world-all-mod",
-      "category": "Adventure",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "56963",
-      "slug": "toxic-drip",
-      "category": "Puzzle",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "53648",
-      "slug": "survivor-rainbow-monster",
-      "category": "Arcade",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "40016",
-      "slug": "mad-fish-2",
-      "category": "Adventure",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "48649",
-      "slug": "gbox-doubling",
-      "category": "Puzzle",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "46685",
-      "slug": "cardboard-racing-time",
+      "supplierId": "39679",
+      "slug": "ketchapp-basketball",
       "category": "Sports",
       "viewport": "desktop",
       "passed": true,
@@ -291,44 +307,17 @@
       "errors": []
     },
     {
-      "supplierId": "43353",
-      "slug": "ayane-quest-2",
-      "category": "Arcade",
+      "supplierId": "38338",
+      "slug": "15-doors-escape-2",
+      "category": "Puzzle",
       "viewport": "desktop",
       "passed": true,
       "status": 200,
       "errors": []
     },
     {
-      "supplierId": "41195",
-      "slug": "war-airplane",
-      "category": "Arcade",
-      "viewport": "mobile",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "40827",
-      "slug": "friends-fat-to-fit-day",
-      "category": "Arcade",
-      "viewport": "mobile",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "39139",
-      "slug": "boomcraft",
-      "category": "Action",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "36682",
-      "slug": "lily-s-garden-design-and-relax",
+      "supplierId": "39268",
+      "slug": "truck-rider",
       "category": "Adventure",
       "viewport": "desktop",
       "passed": true,
@@ -336,37 +325,48 @@
       "errors": []
     },
     {
-      "supplierId": "35985",
-      "slug": "mr-blue",
-      "category": "Arcade",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "34559",
-      "slug": "sisters-cook-cookies",
-      "category": "Arcade",
-      "viewport": "desktop",
-      "passed": true,
-      "status": 200,
-      "errors": []
-    },
-    {
-      "supplierId": "32528",
-      "slug": "unicorn-mermaid-cupcake-cooking-design-creative",
-      "category": "Arcade",
+      "supplierId": "36618",
+      "slug": "giant-head-rush",
+      "category": "Puzzle",
       "viewport": "mobile",
       "passed": true,
       "status": 200,
       "errors": []
     },
     {
-      "supplierId": "30323",
-      "slug": "how-to-loot-2-hero-rescue-and-pin-pull",
+      "supplierId": "36369",
+      "slug": "lawn-mower",
       "category": "Puzzle",
       "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "34938",
+      "slug": "drum-for-kids",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "IMA SDK is either not loaded from a google domain or is not a supported version."
+      ]
+    },
+    {
+      "supplierId": "32647",
+      "slug": "pop-blue",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "30223",
+      "slug": "cake-master-shop-cake-making",
+      "category": "Arcade",
+      "viewport": "mobile",
       "passed": true,
       "status": 200,
       "errors": []

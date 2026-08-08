@@ -1258,6 +1258,15 @@ for (const profile of generatedPartnerGameProfiles) {
   );
 }
 export const allPartnerGameProfiles = [...partnerProfileMap.values()];
+const partnerProfilesByCategory = new Map();
+const partnerProfileIndex = new Map();
+for (const [index, profile] of allPartnerGameProfiles.entries()) {
+  const category = String(profile.category || '').toLowerCase();
+  const group = partnerProfilesByCategory.get(category) || [];
+  group.push(profile);
+  partnerProfilesByCategory.set(category, group);
+  partnerProfileIndex.set(profile.slug, index);
+}
 export const partnerCatalogueReport = {
   generatedAt: generatedPartnerCatalogue.generatedAt,
   totals: {
@@ -1413,19 +1422,24 @@ export function getPartnerGameProfilesByCluster(slug, limit = 24) {
 
 export function getRelatedPartnerGameProfiles(profile, limit = 6) {
   if (!profile) return getFeaturedPartnerGameProfiles(limit);
-  const sameCategory = allPartnerGameProfiles
-    .filter((game) => game.slug !== profile.slug && String(game.category).toLowerCase() === String(profile.category).toLowerCase());
-  const relatedControls = String(profile.controls || '').toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
-  const controlMatches = allPartnerGameProfiles
-    .filter((game) => game.slug !== profile.slug && !sameCategory.includes(game))
-    .filter((game) => relatedControls.some((word) => String(game.controls || '').toLowerCase().includes(word)));
-  const different = allPartnerGameProfiles.filter((game) => game.slug !== profile.slug && !sameCategory.includes(game) && !controlMatches.includes(game));
+  const safeLimit = Math.max(1, Math.min(12, Number(limit) || 6));
+  const sameCategory = partnerProfilesByCategory.get(String(profile.category || '').toLowerCase()) || [];
+  const start = partnerProfileIndex.get(profile.slug) || 0;
   const seen = new Set();
-  return [...sameCategory, ...controlMatches, ...different].filter((game) => {
-    if (seen.has(game.slug)) return false;
+  const related = [];
+  for (const game of sameCategory) {
+    if (game.slug === profile.slug || seen.has(game.slug)) continue;
     seen.add(game.slug);
-    return true;
-  }).slice(0, limit);
+    related.push(game);
+    if (related.length === safeLimit) return related;
+  }
+  for (let offset = 1; offset <= allPartnerGameProfiles.length && related.length < safeLimit; offset += 1) {
+    const game = allPartnerGameProfiles[(start + offset) % allPartnerGameProfiles.length];
+    if (!game || game.slug === profile.slug || seen.has(game.slug)) continue;
+    seen.add(game.slug);
+    related.push(game);
+  }
+  return related;
 }
 
 export function getTrendingPartnerProfiles(limit = 12) {

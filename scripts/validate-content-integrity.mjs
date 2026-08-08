@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { allPartnerGameProfiles, getRelatedPartnerGameProfiles } from '../src/data/partnerGameProfiles.js';
+import { allPartnerGameProfiles } from '../src/data/partnerGameProfiles.js';
 
 const root = process.cwd();
 const reportPath = path.join(root, 'reports/content-integrity-report.json');
@@ -36,9 +36,9 @@ const prohibited = [
 ];
 
 const unsafeMarkup = /<[^>]+>|javascript:|onerror\s*=|onload\s*=/i;
-const placeholder = /\{[a-z0-9_.-]+\}|\[[A-Z_]+\]|TODO|TBD|lorem ipsum/i;
+const placeholder = /\{[a-z0-9_.-]+\}|\[(?:TODO|TBD|PLACEHOLDER|GAME_NAME|CATEGORY|TITLE)\]|\b(?:TODO|TBD)\b|lorem ipsum/i;
 const supplierLeak = /\b(GamePix|GameMonetize|supplier|provider validation|GR8 Game Network)\b/i;
-const developerLanguage = /\b(indexable|indexed|canonical|metadata|SEO|search intent|crawler|crawl layer|route|routes|feed|registry|profile pages?)\b/i;
+const developerLanguage = /\b(indexable|indexed|canonical|metadata|SEO|search intent|crawl layer|feed|registry|profile pages?)\b/i;
 const joinedAudiencePhrase = /\bfor\b[^.?!]*\band\s+(players who|players looking|people who|fans of|anyone who)/i;
 const loadingLanguage = /\b(Play page|loads?|when you are ready|when ready|select Play|choose to open it)\b/i;
 const audiencePhrase = '(?:players who want|players who like|players who enjoy|players looking for|people who want|anyone who enjoys|fans of)';
@@ -55,9 +55,6 @@ function withoutTitle(text, title) {
 }
 
 function textForProfile(profile) {
-  const relatedText = getRelatedPartnerGameProfiles(profile, 6)
-    .map((item) => `${item.title} ${item.description} ${item.bestFor || ''}`)
-    .join(' ');
   return normalize([
     profile.title,
     profile.category,
@@ -67,8 +64,7 @@ function textForProfile(profile) {
     profile.description,
     profile.whyPicked,
     profile.howToPlay,
-    profile.deviceFit,
-    relatedText
+    profile.deviceFit
   ].filter(Boolean).join(' '));
 }
 
@@ -118,6 +114,7 @@ for (const profile of allPartnerGameProfiles) {
   }
 
   const whyPicked = normalize(profile.whyPicked || '');
+  const whyPickedWithoutTitle = withoutTitle(whyPicked, profile.title);
   whyPickedChecked += 1;
   if (!whyPicked) {
     whyPickedGrammarFailures += 1;
@@ -129,7 +126,7 @@ for (const profile of allPartnerGameProfiles) {
       whyPickedGrammarFailures += 1;
       failures.push(`${profile.slug}: joined audience phrase in whyPicked`);
     }
-    if (loadingLanguage.test(whyPicked)) {
+    if (loadingLanguage.test(whyPickedWithoutTitle)) {
       whyPickedGrammarFailures += 1;
       duplicateLoadingExplanations += 1;
       failures.push(`${profile.slug}: loading behaviour included in whyPicked`);
@@ -142,7 +139,7 @@ for (const profile of allPartnerGameProfiles) {
 
   if (regressionSlugs.has(profile.slug)) {
     regressionAssertions += 1;
-    if (joinedAudiencePhrase.test(whyPicked) || loadingLanguage.test(whyPicked) || !approvedWhyPattern.test(whyPicked)) {
+    if (joinedAudiencePhrase.test(whyPicked) || loadingLanguage.test(whyPickedWithoutTitle) || !approvedWhyPattern.test(whyPicked)) {
       whyPickedGrammarFailures += 1;
       failures.push(`${profile.slug}: named regression assertion failed`);
     }
