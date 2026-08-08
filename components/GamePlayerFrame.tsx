@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import ChallengeShare from '@/components/ChallengeShare';
 import type { Gr8Game } from '@/lib/games';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, recordGameStarted, recordOriginalResult, saveFavourite, subscribePlayerEngagement, type EngagementResult } from '@/lib/playerEngagement';
 import { tr, type EngagementText, type Locale } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 type GamePlayerFrameProps = {
   game: Gr8Game;
@@ -34,6 +35,7 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
   const [runId, setRunId] = useState(() => makeRunId());
   const [lastResult, setLastResult] = useState<(EngagementResult & { score: number }) | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const startListenerCleanupRef = useRef<(() => void) | null>(null);
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
   const copy = labels || tr(locale).engagement;
   const title = game.name || game.title || 'GR8 Game';
@@ -42,6 +44,20 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
   const level = levelFromXp(progress.xp);
   const source = game.iframeUrl || game.embedUrl || '';
   const playNextHref = useMemo(() => '/games', []);
+
+  const connectStartTracking = useCallback(() => {
+    startListenerCleanupRef.current?.();
+    startListenerCleanupRef.current = null;
+
+    try {
+      const frameDocument = iframeRef.current?.contentDocument;
+      const startControl = frameDocument?.querySelector<HTMLElement>('#primary, #start');
+      if (!startControl) return;
+      const onStart = () => trackEvent('game_play_start', { game_slug: slug, game_type: 'original', locale });
+      startControl.addEventListener('click', onStart);
+      startListenerCleanupRef.current = () => startControl.removeEventListener('click', onStart);
+    } catch {}
+  }, [locale, slug]);
 
   useEffect(() => {
     recordGameStarted(slug, 'original');
@@ -61,6 +77,13 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
   }, [runId, slug]);
+
+  useEffect(() => {
+    try {
+      if (iframeRef.current?.contentDocument?.readyState === 'complete') connectStartTracking();
+    } catch {}
+    return () => startListenerCleanupRef.current?.();
+  }, [connectStartTracking, iframeKey]);
 
   function saveGame() {
     saveFavourite(slug, 'original');
@@ -97,6 +120,7 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
         allow="fullscreen; gamepad"
         allowFullScreen
         referrerPolicy="same-origin"
+        onLoad={connectStartTracking}
       />
       <section className="progress-panel" aria-live="polite">
         <div>

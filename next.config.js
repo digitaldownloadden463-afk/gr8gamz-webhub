@@ -38,10 +38,10 @@ const nextConfig = {
       "frame-ancestors 'self'",
       "form-action 'self'",
       "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com",
-      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://al5sm.com",
+      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://al5sm.com https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
-      "connect-src 'self' https://feeds.gamepix.com",
+      "connect-src 'self' https://feeds.gamepix.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com",
       "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co"
     ].join('; ');
 

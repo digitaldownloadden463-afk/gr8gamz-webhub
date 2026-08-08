@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { getConsentSnapshot, getServerConsentSnapshot, subscribeConsentChoice } from '@/lib/consentPreferences';
 import PartnerArtwork from '@/components/PartnerArtwork';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import { recordGameStarted } from '@/lib/playerEngagement';
 import { tr, type EngagementText, type Locale } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 type PartnerPlayClientProps = {
   title: string;
@@ -40,6 +41,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   const [iframeReady, setIframeReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
+  const startTrackedRef = useRef(false);
   const gameSlug = profilePath.split('/').filter(Boolean).pop() || title.toLowerCase().replace(/\s+/g, '-');
 
   useEffect(() => {
@@ -53,6 +55,10 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
     setTimedOut(false);
     setIframeReady(false);
     recordGameStarted(gameSlug, 'select');
+    if (!startTrackedRef.current) {
+      startTrackedRef.current = true;
+      trackEvent('game_play_start', { game_slug: gameSlug, game_type: 'select', locale });
+    }
     setLoaded(true);
   }
 

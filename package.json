@@ -31,6 +31,7 @@
     "smoke:artwork": "node scripts/artwork-browser-smoke.mjs",
     "smoke:gameplay-consent": "node scripts/gameplay-consent-smoke.mjs",
     "smoke:monetag": "node scripts/monetag-consent-smoke.mjs",
+    "smoke:ga4": "node scripts/ga4-consent-smoke.mjs",
     "smoke:phase3a1": "node scripts/phase3a1-responsive-smoke.mjs",
     "smoke:phase3b": "node scripts/phase3b-engagement-smoke.mjs",
     "smoke:games-query": "node scripts/games-query-smoke.mjs",
