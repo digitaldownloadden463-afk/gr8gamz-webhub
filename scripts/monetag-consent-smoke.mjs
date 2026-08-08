@@ -25,6 +25,9 @@ async function createContext(browser) {
 }
 
 async function installProviderStub(context, requests) {
+  await context.route('https://www.googletagmanager.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+  await context.route(/https:\/\/(?:www\.|region1\.)?google-analytics\.com\/.*/, (route) => route.fulfill({ status: 204, body: '' }));
+  await context.route('https://analytics.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
   await context.route(scriptUrl, async (route) => {
     requests.push(route.request().url());
     await route.fulfill({
