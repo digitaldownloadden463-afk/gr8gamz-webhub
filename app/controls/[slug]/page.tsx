@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
-import RegistryGameCard from '@/components/RegistryGameCard';
+import ControlDirectory from '@/components/ControlDirectory';
 import { canonical } from '@/lib/features';
 import { getRegistryControlHubs, getRegistryGamesByControl } from '@/lib/gameRegistry';
 
 type PageProps = { params: Promise<{ slug: string }> };
+const pageSize = 48;
 
 export function generateStaticParams() {
   return getRegistryControlHubs().map((hub) => ({ slug: hub.slug }));
@@ -37,17 +38,11 @@ export default async function ControlHubPage({ params }: PageProps) {
   const hub = getRegistryControlHubs().find((item) => item.slug === slug);
   if (!hub) notFound();
   const games = getRegistryGamesByControl(slug);
+  const totalPages = Math.max(1, Math.ceil(games.length / pageSize));
 
   return (
     <main>
-      <section className="page-title">
-        <span className="eyebrow">Controls</span>
-        <h1>{hub.name} games.</h1>
-        <p>Games that work well with {hub.name.toLowerCase()} controls, from quick originals to GR8 Select picks.</p>
-      </section>
-      <section className="game-grid">
-        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 6} />)}
-      </section>
+      <ControlDirectory hub={hub} games={games.slice(0, pageSize)} page={1} totalPages={totalPages} />
     </main>
   );
 }

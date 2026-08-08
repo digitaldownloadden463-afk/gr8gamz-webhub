@@ -17,6 +17,7 @@ export type AnalyticsParameters = Partial<{
   game_slug: string;
   game_type: 'original' | 'select';
   locale: string;
+  provider: 'gr8' | 'gamepix' | 'gamemonetize';
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
@@ -31,7 +32,7 @@ declare global {
   }
 }
 
-const safeParameterKeys = new Set<keyof AnalyticsParameters>(['game_slug', 'game_type', 'locale']);
+const safeParameterKeys = new Set<keyof AnalyticsParameters>(['game_slug', 'game_type', 'locale', 'provider']);
 const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string> }> = [];
 
 function safeParameters(parameters: AnalyticsParameters) {
@@ -43,6 +44,7 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'game_slug' && !/^[a-z0-9-]+$/.test(normalized)) continue;
     if (key === 'game_type' && normalized !== 'original' && normalized !== 'select') continue;
     if (key === 'locale' && !/^[a-z]{2}(?:-[A-Z]{2})?$/.test(normalized)) continue;
+    if (key === 'provider' && !['gr8', 'gamepix', 'gamemonetize'].includes(normalized)) continue;
     result[key] = normalized;
   }
   return result;

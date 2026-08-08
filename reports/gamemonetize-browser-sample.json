@@ -1,0 +1,375 @@
+{
+  "checkedAt": "2026-08-08T10:22:06.138Z",
+  "sampleSize": 40,
+  "passed": 40,
+  "failed": 0,
+  "note": "The sample loads official provider game documents without clicking or accepting third-party advertising.",
+  "results": [
+    {
+      "supplierId": "83011",
+      "slug": "stormhawk",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "32053",
+      "slug": "spongebob-bubble-shoot",
+      "category": "Action",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "152",
+      "slug": "tanking-tanks",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83009",
+      "slug": "offroad-jeep-simulation",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "29387",
+      "slug": "sonic-subway-supe-rush",
+      "category": "Adventure",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83",
+      "slug": "nyan-cat-flappy",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83151",
+      "slug": "heroes-beware",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "33248",
+      "slug": "one-line-draw",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "147",
+      "slug": "neon-slimes",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "82965",
+      "slug": "imposter-duck-online",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "23522",
+      "slug": "mageclash-io",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "555",
+      "slug": "ludo-wars",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "80362",
+      "slug": "pixel-adventure-3d",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "24903",
+      "slug": "lucky-tap-game",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "153",
+      "slug": "tap-and-clapp",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83065",
+      "slug": "obby-cart-rush",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "27624",
+      "slug": "cross-sprint",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "Cannot read properties of undefined (reading 'startup')"
+      ]
+    },
+    {
+      "supplierId": "130",
+      "slug": "hard-truck",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83070",
+      "slug": "dart-duell-timing-champion",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "26257",
+      "slug": "darts-501-and-more",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "133",
+      "slug": "hole-in-one",
+      "category": "Sports",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "78442",
+      "slug": "scars",
+      "category": "Sports",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "69318",
+      "slug": "funny-crazy-watermelon",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "71509",
+      "slug": "frozen-race-3d",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "65800",
+      "slug": "shoguns-reckoning",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "61752",
+      "slug": "chipi-chipi-chapa-chapa-cat-highway-racing",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "42423",
+      "slug": "puzzleopolis-iq-puzzle",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "53501",
+      "slug": "smash-the-ant",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "51795",
+      "slug": "parking-order",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "49250",
+      "slug": "battling-zombies",
+      "category": "Adventure",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "46751",
+      "slug": "dots-rescue",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "43365",
+      "slug": "happy-glass-3",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD"
+      ]
+    },
+    {
+      "supplierId": "39679",
+      "slug": "ketchapp-basketball",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "38338",
+      "slug": "15-doors-escape-2",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "39268",
+      "slug": "truck-rider",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "36618",
+      "slug": "giant-head-rush",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "36369",
+      "slug": "lawn-mower",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "34938",
+      "slug": "drum-for-kids",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "IMA SDK is either not loaded from a google domain or is not a supported version."
+      ]
+    },
+    {
+      "supplierId": "32647",
+      "slug": "pop-blue",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "30223",
+      "slug": "cake-master-shop-cake-making",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    }
+  ]
+}

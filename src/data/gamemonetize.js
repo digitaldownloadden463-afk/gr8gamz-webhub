@@ -1,72 +1,43 @@
 export const gameMonetizeConfig = {
-  feedBase: 'https://rss.gamemonetize.com/rssfeed.php',
-  defaultAmount: 12,
-  maxAmount: 100,
-  defaultType: 'html5',
-  defaultFormat: 'json',
-  defaultCategory: 'All',
-  defaultCompany: 'All',
-  defaultPopularity: 'newest',
+  feedBase: 'https://gamemonetize.com/feed.php',
+  feedFormat: 0,
+  feedPageSize: 2000,
   approvedEmbedHosts: ['html5.gamemonetize.co'],
   approvedArtworkHosts: ['img.gamemonetize.com'],
-  partnerName: 'GameMonetize',
-  partnerGamesPath: '/gamemonetize-games',
-  playPath: '/gamemonetize-games/play',
+  approvedDomain: 'gr8gamz.com',
+  publisherIdentifier: null,
+  feedAccountSpecific: false,
   disclosurePath: '/partner-disclosure'
 };
 
-export const gameMonetizeCategories = [
-  { id: 'All', label: 'All' },
-  { id: 'Action', label: 'Action' },
-  { id: 'Adventure', label: 'Adventure' },
-  { id: 'Arcade', label: 'Arcade' },
-  { id: 'Hypercasual', label: 'Hypercasual' },
-  { id: 'Puzzles', label: 'Puzzles' },
-  { id: 'Racing', label: 'Racing' },
-  { id: 'Shooting', label: 'Shooting' },
-  { id: 'Sports', label: 'Sports' },
-  { id: 'Soccer', label: 'Soccer' },
-  { id: 'Stickman', label: 'Stickman' }
-];
-
-export const gameMonetizePopularity = [
-  { id: 'newest', label: 'Newest' },
-  { id: 'mostplayed', label: 'Most Played' },
-  { id: 'hotgames', label: 'Hot Games' },
-  { id: 'bestgames', label: 'Best Games' },
-  { id: 'exclusive', label: 'Exclusive' },
-  { id: 'editorpicks', label: 'Editor Picks' },
-  { id: 'nobranding', label: 'No Branding' }
-];
-
 export function normaliseGameMonetizeGame(game = {}) {
   return {
-    id: String(game.id || game.title || ''),
-    title: game.title || 'GameMonetize Game',
-    description: game.description || 'Play this partner HTML5 game through GR8 GAMZ.',
-    instructions: game.instructions || '',
-    category: game.category || 'Partner Game',
-    tags: game.tags || '',
-    thumb: game.thumb || '',
-    url: game.url || '',
-    width: Number.parseInt(game.width || '800', 10) || 800,
-    height: Number.parseInt(game.height || '600', 10) || 600
+    id: String(game.id || ''),
+    title: String(game.title || ''),
+    description: String(game.description || ''),
+    instructions: String(game.instructions || ''),
+    category: String(game.category || ''),
+    tags: String(game.tags || ''),
+    thumb: String(game.thumb || ''),
+    url: String(game.url || ''),
+    width: Number.parseInt(String(game.width || '800'), 10) || 800,
+    height: Number.parseInt(String(game.height || '600'), 10) || 600
   };
 }
 
-export function isSafeGameMonetizeUrl(url) {
+export function isSafeGameMonetizeUrl(value) {
   try {
-    const parsed = new URL(url);
-    return parsed.protocol === 'https:' && gameMonetizeConfig.approvedEmbedHosts.includes(parsed.hostname) && /^\/[a-z0-9]+\/$/i.test(parsed.pathname);
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.hostname === 'html5.gamemonetize.co' && /^\/[a-z0-9]+\/$/i.test(url.pathname) && !url.search && !url.hash;
   } catch {
     return false;
   }
 }
 
-export function isSafeGameMonetizeArtworkUrl(url) {
+export function isSafeGameMonetizeArtworkUrl(value) {
   try {
-    const parsed = new URL(url);
-    return parsed.protocol === 'https:' && gameMonetizeConfig.approvedArtworkHosts.includes(parsed.hostname) && /^\/[a-z0-9]+\/\d+x\d+\.(?:jpg|jpeg|png|webp)$/i.test(parsed.pathname);
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.hostname === 'img.gamemonetize.com' && /^\/[a-z0-9]+\/\d+x\d+\.(?:jpg|jpeg|png|webp)$/i.test(url.pathname);
   } catch {
     return false;
   }

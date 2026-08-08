@@ -6,7 +6,7 @@ import LocalizedGameCard from '@/components/LocalizedGameCard';
 import PartnerArtwork from '@/components/PartnerArtwork';
 import PartnerPlayClient from '@/components/PartnerPlayClient';
 import type { RegistryGame } from '@/lib/gameRegistry';
-import { getIndexableRegistryGames, getRegistryCategories, slugifyRegistryValue } from '@/lib/gameRegistry';
+import { getRegistryCategories, getRegistryGameBySlug, slugifyRegistryValue } from '@/lib/gameRegistry';
 import { categoryName, localeInfo, localizedCanonical, pathForLocale, tr, type Locale } from '@/lib/i18n';
 import { getGlobalLaunchGames, getLocalizedGameText } from '@/lib/globalLaunch';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
@@ -210,6 +210,7 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
         playUrl={profile.playUrl || ''}
         width={profile.width || 960}
         height={profile.height || 540}
+        provider={profile.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'}
         locale={locale}
         labels={text.engagement}
       />
@@ -219,7 +220,7 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
       </section>
       <section className="partner-grid">
         {related.map((item) => {
-          const game = getIndexableRegistryGames().find((entry) => entry.slug === item.slug && entry.source === 'gr8-select');
+          const game = getRegistryGameBySlug(item.slug, 'gr8-select');
           return game ? <LocalizedGameCard key={game.id} game={game} locale={locale} /> : null;
         })}
       </section>

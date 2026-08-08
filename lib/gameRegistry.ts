@@ -40,6 +40,10 @@ export type RegistryGame = {
   lastModified: string;
 };
 
+let registryCache: RegistryGame[] | null = null;
+let indexableRegistryCache: RegistryGame[] | null = null;
+let registryBySlugCache: Map<string, RegistryGame> | null = null;
+
 function uniqueByUrl(games: RegistryGame[]) {
   const seen = new Set<string>();
   return games.filter((game) => {
@@ -51,6 +55,7 @@ function uniqueByUrl(games: RegistryGame[]) {
 }
 
 export function getRegistryGames(): RegistryGame[] {
+  if (registryCache) return registryCache;
   const originals = getAllGames().map((game) => ({
     id: `original:${game.slug || game.id}`,
     sourceId: game.id,
@@ -95,11 +100,24 @@ export function getRegistryGames(): RegistryGame[] {
     lastModified: ''
   }));
 
-  return uniqueByUrl([...originals, ...select]);
+  registryCache = uniqueByUrl([...originals, ...select]);
+  return registryCache;
 }
 
 export function getIndexableRegistryGames() {
-  return getRegistryGames().filter((game) => game.status === 'active' && game.indexable);
+  if (!indexableRegistryCache) indexableRegistryCache = getRegistryGames().filter((game) => game.status === 'active' && game.indexable);
+  return indexableRegistryCache;
+}
+
+export function getRegistryGamesBySlugs(slugs: string[]) {
+  const requested = new Set(slugs);
+  return getIndexableRegistryGames().filter((game) => requested.has(game.slug));
+}
+
+export function getRegistryGameBySlug(slug: string, source?: RegistryGame['source']) {
+  if (!registryBySlugCache) registryBySlugCache = new Map(getIndexableRegistryGames().map((game) => [`${game.source}:${game.slug}`, game]));
+  if (source) return registryBySlugCache.get(`${source}:${slug}`);
+  return registryBySlugCache.get(`gr8-originals:${slug}`) || registryBySlugCache.get(`gr8-select:${slug}`);
 }
 
 export function registryJson() {

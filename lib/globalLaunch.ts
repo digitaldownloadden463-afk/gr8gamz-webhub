@@ -4,6 +4,7 @@ import { getIndexableRegistryGames, slugifyRegistryValue } from '@/lib/gameRegis
 import { categoryFit, categoryName, fill, type Locale } from '@/lib/i18n';
 
 export const partnerTarget = 200;
+let globalLaunchCache: RegistryGame[] | null = null;
 
 function sortByCategoryBalance(games: RegistryGame[]) {
   const buckets = new Map<string, RegistryGame[]>();
@@ -16,12 +17,15 @@ function sortByCategoryBalance(games: RegistryGame[]) {
   for (const bucket of buckets.values()) bucket.sort((a, b) => a.title.localeCompare(b.title));
   const ordered: RegistryGame[] = [];
   const keys = [...buckets.keys()].sort();
+  const positions = new Map(keys.map((key) => [key, 0]));
   while (ordered.length < games.length) {
     let moved = false;
     for (const key of keys) {
-      const next = buckets.get(key)?.shift();
+      const position = positions.get(key) || 0;
+      const next = buckets.get(key)?.[position];
       if (next) {
         ordered.push(next);
+        positions.set(key, position + 1);
         moved = true;
       }
     }
@@ -31,10 +35,12 @@ function sortByCategoryBalance(games: RegistryGame[]) {
 }
 
 export function getGlobalLaunchGames() {
+  if (globalLaunchCache) return globalLaunchCache;
   const games = getIndexableRegistryGames();
   const originals = games.filter((game) => game.source === 'gr8-originals');
   const partners = sortByCategoryBalance(games.filter((game) => game.source === 'gr8-select')).slice(0, partnerTarget);
-  return [...originals, ...partners];
+  globalLaunchCache = [...originals, ...partners];
+  return globalLaunchCache;
 }
 
 export function isGlobalLaunchGame(slug: string, source?: RegistryGame['source']) {

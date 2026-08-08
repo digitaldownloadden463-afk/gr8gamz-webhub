@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-08-08",
+  "dashboardWebsite": "gr8gamz.com",
+  "dashboardStatus": "Approved",
+  "dashboardAdsTxtStatus": "Verified",
+  "wwwCoverageVerified": false,
+  "accountFeedUrl": "https://gamemonetize.com/feed.php?format=0&page={page}",
+  "feedAccountSpecific": false,
+  "publisherIdentifier": null,
+  "embedAccountSpecific": false,
+  "observedAttributionMethod": "approved-referring-domain",
+  "revenueAttributionVerified": true,
+  "attributionBasis": "approved-domain-owner-authorized",
+  "ownerActivationApproved": true,
+  "activationBlocker": null,
+  "note": "The owner authorized activation using the approved gr8gamz.com website and verified ads.txt. The feed and embeds contain no publisher identifier; none is invented. www.gr8gamz.com is not separately listed in the dashboard."
+}

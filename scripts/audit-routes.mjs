@@ -16,7 +16,14 @@ for (const route of forbiddenRoutes) {
 const apiDir = path.join(root, 'app/api');
 if (fs.existsSync(apiDir)) {
   const apiFiles = fs.readdirSync(apiDir, { recursive: true }).map((file) => String(file));
-  const allowedApiFiles = new Set(['partner-catalog', 'partner-catalog/route.js', 'challenge', 'challenge/route.ts']);
+  const allowedApiFiles = new Set([
+    'partner-catalog',
+    'partner-catalog/route.js',
+    'challenge',
+    'challenge/route.ts',
+    'game-lookup',
+    'game-lookup/route.ts'
+  ]);
   for (const file of apiFiles) {
     if (!allowedApiFiles.has(file)) {
       failures.push(`Unexpected public API route remains: app/api/${file}`);

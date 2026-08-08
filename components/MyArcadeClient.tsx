@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useSyncExternalStore, useState } from 'react';
+import { useEffect, useMemo, useRef, useSyncExternalStore, useState } from 'react';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, nextLevelXp, resetPlayerEngagement, subscribePlayerEngagement } from '@/lib/playerEngagement';
 import type { EngagementText } from '@/lib/i18n';
 
@@ -22,9 +22,32 @@ type MyArcadeClientProps = {
 
 export function MyArcadeClient({ games, labels }: MyArcadeClientProps) {
   const [confirmReset, setConfirmReset] = useState(false);
+  const [lookedUpGames, setLookedUpGames] = useState<ArcadeLookupGame[]>([]);
+  const requestedSlugs = useRef(new Set<string>());
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
 
-  const bySlug = useMemo(() => new Map(games.map((game) => [game.slug || game.id, game])), [games]);
+  const bySlug = useMemo(() => new Map([...games, ...lookedUpGames].map((game) => [game.slug || game.id, game])), [games, lookedUpGames]);
+  const savedSlugs = useMemo(() => [...new Set([
+    ...progress.favourites.map((item) => item.slug),
+    ...progress.recent.map((item) => item.slug),
+    ...Object.keys(progress.games)
+  ])].filter((slug) => !bySlug.has(slug)).slice(0, 50), [progress.favourites, progress.recent, progress.games, bySlug]);
+
+  useEffect(() => {
+    const pendingSlugs = savedSlugs.filter((slug) => !requestedSlugs.current.has(slug));
+    if (!pendingSlugs.length) return;
+    pendingSlugs.forEach((slug) => requestedSlugs.current.add(slug));
+    const controller = new AbortController();
+    fetch(`/api/game-lookup?slugs=${encodeURIComponent(pendingSlugs.join(','))}`, { signal: controller.signal, credentials: 'same-origin' })
+      .then((response) => response.ok ? response.json() : { games: [] })
+      .then((payload) => setLookedUpGames((current) => {
+        const merged = new Map(current.map((game) => [game.slug, game]));
+        for (const game of payload.games || []) merged.set(game.slug, game);
+        return [...merged.values()];
+      }))
+      .catch(() => {});
+    return () => controller.abort();
+  }, [savedSlugs]);
   const favouriteGames = progress.favourites.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeLookupGame[];
   const recentGames = progress.recent.map((item) => bySlug.get(item.slug)).filter(Boolean) as ArcadeLookupGame[];
   const level = levelFromXp(progress.xp);

@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-08-08T10:33:43.018Z",
+  "feedRecordsReceived": 37549,
+  "pagesProcessed": 19,
+  "activationApproved": true,
+  "attributionBasis": "approved-domain-owner-authorized",
+  "ownerActivationApproved": true,
+  "published": 30786,
+  "quarantined": 6763,
+  "fallbackProviderMappings": 1081,
+  "reasonCounts": {
+    "gamepix-duplicate": 1080,
+    "gamemonetize-duplicate": 987,
+    "invalid-description": 1468,
+    "browser-playability-failed": 2,
+    "original-duplicate": 1,
+    "repetitive-content": 3225
+  },
+  "approvedDomain": "gr8gamz.com",
+  "wwwCoverageVerified": false,
+  "adsTxtVerifiedInPublisherDashboard": true,
+  "feedAccountSpecific": false,
+  "publisherIdentifier": null
+}

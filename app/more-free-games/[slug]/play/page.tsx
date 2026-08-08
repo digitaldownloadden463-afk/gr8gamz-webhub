@@ -51,6 +51,7 @@ export default async function PartnerPlayPage({ params }: PageProps) {
         playUrl={resolved.found ? resolved.url : ''}
         width={resolved.width}
         height={resolved.height}
+        provider={resolved.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'}
       />
       <section className="section-heading">
         <span className="eyebrow">More choices</span>

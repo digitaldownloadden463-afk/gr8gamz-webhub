@@ -1,6 +1,13 @@
 import { localizedGameEntries, localizedGameSitemapCount, localizedHubEntries, localizedImageEntries } from '@/lib/localizedSitemaps';
 import { isLocale, nonEnglishLocales, type NonEnglishLocale } from '@/lib/i18n';
-import { urlset, xmlResponse } from '@/lib/sitemapXml';
+import { partnerGameEntries, partnerSitemapCount, urlset, xmlResponse } from '@/lib/sitemapXml';
+
+function parsePartnerSitemap(name: string) {
+  const match = name.match(/^partner-games-(\d+)\.xml$/);
+  if (!match) return null;
+  const page = Number(match[1]);
+  return Number.isInteger(page) && page >= 1 && page <= partnerSitemapCount() ? page : null;
+}
 
 function parseLocalizedSitemap(name: string): { locale: NonEnglishLocale; kind: 'hubs' | 'games' | 'images'; page: number } | null {
   const match = name.match(/^locale-(.+)-(hubs|games|images)(?:-(\d+))?\.xml$/);
@@ -15,7 +22,10 @@ function parseLocalizedSitemap(name: string): { locale: NonEnglishLocale; kind: 
 }
 
 export async function GET(_request: Request, { params }: { params: Promise<{ name: string }> }) {
-  const parsed = parseLocalizedSitemap((await params).name);
+  const name = (await params).name;
+  const partnerPage = parsePartnerSitemap(name);
+  if (partnerPage) return xmlResponse(urlset(partnerGameEntries(partnerPage)));
+  const parsed = parseLocalizedSitemap(name);
   if (!parsed) return new Response('Not found', { status: 404 });
   if (parsed.kind === 'hubs') return xmlResponse(urlset(localizedHubEntries(parsed.locale)));
   if (parsed.kind === 'images') {

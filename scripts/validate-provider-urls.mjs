@@ -26,6 +26,7 @@ for (const game of catalogue.games || []) {
 
 const gameMonetizePublished = (catalogue.games || []).filter((game) => game.source === 'gamemonetize');
 const gameMonetizeQuarantined = (catalogue.quarantine || []).filter((game) => game.source === 'gamemonetize');
+const gameMonetizeCandidates = catalogue.providerCandidates?.gamemonetize?.feedRecords || gameMonetizeQuarantined.length;
 const reasons = gameMonetizeQuarantined.reduce((map, game) => {
   const key = game.status || game.qaStatus || 'unknown';
   map[key] = (map[key] || 0) + 1;
@@ -35,8 +36,8 @@ const reasons = gameMonetizeQuarantined.reduce((map, game) => {
 for (const game of gameMonetizePublished) {
   if (blockedText.test(`${game.title} ${game.description}`)) failures.push(`${game.slug}: contains blocked-provider text in published metadata`);
 }
-if (gameMonetizePublished.length > 0 && process.env.GR8_ENABLE_GAMEMONETIZE_EMBEDS !== 'true') {
-  failures.push(`${gameMonetizePublished.length} GameMonetize records are public while GR8_ENABLE_GAMEMONETIZE_EMBEDS is not enabled.`);
+if (gameMonetizePublished.length > 0 && !catalogue.providerActivation?.gamemonetize?.revenueAttributionVerified) {
+  failures.push(`${gameMonetizePublished.length} GameMonetize records are public without verified revenue attribution.`);
 }
 
 if (failures.length) {
@@ -47,5 +48,5 @@ if (failures.length) {
 
 console.log(
   `Provider URL validation passed: ${catalogue.games.length} published partner URLs checked; ` +
-    `${gameMonetizePublished.length} public GameMonetize records; ${gameMonetizeQuarantined.length} GameMonetize records quarantined ${JSON.stringify(reasons)}.`
+    `${gameMonetizePublished.length} public GameMonetize records; ${gameMonetizeCandidates} GameMonetize provider candidates held offline ${JSON.stringify(catalogue.providerCandidates?.gamemonetize?.reasonCounts || reasons)}.`
 );

@@ -1,0 +1,12 @@
+[
+  {
+    "sourceId": "75190",
+    "status": "browser-playability-failed",
+    "reason": "Provider document returned HTTP 404 during browser validation."
+  },
+  {
+    "sourceId": "317",
+    "status": "browser-playability-failed",
+    "reason": "Provider document returned HTTP 404 during browser validation."
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "publishedProfilesChecked": 2400,
+  "publishedProfilesChecked": 33186,
   "localeTemplatesChecked": 13,
   "prohibitedPhraseMatches": 0,
   "emptyOutputs": 0,
@@ -10,7 +10,7 @@
   "unsafeMarkupMatches": 0,
   "unsupportedClaimFailures": 0,
   "localizedTemplateFailures": 0,
-  "whyPickedChecked": 2400,
+  "whyPickedChecked": 33186,
   "whyPickedGrammarFailures": 0,
   "duplicateLoadingExplanations": 0,
   "regressionAssertions": 6,
