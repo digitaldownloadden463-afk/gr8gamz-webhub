@@ -20,7 +20,7 @@ export default function CookiePolicyPage() {
       </section>
       <section className="content-panel">
         <h2>Optional storage</h2>
-        <p>Vercel Web Analytics and Speed Insights are off until you choose Accept All. When enabled, they measure page views and performance without loading social widgets or advertising scripts. Reject All keeps them disabled. Partner games still load only after a separate Play action.</p>
+        <p>Vercel Web Analytics, Speed Insights and optional advertising or affiliate tracking are off until you choose Accept All. When enabled, analytics measure page views and performance, while approved affiliate technology may transform qualifying links and record impressions. Reject All keeps these optional services disabled. Partner games still load only after a separate Play action.</p>
       </section>
     </main>
   );
