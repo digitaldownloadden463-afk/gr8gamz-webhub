@@ -11,6 +11,11 @@ const gamePixRoute = process.env.GAMEPIX_GAMEPLAY_ROUTE || '/more-free-games/bod
 const failures = [];
 
 async function clearConsent(context) {
+  await context.route('https://al5sm.com/tag.min.js', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/javascript',
+    body: 'window.__gr8MonetagGameplaySmoke = true;'
+  }));
   await context.clearCookies();
   await context.addInitScript(() => {
     try {
