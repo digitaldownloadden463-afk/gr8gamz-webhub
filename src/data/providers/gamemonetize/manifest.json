@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-08-08T09:41:59.864Z",
+  "source": "https://gamemonetize.com/feed.php?format=0&page={page}",
+  "feedRecords": 37549,
+  "pagesProcessed": 19,
+  "chunks": [
+    {
+      "file": "page-001.json",
+      "records": 2000
+    },
+    {
+      "file": "page-002.json",
+      "records": 2000
+    },
+    {
+      "file": "page-003.json",
+      "records": 2000
+    },
+    {
+      "file": "page-004.json",
+      "records": 2000
+    },
+    {
+      "file": "page-005.json",
+      "records": 2000
+    },
+    {
+      "file": "page-006.json",
+      "records": 2000
+    },
+    {
+      "file": "page-007.json",
+      "records": 2000
+    },
+    {
+      "file": "page-008.json",
+      "records": 2000
+    },
+    {
+      "file": "page-009.json",
+      "records": 2000
+    },
+    {
+      "file": "page-010.json",
+      "records": 2000
+    },
+    {
+      "file": "page-011.json",
+      "records": 2000
+    },
+    {
+      "file": "page-012.json",
+      "records": 2000
+    },
+    {
+      "file": "page-013.json",
+      "records": 2000
+    },
+    {
+      "file": "page-014.json",
+      "records": 2000
+    },
+    {
+      "file": "page-015.json",
+      "records": 2000
+    },
+    {
+      "file": "page-016.json",
+      "records": 2000
+    },
+    {
+      "file": "page-017.json",
+      "records": 2000
+    },
+    {
+      "file": "page-018.json",
+      "records": 2000
+    },
+    {
+      "file": "page-019.json",
+      "records": 1549
+    }
+  ],
+  "activationApproved": false,
+  "reasonCounts": {
+    "pending-revenue-attribution": 34606,
+    "gamepix-duplicate": 1097,
+    "gamemonetize-duplicate": 995,
+    "browser-playability-failed": 2,
+    "invalid-description": 848,
+    "original-duplicate": 1
+  }
+}

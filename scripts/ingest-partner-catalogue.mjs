@@ -1,334 +1,303 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import {
+  GAME_MONETIZE_PAGE_SIZE,
+  artworkHash,
+  embedHash,
+  gameMonetizeFeedUrl,
+  normalizeGameMonetizeRecord,
+  normalizedGameTitle,
+  slugifyGameMonetize
+} from './providers/gamemonetize-adapter.mjs';
 
-const outputPath = 'src/data/partnerCatalog.generated.json';
-const reportPath = 'reports/partner-catalogue-report.json';
-const targetIndexable = Number.parseInt(process.env.GR8_CATALOGUE_TARGET || '2200', 10);
-const gamePixPageSize = 48;
-const gamePixPages = Number.parseInt(process.env.GR8_GAMEPIX_PAGES || String(Math.ceil(targetIndexable / gamePixPageSize) + 4), 10);
-const requestTimeoutMs = 12000;
-const today = new Date().toISOString();
-const gameMonetizeEmbedsEnabled = process.env.GR8_ENABLE_GAMEMONETIZE_EMBEDS === 'true';
+const root = process.cwd();
+const outputPath = path.join(root, 'src/data/partnerCatalog.generated.json');
+const reportPath = path.join(root, 'reports/partner-catalogue-report.json');
+const providerReportPath = path.join(root, 'reports/gamemonetize-ingestion-report.json');
+const providerCatalogueDirectory = path.join(root, 'src/data/providers/gamemonetize');
+const providerManifestPath = path.join(providerCatalogueDirectory, 'manifest.json');
+const cacheDirectory = path.join(root, '.cache/gamemonetize-feed');
+const checkedAt = new Date().toISOString();
+const activationApproved = process.env.GR8_GAMEMONETIZE_REVENUE_VERIFIED === 'true' && process.env.GR8_ENABLE_GAMEMONETIZE_EMBEDS === 'true';
+const maximumPages = 100;
+const pageDelayMs = Number.parseInt(process.env.GR8_GAMEMONETIZE_PAGE_DELAY_MS || '2500', 10);
 
-const allowedCategories = new Map([
-  ['action', 'Action'],
-  ['arcade', 'Arcade'],
-  ['adventure', 'Adventure'],
-  ['puzzle', 'Puzzle'],
-  ['puzzles', 'Puzzle'],
-  ['hidden-object', 'Puzzle'],
-  ['racing', 'Racing'],
-  ['sports', 'Sports'],
-  ['shooting', 'Action'],
-  ['shooter', 'Action'],
-  ['strategy', 'Strategy'],
-  ['multiplayer', 'Multiplayer'],
-  ['io', 'Multiplayer'],
-  ['.io', 'Multiplayer'],
-  ['runner', 'Arcade'],
-  ['simulation', 'Adventure'],
-  ['educational', 'Puzzle'],
-  ['card', 'Puzzle'],
-  ['kids', 'Arcade'],
-  ['girls', 'Adventure'],
-  ['hypercasual', 'Arcade']
-]);
-
-function decodeText(value = '') {
-  return String(value)
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&rsquo;/g, "'")
-    .replace(/&mdash;/g, '-')
-    .replace(/&ndash;/g, '-')
-    .replace(/&bull;/g, '-')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function slugify(value = '') {
-  return decodeText(value)
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 88);
-}
-
-function titleKey(value = '') {
-  return decodeText(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\b(the|free|online|game|games)\b/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-function safeUrl(value = '', rules = []) {
-  try {
-    const url = new URL(String(value));
-    return url.protocol === 'https:' && rules.some((rule) => rule(url));
-  } catch {
-    return false;
+async function fetchPage(page, attempt = 1) {
+  const cachePath = path.join(cacheDirectory, `page-${page}.json`);
+  if (process.env.GR8_GAMEMONETIZE_REFRESH !== 'true') {
+    try {
+      const cached = JSON.parse(await fs.readFile(cachePath, 'utf8'));
+      if (Array.isArray(cached)) return cached;
+    } catch {}
   }
-}
 
-function categoryFor(value = '') {
-  const key = String(value || '').toLowerCase().trim();
-  return allowedCategories.get(key) || allowedCategories.get(slugify(key)) || 'Arcade';
-}
-
-function imageForGamePix(item) {
-  const namespace = item.namespace || slugify(item.title || item.id);
-  const candidate = item.banner_image || item.image || '';
-  if (safeUrl(candidate, [(url) => url.hostname === 'img.gamepix.com' && url.pathname.startsWith('/games/')])) {
-    const url = new URL(candidate);
-    url.searchParams.set('w', '480');
-    return url.toString();
-  }
-  return `https://img.gamepix.com/games/${namespace}/cover/${namespace}.png?w=480`;
-}
-
-function factualDescription(title, category, sourceDescription = '') {
-  const cleaned = decodeText(sourceDescription);
-  if (cleaned.length >= 80) return cleaned.slice(0, 420);
-  return `${title} is a ${category.toLowerCase()} browser game in GR8 Select. Open the profile, check the artwork and category, then choose Play when you are ready to load the game.`;
-}
-
-function deviceText(orientation = '') {
-  if (orientation === 'portrait') return 'Best on phones and touch screens in portrait view when the game supports it.';
-  if (orientation === 'landscape') return 'Best on desktop, tablet or landscape mobile screens.';
-  return 'Designed for browser play on phone, tablet and desktop when supported by the game.';
-}
-
-function controlsText(item = {}) {
-  const instructions = decodeText(item.instructions || '');
-  if (instructions.length >= 18) return instructions.slice(0, 240);
-  if (String(item.orientation || '').toLowerCase() === 'portrait') return 'Use touch controls or the on-screen prompts shown by the game.';
-  return 'Use the controls shown inside the game after it loads.';
-}
-
-function normaliseGamePix(item, page) {
-  const title = decodeText(item.title || '');
-  const namespace = slugify(item.namespace || title || item.id);
-  const playUrl = item.url || '';
-  const artwork = imageForGamePix(item);
-  const category = categoryFor(item.category);
-  return {
-    source: 'gamepix',
-    sourceId: String(item.id || namespace),
-    sourcePage: page,
-    sourceCategory: item.category || '',
-    title,
-    slug: slugify(namespace || title),
-    category,
-    description: factualDescription(title, category, item.description),
-    controls: controlsText(item),
-    deviceSupport: deviceText(String(item.orientation || '').toLowerCase()),
-    artwork,
-    playUrl,
-    width: Number.parseInt(String(item.width || '800'), 10) || 800,
-    height: Number.parseInt(String(item.height || '600'), 10) || 600,
-    sourceModified: item.date_modified || item.dateModified || '',
-    sourcePublished: item.date_published || item.datePublished || '',
-    qualityScore: typeof item.quality_score === 'number' ? item.quality_score : null
-  };
-}
-
-function normaliseGameMonetize(item, slice) {
-  const title = decodeText(item.title || '');
-  const category = categoryFor(item.category);
-  return {
-    source: 'gamemonetize',
-    sourceId: String(item.id || slugify(title)),
-    sourcePage: slice,
-    sourceCategory: item.category || '',
-    title,
-    slug: slugify(title),
-    category,
-    description: factualDescription(title, category, item.description),
-    controls: controlsText(item),
-    deviceSupport: 'Browser support depends on the loaded game and device controls.',
-    artwork: item.thumb || item.image || '',
-    playUrl: item.url || '',
-    width: Number.parseInt(String(item.width || '960'), 10) || 960,
-    height: Number.parseInt(String(item.height || '600'), 10) || 600,
-    sourceModified: '',
-    sourcePublished: '',
-    qualityScore: null
-  };
-}
-
-async function fetchJson(url, attempt = 1) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), requestTimeoutMs);
+  const timeout = setTimeout(() => controller.abort(), 45000);
   try {
-    const response = await fetch(url, { signal: controller.signal, headers: { accept: 'application/json' } });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return response.json();
+    const response = await fetch(gameMonetizeFeedUrl(page), {
+      signal: controller.signal,
+      headers: { accept: 'application/json', 'user-agent': 'GR8-GAMZ-Catalogue/1.0 (+https://www.gr8gamz.com)' }
+    });
+    if (response.status === 429 && attempt <= 6) {
+      await delay(Math.min(60000, 5000 * (2 ** (attempt - 1))));
+      return fetchPage(page, attempt + 1);
+    }
+    if (!response.ok) throw new Error(`GameMonetize feed page ${page} returned HTTP ${response.status}`);
+    const payload = await response.json();
+    if (!Array.isArray(payload)) throw new Error(`GameMonetize feed page ${page} did not return an array`);
+    await fs.mkdir(cacheDirectory, { recursive: true });
+    await fs.writeFile(cachePath, `${JSON.stringify(payload)}\n`);
+    return payload;
   } catch (error) {
-    if (attempt < 3) {
-      await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
-      return fetchJson(url, attempt + 1);
+    if (attempt <= 4 && error?.name !== 'SyntaxError') {
+      await delay(Math.min(30000, 1500 * (2 ** (attempt - 1))));
+      return fetchPage(page, attempt + 1);
     }
     throw error;
   } finally {
-    clearTimeout(timer);
+    clearTimeout(timeout);
   }
 }
 
-function gamePixFeedUrl(page) {
-  const url = new URL('https://feeds.gamepix.com/v2/json');
-  url.searchParams.set('sid', process.env.GAMEPIX_SID || process.env.NEXT_PUBLIC_GAMEPIX_SID || '8G856');
-  url.searchParams.set('pagination', String(gamePixPageSize));
-  url.searchParams.set('page', String(page));
-  url.searchParams.set('order', 'quality');
-  return url.toString();
+async function fetchCompleteFeed() {
+  const records = [];
+  let pagesProcessed = 0;
+  for (let page = 1; page <= maximumPages; page += 1) {
+    const items = await fetchPage(page);
+    pagesProcessed += 1;
+    records.push(...items.map((item) => normalizeGameMonetizeRecord(item, page, checkedAt)));
+    if (items.length < GAME_MONETIZE_PAGE_SIZE) break;
+    await delay(pageDelayMs);
+  }
+  if (pagesProcessed === maximumPages) throw new Error(`GameMonetize pagination exceeded the safety limit of ${maximumPages} pages`);
+  return { records, pagesProcessed };
 }
 
-function gameMonetizeFeedUrl(slice) {
-  const url = new URL('https://rss.gamemonetize.com/rssfeed.php');
-  url.searchParams.set('amount', '100');
-  url.searchParams.set('category', 'All');
-  url.searchParams.set('company', 'All');
-  url.searchParams.set('format', 'json');
-  url.searchParams.set('popularity', slice);
-  url.searchParams.set('type', 'html5');
-  return url.toString();
+function duplicateKeySets(gamePixGames, originalGames) {
+  return {
+    titles: new Set([...gamePixGames.map((game) => normalizedGameTitle(game.title)), ...originalGames.map((game) => normalizedGameTitle(game.name || game.title))].filter(Boolean)),
+    slugs: new Set([...gamePixGames.map((game) => game.slug), ...originalGames.map((game) => game.slug || game.id)].filter(Boolean))
+  };
 }
 
-function validate(record) {
-  if (!record.title || record.title.length < 2) return 'invalid-metadata';
-  if (!record.description || record.description.length < 80) return 'invalid-metadata';
-  if (!record.slug || record.slug.length < 2) return 'invalid-metadata';
-  if (!record.category) return 'invalid-metadata';
-  if (!safeUrl(record.artwork, [
-    (url) => record.source === 'gamepix' && url.hostname === 'img.gamepix.com' && url.pathname.startsWith('/games/'),
-    (url) => record.source === 'gamemonetize' && url.hostname === 'img.gamemonetize.com' && /^\/[a-z0-9]+\/\d+x\d+\.(?:jpg|jpeg|png|webp)$/i.test(url.pathname)
-  ])) return 'broken-artwork';
-  if (!safeUrl(record.playUrl, [
-    (url) => record.source === 'gamepix' && url.hostname === 'play.gamepix.com' && url.pathname.endsWith('/embed'),
-    (url) => record.source === 'gamemonetize' && url.hostname === 'html5.gamemonetize.co' && /^\/[a-z0-9]+\/$/i.test(url.pathname)
-  ])) return 'broken-play-url';
-  if (record.source === 'gamemonetize' && !gameMonetizeEmbedsEnabled) return 'blocked';
-  return 'verified-indexable';
+function enrichPublished(record, previousById) {
+  const previous = previousById.get(record.sourceId);
+  return {
+    ...record,
+    firstSeen: previous?.firstSeen || record.firstSeen,
+    id: `select:gamemonetize:${record.sourceId}`,
+    path: `/more-free-games/${record.slug}`,
+    playPath: `/more-free-games/${record.slug}/play`,
+    status: 'verified-indexable',
+    indexable: true,
+    qaStatus: 'verified-indexable',
+    qaCheckedAt: checkedAt,
+    sourceAttribution: 'gamemonetize'
+  };
 }
 
-function fingerprint(record) {
-  let playKey = '';
-  let artKey = '';
-  try {
-    const play = new URL(record.playUrl);
-    play.search = '';
-    playKey = play.toString().toLowerCase();
-  } catch {}
-  try {
-    const art = new URL(record.artwork);
-    art.search = '';
-    artKey = art.toString().toLowerCase();
-  } catch {}
-  return [titleKey(record.title), playKey, artKey].filter(Boolean).join('|');
+function quarantine(record, status, previousById) {
+  const previous = previousById.get(record.sourceId);
+  return {
+    ...record,
+    firstSeen: previous?.firstSeen || record.firstSeen,
+    id: `select:gamemonetize:${record.sourceId || record.fingerprint}`,
+    path: record.slug ? `/more-free-games/${record.slug}` : '',
+    playPath: record.slug ? `/more-free-games/${record.slug}/play` : '',
+    status,
+    indexable: false,
+    qaStatus: status,
+    qaCheckedAt: checkedAt,
+    sourceAttribution: 'gamemonetize'
+  };
+}
+
+function compactProviderRecord(record) {
+  const compact = {
+    source: 'gamemonetize',
+    sourceId: record.sourceId,
+    sourcePage: record.sourcePage,
+    title: record.title,
+    slug: record.slug,
+    category: record.category,
+    tags: record.tags,
+    description: record.description,
+    instructions: record.instructions,
+    artwork: record.artwork,
+    playUrl: record.playUrl,
+    width: record.width,
+    height: record.height,
+    firstSeen: record.firstSeen,
+    lastSeen: record.lastSeen,
+    lastChecked: record.lastChecked,
+    status: record.status,
+    fingerprint: record.fingerprint
+  };
+  if (record.validationErrors?.length) compact.validationErrors = record.validationErrors;
+  return compact;
+}
+
+async function writeProviderChunks(records, pagesProcessed, reasonCounts) {
+  await fs.mkdir(providerCatalogueDirectory, { recursive: true });
+  const existingFiles = await fs.readdir(providerCatalogueDirectory).catch(() => []);
+  await Promise.all(existingFiles.filter((file) => /^(?:page-\d+|unavailable)\.json$/.test(file)).map((file) => fs.unlink(path.join(providerCatalogueDirectory, file))));
+  const chunks = [];
+  for (let page = 1; page <= pagesProcessed; page += 1) {
+    const pageRecords = records.filter((record) => record.sourcePage === page).map(compactProviderRecord);
+    const file = `page-${String(page).padStart(3, '0')}.json`;
+    await fs.writeFile(path.join(providerCatalogueDirectory, file), `${JSON.stringify(pageRecords)}\n`);
+    chunks.push({ file, records: pageRecords.length });
+  }
+  const manifest = {
+    generatedAt: checkedAt,
+    source: 'https://gamemonetize.com/feed.php?format=0&page={page}',
+    feedRecords: records.filter((record) => record.status !== 'unavailable').length,
+    pagesProcessed,
+    chunks,
+    activationApproved,
+    reasonCounts
+  };
+  await fs.writeFile(providerManifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  return manifest;
 }
 
 async function main() {
-  const raw = [];
-  const pagesProcessed = { gamepix: 0, gamemonetize: 0 };
-  const supplierTotals = { gamepix: 0, gamemonetize: 0 };
+  const previous = JSON.parse(await fs.readFile(outputPath, 'utf8'));
+  const originalGames = JSON.parse(await fs.readFile(path.join(root, 'src/data/games.json'), 'utf8'));
+  const gamePixGames = previous.games.filter((game) => game.source === 'gamepix');
+  const previousGameMonetize = [...previous.games, ...(previous.quarantine || [])].filter((game) => game.source === 'gamemonetize');
+  const previousById = new Map(previousGameMonetize.map((game) => [String(game.sourceId), game]));
+  const failedBrowserIds = new Set();
+  try {
+    const browserReport = JSON.parse(await fs.readFile(path.join(root, 'reports/gamemonetize-browser-sample.json'), 'utf8'));
+    for (const result of browserReport.results || []) if (!result.passed && result.supplierId) failedBrowserIds.add(String(result.supplierId));
+  } catch {}
+  const { records, pagesProcessed } = await fetchCompleteFeed();
+  const existing = duplicateKeySets(gamePixGames, originalGames);
+  const seenIds = new Set();
+  const seenEmbeds = new Set();
+  const seenArtwork = new Set();
+  const seenTitles = new Set();
+  const publishedGameMonetize = [];
+  const gameMonetizeQuarantine = [];
+  const fallbackProviders = [];
+  const reasonCounts = {};
 
-  for (let page = 1; page <= gamePixPages; page += 1) {
-    const payload = await fetchJson(gamePixFeedUrl(page));
-    const items = Array.isArray(payload.items) ? payload.items : [];
-    pagesProcessed.gamepix += 1;
-    supplierTotals.gamepix += items.length;
-    raw.push(...items.map((item) => normaliseGamePix(item, page)));
-    if (!payload.next_url) break;
-    await new Promise((resolve) => setTimeout(resolve, 80));
-  }
+  for (const record of records) {
+    let reason = '';
+    if (failedBrowserIds.has(record.sourceId)) reason = 'browser-playability-failed';
+    else if (record.validationErrors.length) reason = record.validationErrors[0];
+    else if (seenIds.has(record.sourceId) || seenEmbeds.has(embedHash(record.embedUrl)) || seenArtwork.has(artworkHash(record.artworkUrl)) || seenTitles.has(normalizedGameTitle(record.title))) reason = 'gamemonetize-duplicate';
+    else if (existing.titles.has(normalizedGameTitle(record.title)) || existing.slugs.has(record.slug)) reason = originalGames.some((game) => normalizedGameTitle(game.name || game.title) === normalizedGameTitle(record.title) || (game.slug || game.id) === record.slug) ? 'original-duplicate' : 'gamepix-duplicate';
 
-  for (const slice of ['newest', 'mostplayed', 'hotgames', 'bestgames', 'editorpicks', 'exclusive']) {
-    try {
-      const payload = await fetchJson(gameMonetizeFeedUrl(slice));
-      const items = Array.isArray(payload) ? payload : [];
-      pagesProcessed.gamemonetize += 1;
-      supplierTotals.gamemonetize += items.length;
-      raw.push(...items.map((item) => normaliseGameMonetize(item, slice)));
-      await new Promise((resolve) => setTimeout(resolve, 120));
-    } catch {
-      pagesProcessed.gamemonetize += 1;
+    seenIds.add(record.sourceId);
+    if (record.embedHash) seenEmbeds.add(record.embedHash);
+    if (record.artworkHash) seenArtwork.add(record.artworkHash);
+    if (normalizedGameTitle(record.title)) seenTitles.add(normalizedGameTitle(record.title));
+
+    if (reason) {
+      reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
+      gameMonetizeQuarantine.push(quarantine(record, reason, previousById));
+      if (reason === 'gamepix-duplicate' || reason === 'original-duplicate') {
+        fallbackProviders.push({
+          canonicalSlug: slugifyGameMonetize(record.title),
+          canonicalProvider: reason === 'original-duplicate' ? 'gr8' : 'gamepix',
+          provider: 'gamemonetize',
+          supplierId: record.sourceId,
+          embedUrl: record.embedUrl,
+          artworkUrl: record.artworkUrl,
+          lastChecked: checkedAt
+        });
+      }
+      continue;
     }
-  }
 
-  const seenSlug = new Map();
-  const seenFingerprint = new Set();
-  const games = [];
-  const quarantine = [];
-  const statusCounts = {};
-  const quarantineCounts = {};
-
-  for (const record of raw) {
-    const reason = validate(record);
-    const fp = fingerprint(record);
-    const existingSlug = seenSlug.get(record.slug);
-    const isDuplicate = Boolean(existingSlug || seenFingerprint.has(fp));
-    const status = reason === 'verified-indexable' && !isDuplicate ? 'verified-indexable' : (isDuplicate ? 'duplicate' : reason);
-    statusCounts[status] = (statusCounts[status] || 0) + 1;
-
-    const enriched = {
-      ...record,
-      id: `select:${record.source}:${record.sourceId}`,
-      path: `/more-free-games/${record.slug}`,
-      playPath: `/more-free-games/${record.slug}/play`,
-      status,
-      indexable: status === 'verified-indexable',
-      lastChecked: today,
-      qaStatus: status,
-      qaCheckedAt: today,
-      sourceAttribution: record.source,
-      fingerprint: fp
-    };
-
-    if (status === 'verified-indexable') {
-      seenSlug.set(record.slug, enriched.id);
-      seenFingerprint.add(fp);
-      games.push(enriched);
-    } else {
-      quarantineCounts[status] = (quarantineCounts[status] || 0) + 1;
-      quarantine.push(enriched);
+    if (!activationApproved) {
+      reasonCounts['pending-revenue-attribution'] = (reasonCounts['pending-revenue-attribution'] || 0) + 1;
+      gameMonetizeQuarantine.push(quarantine(record, 'pending-revenue-attribution', previousById));
+      continue;
     }
+    publishedGameMonetize.push(enrichPublished(record, previousById));
   }
 
-  const duplicateCount = statusCounts.duplicate || 0;
-  const nonDuplicateQuarantineCount = quarantine.length - duplicateCount;
-  const nonDuplicateQuarantineCounts = Object.fromEntries(
-    Object.entries(quarantineCounts).filter(([status]) => status !== 'duplicate')
-  );
+  const disappeared = previousGameMonetize.filter((game) => !seenIds.has(String(game.sourceId))).map((game) => quarantine({ ...game, lastChecked: checkedAt }, 'unavailable', previousById));
+  if (disappeared.length) reasonCounts.unavailable = disappeared.length;
+  gameMonetizeQuarantine.push(...disappeared);
+
+  const games = [...gamePixGames, ...publishedGameMonetize];
+  const otherQuarantine = (previous.quarantine || []).filter((game) => game.source !== 'gamemonetize');
+  const duplicates = gameMonetizeQuarantine.filter((game) => /duplicate$/.test(game.status)).length + otherQuarantine.filter((game) => game.status === 'duplicate').length;
+  const quarantined = gameMonetizeQuarantine.filter((game) => !/duplicate$/.test(game.status)).length + otherQuarantine.filter((game) => game.status !== 'duplicate').length;
+  const supplierTotals = { gamepix: gamePixGames.length, gamemonetize: records.length };
+  const statusCounts = games.concat(otherQuarantine, gameMonetizeQuarantine).reduce((counts, game) => ({ ...counts, [game.status]: (counts[game.status] || 0) + 1 }), {});
+  const quarantineCounts = otherQuarantine.concat(gameMonetizeQuarantine).reduce((counts, game) => /duplicate$/.test(game.status) ? counts : ({ ...counts, [game.status]: (counts[game.status] || 0) + 1 }), {});
+  const raw = gamePixGames.length + records.length + disappeared.length;
+
+  const providerManifest = await writeProviderChunks(gameMonetizeQuarantine.concat(publishedGameMonetize), pagesProcessed, reasonCounts);
 
   const payload = {
-    generatedAt: today,
+    generatedAt: checkedAt,
     minimumIndexableTarget: 2000,
-    totals: {
-      raw: raw.length,
-      verifiedIndexable: games.length,
-      verifiedNoindex: 0,
-      duplicates: duplicateCount,
-      quarantined: nonDuplicateQuarantineCount
-    },
+    totals: { raw, verifiedIndexable: games.length, verifiedNoindex: 0, duplicates, quarantined },
     supplierTotals,
-    pagesProcessed,
+    pagesProcessed: { gamepix: previous.pagesProcessed?.gamepix || 50, gamemonetize: pagesProcessed },
     statusCounts,
-    quarantineCounts: nonDuplicateQuarantineCounts,
+    quarantineCounts,
+    providerActivation: {
+      gamemonetize: {
+        revenueAttributionVerified: activationApproved,
+        approvedDomain: 'gr8gamz.com',
+        wwwCoverageVerified: false,
+        feedAccountSpecific: false,
+        feedBase: 'https://gamemonetize.com/feed.php?format=0&page={page}',
+        embedHost: 'html5.gamemonetize.co',
+        artworkHost: 'img.gamemonetize.com'
+      }
+    },
+    providerCandidates: { gamemonetize: providerManifest },
+    fallbackProviders,
     games,
-    quarantine
+    quarantine: otherQuarantine
   };
 
-  await fs.mkdir('reports', { recursive: true });
-  await fs.writeFile(outputPath, `${JSON.stringify(payload)}\n`);
-  await fs.writeFile(reportPath, `${JSON.stringify(payload, null, 2)}\n`);
+  const providerReport = {
+    generatedAt: checkedAt,
+    feedRecordsReceived: records.length,
+    pagesProcessed,
+    activationApproved,
+    published: publishedGameMonetize.length,
+    quarantined: gameMonetizeQuarantine.length,
+    fallbackProviderMappings: fallbackProviders.length,
+    reasonCounts,
+    approvedDomain: 'gr8gamz.com',
+    wwwCoverageVerified: false,
+    adsTxtVerifiedInPublisherDashboard: true,
+    feedAccountSpecific: false,
+    publisherIdentifier: null
+  };
 
-  if (games.length < 2000) {
-    throw new Error(`Catalogue gate failed: ${games.length} verified-indexable partner profiles, expected at least 2000.`);
-  }
-  console.log(`Ingested ${raw.length} raw records; ${games.length} verified-indexable; ${quarantine.length} quarantined.`);
-  console.log(`Report: ${reportPath}`);
+  await fs.mkdir(path.dirname(reportPath), { recursive: true });
+  await fs.writeFile(outputPath, `${JSON.stringify(payload)}\n`);
+  await fs.writeFile(reportPath, `${JSON.stringify({
+    generatedAt: checkedAt,
+    totals: payload.totals,
+    supplierTotals,
+    pagesProcessed: payload.pagesProcessed,
+    statusCounts,
+    quarantineCounts,
+    providerActivation: payload.providerActivation,
+    providerCandidates: payload.providerCandidates,
+    fallbackProviderMappings: fallbackProviders.length
+  }, null, 2)}\n`);
+  await fs.writeFile(providerReportPath, `${JSON.stringify(providerReport, null, 2)}\n`);
+  console.log(JSON.stringify(providerReport, null, 2));
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 });

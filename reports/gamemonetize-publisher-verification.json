@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-08-08",
+  "dashboardWebsite": "gr8gamz.com",
+  "dashboardStatus": "Approved",
+  "dashboardAdsTxtStatus": "Verified",
+  "wwwCoverageVerified": false,
+  "accountFeedUrl": "https://gamemonetize.com/feed.php?format=0&page={page}",
+  "feedAccountSpecific": false,
+  "publisherIdentifier": null,
+  "embedAccountSpecific": false,
+  "observedAttributionMethod": "approved-referring-domain",
+  "revenueAttributionVerified": false,
+  "activationBlocker": "GameMonetize must confirm that the approved gr8gamz.com website record also attributes sessions referred by www.gr8gamz.com."
+}

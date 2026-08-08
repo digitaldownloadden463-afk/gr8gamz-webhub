@@ -1,0 +1,375 @@
+{
+  "checkedAt": "2026-08-08T09:45:03.558Z",
+  "sampleSize": 40,
+  "passed": 40,
+  "failed": 0,
+  "note": "The sample loads official provider game documents without clicking or accepting third-party advertising.",
+  "results": [
+    {
+      "supplierId": "83011",
+      "slug": "stormhawk",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "31257",
+      "slug": "star-quest",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "152",
+      "slug": "tanking-tanks",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83009",
+      "slug": "offroad-jeep-simulation",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "29295",
+      "slug": "ben-10-subway-ultimate-alien",
+      "category": "Adventure",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83",
+      "slug": "nyan-cat-flappy",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83151",
+      "slug": "heroes-beware",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "32722",
+      "slug": "two-walls",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "147",
+      "slug": "neon-slimes",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "82965",
+      "slug": "imposter-duck-online",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "23522",
+      "slug": "mageclash-io",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "498",
+      "slug": "stickworld-io",
+      "category": "Multiplayer",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "80362",
+      "slug": "pixel-adventure-3d",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "24915",
+      "slug": "up-color-game",
+      "category": "Puzzle",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "153",
+      "slug": "tap-and-clapp",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83065",
+      "slug": "obby-cart-rush",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "26837",
+      "slug": "little-uboat",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD"
+      ]
+    },
+    {
+      "supplierId": "130",
+      "slug": "hard-truck",
+      "category": "Racing",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "83070",
+      "slug": "dart-duell-timing-champion",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "25479",
+      "slug": "rocket-soccer-derby",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "Unexpected identifier 'Content'"
+      ]
+    },
+    {
+      "supplierId": "133",
+      "slug": "hole-in-one",
+      "category": "Sports",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "74703",
+      "slug": "alphabet-merge-challenge",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "75616",
+      "slug": "deep-digger-tycoon",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "71547",
+      "slug": "ice-cream-toppings",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "65987",
+      "slug": "graduation-makeup-trends",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": [
+        "gameWidth is not defined"
+      ]
+    },
+    {
+      "supplierId": "61334",
+      "slug": "sprunki-s-world-all-mod",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "56963",
+      "slug": "toxic-drip",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "53648",
+      "slug": "survivor-rainbow-monster",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "40016",
+      "slug": "mad-fish-2",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "48649",
+      "slug": "gbox-doubling",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "46685",
+      "slug": "cardboard-racing-time",
+      "category": "Sports",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "43353",
+      "slug": "ayane-quest-2",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "41195",
+      "slug": "war-airplane",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "40827",
+      "slug": "friends-fat-to-fit-day",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "39139",
+      "slug": "boomcraft",
+      "category": "Action",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "36682",
+      "slug": "lily-s-garden-design-and-relax",
+      "category": "Adventure",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "35985",
+      "slug": "mr-blue",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "34559",
+      "slug": "sisters-cook-cookies",
+      "category": "Arcade",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "32528",
+      "slug": "unicorn-mermaid-cupcake-cooking-design-creative",
+      "category": "Arcade",
+      "viewport": "mobile",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "supplierId": "30323",
+      "slug": "how-to-loot-2-hero-rescue-and-pin-pull",
+      "category": "Puzzle",
+      "viewport": "desktop",
+      "passed": true,
+      "status": 200,
+      "errors": []
+    }
+  ]
+}

@@ -17,6 +17,7 @@ type PartnerPlayClientProps = {
   playUrl: string;
   width: number;
   height: number;
+  provider?: 'gamepix' | 'gamemonetize';
   locale?: Locale;
   labels?: EngagementText;
 };
@@ -33,7 +34,7 @@ function getServerHydrationSnapshot() {
   return false;
 }
 
-export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height, locale = 'en', labels }: PartnerPlayClientProps) {
+export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height, provider = 'gamepix', locale = 'en', labels }: PartnerPlayClientProps) {
   const hydrated = useSyncExternalStore(subscribeHydration, getHydratedSnapshot, getServerHydrationSnapshot);
   const consentChoice = useSyncExternalStore(subscribeConsentChoice, getConsentSnapshot, getServerConsentSnapshot);
   const copy = labels || tr(locale).engagement;
@@ -51,13 +52,13 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   }, [iframeReady, loaded, retryKey]);
 
   function loadGame() {
-    if (!hydrated) return;
+    if (!hydrated || (provider === 'gamemonetize' && consentChoice !== 'accepted')) return;
     setTimedOut(false);
     setIframeReady(false);
     recordGameStarted(gameSlug, 'select');
     if (!startTrackedRef.current) {
       startTrackedRef.current = true;
-      trackEvent('game_play_start', { game_slug: gameSlug, game_type: 'select', locale });
+      trackEvent('game_play_start', { game_slug: gameSlug, game_type: 'select', locale, provider });
     }
     setLoaded(true);
   }
@@ -83,6 +84,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   }
 
   if (!loaded) {
+    const gameMonetizeBlocked = provider === 'gamemonetize' && consentChoice !== 'accepted';
     return (
       <section className="partner-consent-panel">
         <PartnerArtwork src={image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
@@ -91,12 +93,12 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
           <h2>{title}</h2>
           <p>This opens an embedded game outside the core GR8 Originals library. Extra device, usage or advertising data may be processed by the game service under its own terms.</p>
           <div className="cta-row">
-            <button type="button" className="cta-button" onClick={loadGame} disabled={!hydrated} aria-disabled={!hydrated}>
-              {hydrated ? 'Load game' : 'Preparing game...'}
+            <button type="button" className="cta-button" onClick={loadGame} disabled={!hydrated || gameMonetizeBlocked} aria-disabled={!hydrated || gameMonetizeBlocked}>
+              {!hydrated ? 'Preparing game...' : gameMonetizeBlocked ? 'Accept optional content to play' : 'Load game'}
             </button>
             <Link href={profilePath} className="secondary-cta">Back to profile</Link>
           </div>
-          {consentChoice === 'rejected' ? <p className="fine-print">You rejected optional site-wide cookies. You can still choose to load this specific partner game.</p> : null}
+          {gameMonetizeBlocked ? <p className="fine-print">This game includes provider-controlled advertising and can load only after you accept optional content in Privacy Choices.</p> : null}
         </div>
       </section>
     );

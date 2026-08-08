@@ -8,7 +8,8 @@ const nextConfig = fs.readFileSync(path.join(root, 'next.config.js'), 'utf8');
 const failures = [];
 
 const publishedPartners = catalogue.games.filter((game) => game.status === 'verified-indexable' && game.indexable);
-const quarantinedGameMonetize = catalogue.games.filter((game) => game.source === 'gamemonetize' && game.status !== 'verified-indexable');
+const quarantinedGameMonetize = (catalogue.quarantine || []).filter((game) => game.source === 'gamemonetize');
+const gameMonetizeCandidateCount = catalogue.providerCandidates?.gamemonetize?.feedRecords || 0;
 const partnerRoutes = new Set(publishedPartners.map((game) => game.path));
 const originalRoutes = new Set(originals.map((game) => `/arcade/${game.slug || game.id}`));
 const indexableRoutes = new Set(['/', '/games', '/gr8-select', '/gr8-originals', ...partnerRoutes, ...originalRoutes]);
@@ -80,8 +81,8 @@ if (cspLines.some((line) => /html5\.gamemonetize\.com|\*\.gamemonetize\.com/.tes
 }
 if (!/frame-src[^;]*https:\/\/html5\.gamemonetize\.co/.test(nextConfig)) failures.push('CSP does not permit the exact approved GameMonetize .co iframe origin.');
 const publishedGameMonetize = catalogue.games.filter((game) => game.source === 'gamemonetize' && game.status === 'verified-indexable');
-if (publishedGameMonetize.length) failures.push(`${publishedGameMonetize.length} GameMonetize records are published.`);
-if ((catalogue.supplierTotals?.gamemonetize || 0) !== ((catalogue.statusCounts?.blocked || 0) + (catalogue.statusCounts?.duplicate || 0))) failures.push('GameMonetize quarantine accounting is inconsistent.');
+if (publishedGameMonetize.length && !catalogue.providerActivation?.gamemonetize?.revenueAttributionVerified) failures.push(`${publishedGameMonetize.length} GameMonetize records are published without verified revenue attribution.`);
+if ((catalogue.supplierTotals?.gamemonetize || 0) !== gameMonetizeCandidateCount) failures.push('GameMonetize catalogue accounting is inconsistent.');
 
 const usedText = cleanPublicText(publishedPartners.map((game) => `${game.title}\n${game.description}\n${game.controls}\n${game.deviceSupport}`).join('\n'));
 if (/GamePix|GameMonetize|supplier games|provider collection|GR8 Game Network|partner-powered|partner profile/i.test(usedText)) failures.push('Published profile metadata contains supplier/internal wording.');

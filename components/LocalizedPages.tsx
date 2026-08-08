@@ -210,6 +210,7 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
         playUrl={profile.playUrl || ''}
         width={profile.width || 960}
         height={profile.height || 540}
+        provider={profile.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'}
         locale={locale}
         labels={text.engagement}
       />

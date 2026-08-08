@@ -1,29 +1,21 @@
 'use client';
 
-import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Play, RotateCw } from 'lucide-react';
-
-type Provider = 'gamepix' | 'gamemonetize';
+import PartnerArtwork from '@/components/PartnerArtwork';
 
 type LivePartnerGame = {
   id: string;
   slug: string;
-  provider: Provider;
-  providerLabel: string;
   title: string;
   category: string;
   description: string;
   image: string;
-  playUrl: string;
-  width: number;
-  height: number;
+  path: string;
 };
 
 type CatalogueResponse = {
-  provider: Provider;
   page: number;
-  pageSize: number;
   totalEstimate: number | null;
   hasMore: boolean;
   items: LivePartnerGame[];
@@ -32,36 +24,28 @@ type CatalogueResponse = {
 const categoryFilters = ['All GR8 Select', 'Action', 'Puzzle', 'Racing', 'Sports', 'Arcade', 'Adventure', 'Multiplayer'];
 
 export function LivePartnerCatalogue() {
-  const [provider, setProvider] = useState<Provider>('gamepix');
   const [games, setGames] = useState<LivePartnerGame[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [totalEstimate, setTotalEstimate] = useState<number | null>(null);
-  const [selected, setSelected] = useState<LivePartnerGame | null>(null);
-  const [loadSelected, setLoadSelected] = useState(false);
   const [category, setCategory] = useState('All GR8 Select');
   const sentinelRef = useRef<HTMLDivElement | null>(null);
-  const activeProviderRef = useRef<Provider>('gamepix');
 
-  const loadPage = useCallback(async (nextPage: number, nextProvider = provider) => {
+  const loadPage = useCallback(async (nextPage: number) => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(`/api/partner-catalog?provider=${nextProvider}&page=${nextPage}&pageSize=48`, {
-        headers: { accept: 'application/json' }
-      });
-      if (!response.ok) throw new Error('Feed request failed');
+      const response = await fetch(`/api/partner-catalog?page=${nextPage}&pageSize=48`, { headers: { accept: 'application/json' } });
+      if (!response.ok) throw new Error('Catalogue request failed');
       const payload = (await response.json()) as CatalogueResponse;
-      if (activeProviderRef.current !== nextProvider) return;
       setGames((current) => {
         const merged = nextPage === 1 ? [] : current.slice();
-        const seen = new Set(merged.map((game) => `${game.provider}:${game.id}:${game.slug}`));
-        for (const item of payload.items.filter((entry) => entry.provider === nextProvider)) {
-          const key = `${item.provider}:${item.id}:${item.slug}`;
-          if (!seen.has(key)) {
-            seen.add(key);
+        const seen = new Set(merged.map((game) => game.slug));
+        for (const item of payload.items) {
+          if (!seen.has(item.slug)) {
+            seen.add(item.slug);
             merged.push(item);
           }
         }
@@ -76,123 +60,58 @@ export function LivePartnerCatalogue() {
     } finally {
       setLoading(false);
     }
-  }, [provider]);
+  }, []);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      void loadPage(1, provider);
-    }, 0);
+    const timer = window.setTimeout(() => void loadPage(1), 0);
     return () => window.clearTimeout(timer);
-  }, [provider, loadPage]);
+  }, [loadPage]);
 
   useEffect(() => {
     const node = sentinelRef.current;
     if (!node || !hasMore || loading) return undefined;
     const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        void loadPage(page + 1);
-      }
-    }, { rootMargin: '900px 0px' });
+      if (entries.some((entry) => entry.isIntersecting)) void loadPage(page + 1);
+    }, { rootMargin: '800px 0px' });
     observer.observe(node);
     return () => observer.disconnect();
   }, [hasMore, loadPage, loading, page]);
 
-  const openGame = (game: LivePartnerGame) => {
-    setSelected(game);
-    setLoadSelected(false);
-  };
-
-  const chooseProvider = (nextProvider: Provider) => {
-    activeProviderRef.current = nextProvider;
-    setGames([]);
-    setSelected(null);
-    setLoadSelected(false);
-    setHasMore(true);
-    setPage(1);
-    setProvider(nextProvider);
-  };
-
   const filteredGames = category === 'All GR8 Select'
     ? games
-    : games.filter((game) => String(game.category).toLowerCase() === category.toLowerCase() || (category === 'Multiplayer' && /\.io|multi/i.test(`${game.category} ${game.title} ${game.description}`)));
+    : games.filter((game) => game.category.toLowerCase() === category.toLowerCase() || (category === 'Multiplayer' && /\.io|multi/i.test(`${game.category} ${game.title}`)));
 
   return (
     <section className="live-catalogue" aria-label="GR8 Select game catalogue">
       <div className="section-heading">
         <span className="eyebrow">GR8 Select catalogue</span>
-        <h2>Real game artwork. More games keep loading as you browse.</h2>
+        <h2>Choose a game and jump straight to its play page.</h2>
       </div>
       <div className="catalogue-toolbar" aria-label="GR8 Select catalogue controls">
         {categoryFilters.map((item) => (
           <button type="button" key={item} className={category === item ? 'is-active' : ''} onClick={() => setCategory(item)}>{item}</button>
         ))}
-        <button type="button" onClick={() => chooseProvider(provider === 'gamepix' ? 'gamemonetize' : 'gamepix')}>More fresh picks</button>
-        <span>{totalEstimate ? `${totalEstimate.toLocaleString()}+ games available` : 'Fresh GR8 Select shelf'}</span>
+        <span>{totalEstimate ? `${totalEstimate.toLocaleString()} games available` : 'GR8 Select'}</span>
       </div>
-
-      {selected ? (
-        <section className="live-play-panel" aria-label={`Selected GR8 Select game ${selected.title}`}>
-          <Image src={selected.image} alt={`${selected.title} artwork`} width={640} height={384} unoptimized sizes="(max-width: 900px) 92vw, 420px" />
-          <div>
-            <span className="eyebrow">GR8 Select</span>
-            <h3>{selected.title}</h3>
-            <p>{loadSelected ? `Loading ${selected.title}.` : `Choose Load game to open ${selected.title}. The external game only loads after this action.`}</p>
-            {!loadSelected ? (
-              <button type="button" className="cta-button" onClick={() => setLoadSelected(true)}>
-                <Play size={18} aria-hidden="true" /> Load game
-              </button>
-            ) : (
-              <iframe
-                title={selected.title}
-                src={selected.playUrl}
-                width={selected.width}
-                height={selected.height}
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-popups"
-                allow="autoplay; fullscreen; gamepad"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            )}
-          </div>
-        </section>
-      ) : null}
-
       <div className="live-game-grid">
         {filteredGames.map((game, index) => (
-          <article className="live-game-card" key={`${game.provider}-${game.id}-${game.slug}`}>
-            <button type="button" className="live-game-card__button" onClick={() => openGame(game)}>
+          <article className="live-game-card" key={game.slug}>
+            <Link href={game.path} className="live-game-card__button">
               <span className="live-game-card__image">
-                <Image
-                  src={game.image}
-                  alt={`${game.title} artwork`}
-                  width={480}
-                  height={288}
-                  sizes="(max-width: 620px) 92vw, (max-width: 1024px) 44vw, 300px"
-                  unoptimized
-                  priority={index < 6}
-                />
-                <span>{game.category}</span>
+                <PartnerArtwork src={game.image} title={game.title} category={game.category} priority={index < 6} sizes="(max-width: 620px) 92vw, (max-width: 1024px) 44vw, 300px" />
               </span>
               <span className="live-game-card__body">
                 <span className="game-card__kicker">GR8 Select</span>
                 <strong>{game.title}</strong>
                 <span>{game.description}</span>
-                <span className="game-card__button"><Play size={18} aria-hidden="true" /> Play</span>
               </span>
-            </button>
+            </Link>
           </article>
         ))}
       </div>
-
-      {error ? <p className="status-message" role="status">{error}</p> : null}
-      {loading ? <p className="status-message" role="status"><RotateCw size={18} aria-hidden="true" /> Loading more games...</p> : null}
-      <div ref={sentinelRef} className="catalogue-sentinel" aria-hidden="true" />
-      {hasMore && !loading ? (
-        <button type="button" className="secondary-button catalogue-load-more" onClick={() => loadPage(page + 1)}>
-          Load more games
-        </button>
-      ) : null}
+      {error ? <p role="alert">{error}</p> : null}
+      <div ref={sentinelRef} aria-hidden="true" />
+      {loading ? <p role="status">Loading more games...</p> : null}
     </section>
   );
 }
