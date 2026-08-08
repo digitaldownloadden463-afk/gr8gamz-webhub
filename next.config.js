@@ -38,7 +38,7 @@ const nextConfig = {
       "frame-ancestors 'self'",
       "form-action 'self'",
       "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com",
-      "script-src 'self' 'unsafe-inline' https://play.gamepix.com",
+      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://al5sm.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
       "connect-src 'self' https://feeds.gamepix.com",
