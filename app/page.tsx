@@ -8,6 +8,7 @@ import { canonical } from '@/lib/features';
 import { getCatalogueStats } from '@/lib/catalogueStats';
 import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import { getRegistryCategories } from '@/lib/gameRegistry';
+import LenovoImpactTracking from '@/components/LenovoImpactTracking';
 
 export const metadata = {
   alternates: { canonical: canonical('/') }
@@ -35,6 +36,7 @@ export default function HomePage() {
 
   return (
     <main>
+      <LenovoImpactTracking />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <nav className="home-play-menu" aria-label="Homepage play menu">
         <Link href="/gr8-originals"><Gamepad2 size={18} aria-hidden="true" /> GR8 Originals</Link>
