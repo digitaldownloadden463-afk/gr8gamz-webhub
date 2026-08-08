@@ -3,7 +3,7 @@ import { canonical } from '@/lib/features';
 import { getGameBySlug } from '@/lib/games';
 import { getPartnerGameProfile } from '@/src/data/partnerGameProfiles';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const alt = 'GR8 GAMZ game card';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
