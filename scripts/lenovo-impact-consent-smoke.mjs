@@ -76,11 +76,15 @@ const browser = await chromium.launch();
   await page.locator('script[data-gr8-integration="lenovo-impact"]').waitFor({ state: 'attached', timeout: 5000 });
   await page.waitForFunction(() => window.__gr8LenovoImpactTestLoads === 1);
 
-  const attributes = await page.locator('script[data-gr8-integration="lenovo-impact"]').evaluate((script) => ({
+  const attributes = await page.locator('head > script[data-gr8-integration="lenovo-impact"]').evaluate((script) => ({
     async: script.async,
+    id: script.id,
+    parent: script.parentElement?.tagName,
     src: script.src,
     type: script.type
   }));
+  if (attributes.parent !== 'HEAD') failures.push(`Accept All: expected script under HEAD, found ${attributes.parent || 'no parent'}`);
+  if (attributes.id !== 'gr8-lenovo-impact') failures.push(`Accept All: unexpected script id ${attributes.id}`);
   if (attributes.src !== scriptUrl) failures.push(`Accept All: expected ${scriptUrl}, found ${attributes.src}`);
   if (!attributes.async) failures.push('Accept All: script was not async');
   if (attributes.type !== 'text/javascript') failures.push(`Accept All: unexpected script type ${attributes.type}`);
@@ -97,6 +101,7 @@ const browser = await chromium.launch();
   await page.waitForURL(new RegExp(`${baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/?$`));
   if (requests.length !== 1) failures.push(`Repeat homepage visit: expected one script request, found ${requests.length}`);
   if (await page.locator('script[data-gr8-integration="lenovo-impact"]').count() !== 1) failures.push('Repeat homepage visit: duplicate script detected');
+  if (await page.locator('head > script#gr8-lenovo-impact').count() !== 1) failures.push('Repeat homepage visit: Impact script was not retained under HEAD');
   if (await page.locator('[data-gr8-integration="lenovo-impact"]:not(script)').count()) failures.push('Mobile: visible Impact container was introduced');
   if (await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) failures.push('Mobile: horizontal overflow was introduced');
   const relevantErrors = errors.filter((message) => /hydration|react|impactstat|P-A7586931/i.test(message));
@@ -111,4 +116,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Lenovo Impact consent smoke passed: homepage-only loading, consent gating, exact tag, queued commands and duplicate prevention verified.');
+console.log('Lenovo Impact consent smoke passed: HEAD placement, homepage-only loading, consent gating, exact tag, queued commands and duplicate prevention verified.');

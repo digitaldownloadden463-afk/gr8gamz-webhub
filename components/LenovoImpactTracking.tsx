@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useConsentChoice } from '@/lib/consentPreferences';
 
 const IMPACT_SCRIPT_URL = 'https://utt.impactcdn.com/P-A7586931-c266-49bb-bc60-1b14443f47521.js';
+const IMPACT_SCRIPT_ID = 'gr8-lenovo-impact';
 const IMPACT_SCRIPT_SELECTOR = `script[src="${IMPACT_SCRIPT_URL}"]`;
 
 type ImpactStat = {
@@ -34,15 +35,21 @@ export default function LenovoImpactTracking() {
       window.impactStat = queuedImpactStat;
     }
 
-    if (!document.querySelector(IMPACT_SCRIPT_SELECTOR)) {
+    const existingScript = document.querySelector<HTMLScriptElement>(`script#${IMPACT_SCRIPT_ID}`)
+      || document.querySelector<HTMLScriptElement>(IMPACT_SCRIPT_SELECTOR);
+
+    if (!existingScript) {
       const script = document.createElement('script');
+      script.id = IMPACT_SCRIPT_ID;
       script.type = 'text/javascript';
       script.src = IMPACT_SCRIPT_URL;
       script.async = true;
       script.dataset.gr8Integration = 'lenovo-impact';
-      const firstScript = document.getElementsByTagName('script')[0];
-      if (firstScript?.parentNode) firstScript.parentNode.insertBefore(script, firstScript);
-      else document.body.appendChild(script);
+      document.head.appendChild(script);
+    } else {
+      existingScript.id = IMPACT_SCRIPT_ID;
+      existingScript.dataset.gr8Integration = 'lenovo-impact';
+      if (existingScript.parentElement !== document.head) document.head.appendChild(existingScript);
     }
 
     window.impactStat('transformLinks');
@@ -52,4 +59,3 @@ export default function LenovoImpactTracking() {
 
   return null;
 }
-
