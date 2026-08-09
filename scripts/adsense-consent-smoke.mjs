@@ -10,6 +10,7 @@ try {
 }
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
+const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
 const accountId = 'ca-pub-9245359017496056';
 const publisherId = 'pub-9245359017496056';
 const scriptUrl = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${accountId}`;
@@ -18,6 +19,7 @@ const failures = [];
 async function freshContext(browser, { choice = null, gdprApplies = true, viewport = { width: 390, height: 844 } } = {}) {
   const context = await browser.newContext({ viewport });
   await context.clearCookies();
+  if (previewShareUrl) await context.request.get(previewShareUrl);
   await context.addInitScript(({ initialChoice, applies }) => {
     try {
       window.localStorage.removeItem('gr8:privacy-consent');
