@@ -17,7 +17,8 @@ const nextConfig = {
     ],
     remotePatterns: [
       { protocol: 'https', hostname: 'img.gamepix.com', pathname: '/games/**' },
-      { protocol: 'https', hostname: 'img.gamemonetize.com', pathname: '/**' }
+      { protocol: 'https', hostname: 'img.gamemonetize.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'assets3.razerzone.com', pathname: '/**' }
     ]
   },
   async redirects() {
@@ -40,7 +41,7 @@ const nextConfig = {
       "object-src 'none'",
       "frame-ancestors 'self'",
       "form-action 'self'",
-      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://utt.impactcdn.com",
+      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets3.razerzone.com https://utt.impactcdn.com",
       "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://al5sm.com https://www.googletagmanager.com https://utt.impactcdn.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",

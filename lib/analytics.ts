@@ -11,6 +11,7 @@ export type AnalyticsEventName =
   | 'search'
   | 'language_change'
   | 'affiliate_guide_view'
+  | 'product_view'
   | 'affiliate_product_impression';
 
 export type AnalyticsParameters = Partial<{
@@ -18,6 +19,12 @@ export type AnalyticsParameters = Partial<{
   game_type: 'original' | 'select';
   locale: string;
   provider: 'gr8' | 'gamepix' | 'gamemonetize';
+  merchant: 'razer';
+  product_id: string;
+  product_name: string;
+  category: string;
+  page_type: 'hub' | 'category' | 'guide' | 'comparison' | 'product';
+  cta_position: string;
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
@@ -32,7 +39,9 @@ declare global {
   }
 }
 
-const safeParameterKeys = new Set<keyof AnalyticsParameters>(['game_slug', 'game_type', 'locale', 'provider']);
+const safeParameterKeys = new Set<keyof AnalyticsParameters>([
+  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_id', 'product_name', 'category', 'page_type', 'cta_position'
+]);
 const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string> }> = [];
 
 function safeParameters(parameters: AnalyticsParameters) {
@@ -45,6 +54,9 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'game_type' && normalized !== 'original' && normalized !== 'select') continue;
     if (key === 'locale' && !/^[a-z]{2}(?:-[A-Z]{2})?$/.test(normalized)) continue;
     if (key === 'provider' && !['gr8', 'gamepix', 'gamemonetize'].includes(normalized)) continue;
+    if (key === 'merchant' && normalized !== 'razer') continue;
+    if (key === 'page_type' && !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)) continue;
+    if (['product_id', 'category', 'cta_position'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
     result[key] = normalized;
   }
   return result;

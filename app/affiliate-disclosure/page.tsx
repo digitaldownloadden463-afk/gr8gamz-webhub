@@ -16,7 +16,7 @@ export default function AffiliateDisclosurePage() {
       </section>
       <section className="content-panel">
         <h2>Player-first labelling</h2>
-        <p>Affiliate links, sponsored placements or paid recommendations are labelled when they appear. Ordinary game cards are not presented as paid recommendations unless the page says so. Lenovo affiliate links may use Impact tracking after you choose Accept All in the privacy controls.</p>
+        <p>Affiliate links, sponsored placements or paid recommendations are labelled when they appear. Ordinary game cards are not presented as paid recommendations unless the page says so. Gaming Gear links may use Impact tracking to attribute a qualifying purchase to GR8 GAMZ. Optional site analytics remain controlled by your privacy choice.</p>
       </section>
     </main>
   );

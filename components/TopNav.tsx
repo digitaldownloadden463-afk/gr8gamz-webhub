@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Search } from 'lucide-react';
 import LanguageSelector from '@/components/LanguageSelector';
 import { defaultLocale, isLocale, pathForLocale, tr, type Locale } from '@/lib/i18n';
+import { gamingGearLabel } from '@/lib/commerce/i18n';
 
 const links = [
   { href: '/', key: 'home' },
@@ -35,6 +36,12 @@ export function TopNav({ locale }: { locale?: Locale }) {
       </Link>
     );
   });
+  const gearActive = localizedPath === '/gaming-gear' || localizedPath.startsWith('/gaming-gear/');
+  navLinks.splice(4, 0, (
+    <Link key="/gaming-gear" href="/gaming-gear" aria-current={gearActive ? 'page' : undefined}>
+      {gamingGearLabel(activeLocale)}
+    </Link>
+  ));
 
   return (
     <header className="top-nav">
