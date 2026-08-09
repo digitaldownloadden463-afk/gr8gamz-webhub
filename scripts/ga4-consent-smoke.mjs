@@ -11,20 +11,46 @@ const measurementId = 'G-QYTP57SB11';
 const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
 const failures = [];
 
-async function createContext(browser) {
+async function createContext(browser, choice = null) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   await context.clearCookies();
-  await context.addInitScript(() => {
+  await context.addInitScript((initialChoice) => {
     try {
       window.localStorage.removeItem('gr8:privacy-consent');
       window.localStorage.removeItem('gr8:privacy-consent:v1');
       window.localStorage.removeItem('gr8:privacy-consent:signal');
     } catch {}
-  });
+    let callback;
+    window.__tcfapi = (command, _version, next) => {
+      if (command === 'removeEventListener') return;
+      callback = next;
+      queueMicrotask(() => {
+        const accepted = initialChoice === 'accepted';
+        next({
+          cmpStatus: 'loaded',
+          eventStatus: initialChoice ? 'useractioncomplete' : 'cmpuishown',
+          gdprApplies: true,
+          listenerId: 1,
+          tcString: initialChoice ? `smoke-${initialChoice}` : '',
+          purpose: { consents: Object.fromEntries(['1', '3', '4', '7', '9', '10'].map((key) => [key, accepted])) }
+        }, true);
+      });
+    };
+    window.__gr8EmitTcf = (nextChoice) => {
+      const accepted = nextChoice === 'accepted';
+      callback?.({
+        cmpStatus: 'loaded', eventStatus: 'useractioncomplete', gdprApplies: true,
+        listenerId: 1, tcString: `smoke-${nextChoice}`,
+        purpose: { consents: Object.fromEntries(['1', '3', '4', '7', '9', '10'].map((key) => [key, accepted])) }
+      }, true);
+    };
+  }, choice);
   return context;
 }
 
 async function stubAnalytics(context, requests) {
+  await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+  await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://www.googletagmanager.com/**', async (route) => {
     requests.push(route.request().url());
     await route.fulfill({ status: 200, contentType: 'application/javascript', body: 'window.__gr8GaTestScriptLoaded = true;' });
@@ -61,14 +87,14 @@ const browser = await chromium.launch();
   const page = await context.newPage();
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
   await expectNoAnalytics(page, requests, 'Fresh visitor');
-  await page.getByRole('button', { name: /^reject all$/i }).click();
+  await page.evaluate(() => window.__gr8EmitTcf('rejected'));
   await expectNoAnalytics(page, requests, 'Reject All');
   await context.close();
 }
 
 {
   const requests = [];
-  const context = await createContext(browser);
+  const context = await createContext(browser, 'accepted');
   await stubAnalytics(context, requests);
   const page = await context.newPage();
   const browserErrors = [];
@@ -76,8 +102,7 @@ const browser = await chromium.launch();
   page.on('pageerror', (error) => browserErrors.push(error.message));
 
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
-  await page.getByRole('button', { name: /^accept all$/i }).click();
-  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 5000 });
+  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   await page.waitForFunction(() => window.__gr8GaTestScriptLoaded === true);
 
   const script = await page.locator('#gr8-ga4-script').evaluate((node) => ({ src: node.src, async: node.async }));
@@ -106,6 +131,7 @@ const browser = await chromium.launch();
   if (await page.locator('#gr8-ga4-script').count() !== 1 || requests.filter((url) => url === scriptUrl).length !== 1) failures.push('Client navigation: GA script was duplicated');
 
   await page.goto(`${baseUrl}/arcade/neon-snake-rush`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   const beforeStart = await dataLayerEvents(page, 'game_play_start');
   if (beforeStart.length !== 0) failures.push('Game start: event fired from page load');
   const frame = page.locator('.game-player-frame iframe').contentFrame();
@@ -117,6 +143,7 @@ const browser = await chromium.launch();
   }
 
   await page.goto(`${baseUrl}/more-free-games/body-drop-3d/play`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   const beforePartnerStart = await dataLayerEvents(page, 'game_play_start');
   if (beforePartnerStart.length !== 0) failures.push('Partner game start: event fired from page load');
   await page.getByRole('button', { name: /^load game$/i }).click();
@@ -126,7 +153,10 @@ const browser = await chromium.launch();
     failures.push('Partner game start: expected one correctly labelled event after Load game');
   }
 
-  const relevantErrors = browserErrors.filter((message) => /hydration|react|googleanalytics|gtag/i.test(message));
+  const relevantErrors = browserErrors.filter((message) =>
+    !/eval\(\) is not supported.*React requires eval\(\) in development mode/is.test(message)
+    && /hydration|react|googleanalytics|gtag/i.test(message)
+  );
   if (relevantErrors.length) failures.push(`Browser errors: ${relevantErrors.join(' | ')}`);
   await context.close();
 }

@@ -63,10 +63,10 @@ const policies: Record<AdPageType, AdPolicy> = {
   },
   product: {
     pageType: 'product',
-    adDensity: 'low',
+    adDensity: 'none',
     autoAdsAllowed: false,
-    allowedFormats: ['in-page'],
-    manualSlots: ['after-product-information']
+    allowedFormats: [],
+    manualSlots: []
   },
   legal: {
     pageType: 'legal',

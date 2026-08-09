@@ -25,6 +25,8 @@ async function createContext(browser) {
 }
 
 async function installImpactStub(context, requests) {
+  await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+  await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://www.googletagmanager.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
   await context.route(/https:\/\/(?:www\.|region1\.)?google-analytics\.com\/.*/, (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://analytics.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
@@ -87,7 +89,7 @@ if (!initialHomepageHead.includes('name="impact-site-verification"') || !initial
   await page.getByRole('button', { name: /^accept all$/i }).click();
   await expectUnloaded(page, requests, 'Accepted away from homepage');
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
-  await page.locator('script[data-gr8-integration="lenovo-impact"]').waitFor({ state: 'attached', timeout: 5000 });
+  await page.locator('script[data-gr8-integration="lenovo-impact"]').waitFor({ state: 'attached', timeout: 15000 });
   await page.waitForFunction(() => window.__gr8LenovoImpactTestLoads === 1);
 
   const attributes = await page.locator('head > script[data-gr8-integration="lenovo-impact"]').evaluate((script) => ({
@@ -118,7 +120,10 @@ if (!initialHomepageHead.includes('name="impact-site-verification"') || !initial
   if (await page.locator('head > script#gr8-lenovo-impact').count() !== 1) failures.push('Repeat homepage visit: Impact script was not retained under HEAD');
   if (await page.locator('[data-gr8-integration="lenovo-impact"]:not(script)').count()) failures.push('Mobile: visible Impact container was introduced');
   if (await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) failures.push('Mobile: horizontal overflow was introduced');
-  const relevantErrors = errors.filter((message) => /hydration|react|impactstat|P-A7586931/i.test(message));
+  const relevantErrors = errors.filter((message) =>
+    !/eval\(\) is not supported.*React requires eval\(\) in development mode/is.test(message)
+    && /hydration|react|impactstat|P-A7586931/i.test(message)
+  );
   if (relevantErrors.length) failures.push(`Browser errors: ${relevantErrors.join(' | ')}`);
   await context.close();
 }

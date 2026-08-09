@@ -20,7 +20,7 @@ export default function CookiePolicyPage() {
       </section>
       <section className="content-panel">
         <h2>Optional storage</h2>
-        <p>Vercel Web Analytics, Speed Insights, Google advertising and optional affiliate tracking are off until you choose Accept All. When enabled, analytics measure page views and performance, Google may use cookies or similar storage to deliver and measure ads, and approved affiliate technology may transform qualifying links and record impressions. Reject All keeps these optional services disabled. Partner games still load only after a separate Play action.</p>
+        <p>In the EEA, UK and Switzerland, Google&apos;s certified consent platform records advertising and analytics choices through IAB TCF and Google consent mode. Google tags begin with advertising and analytics storage denied. Full analytics, affiliate tracking and optional partner resources remain disabled unless the resulting choice permits them. Outside those regions, GR8 GAMZ provides equivalent Accept All and Reject All controls. Partner games still load only after a separate Play action.</p>
       </section>
     </main>
   );

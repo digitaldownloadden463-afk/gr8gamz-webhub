@@ -8,7 +8,8 @@ import PwaRegister from '@/components/PwaRegister';
 import VercelObservability from '@/components/VercelObservability';
 import GoogleAdSense from '@/components/GoogleAdSense';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-import { ADSENSE_ACCOUNT_ID } from '@/lib/ads/config';
+import GoogleConsentBridge from '@/components/GoogleConsentBridge';
+import { ADSENSE_ACCOUNT_ID, adsenseConfig } from '@/lib/ads/config';
 import { canonical, siteUrl } from '@/lib/features';
 import { headers } from 'next/headers';
 import { defaultLocale, isLocale, localeInfo, type Locale } from '@/lib/i18n';
@@ -58,13 +59,24 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const info = localeInfo(locale);
   return (
     <html lang={locale} dir={info.dir}>
+      {adsenseConfig.enabled ? (
+        <head>
+          <script
+            id="gr8-google-consent-defaults"
+            dangerouslySetInnerHTML={{
+              __html: "window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};window.gtag_enable_tcf_support=true;window.gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});window.gtag('set','ads_data_redaction',true);"
+            }}
+          />
+        </head>
+      ) : null}
       <body>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <TopNav />
         <div id="main-content">{children}</div>
         <Footer />
-        <ConsentBanner />
+        <GoogleConsentBridge />
         <GoogleAdSense />
+        <ConsentBanner />
         <Suspense fallback={null}><GoogleAnalytics /></Suspense>
         <PwaRegister />
         <VercelObservability />

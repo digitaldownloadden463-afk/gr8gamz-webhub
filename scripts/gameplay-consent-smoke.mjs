@@ -11,6 +11,8 @@ const gamePixRoute = process.env.GAMEPIX_GAMEPLAY_ROUTE || '/more-free-games/bod
 const failures = [];
 
 async function clearConsent(context) {
+  await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+  await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://www.googletagmanager.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
   await context.route(/https:\/\/(?:www\.|region1\.)?google-analytics\.com\/.*/, (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://analytics.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));

@@ -35,6 +35,8 @@ const failures = [];
 try {
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
     const context = await browser.newContext({ viewport });
+    await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+    await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
     const page = await context.newPage();
     const consoleErrors = [];
     page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
@@ -58,7 +60,10 @@ try {
         if (url.hostname !== 'razer.a9yw.net' || !url.searchParams.get('u')?.startsWith('https://www.razer.com/gb-en/')) failures.push(`${route} has invalid affiliate URL`);
       }
     }
-    const appErrors = consoleErrors.filter((message) => !/Failed to load resource/.test(message));
+    const appErrors = consoleErrors.filter((message) =>
+      !/Failed to load resource/.test(message)
+      && !/eval\(\) is not supported.*React requires eval\(\) in development mode/is.test(message)
+    );
     if (appErrors.length) failures.push(`Console errors at ${viewport.width}px: ${appErrors.join(' | ')}`);
     await context.close();
   }

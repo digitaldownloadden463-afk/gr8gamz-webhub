@@ -4,6 +4,7 @@ import { useSyncExternalStore } from 'react';
 
 export type ConsentChoice = 'accepted' | 'rejected';
 export type ConsentSnapshot = ConsentChoice | null | 'unknown';
+export type ConsentAuthority = 'pending' | 'google-cmp' | 'custom';
 
 const legacyStorageKey = 'gr8:privacy-consent';
 const storageKey = 'gr8:privacy-consent:v1';
@@ -14,6 +15,9 @@ const maxAgeSeconds = 60 * 60 * 24 * 180;
 const eventName = 'gr8-consent-change';
 
 let memoryChoice: ConsentChoice | null = null;
+let googleCmpChoice: ConsentChoice | null = null;
+const googleCmpEnabled = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED === 'true';
+let consentAuthority: ConsentAuthority = googleCmpEnabled ? 'pending' : 'custom';
 const listeners = new Set<() => void>();
 let channel: BroadcastChannel | null = null;
 
@@ -114,16 +118,50 @@ function emitConsentChange() {
   } catch {}
 }
 
-export function getConsentChoice(): ConsentChoice | null {
-  return readPersistedChoice();
-}
-
-export function setConsentChoice(choice: ConsentChoice) {
+function persistChoice(choice: ConsentChoice) {
   memoryChoice = choice;
   safeCookieWrite(choice);
   safeLocalStorageSet(storageKey, `${version}.${choice}`);
   safeLocalStorageSet(legacyStorageKey, choice);
   safeLocalStorageSet(signalStorageKey, `${version}.${choice}.${Date.now()}`);
+}
+
+function updateGoogleConsentMode(choice: ConsentChoice) {
+  try {
+    window.gtag?.('consent', 'update', {
+      ad_storage: choice === 'accepted' ? 'granted' : 'denied',
+      ad_user_data: choice === 'accepted' ? 'granted' : 'denied',
+      ad_personalization: choice === 'accepted' ? 'granted' : 'denied',
+      analytics_storage: choice === 'accepted' ? 'granted' : 'denied'
+    });
+  } catch {}
+}
+
+export function getConsentChoice(): ConsentChoice | null {
+  if (consentAuthority === 'pending') return null;
+  if (consentAuthority === 'google-cmp') return googleCmpChoice;
+  return readPersistedChoice();
+}
+
+export function setConsentChoice(choice: ConsentChoice) {
+  persistChoice(choice);
+  updateGoogleConsentMode(choice);
+  emitConsentChange();
+}
+
+export function setConsentAuthority(authority: ConsentAuthority) {
+  if (consentAuthority === authority) return;
+  consentAuthority = authority;
+  if (authority !== 'google-cmp') googleCmpChoice = null;
+  emitConsentChange();
+}
+
+export function setGoogleCmpConsent(choice: ConsentChoice | null) {
+  consentAuthority = 'google-cmp';
+  googleCmpChoice = choice;
+  if (choice) {
+    persistChoice(choice);
+  }
   emitConsentChange();
 }
 
@@ -173,6 +211,7 @@ export function subscribeConsentChoice(listener: () => void) {
 }
 
 export function getConsentSnapshot(): ConsentSnapshot {
+  if (consentAuthority === 'pending') return 'unknown';
   return getConsentChoice();
 }
 
@@ -182,6 +221,18 @@ export function getServerConsentSnapshot(): ConsentSnapshot {
 
 export function useConsentChoice() {
   return useSyncExternalStore(subscribeConsentChoice, getConsentSnapshot, getServerConsentSnapshot);
+}
+
+export function getConsentAuthority() {
+  return consentAuthority;
+}
+
+export function getServerConsentAuthority(): ConsentAuthority {
+  return googleCmpEnabled ? 'pending' : 'custom';
+}
+
+export function useConsentAuthority() {
+  return useSyncExternalStore(subscribeConsentChoice, getConsentAuthority, getServerConsentAuthority);
 }
 
 export const consentPreferenceMeta = {
