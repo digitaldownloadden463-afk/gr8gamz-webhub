@@ -35,7 +35,7 @@
     "smoke:playwright": "node scripts/playwright-smoke.mjs",
     "smoke:artwork": "node scripts/artwork-browser-smoke.mjs",
     "smoke:gameplay-consent": "node scripts/gameplay-consent-smoke.mjs",
-    "smoke:monetag": "node scripts/monetag-consent-smoke.mjs",
+    "smoke:adsense": "node scripts/adsense-consent-smoke.mjs",
     "smoke:ga4": "node scripts/ga4-consent-smoke.mjs",
     "smoke:gamemonetize": "node scripts/gamemonetize-browser-sample.mjs",
     "smoke:lenovo": "node scripts/lenovo-impact-consent-smoke.mjs",

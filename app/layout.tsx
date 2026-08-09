@@ -6,8 +6,9 @@ import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
 import PwaRegister from '@/components/PwaRegister';
 import VercelObservability from '@/components/VercelObservability';
-import MonetagPopunder from '@/components/MonetagPopunder';
+import GoogleAdSense from '@/components/GoogleAdSense';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { ADSENSE_ACCOUNT_ID } from '@/lib/ads/config';
 import { canonical, siteUrl } from '@/lib/features';
 import { headers } from 'next/headers';
 import { defaultLocale, isLocale, localeInfo, type Locale } from '@/lib/i18n';
@@ -41,7 +42,10 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
-    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : undefined
+    other: {
+      'google-adsense-account': ADSENSE_ACCOUNT_ID,
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : {})
+    }
   }
 };
 
@@ -60,7 +64,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div id="main-content">{children}</div>
         <Footer />
         <ConsentBanner />
-        <MonetagPopunder />
+        <GoogleAdSense />
         <Suspense fallback={null}><GoogleAnalytics /></Suspense>
         <PwaRegister />
         <VercelObservability />
