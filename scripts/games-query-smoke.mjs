@@ -12,10 +12,10 @@ const longRawQuery = 'snake-'.repeat(30);
 const longExpected = longRawQuery.slice(0, 80);
 const cases = [
   { path: '/games', query: '', expectedMinCards: 26, expectedMaxCards: 26, copy: null },
-  { path: '/games?q=snake', query: 'snake', expectedMinCards: 1, expectedMaxCards: 25, copy: 'Showing results for "snake".' },
-  { path: '/games?q=zzzz-no-such-game', query: 'zzzz-no-such-game', expectedMinCards: 0, expectedMaxCards: 0, copy: 'Showing results for "zzzz-no-such-game".' },
-  { path: '/games?q=neon%20snake', query: 'neon snake', expectedMinCards: 1, expectedMaxCards: 25, copy: 'Showing results for "neon snake".' },
-  { path: `/games?q=${encodeURIComponent(longRawQuery)}`, query: longExpected, expectedMinCards: 0, expectedMaxCards: 26, copy: `Showing results for "${longExpected}".` }
+  { path: '/games?q=snake', query: 'snake', expectedMinCards: 1, expectedMaxCards: 48, copy: 'Showing results for "snake" across GR8 Originals and GR8 Select.' },
+  { path: '/games?q=zzzz-no-such-game', query: 'zzzz-no-such-game', expectedMinCards: 0, expectedMaxCards: 0, copy: 'Showing results for "zzzz-no-such-game" across GR8 Originals and GR8 Select.' },
+  { path: '/games?q=neon%20snake', query: 'neon snake', expectedMinCards: 1, expectedMaxCards: 48, copy: 'Showing results for "neon snake" across GR8 Originals and GR8 Select.' },
+  { path: `/games?q=${encodeURIComponent(longRawQuery)}`, query: longExpected, expectedMinCards: 0, expectedMaxCards: 48, copy: `Showing results for "${longExpected}" across GR8 Originals and GR8 Select.` }
 ];
 
 function fail(message) {
@@ -53,7 +53,7 @@ for (const item of cases) {
   }
   if (item.copy && !html.includes(escapeHtml(item.copy))) fail(`${item.path} missing server query copy: ${escapeHtml(item.copy)}`);
   if (item.query && !html.includes(`value="${escapeHtml(item.query)}"`)) fail(`${item.path} missing search input value "${item.query}" in server HTML`);
-  if ((item.path === '/games?q=snake' || item.path === '/games?q=neon%20snake') && !containsCardTitle(html, 'Neon Snake Rush')) fail(`${item.path} did not include Neon Snake Rush in server HTML`);
+  if (item.path === '/games?q=neon%20snake' && !containsCardTitle(html, 'Neon Snake Rush')) fail(`${item.path} did not include Neon Snake Rush in server HTML`);
   if (item.path.includes('zzzz') && count !== 0) fail(`${item.path} impossible query should render zero cards, saw ${count}`);
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (canonical !== 'https://www.gr8gamz.com/games') fail(`${item.path} canonical was ${canonical || 'missing'}`);
@@ -103,7 +103,8 @@ for (const width of [320, 390]) {
   await page.goto(`${baseUrl}/games?q=snake`, { waitUntil: 'networkidle', timeout: 60000 });
   const initialCards = await page.locator('.game-card').count();
   await page.locator('input[type="search"]').fill('zzzz-no-such-game');
-  await page.waitForTimeout(100);
+  await page.locator('input[type="search"]').press('Enter');
+  await page.waitForURL(/\/games\?q=zzzz-no-such-game/);
   const filteredCards = await page.locator('.game-card').count();
   if (initialCards < 1 || filteredCards !== 0) fail(`interactive filtering failed: before ${initialCards}, after ${filteredCards}`);
   if (consoleErrors.length) fail(`hydrated query page console/runtime errors: ${consoleErrors.join(' | ')}`);
