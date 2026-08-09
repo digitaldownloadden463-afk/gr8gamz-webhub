@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <section className="content-panel">
         <h2>What GR8 GAMZ collects</h2>
         <p>GR8 GAMZ does not run production accounts, public chat, public profiles or server-side player leaderboards in this version. My GR8 Arcade favourites, recent games, XP, streaks, supported original-game results, achievements and challenge history are stored in your browser and stay on your device.</p>
-        <p>Essential technical cookies may be set by hosting infrastructure. Vercel Web Analytics and Speed Insights load only after you choose Accept All, and challenge URLs are excluded from analytics events. Advertising or partner game resources must not load before consent or a deliberate partner-game launch choice.</p>
+        <p>Essential technical cookies may be set by hosting infrastructure. Vercel Web Analytics, Speed Insights and optional advertising or affiliate tracking load only after you choose Accept All, and challenge URLs are excluded from analytics events. Lenovo affiliate links may use Impact technology to transform qualifying links and record impressions after that choice. Partner game resources still require consent and a deliberate game launch.</p>
       </section>
       <section className="content-panel">
         <h2>Partner games</h2>
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Purposes, lawful bases and retention</h2>
-        <p>Essential processing keeps the site available and secure. Local-device storage supports saved games, recent games and honest local progress until you clear it. Stateless challenge links contain only validated game details, timestamps and a non-personal, player-reported local score when a supported GR8 Original reports one in this browser. The signature prevents a challenge link being changed after creation, but it is not a server-authoritative score system. Optional Vercel Analytics and Speed Insights help understand page views and performance after consent without storing your GR8 progress on a server.</p>
+        <p>Essential processing keeps the site available and secure. Local-device storage supports saved games, recent games and honest local progress until you clear it. Stateless challenge links contain only validated game details, timestamps and a non-personal, player-reported local score when a supported GR8 Original reports one in this browser. The signature prevents a challenge link being changed after creation, but it is not a server-authoritative score system. Optional analytics help understand page views and performance after consent. Optional affiliate tracking supports commission attribution for qualifying links; it does not receive your GR8 progress data.</p>
       </section>
       <section className="content-panel">
         <h2>Rights and contact details</h2>
