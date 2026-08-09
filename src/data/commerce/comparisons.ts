@@ -1,0 +1,12 @@
+import type { ProductComparison } from '@/lib/commerce/types';
+
+export const productComparisons = [
+  { slug: 'razer-viper-v3-pro-vs-deathadder-v4-pro', category: 'gaming-mice', title: 'Razer Viper V3 Pro vs DeathAdder V4 Pro', description: 'Compare a symmetrical lightweight esports shape with Razer’s right-handed ergonomic approach.', productSlugs: ['razer-viper-v3-pro', 'razer-deathadder-v4-pro'] },
+  { slug: 'razer-viper-v3-pro-vs-basilisk-v3-pro-35k', category: 'gaming-mice', title: 'Razer Viper V3 Pro vs Basilisk V3 Pro 35K', description: 'Choose between stripped-back competitive speed and a heavier feature-rich mouse.', productSlugs: ['razer-viper-v3-pro', 'razer-basilisk-v3-pro-35k'] },
+  { slug: 'razer-deathadder-v4-pro-vs-basilisk-v3-pro-35k', category: 'gaming-mice', title: 'Razer DeathAdder V4 Pro vs Basilisk V3 Pro 35K', description: 'Compare two right-handed mice with different priorities: esports simplicity or extra controls.', productSlugs: ['razer-deathadder-v4-pro', 'razer-basilisk-v3-pro-35k'] },
+  { slug: 'razer-naga-v2-pro-vs-basilisk-v3-pro-35k', category: 'gaming-mice', title: 'Razer Naga V2 Pro vs Basilisk V3 Pro 35K', description: 'Compare a modular MMO-focused mouse with a more general feature-rich option.', productSlugs: ['razer-naga-v2-pro', 'razer-basilisk-v3-pro-35k'] },
+  { slug: 'razer-blackshark-v3-pro-vs-kraken-v4-pro', category: 'gaming-headsets', title: 'Razer BlackShark V3 Pro vs Kraken V4 Pro', description: 'Competitive communication or immersive haptics: compare two premium headset directions.', productSlugs: ['razer-blackshark-v3-pro', 'razer-kraken-v4-pro'] },
+  { slug: 'razer-huntsman-v3-pro-8khz-vs-blackwidow-v4-pro', category: 'gaming-keyboards', title: 'Razer Huntsman V3 Pro 8KHz vs BlackWidow V4 Pro', description: 'Compare adjustable optical actuation with a full-size mechanical control layout.', productSlugs: ['razer-huntsman-v3-pro-8khz', 'razer-blackwidow-v4-pro'] },
+  { slug: 'razer-kishi-v3-vs-kishi-v3-pro', category: 'mobile-gaming', title: 'Razer Kishi V3 vs Kishi V3 Pro', description: 'Compare device fit and control options before choosing a mobile controller.', productSlugs: ['razer-kishi-v3', 'razer-kishi-v3-pro'] },
+  { slug: 'razer-viper-v3-pro-vs-naga-v2-pro', category: 'gaming-mice', title: 'Razer Viper V3 Pro vs Naga V2 Pro', description: 'See how a minimal lightweight esports mouse differs from a modular command-heavy design.', productSlugs: ['razer-viper-v3-pro', 'razer-naga-v2-pro'] }
+] as const satisfies readonly ProductComparison[];

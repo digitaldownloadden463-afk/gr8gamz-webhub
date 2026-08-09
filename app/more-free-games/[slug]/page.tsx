@@ -9,6 +9,7 @@ import { canonical } from '@/lib/features';
 import { slugifyRegistryValue } from '@/lib/gameRegistry';
 import { tr } from '@/lib/i18n';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import GearContextModule from '@/components/commerce/GearContextModule';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -121,6 +122,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         labels={text.engagement}
       />
       <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" labels={text.engagement} />
+      <GearContextModule category={profile.category} />
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>

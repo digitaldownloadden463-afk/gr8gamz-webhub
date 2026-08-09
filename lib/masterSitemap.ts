@@ -6,6 +6,7 @@ export function masterSitemapPaths() {
     '/sitemaps/core.xml',
     '/sitemaps/original-games.xml',
     '/sitemaps/collections.xml',
+    '/sitemaps/gaming-gear.xml',
     ...Array.from({ length: partnerSitemapCount() }, (_, index) => `/sitemaps/partner-games-${index + 1}.xml`),
     '/sitemap-images.xml',
     ...localizedSitemapPaths()

@@ -6,6 +6,7 @@ import GameShare from '@/components/GameShare';
 import { getAllGames, getGameBySlug } from '@/lib/games';
 import { canonical } from '@/lib/features';
 import { tr } from '@/lib/i18n';
+import GearContextModule from '@/components/commerce/GearContextModule';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -82,6 +83,7 @@ export default async function ArcadeGamePage({ params }: PageProps) {
         text={`Think you can master ${game.name}? Play it on GR8 GAMZ.`}
         labels={text.engagement}
       />
+      <GearContextModule category={game.category || game.genre} />
       <section className="content-panel">
         <h2>How to play</h2>
         <ul className="clean-list">
