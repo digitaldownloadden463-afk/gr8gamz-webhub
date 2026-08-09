@@ -155,6 +155,34 @@ export function getRegistryGamesByCategory(slug: string) {
   return getIndexableRegistryGames().filter((game) => slugifyRegistryValue(game.category) === slug);
 }
 
+export function searchRegistryGames(query: string, page = 1, pageSize = 48) {
+  const normalizedQuery = String(query || '').trim().toLowerCase().slice(0, 80);
+  const safePageSize = Math.max(12, Math.min(96, Number(pageSize) || 48));
+  if (!normalizedQuery) return { games: [], page: 1, pageSize: safePageSize, totalGames: 0, totalPages: 0 };
+  const terms = normalizedQuery.split(/\s+/).filter(Boolean);
+  const matches = getIndexableRegistryGames()
+    .map((game) => {
+      const title = game.title.toLowerCase();
+      const searchable = `${title} ${game.category} ${game.summary} ${game.tags.join(' ')}`.toLowerCase();
+      if (!terms.every((term) => searchable.includes(term))) return null;
+      const score = title === normalizedQuery ? 4 : title.startsWith(normalizedQuery) ? 3 : title.includes(normalizedQuery) ? 2 : 1;
+      return { game, score };
+    })
+    .filter((match): match is { game: RegistryGame; score: number } => Boolean(match))
+    .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
+  const totalGames = matches.length;
+  const totalPages = Math.max(1, Math.ceil(totalGames / safePageSize));
+  const safePage = Math.max(1, Math.min(totalPages, Number(page) || 1));
+  const start = (safePage - 1) * safePageSize;
+  return {
+    games: matches.slice(start, start + safePageSize).map((match) => match.game),
+    page: safePage,
+    pageSize: safePageSize,
+    totalGames,
+    totalPages
+  };
+}
+
 export const controlHubs = [
   { slug: 'tap', name: 'Tap', pattern: /tap|click|one-tap/i },
   { slug: 'swipe', name: 'Swipe', pattern: /swipe/i },
