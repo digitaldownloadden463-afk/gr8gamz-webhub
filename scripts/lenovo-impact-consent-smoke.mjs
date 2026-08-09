@@ -8,6 +8,7 @@ try {
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
 const scriptUrl = 'https://utt.impactcdn.com/P-A7586931-c266-49bb-bc60-1b14443f47521.js';
+const verificationValue = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
 const failures = [];
 
 async function createContext(browser) {
@@ -44,7 +45,19 @@ async function expectUnloaded(page, requests, label) {
   if (requests.length) failures.push(`${label}: Impact script was requested ${requests.length} time(s)`);
 }
 
+async function expectVerificationMeta(page, expected, label) {
+  const selector = `head > meta[name="impact-site-verification"][value="${verificationValue}"]`;
+  const count = await page.locator(selector).count();
+  if (count !== expected) failures.push(`${label}: expected ${expected} verification meta tag(s), found ${count}`);
+}
+
 const browser = await chromium.launch();
+
+const initialHomepageHtml = await fetch(`${baseUrl}/`).then((response) => response.text());
+const initialHomepageHead = initialHomepageHtml.match(/<head[^>]*>([\s\S]*?)<\/head>/i)?.[1] || '';
+if (!initialHomepageHead.includes('name="impact-site-verification"') || !initialHomepageHead.includes(`value="${verificationValue}"`)) {
+  failures.push('Homepage initial HTML: exact Impact verification meta tag was missing from HEAD');
+}
 
 {
   const requests = [];
@@ -52,6 +65,7 @@ const browser = await chromium.launch();
   await installImpactStub(context, requests);
   const page = await context.newPage();
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
+  await expectVerificationMeta(page, 1, 'Homepage initial HTML');
   await expectUnloaded(page, requests, 'Fresh visitor');
   await page.getByRole('button', { name: /^reject all$/i }).click();
   await expectUnloaded(page, requests, 'Reject All');
@@ -70,6 +84,7 @@ const browser = await chromium.launch();
   page.on('pageerror', (error) => errors.push(error.message));
 
   await page.goto(`${baseUrl}/games`, { waitUntil: 'domcontentloaded' });
+  await expectVerificationMeta(page, 0, 'Non-homepage route');
   await page.getByRole('button', { name: /^accept all$/i }).click();
   await expectUnloaded(page, requests, 'Accepted away from homepage');
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
@@ -116,4 +131,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Lenovo Impact consent smoke passed: HEAD placement, homepage-only loading, consent gating, exact tag, queued commands and duplicate prevention verified.');
+console.log('Lenovo Impact consent smoke passed: initial HEAD verification meta, consent-gated tracking, exact tag, queued commands and duplicate prevention verified.');

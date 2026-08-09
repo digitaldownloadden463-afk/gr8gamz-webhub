@@ -10,6 +10,8 @@ import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import { getRegistryCategories } from '@/lib/gameRegistry';
 import LenovoImpactTracking from '@/components/LenovoImpactTracking';
 
+const IMPACT_SITE_VERIFICATION = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
+
 export const metadata = {
   alternates: { canonical: canonical('/') }
 };
@@ -36,6 +38,7 @@ export default function HomePage() {
 
   return (
     <main>
+      <meta name="impact-site-verification" {...{ value: IMPACT_SITE_VERIFICATION }} />
       <LenovoImpactTracking />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <nav className="home-play-menu" aria-label="Homepage play menu">
