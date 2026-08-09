@@ -1304,6 +1304,23 @@ main summary {
   }
 }
 
+.adsense-slot {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 24px auto;
+  overflow: hidden;
+  contain: layout paint;
+}
+
+.adsense-slot__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
 @media (max-width: 520px) {
   main { width: min(100% - 20px, 440px); padding-top: 18px; }
   .hero__content { padding: 28px; }

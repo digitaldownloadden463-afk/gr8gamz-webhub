@@ -41,12 +41,12 @@ const nextConfig = {
       "object-src 'none'",
       "frame-ancestors 'self'",
       "form-action 'self'",
-      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets3.razerzone.com https://utt.impactcdn.com",
-      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://al5sm.com https://www.googletagmanager.com https://utt.impactcdn.com",
+      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets3.razerzone.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
+      "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://www.googletagmanager.com https://utt.impactcdn.com https://pagead2.googlesyndication.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
-      "connect-src 'self' https://feeds.gamepix.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://utt.impactcdn.com",
-      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co"
+      "connect-src 'self' https://feeds.gamepix.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com",
+      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com"
     ].join('; ');
 
     return [

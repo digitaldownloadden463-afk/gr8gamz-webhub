@@ -38,7 +38,6 @@ async function stubAnalytics(context, requests) {
     await route.fulfill({ status: 204, body: '' });
   });
   await context.route('https://play.gamepix.com/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Game test</title>' }));
-  await context.route('https://al5sm.com/tag.min.js', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
 }
 
 async function dataLayerEvents(page, name) {

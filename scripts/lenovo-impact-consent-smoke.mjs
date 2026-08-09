@@ -25,7 +25,6 @@ async function createContext(browser) {
 }
 
 async function installImpactStub(context, requests) {
-  await context.route('https://al5sm.com/tag.min.js', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
   await context.route('https://www.googletagmanager.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
   await context.route(/https:\/\/(?:www\.|region1\.)?google-analytics\.com\/.*/, (route) => route.fulfill({ status: 204, body: '' }));
   await context.route('https://analytics.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
