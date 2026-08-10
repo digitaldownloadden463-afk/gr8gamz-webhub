@@ -14,12 +14,12 @@ export default function PrivacyPage() {
       <section className="page-title">
         <span className="eyebrow">Privacy</span>
         <h1>Privacy Policy</h1>
-        <p>Last updated: 28 July 2026. This page explains how GR8 GAMZ handles privacy, storage and external games.</p>
+        <p>Last updated: 9 August 2026. This page explains how GR8 GAMZ handles privacy, storage and external games.</p>
       </section>
       <section className="content-panel">
         <h2>What GR8 GAMZ collects</h2>
         <p>GR8 GAMZ does not run production accounts, public chat, public profiles or server-side player leaderboards in this version. My GR8 Arcade favourites, recent games, XP, streaks, supported original-game results, achievements and challenge history are stored in your browser and stay on your device.</p>
-        <p>Essential technical cookies may be set by hosting infrastructure. Vercel Web Analytics, Speed Insights, Google advertising and optional affiliate tracking load only after you choose Accept All, and challenge URLs are excluded from analytics events. Lenovo affiliate links may use Impact technology to transform qualifying links and record impressions after that choice. Partner game resources still require consent and a deliberate game launch.</p>
+        <p>Essential technical cookies may be set by hosting infrastructure. In the EEA, UK and Switzerland, Google&apos;s certified consent platform presents the site&apos;s advertising and analytics choices and supplies IAB TCF and consent-mode signals. Elsewhere, GR8 GAMZ presents its own equivalent privacy choices. Vercel Web Analytics, Speed Insights, Google Analytics and optional affiliate tracking remain disabled unless the resulting choice permits them. Challenge URLs are excluded from analytics events. Partner game resources still require consent and a deliberate game launch.</p>
       </section>
       <section className="content-panel">
         <h2>Partner games</h2>

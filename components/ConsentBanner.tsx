@@ -3,6 +3,7 @@
 import {
   getConsentChoice,
   setConsentChoice,
+  useConsentAuthority,
   useConsentChoice,
   type ConsentChoice
 } from '@/lib/consentPreferences';
@@ -12,8 +13,9 @@ export type { ConsentChoice };
 
 export function ConsentBanner() {
   const choice = useConsentChoice();
+  const authority = useConsentAuthority();
 
-  if (choice === 'unknown' || choice) return null;
+  if (authority !== 'custom' || choice === 'unknown' || choice) return null;
 
   return (
     <section className="consent-banner" aria-label="Privacy choices">
