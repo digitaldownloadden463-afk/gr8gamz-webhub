@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T10:33:43.018Z",
+  "generatedAt": "2026-08-10T05:49:21.236Z",
   "totals": {
     "raw": 39949,
     "verifiedIndexable": 33186,
@@ -44,7 +44,7 @@
   },
   "providerCandidates": {
     "gamemonetize": {
-      "generatedAt": "2026-08-08T10:33:43.018Z",
+      "generatedAt": "2026-08-10T05:49:21.236Z",
       "source": "https://gamemonetize.com/feed.php?format=0&page={page}",
       "feedRecords": 37549,
       "pagesProcessed": 19,
