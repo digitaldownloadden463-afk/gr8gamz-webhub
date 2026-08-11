@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-08T10:33:43.018Z",
-  "feedRecordsReceived": 37549,
+  "generatedAt": "2026-08-11T05:31:30.502Z",
+  "feedRecordsReceived": 37564,
   "pagesProcessed": 19,
   "activationApproved": true,
   "attributionBasis": "approved-domain-owner-authorized",
   "ownerActivationApproved": true,
-  "published": 30786,
+  "published": 30801,
   "quarantined": 6763,
   "fallbackProviderMappings": 1081,
   "reasonCounts": {
