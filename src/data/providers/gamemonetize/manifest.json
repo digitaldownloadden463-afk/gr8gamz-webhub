@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-08T10:33:43.018Z",
+  "generatedAt": "2026-08-12T05:50:22.631Z",
   "source": "https://gamemonetize.com/feed.php?format=0&page={page}",
-  "feedRecords": 37549,
+  "feedRecords": 37579,
   "pagesProcessed": 19,
   "chunks": [
     {
@@ -78,7 +78,7 @@
     },
     {
       "file": "page-019.json",
-      "records": 1549
+      "records": 1579
     }
   ],
   "activationApproved": true,
