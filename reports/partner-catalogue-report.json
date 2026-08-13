@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-08-08T10:33:43.018Z",
+  "generatedAt": "2026-08-13T05:52:24.051Z",
   "totals": {
-    "raw": 39949,
-    "verifiedIndexable": 33186,
+    "raw": 39994,
+    "verifiedIndexable": 33231,
     "verifiedNoindex": 0,
     "duplicates": 2068,
     "quarantined": 4695
   },
   "supplierTotals": {
     "gamepix": 2400,
-    "gamemonetize": 37549
+    "gamemonetize": 37594
   },
   "pagesProcessed": {
     "gamepix": 50,
     "gamemonetize": 19
   },
   "statusCounts": {
-    "verified-indexable": 33186,
+    "verified-indexable": 33231,
     "gamepix-duplicate": 1080,
     "gamemonetize-duplicate": 987,
     "invalid-description": 1468,
@@ -44,9 +44,9 @@
   },
   "providerCandidates": {
     "gamemonetize": {
-      "generatedAt": "2026-08-08T10:33:43.018Z",
+      "generatedAt": "2026-08-13T05:52:24.051Z",
       "source": "https://gamemonetize.com/feed.php?format=0&page={page}",
-      "feedRecords": 37549,
+      "feedRecords": 37594,
       "pagesProcessed": 19,
       "chunks": [
         {
@@ -123,7 +123,7 @@
         },
         {
           "file": "page-019.json",
-          "records": 1549
+          "records": 1594
         }
       ],
       "activationApproved": true,
