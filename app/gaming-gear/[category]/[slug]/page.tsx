@@ -32,12 +32,13 @@ export default async function CommerceEditorialPage({ params }: { params: Promis
   const page = guide || comparison!;
   const products = page.productSlugs.map((productSlug) => getCommerceProduct(productSlug)).filter((product): product is NonNullable<typeof product> => Boolean(product));
   const pageType = guide ? 'guide' : 'comparison';
+  const currentPath = `/gaming-gear/${category.slug}/${slug}`;
   const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', name: page.title, itemListElement: products.map((product, index) => ({ '@type': 'ListItem', position: index + 1, url: canonical(`/gaming-gear/products/${product.slug}`), name: product.name })) };
   return (
     <main className="commerce-page">
       <CommercePageView pageType={pageType} category={category.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
-      <CommerceBreadcrumbs items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: page.title }]} />
+      <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: page.title }]} />
       <section className="commerce-title commerce-title--editorial"><span className="eyebrow">{guide ? 'Buying guide' : 'Product comparison'}</span><h1>{page.title}</h1><p>{page.description}</p>{guide ? <p className="commerce-intent"><CheckCircle2 size={18} aria-hidden="true" />{guide.intent}</p> : <p className="commerce-intent"><Scale size={18} aria-hidden="true" />Compare the differences that affect everyday use, not just the longest feature list.</p>}</section>
       <AffiliateDisclosure />
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Shortlist</span><h2>{guide ? 'The strongest fits for this buying question.' : 'The two products side by side.'}</h2></div><div className="product-grid">{products.map((product, index) => <ProductCard key={product.slug} product={product} pageType={pageType} pageSlug={slug} priority={index < 2} />)}</div></section>

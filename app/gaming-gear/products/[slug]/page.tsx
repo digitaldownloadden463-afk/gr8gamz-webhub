@@ -29,12 +29,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const category = getCommerceCategory(product.category)!;
   const alternatives = productsForCategory(product.category).filter((item) => item.slug !== product.slug).slice(0, 3);
   const guides = guidesForCategory(product.category).filter((guide) => (guide.productSlugs as readonly string[]).includes(product.slug)).slice(0, 3);
-  const productJsonLd = { '@context': 'https://schema.org', '@type': 'Product', name: product.name, image: [product.image], description: product.shortDescription, brand: { '@type': 'Brand', name: product.brand }, sku: product.merchantProductId, url: canonical(`/gaming-gear/products/${product.slug}`) };
+  const currentPath = `/gaming-gear/products/${product.slug}`;
   return (
     <main className="commerce-page">
       <CommercePageView pageType="product" category={product.category} productId={product.id} productName={product.name} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
-      <CommerceBreadcrumbs items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: product.name }]} />
+      <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: product.name }]} />
       <section className="product-hero">
         <div className="product-hero__image"><Image src={product.image} alt={`${product.name} product image`} fill priority sizes="(max-width: 820px) 94vw, 48vw" unoptimized /></div>
         <div className="product-hero__copy"><span className="eyebrow">{product.brand} · {category.name}</span><h1>{product.name}</h1><p className="product-verdict">{product.shortDescription}</p><p className="best-for"><strong>Best for:</strong> {product.bestFor}</p><ul>{product.keyFeatures.map((feature) => <li key={feature}><Check size={18} aria-hidden="true" />{feature}</li>)}</ul><AffiliateLink product={product} pageType="product" pageSlug={product.slug} position="hero" className="cta">See latest Razer price <ExternalLink size={17} aria-hidden="true" /></AffiliateLink><small><Info size={15} aria-hidden="true" /> Price and stock are checked on Razer&apos;s UK site.</small></div>

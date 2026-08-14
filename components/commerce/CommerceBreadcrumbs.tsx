@@ -1,9 +1,23 @@
 import Link from 'next/link';
 import { canonical } from '@/lib/features';
 
-export default function CommerceBreadcrumbs({ items }: { items: readonly { href?: string; label: string }[] }) {
+type CommerceBreadcrumbsProps = {
+  currentPath: string;
+  items: readonly { href?: string; label: string }[];
+};
+
+export default function CommerceBreadcrumbs({ currentPath, items }: CommerceBreadcrumbsProps) {
   const crumbs = [{ href: '/', label: 'Home' }, ...items];
-  const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: canonical(item.href || '/') })) };
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      item: canonical(item.href ?? currentPath)
+    }))
+  };
   return (
     <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><nav className="breadcrumbs" aria-label="Breadcrumb">
       <Link href="/">Home</Link><span aria-hidden="true">/</span>

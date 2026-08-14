@@ -26,6 +26,7 @@
     "validate:rendered-link-graph": "node scripts/validate-rendered-link-graph.mjs",
     "validate:sitemap-truth": "node scripts/validate-sitemap-truth.mjs",
     "validate:commerce": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-commerce.mjs",
+    "validate:commerce-structured-data": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-commerce-structured-data.mjs",
     "test": "pnpm run validate:games && pnpm run validate:partners && pnpm run validate:partner-discovery && pnpm run validate:providers && pnpm run validate:gamemonetize && pnpm run validate:i18n && pnpm run validate:seo-engine && pnpm run validate:content-integrity && pnpm run audit:routes && pnpm run validate:discovery && pnpm run check:bundle-size",
     "audit:routes": "node scripts/audit-routes.mjs",
     "validate:discovery": "node scripts/validate-discovery.mjs",

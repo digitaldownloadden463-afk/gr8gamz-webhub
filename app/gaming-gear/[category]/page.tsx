@@ -26,12 +26,13 @@ export default async function CommerceCategoryPage({ params }: { params: Promise
   const products = productsForCategory(category.slug);
   const guides = guidesForCategory(category.slug);
   const comparisons = comparisonsForCategory(category.slug);
+  const currentPath = `/gaming-gear/${category.slug}`;
   const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', name: `${category.name} shortlist`, itemListElement: products.map((product, index) => ({ '@type': 'ListItem', position: index + 1, url: canonical(`/gaming-gear/products/${product.slug}`), name: product.name })) };
   return (
     <main className="commerce-page">
       <CommercePageView pageType="category" category={category.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
-      <CommerceBreadcrumbs items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { label: category.name }]} />
+      <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { label: category.name }]} />
       <section className="commerce-title"><span className="eyebrow">GR8 Gaming Gear</span><h1>{category.name}</h1><p>{category.description}</p></section>
       <AffiliateDisclosure />
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Product shortlist</span><h2>Current Razer options, compared by practical fit.</h2></div><div className="product-grid">{products.map((product, index) => <ProductCard key={product.slug} product={product} pageType="category" pageSlug={category.slug} priority={index < 2} />)}</div></section>
