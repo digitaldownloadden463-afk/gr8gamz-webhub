@@ -102,8 +102,9 @@ function readExternalChoice(): ConsentChoice | null {
 
 function syncFromExternalChoice() {
   const next = readExternalChoice();
-  if (next && next !== memoryChoice) {
+  if (next && (next !== memoryChoice || (consentAuthority === 'google-cmp' && next !== googleCmpChoice))) {
     memoryChoice = next;
+    if (consentAuthority === 'google-cmp') googleCmpChoice = next;
     for (const storedListener of listeners) storedListener();
   }
 }
@@ -171,7 +172,10 @@ export function subscribeConsentChoice(listener: () => void) {
   const storageNotify = (event: StorageEvent) => {
     if (event.key === storageKey || event.key === legacyStorageKey || event.key === signalStorageKey) {
       const next = parseStored(event.newValue) || parseStored(event.newValue?.split('.').slice(0, 2).join('.'));
-      if (next) memoryChoice = next;
+      if (next) {
+        memoryChoice = next;
+        if (consentAuthority === 'google-cmp') googleCmpChoice = next;
+      }
     }
     listener();
   };
@@ -181,6 +185,7 @@ export function subscribeConsentChoice(listener: () => void) {
       channel.addEventListener('message', (event) => {
         if (isChoice(event.data)) {
           memoryChoice = event.data;
+          if (consentAuthority === 'google-cmp') googleCmpChoice = event.data;
           for (const storedListener of listeners) storedListener();
         }
       });

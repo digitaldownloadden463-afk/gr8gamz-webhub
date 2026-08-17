@@ -30,7 +30,7 @@ export default function PrivacyChoicesClient() {
       <p>Current optional resource choice: <strong>{choice === 'unknown' ? 'loading' : choice || 'not set'}</strong></p>
       <div className="cta-row">
         {authority === 'google-cmp' ? (
-          <button type="button" className="cta-button" disabled={!ready} onClick={openGooglePrivacyOptions}>Open privacy and cookie settings</button>
+          <button type="button" className="cta-button" disabled={!ready} onClick={() => void openGooglePrivacyOptions()}>Open privacy and cookie settings</button>
         ) : authority === 'custom' ? (
           <>
             <button type="button" className="cta-button" disabled={!ready} onClick={() => choose('accepted')}>Accept All</button>

@@ -44,20 +44,60 @@ function choiceFromTcf(data: TcfData): ConsentChoice {
     : 'rejected';
 }
 
-export function openGooglePrivacyOptions() {
-  try {
-    window.googlefc = window.googlefc || {};
-    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
-    const showMessage = window.googlefc.showRevocationMessage;
-    window.googlefc.callbackQueue.push(
-      typeof showMessage === 'function'
-        ? showMessage
-        : () => window.googlefc?.showRevocationMessage?.()
-    );
-    return true;
-  } catch {
-    return false;
-  }
+export function openGooglePrivacyOptions(timeoutMs = 5000, signal?: AbortSignal): Promise<boolean> {
+  return new Promise((resolve) => {
+    let settled = false;
+    let timer: number | undefined;
+    let queuedCallback: (() => void) | null = null;
+
+    const cleanup = () => {
+      if (timer !== undefined) window.clearTimeout(timer);
+      signal?.removeEventListener('abort', abort);
+      const queue = window.googlefc?.callbackQueue;
+      if (queue && queuedCallback) {
+        const index = queue.indexOf(queuedCallback);
+        if (index >= 0) queue.splice(index, 1);
+      }
+    };
+
+    const finish = (opened: boolean) => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      resolve(opened);
+    };
+
+    function abort() {
+      finish(false);
+    }
+
+    const showMessage = () => {
+      try {
+        const open = window.googlefc?.showRevocationMessage;
+        if (typeof open !== 'function') return;
+        open();
+        finish(true);
+      } catch {
+        finish(false);
+      }
+    };
+
+    try {
+      window.googlefc = window.googlefc || {};
+      window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+      if (typeof window.googlefc.showRevocationMessage === 'function') {
+        showMessage();
+        return;
+      }
+      queuedCallback = showMessage;
+      window.googlefc.callbackQueue.push(showMessage);
+      signal?.addEventListener('abort', abort, { once: true });
+      if (signal?.aborted) abort();
+      else timer = window.setTimeout(() => finish(false), timeoutMs);
+    } catch {
+      finish(false);
+    }
+  });
 }
 
 export default function GoogleConsentBridge() {
