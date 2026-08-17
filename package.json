@@ -39,6 +39,7 @@
     "smoke:adsense": "node scripts/adsense-consent-smoke.mjs",
     "smoke:ga4": "node scripts/ga4-consent-smoke.mjs",
     "smoke:gamemonetize": "node scripts/gamemonetize-browser-sample.mjs",
+    "smoke:gamemonetize-consent": "node scripts/gamemonetize-consent-play-smoke.mjs",
     "smoke:lenovo": "node scripts/lenovo-impact-consent-smoke.mjs",
     "smoke:lenovo-impact": "node scripts/lenovo-impact-consent-smoke.mjs",
     "smoke:partner-categories": "node scripts/partner-category-smoke.mjs",
