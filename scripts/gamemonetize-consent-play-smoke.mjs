@@ -27,7 +27,7 @@ async function stubProvider(context, requests, { delayFirst = false } = {}) {
   await context.route('https://html5.gamemonetize.co/**', async (route) => {
     requestCount += 1;
     requests.push(route.request().url());
-    if (delayFirst && requestCount === 1) await new Promise((resolve) => setTimeout(resolve, 15000));
+    if (delayFirst && requestCount === 1) await new Promise((resolve) => setTimeout(resolve, 30000));
     await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>GR8 provider smoke</title><body>ready</body>' }).catch(() => {});
   });
 }
@@ -143,7 +143,7 @@ const browser = await chromium.launch();
   await stubProvider(context, requests, { delayFirst: true });
   const { page } = await openPlayPage(context);
   await acceptChoice(page);
-  const timeoutVisible = await page.getByText(/taking longer than expected/i).waitFor({ state: 'visible', timeout: 14000 }).then(() => true).catch(() => false);
+  const timeoutVisible = await page.getByText(/taking longer than expected/i).waitFor({ state: 'visible', timeout: 27000 }).then(() => true).catch(() => false);
   if (!timeoutVisible) failures.push('Iframe timeout: recoverable timeout UI did not appear.');
   else {
     await page.getByRole('button', { name: /^retry$/i }).click();

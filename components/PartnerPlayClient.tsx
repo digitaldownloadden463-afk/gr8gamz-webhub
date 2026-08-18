@@ -93,7 +93,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
 
   useEffect(() => {
     if (!loaded || iframeReady) return undefined;
-    const timer = window.setTimeout(() => setTimedOut(true), 12000);
+    const timer = window.setTimeout(() => setTimedOut(true), 25000);
     return () => window.clearTimeout(timer);
   }, [iframeReady, loaded, retryKey]);
 
