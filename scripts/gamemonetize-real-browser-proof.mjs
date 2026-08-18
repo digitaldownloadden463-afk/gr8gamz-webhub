@@ -4,7 +4,9 @@ import { chromium, webkit } from '@playwright/test';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
 const headed = process.env.HEADED === '1';
-const evidenceDir = path.resolve('reports/evidence/gamemonetize-consent');
+const evidenceDir = path.resolve(
+  process.env.EVIDENCE_DIR || 'reports/evidence/gamemonetize-consent',
+);
 const catalogue = JSON.parse(fs.readFileSync('src/data/partnerCatalog.generated.json', 'utf8'));
 const failures = [];
 const browserErrors = [];
