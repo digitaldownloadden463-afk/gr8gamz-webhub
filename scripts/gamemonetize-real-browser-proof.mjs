@@ -3,6 +3,7 @@ import path from 'node:path';
 import { chromium, webkit } from '@playwright/test';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
+const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
 const headed = process.env.HEADED === '1';
 const evidenceDir = path.resolve(
   process.env.EVIDENCE_DIR || 'reports/evidence/gamemonetize-consent',
@@ -13,6 +14,12 @@ const browserErrors = [];
 const results = [];
 
 fs.mkdirSync(evidenceDir, { recursive: true });
+
+async function authorizePreview(context) {
+  if (!previewShareUrl) return;
+  const response = await context.request.get(previewShareUrl);
+  if (!response.ok()) throw new Error(`Preview access failed with HTTP ${response.status()}`);
+}
 
 const requestedSamples = [
   'duck-math',
@@ -82,6 +89,7 @@ async function assertExactIframe(page, game, label) {
 
 async function verifyCleanChrome(browser) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await authorizePreview(context);
   const page = await context.newPage();
   const network = observe(page);
   const game = samples[0];
@@ -137,6 +145,7 @@ async function verifyCleanChrome(browser) {
 
 async function verifyFreshRejection(browser) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  await authorizePreview(context);
   const page = await context.newPage();
   const network = observe(page);
   await openPlay(page, samples[2].slug);
@@ -151,6 +160,7 @@ async function verifyFreshRejection(browser) {
 
 async function verifyMobileChrome(browser) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  await authorizePreview(context);
   const page = await context.newPage();
   const network = observe(page);
   await openPlay(page, samples[4].slug);
@@ -166,6 +176,7 @@ async function verifyMobileChrome(browser) {
 
 async function verifyWebKit(browser) {
   const context = await browser.newContext({ viewport: { width: 1024, height: 768 } });
+  await authorizePreview(context);
   const page = await context.newPage();
   const network = observe(page);
   await openPlay(page, samples[5].slug);
@@ -178,6 +189,7 @@ async function verifyWebKit(browser) {
 
 async function verifyControls(browser) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  await authorizePreview(context);
   const page = await context.newPage();
   await page.goto(`${baseUrl}/more-free-games/war-the-knights/play`, { waitUntil: 'domcontentloaded' });
   await page.getByRole('button', { name: /^Load game$/i }).click();
