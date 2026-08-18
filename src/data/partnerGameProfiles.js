@@ -1420,22 +1420,24 @@ export function getPartnerGameProfilesByCluster(slug, limit = 24) {
     .slice(0, limit);
 }
 
-export function getRelatedPartnerGameProfiles(profile, limit = 6) {
+export function getRelatedPartnerGameProfiles(profile, limit = 6, options = {}) {
   if (!profile) return getFeaturedPartnerGameProfiles(limit);
   const safeLimit = Math.max(1, Math.min(12, Number(limit) || 6));
+  const excludedProvider = String(options.excludeProvider || '').toLowerCase();
+  const isEligible = (game) => !excludedProvider || String(game.provider || '').toLowerCase() !== excludedProvider;
   const sameCategory = partnerProfilesByCategory.get(String(profile.category || '').toLowerCase()) || [];
   const start = partnerProfileIndex.get(profile.slug) || 0;
   const seen = new Set();
   const related = [];
   for (const game of sameCategory) {
-    if (game.slug === profile.slug || seen.has(game.slug)) continue;
+    if (game.slug === profile.slug || seen.has(game.slug) || !isEligible(game)) continue;
     seen.add(game.slug);
     related.push(game);
     if (related.length === safeLimit) return related;
   }
   for (let offset = 1; offset <= allPartnerGameProfiles.length && related.length < safeLimit; offset += 1) {
     const game = allPartnerGameProfiles[(start + offset) % allPartnerGameProfiles.length];
-    if (!game || game.slug === profile.slug || seen.has(game.slug)) continue;
+    if (!game || game.slug === profile.slug || seen.has(game.slug) || !isEligible(game)) continue;
     seen.add(game.slug);
     related.push(game);
   }

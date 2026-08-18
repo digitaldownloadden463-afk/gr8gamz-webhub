@@ -1,55 +1,55 @@
 {
-  "generatedAt": "2026-08-08T10:33:43.018Z",
-  "totalPartnerGames": 33186,
+  "generatedAt": "2026-08-13T05:52:24.051Z",
+  "totalPartnerGames": 33231,
   "providerCounts": {
-    "gamemonetize": 30786,
+    "gamemonetize": 30831,
     "gamepix": 2400
   },
   "categoryCounts": {
-    "Arcade": 15731,
-    "Puzzle": 8454,
-    "Action": 3072,
-    "Racing": 2308,
-    "Adventure": 2136,
-    "Sports": 1112,
-    "Multiplayer": 315,
+    "Arcade": 15744,
+    "Puzzle": 8467,
+    "Action": 3075,
+    "Racing": 2310,
+    "Adventure": 2144,
+    "Sports": 1117,
+    "Multiplayer": 316,
     "Strategy": 58
   },
   "canonicalCategories": [
     {
       "category": "Arcade",
       "slug": "arcade",
-      "count": 15731
+      "count": 15744
     },
     {
       "category": "Puzzle",
       "slug": "puzzle",
-      "count": 8454
+      "count": 8467
     },
     {
       "category": "Action",
       "slug": "action",
-      "count": 3072
+      "count": 3075
     },
     {
       "category": "Racing",
       "slug": "racing",
-      "count": 2308
+      "count": 2310
     },
     {
       "category": "Adventure",
       "slug": "adventure",
-      "count": 2136
+      "count": 2144
     },
     {
       "category": "Sports",
       "slug": "sports",
-      "count": 1112
+      "count": 1117
     },
     {
       "category": "Multiplayer",
       "slug": "multiplayer",
-      "count": 315
+      "count": 316
     },
     {
       "category": "Strategy",
@@ -58,7 +58,7 @@
     }
   ],
   "gamesWithMissingCategory": 0,
-  "searchableGameMonetizeGames": 30786,
+  "searchableGameMonetizeGames": 30831,
   "orphanCanonicalProfiles": 0,
   "brokenCategoryTargets": 0,
   "failures": []

@@ -2,20 +2,19 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import {
-  getConsentSnapshot,
-  getServerConsentSnapshot,
-  setConsentChoice,
-  subscribeConsentChoice,
-  useConsentAuthority
-} from '@/lib/consentPreferences';
 import PartnerArtwork from '@/components/PartnerArtwork';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
-import { openGooglePrivacyOptions } from '@/components/GoogleConsentBridge';
 import { recordGameStarted } from '@/lib/playerEngagement';
 import { tr, type EngagementText, type Locale } from '@/lib/i18n';
 import { trackEvent } from '@/lib/analytics';
+import {
+  getPartnerContentSnapshot,
+  getServerPartnerContentSnapshot,
+  setPartnerContentChoice,
+  subscribePartnerContentChoice
+} from '@/lib/partnerContentConsent';
+import { partnerContentText } from '@/lib/partnerContentTranslations';
 
 type PartnerPlayClientProps = {
   title: string;
@@ -43,38 +42,64 @@ function getServerHydrationSnapshot() {
 
 export function PartnerPlayClient({ title, profilePath, image, playUrl, width, height, provider = 'gamepix', locale = 'en', labels }: PartnerPlayClientProps) {
   const hydrated = useSyncExternalStore(subscribeHydration, getHydratedSnapshot, getServerHydrationSnapshot);
-  const consentChoice = useSyncExternalStore(subscribeConsentChoice, getConsentSnapshot, getServerConsentSnapshot);
-  const consentAuthority = useConsentAuthority();
+  const partnerContentChoice = useSyncExternalStore(
+    subscribePartnerContentChoice,
+    getPartnerContentSnapshot,
+    getServerPartnerContentSnapshot
+  );
   const copy = labels || tr(locale).engagement;
+  const consentCopy = partnerContentText(locale);
   const [loaded, setLoaded] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
-  const [requestingConsent, setRequestingConsent] = useState(false);
-  const [consentError, setConsentError] = useState('');
+  const [consentDialogOpen, setConsentDialogOpen] = useState(false);
   const startTrackedRef = useRef(false);
-  const consentRequestRef = useRef(false);
-  const consentAbortRef = useRef<AbortController | null>(null);
-  const mountedRef = useRef(true);
+  const consentDialogRef = useRef<HTMLDivElement | null>(null);
+  const consentActionRef = useRef<HTMLButtonElement | null>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const gameSlug = profilePath.split('/').filter(Boolean).pop() || title.toLowerCase().replace(/\s+/g, '-');
-  const privacyChoicesPath = locale === 'en' ? '/privacy-choices' : `/${locale}/privacy-choices`;
+  const privacyChoicesPath = '/privacy-choices';
+  const gameMonetizePrivacyUrl = 'https://gamemonetize.com/privacypolicy';
 
   useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-      consentAbortRef.current?.abort();
+    if (!consentDialogOpen) return undefined;
+    restoreFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const frame = window.requestAnimationFrame(() => consentActionRef.current?.focus());
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setConsentDialogOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = consentDialogRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
-  }, []);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener('keydown', closeOnEscape);
+      restoreFocusRef.current?.focus();
+    };
+  }, [consentDialogOpen]);
 
   useEffect(() => {
     if (!loaded || iframeReady) return undefined;
-    const timer = window.setTimeout(() => setTimedOut(true), 12000);
+    const timer = window.setTimeout(() => setTimedOut(true), 25000);
     return () => window.clearTimeout(timer);
   }, [iframeReady, loaded, retryKey]);
 
   const loadGame = useCallback(() => {
-    if (loaded || !hydrated || (provider === 'gamemonetize' && consentChoice !== 'accepted')) return;
+    if (loaded || !hydrated || (provider === 'gamemonetize' && partnerContentChoice !== 'accepted')) return;
     setTimedOut(false);
     setIframeReady(false);
     recordGameStarted(gameSlug, 'select');
@@ -83,13 +108,12 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
       trackEvent('game_play_start', { game_slug: gameSlug, game_type: 'select', locale, provider });
     }
     setLoaded(true);
-  }, [consentChoice, gameSlug, hydrated, loaded, locale, provider]);
+  }, [gameSlug, hydrated, loaded, locale, partnerContentChoice, provider]);
 
   useEffect(() => {
     if (provider !== 'gamemonetize' || !hydrated) return;
     const timer = window.setTimeout(() => {
-      if (consentChoice === 'accepted') {
-        setConsentError('');
+      if (partnerContentChoice === 'accepted') {
         loadGame();
         return;
       }
@@ -100,31 +124,11 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
       }
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [consentChoice, hydrated, loadGame, loaded, provider]);
+  }, [hydrated, loadGame, loaded, partnerContentChoice, provider]);
 
-  async function requestOptionalConsent() {
-    if (!hydrated || consentRequestRef.current) return;
-    consentRequestRef.current = true;
-    setRequestingConsent(true);
-    setConsentError('');
-    const controller = new AbortController();
-    consentAbortRef.current = controller;
-    try {
-      if (consentAuthority === 'custom') {
-        setConsentChoice('accepted');
-        return;
-      }
-      const opened = await openGooglePrivacyOptions(5000, controller.signal);
-      if (!opened && mountedRef.current) {
-        setConsentError('Privacy choices could not be opened. Try again or use Privacy Choices below.');
-      }
-    } catch {
-      if (mountedRef.current) setConsentError('Privacy choices could not be opened. Try again or use Privacy Choices below.');
-    } finally {
-      if (consentAbortRef.current === controller) consentAbortRef.current = null;
-      consentRequestRef.current = false;
-      if (mountedRef.current) setRequestingConsent(false);
-    }
+  function choosePartnerContent(choice: 'accepted' | 'rejected') {
+    setPartnerContentChoice(choice);
+    setConsentDialogOpen(false);
   }
 
   function retryGame() {
@@ -148,31 +152,55 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   }
 
   if (!loaded) {
-    const gameMonetizeBlocked = provider === 'gamemonetize' && consentChoice !== 'accepted';
+    const gameMonetizeBlocked = provider === 'gamemonetize' && partnerContentChoice !== 'accepted';
     return (
-      <section className="partner-consent-panel">
-        <PartnerArtwork src={image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
-        <div>
-          <span className="eyebrow">Load game</span>
-          <h2>{title}</h2>
-          <p>This opens an embedded game outside the core GR8 Originals library. Extra device, usage or advertising data may be processed by the game service under its own terms.</p>
-          <div className="cta-row">
-            <button
-              type="button"
-              className="cta-button"
-              onClick={gameMonetizeBlocked ? requestOptionalConsent : loadGame}
-              disabled={!hydrated || requestingConsent}
-              aria-disabled={!hydrated || requestingConsent}
-              aria-busy={requestingConsent}
-            >
-              {!hydrated ? 'Preparing game...' : requestingConsent ? 'Opening privacy choices...' : gameMonetizeBlocked ? 'Accept optional content to play' : 'Load game'}
-            </button>
-            <Link href={profilePath} className="secondary-cta">Back to profile</Link>
+      <>
+        <section className="partner-consent-panel">
+          <PartnerArtwork src={provider === 'gamemonetize' ? undefined : image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
+          <div>
+            <span className="eyebrow">{tr(locale).common.loadGame}</span>
+            <h2>{title}</h2>
+            <p>{provider === 'gamemonetize' ? consentCopy.dialogBody : tr(locale).profile.external}</p>
+            <div className="cta-row">
+              <button
+                type="button"
+                className="cta-button"
+                onClick={gameMonetizeBlocked ? () => setConsentDialogOpen(true) : loadGame}
+                disabled={!hydrated}
+                aria-disabled={!hydrated}
+              >
+                {!hydrated ? `${tr(locale).common.loadGame}...` : gameMonetizeBlocked ? (partnerContentChoice === 'rejected' ? consentCopy.changeChoice : consentCopy.consentAction) : tr(locale).common.loadGame}
+              </button>
+              <Link href={profilePath} className="secondary-cta">{copy.gameDetails}</Link>
+            </div>
+            {gameMonetizeBlocked ? <p className="fine-print">{consentCopy.blockedNotice} <Link href={privacyChoicesPath}>{consentCopy.privacyChoices}</Link></p> : null}
           </div>
-          {gameMonetizeBlocked ? <p className="fine-print">This game includes provider-controlled advertising and can load only after you accept optional content in Privacy Choices.</p> : null}
-          {consentError ? <p className="fine-print" role="alert">{consentError} <Link href={privacyChoicesPath}>Privacy Choices</Link></p> : null}
-        </div>
-      </section>
+        </section>
+        {consentDialogOpen ? (
+          <div className="partner-consent-dialog-backdrop" role="presentation">
+            <div
+              ref={consentDialogRef}
+              className="partner-consent-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="partner-consent-title"
+              aria-describedby="partner-consent-description"
+            >
+              <button type="button" className="partner-consent-dialog__close" aria-label={consentCopy.close} onClick={() => setConsentDialogOpen(false)}>&times;</button>
+              <span className="eyebrow">GR8 Select</span>
+              <h2 id="partner-consent-title">{consentCopy.dialogTitle}</h2>
+              <p id="partner-consent-description">{consentCopy.dialogBody}</p>
+              <p className="fine-print">{consentCopy.dialogDetail}</p>
+              <a href={gameMonetizePrivacyUrl} target="_blank" rel="noopener noreferrer">{consentCopy.providerPrivacy}</a>
+              <div className="partner-consent-dialog__actions">
+                <button ref={consentActionRef} type="button" className="cta-button" onClick={() => choosePartnerContent('accepted')}>{consentCopy.allowGame}</button>
+                <button type="button" className="secondary-button" onClick={() => choosePartnerContent('rejected')}>{consentCopy.keepBlocked}</button>
+              </div>
+              <Link href={privacyChoicesPath}>{consentCopy.privacyChoices}</Link>
+            </div>
+          </div>
+        ) : null}
+      </>
     );
   }
 

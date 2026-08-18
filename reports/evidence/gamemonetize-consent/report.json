@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-08-18T23:08:18.771Z",
+  "baseUrl": "http://127.0.0.1:3100",
+  "headed": true,
+  "mockedCmp": false,
+  "injectedConsent": false,
+  "seededStorage": false,
+  "interceptedProviderRequests": false,
+  "samples": [
+    {
+      "browser": "Chromium desktop",
+      "slug": "offroad-jeep-simulation",
+      "category": "Adventure",
+      "iframe": "https://html5.gamemonetize.co/q6u8ghlmkx9rhy48udltwan4cqmmoxxm/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "heroes-beware",
+      "category": "Arcade",
+      "iframe": "https://html5.gamemonetize.co/5q7rgv3nxbtcx1doq963t8t8ax6sc0ss/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "pixel-adventure-3d",
+      "category": "Puzzle",
+      "iframe": "https://html5.gamemonetize.co/dumvc6z862n04xjv48090drqcaor6et6/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "obby-cart-rush",
+      "category": "Racing",
+      "iframe": "https://html5.gamemonetize.co/tmhj9i3trg8ot0u7h9qahh6flzn9zkjp/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "hard-truck",
+      "category": "Racing",
+      "iframe": "https://html5.gamemonetize.co/rvfxjqttcrho4kx09djpygsinr4w8xwz/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "hole-in-one",
+      "category": "Sports",
+      "iframe": "https://html5.gamemonetize.co/393xc6qs7lcxgl8u45p602md5xv3p3ts/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "fill-line",
+      "category": "Puzzle",
+      "iframe": "https://html5.gamemonetize.co/1h2vp9wrwncvruaxd97ccff0kys7pmyr/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "neon-slimes",
+      "category": "Arcade",
+      "iframe": "https://html5.gamemonetize.co/39ym7ekx2tlc96018bi11j37mbz33on6/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "rat-arena",
+      "category": "Action",
+      "iframe": "https://html5.gamemonetize.co/p29gkdsenripcjdoy9p3xow6tmqfw1fm/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "brush-cat-challenge",
+      "category": "Multiplayer",
+      "iframe": "https://html5.gamemonetize.co/odelq0qdc12p5bftdafkq6l2u3gkj2un/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "duck-math",
+      "category": "Arcade",
+      "iframe": "https://html5.gamemonetize.co/dpgaq96zlfyczncxh44iiy9tdl18cakz/",
+      "result": "passed"
+    },
+    {
+      "browser": "Chromium desktop",
+      "slug": "stormhawk",
+      "category": "Action",
+      "iframe": "https://html5.gamemonetize.co/xluntt2g2ij4zf2lrthjozqe4vhx8qi3/",
+      "result": "passed"
+    },
+    {
+      "browser": "WebKit",
+      "slug": "obby-cart-rush",
+      "category": "Racing",
+      "iframe": "https://html5.gamemonetize.co/tmhj9i3trg8ot0u7h9qahh6flzn9zkjp/",
+      "result": "passed"
+    }
+  ],
+  "assertions": {
+    "zeroProviderRequestsBeforeAcceptance": true,
+    "exactFeedUrls": true,
+    "revocationRemovesIframe": true,
+    "consoleErrors": 0
+  },
+  "failures": []
+}

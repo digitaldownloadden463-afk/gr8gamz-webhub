@@ -17,7 +17,6 @@ export default function GoogleAdSense() {
     script.async = true;
     script.crossOrigin = 'anonymous';
     script.src = adsenseConfig.scriptUrl;
-    script.dataset.gr8Integration = 'google-adsense';
     document.head.appendChild(script);
   }, []);
 

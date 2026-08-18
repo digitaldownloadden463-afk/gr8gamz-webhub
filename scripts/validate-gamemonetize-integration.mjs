@@ -5,6 +5,7 @@ const catalogue = JSON.parse(fs.readFileSync('src/data/partnerCatalog.generated.
 const report = JSON.parse(fs.readFileSync('reports/gamemonetize-ingestion-report.json', 'utf8'));
 const nextConfig = fs.readFileSync('next.config.js', 'utf8');
 const playClient = fs.readFileSync('components/PartnerPlayClient.tsx', 'utf8');
+const consentCopy = fs.readFileSync('lib/partnerContentTranslations.ts', 'utf8');
 const errors = [];
 const manifest = JSON.parse(fs.readFileSync('src/data/providers/gamemonetize/manifest.json', 'utf8'));
 const records = manifest.chunks.flatMap((chunk) => JSON.parse(fs.readFileSync(`src/data/providers/gamemonetize/${chunk.file}`, 'utf8')));
@@ -22,8 +23,12 @@ if (!/frame-src[^;]*https:\/\/html5\.gamemonetize\.co/.test(nextConfig)) errors.
 if (!/img-src[^;]*https:\/\/img\.gamemonetize\.com/.test(nextConfig)) errors.push('CSP is missing the exact GameMonetize artwork origin.');
 const cspLines = nextConfig.split('\n').map((line) => line.trim());
 if (cspLines.some((line) => /frame-src.*\*\.gamemonetize|(?:script-src|connect-src).*gamemonetize/i.test(line))) errors.push('CSP grants broader GameMonetize access than the integration needs.');
-if (!/provider === 'gamemonetize' && consentChoice !== 'accepted'/.test(playClient)) errors.push('GameMonetize iframe creation is not gated on accepted consent.');
+if (!/provider === 'gamemonetize' && partnerContentChoice !== 'accepted'/.test(playClient)) errors.push('GameMonetize iframe creation is not gated on explicit partner-content consent.');
 if (/window\.open\s*\(/.test(playClient)) errors.push('Partner play client must not manually open advertising windows.');
+if (!/https:\/\/gamemonetize\.com\/privacypolicy/.test(playClient)) errors.push('GameMonetize consent dialog does not link to the provider privacy policy.');
+if (!/GameMonetize.*advertising controlled by GameMonetize/.test(consentCopy)) errors.push('English GameMonetize advertising disclosure is missing.');
+const localizedProviderDisclosures = consentCopy.match(/dialogBody: '[^']*GameMonetize[^']*'/g) || [];
+if (localizedProviderDisclosures.length !== 13) errors.push(`Expected 13 localized GameMonetize disclosures, found ${localizedProviderDisclosures.length}.`);
 
 for (const game of records) {
   if (!game.sourceId) errors.push(`${game.slug || 'unknown'}: missing supplier ID.`);
@@ -33,6 +38,10 @@ for (const game of records) {
   }
   if (!/^invalid-/.test(game.status) && (!game.title || !game.description || !game.category)) errors.push(`${game.sourceId}: missing required metadata.`);
   if (!isApprovedGameMonetizeEmbed(game.playUrl)) errors.push(`${game.sourceId}: invalid embed URL.`);
+  try {
+    const embed = new URL(game.playUrl);
+    if (embed.search || embed.hash) errors.push(`${game.sourceId}: feed-supplied embed URL contains unapproved parameters or a fragment.`);
+  } catch {}
   if (!isApprovedGameMonetizeArtwork(game.artwork)) errors.push(`${game.sourceId}: invalid artwork URL.`);
 }
 
