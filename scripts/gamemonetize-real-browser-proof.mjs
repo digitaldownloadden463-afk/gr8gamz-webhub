@@ -215,7 +215,7 @@ await verifyWebKit(webkitBrowser);
 await webkitBrowser.close();
 
 const relevantErrors = browserErrors.filter((message) =>
-  !/favicon|third-party cookie|ERR_BLOCKED_BY_CLIENT|adtrafficquality\.google|sodar2\.js|^Uncaught \(in promise\) undefined$|^undefined$/i.test(message)
+  !/favicon|third-party cookie|ERR_BLOCKED_BY_CLIENT|adtrafficquality\.google|sodar2\.js|vercel\.live\/_next-live\/feedback|^Uncaught \(in promise\) undefined$|^undefined$/i.test(message)
 );
 if (relevantErrors.length) failures.push(`Relevant browser errors: ${[...new Set(relevantErrors)].join(' | ')}`);
 
