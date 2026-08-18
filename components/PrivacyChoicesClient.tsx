@@ -37,11 +37,12 @@ export default function PrivacyChoicesClient() {
   return (
     <section className="content-panel">
       <h2>External GR8 Select games</h2>
-      <p>Choose whether external GR8 Select games may load on this device. These games may process device, usage and advertising data under the game service&apos;s own terms.</p>
+      <p>Choose whether GameMonetize games and their provider-controlled advertising may load on this device. If allowed, GameMonetize may process device, usage and advertising data under its own terms.</p>
+      <p>This separate GR8 GAMZ choice does not change Google privacy choices or control consent inside GameMonetize. <a href="https://gamemonetize.com/privacypolicy" target="_blank" rel="noopener noreferrer">Read the GameMonetize privacy policy</a>.</p>
       <p>Current external game choice: <strong>{partnerChoice === 'unknown' ? 'loading' : partnerChoice || 'not set'}</strong></p>
       <div className="cta-row">
-        <button type="button" className="cta-button" disabled={!ready} onClick={() => setPartnerContentChoice('accepted')}>Allow external games</button>
-        <button type="button" className="secondary-button" disabled={!ready} onClick={() => setPartnerContentChoice('rejected')}>Block external games</button>
+        <button type="button" className="cta-button" disabled={!ready} onClick={() => setPartnerContentChoice('accepted')}>Allow game and advertising content</button>
+        <button type="button" className="secondary-button" disabled={!ready} onClick={() => setPartnerContentChoice('rejected')}>Block game and advertising content</button>
       </div>
       <hr />
       <h2>Site privacy choices</h2>

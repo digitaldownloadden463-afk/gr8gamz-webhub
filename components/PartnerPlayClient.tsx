@@ -60,6 +60,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
   const restoreFocusRef = useRef<HTMLElement | null>(null);
   const gameSlug = profilePath.split('/').filter(Boolean).pop() || title.toLowerCase().replace(/\s+/g, '-');
   const privacyChoicesPath = '/privacy-choices';
+  const gameMonetizePrivacyUrl = 'https://gamemonetize.com/privacypolicy';
 
   useEffect(() => {
     if (!consentDialogOpen) return undefined;
@@ -155,11 +156,11 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
     return (
       <>
         <section className="partner-consent-panel">
-          <PartnerArtwork src={image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
+          <PartnerArtwork src={provider === 'gamemonetize' ? undefined : image} title={title} category="GR8 Select" priority variant="panel" sizes="(max-width: 900px) 92vw, 720px" />
           <div>
             <span className="eyebrow">{tr(locale).common.loadGame}</span>
             <h2>{title}</h2>
-            <p>{consentCopy.dialogBody}</p>
+            <p>{provider === 'gamemonetize' ? consentCopy.dialogBody : tr(locale).profile.external}</p>
             <div className="cta-row">
               <button
                 type="button"
@@ -190,6 +191,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
               <h2 id="partner-consent-title">{consentCopy.dialogTitle}</h2>
               <p id="partner-consent-description">{consentCopy.dialogBody}</p>
               <p className="fine-print">{consentCopy.dialogDetail}</p>
+              <a href={gameMonetizePrivacyUrl} target="_blank" rel="noopener noreferrer">{consentCopy.providerPrivacy}</a>
               <div className="partner-consent-dialog__actions">
                 <button ref={consentActionRef} type="button" className="cta-button" onClick={() => choosePartnerContent('accepted')}>{consentCopy.allowGame}</button>
                 <button type="button" className="secondary-button" onClick={() => choosePartnerContent('rejected')}>{consentCopy.keepBlocked}</button>

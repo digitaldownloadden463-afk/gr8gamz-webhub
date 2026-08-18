@@ -30,6 +30,10 @@ async function stubProvider(context, requests, { delayFirst = false } = {}) {
     if (delayFirst && requestCount === 1) await new Promise((resolve) => setTimeout(resolve, 30000));
     await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>GR8 provider smoke</title><body>ready</body>' }).catch(() => {});
   });
+  await context.route('https://img.gamemonetize.com/**', async (route) => {
+    requests.push(route.request().url());
+    await route.fulfill({ status: 204, body: '' });
+  });
 }
 
 async function openPlayPage(context) {
@@ -41,8 +45,14 @@ async function openPlayPage(context) {
   return { page, errors };
 }
 
+async function dismissSiteBannerIfPresent(page) {
+  const reject = page.getByRole('button', { name: /^Reject All$/i });
+  if (await reject.isVisible().catch(() => false)) await reject.click();
+}
+
 async function openChoice(page) {
-  const button = page.getByRole('button', { name: /optional content/i });
+  await dismissSiteBannerIfPresent(page);
+  const button = page.getByRole('button', { name: /external content/i });
   await button.waitFor({ state: 'visible', timeout: 10000 });
   await button.click();
   await page.getByRole('dialog', { name: /allow this gr8 select game/i }).waitFor({ state: 'visible', timeout: 3000 });
@@ -50,7 +60,7 @@ async function openChoice(page) {
 
 async function acceptChoice(page) {
   await openChoice(page);
-  await page.getByRole('button', { name: /allow and play/i }).click();
+  await page.getByRole('button', { name: /allow content and play/i }).click();
 }
 
 const browser = await chromium.launch();
@@ -60,12 +70,15 @@ const browser = await chromium.launch();
   const context = await createContext(browser);
   await stubProvider(context, requests);
   const { page } = await openPlayPage(context);
-  const button = page.getByRole('button', { name: /optional content/i });
+  const button = page.getByRole('button', { name: /external content/i });
   await button.waitFor({ state: 'visible', timeout: 10000 });
   if (!await button.isEnabled()) failures.push('No consent: the optional-content action is disabled.');
   if (requests.length) failures.push('No consent: GameMonetize requested before an explicit choice.');
   await openChoice(page);
   if (requests.length) failures.push('Dialog open: GameMonetize requested before acceptance.');
+  if (!await page.getByRole('link', { name: /GameMonetize privacy policy/i }).isVisible()) failures.push('Dialog open: GameMonetize privacy-policy disclosure is missing.');
+  const disclosure = await page.getByRole('dialog').textContent();
+  if (!/GameMonetize.*advertising controlled by GameMonetize/i.test(disclosure || '')) failures.push('Dialog open: provider-controlled advertising disclosure is missing.');
   await context.close();
 }
 
@@ -74,23 +87,45 @@ const browser = await chromium.launch();
   const context = await createContext(browser);
   await stubProvider(context, requests);
   const { page, errors } = await openPlayPage(context);
-  const trigger = page.getByRole('button', { name: /optional content/i });
-  await Promise.all([trigger.click(), trigger.click(), trigger.click()]);
+  await dismissSiteBannerIfPresent(page);
+  const siteChoiceBefore = await page.evaluate(() => localStorage.getItem('gr8:privacy-consent:v1'));
+  const trigger = page.getByRole('button', { name: /external content/i });
+  const triggerBox = await trigger.boundingBox();
+  await trigger.click();
+  if (triggerBox) await page.mouse.click(triggerBox.x + triggerBox.width / 2, triggerBox.y + triggerBox.height / 2, { clickCount: 2, delay: 10 });
   const dialogs = page.getByRole('dialog', { name: /allow this gr8 select game/i });
   await dialogs.waitFor({ state: 'visible', timeout: 3000 });
   if (await dialogs.count() !== 1) failures.push('Rapid click: more than one consent dialog opened.');
-  await page.getByRole('button', { name: /allow and play/i }).click();
+  await page.getByRole('button', { name: /allow content and play/i }).click();
   await page.locator('.partner-player iframe').waitFor({ state: 'attached', timeout: 7000 });
   await page.locator('.partner-player__status').waitFor({ state: 'detached', timeout: 5000 });
   if (requests.length !== 1) failures.push(`Acceptance: expected one iframe request, found ${requests.length}.`);
+  if (requests.some((url) => {
+    const parsed = new URL(url);
+    return parsed.protocol !== 'https:' || parsed.hostname !== 'html5.gamemonetize.co' || parsed.search || parsed.hash;
+  })) failures.push('Acceptance: provider URL was modified or contains consent parameters.');
   const privacyState = await page.evaluate(() => ({
     partner: localStorage.getItem('gr8:partner-content-consent:v1'),
     site: localStorage.getItem('gr8:privacy-consent:v1'),
     tcf: typeof window.__tcfapi
   }));
   if (privacyState.partner !== 'v1.accepted') failures.push('Acceptance: dedicated partner choice was not stored.');
-  if (privacyState.site) failures.push('Acceptance: partner choice incorrectly changed the site/Google consent value.');
+  if (privacyState.site !== siteChoiceBefore) failures.push('Acceptance: partner choice incorrectly changed the site/Google consent value.');
   if (errors.some((error) => /hydration|react|uncaught/i.test(error))) failures.push(`Acceptance: browser errors: ${errors.join(' | ')}`);
+  await context.close();
+}
+
+{
+  const requests = [];
+  const context = await createContext(browser);
+  await stubProvider(context, requests);
+  const { page } = await openPlayPage(context);
+  await openChoice(page);
+  await page.getByRole('button', { name: /keep blocked/i }).click();
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await page.waitForTimeout(300);
+  if (requests.length || await page.locator('.partner-player iframe').count()) failures.push('Returning rejected visitor: GameMonetize loaded.');
+  await page.getByRole('button', { name: /change external content/i }).waitFor({ state: 'visible', timeout: 5000 }).catch(() => failures.push('Returning rejected visitor: stored rejection was not reflected.'));
   await context.close();
 }
 
@@ -103,7 +138,7 @@ const browser = await chromium.launch();
   await page.getByRole('button', { name: /keep blocked/i }).click();
   await page.waitForTimeout(300);
   if (requests.length || await page.locator('.partner-player iframe').count()) failures.push('Explicit rejection: GameMonetize loaded.');
-  if (!await page.getByRole('button', { name: /change optional content/i }).isVisible()) failures.push('Explicit rejection: the choice cannot be reopened.');
+  if (!await page.getByRole('button', { name: /change external content/i }).isVisible()) failures.push('Explicit rejection: the choice cannot be reopened.');
   await context.close();
 }
 
@@ -126,14 +161,14 @@ const browser = await chromium.launch();
   await stubProvider(context, requests);
   const first = await openPlayPage(context);
   const second = await openPlayPage(context);
-  await first.page.getByRole('button', { name: /optional content/i }).waitFor({ state: 'visible', timeout: 10000 });
-  await second.page.getByRole('button', { name: /optional content/i }).waitFor({ state: 'visible', timeout: 10000 });
+  await first.page.getByRole('button', { name: /external content/i }).waitFor({ state: 'visible', timeout: 10000 });
+  await second.page.getByRole('button', { name: /external content/i }).waitFor({ state: 'visible', timeout: 10000 });
   await acceptChoice(first.page);
   await second.page.locator('.partner-player iframe').waitFor({ state: 'attached', timeout: 5000 }).catch(() => failures.push('Cross-tab acceptance: second tab did not load immediately.'));
   await second.page.goto(`${baseUrl}/privacy-choices`, { waitUntil: 'domcontentloaded' });
-  await second.page.getByRole('button', { name: /block external games/i }).click();
+  await second.page.getByRole('button', { name: /block game and advertising content/i }).click();
   await first.page.locator('.partner-player iframe').waitFor({ state: 'detached', timeout: 5000 }).catch(() => failures.push('Cross-tab revocation: loaded iframe was not removed.'));
-  if (!await first.page.getByRole('button', { name: /change optional content/i }).isVisible()) failures.push('Cross-tab revocation: blocked choice was not reflected in the play UI.');
+  if (!await first.page.getByRole('button', { name: /change external content/i }).isVisible()) failures.push('Cross-tab revocation: blocked choice was not reflected in the play UI.');
   await context.close();
 }
 

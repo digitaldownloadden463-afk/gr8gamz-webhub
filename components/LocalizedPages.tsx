@@ -192,7 +192,9 @@ export function LocalizedPartnerPlayPage({ locale, slug }: { locale: Locale; slu
   const info = localeInfo(locale);
   const profile = getPartnerGameProfile(slug);
   if (!profile) return null;
-  const related = getRelatedPartnerGameProfiles(profile, 4);
+  const related = getRelatedPartnerGameProfiles(profile, 4, {
+    excludeProvider: profile.provider === 'gamemonetize' ? 'gamemonetize' : ''
+  });
   const localizedProfilePath = pathForLocale(locale, profile.path);
 
   return (

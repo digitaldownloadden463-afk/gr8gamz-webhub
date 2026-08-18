@@ -34,7 +34,9 @@ export default async function PartnerPlayPage({ params }: PageProps) {
   } catch {
     resolved = { ...resolved };
   }
-  const related = getRelatedPartnerGameProfiles(profile, 4);
+  const related = getRelatedPartnerGameProfiles(profile, 4, {
+    excludeProvider: resolved.provider === 'gamemonetize' ? 'gamemonetize' : ''
+  });
 
   return (
     <main className="partner-play-page">

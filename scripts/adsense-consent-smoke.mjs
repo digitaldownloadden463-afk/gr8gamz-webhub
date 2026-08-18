@@ -202,7 +202,7 @@ const browser = await chromium.launch();
     window.__gr8RevocationOpened = false;
     window.googlefc = { showRevocationMessage: () => { window.__gr8RevocationOpened = true; }, callbackQueue: [] };
   });
-  await page.getByRole('button', { name: /open privacy and cookie settings/i }).click();
+  await page.getByRole('button', { name: /open Google privacy settings/i }).click();
   await page.evaluate(() => window.googlefc.callbackQueue.splice(0).forEach((callback) => callback()));
   if (!await page.evaluate(() => window.__gr8RevocationOpened)) failures.push('Privacy Choices: Google CMP revocation message was not requested');
   await context.close();

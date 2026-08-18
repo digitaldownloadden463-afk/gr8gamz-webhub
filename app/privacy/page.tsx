@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <section className="page-title">
         <span className="eyebrow">Privacy</span>
         <h1>Privacy Policy</h1>
-        <p>Last updated: 9 August 2026. This page explains how GR8 GAMZ handles privacy, storage and external games.</p>
+        <p>Last updated: 18 August 2026. This page explains how GR8 GAMZ handles privacy, storage and external games.</p>
       </section>
       <section className="content-panel">
         <h2>What GR8 GAMZ collects</h2>
@@ -23,7 +23,8 @@ export default function PrivacyPage() {
       </section>
       <section className="content-panel">
         <h2>Partner games</h2>
-        <p>GR8 Select play pages explain that an external iframe will load only after a deliberate player choice. If you choose to load games supplied through GamePix or GameMonetize, that external game service may process device, usage, advertising and security data under its own policies.</p>
+        <p>GR8 Select play pages explain that an external iframe will load only after a deliberate player choice. GameMonetize games include advertising controlled by GameMonetize. If you allow a GameMonetize game to load, GameMonetize may process device, usage and advertising data under its own terms. This GR8 GAMZ external-content choice is separate from Google privacy choices and does not control consent inside the embedded game. Read the <a href="https://gamemonetize.com/privacypolicy" target="_blank" rel="noopener noreferrer">GameMonetize privacy policy</a>.</p>
+        <p>GamePix games remain governed by their own external service terms when deliberately loaded.</p>
       </section>
       <section className="content-panel">
         <h2>Purposes, lawful bases and retention</h2>
