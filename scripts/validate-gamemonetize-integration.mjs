@@ -22,7 +22,7 @@ if (!/frame-src[^;]*https:\/\/html5\.gamemonetize\.co/.test(nextConfig)) errors.
 if (!/img-src[^;]*https:\/\/img\.gamemonetize\.com/.test(nextConfig)) errors.push('CSP is missing the exact GameMonetize artwork origin.');
 const cspLines = nextConfig.split('\n').map((line) => line.trim());
 if (cspLines.some((line) => /frame-src.*\*\.gamemonetize|(?:script-src|connect-src).*gamemonetize/i.test(line))) errors.push('CSP grants broader GameMonetize access than the integration needs.');
-if (!/provider === 'gamemonetize' && consentChoice !== 'accepted'/.test(playClient)) errors.push('GameMonetize iframe creation is not gated on accepted consent.');
+if (!/provider === 'gamemonetize' && partnerContentChoice !== 'accepted'/.test(playClient)) errors.push('GameMonetize iframe creation is not gated on explicit partner-content consent.');
 if (/window\.open\s*\(/.test(playClient)) errors.push('Partner play client must not manually open advertising windows.');
 
 for (const game of records) {

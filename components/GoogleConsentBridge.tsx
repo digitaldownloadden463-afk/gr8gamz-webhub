@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import {
+  getConsentChoice,
   setConsentAuthority,
   setGoogleCmpConsent,
   type ConsentChoice
@@ -29,7 +30,7 @@ declare global {
     __tcfapi?: TcfApi;
     gtag_enable_tcf_support?: boolean;
     googlefc?: {
-      callbackQueue?: Array<() => void>;
+      callbackQueue?: Array<{ CONSENT_API_READY: () => void }>;
       showRevocationMessage?: () => void;
     };
   }
@@ -48,7 +49,7 @@ export function openGooglePrivacyOptions(timeoutMs = 5000, signal?: AbortSignal)
   return new Promise((resolve) => {
     let settled = false;
     let timer: number | undefined;
-    let queuedCallback: (() => void) | null = null;
+    let queuedCallback: { CONSENT_API_READY: () => void } | null = null;
 
     const cleanup = () => {
       if (timer !== undefined) window.clearTimeout(timer);
@@ -73,6 +74,10 @@ export function openGooglePrivacyOptions(timeoutMs = 5000, signal?: AbortSignal)
 
     const showMessage = () => {
       try {
+        if (!getConsentChoice()) {
+          finish(false);
+          return;
+        }
         const open = window.googlefc?.showRevocationMessage;
         if (typeof open !== 'function') return;
         open();
@@ -89,8 +94,8 @@ export function openGooglePrivacyOptions(timeoutMs = 5000, signal?: AbortSignal)
         showMessage();
         return;
       }
-      queuedCallback = showMessage;
-      window.googlefc.callbackQueue.push(showMessage);
+      queuedCallback = { CONSENT_API_READY: showMessage };
+      window.googlefc.callbackQueue.push(queuedCallback);
       signal?.addEventListener('abort', abort, { once: true });
       if (signal?.aborted) abort();
       else timer = window.setTimeout(() => finish(false), timeoutMs);

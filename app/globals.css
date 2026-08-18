@@ -1218,6 +1218,64 @@ main summary {
   justify-content: flex-end;
 }
 
+.partner-consent-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  background: rgba(2, 3, 7, .86);
+  backdrop-filter: blur(10px);
+}
+
+.partner-consent-dialog {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 560px);
+  max-height: min(760px, calc(100dvh - 36px));
+  overflow: auto;
+  padding: 26px;
+  border: 1px solid rgba(54, 247, 105, .32);
+  border-radius: 8px;
+  background: #101217;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .65);
+  animation: gr8-rise-in var(--motion-fast) var(--ease-out) both;
+}
+
+.partner-consent-dialog h2,
+.partner-consent-dialog p { margin: 0; }
+
+.partner-consent-dialog__close {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #080a0f;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.partner-consent-dialog__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.partner-consent-dialog__actions button { min-height: 48px; }
+
+@media (max-width: 520px) {
+  .partner-consent-dialog { padding: 24px 18px 18px; }
+  .partner-consent-dialog__actions { grid-template-columns: 1fr; }
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -2645,6 +2703,8 @@ main[dir="rtl"] .nav-links--compact a {
   .partner-profile-hero,
   .game-hero,
   .partner-player,
+  .partner-consent-dialog-backdrop,
+  .partner-consent-dialog,
   .consent-banner,
   .site-footer,
   .nav-menu[open] .nav-links--compact {
