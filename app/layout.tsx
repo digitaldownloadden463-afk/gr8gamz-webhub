@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   applicationName: 'GR8 GAMZ',
   manifest: '/manifest.webmanifest',
   icons: {
-    icon: [{ url: '/favicon.ico' }, { url: '/icon.png', type: 'image/png', sizes: '512x512' }],
+    icon: [
+      { url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/favicon.ico', type: 'image/x-icon', sizes: '48x48 96x96 192x192' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' }
+    ],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }]
   },
   openGraph: {
