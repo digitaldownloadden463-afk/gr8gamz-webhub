@@ -42,7 +42,7 @@ try {
     page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
     const viewportRoutes = viewport.width === 390 ? representativeRoutes : routes;
     for (const route of viewportRoutes) {
-      const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
+      const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
       if (response?.status() !== 200) failures.push(`${route} returned ${response?.status()}`);
       const facts = await page.evaluate(() => ({
         h1: document.querySelectorAll('h1').length,

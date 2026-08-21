@@ -10,6 +10,8 @@ import { getRegistryCategories, getRegistryGameBySlug, slugifyRegistryValue } fr
 import { categoryName, localeInfo, localizedCanonical, pathForLocale, tr, type Locale } from '@/lib/i18n';
 import { getGlobalLaunchGames, getLocalizedGameText } from '@/lib/globalLaunch';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import GearContextModule from '@/components/commerce/GearContextModule';
+import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 
 const pageSize = 48;
 
@@ -138,11 +140,12 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
     gamePlatform: 'Web browser',
     genre: copy.category,
     inLanguage: locale,
-    provider: { '@type': 'Organization', name: 'GR8 GAMZ' }
+    isAccessibleForFree: true
   };
 
   return (
     <main lang={locale} dir={info.dir}>
+      {game.source === 'gr8-select' ? <PartnerProfileAnalytics slug={game.slug} provider={getPartnerGameProfile(game.slug)?.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'} locale={locale} /> : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <Link href={pathForLocale(locale, '/')}>{text.nav.home}</Link>
@@ -176,6 +179,7 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
       </section>
       <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} labels={text.engagement} />
       {game.source === 'gr8-select' ? <ChallengeShare gameSlug={game.slug} gameTitle={game.title} kind="select" locale={locale} labels={text.engagement} /> : null}
+      {game.source === 'gr8-select' ? <GearContextModule category={game.category} controls={copy.controls} deviceFit={copy.fit} locale={locale} /> : null}
       <section className="section-heading">
         <span className="eyebrow">{text.common.related}</span>
         <h2>{text.common.related}.</h2>

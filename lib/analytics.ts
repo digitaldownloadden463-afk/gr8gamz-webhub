@@ -12,6 +12,7 @@ export type AnalyticsEventName =
   | 'language_change'
   | 'affiliate_guide_view'
   | 'product_view'
+  | 'partner_profile_view'
   | 'affiliate_product_impression';
 
 export type AnalyticsParameters = Partial<{
