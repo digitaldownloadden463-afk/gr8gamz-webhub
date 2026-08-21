@@ -1,0 +1,22 @@
+[
+  {
+    "id": "reddit-wordgames",
+    "community": "Reddit r/wordgames",
+    "ruleSource": "https://www.reddit.com/r/wordgames/comments/1ob0x6h/meta_updated_rules_self_promotion_policy/",
+    "checkedAt": "2026-08-21",
+    "promotionRule": "Occasional creator promotion requires meaningful participation. Monetized and affiliate links are prohibited.",
+    "eligibility": "conditional",
+    "useFor": "A genuinely relevant word-game discussion only, after a fresh manual rule check and without an affiliate link.",
+    "notes": "Ask moderators first when uncertain. A GR8 partner profile must be described transparently; GR8 must not claim to have created the game."
+  },
+  {
+    "id": "html5gamedevs-showcase",
+    "community": "HTML5 Game Devs Game Showcase",
+    "ruleSource": "https://www.html5gamedevs.com/topic/873-guidelines-for-posting-in-this-board/",
+    "checkedAt": "2026-08-21",
+    "promotionRule": "The showcase is for games the poster created or is creating and expects substantive project information and discussion.",
+    "eligibility": "ineligible-for-partner-games",
+    "useFor": "Do not submit GR8 Select partner games because GR8 GAMZ did not create them.",
+    "notes": "This record prevents ownership misrepresentation and is not a posting target."
+  }
+]

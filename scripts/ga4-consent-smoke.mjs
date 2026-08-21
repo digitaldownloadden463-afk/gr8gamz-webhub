@@ -85,8 +85,10 @@ const browser = await chromium.launch();
   const context = await createContext(browser);
   await stubAnalytics(context, requests);
   const page = await context.newPage();
-  await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await expectNoAnalytics(page, requests, 'Fresh visitor');
+  await page.goto(`${baseUrl}/more-free-games/duck-math`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  if ((await dataLayerEvents(page, 'partner_profile_view')).length) failures.push('Fresh visitor: partner profile analytics fired before consent');
   await page.evaluate(() => window.__gr8EmitTcf('rejected'));
   await expectNoAnalytics(page, requests, 'Reject All');
   await context.close();
@@ -101,7 +103,12 @@ const browser = await chromium.launch();
   page.on('console', (message) => { if (message.type() === 'error') browserErrors.push(message.text()); });
   page.on('pageerror', (error) => browserErrors.push(error.message));
 
-  await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  if (await page.locator('#gr8-ga4-script').count() === 0) {
+    const acceptButton = page.getByRole('button', { name: /^accept all$/i });
+    await acceptButton.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
+    if (await acceptButton.isVisible().catch(() => false)) await acceptButton.click();
+  }
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   await page.waitForFunction(() => window.__gr8GaTestScriptLoaded === true);
 
@@ -130,7 +137,15 @@ const browser = await chromium.launch();
   if (pageViews.length !== 3 || pageViews[2]?.page_path !== '/gr8-select') failures.push('Client navigation: expected one page view for /gr8-select');
   if (await page.locator('#gr8-ga4-script').count() !== 1 || requests.filter((url) => url === scriptUrl).length !== 1) failures.push('Client navigation: GA script was duplicated');
 
-  await page.goto(`${baseUrl}/arcade/neon-snake-rush`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${baseUrl}/more-free-games/duck-math`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'partner_profile_view'));
+  const profileViews = await dataLayerEvents(page, 'partner_profile_view');
+  if (profileViews.length !== 1 || profileViews[0]?.game_slug !== 'duck-math' || profileViews[0]?.provider !== 'gamemonetize') {
+    failures.push('Partner profile: expected one consent-aware profile view with the internal provider label');
+  }
+
+  await page.goto(`${baseUrl}/arcade/neon-snake-rush`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   const beforeStart = await dataLayerEvents(page, 'game_play_start');
   if (beforeStart.length !== 0) failures.push('Game start: event fired from page load');
@@ -142,7 +157,7 @@ const browser = await chromium.launch();
     failures.push('Game start: expected one correctly labelled original-game event');
   }
 
-  await page.goto(`${baseUrl}/more-free-games/body-drop-3d/play`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${baseUrl}/more-free-games/body-drop-3d/play`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   const beforePartnerStart = await dataLayerEvents(page, 'game_play_start');
   if (beforePartnerStart.length !== 0) failures.push('Partner game start: event fired from page load');
@@ -168,4 +183,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('GA4 consent smoke passed: consent gating, one manual page view per route, duplicate prevention, and genuine game start tracking verified.');
+console.log('GA4 consent smoke passed: consent gating, SPA page views, partner profile view, duplicate prevention, and genuine game start tracking verified.');

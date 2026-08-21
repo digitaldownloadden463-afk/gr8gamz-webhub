@@ -10,6 +10,7 @@ import { slugifyRegistryValue } from '@/lib/gameRegistry';
 import { tr } from '@/lib/i18n';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import GearContextModule from '@/components/commerce/GearContextModule';
+import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -70,14 +71,12 @@ export default async function PartnerProfilePage({ params }: PageProps) {
     url: canonical(profile.path),
     gamePlatform: 'Web browser',
     genre: profile.category,
-    provider: {
-      '@type': 'Organization',
-      name: 'GR8 GAMZ'
-    }
+    isAccessibleForFree: true
   };
 
   return (
     <main>
+      <PartnerProfileAnalytics slug={profile.slug} provider={profile.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -122,7 +121,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         labels={text.engagement}
       />
       <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" labels={text.engagement} />
-      <GearContextModule category={profile.category} />
+      <GearContextModule category={profile.category} controls={controls} deviceFit={deviceFit} />
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>
