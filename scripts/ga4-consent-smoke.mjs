@@ -7,7 +7,8 @@ try {
 }
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
-const measurementId = 'G-QYTP57SB11';
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-YL11VWGQM6';
+const retiredMeasurementId = 'G-QYTP57SB11';
 const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
 const failures = [];
 
@@ -63,6 +64,7 @@ async function stubAnalytics(context, requests) {
     requests.push(route.request().url());
     await route.fulfill({ status: 204, body: '' });
   });
+  await context.route('https://razer.a9yw.net/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Tracked Razer destination</title>' }));
   await context.route('https://play.gamepix.com/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Game test</title>' }));
 }
 
@@ -91,6 +93,15 @@ const browser = await chromium.launch();
   if ((await dataLayerEvents(page, 'partner_profile_view')).length) failures.push('Fresh visitor: partner profile analytics fired before consent');
   await page.evaluate(() => window.__gr8EmitTcf('rejected'));
   await expectNoAnalytics(page, requests, 'Reject All');
+  await page.goto(`${baseUrl}/gaming-gear/products/razer-viper-v3-pro`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  if ((await dataLayerEvents(page, 'product_view')).length) failures.push('Reject All: product analytics fired without consent');
+  const affiliateLink = page.locator('a[rel*="sponsored"]').first();
+  const popupPromise = page.waitForEvent('popup');
+  await affiliateLink.click();
+  const popup = await popupPromise;
+  if (!popup.url().startsWith('https://razer.a9yw.net/')) failures.push('Reject All: affiliate navigation did not use the tracked Razer destination');
+  await popup.close();
+  await expectNoAnalytics(page, requests, 'Rejected affiliate navigation');
   await context.close();
 }
 
@@ -116,6 +127,7 @@ const browser = await chromium.launch();
   if (script.src !== scriptUrl) failures.push(`Accept All: expected ${scriptUrl}, found ${script.src}`);
   if (!script.async) failures.push('Accept All: GA script was not async');
   if (requests.filter((url) => url === scriptUrl).length !== 1) failures.push('Accept All: GA script did not load exactly once');
+  if (requests.some((url) => url.includes(retiredMeasurementId))) failures.push('Accept All: the retired Living Style measurement ID was requested');
 
   const configEntries = await page.evaluate(() => (window.dataLayer || []).filter((entry) => entry?.[0] === 'config'));
   if (configEntries.length !== 1 || configEntries[0]?.[1] !== measurementId || configEntries[0]?.[2]?.send_page_view !== false) {
@@ -153,7 +165,7 @@ const browser = await chromium.launch();
   await frame.locator('#primary').click();
   await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'game_play_start'), null, { timeout: 5000 });
   const starts = await dataLayerEvents(page, 'game_play_start');
-  if (starts.length !== 1 || starts[0]?.game_slug !== 'neon-snake-rush' || starts[0]?.game_type !== 'original' || starts[0]?.locale !== 'en') {
+  if (starts.length !== 1 || starts[0]?.game_slug !== 'neon-snake-rush' || starts[0]?.game_type !== 'original' || starts[0]?.provider !== 'gr8' || starts[0]?.locale !== 'en') {
     failures.push('Game start: expected one correctly labelled original-game event');
   }
 
@@ -166,6 +178,27 @@ const browser = await chromium.launch();
   const partnerStarts = await dataLayerEvents(page, 'game_play_start');
   if (partnerStarts.length !== 1 || partnerStarts[0]?.game_slug !== 'body-drop-3d' || partnerStarts[0]?.game_type !== 'select' || partnerStarts[0]?.locale !== 'en') {
     failures.push('Partner game start: expected one correctly labelled event after Load game');
+  }
+
+  await page.goto(`${baseUrl}/gaming-gear/gaming-mice/best-gaming-mouse`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_guide_view'));
+  const guideViews = await dataLayerEvents(page, 'affiliate_guide_view');
+  if (guideViews.length !== 1 || guideViews[0]?.guide_slug !== 'best-gaming-mouse' || guideViews[0]?.page_type !== 'guide' || guideViews[0]?.merchant !== 'razer' || guideViews[0]?.locale !== 'en') {
+    failures.push('Buying guide: expected one correctly labelled affiliate_guide_view event');
+  }
+  await page.locator('a[rel*="sponsored"]').first().click();
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_click'));
+  const guideClicks = await dataLayerEvents(page, 'affiliate_click');
+  if (guideClicks.length !== 1 || guideClicks[0]?.guide_slug !== 'best-gaming-mouse' || guideClicks[0]?.product_slug !== 'razer-viper-v3-pro' || guideClicks[0]?.link_position !== 'card' || guideClicks[0]?.destination_type !== 'merchant_product' || guideClicks[0]?.locale !== 'en') {
+    failures.push('Affiliate click: expected one consent-aware event with guide, product, position, and destination parameters');
+  }
+
+  await page.goto(`${baseUrl}/gaming-gear/products/razer-viper-v3-pro`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'product_view'));
+  const productViews = await dataLayerEvents(page, 'product_view');
+  if (productViews.length !== 1 || productViews[0]?.product_slug !== 'razer-viper-v3-pro' || productViews[0]?.page_type !== 'product' || productViews[0]?.merchant !== 'razer') {
+    failures.push('Product page: expected one correctly labelled product_view event');
   }
 
   const relevantErrors = browserErrors.filter((message) =>
@@ -183,4 +216,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('GA4 consent smoke passed: consent gating, SPA page views, partner profile view, duplicate prevention, and genuine game start tracking verified.');
+console.log('GA4 consent smoke passed: dedicated measurement ID, consent gating, SPA page views, gameplay, commerce events, affiliate navigation, and duplicate prevention verified.');

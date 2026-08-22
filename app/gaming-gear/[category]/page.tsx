@@ -30,7 +30,7 @@ export default async function CommerceCategoryPage({ params }: { params: Promise
   const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', name: `${category.name} shortlist`, itemListElement: products.map((product, index) => ({ '@type': 'ListItem', position: index + 1, url: canonical(`/gaming-gear/products/${product.slug}`), name: product.name })) };
   return (
     <main className="commerce-page">
-      <CommercePageView pageType="category" category={category.slug} />
+      <CommercePageView pageType="category" pageSlug={category.slug} category={category.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
       <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { label: category.name }]} />
       <section className="commerce-title"><span className="eyebrow">GR8 Gaming Gear</span><h1>{category.name}</h1><p>{category.description}</p></section>

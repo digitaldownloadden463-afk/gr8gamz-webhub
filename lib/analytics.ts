@@ -21,11 +21,13 @@ export type AnalyticsParameters = Partial<{
   locale: string;
   provider: 'gr8' | 'gamepix' | 'gamemonetize';
   merchant: 'razer';
-  product_id: string;
+  product_slug: string;
   product_name: string;
+  guide_slug: string;
   category: string;
   page_type: 'hub' | 'category' | 'guide' | 'comparison' | 'product';
-  cta_position: string;
+  link_position: string;
+  destination_type: 'merchant_product';
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
@@ -41,7 +43,7 @@ declare global {
 }
 
 const safeParameterKeys = new Set<keyof AnalyticsParameters>([
-  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_id', 'product_name', 'category', 'page_type', 'cta_position'
+  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_slug', 'product_name', 'guide_slug', 'category', 'page_type', 'link_position', 'destination_type'
 ]);
 const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string> }> = [];
 
@@ -57,7 +59,8 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'provider' && !['gr8', 'gamepix', 'gamemonetize'].includes(normalized)) continue;
     if (key === 'merchant' && normalized !== 'razer') continue;
     if (key === 'page_type' && !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)) continue;
-    if (['product_id', 'category', 'cta_position'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
+    if (['product_slug', 'guide_slug', 'category', 'link_position'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
+    if (key === 'destination_type' && normalized !== 'merchant_product') continue;
     result[key] = normalized;
   }
   return result;

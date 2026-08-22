@@ -1,19 +1,35 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import type { CommercePageType } from '@/lib/commerce/types';
+import { useConsentChoice } from '@/lib/consentPreferences';
 
-export default function CommercePageView({ pageType, category, productId, productName }: {
+export default function CommercePageView({ pageType, pageSlug, category, productSlug, productName }: {
   pageType: CommercePageType;
+  pageSlug: string;
   category?: string;
-  productId?: string;
+  productSlug?: string;
   productName?: string;
 }) {
+  const consent = useConsentChoice();
+  const trackedKey = useRef('');
+
   useEffect(() => {
-    trackEvent(pageType === 'product' ? 'product_view' : 'affiliate_guide_view', {
-      merchant: 'razer', page_type: pageType, category, product_id: productId, product_name: productName
-    });
-  }, [pageType, category, productId, productName]);
+    if (consent !== 'accepted') return;
+    if (pageType !== 'product' && pageType !== 'guide' && pageType !== 'comparison') return;
+    const key = `${pageType}:${pageSlug}`;
+    if (trackedKey.current === key) return;
+    if (!trackEvent(pageType === 'product' ? 'product_view' : 'affiliate_guide_view', {
+      merchant: 'razer',
+      locale: 'en',
+      page_type: pageType,
+      category,
+      product_slug: productSlug,
+      product_name: productName,
+      guide_slug: pageType === 'guide' || pageType === 'comparison' ? pageSlug : undefined
+    })) return;
+    trackedKey.current = key;
+  }, [category, consent, pageSlug, pageType, productName, productSlug]);
   return null;
 }

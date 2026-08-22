@@ -36,7 +36,7 @@ export default async function CommerceEditorialPage({ params }: { params: Promis
   const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', name: page.title, itemListElement: products.map((product, index) => ({ '@type': 'ListItem', position: index + 1, url: canonical(`/gaming-gear/products/${product.slug}`), name: product.name })) };
   return (
     <main className="commerce-page">
-      <CommercePageView pageType={pageType} category={category.slug} />
+      <CommercePageView pageType={pageType} pageSlug={slug} category={category.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
       <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: page.title }]} />
       <section className="commerce-title commerce-title--editorial"><span className="eyebrow">{guide ? 'Buying guide' : 'Product comparison'}</span><h1>{page.title}</h1><p>{page.description}</p>{guide ? <p className="commerce-intent"><CheckCircle2 size={18} aria-hidden="true" />{guide.intent}</p> : <p className="commerce-intent"><Scale size={18} aria-hidden="true" />Compare the differences that affect everyday use, not just the longest feature list.</p>}</section>
