@@ -20,11 +20,11 @@ export default function CommerceBreadcrumbs({ currentPath, items }: CommerceBrea
   };
   return (
     <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><nav className="breadcrumbs" aria-label="Breadcrumb">
-      <Link href="/">Home</Link><span aria-hidden="true">/</span>
+      <Link href="/">Home</Link><span className="breadcrumbs__separator" aria-hidden="true">/</span>
       {items.map((item, index) => (
         <span key={`${item.label}-${index}`} className="breadcrumbs__item">
           {item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}
-          {index < items.length - 1 ? <span aria-hidden="true">/</span> : null}
+          {index < items.length - 1 ? <span className="breadcrumbs__separator" aria-hidden="true">/</span> : null}
         </span>
       ))}
     </nav></>

@@ -26,9 +26,16 @@ for (const product of commerceProducts) {
   graph.set(`/gaming-gear/products/${product.slug}`, new Set());
   if (!product.id || !product.merchantProductId || product.merchant !== 'razer') errors.push(`Invalid identity: ${product.slug}`);
   if (!/^https:\/\/www\.razer\.com\/gb-en\//.test(product.destinationUrl)) errors.push(`Unapproved destination: ${product.slug}`);
-  if (!/^https:\/\/assets3\.razerzone\.com\//.test(product.image)) errors.push(`Unapproved image: ${product.slug}`);
+  if (!/^https:\/\/assets[23]\.razerzone\.com\//.test(product.image)) errors.push(`Unapproved image: ${product.slug}`);
   if (product.price !== null) errors.push(`Static price is not permitted without a feed: ${product.slug}`);
-  if (!product.keyFeatures?.length || !product.shortDescription || !product.bestFor) errors.push(`Incomplete content: ${product.slug}`);
+  if (product.schemaVersion !== 2 || !product.family || !product.model || !product.generation || !product.lifecycle) errors.push(`Incomplete v2 identity: ${product.slug}`);
+  if (!product.keyFeatures?.length || !product.shortDescription || !product.buyingSummary || !product.bestFor) errors.push(`Incomplete content: ${product.slug}`);
+  if (!product.officialSourceUrl || product.sourceCheckedAt !== '2026-08-22' || product.contentEvidenceState !== 'verified-official-sources') errors.push(`Invalid provenance: ${product.slug}`);
+  if (!product.platforms?.length || !Object.keys(product.specifications || {}).length) errors.push(`Missing compatibility or specifications: ${product.slug}`);
+  if (product.authorisedPriceSource !== null || product.priceCheckedAt !== null) errors.push(`Unapproved offer evidence: ${product.slug}`);
+  for (const specification of Object.values(product.specifications || {})) {
+    if (!specification.value || !specification.sourceUrl || !specification.checkedAt) errors.push(`Invalid specification evidence: ${product.slug}`);
+  }
 }
 
 for (const page of [...buyingGuides, ...productComparisons]) {
@@ -37,6 +44,9 @@ for (const page of [...buyingGuides, ...productComparisons]) {
   routePaths.add(route);
   graph.set(route, new Set());
   for (const slug of page.productSlugs) if (!productSlugs.has(slug)) errors.push(`Unknown product ${slug} in ${route}`);
+  if (!page.sourceCheckedAt || !page.description || !page.title) errors.push(`Incomplete editorial provenance: ${route}`);
+  if ('methodology' in page && (!page.methodology || !page.recommendations?.length || !page.decisionSections?.length)) errors.push(`Thin buying guide: ${route}`);
+  if ('verdict' in page && (!page.verdict || !page.comparisonRows?.length || !page.recommendations?.length || !page.parentGuideSlug)) errors.push(`Thin comparison: ${route}`);
 }
 
 const categoryRoutes = new Set(commerceProducts.map((product) => `/gaming-gear/${product.category}`));

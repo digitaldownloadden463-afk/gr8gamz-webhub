@@ -3,6 +3,8 @@ import { buyingGuides } from '@/src/data/commerce/guides';
 import { productComparisons } from '@/src/data/commerce/comparisons';
 import type { CommerceCategorySlug } from '@/lib/commerce/types';
 
+const productEvidenceMaxAgeDays = 45;
+
 export const commerceCategories: readonly {
   slug: CommerceCategorySlug;
   name: string;
@@ -11,11 +13,21 @@ export const commerceCategories: readonly {
   { slug: 'gaming-mice', name: 'Gaming Mice', description: 'Compare grip, weight, controls and wireless features before choosing your next mouse.' },
   { slug: 'gaming-headsets', name: 'Gaming Headsets', description: 'Find the right balance of clear communication, platform support and immersive audio.' },
   { slug: 'gaming-keyboards', name: 'Gaming Keyboards', description: 'Choose a switch system, layout and control set that genuinely fits your desk.' },
-  { slug: 'mobile-gaming', name: 'Mobile Gaming', description: 'Check device compatibility first, then compare full-size controls for play on the move.' }
+  { slug: 'gaming-controllers', name: 'Gaming Controllers', description: 'Compare platform support, connection mode and competitive controls before choosing a controller.' },
+  { slug: 'mobile-gaming', name: 'Mobile Gaming', description: 'Check device compatibility first, then compare full-size controls for play on the move.' },
+  { slug: 'gaming-laptops', name: 'Gaming Laptops', description: 'Choose the Blade size and performance class before comparing exact UK configurations.' },
+  { slug: 'gaming-chairs', name: 'Gaming Chairs', description: 'Compare support design, materials and official dimensions before choosing a chair.' }
 ];
 
 export function getCommerceProduct(slug: string) {
   return commerceProducts.find((product) => product.slug === slug);
+}
+
+export function commerceEvidenceState(sourceCheckedAt: string, now = new Date()) {
+  const checkedAt = new Date(`${sourceCheckedAt}T00:00:00Z`);
+  if (Number.isNaN(checkedAt.getTime())) return 'invalid' as const;
+  const ageDays = (now.getTime() - checkedAt.getTime()) / 86_400_000;
+  return ageDays > productEvidenceMaxAgeDays ? 'stale' as const : 'current' as const;
 }
 
 export function getCommerceCategory(slug: string) {
@@ -50,4 +62,14 @@ export function commerceRoutePaths() {
     ...buyingGuides.map((guide) => `/gaming-gear/${guide.category}/${guide.slug}`),
     ...productComparisons.map((comparison) => `/gaming-gear/${comparison.category}/${comparison.slug}`)
   ];
+}
+
+export function commerceRouteLastmod(route: string) {
+  const product = commerceProducts.find((item) => route === `/gaming-gear/products/${item.slug}`);
+  if (product) return product.lastUpdated;
+  const guide = buyingGuides.find((item) => route === `/gaming-gear/${item.category}/${item.slug}`);
+  if (guide) return guide.sourceCheckedAt;
+  const comparison = productComparisons.find((item) => route === `/gaming-gear/${item.category}/${item.slug}`);
+  if (comparison) return comparison.sourceCheckedAt;
+  return '2026-08-22';
 }

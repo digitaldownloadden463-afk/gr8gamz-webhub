@@ -14,12 +14,19 @@ const representativeRoutes = [
   '/gaming-gear/gaming-mice',
   '/gaming-gear/gaming-headsets',
   '/gaming-gear/gaming-keyboards',
+  '/gaming-gear/gaming-laptops',
+  '/gaming-gear/gaming-chairs',
+  '/gaming-gear/gaming-controllers',
   '/gaming-gear/mobile-gaming',
-  '/gaming-gear/gaming-mice/best-gaming-mouse',
-  '/gaming-gear/gaming-mice/razer-viper-v3-pro-vs-deathadder-v4-pro',
-  '/gaming-gear/products/razer-viper-v3-pro',
-  '/gaming-gear/products/razer-blackshark-v3-pro',
-  '/gaming-gear/products/razer-kishi-v3-pro'
+  '/gaming-gear/gaming-headsets/razer-blackshark-v3-pro-vs-kraken-v4-pro',
+  '/gaming-gear/gaming-mice/best-wireless-gaming-mouse',
+  '/gaming-gear/gaming-mice/razer-viper-v4-pro-vs-deathadder-v4-pro',
+  '/gaming-gear/products/razer-viper-v4-pro',
+  '/gaming-gear/products/razer-naga-v3-pro',
+  '/gaming-gear/gaming-laptops/razer-blade-14-vs-blade-16',
+  '/gaming-gear/gaming-chairs/razer-iskur-v2-newgen-vs-enki',
+  '/gaming-gear/gaming-keyboards/razer-huntsman-v3-pro-8khz-vs-blackwidow-v4-pro',
+  '/gaming-gear/mobile-gaming/razer-kishi-v3-vs-kishi-v3-pro'
 ];
 const routes = [
   '/gaming-gear',
@@ -33,14 +40,14 @@ const browser = await chromium.launch({ headless: true });
 const failures = [];
 
 try {
-  for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+  for (const viewport of [{ width: 390, height: 844 }, { width: 768, height: 1024 }, { width: 1440, height: 900 }]) {
     const context = await browser.newContext({ viewport });
     await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
     await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
     const page = await context.newPage();
     const consoleErrors = [];
     page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
-    const viewportRoutes = viewport.width === 390 ? representativeRoutes : routes;
+    const viewportRoutes = viewport.width < 1000 ? representativeRoutes : routes;
     for (const route of viewportRoutes) {
       const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
       if (response?.status() !== 200) failures.push(`${route} returned ${response?.status()}`);

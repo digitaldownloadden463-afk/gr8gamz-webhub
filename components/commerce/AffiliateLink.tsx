@@ -14,6 +14,7 @@ export default function AffiliateLink({ product, pageType, pageSlug, position, c
   children: ReactNode;
 }) {
   const href = buildAffiliateUrl(product, commercePageId(pageType, pageSlug), position);
+  const locale = () => document.documentElement.lang || 'en';
   return (
     <a
       href={href}
@@ -22,7 +23,7 @@ export default function AffiliateLink({ product, pageType, pageSlug, position, c
       className={className}
       onClick={() => trackEvent('affiliate_click', {
         merchant: product.merchant,
-        locale: 'en',
+        locale: locale(),
         product_slug: product.slug,
         product_name: product.name,
         guide_slug: pageType === 'guide' || pageType === 'comparison' ? pageSlug : undefined,
