@@ -2,7 +2,7 @@ import { canonical, siteUrl } from '@/lib/features';
 import { getAllGames } from '@/lib/games';
 import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHubs } from '@/lib/gameRegistry';
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
-import { commerceRoutePaths } from '@/lib/commerce/catalogue';
+import { commerceRouteLastmod, commerceRoutePaths } from '@/lib/commerce/catalogue';
 
 export const partnerSitemapSize = 1000;
 
@@ -89,7 +89,7 @@ export function collectionEntries() {
 }
 
 export function commerceEntries() {
-  return commerceRoutePaths().map((route) => urlEntry(route, undefined, route === '/gaming-gear' ? '0.8' : '0.65')).join('');
+  return commerceRoutePaths().map((route) => urlEntry(route, commerceRouteLastmod(route), route === '/gaming-gear' ? '0.8' : '0.65')).join('');
 }
 
 export function sitemapIndex(paths: string[]) {

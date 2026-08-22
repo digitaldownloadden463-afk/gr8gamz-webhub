@@ -194,7 +194,7 @@ const browser = await chromium.launch();
   await page.locator('a[rel*="sponsored"]').first().click();
   await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_click'));
   const guideClicks = await dataLayerEvents(page, 'affiliate_click');
-  if (guideClicks.length !== 1 || guideClicks[0]?.guide_slug !== 'best-gaming-mouse' || guideClicks[0]?.product_slug !== 'razer-viper-v3-pro' || guideClicks[0]?.link_position !== 'card' || guideClicks[0]?.destination_type !== 'merchant_product' || guideClicks[0]?.locale !== 'en') {
+  if (guideClicks.length !== 1 || guideClicks[0]?.guide_slug !== 'best-gaming-mouse' || guideClicks[0]?.product_slug !== 'razer-viper-v4-pro' || guideClicks[0]?.link_position !== 'card' || guideClicks[0]?.destination_type !== 'merchant_product' || guideClicks[0]?.locale !== 'en') {
     failures.push('Affiliate click: expected one consent-aware event with guide, product, position, and destination parameters');
   }
 

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Crosshair, Gamepad2, Headphones, Keyboard, MousePointer2, ShieldCheck } from 'lucide-react';
+import { Armchair, ArrowRight, Crosshair, Gamepad2, Headphones, Keyboard, Laptop, MousePointer2, ShieldCheck } from 'lucide-react';
 import AffiliateDisclosure from '@/components/commerce/AffiliateDisclosure';
 import CommercePageView from '@/components/commerce/CommercePageView';
 import ProductCard from '@/components/commerce/ProductCard';
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: { title: 'GR8 Gaming Gear', description: 'Gaming gear guides and product comparisons for UK players.', url: canonical('/gaming-gear') }
 };
 
-const icons = { 'gaming-mice': MousePointer2, 'gaming-headsets': Headphones, 'gaming-keyboards': Keyboard, 'mobile-gaming': Gamepad2 } as const;
+const icons = { 'gaming-mice': MousePointer2, 'gaming-headsets': Headphones, 'gaming-keyboards': Keyboard, 'gaming-controllers': Gamepad2, 'mobile-gaming': Gamepad2, 'gaming-laptops': Laptop, 'gaming-chairs': Armchair } as const;
 
 export default function GamingGearPage() {
   const itemList = {
