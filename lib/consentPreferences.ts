@@ -160,6 +160,7 @@ export function setConsentAuthority(authority: ConsentAuthority) {
 export function setGoogleCmpConsent(choice: ConsentChoice | null) {
   consentAuthority = 'google-cmp';
   googleCmpChoice = choice;
+  updateGoogleConsentMode(choice || 'rejected');
   if (choice) {
     persistChoice(choice);
   }

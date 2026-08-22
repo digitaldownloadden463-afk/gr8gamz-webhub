@@ -40,6 +40,12 @@ export default function GoogleAnalytics() {
     window.gtag = window.gtag || function gtag(...args: unknown[]) {
       window.dataLayer?.push(args);
     };
+    window.gtag('consent', 'update', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
+    });
 
     if (!window.__gr8GaInitialized) {
       window.gtag('js', new Date());

@@ -133,6 +133,10 @@ const browser = await chromium.launch();
   if (configEntries.length !== 1 || configEntries[0]?.[1] !== measurementId || configEntries[0]?.[2]?.send_page_view !== false) {
     failures.push('Accept All: GA config was missing, duplicated, or did not use send_page_view:false');
   }
+  const consentUpdates = await page.evaluate(() => (window.dataLayer || []).filter((entry) => entry?.[0] === 'consent' && entry?.[1] === 'update'));
+  if (!consentUpdates.length || consentUpdates.at(-1)?.[2]?.analytics_storage !== 'granted') {
+    failures.push(`Accept All: Consent Mode did not update analytics_storage to granted (${JSON.stringify(consentUpdates)})`);
+  }
   let pageViews = await dataLayerEvents(page, 'page_view');
   if (pageViews.length !== 1 || pageViews[0]?.page_path !== '/') failures.push('Initial page view: expected exactly one event for /');
 
