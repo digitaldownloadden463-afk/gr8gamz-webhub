@@ -53,7 +53,7 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
       const frameDocument = iframeRef.current?.contentDocument;
       const startControl = frameDocument?.querySelector<HTMLElement>('#primary, #start');
       if (!startControl) return;
-      const onStart = () => trackEvent('game_play_start', { game_slug: slug, game_type: 'original', locale });
+      const onStart = () => trackEvent('game_play_start', { game_slug: slug, game_type: 'original', provider: 'gr8', locale });
       startControl.addEventListener('click', onStart);
       startListenerCleanupRef.current = () => startControl.removeEventListener('click', onStart);
     } catch {}

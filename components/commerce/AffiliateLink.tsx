@@ -22,11 +22,14 @@ export default function AffiliateLink({ product, pageType, pageSlug, position, c
       className={className}
       onClick={() => trackEvent('affiliate_click', {
         merchant: product.merchant,
-        product_id: product.id,
+        locale: 'en',
+        product_slug: product.slug,
         product_name: product.name,
+        guide_slug: pageType === 'guide' || pageType === 'comparison' ? pageSlug : undefined,
         category: product.category,
         page_type: pageType,
-        cta_position: position
+        link_position: position,
+        destination_type: 'merchant_product'
       })}
     >
       {children}

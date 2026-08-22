@@ -32,7 +32,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const currentPath = `/gaming-gear/products/${product.slug}`;
   return (
     <main className="commerce-page">
-      <CommercePageView pageType="product" category={product.category} productId={product.id} productName={product.name} />
+      <CommercePageView pageType="product" pageSlug={product.slug} category={product.category} productSlug={product.slug} productName={product.name} />
       <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: product.name }]} />
       <section className="product-hero">
         <div className="product-hero__image"><Image src={product.image} alt={`${product.name} product image`} fill priority sizes="(max-width: 820px) 94vw, 48vw" unoptimized /></div>

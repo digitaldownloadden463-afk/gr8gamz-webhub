@@ -25,7 +25,7 @@ export default function GamingGearPage() {
   };
   return (
     <main className="commerce-page">
-      <CommercePageView pageType="hub" />
+      <CommercePageView pageType="hub" pageSlug="gaming-gear" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
       <section className="commerce-hero">
         <div>
