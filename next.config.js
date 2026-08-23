@@ -42,7 +42,7 @@ const nextConfig = {
       "object-src 'none'",
       "frame-ancestors 'self'",
       "form-action 'self'",
-      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets2.razerzone.com https://assets3.razerzone.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
+      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets2.razerzone.com https://assets3.razerzone.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google",
       "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://www.googletagmanager.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep2.adtrafficquality.google",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
