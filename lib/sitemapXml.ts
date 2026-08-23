@@ -1,4 +1,5 @@
 import { canonical, siteUrl } from '@/lib/features';
+import { categoryEditorialReviewedAt, getCategoryEditorialRecords } from '@/lib/categoryEditorial';
 import { getAllGames } from '@/lib/games';
 import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHubs } from '@/lib/gameRegistry';
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
@@ -62,7 +63,9 @@ export function partnerGameEntries(page: number) {
 }
 
 export function collectionEntries() {
-  const categoryRoutes = getRegistryCategories().flatMap((category) => [
+  const editorialSlugs = new Set(getCategoryEditorialRecords().map((record) => record.slug));
+  const categories = getRegistryCategories(1).filter((category) => category.count >= 4 || editorialSlugs.has(category.slug));
+  const categoryRoutes = categories.flatMap((category) => [
     `/categories/${category.slug}`,
     ...Array.from({ length: Math.max(0, Math.ceil(category.count / 48) - 1) }, (_, index) => `/categories/${category.slug}/page/${index + 2}`)
   ]);
@@ -85,7 +88,11 @@ export function collectionEntries() {
     ...controlRoutes,
     ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
   ];
-  return routes.map((route) => urlEntry(route, undefined, route === '/games' ? '0.85' : '0.65')).join('');
+  return routes.map((route) => {
+    const categorySlug = route.match(/^\/categories\/([^/]+)/)?.[1];
+    const lastmod = categorySlug && editorialSlugs.has(categorySlug) ? categoryEditorialReviewedAt : undefined;
+    return urlEntry(route, lastmod, route === '/games' ? '0.85' : '0.65');
+  }).join('');
 }
 
 export function commerceEntries() {

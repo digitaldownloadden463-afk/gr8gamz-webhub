@@ -1,10 +1,8 @@
 import { notFound } from 'next/navigation';
 import CategoryDirectory from '@/components/CategoryDirectory';
-import { canonical } from '@/lib/features';
-import { getRegistryCategories, getRegistryGamesByCategory } from '@/lib/gameRegistry';
+import { categoryPageMetadata, categoryPageStructuredData, getCategoryPageData, parseCategoryPageNumber } from '@/lib/categoryPages';
 
 type PageProps = { params: Promise<{ slug: string; page: string }> };
-const pageSize = 48;
 
 export const revalidate = 86400;
 
@@ -14,29 +12,24 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug, page } = await params;
-  const pageNumber = Number.parseInt(page, 10);
-  const category = getRegistryCategories(1).find((item) => item.slug === slug);
-  const totalPages = category ? Math.max(1, Math.ceil(category.count / pageSize)) : 0;
-  if (!category || !Number.isInteger(pageNumber) || pageNumber < 2 || pageNumber > totalPages) return {};
-  return {
-    title: `${category.name} Games - Page ${pageNumber}`,
-    description: `Browse page ${pageNumber} of ${category.name.toLowerCase()} games on GR8 GAMZ.`,
-    alternates: { canonical: canonical(`/categories/${category.slug}/page/${pageNumber}`) }
-  };
+  const pageNumber = parseCategoryPageNumber(page);
+  if (pageNumber === null) return {};
+  const data = getCategoryPageData(slug, pageNumber);
+  return data && pageNumber >= 2 ? categoryPageMetadata(data) : {};
 }
 
 export default async function CategoryPagedPage({ params }: PageProps) {
   const { slug, page } = await params;
-  const pageNumber = Number.parseInt(page, 10);
-  const category = getRegistryCategories(1).find((item) => item.slug === slug);
-  const allGames = category ? getRegistryGamesByCategory(slug) : [];
-  const totalPages = Math.max(1, Math.ceil(allGames.length / pageSize));
-  if (!category || !Number.isInteger(pageNumber) || pageNumber < 2 || pageNumber > totalPages) notFound();
-  const games = allGames.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+  const pageNumber = parseCategoryPageNumber(page);
+  if (pageNumber === null) notFound();
+  const data = getCategoryPageData(slug, pageNumber);
+  if (!data || pageNumber < 2) notFound();
+  const jsonLd = categoryPageStructuredData(data);
 
   return (
     <main>
-      <CategoryDirectory category={category} games={games} page={pageNumber} totalPages={totalPages} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <CategoryDirectory category={data.category} games={data.games} page={data.page} totalPages={data.totalPages} />
     </main>
   );
 }
