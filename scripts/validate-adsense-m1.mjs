@@ -50,6 +50,10 @@ expect(slot.includes('MutationObserver'), 'Ad fill/error state containment is mi
 for (const domain of ['pagead2.googlesyndication.com', 'googleads.g.doubleclick.net', 'tpc.googlesyndication.com', 'fundingchoicesmessages.google.com', 'ep2.adtrafficquality.google']) {
   expect(csp.includes(domain), `CSP is missing required domain ${domain}.`);
 }
+const scriptDirective = csp.match(/"script-src ([^"]+)"/)?.[1] ?? '';
+const frameDirective = csp.match(/"frame-src ([^"]+)"/)?.[1] ?? '';
+expect(scriptDirective.includes('https://ep2.adtrafficquality.google'), 'Ad traffic-quality script host is not allowed by script-src.');
+expect(frameDirective.includes('https://ep2.adtrafficquality.google'), 'Ad traffic-quality frame host is not allowed by frame-src.');
 
 const expectedPlacementFiles = [
   'app/page.tsx',

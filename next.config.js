@@ -47,7 +47,7 @@ const nextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
       "connect-src 'self' https://feeds.gamepix.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://csi.gstatic.com",
-      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com"
+      "frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamemonetize.co https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep2.adtrafficquality.google"
     ].join('; ');
 
     return [
