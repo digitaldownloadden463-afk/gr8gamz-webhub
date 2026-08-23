@@ -10,6 +10,7 @@ import { buyingGuides } from '@/src/data/commerce/guides';
 import { productComparisons } from '@/src/data/commerce/comparisons';
 import { canonical } from '@/lib/features';
 import { getBuyingGuide, getCommerceCategory, getCommerceProduct, getProductComparison, guidesForCategory } from '@/lib/commerce/catalogue';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 export function generateStaticParams() {
   return [...buyingGuides, ...productComparisons].map((page) => ({ category: page.category, slug: page.slug }));
@@ -58,6 +59,7 @@ export default async function CommerceEditorialPage({ params }: { params: Promis
       </section>
       {comparison ? <section className="commerce-next"><h2>Parent buying guide</h2><Link href={`/gaming-gear/${category.slug}/${comparison.parentGuideSlug}`} className="text-link">Use this comparison in the wider buying guide <ArrowRight size={18} aria-hidden="true" /></Link></section> : null}
       <section className="commerce-next"><h2>Keep comparing</h2><div className="guide-link-grid">{guidesForCategory(category.slug).filter((item) => item.slug !== slug).slice(0, 3).map((item) => <Link key={item.slug} href={`/gaming-gear/${item.category}/${item.slug}`}><strong>{item.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div></section>
+      <AdSensePlacement placement="editorial-footer" />
     </main>
   );
 }

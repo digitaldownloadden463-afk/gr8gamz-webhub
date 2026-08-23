@@ -8,6 +8,7 @@ import { buyingGuides } from '@/src/data/commerce/guides';
 import { commerceProducts } from '@/src/data/commerce/products';
 import { commerceCategories } from '@/lib/commerce/catalogue';
 import { canonical } from '@/lib/features';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 export const metadata: Metadata = {
   title: 'Gaming Gear Guides and Razer Product Comparisons',
@@ -55,6 +56,7 @@ export default function GamingGearPage() {
         <div className="section-heading"><span className="eyebrow">Current shortlist</span><h2>Compare a deliberately small set of current products.</h2></div>
         <div className="product-grid">{commerceProducts.slice(0, 6).map((product, index) => <ProductCard key={product.slug} product={product} pageType="hub" pageSlug="gaming-gear" priority={index < 2} />)}</div>
       </section>
+      <AdSensePlacement placement="editorial-footer" />
     </main>
   );
 }

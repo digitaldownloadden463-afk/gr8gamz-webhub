@@ -1,3 +1,5 @@
+import type { AdPlacementId } from './placements';
+
 export type AdDensity = 'none' | 'low' | 'low-medium' | 'medium' | 'medium-high';
 export type AdFormat = 'in-page' | 'side-rail' | 'anchor' | 'vignette' | 'multiplex';
 export type AdPageType =
@@ -15,30 +17,30 @@ export type AdPolicy = {
   adDensity: AdDensity;
   autoAdsAllowed: boolean;
   allowedFormats: readonly AdFormat[];
-  manualSlots: readonly string[];
+  manualSlots: readonly AdPlacementId[];
 };
 
 const policies: Record<AdPageType, AdPolicy> = {
   home: {
     pageType: 'home',
-    adDensity: 'medium',
-    autoAdsAllowed: true,
-    allowedFormats: ['in-page', 'side-rail'],
-    manualSlots: ['after-early-section', 'deep-content']
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['home-content-primary']
   },
   discovery: {
     pageType: 'discovery',
-    adDensity: 'medium-high',
-    autoAdsAllowed: true,
-    allowedFormats: ['in-page', 'side-rail'],
-    manualSlots: ['after-game-row', 'deep-content']
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['discovery-after-catalogue']
   },
   'game-profile': {
     pageType: 'game-profile',
-    adDensity: 'medium',
-    autoAdsAllowed: true,
-    allowedFormats: ['in-page', 'side-rail'],
-    manualSlots: ['after-game-information']
+    adDensity: 'none',
+    autoAdsAllowed: false,
+    allowedFormats: [],
+    manualSlots: []
   },
   play: {
     pageType: 'play',
@@ -49,17 +51,17 @@ const policies: Record<AdPageType, AdPolicy> = {
   },
   'gaming-gear-hub': {
     pageType: 'gaming-gear-hub',
-    adDensity: 'medium',
-    autoAdsAllowed: true,
-    allowedFormats: ['in-page', 'side-rail'],
-    manualSlots: ['between-editorial-sections']
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['editorial-footer']
   },
   'buying-guide': {
     pageType: 'buying-guide',
-    adDensity: 'low-medium',
-    autoAdsAllowed: true,
-    allowedFormats: ['in-page', 'side-rail'],
-    manualSlots: ['between-editorial-sections']
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['editorial-footer']
   },
   product: {
     pageType: 'product',
@@ -93,6 +95,11 @@ const legalRoutes = new Set([
   '/terms'
 ]);
 
+const interactionRoutes = new Set([
+  '/games',
+  '/my-arcade'
+]);
+
 function withoutLocale(pathname: string) {
   const parts = pathname.split('/').filter(Boolean);
   if (parts[0] && /^(?:es|pt-BR|fr|de|it|pl|tr|id|ja|ko|hi|ar)$/.test(parts[0])) parts.shift();
@@ -102,7 +109,7 @@ function withoutLocale(pathname: string) {
 export function getAdPolicy(pathname: string): AdPolicy {
   const route = withoutLocale(pathname);
   if (route === '/') return policies.home;
-  if (legalRoutes.has(route) || route.startsWith('/challenge/')) return policies.legal;
+  if (legalRoutes.has(route) || interactionRoutes.has(route) || route.startsWith('/challenge/')) return policies.legal;
   if (route.startsWith('/arcade/') || /^\/more-free-games\/[^/]+\/play\/?$/.test(route)) return policies.play;
   if (route.startsWith('/gaming-gear/products/')) return policies.product;
   if (route === '/gaming-gear') return policies['gaming-gear-hub'];

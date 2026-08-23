@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CalendarCheck, ChevronDown } from 'lucide-react';
 import RegistryGameCard from '@/components/RegistryGameCard';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 import {
   categorySelectionCriteria,
   categorySelectionLabels,
@@ -185,6 +186,8 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
           </nav>
         </details>
       ) : null}
+
+      <AdSensePlacement placement="discovery-after-catalogue" />
 
       {page === 1 && editorial ? <CategoryEditorialDetails editorial={editorial} reviewedAt={reviewedAt} /> : null}
     </>
