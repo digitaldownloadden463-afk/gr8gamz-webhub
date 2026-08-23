@@ -1,9 +1,9 @@
 {
-  "baseUrl": "http://127.0.0.1:3101",
+  "baseUrl": "http://127.0.0.1:3117",
   "sitemapFiles": 75,
-  "regularUrls": 38520,
+  "regularUrls": 38521,
   "imageEntries": 35969,
-  "emittedLastmods": 77,
+  "emittedLastmods": 447,
   "duplicateSitemapChildren": 0,
   "duplicateRegularUrls": 0,
   "staleSharedLastmods": 0,

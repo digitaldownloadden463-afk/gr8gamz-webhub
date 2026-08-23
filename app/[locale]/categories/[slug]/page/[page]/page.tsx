@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LocalizedCollectionPage } from '@/components/LocalizedPages';
 import { getGlobalLaunchGames } from '@/lib/globalLaunch';
+import { parseCategoryPageNumber } from '@/lib/categoryPages';
 import { getRegistryCategories, slugifyRegistryValue } from '@/lib/gameRegistry';
 import { categoryName, localizedAlternates, localizedCanonical, nonEnglishLocales, tr, type Locale } from '@/lib/i18n';
 
@@ -20,19 +21,24 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug, page } = await params;
   const category = getRegistryCategories(1).find((item) => item.slug === slug);
-  if (!category) return {};
-  const number = Number.parseInt(page, 10);
+  const number = parseCategoryPageNumber(page);
+  const count = getGlobalLaunchGames().filter((game) => slugifyRegistryValue(game.category) === slug).length;
+  const totalPages = Math.max(1, Math.ceil(count / pageSize));
+  if (!category || number === null || number < 2 || number > totalPages) return {};
   const text = tr(locale);
   return {
-    title: `${categoryName(locale, category.name)} ${text.common.page} ${number}`,
-    description: text.hubs.gamesIntro,
+    title: `${categoryName(locale, category.name)} ${text.common.page} ${number} / ${totalPages}`,
+    description: `${text.hubs.gamesIntro} ${text.common.page} ${number} / ${totalPages}.`,
+    robots: { index: true, follow: true },
     alternates: { canonical: localizedCanonical(locale, `/categories/${slug}/page/${number}`), languages: localizedAlternates(`/categories/${slug}/page/${number}`) }
   };
 }
 
 export default async function Page({ params }: PageProps) {
   const { locale, slug, page } = await params;
-  const number = Number.parseInt(page, 10);
-  if (!Number.isFinite(number) || number < 2) notFound();
+  const number = parseCategoryPageNumber(page);
+  const count = getGlobalLaunchGames().filter((game) => slugifyRegistryValue(game.category) === slug).length;
+  const totalPages = Math.max(1, Math.ceil(count / pageSize));
+  if (number === null || number < 2 || number > totalPages) notFound();
   return <LocalizedCollectionPage locale={locale} categorySlug={slug} page={number} />;
 }

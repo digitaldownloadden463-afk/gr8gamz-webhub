@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-08-22",
+  "upgradedCategories": [
+    "action",
+    "adventure",
+    "multiplayer",
+    "puzzle",
+    "racing",
+    "shooter",
+    "sports",
+    "strategy"
+  ],
+  "categoryCounts": {
+    "action": 3081,
+    "adventure": 2143,
+    "multiplayer": 316,
+    "puzzle": 8473,
+    "racing": 2314,
+    "shooter": 1,
+    "sports": 1122,
+    "strategy": 59
+  },
+  "validEnglishCategoryPages": 702,
+  "upgradedCategoryPages": 370,
+  "sitemapCategoryPages": 698,
+  "paginationClassification": {
+    "usefulAndIndexable": 702,
+    "usefulDiscoveryNotIndependentlyIndexable": 0,
+    "duplicateLegacyHubsRedirected": 6,
+    "emptyGeneratedPages": 0,
+    "invalidOrOutOfRange": "404 by range rule",
+    "obsolete": 6
+  },
+  "contextualLinksValidated": 72,
+  "fabricatedPopularityLabels": 0,
+  "errors": []
+}

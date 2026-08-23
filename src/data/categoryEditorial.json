@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-08-22",
+  "catalogueSnapshotCommit": "fd48ca87fd2924999493f384f9a49d2eac2c521c",
+  "selectionCriteria": {
+    "gr8-original": "A game built and published by GR8 GAMZ whose registry source is GR8 Originals.",
+    "editors-pick": "A manually reviewed, playable starting point chosen to represent a distinct style within the category. This is not a player rating or popularity claim.",
+    "quick-play": "The game record describes a short run, simple loop or immediate retry format.",
+    "mobile-friendly": "The game record explicitly supports touch, phone or mobile play; individual provider controls can still vary.",
+    "keyboard-friendly": "The game record explicitly names keyboard, arrow-key or WASD controls.",
+    "longer-session": "The game record explicitly describes extended progression, campaign play or a longer session.",
+    "recently-added": "The canonical registry has a valid addition date within 90 days of the category review.",
+    "popular-on-gr8": "Requires category-level GR8 GAMZ analytics. This label is not shown when that evidence is unavailable."
+  },
+  "categories": [
+    {
+      "slug": "action",
+      "name": "Action",
+      "title": "Action Games: Fast Browser Challenges",
+      "description": "Browse action games built around reactions, movement, survival and fast retries, with clear starting points for touch, mouse and keyboard play.",
+      "h1": "Action games for fast reactions and bold moves",
+      "introduction": "Action games ask you to react while the situation is changing. The catalogue ranges from short survival runs and physics stunts to battle arenas and movement-heavy challenges, so the right starting point depends on how much control and pressure you want.",
+      "distinction": "What separates action from a general arcade game is sustained pressure: movement, timing or targeting keeps influencing the next decision instead of ending after one isolated move.",
+      "subgenres": [
+        { "name": "Survival and dodging", "description": "Stay in motion, read hazards and recover quickly after a failed run." },
+        { "name": "Battles and brawlers", "description": "Manage positioning, attacks and incoming pressure in direct confrontations." },
+        { "name": "Physics and stunt action", "description": "Use momentum, impacts and unusual movement as part of the challenge." },
+        { "name": "Running and platform action", "description": "Time jumps, lane changes or short movement sequences under pressure." }
+      ],
+      "choosing": [
+        "Choose a touch-led run when you want a short session with immediate retries.",
+        "Choose keyboard or mouse controls when precise movement or targeting matters more than portability.",
+        "Check the game profile before loading an external title because control detail and device fit vary by game."
+      ],
+      "deviceGuidance": "Tap and swipe action can work well on phones, while games with several movement or aim controls are usually easier on a keyboard, mouse or landscape screen.",
+      "controlsGuidance": "Look for one-input survival games for the simplest start. Pick explicit keyboard, WASD or mouse controls when you want finer movement and targeting.",
+      "sessionGuidance": "Short survival and stunt loops suit a quick break. Battle and exploration-led action can take longer because each attempt has more decisions.",
+      "editorialPicks": [
+        { "slug": "space-tap-survival", "labels": ["editors-pick", "gr8-original", "quick-play"], "rationale": "A focused hold-to-fly survival loop that demonstrates the category without a complex control setup." },
+        { "slug": "body-drop-3d", "labels": ["editors-pick"], "rationale": "A physics-led option for players who want action built around aiming, triggering and stunt outcomes." },
+        { "slug": "war-the-knights", "labels": ["editors-pick", "keyboard-friendly"], "rationale": "A battle-oriented choice whose profile supports tap, drag or keyboard input depending on device." }
+      ],
+      "originalSlugs": ["space-tap-survival", "zombie-lane-runner", "shadow-ninja-leap"],
+      "relatedCategorySlugs": ["adventure", "multiplayer", "shooter", "arcade"],
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "adventure",
+      "name": "Adventure",
+      "title": "Adventure Games: Explore and Make Progress",
+      "description": "Find browser adventure games centred on exploration, discovery, choices and progress, from quick quests to broader simulation-style journeys.",
+      "h1": "Adventure games built around discovery",
+      "introduction": "Adventure games give the next place, choice or objective as much importance as the immediate action. Some are compact quests with a clear decision loop; others use driving, exploration or simulation systems to create a longer-feeling journey.",
+      "distinction": "The category is defined by progression through places, objectives or discoveries. Reflexes can matter, but they support a sense of moving through an experience rather than chasing one isolated score.",
+      "subgenres": [
+        { "name": "Quest and choice games", "description": "Advance by choosing routes, solving local problems or taking measured risks." },
+        { "name": "Exploration adventures", "description": "Move through new areas and learn what the game expects as you progress." },
+        { "name": "Driving and vehicle journeys", "description": "Use travel, routes and changing environments as the core of the session." },
+        { "name": "Idle and progression play", "description": "Build resources or unlock progress through a slower, repeatable loop." }
+      ],
+      "choosing": [
+        "Start with a compact quest when you want a clear goal without a long setup.",
+        "Choose exploration or simulation when you have time to learn more controls and systems.",
+        "Use the profile's device notes before committing to a vehicle or 3D game on a small screen."
+      ],
+      "deviceGuidance": "Choice-led and touch-led adventures can travel well. Vehicle, 3D movement and multi-control games are generally clearer on tablets, landscape phones or desktop.",
+      "controlsGuidance": "Simple choices and taps reduce the learning curve. Directional movement, camera control or vehicle input gives more freedom but asks more from the device.",
+      "sessionGuidance": "A door choice or compact quest can fit a short break; exploration, driving and progression systems usually reward a longer visit.",
+      "editorialPicks": [
+        { "slug": "dungeon-door-dash", "labels": ["editors-pick", "gr8-original", "quick-play"], "rationale": "A concise risk-choice adventure that reaches its main decision loop quickly." },
+        { "slug": "bus-driver-simulator-3d", "labels": ["editors-pick"], "rationale": "A vehicle-led journey for players who prefer a larger environment and a more involved control setup." },
+        { "slug": "flamit", "labels": ["editors-pick"], "rationale": "A contrasting adventure pick for players who want direct movement and discovery rather than idle progression." }
+      ],
+      "originalSlugs": ["dungeon-door-dash"],
+      "relatedCategorySlugs": ["action", "puzzle", "strategy", "arcade"],
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "multiplayer",
+      "name": "Multiplayer",
+      "title": "Multiplayer Games: Arenas and Competitive Play",
+      "description": "Browse multiplayer browser games with arena movement, competitive rounds and quick rematches, plus guidance on controls and session fit.",
+      "h1": "Multiplayer games for competitive browser sessions",
+      "introduction": "Multiplayer games are organised around other participants, shared arenas or competitive round structures. They can feel immediate, but each game handles matchmaking, opponents and online availability differently, so read the profile and in-game prompts before assuming a specific mode.",
+      "distinction": "Unlike a solo score chase, multiplayer play depends on a shared or competitive game structure. GR8 GAMZ does not claim that every listed session always contains live human opponents.",
+      "subgenres": [
+        { "name": "Arena survival", "description": "Move, grow or outlast rivals in an open competitive space." },
+        { "name": "Team and battle rounds", "description": "Use positioning and direct action in structured confrontations." },
+        { "name": "Race and obstacle competition", "description": "Reach a finish or survive a course while other competitors add pressure." },
+        { "name": "Quick rematch games", "description": "Short rounds make it easy to learn from one result and try again." }
+      ],
+      "choosing": [
+        "Choose a simple arena when you want to understand the objective quickly.",
+        "Prefer explicit keyboard or landscape controls when movement and aiming happen at the same time.",
+        "Expect opponent availability and online features to vary inside each external game."
+      ],
+      "deviceGuidance": "Touch-friendly arenas can work on phones, while busy maps and simultaneous movement controls are easier to read on a larger landscape or desktop display.",
+      "controlsGuidance": "Look for clear movement-only controls for a quick start. Games that combine movement, aiming and abilities benefit from keyboard or well-spaced on-screen controls.",
+      "sessionGuidance": "Rounds can be short, but rematches and arena progression can turn a quick visit into a longer session.",
+      "editorialPicks": [
+        { "slug": "yenemy-io", "labels": ["editors-pick"], "rationale": "A direct arena-style starting point for players who want competitive movement and repeat rounds." },
+        { "slug": "worm-hunt-snake-game-io-zone", "labels": ["editors-pick"], "rationale": "A familiar growth-and-survival structure that makes the shared arena objective easy to recognise." },
+        { "slug": "race-time", "labels": ["editors-pick", "mobile-friendly"], "rationale": "A touch-oriented competitive option for players who prefer a race format over an open battle arena." }
+      ],
+      "originalSlugs": [],
+      "relatedCategorySlugs": ["action", "strategy", "racing", "sports"],
+      "gearGuide": {
+        "path": "/gaming-gear/gaming-headsets/best-gaming-headset",
+        "label": "Compare gaming headsets for communication and immersion",
+        "description": "A secondary guide for players considering clearer voice communication or a more private audio setup."
+      },
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "puzzle",
+      "name": "Puzzle",
+      "title": "Puzzle Games: Logic, Blocks and Brain Teasers",
+      "description": "Choose from logic, block, matching, sorting and spatial puzzle games, with practical guidance for quick touch play or deeper keyboard challenges.",
+      "h1": "Puzzle games for logic, patterns and careful moves",
+      "introduction": "Puzzle games reward understanding a rule and applying it carefully. The catalogue includes quick matching and sorting loops, spatial movement problems, memory challenges and board-filling games, so difficulty depends as much on the rule set as the controls.",
+      "distinction": "Progress comes primarily from recognising patterns, planning moves or testing a solution. Speed can add pressure, but the central challenge is deciding what to do next.",
+      "subgenres": [
+        { "name": "Block and spatial puzzles", "description": "Rotate, move or place shapes while managing limited space." },
+        { "name": "Matching and sorting", "description": "Group colours, objects or symbols under a clear set of rules." },
+        { "name": "Logic and route puzzles", "description": "Plan a sequence of moves to reach a target or unlock a path." },
+        { "name": "Memory and observation", "description": "Recall positions or notice visual differences rather than relying on speed alone." }
+      ],
+      "choosing": [
+        "Pick matching or sorting for a short touch-friendly session.",
+        "Pick spatial movement or route planning when you want a problem that may take several attempts.",
+        "Check for explicit keyboard controls before opening a movement puzzle on a phone."
+      ],
+      "deviceGuidance": "Tap, drag and matching puzzles are often comfortable on phones. Spatial movement puzzles with WASD or arrow keys are better suited to a physical keyboard.",
+      "controlsGuidance": "The simplest puzzle controls are tap and drag. Keyboard-driven block movement offers precise input but should be chosen with the device in mind.",
+      "sessionGuidance": "Matching and memory rounds can be brief. Logic chains and difficult spatial puzzles may need a longer focused session.",
+      "editorialPicks": [
+        { "slug": "bubble-pop-blitz", "labels": ["editors-pick", "gr8-original", "quick-play", "mobile-friendly"], "rationale": "A direct tap-and-match Original for a short puzzle session with little control setup." },
+        { "slug": "bloxorz", "labels": ["editors-pick", "keyboard-friendly"], "rationale": "A spatial block puzzle with explicit WASD and arrow-key controls for players who want deliberate movement planning." },
+        { "slug": "tentrix", "labels": ["editors-pick", "mobile-friendly"], "rationale": "A drag-and-place grid puzzle whose profile supports mobile, tablet and desktop play." }
+      ],
+      "originalSlugs": ["bubble-pop-blitz", "crystal-match-quest", "lava-tile-escape", "ice-slide-puzzle", "astro-memory-grid"],
+      "relatedCategorySlugs": ["strategy", "adventure", "arcade"],
+      "gearGuide": {
+        "path": "/gaming-gear/gaming-mice/best-gaming-mouse",
+        "label": "Compare mouse shapes for precise desktop control",
+        "description": "Optional reading for players who spend longer sessions on drag, placement or pointer-led games."
+      },
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "racing",
+      "name": "Racing",
+      "title": "Racing Games: Cars, Bikes and Time Trials",
+      "description": "Browse racing and driving games for cars, bikes, stunts and time trials, with guidance for touch steering, keyboard control and session length.",
+      "h1": "Racing games for speed, steering and clean timing",
+      "introduction": "Racing games combine route reading with steering, braking or jump timing. Some aim for clean laps and time trials; others focus on stunts, traffic, crashes or survival, so choose by control style before choosing by vehicle.",
+      "distinction": "Movement is judged against a route, obstacle sequence, clock or rival. Even crash-focused games remain racing-led when steering and forward progress drive the main challenge.",
+      "subgenres": [
+        { "name": "Track and time-trial racing", "description": "Learn corners and improve a repeatable route against time or rivals." },
+        { "name": "Bike and stunt runs", "description": "Balance speed with jumps, landings and obstacle timing." },
+        { "name": "Traffic and chase games", "description": "Read moving hazards while maintaining speed and control." },
+        { "name": "Crash and demolition driving", "description": "Use impacts and vehicle control as part of the objective." }
+      ],
+      "choosing": [
+        "Choose tap or hold steering for a quick mobile run.",
+        "Choose explicit keyboard steering when small corrections and several controls matter.",
+        "Use landscape orientation for wider tracks and on-screen driving controls where supported."
+      ],
+      "deviceGuidance": "One-input racers can work well on phones. Detailed steering, throttle and brake controls are easier on desktop or a larger landscape screen.",
+      "controlsGuidance": "Tap-to-jump and hold-to-steer games start quickly. Keyboard and multi-button driving provides more precision but needs more space and practice.",
+      "sessionGuidance": "A stunt run or chase can fit a few minutes. Lap improvement and broader driving simulations encourage repeat attempts or longer play.",
+      "editorialPicks": [
+        { "slug": "turbo-drift-grid", "labels": ["editors-pick", "gr8-original", "quick-play"], "rationale": "A GR8 Original with a clear hold-to-steer loop for a fast introduction to the category." },
+        { "slug": "slope-racing-3d", "labels": ["editors-pick", "keyboard-friendly"], "rationale": "A precision option with explicit keyboard, touch or on-screen steering guidance." },
+        { "slug": "moto-x3m-spooky-land", "labels": ["editors-pick"], "rationale": "A bike-and-obstacle alternative for players who want jumps and timing rather than conventional lap racing." }
+      ],
+      "originalSlugs": ["turbo-drift-grid", "monster-truck-tap"],
+      "relatedCategorySlugs": ["sports", "action", "arcade"],
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "shooter",
+      "name": "Shooting",
+      "title": "Shooting Games: Aim, Dodge and Survive",
+      "description": "Start with GR8 GAMZ shooting play built around aiming, movement and survival, then continue into related action and strategy categories.",
+      "h1": "Shooting games for aim, movement and survival",
+      "introduction": "Shooting games combine target selection with movement, timing or survival. This focused hub currently starts with a GR8 Original space shooter and links into broader action and strategy paths rather than pretending a one-game shelf is a large catalogue.",
+      "distinction": "Aiming or projectile management is the central action. Dodging and positioning still matter, but they support the decision about when and where to fire.",
+      "subgenres": [
+        { "name": "Arcade space shooting", "description": "Move through hazards while automatic or direct fire deals with incoming targets." },
+        { "name": "Target and survival play", "description": "Balance aim with staying clear of threats for as long as possible." },
+        { "name": "Tactical shooting", "description": "Plan position and target order when the game offers slower, more deliberate encounters." }
+      ],
+      "choosing": [
+        "Start with drag or pointer movement when you want aiming without a large keyboard layout.",
+        "Move into Action for a wider set of combat and survival formats.",
+        "Choose Strategy when planning and defence matter more than reflex shooting."
+      ],
+      "deviceGuidance": "Drag movement can suit touch screens, while games that separate movement and aiming generally need a keyboard and mouse or a well-designed landscape control layout.",
+      "controlsGuidance": "Check whether firing is automatic or manual. Automatic fire lets you focus on movement; separate aim and fire controls create a more demanding setup.",
+      "sessionGuidance": "Arcade survival runs are designed for quick retries. Tactical or defence-led shooting usually asks for more planning and a longer session.",
+      "editorialPicks": [
+        { "slug": "alien-invader-swarm", "labels": ["editors-pick", "gr8-original", "quick-play", "mobile-friendly"], "rationale": "The current category entry: a drag-to-move GR8 Original with automatic fire and a clear survival objective." }
+      ],
+      "originalSlugs": ["alien-invader-swarm"],
+      "relatedCategorySlugs": ["action", "arcade", "strategy"],
+      "gearGuide": {
+        "path": "/gaming-gear/gaming-mice/best-gaming-mouse-for-fps",
+        "label": "Compare current mouse shapes for FPS play",
+        "description": "Optional hardware guidance for players moving from simple browser aiming to mouse-led PC shooters."
+      },
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "sports",
+      "name": "Sports",
+      "title": "Sports Games: Football, Basketball and Skill",
+      "description": "Browse sports games for football, basketball, golf, bowling and timing challenges, with practical control and device guidance.",
+      "h1": "Sports games for scoring, timing and skill shots",
+      "introduction": "Sports games turn familiar scoring ideas into short browser challenges. Some recreate a compact match or contest, while others isolate one skill such as a penalty, putt, bowl or basketball shot so you can retry it quickly.",
+      "distinction": "The objective is tied to a recognisable sport, scoring system or athletic skill. Physics and timing matter, but the sport gives each attempt its structure.",
+      "subgenres": [
+        { "name": "Football challenges", "description": "Take penalties, manage quick matches or aim for goal-based scoring." },
+        { "name": "Basketball shooting", "description": "Control aim, release and movement in shot-focused or competitive formats." },
+        { "name": "Precision sports", "description": "Putt, bowl or aim with careful power and direction." },
+        { "name": "Arcade sports", "description": "Use simplified rules and quick rounds for immediate replay value." }
+      ],
+      "choosing": [
+        "Choose a single-skill challenge for a short session and simple controls.",
+        "Choose a match-style game when you want movement, defence and scoring in one round.",
+        "Use drag-and-release games for touch play; check the profile when keyboard movement is part of the sport."
+      ],
+      "deviceGuidance": "Drag, swipe and tap shooting games usually fit phones and tablets. Match-style sports with simultaneous movement controls are clearer in landscape or on desktop.",
+      "controlsGuidance": "Power-and-aim gestures make precision sports approachable. Match games add movement, action buttons or player switching and need more practice.",
+      "sessionGuidance": "A penalty, putt or shot challenge can last a few minutes. Tournament and match formats are better when you have time for several rounds.",
+      "editorialPicks": [
+        { "slug": "pixel-goal-hero", "labels": ["editors-pick", "gr8-original", "quick-play", "mobile-friendly"], "rationale": "A drag-and-release football Original that reaches the scoring challenge immediately." },
+        { "slug": "basketball-stars", "labels": ["editors-pick"], "rationale": "A broader basketball option for players who want movement and competitive controls rather than one isolated shot." },
+        { "slug": "penalty-kick-wiz", "labels": ["editors-pick"], "rationale": "A focused football choice for players who want a recognisable scoring situation and quick retries." }
+      ],
+      "originalSlugs": ["pixel-goal-hero", "cyber-basketball-shots", "neon-air-hockey", "cyber-bowling-blitz", "galaxy-golf-putt"],
+      "relatedCategorySlugs": ["racing", "action", "multiplayer", "arcade"],
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
+    {
+      "slug": "strategy",
+      "name": "Strategy",
+      "title": "Strategy Games: Planning, Defence and Tactics",
+      "description": "Browse strategy games for planning, defence, sequencing and resource decisions, from quick traffic control to longer battle systems.",
+      "h1": "Strategy games for planning before you act",
+      "introduction": "Strategy games reward decisions that shape what happens later. The catalogue includes traffic control, tower defence, battle simulation, merging and incremental systems, so a good choice depends on whether you want a short sequencing puzzle or a longer tactical session.",
+      "distinction": "The main challenge is the consequence of a plan: placement, timing, resource use or target order matters beyond the current move.",
+      "subgenres": [
+        { "name": "Tower defence", "description": "Place or improve defences to manage repeated waves and changing pressure." },
+        { "name": "Battle simulation", "description": "Choose units, positions or upgrades before watching the plan unfold." },
+        { "name": "Traffic and sequencing", "description": "Control the order and timing of actions to prevent conflicts." },
+        { "name": "Merge and incremental strategy", "description": "Build strength or resources through repeated, planned upgrades." }
+      ],
+      "choosing": [
+        "Choose traffic or sequencing for a short decision loop.",
+        "Choose tower defence when you want placement, upgrades and repeated waves.",
+        "Choose battle simulation or incremental systems when you have time to learn more rules."
+      ],
+      "deviceGuidance": "Tap-led placement and sequencing can work on touch screens. Dense maps, many units and small controls are easier to read on tablets or desktop.",
+      "controlsGuidance": "Strategy often uses pointer or touch placement rather than fast movement. The important control question is whether the interface remains readable at your screen size.",
+      "sessionGuidance": "A traffic puzzle can be brief. Defence, simulation and progression systems often reward a longer session and repeat planning.",
+      "editorialPicks": [
+        { "slug": "traffic-tap-chaos", "labels": ["editors-pick", "gr8-original", "quick-play", "mobile-friendly"], "rationale": "A compact tap-based Original that demonstrates sequencing and consequence without a long setup." },
+        { "slug": "perimeter", "labels": ["editors-pick", "longer-session"], "rationale": "A broader tactical choice for players who want more systems and a desktop-oriented session." },
+        { "slug": "tower-defense", "labels": ["editors-pick"], "rationale": "A direct route into placement and defence for players who want the category's core planning loop." }
+      ],
+      "originalSlugs": ["traffic-tap-chaos"],
+      "relatedCategorySlugs": ["puzzle", "multiplayer", "action"],
+      "gearGuide": {
+        "path": "/gaming-gear/gaming-mice/best-ergonomic-gaming-mouse",
+        "label": "Compare mouse shapes for longer desktop sessions",
+        "description": "Optional reading for players who spend extended strategy sessions using pointer-led controls."
+      },
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    }
+  ]
+}
