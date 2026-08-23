@@ -9,6 +9,7 @@ import { getCatalogueStats } from '@/lib/catalogueStats';
 import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import { getRegistryCategories } from '@/lib/gameRegistry';
 import LenovoImpactTracking from '@/components/LenovoImpactTracking';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 const IMPACT_SITE_VERIFICATION = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
 
@@ -126,6 +127,8 @@ export default function HomePage() {
           />
         ))}
       </section>
+
+      <AdSensePlacement placement="home-content-primary" />
 
       <section className="spotlight-band" aria-label="Daily and trending games">
         <Link href="/gr8-trending" className="spotlight-card">

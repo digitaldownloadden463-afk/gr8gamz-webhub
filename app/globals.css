@@ -1605,9 +1605,27 @@ main summary {
 .adsense-slot {
   width: 100%;
   max-width: var(--content-width);
-  margin: 24px auto;
+  margin: 48px auto;
   overflow: hidden;
   contain: layout paint;
+  isolation: isolate;
+  min-width: 0;
+}
+
+.adsense-slot--manual {
+  border-block: 1px solid var(--line);
+  padding-block: 16px;
+}
+
+.adsense-slot .adsbygoogle {
+  width: 100%;
+  max-width: 100%;
+}
+
+.adsense-slot[data-ad-state="unfilled"],
+.adsense-slot[data-ad-state="error"] {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .adsense-slot__label {
@@ -1617,6 +1635,10 @@ main summary {
   font-size: .75rem;
   line-height: 1.2;
   text-align: center;
+}
+
+@media (max-width: 520px) {
+  .adsense-slot { margin-block: 40px; }
 }
 
 @media (max-width: 520px) {

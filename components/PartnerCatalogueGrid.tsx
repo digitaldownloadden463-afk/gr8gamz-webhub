@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import PartnerGameCard from '@/components/PartnerGameCard';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 
 export function PartnerCatalogueGrid({ page = 1 }: { page?: number }) {
@@ -38,6 +39,7 @@ export function PartnerCatalogueGrid({ page = 1 }: { page?: number }) {
             : <Link key={item.pageNumber} href={item.href}>{item.pageNumber}</Link>
         ))}
       </nav>
+      <AdSensePlacement placement="discovery-after-catalogue" />
     </section>
   );
 }
