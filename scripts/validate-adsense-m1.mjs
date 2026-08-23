@@ -53,9 +53,13 @@ for (const domain of ['pagead2.googlesyndication.com', 'googleads.g.doubleclick.
 const scriptDirective = csp.match(/"script-src ([^"]+)"/)?.[1] ?? '';
 const frameDirective = csp.match(/"frame-src ([^"]+)"/)?.[1] ?? '';
 const imageDirective = csp.match(/"img-src ([^"]+)"/)?.[1] ?? '';
+const styleDirective = csp.match(/"style-src ([^"]+)"/)?.[1] ?? '';
+const fontDirective = csp.match(/"font-src ([^"]+)"/)?.[1] ?? '';
 expect(scriptDirective.includes('https://ep2.adtrafficquality.google'), 'Ad traffic-quality script host is not allowed by script-src.');
 expect(frameDirective.includes('https://ep2.adtrafficquality.google'), 'Ad traffic-quality frame host is not allowed by frame-src.');
 expect(imageDirective.includes('https://ep1.adtrafficquality.google'), 'Ad traffic-quality pixel host is not allowed by img-src.');
+expect(styleDirective.includes('https://fonts.googleapis.com'), 'Google CMP stylesheet host is not allowed by style-src.');
+expect(fontDirective.includes('https://fonts.gstatic.com'), 'Google CMP font host is not allowed by font-src.');
 
 const expectedPlacementFiles = [
   'app/page.tsx',
