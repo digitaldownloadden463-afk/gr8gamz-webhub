@@ -47,7 +47,7 @@ expect(slot.includes("consent === 'accepted'"), 'Manual ads are not gated by exp
 expect(slot.includes('data-adtest={adsenseConfig.testMode'), 'Preview/test ad mode is not wired to manual units.');
 expect(slot.includes('MutationObserver'), 'Ad fill/error state containment is missing.');
 
-for (const domain of ['pagead2.googlesyndication.com', 'googleads.g.doubleclick.net', 'tpc.googlesyndication.com', 'fundingchoicesmessages.google.com']) {
+for (const domain of ['pagead2.googlesyndication.com', 'googleads.g.doubleclick.net', 'tpc.googlesyndication.com', 'fundingchoicesmessages.google.com', 'ep2.adtrafficquality.google']) {
   expect(csp.includes(domain), `CSP is missing required domain ${domain}.`);
 }
 
