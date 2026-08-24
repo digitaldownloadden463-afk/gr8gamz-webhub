@@ -9,6 +9,7 @@ const styles = read('app/globals.css');
 const policy = read('lib/ads/adPolicy.ts');
 const placements = read('lib/ads/placements.ts');
 const i18n = read('lib/i18n.ts');
+const renderedGraph = read('scripts/validate-rendered-link-graph.mjs');
 const sourceFiles = [
   'components/CategoryDirectory.tsx',
   'components/ControlDirectory.tsx',
@@ -34,6 +35,7 @@ expect(styles.includes('min-height: 44px;'), 'Pagination does not preserve 44px 
 expect(styles.includes('[dir="rtl"] .compact-pagination .pagination-arrow'), 'Compact pagination arrows are not RTL-aware.');
 expect(!styles.includes('.pagination-list') && !styles.includes('.pagination-directory'), 'Legacy numbered-pagination CSS remains.');
 expect(i18n.includes("const localizedCategoryPath = clean.replace("), 'Deep English category locale switches do not fall back to valid localized category hubs.');
+expect(!renderedGraph.includes('maxDepth > 3'), 'Rendered graph still assumes numbered pagination can keep every sequential page within three clicks.');
 
 const eligible = [
   ['app/page.tsx', 'home'],
