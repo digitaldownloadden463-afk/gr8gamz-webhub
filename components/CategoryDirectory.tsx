@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, CalendarCheck, ChevronDown } from 'lucide-react';
+import { CalendarCheck, ChevronDown } from 'lucide-react';
 import RegistryGameCard from '@/components/RegistryGameCard';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
+import CompactPagination from '@/components/CompactPagination';
 import {
   categorySelectionCriteria,
   categorySelectionLabels,
@@ -123,6 +124,10 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
     ? getRegistryGamesBySlugs(editorial.editorialPicks.map((pick) => pick.slug))
         .map((game) => ({ game, pick: editorial.editorialPicks.find((item) => item.slug === game.slug)! }))
     : [];
+  const supportsThreeAds = games.length >= 12;
+  const splitIndex = Math.min(24, Math.ceil(games.length / 2));
+  const firstGames = games.slice(0, splitIndex);
+  const remainingGames = games.slice(splitIndex);
 
   return (
     <>
@@ -159,35 +164,29 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
         </section>
       )}
 
-      <section className="game-grid" aria-label={`${name} games, page ${page}`}>
-        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-upper-content" /> : null}
+
+      <section className="game-grid" aria-label={`${name} games, page ${page}, first group`}>
+        {firstGames.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
       </section>
 
-      <nav className="pagination-nav" aria-label={`${name} game pages`}>
-        <div className="pagination-nav__previous">
-          {page > 1 ? <Link className="text-link" href={basePath}>First page</Link> : null}
-          {page > 1 ? <Link className="secondary-cta" href={pagePath(page - 1)}><ArrowLeft size={18} aria-hidden="true" /> Previous</Link> : null}
-        </div>
-        <span>Page {page} of {totalPages}</span>
-        <div className="pagination-nav__next">
-          {page < totalPages ? <Link className="cta" href={pagePath(page + 1)}>Next <ArrowRight size={18} aria-hidden="true" /></Link> : null}
-        </div>
-      </nav>
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-mid-content" /> : null}
 
-      {totalPages > 1 ? (
-        <details className="pagination-directory">
-          <summary><ChevronDown size={18} aria-hidden="true" /> Jump to a catalogue page</summary>
-          <nav className="pagination-list" aria-label={`All ${name} catalogue pages`}>
-            {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
-              pageNumber === page
-                ? <span key={pageNumber} aria-current="page">{pageNumber}</span>
-                : <Link key={pageNumber} href={pagePath(pageNumber)} aria-label={`${name} games, page ${pageNumber}`}>{pageNumber}</Link>
-            ))}
-          </nav>
-        </details>
+      {remainingGames.length ? (
+        <section className="game-grid" aria-label={`${name} games, page ${page}, second group`}>
+          {remainingGames.map((game) => <RegistryGameCard key={game.id} game={game} />)}
+        </section>
       ) : null}
 
-      <AdSensePlacement placement="discovery-after-catalogue" />
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-lower-content" /> : null}
+
+      <CompactPagination
+        currentPage={page}
+        totalPages={totalPages}
+        previousHref={page > 1 ? pagePath(page - 1) : undefined}
+        nextHref={page < totalPages ? pagePath(page + 1) : undefined}
+        ariaLabel={`${name} game pages`}
+      />
 
       {page === 1 && editorial ? <CategoryEditorialDetails editorial={editorial} reviewedAt={reviewedAt} /> : null}
     </>

@@ -38,6 +38,7 @@ export default function GamingGearPage() {
         <aside className="commerce-hero__note"><ShieldCheck aria-hidden="true" /><strong>Research-led, clearly disclosed</strong><span>We do not claim hands-on testing where none took place, and prices stay with the merchant so they do not go stale here.</span></aside>
       </section>
       <AffiliateDisclosure />
+      <AdSensePlacement placement="editorial-upper-content" />
       <section className="commerce-section">
         <div className="section-heading"><span className="eyebrow">Shop by setup</span><h2>Start with the equipment category.</h2></div>
         <div className="commerce-category-grid">
@@ -52,11 +53,12 @@ export default function GamingGearPage() {
         <div className="section-heading"><span className="eyebrow">High-intent guides</span><h2>Shortlists made for real buying decisions.</h2></div>
         <div className="guide-link-grid">{buyingGuides.slice(0, 8).map((guide) => <Link key={guide.slug} href={`/gaming-gear/${guide.category}/${guide.slug}`}><span>{guide.query}</span><strong>{guide.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div>
       </section>
+      <AdSensePlacement placement="editorial-mid-content" />
       <section className="commerce-section" id="products">
         <div className="section-heading"><span className="eyebrow">Current shortlist</span><h2>Compare a deliberately small set of current products.</h2></div>
         <div className="product-grid">{commerceProducts.slice(0, 6).map((product, index) => <ProductCard key={product.slug} product={product} pageType="hub" pageSlug="gaming-gear" priority={index < 2} />)}</div>
       </section>
-      <AdSensePlacement placement="editorial-footer" />
+      <AdSensePlacement placement="editorial-lower-content" />
     </main>
   );
 }

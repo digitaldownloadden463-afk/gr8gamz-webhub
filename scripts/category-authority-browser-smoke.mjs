@@ -88,16 +88,17 @@ try {
     const deepFacts = await page.evaluate(() => ({
       canonical: document.querySelector('link[rel="canonical"]')?.href || '',
       title: document.title,
-      firstPage: [...document.querySelectorAll('a')].some((link) => link.textContent?.trim() === 'First page' && link.getAttribute('href') === '/categories/action'),
       previous: Boolean(document.querySelector('a[href="/categories/action"]')),
       next: Boolean(document.querySelector('a[href="/categories/action/page/3"]')),
-      pageDirectory: document.querySelectorAll('.pagination-list a').length,
+      numberedPages: document.querySelectorAll('.pagination-list a, .pagination-directory').length,
+      pageStatus: document.querySelector('.pagination-nav__status')?.textContent?.trim() || '',
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth
     }));
     if (deepFacts.canonical !== 'https://www.gr8gamz.com/categories/action/page/2') failures.push('Action page 2 canonical is incorrect.');
     if (!/Page 2 of 65/.test(deepFacts.title)) failures.push('Action page 2 title is not page-number aware.');
-    if (!deepFacts.firstPage || !deepFacts.previous || !deepFacts.next) failures.push('Action page 2 is missing sequential or first-page links.');
-    if (deepFacts.pageDirectory !== 64) failures.push(`Action page 2 exposes ${deepFacts.pageDirectory} page-directory links instead of 64 alternatives.`);
+    if (!deepFacts.previous || !deepFacts.next) failures.push('Action page 2 is missing sequential links.');
+    if (deepFacts.numberedPages !== 0) failures.push(`Action page 2 still exposes ${deepFacts.numberedPages} numbered-page controls.`);
+    if (deepFacts.pageStatus !== 'Page 2 of 65') failures.push(`Action page 2 displays ${deepFacts.pageStatus}.`);
     if (deepFacts.overflow) failures.push(`Action page 2 overflows at ${viewport.width}px.`);
 
     const focusLink = page.locator('.pagination-nav a').first();

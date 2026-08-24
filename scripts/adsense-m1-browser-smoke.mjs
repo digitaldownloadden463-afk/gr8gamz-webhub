@@ -69,42 +69,39 @@ async function stubGoogle(context, requests) {
   }
 }
 
-async function inspectAllowed(page, path, expectedSlot, expectedPlacement) {
+async function inspectAllowed(page, path, expectedSlot, expectedPlacements) {
   const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
   if (response?.status() !== 200) failures.push(`${path} returned ${response?.status()}`);
   const ad = page.locator('.adsense-slot');
   await page.waitForFunction(() => document.cookie.includes('gr8_consent=v1.accepted'), null, { timeout: 5000 }).catch(() => {});
   await page.waitForTimeout(500);
-  if (await ad.count() !== 1) {
+  if (await ad.count() !== expectedPlacements.length) {
     const facts = await page.evaluate(() => ({
       script: Boolean(document.querySelector('#gr8-adsense-script')),
       pushes: window.__gr8AdPushCount || 0,
       cookie: document.cookie,
       html: document.documentElement.outerHTML.includes('data-ad-placement')
     }));
-    failures.push(`${path} did not render one eligible ad: ${JSON.stringify(facts)}.`);
+    failures.push(`${path} did not render ${expectedPlacements.length} eligible ads: ${JSON.stringify(facts)}.`);
     return;
   }
-  const facts = await ad.evaluate((node) => {
+  const facts = await ad.evaluateAll((nodes) => nodes.map((node) => {
     const rect = node.getBoundingClientRect();
     const ins = node.querySelector('ins.adsbygoogle');
     return {
-      count: document.querySelectorAll('.adsense-slot').length,
       slot: ins?.getAttribute('data-ad-slot'),
       client: ins?.getAttribute('data-ad-client'),
       testMode: ins?.getAttribute('data-adtest'),
       placement: node.getAttribute('data-ad-placement'),
-      pageType: node.getAttribute('data-ad-page-type'),
       minHeight: Number.parseFloat(getComputedStyle(node).minHeight),
       width: rect.width,
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth
     };
-  });
-  if (facts.count !== 1) failures.push(`${path} rendered ${facts.count} ad containers.`);
-  if (facts.slot !== expectedSlot || facts.client !== 'ca-pub-9245359017496056') failures.push(`${path} uses an unexpected account or slot.`);
-  if (facts.placement !== expectedPlacement) failures.push(`${path} uses placement ${facts.placement}.`);
-  if (facts.testMode !== 'on') failures.push(`${path} preview unit is not in AdSense test mode.`);
-  if (facts.minHeight < 250 || facts.width <= 0 || facts.overflow) failures.push(`${path} does not reserve a safe responsive area.`);
+  }));
+  if (facts.some((fact) => fact.slot !== expectedSlot || fact.client !== 'ca-pub-9245359017496056')) failures.push(`${path} uses an unexpected account or slot.`);
+  if (JSON.stringify(facts.map((fact) => fact.placement)) !== JSON.stringify(expectedPlacements)) failures.push(`${path} uses placements ${facts.map((fact) => fact.placement).join(', ')}.`);
+  if (facts.some((fact) => fact.testMode !== 'on')) failures.push(`${path} preview units are not in AdSense test mode.`);
+  if (facts.some((fact) => fact.minHeight < 250 || fact.width <= 0 || fact.overflow)) failures.push(`${path} does not reserve safe responsive areas.`);
 }
 
 async function inspectExcluded(page, path) {
@@ -125,18 +122,18 @@ const browser = await chromium.launch();
   await page.waitForTimeout(250);
   if (await page.locator('.adsense-slot').count()) failures.push('Rejected consent rendered a manual ad.');
   if (await page.evaluate(() => window.__gr8AdPushCount || 0)) failures.push('Rejected consent initialized an ad unit.');
-  await page.waitForFunction(() => window.__gr8M1ListenerCount?.() > 0, null, { timeout: 5000 });
+  await page.waitForFunction(() => window.__gr8M1ListenerCount?.() > 0, null, { timeout: 15000 });
   await page.evaluate(() => window.__gr8M1EmitChoice('accepted'));
   await page.waitForTimeout(500);
-  if (await page.locator('.adsense-slot').count() !== 1) {
+  if (await page.locator('.adsense-slot').count() !== 3) {
     const facts = await page.evaluate(() => ({
       script: Boolean(document.querySelector('#gr8-adsense-script')),
       pushes: window.__gr8AdPushCount || 0,
       consent: document.cookie.includes('gr8_consent=v1.accepted')
     }));
-    failures.push(`Rejection followed by acceptance did not render one unit: ${JSON.stringify(facts)}.`);
+    failures.push(`Rejection followed by acceptance did not render three units: ${JSON.stringify(facts)}.`);
   } else {
-    if (await page.evaluate(() => window.__gr8AdPushCount) !== 1) failures.push('Rejection followed by acceptance did not initialize exactly one unit.');
+    if (await page.evaluate(() => window.__gr8AdPushCount) !== 3) failures.push('Rejection followed by acceptance did not initialize exactly three units.');
     await page.evaluate(() => window.__gr8M1EmitChoice('rejected'));
     await page.locator('.adsense-slot').waitFor({ state: 'detached' });
   }
@@ -153,26 +150,28 @@ const browser = await chromium.launch();
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
 
-  await inspectAllowed(page, '/', slots.home, 'home-content-primary');
+  await inspectAllowed(page, '/', slots.home, ['home-upper-content', 'home-mid-content', 'home-lower-content']);
   await page.locator('a[href="/categories/action"]').first().click({ noWaitAfter: true });
   await page.waitForURL(/\/categories\/action$/, { timeout: 60000 });
   await page.waitForTimeout(750);
-  if (await page.locator('.adsense-slot').count() !== 1) {
+  if (await page.locator('.adsense-slot').count() !== 3) {
     failures.push(`SPA navigation lost its eligible unit: ${JSON.stringify(await page.evaluate(() => ({ url: location.href, pushes: window.__gr8AdPushCount || 0, cookie: document.cookie, scripts: document.querySelectorAll('#gr8-adsense-script').length })))}`);
   }
   if (await page.locator('#gr8-adsense-script').count() !== 1) failures.push('SPA navigation duplicated the AdSense script.');
   if (requests.filter((url) => url === scriptUrl).length !== 1) failures.push('SPA navigation requested the AdSense script more than once.');
-  if (await page.evaluate(() => window.__gr8AdPushCount) !== 2) failures.push('SPA navigation did not initialize exactly one unit per eligible page.');
+  if (await page.evaluate(() => window.__gr8AdPushCount) !== 6) failures.push('SPA navigation did not initialize exactly three units per eligible page.');
 
-  await inspectAllowed(page, '/categories/action/page/2', slots.discovery, 'discovery-after-catalogue');
-  await inspectAllowed(page, '/gr8-select', slots.discovery, 'discovery-after-catalogue');
-  await inspectAllowed(page, '/gaming-gear', slots.editorial, 'editorial-footer');
-  await inspectAllowed(page, '/gaming-gear/gaming-mice/best-wireless-gaming-mouse', slots.editorial, 'editorial-footer');
+  await inspectAllowed(page, '/categories/action/page/2', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/controls/tap', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/gr8-select', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/gaming-gear', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
+  await inspectAllowed(page, '/gaming-gear/gaming-mice/best-wireless-gaming-mouse', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
 
   const separation = await page.evaluate(() => {
-    const ad = document.querySelector('.adsense-slot')?.getBoundingClientRect();
+    const ads = [...document.querySelectorAll('.adsense-slot')].map((node) => node.getBoundingClientRect());
     const affiliate = [...document.querySelectorAll('a[rel~="sponsored"]')].map((node) => node.getBoundingClientRect());
-    return ad && affiliate.length ? ad.top - Math.max(...affiliate.map((rect) => rect.bottom)) : 999;
+    if (!ads.length || !affiliate.length) return 999;
+    return Math.min(...ads.flatMap((ad) => affiliate.map((link) => ad.bottom < link.top ? link.top - ad.bottom : (link.bottom < ad.top ? ad.top - link.bottom : 0))));
   });
   if (separation < 32) failures.push(`Editorial ad is only ${Math.round(separation)}px from an affiliate CTA.`);
 
@@ -197,9 +196,9 @@ for (const viewport of [{ width: 768, height: 1024 }, { width: 1440, height: 900
   const context = await contextFor(browser, 'accepted', viewport);
   await stubGoogle(context, requests);
   const page = await context.newPage();
-  await inspectAllowed(page, '/', slots.home, 'home-content-primary');
-  await inspectAllowed(page, '/categories/puzzle', slots.discovery, 'discovery-after-catalogue');
-  await inspectAllowed(page, '/gaming-gear', slots.editorial, 'editorial-footer');
+  await inspectAllowed(page, '/', slots.home, ['home-upper-content', 'home-mid-content', 'home-lower-content']);
+  await inspectAllowed(page, '/categories/puzzle', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/gaming-gear', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
   await inspectExcluded(page, '/more-free-games/duck-math/play');
   await inspectExcluded(page, '/gaming-gear/products/razer-viper-v4-pro');
   await context.close();

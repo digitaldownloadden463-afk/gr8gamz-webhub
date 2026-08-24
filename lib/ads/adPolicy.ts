@@ -26,14 +26,14 @@ const policies: Record<AdPageType, AdPolicy> = {
     adDensity: 'low',
     autoAdsAllowed: false,
     allowedFormats: ['in-page'],
-    manualSlots: ['home-content-primary']
+    manualSlots: ['home-upper-content', 'home-mid-content', 'home-lower-content']
   },
   discovery: {
     pageType: 'discovery',
     adDensity: 'low',
     autoAdsAllowed: false,
     allowedFormats: ['in-page'],
-    manualSlots: ['discovery-after-catalogue']
+    manualSlots: ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']
   },
   'game-profile': {
     pageType: 'game-profile',
@@ -54,14 +54,14 @@ const policies: Record<AdPageType, AdPolicy> = {
     adDensity: 'low',
     autoAdsAllowed: false,
     allowedFormats: ['in-page'],
-    manualSlots: ['editorial-footer']
+    manualSlots: ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']
   },
   'buying-guide': {
     pageType: 'buying-guide',
     adDensity: 'low',
     autoAdsAllowed: false,
     allowedFormats: ['in-page'],
-    manualSlots: ['editorial-footer']
+    manualSlots: ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']
   },
   product: {
     pageType: 'product',
