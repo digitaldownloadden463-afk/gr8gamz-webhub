@@ -784,42 +784,32 @@ main summary {
   justify-self: end;
 }
 
-.pagination-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.pagination-list a,
-.pagination-list span {
+.pagination-nav__disabled {
   display: inline-flex;
-  min-width: 44px;
+  gap: 8px;
+  min-width: 96px;
   min-height: 44px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255,255,255,.055);
-  color: var(--text);
+  color: var(--muted);
   font-weight: 900;
-  text-decoration: none;
+  opacity: .62;
 }
 
-.pagination-list a:hover,
-.pagination-list a:focus-visible,
-.pagination-list span[aria-current="page"] {
-  border-color: rgba(50,255,129,.75);
-  background: rgba(50,255,129,.14);
-  color: var(--brand);
+.compact-pagination {
+  clear: both;
+  margin-block: 24px 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
 }
 
-.pagination-directory {
-  margin-top: 14px;
-  border-block: 1px solid var(--line);
+.compact-pagination a,
+.compact-pagination .pagination-nav__disabled {
+  white-space: nowrap;
 }
 
-.pagination-directory summary,
 .category-methodology summary {
   gap: 8px;
   color: var(--text);
@@ -828,11 +818,11 @@ main summary {
   list-style: none;
 }
 
-.pagination-directory summary::-webkit-details-marker,
 .category-methodology summary::-webkit-details-marker { display: none; }
 
-.pagination-directory[open] summary svg,
 .category-methodology[open] summary svg { transform: rotate(180deg); }
+
+[dir="rtl"] .compact-pagination .pagination-arrow { transform: rotate(180deg); }
 
 .category-breadcrumb { margin-top: 24px; }
 
@@ -1567,8 +1557,17 @@ main summary {
   .game-player-frame__bar { align-items: stretch; flex-direction: column; }
   .game-player-frame__actions { justify-content: flex-start; }
   .site-footer nav { justify-content: flex-start; }
-  .pagination-nav {
+  .pagination-nav:not(.compact-pagination) {
     grid-template-columns: 1fr;
+  }
+  .compact-pagination {
+    grid-template-columns: minmax(88px, 1fr) auto minmax(88px, 1fr);
+    gap: 8px;
+  }
+  .compact-pagination .pagination-nav__previous > *,
+  .compact-pagination .pagination-nav__next > * {
+    flex: 1 1 auto;
+    min-width: 0;
   }
   .pagination-nav__previous,
   .pagination-nav__next {
@@ -1624,7 +1623,7 @@ main summary {
 
 .adsense-slot[data-ad-state="unfilled"],
 .adsense-slot[data-ad-state="error"] {
-  visibility: hidden;
+  display: none;
   pointer-events: none;
 }
 

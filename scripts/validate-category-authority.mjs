@@ -9,6 +9,7 @@ const { getPartnerGameProfiles } = await import('../src/data/partnerGameProfiles
 const partnerProfiles = getPartnerGameProfiles();
 const categoryPageSource = read('lib/categoryPages.ts');
 const directorySource = read('components/CategoryDirectory.tsx');
+const compactPaginationSource = read('components/CompactPagination.tsx');
 const pageOneSource = read('app/categories/[slug]/page.tsx');
 const pagedSource = read('app/categories/[slug]/page/[page]/page.tsx');
 const localizedPagedSource = read('app/[locale]/categories/[slug]/page/[page]/page.tsx');
@@ -107,11 +108,11 @@ assert(categoryPageSource.includes('games.map((game, index)'), 'ItemList entries
 assert(!/Product|AggregateRating|Review/.test(categoryPageSource), 'Category structured data must not fabricate Product, Review or AggregateRating objects.');
 assert(pageOneSource.includes('categoryPageStructuredData(data)'), 'Page one must use the shared truthful structured-data builder.');
 assert(pagedSource.includes('categoryPageStructuredData(data)'), 'Deep pages must use the shared truthful structured-data builder.');
-assert(directorySource.includes('href={pagePath(page - 1)}'), 'Pagination must contain a crawlable previous link.');
-assert(directorySource.includes('href={pagePath(page + 1)}'), 'Pagination must contain a crawlable next link.');
-assert(directorySource.includes('href={basePath}>First page'), 'Deep pagination must link directly to page one.');
-assert(directorySource.includes('Array.from({ length: totalPages }'), 'Every valid page must remain directly crawlable from the page directory.');
-assert(directorySource.includes('aria-current="page"'), 'Pagination and breadcrumbs must expose the current page accessibly.');
+assert(directorySource.includes('previousHref={page > 1 ? pagePath(page - 1) : undefined}'), 'Pagination must contain a crawlable previous link.');
+assert(directorySource.includes('nextHref={page < totalPages ? pagePath(page + 1) : undefined}'), 'Pagination must contain a crawlable next link.');
+assert(!directorySource.includes('Array.from({ length: totalPages }'), 'Category pages must not render a numbered page directory.');
+assert(compactPaginationSource.includes('aria-current="page"'), 'Compact pagination must expose the current page accessibly.');
+assert(compactPaginationSource.includes('href={previousHref}') && compactPaginationSource.includes('href={nextHref}'), 'Compact pagination must use crawlable links.');
 assert(localizedPagedSource.includes('number > totalPages) notFound()'), 'Out-of-range localized pages must return 404 instead of repeating the last slice.');
 assert(localizedPagedSource.includes('parseCategoryPageNumber(page)'), 'Localized pagination must reject duplicate numeric URL forms.');
 assert(pagedSource.includes('if (!data || pageNumber < 2) notFound()'), 'Invalid English paginated URLs must return 404.');

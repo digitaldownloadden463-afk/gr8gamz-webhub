@@ -46,6 +46,7 @@ expect(policy.includes("const interactionRoutes = new Set([\n  '/games',\n  '/my
 expect(slot.includes("consent === 'accepted'"), 'Manual ads are not gated by explicit consent.');
 expect(slot.includes('data-adtest={adsenseConfig.testMode'), 'Preview/test ad mode is not wired to manual units.');
 expect(slot.includes('MutationObserver'), 'Ad fill/error state containment is missing.');
+expect(read('app/globals.css').includes('display: none;\n  pointer-events: none;'), 'Unfilled and failed manual units must collapse safely.');
 
 for (const domain of ['pagead2.googlesyndication.com', 'googleads.g.doubleclick.net', 'tpc.googlesyndication.com', 'fundingchoicesmessages.google.com', 'ep2.adtrafficquality.google']) {
   expect(csp.includes(domain), `CSP is missing required domain ${domain}.`);
@@ -65,12 +66,29 @@ expect(fontDirective.includes('https://fonts.gstatic.com'), 'Google CMP font hos
 const expectedPlacementFiles = [
   'app/page.tsx',
   'components/CategoryDirectory.tsx',
+  'components/ControlDirectory.tsx',
   'components/PartnerCatalogueGrid.tsx',
+  'components/LocalizedPages.tsx',
   'app/gaming-gear/page.tsx',
   'app/gaming-gear/[category]/page.tsx',
   'app/gaming-gear/[category]/[slug]/page.tsx'
 ];
 for (const file of expectedPlacementFiles) expect(read(file).includes('AdSensePlacement'), `${file} is missing its approved placement.`);
+
+for (const [file, prefix] of [
+  ['app/page.tsx', 'home'],
+  ['components/CategoryDirectory.tsx', 'discovery'],
+  ['components/ControlDirectory.tsx', 'discovery'],
+  ['components/PartnerCatalogueGrid.tsx', 'discovery'],
+  ['app/gaming-gear/page.tsx', 'editorial'],
+  ['app/gaming-gear/[category]/page.tsx', 'editorial'],
+  ['app/gaming-gear/[category]/[slug]/page.tsx', 'editorial']
+]) {
+  const source = read(file);
+  for (const position of ['upper-content', 'mid-content', 'lower-content']) {
+    expect(source.includes(`placement="${prefix}-${position}"`), `${file} is missing its ${position} placement.`);
+  }
+}
 
 for (const file of [
   'app/not-found.tsx',

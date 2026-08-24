@@ -42,6 +42,7 @@ export default async function CommerceEditorialPage({ params }: { params: Promis
       <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { href: `/gaming-gear/${category.slug}`, label: category.name }, { label: page.title }]} />
       <section className="commerce-title commerce-title--editorial"><span className="eyebrow">{guide ? 'Buying guide' : 'Product comparison'}</span><h1>{page.title}</h1><p>{page.description}</p>{guide ? <p className="commerce-intent"><CheckCircle2 size={18} aria-hidden="true" />{guide.intent}</p> : <p className="commerce-intent"><Scale size={18} aria-hidden="true" />Compare the differences that affect everyday use, not just the longest feature list.</p>}</section>
       <AffiliateDisclosure />
+      <AdSensePlacement placement="editorial-upper-content" />
       {guide ? <>
         <section className="commerce-section commerce-method"><div className="section-heading"><span className="eyebrow">How we selected</span><h2>A shortlist built around the decision, not a universal winner.</h2></div><p>{guide.methodology}</p></section>
         <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Shortlist</span><h2>The strongest fits for this buying question.</h2></div><div className="product-grid">{products.map((product, index) => <ProductCard key={product.slug} product={product} pageType={pageType} pageSlug={slug} priority={index < 2} recommendation={guide.recommendations.find((item) => item.productSlug === product.slug)} />)}</div></section>
@@ -53,13 +54,14 @@ export default async function CommerceEditorialPage({ params }: { params: Promis
         <section className="buying-notes buying-notes--specific">{comparison!.recommendations.map((section) => <article key={section.heading}><h2>{section.heading}</h2><p>{section.body}</p></article>)}</section>
         <p className="source-note">Specifications and product positioning were checked against official Razer product pages on {comparison!.sourceCheckedAt}. Prices and availability remain on the merchant site.</p>
       </>}
+      <AdSensePlacement placement="editorial-mid-content" />
       <section className="buying-notes">
         <article><h2>Price and availability</h2><p>Models, configurations and stock can change. GR8 GAMZ does not store a price without an authorised fresh source; use the Razer links for current UK details.</p></article>
         <article><h2>Research standard</h2><p>This page uses official published product information and editorial comparison. It does not claim that GR8 GAMZ personally tested these products.</p></article>
       </section>
       {comparison ? <section className="commerce-next"><h2>Parent buying guide</h2><Link href={`/gaming-gear/${category.slug}/${comparison.parentGuideSlug}`} className="text-link">Use this comparison in the wider buying guide <ArrowRight size={18} aria-hidden="true" /></Link></section> : null}
       <section className="commerce-next"><h2>Keep comparing</h2><div className="guide-link-grid">{guidesForCategory(category.slug).filter((item) => item.slug !== slug).slice(0, 3).map((item) => <Link key={item.slug} href={`/gaming-gear/${item.category}/${item.slug}`}><strong>{item.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div></section>
-      <AdSensePlacement placement="editorial-footer" />
+      <AdSensePlacement placement="editorial-lower-content" />
     </main>
   );
 }

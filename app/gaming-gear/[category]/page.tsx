@@ -36,10 +36,12 @@ export default async function CommerceCategoryPage({ params }: { params: Promise
       <CommerceBreadcrumbs currentPath={currentPath} items={[{ href: '/gaming-gear', label: 'Gaming Gear' }, { label: category.name }]} />
       <section className="commerce-title"><span className="eyebrow">GR8 Gaming Gear</span><h1>{category.name}</h1><p>{category.description}</p></section>
       <AffiliateDisclosure />
+      <AdSensePlacement placement="editorial-upper-content" />
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Product shortlist</span><h2>Current Razer options, compared by practical fit.</h2></div><div className="product-grid">{products.map((product, index) => <ProductCard key={product.slug} product={product} pageType="category" pageSlug={category.slug} priority={index < 2} />)}</div></section>
+      <AdSensePlacement placement="editorial-mid-content" />
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Buying guides</span><h2>Start with the question you need answered.</h2></div><div className="guide-link-grid">{guides.map((guide) => <Link key={guide.slug} href={`/gaming-gear/${guide.category}/${guide.slug}`}><span>{guide.query}</span><strong>{guide.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div></section>
       {comparisons.length ? <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Head to head</span><h2>Direct product comparisons.</h2></div><div className="comparison-links">{comparisons.map((comparison) => <Link key={comparison.slug} href={`/gaming-gear/${comparison.category}/${comparison.slug}`}><strong>{comparison.title}</strong><span>{comparison.description}</span></Link>)}</div></section> : null}
-      <AdSensePlacement placement="editorial-footer" />
+      <AdSensePlacement placement="editorial-lower-content" />
     </main>
   );
 }

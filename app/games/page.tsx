@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CompactPagination from '@/components/CompactPagination';
 import GameFilters from '@/components/GameFilters';
 import RegistryGameCard from '@/components/RegistryGameCard';
 import { getAllGames } from '@/lib/games';
@@ -58,13 +59,13 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           <div className="game-grid" aria-live="polite">
             {searchResults.games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
           </div>
-          {searchResults.totalPages > 1 ? (
-            <nav className="pagination-nav" aria-label="Search result pages">
-              {searchResults.page > 1 ? <Link className="secondary-cta" href={`/games?q=${encodeURIComponent(query)}&page=${searchResults.page - 1}`}>Previous</Link> : <span />}
-              <span>Page {searchResults.page} of {searchResults.totalPages}</span>
-              {searchResults.page < searchResults.totalPages ? <Link className="cta" href={`/games?q=${encodeURIComponent(query)}&page=${searchResults.page + 1}`}>Next</Link> : <span />}
-            </nav>
-          ) : null}
+          <CompactPagination
+            currentPage={searchResults.page}
+            totalPages={searchResults.totalPages}
+            previousHref={searchResults.page > 1 ? `/games?q=${encodeURIComponent(query)}&page=${searchResults.page - 1}` : undefined}
+            nextHref={searchResults.page < searchResults.totalPages ? `/games?q=${encodeURIComponent(query)}&page=${searchResults.page + 1}` : undefined}
+            ariaLabel="Search result pages"
+          />
         </section>
       ) : <GameFilters games={games} />}
       <section className="content-panel" aria-label="Browse by category">

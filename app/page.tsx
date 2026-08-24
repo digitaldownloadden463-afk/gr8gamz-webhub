@@ -86,6 +86,8 @@ export default function HomePage() {
         <article><Globe2 aria-hidden="true" /><strong>Global play</strong><span>Browse GR8 GAMZ across 13 supported language experiences.</span></article>
       </section>
 
+      <AdSensePlacement placement="home-upper-content" />
+
       <section className="portal-stage" aria-label="Choose a way to play">
         <div className="portal-stage__copy">
           <span className="eyebrow"><Compass size={18} aria-hidden="true" /> Pick your route</span>
@@ -128,7 +130,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      <AdSensePlacement placement="home-content-primary" />
+      <AdSensePlacement placement="home-mid-content" />
 
       <section className="spotlight-band" aria-label="Daily and trending games">
         <Link href="/gr8-trending" className="spotlight-card">
@@ -161,6 +163,8 @@ export default function HomePage() {
         <div><span className="eyebrow"><Headphones size={18} aria-hidden="true" /> GR8 Gaming Gear</span><h2>Upgrade the setup, not the sales pitch.</h2><p>Focused UK guides for mice, headsets, keyboards and mobile controllers, with clear comparisons and no invented testing claims.</p></div>
         <Link href="/gaming-gear" className="cta">Explore gaming gear <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
+
+      <AdSensePlacement placement="home-lower-content" />
 
       <section className="final-play-cta">
         <span className="eyebrow">Ready when you are</span>

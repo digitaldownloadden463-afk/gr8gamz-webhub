@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import LocalizedGameCard from '@/components/LocalizedGameCard';
@@ -12,6 +12,8 @@ import { getGlobalLaunchGames, getLocalizedGameText } from '@/lib/globalLaunch';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
+import CompactPagination from '@/components/CompactPagination';
 
 const pageSize = 48;
 
@@ -60,11 +62,13 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+      <AdSensePlacement placement="home-upper-content" />
       <section className="value-grid" aria-label={text.hubs.gamesTitle}>
         <article><Gamepad2 aria-hidden="true" /><strong>{text.home.fast}</strong><span>{text.hubs.gamesIntro}</span></article>
         <article><ShieldCheck aria-hidden="true" /><strong>{text.home.privacy}</strong><span>{text.profile.external}</span></article>
         <article><Star aria-hidden="true" /><strong>{text.home.browse}</strong><span>{text.hubs.launchIntro}</span></article>
       </section>
+      <AdSensePlacement placement="home-mid-content" />
       <section className="section-heading">
         <span className="eyebrow">{text.hubs.launchTitle}</span>
         <h2>{text.hubs.gamesTitle}</h2>
@@ -73,6 +77,7 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
       <section className="game-grid">
         {featured.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 12} />)}
       </section>
+      <AdSensePlacement placement="home-lower-content" />
     </main>
   );
 }
@@ -86,13 +91,10 @@ export function LocalizedCollectionPage({ locale, page = 1, categorySlug, source
   const games = launch.slice((safePage - 1) * pageSize, safePage * pageSize);
   const category = categorySlug ? getRegistryCategories(1).find((item) => item.slug === categorySlug) : null;
   const basePath = categorySlug ? `/categories/${categorySlug}` : (source === 'gr8-originals' ? '/gr8-originals' : '/gr8-select');
-  const pageLinks = Array.from({ length: totalPages }, (_, index) => {
-    const pageNumber = index + 1;
-    return {
-      pageNumber,
-      href: pathForLocale(locale, pageNumber === 1 ? basePath : `${basePath}/page/${pageNumber}`)
-    };
-  });
+  const supportsThreeAds = games.length >= 12;
+  const splitIndex = Math.min(24, Math.ceil(games.length / 2));
+  const firstGames = games.slice(0, splitIndex);
+  const remainingGames = games.slice(splitIndex);
 
   return (
     <main lang={locale} dir={info.dir}>
@@ -101,25 +103,24 @@ export function LocalizedCollectionPage({ locale, page = 1, categorySlug, source
         <h1>{category ? `${categoryName(locale, category.name)} ${text.hubs.categoryTitle}` : (source === 'gr8-originals' ? text.hubs.originalsTitle : text.hubs.selectTitle)}</h1>
         <p>{category ? text.hubs.gamesIntro : (source === 'gr8-originals' ? text.hubs.gamesIntro : text.hubs.selectIntro)}</p>
       </section>
-      <section className="game-grid">
-        {games.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 56} />)}
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-upper-content" /> : null}
+      <section className="game-grid" aria-label={`${text.common.page} ${safePage}, 1`}>
+        {firstGames.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 8} />)}
       </section>
-      {totalPages > 1 ? (
-        <nav className="pagination-nav" aria-label={text.common.page}>
-          {safePage > 1 ? <Link className="secondary-cta" href={pathForLocale(locale, safePage === 2 ? basePath : `${basePath}/page/${safePage - 1}`)}><ArrowLeft size={18} aria-hidden="true" /> {text.common.previous}</Link> : <span />}
-          <span>{text.common.page} {safePage} / {totalPages}</span>
-          {safePage < totalPages ? <Link className="cta" href={pathForLocale(locale, `${basePath}/page/${safePage + 1}`)}>{text.common.next} <ArrowRight size={18} aria-hidden="true" /></Link> : <span />}
-        </nav>
-      ) : null}
-      {totalPages > 1 ? (
-        <nav className="pagination-list" aria-label={text.common.page}>
-          {pageLinks.map((item) => (
-            item.pageNumber === safePage
-              ? <span key={item.pageNumber} aria-current="page">{item.pageNumber}</span>
-              : <Link key={item.pageNumber} href={item.href}>{item.pageNumber}</Link>
-          ))}
-        </nav>
-      ) : null}
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-mid-content" /> : null}
+      {remainingGames.length ? <section className="game-grid" aria-label={`${text.common.page} ${safePage}, 2`}>{remainingGames.map((game) => <LocalizedGameCard key={game.id} game={game} locale={locale} />)}</section> : null}
+      {supportsThreeAds ? <AdSensePlacement placement="discovery-lower-content" /> : null}
+      <CompactPagination
+        currentPage={safePage}
+        totalPages={totalPages}
+        previousHref={safePage > 1 ? pathForLocale(locale, safePage === 2 ? basePath : `${basePath}/page/${safePage - 1}`) : undefined}
+        nextHref={safePage < totalPages ? pathForLocale(locale, `${basePath}/page/${safePage + 1}`) : undefined}
+        previousLabel={text.common.previous}
+        nextLabel={text.common.next}
+        pageLabel={text.common.page}
+        ofLabel={text.common.of}
+        ariaLabel={text.common.page}
+      />
     </main>
   );
 }
