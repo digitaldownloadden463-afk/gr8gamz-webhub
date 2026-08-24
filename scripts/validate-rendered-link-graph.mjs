@@ -8,6 +8,16 @@ const reportPath = path.join(process.cwd(), 'reports/rendered-link-graph-report.
 const concurrency = Number.parseInt(process.env.RENDERED_GRAPH_CONCURRENCY || '18', 10);
 const failures = [];
 
+async function previewAccessCookie() {
+  if (!previewShareToken) return '';
+  const accessUrl = new URL('/', origin);
+  accessUrl.searchParams.set('_vercel_share', previewShareToken);
+  const response = await fetch(accessUrl, { redirect: 'manual' });
+  return response.headers.get('set-cookie')?.split(';', 1)[0] || '';
+}
+
+const previewCookie = await previewAccessCookie();
+
 function xmlLocs(xml) {
   return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
 }
@@ -54,9 +64,11 @@ async function fetchText(pathname) {
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
       const target = new URL(pathname, origin);
-      if (previewShareToken) target.searchParams.set('_vercel_share', previewShareToken);
       const response = await fetch(target, {
-        headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' },
+        headers: {
+          'user-agent': 'GR8-Rendered-Link-Graph/1.0',
+          ...(previewCookie ? { cookie: previewCookie } : {})
+        },
         signal: AbortSignal.timeout(60_000)
       });
       const text = await response.text();

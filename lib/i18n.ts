@@ -321,10 +321,11 @@ export function switchLocalePath(locale: Locale, path = '/') {
   const alreadyLocalized = isLocale(firstSegment);
   const clean = stripLocale(path);
   if (locale === defaultLocale) return clean;
+  const localizedCategoryPath = clean.replace(/^(\/categories\/[a-z0-9.-]+)\/page\/[1-9][0-9]*\/?$/, '$1');
   if (!alreadyLocalized && /^\/more-free-games\/[a-z0-9-]+(?:\/play)?\/?$/.test(clean)) {
     return pathForLocale(locale, '/');
   }
-  return pathForLocale(locale, hasLocalizedRoute(clean) ? clean : '/');
+  return pathForLocale(locale, hasLocalizedRoute(localizedCategoryPath) ? localizedCategoryPath : '/');
 }
 
 export function localizedCanonical(locale: Locale, path = '/') {

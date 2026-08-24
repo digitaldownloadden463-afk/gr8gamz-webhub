@@ -8,6 +8,7 @@ const pagination = read('components/CompactPagination.tsx');
 const styles = read('app/globals.css');
 const policy = read('lib/ads/adPolicy.ts');
 const placements = read('lib/ads/placements.ts');
+const i18n = read('lib/i18n.ts');
 const sourceFiles = [
   'components/CategoryDirectory.tsx',
   'components/ControlDirectory.tsx',
@@ -32,6 +33,7 @@ expect(pagination.includes('{pageLabel} {currentPage} {ofLabel} {totalPages}'), 
 expect(styles.includes('min-height: 44px;'), 'Pagination does not preserve 44px pointer targets.');
 expect(styles.includes('[dir="rtl"] .compact-pagination .pagination-arrow'), 'Compact pagination arrows are not RTL-aware.');
 expect(!styles.includes('.pagination-list') && !styles.includes('.pagination-directory'), 'Legacy numbered-pagination CSS remains.');
+expect(i18n.includes("const localizedCategoryPath = clean.replace("), 'Deep English category locale switches do not fall back to valid localized category hubs.');
 
 const eligible = [
   ['app/page.tsx', 'home'],
