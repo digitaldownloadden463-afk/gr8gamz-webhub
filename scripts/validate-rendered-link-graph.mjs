@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const baseUrl = process.env.RENDERED_GRAPH_BASE_URL || process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
 const origin = new URL(baseUrl).origin;
+const previewShareToken = process.env.VERCEL_SHARE_BYPASS?.trim() || '';
 const reportPath = path.join(process.cwd(), 'reports/rendered-link-graph-report.json');
 const concurrency = Number.parseInt(process.env.RENDERED_GRAPH_CONCURRENCY || '18', 10);
 const failures = [];
@@ -52,7 +53,9 @@ async function fetchText(pathname) {
   let lastError;
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
-      const response = await fetch(`${origin}${pathname}`, {
+      const target = new URL(pathname, origin);
+      if (previewShareToken) target.searchParams.set('_vercel_share', previewShareToken);
+      const response = await fetch(target, {
         headers: { 'user-agent': 'GR8-Rendered-Link-Graph/1.0' },
         signal: AbortSignal.timeout(60_000)
       });
