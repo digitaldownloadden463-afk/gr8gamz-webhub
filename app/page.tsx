@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CalendarDays, Compass, Flame, Gamepad2, Globe2, Headphones, Search, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, Clock3, Compass, Flame, Gamepad2, Globe2, Headphones, Search, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import PartnerGameCard from '@/components/PartnerGameCard';
 import { getFeaturedGames } from '@/lib/games';
@@ -162,6 +162,11 @@ export default function HomePage() {
       <section className="gear-home-band" aria-label="Gaming gear guides">
         <div><span className="eyebrow"><Headphones size={18} aria-hidden="true" /> GR8 Gaming Gear</span><h2>Upgrade the setup, not the sales pitch.</h2><p>Focused UK guides for mice, headsets, keyboards and mobile controllers, with clear comparisons and no invented testing claims.</p></div>
         <Link href="/gaming-gear" className="cta">Explore gaming gear <ArrowRight size={18} aria-hidden="true" /></Link>
+      </section>
+
+      <section className="classroom-home-band" aria-label="GR8 Classroom">
+        <div><span className="eyebrow"><BookOpen size={18} aria-hidden="true" /> GR8 Classroom</span><h2>Put a clear timer on the board, then choose a short activity.</h2><p>A free classroom countdown with optional maths, logic, puzzle and memory-game suggestions. No account or pupil names.</p></div>
+        <Link href="/classroom" className="cta"><Clock3 size={18} aria-hidden="true" /> Open GR8 Classroom</Link>
       </section>
 
       <AdSensePlacement placement="home-lower-content" />

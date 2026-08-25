@@ -45,6 +45,26 @@ export const adPlacements = {
     slot: adsenseConfig.slots.editorial,
     minHeight: 250,
     pageTypes: ['gaming-gear-hub', 'buying-guide']
+  },
+  'classroom-upper-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 180,
+    pageTypes: ['classroom-hub']
+  },
+  'classroom-mid-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 180,
+    pageTypes: ['classroom-hub']
+  },
+  'classroom-lower-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 180,
+    pageTypes: ['classroom-hub']
+  },
+  'classroom-tool-lower-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 180,
+    pageTypes: ['classroom-tool']
   }
 } as const;
 

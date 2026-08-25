@@ -4,6 +4,7 @@ import { getAllGames } from '@/lib/games';
 import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHubs } from '@/lib/gameRegistry';
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 import { commerceRouteLastmod, commerceRoutePaths } from '@/lib/commerce/catalogue';
+import { classroomReviewedAt, classroomRoutePaths } from '@/lib/classroom';
 
 export const partnerSitemapSize = 1000;
 
@@ -46,7 +47,10 @@ export function originalGameEntries() {
 
 export function coreEntries() {
   const staticRoutes = ['/', '/about', '/contact', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
-  return staticRoutes.map((route) => urlEntry(route, undefined, route === '/' ? '1.0' : '0.7')).join('');
+  return [
+    ...staticRoutes.map((route) => urlEntry(route, undefined, route === '/' ? '1.0' : '0.7')),
+    ...classroomRoutePaths().map((route) => urlEntry(route, classroomReviewedAt, route === '/classroom/timer' ? '0.85' : '0.8'))
+  ].join('');
 }
 
 export function partnerGames() {

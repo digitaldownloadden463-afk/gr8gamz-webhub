@@ -22,20 +22,21 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) return {};
+  const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
   const ogImage = `/og/game/${profile.slug}`;
   return {
-    title: profile.title,
+    title: displayTitle,
     description: profile.description,
     alternates: { canonical: canonical(`/more-free-games/${profile.slug}`) },
     openGraph: {
-      title: profile.title,
+      title: displayTitle,
       description: profile.description,
       url: canonical(`/more-free-games/${profile.slug}`),
-      images: [{ url: ogImage, width: 1200, height: 630, alt: `${profile.title} on GR8 GAMZ` }]
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${displayTitle} on GR8 GAMZ` }]
     },
     twitter: {
       card: 'summary_large_image',
-      title: profile.title,
+      title: displayTitle,
       description: profile.description,
       images: [ogImage]
     }
@@ -46,6 +47,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) notFound();
+  const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
   const text = tr('en');
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
@@ -60,13 +62,13 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       { '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') },
       { '@type': 'ListItem', position: 2, name: 'GR8 Select', item: canonical('/gr8-select') },
       { '@type': 'ListItem', position: 3, name: profile.category, item: canonical(categoryPath) },
-      { '@type': 'ListItem', position: 4, name: profile.title, item: canonical(profile.path) }
+      { '@type': 'ListItem', position: 4, name: displayTitle, item: canonical(profile.path) }
     ]
   };
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
-    name: profile.title,
+    name: displayTitle,
     description: profile.description,
     url: canonical(profile.path),
     gamePlatform: 'Web browser',
@@ -86,12 +88,12 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         <span>/</span>
         <Link href={categoryPath}>{profile.category}</Link>
         <span>/</span>
-        <span>{profile.title}</span>
+        <span>{displayTitle}</span>
       </nav>
       <section className="partner-profile-hero">
         <div className="partner-profile-copy">
           <span className="eyebrow">GR8 Select</span>
-          <h1>{profile.title}</h1>
+          <h1>{displayTitle}</h1>
           <p>{profile.description}</p>
           <div className="cta-row profile-cta-row">
             <Link href={playPath} className="cta">Play</Link>
