@@ -18,7 +18,7 @@ export function Footer({ locale }: { locale?: Locale }) {
     ['/gr8-originals', text.nav.originals, true],
     ['/gr8-select', text.nav.select, true],
     ['/gaming-gear', 'Gaming Gear', false],
-    ['/classroom', 'GR8 Classroom', false],
+    ['/classroom', 'Classroom', false],
     ['/gr8-trending', text.nav.trending, true],
     ['/gr8-daily', text.nav.daily, true],
     ['/new-games', text.nav.new, true],

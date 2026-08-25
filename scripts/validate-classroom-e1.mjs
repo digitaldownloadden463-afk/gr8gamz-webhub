@@ -17,6 +17,7 @@ const placements = read('lib/ads/placements.ts');
 const sitemap = read('lib/sitemapXml.ts');
 const imageSitemap = read('app/sitemap-images.xml/route.ts');
 const footer = read('components/Footer.tsx');
+const topNav = read('components/TopNav.tsx');
 const homepage = read('app/page.tsx');
 const profile = read('app/more-free-games/[slug]/page.tsx');
 const research = read('reports/classroom-e1-search-research.md');
@@ -74,8 +75,10 @@ expect(placements.includes("'classroom-tool-lower-content'"), 'Timer ad placemen
 expect(sitemap.includes('classroomRoutePaths()'), 'Classroom routes are absent from the regular sitemap.');
 expect(imageSitemap.includes("'/classroom/gr8-classroom-share.png'"), 'Classroom image is absent from the image sitemap.');
 expect(imageSitemap.includes("'/classroom/gr8-classroom-timer-share.png'"), 'Timer image is absent from the image sitemap.');
-expect(footer.includes("['/classroom', 'GR8 Classroom'"), 'GR8 Classroom is absent from the footer.');
-expect(homepage.includes('href="/classroom"'), 'GR8 Classroom is absent from the homepage.');
+expect(topNav.includes('key="/classroom" href="/classroom"'), 'Classroom is absent from the shared global navigation.');
+expect(topNav.includes("localizedPath.startsWith('/classroom/')"), 'Nested Classroom routes do not receive the active navigation state.');
+expect(footer.includes("['/classroom', 'Classroom', false]"), 'Classroom is absent from the footer or incorrectly localized.');
+expect(homepage.includes('href="/classroom/timer"') && homepage.includes('href="/classroom"'), 'Homepage Classroom discovery does not link to both the timer and hub.');
 expect(research.includes('**Free Classroom Timer / Online Classroom Timer, 88/100.**'), 'Research does not record the scored winner.');
 expect(!research.match(/monthly searches|CPC £|keyword difficulty \d/i), 'Research contains unsupported paid-tool metrics.');
 

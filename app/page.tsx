@@ -166,7 +166,10 @@ export default function HomePage() {
 
       <section className="classroom-home-band" aria-label="GR8 Classroom">
         <div><span className="eyebrow"><BookOpen size={18} aria-hidden="true" /> GR8 Classroom</span><h2>Put a clear timer on the board, then choose a short activity.</h2><p>A free classroom countdown with optional maths, logic, puzzle and memory-game suggestions. No account or pupil names.</p></div>
-        <Link href="/classroom" className="cta"><Clock3 size={18} aria-hidden="true" /> Open GR8 Classroom</Link>
+        <div className="cta-row">
+          <Link href="/classroom/timer" className="cta"><Clock3 size={18} aria-hidden="true" /> Open classroom timer</Link>
+          <Link href="/classroom" className="secondary-cta"><BookOpen size={18} aria-hidden="true" /> Browse Classroom</Link>
+        </div>
       </section>
 
       <AdSensePlacement placement="home-lower-content" />
