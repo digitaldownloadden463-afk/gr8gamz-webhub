@@ -1,13 +1,19 @@
 import { chromium, webkit } from '@playwright/test';
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:3017';
+const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
 const failures = [];
+
+async function authorizePreview(context) {
+  if (previewShareUrl) await context.request.get(previewShareUrl);
+}
 
 async function runBrowser(browserType, name, viewports) {
   const browser = await browserType.launch({ headless: true });
   try {
     for (const viewport of viewports) {
       const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
+      await authorizePreview(context);
       await context.route(/googletagmanager\.com|google-analytics\.com|googlesyndication\.com|doubleclick\.net/, (route) => route.abort());
       const page = await context.newPage();
       const errors = [];
@@ -82,6 +88,7 @@ async function runBrowser(browserType, name, viewports) {
 
     if (name === 'Chromium') {
       const acceptedContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+      await authorizePreview(acceptedContext);
       await acceptedContext.route(/googletagmanager\.com|google-analytics\.com|googlesyndication\.com|doubleclick\.net/, (route) => route.abort());
       const acceptedPage = await acceptedContext.newPage();
       await acceptedPage.goto(`${baseUrl}/classroom`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
@@ -97,6 +104,7 @@ async function runBrowser(browserType, name, viewports) {
       await acceptedContext.close();
 
       const rejectedContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+      await authorizePreview(rejectedContext);
       const rejectedPage = await rejectedContext.newPage();
       await rejectedPage.goto(`${baseUrl}/classroom/timer`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
       const rejectButton = rejectedPage.getByRole('button', { name: 'Reject All' });
