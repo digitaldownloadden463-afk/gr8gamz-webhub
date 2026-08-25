@@ -72,7 +72,7 @@ async function runBrowser(browserType, name, viewports) {
       const schemaInvalid = initial.schema.includes('MALFORMED') || breadcrumb?.itemListElement?.at(-1)?.item !== 'https://www.gr8gamz.com/classroom/timer' || webApp?.name !== 'GR8 Classroom Timer';
       if (initial.canonical !== 'https://www.gr8gamz.com/classroom/timer' || initial.noindex || initial.overflow || initial.ads !== 0 || !initial.sound || initial.personalInputs || initial.activeClassroom !== 2 || schemaInvalid) failures.push(`${name} ${viewport.width}: timer initial facts ${JSON.stringify(initial)}.`);
 
-      await page.waitForTimeout(250);
+      await page.waitForTimeout(baseUrl.endsWith('.vercel.app') ? 1500 : 250);
       await page.getByLabel('Hours').fill('0');
       await page.getByLabel('Minutes').fill('0');
       await page.getByLabel('Seconds').fill('2');
