@@ -61,7 +61,7 @@ function canonicalPath(html) {
 
 async function fetchText(pathname) {
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < 6; attempt += 1) {
     try {
       const target = new URL(pathname, origin);
       const response = await fetch(target, {
@@ -72,10 +72,18 @@ async function fetchText(pathname) {
         signal: AbortSignal.timeout(60_000)
       });
       const text = await response.text();
+      if ([408, 425, 429, 500, 502, 503, 504].includes(response.status)) {
+        const retryAfter = Number.parseInt(response.headers.get('retry-after') || '', 10);
+        const delay = Number.isFinite(retryAfter)
+          ? Math.min(retryAfter * 1000, 15_000)
+          : Math.min(500 * (2 ** attempt), 8_000);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
       return { response, text };
     } catch (error) {
       lastError = error;
-      await new Promise((resolve) => setTimeout(resolve, 200 * (attempt + 1)));
+      await new Promise((resolve) => setTimeout(resolve, Math.min(500 * (2 ** attempt), 8_000)));
     }
   }
   failures.push(`${pathname} failed to fetch: ${lastError?.message || 'unknown fetch error'}`);

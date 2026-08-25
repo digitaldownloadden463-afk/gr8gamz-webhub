@@ -6,7 +6,7 @@ function xmlEscape(value: string) {
 }
 
 export function GET() {
-  const urls = getIndexableRegistryGames().map((game) => {
+  const gameUrls = getIndexableRegistryGames().map((game) => {
     const image = game.artwork.startsWith('http') ? game.artwork : canonical(game.artwork);
     return `
       <url>
@@ -17,8 +17,19 @@ export function GET() {
         </image:image>
       </url>`;
   }).join('');
+  const classroomUrls = [
+    ['/classroom', '/classroom/gr8-classroom-share.png', 'GR8 Classroom timer and activity hub'],
+    ['/classroom/timer', '/classroom/gr8-classroom-timer-share.png', 'GR8 Classroom visual countdown timer']
+  ].map(([path, image, title]) => `
+      <url>
+        <loc>${canonical(path)}</loc>
+        <image:image>
+          <image:loc>${canonical(image)}</image:loc>
+          <image:title>${xmlEscape(title)}</image:title>
+        </image:image>
+      </url>`).join('');
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${urls}
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${gameUrls}${classroomUrls}
   </urlset>`;
   return new Response(xml, { headers: { 'content-type': 'application/xml; charset=utf-8' } });
 }

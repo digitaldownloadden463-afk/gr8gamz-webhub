@@ -9,6 +9,8 @@ export type AdPageType =
   | 'play'
   | 'gaming-gear-hub'
   | 'buying-guide'
+  | 'classroom-hub'
+  | 'classroom-tool'
   | 'product'
   | 'legal';
 
@@ -63,6 +65,20 @@ const policies: Record<AdPageType, AdPolicy> = {
     allowedFormats: ['in-page'],
     manualSlots: ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']
   },
+  'classroom-hub': {
+    pageType: 'classroom-hub',
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['classroom-upper-content', 'classroom-mid-content', 'classroom-lower-content']
+  },
+  'classroom-tool': {
+    pageType: 'classroom-tool',
+    adDensity: 'low',
+    autoAdsAllowed: false,
+    allowedFormats: ['in-page'],
+    manualSlots: ['classroom-tool-lower-content']
+  },
   product: {
     pageType: 'product',
     adDensity: 'none',
@@ -114,6 +130,8 @@ export function getAdPolicy(pathname: string): AdPolicy {
   if (route.startsWith('/gaming-gear/products/')) return policies.product;
   if (route === '/gaming-gear') return policies['gaming-gear-hub'];
   if (route.startsWith('/gaming-gear/')) return policies['buying-guide'];
+  if (route === '/classroom') return policies['classroom-hub'];
+  if (route === '/classroom/timer') return policies['classroom-tool'];
   if (/^\/more-free-games\/[^/]+\/?$/.test(route)) return policies['game-profile'];
   return policies.discovery;
 }

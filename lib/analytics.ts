@@ -13,7 +13,20 @@ export type AnalyticsEventName =
   | 'affiliate_guide_view'
   | 'product_view'
   | 'partner_profile_view'
-  | 'affiliate_product_impression';
+  | 'affiliate_product_impression'
+  | 'classroom_hub_view'
+  | 'classroom_timer_view'
+  | 'timer_preset_selected'
+  | 'timer_custom_set'
+  | 'timer_started'
+  | 'timer_paused'
+  | 'timer_resumed'
+  | 'timer_completed'
+  | 'timer_reset'
+  | 'timer_fullscreen'
+  | 'timer_sound_enabled'
+  | 'classroom_game_selected'
+  | 'classroom_filter_used';
 
 export type AnalyticsParameters = Partial<{
   game_slug: string;
@@ -28,6 +41,9 @@ export type AnalyticsParameters = Partial<{
   page_type: 'hub' | 'category' | 'guide' | 'comparison' | 'product';
   link_position: string;
   destination_type: 'merchant_product';
+  timer_seconds: number;
+  timer_mode: 'standard' | 'calm';
+  classroom_section: string;
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
@@ -43,14 +59,19 @@ declare global {
 }
 
 const safeParameterKeys = new Set<keyof AnalyticsParameters>([
-  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_slug', 'product_name', 'guide_slug', 'category', 'page_type', 'link_position', 'destination_type'
+  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_slug', 'product_name', 'guide_slug', 'category', 'page_type', 'link_position', 'destination_type', 'timer_seconds', 'timer_mode', 'classroom_section'
 ]);
-const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string> }> = [];
+const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string | number> }> = [];
 
 function safeParameters(parameters: AnalyticsParameters) {
-  const result: Record<string, string> = {};
+  const result: Record<string, string | number> = {};
   for (const [key, value] of Object.entries(parameters)) {
-    if (!safeParameterKeys.has(key as keyof AnalyticsParameters) || typeof value !== 'string') continue;
+    if (!safeParameterKeys.has(key as keyof AnalyticsParameters)) continue;
+    if (key === 'timer_seconds') {
+      if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 359999) result[key] = value;
+      continue;
+    }
+    if (typeof value !== 'string') continue;
     const normalized = value.trim().slice(0, 100);
     if (!normalized) continue;
     if (key === 'game_slug' && !/^[a-z0-9-]+$/.test(normalized)) continue;
@@ -61,6 +82,8 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'page_type' && !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)) continue;
     if (['product_slug', 'guide_slug', 'category', 'link_position'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
     if (key === 'destination_type' && normalized !== 'merchant_product') continue;
+    if (key === 'timer_mode' && !['standard', 'calm'].includes(normalized)) continue;
+    if (key === 'classroom_section' && !/^[a-z0-9_-]+$/.test(normalized)) continue;
     result[key] = normalized;
   }
   return result;
