@@ -4,6 +4,12 @@ const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:3017';
 const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
 const failures = [];
 
+function isExpectedLocalFailure(message) {
+  return /ERR_FAILED|Failed to load resource/i.test(message)
+    || (baseUrl.startsWith('http://127.0.0.1') && /due to access control checks/i.test(message))
+    || (baseUrl.endsWith('.vercel.app') && /vercel\.live\/_next-live\/feedback|due to access control checks/i.test(message));
+}
+
 async function authorizePreview(context) {
   if (previewShareUrl) await context.request.get(previewShareUrl);
 }
@@ -17,11 +23,12 @@ async function runBrowser(browserType, name, viewports) {
       await context.route(/googletagmanager\.com|google-analytics\.com|googlesyndication\.com|doubleclick\.net/, (route) => route.abort());
       const page = await context.newPage();
       const errors = [];
-      page.on('pageerror', (error) => errors.push(error.message));
+      page.on('pageerror', (error) => {
+        if (!isExpectedLocalFailure(error.message)) errors.push(error.message);
+      });
       page.on('console', (message) => {
         const text = message.text();
-        const expectedLocalFailure = /ERR_FAILED|Failed to load resource|\/sw\.js due to access control checks/i.test(text);
-        if (message.type() === 'error' && !expectedLocalFailure) errors.push(text);
+        if (message.type() === 'error' && !isExpectedLocalFailure(text)) errors.push(text);
       });
 
       const hubResponse = await page.goto(`${baseUrl}/classroom`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
@@ -32,9 +39,19 @@ async function runBrowser(browserType, name, viewports) {
         noindex: /noindex/i.test(document.querySelector('meta[name="robots"]')?.content || ''),
         overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
         cards: document.querySelectorAll('.classroom-game-card').length,
-        ads: document.querySelectorAll('.adsbygoogle').length
+        ads: document.querySelectorAll('.adsbygoogle').length,
+        desktopClassroom: document.querySelectorAll('.nav-links--desktop a[href="/classroom"]').length,
+        footerClassroom: document.querySelectorAll('.site-footer a[href="/classroom"]').length,
+        activeClassroom: document.querySelectorAll('.nav-links a[href="/classroom"][aria-current="page"]').length
       }));
-      if (!hubFacts.h1 || hubFacts.canonical !== 'https://www.gr8gamz.com/classroom' || hubFacts.noindex || hubFacts.overflow || hubFacts.cards < 12 || hubFacts.ads !== 0) failures.push(`${name} ${viewport.width}: hub facts ${JSON.stringify(hubFacts)}.`);
+      if (!hubFacts.h1 || hubFacts.canonical !== 'https://www.gr8gamz.com/classroom' || hubFacts.noindex || hubFacts.overflow || hubFacts.cards < 12 || hubFacts.ads !== 0 || hubFacts.desktopClassroom !== 1 || hubFacts.footerClassroom !== 1 || hubFacts.activeClassroom !== 2) failures.push(`${name} ${viewport.width}: hub facts ${JSON.stringify(hubFacts)}.`);
+      if (viewport.width <= 1180) {
+        await page.locator('.nav-menu > summary').click();
+        const compactLink = page.locator('.nav-links--compact a[href="/classroom"]');
+        if (!await compactLink.isVisible()) failures.push(`${name} ${viewport.width}: Classroom is missing from the compact menu.`);
+        const compactBox = await compactLink.evaluate((node) => ({ width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height }));
+        if (compactBox.width < 44 || compactBox.height < 44) failures.push(`${name} ${viewport.width}: compact Classroom target is below 44px.`);
+      }
 
       const response = await page.goto(`${baseUrl}/classroom/timer`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
       if (response?.status() !== 200) failures.push(`${name} ${viewport.width}: timer returned ${response?.status()}.`);
@@ -45,6 +62,7 @@ async function runBrowser(browserType, name, viewports) {
         ads: document.querySelectorAll('.adsbygoogle').length,
         sound: document.querySelector('button[aria-label="Enable completion sound"]') !== null,
         personalInputs: [...document.querySelectorAll('input')].some((input) => /name|email|student|pupil/i.test(`${input.name} ${input.placeholder} ${input.getAttribute('aria-label') || ''}`)),
+        activeClassroom: document.querySelectorAll('.nav-links a[href="/classroom"][aria-current="page"]').length,
         schema: [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => {
           try { return JSON.parse(script.textContent || 'null'); } catch { return 'MALFORMED'; }
         })
@@ -52,8 +70,9 @@ async function runBrowser(browserType, name, viewports) {
       const breadcrumb = initial.schema.find((item) => item?.['@type'] === 'BreadcrumbList');
       const webApp = initial.schema.find((item) => item?.['@type'] === 'WebApplication');
       const schemaInvalid = initial.schema.includes('MALFORMED') || breadcrumb?.itemListElement?.at(-1)?.item !== 'https://www.gr8gamz.com/classroom/timer' || webApp?.name !== 'GR8 Classroom Timer';
-      if (initial.canonical !== 'https://www.gr8gamz.com/classroom/timer' || initial.noindex || initial.overflow || initial.ads !== 0 || !initial.sound || initial.personalInputs || schemaInvalid) failures.push(`${name} ${viewport.width}: timer initial facts ${JSON.stringify(initial)}.`);
+      if (initial.canonical !== 'https://www.gr8gamz.com/classroom/timer' || initial.noindex || initial.overflow || initial.ads !== 0 || !initial.sound || initial.personalInputs || initial.activeClassroom !== 2 || schemaInvalid) failures.push(`${name} ${viewport.width}: timer initial facts ${JSON.stringify(initial)}.`);
 
+      await page.waitForTimeout(baseUrl.endsWith('.vercel.app') ? 1500 : 250);
       await page.getByLabel('Hours').fill('0');
       await page.getByLabel('Minutes').fill('0');
       await page.getByLabel('Seconds').fill('2');
@@ -87,6 +106,47 @@ async function runBrowser(browserType, name, viewports) {
     }
 
     if (name === 'Chromium') {
+      const shellContext = await browser.newContext({ viewport: { width: 1181, height: 900 }, reducedMotion: 'reduce' });
+      await authorizePreview(shellContext);
+      const [robotsResponse, sitemapResponse, hubHtmlResponse, timerHtmlResponse] = await Promise.all([
+        shellContext.request.get(`${baseUrl}/robots.txt`),
+        shellContext.request.get(`${baseUrl}/sitemaps/core.xml`),
+        shellContext.request.get(`${baseUrl}/classroom`),
+        shellContext.request.get(`${baseUrl}/classroom/timer`)
+      ]);
+      const [robots, sitemap, hubHtml, timerHtml] = await Promise.all([
+        robotsResponse.text(),
+        sitemapResponse.text(),
+        hubHtmlResponse.text(),
+        timerHtmlResponse.text()
+      ]);
+      for (const route of ['/classroom', '/classroom/timer']) {
+        const canonicalUrl = `https://www.gr8gamz.com${route}`;
+        const sitemapMatches = sitemap.match(new RegExp(`<loc>${canonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`, 'g')) || [];
+        if (sitemapMatches.length !== 1) failures.push(`${route} appears ${sitemapMatches.length} times in the core sitemap.`);
+      }
+      if (!robotsResponse.ok() || /Disallow:\s*\/classroom(?:\s|$)/i.test(robots)) failures.push('robots.txt does not permit Classroom crawling.');
+      for (const [route, response, html] of [['/classroom', hubHtmlResponse, hubHtml], ['/classroom/timer', timerHtmlResponse, timerHtml]]) {
+        if (!response.ok() || !html.includes('href="/classroom"') || !html.includes('<h1')) failures.push(`${route} server HTML is missing its global Classroom link or principal content.`);
+      }
+      const shellPage = await shellContext.newPage();
+      await shellPage.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+      const shellFacts = await shellPage.evaluate(() => ({
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+        desktopVisible: !!document.querySelector('.nav-links--desktop a[href="/classroom"]')?.getClientRects().length,
+        timerCta: document.querySelectorAll('.classroom-home-band a[href="/classroom/timer"]').length,
+        hubCta: document.querySelectorAll('.classroom-home-band a[href="/classroom"]').length
+      }));
+      if (shellFacts.overflow || !shellFacts.desktopVisible || shellFacts.timerCta !== 1 || shellFacts.hubCta !== 1) failures.push(`Narrow desktop shell facts ${JSON.stringify(shellFacts)}.`);
+      await shellPage.goto(`${baseUrl}/ar/games`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+      const rtlFacts = await shellPage.evaluate(() => ({
+        dir: document.documentElement.dir,
+        classroomHref: document.querySelector('.nav-links--compact a[href="/classroom"]')?.getAttribute('href'),
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth
+      }));
+      if (rtlFacts.dir !== 'rtl' || rtlFacts.classroomHref !== '/classroom' || rtlFacts.overflow) failures.push(`Arabic shell facts ${JSON.stringify(rtlFacts)}.`);
+      await shellContext.close();
+
       const acceptedContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
       await authorizePreview(acceptedContext);
       await acceptedContext.route(/googletagmanager\.com|google-analytics\.com|googlesyndication\.com|doubleclick\.net/, (route) => route.abort());
