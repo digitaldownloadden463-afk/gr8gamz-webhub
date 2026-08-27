@@ -6,6 +6,10 @@ import { localizedAlternates } from '@/lib/i18n';
 
 export const categoryPageSize = 48;
 
+const categorySearchTitles: Record<string, string> = {
+  arcade: 'Free Arcade Games Online - Quick Browser Play'
+};
+
 export function parseCategoryPageNumber(value: string) {
   if (!/^[1-9]\d*$/.test(value)) return null;
   const page = Number(value);
@@ -50,7 +54,7 @@ export function categoryPageMetadata(data: CategoryPageData): Metadata {
   const { category, editorial, page, totalPages, path } = data;
   const name = categoryDisplayName(category.slug, category.name);
   const title = page === 1
-    ? editorial?.title || `${name} Games`
+    ? editorial?.title || categorySearchTitles[category.slug] || `${name} Games`
     : `${name} Games - Page ${page} of ${totalPages}`;
   const description = page === 1
     ? editorial?.description || `Browse ${category.count.toLocaleString('en-GB')} ${name.toLowerCase()} games from GR8 Originals and GR8 Select.`

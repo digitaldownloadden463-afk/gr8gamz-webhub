@@ -3,8 +3,8 @@ import { canonical } from '@/lib/features';
 import { getAllGames } from '@/lib/games';
 
 export const metadata = {
-  title: 'Mobile Games',
-  description: 'Touch-friendly GR8 GAMZ browser games for phones and tablets.',
+  title: 'Free Mobile Games Online - Play on Phone & Tablet',
+  description: 'Play touch-friendly free mobile games online from GR8 GAMZ, built for phones, tablets and modern browsers without a separate app installation.',
   alternates: { canonical: canonical('/mobile-games') }
 };
 
@@ -14,8 +14,8 @@ export default function MobileGamesPage() {
     <main>
       <section className="page-title">
         <span className="eyebrow">Mobile Games</span>
-        <h1>Touch-friendly games for your screen.</h1>
-        <p>GR8 Originals built to play cleanly on phones, tablets and desktop browsers.</p>
+        <h1>Free mobile games for phone and tablet.</h1>
+        <p>Browse verified touch-friendly GR8 Originals that play in a modern mobile browser without a separate app installation.</p>
       </section>
       <section className="game-grid">
         {games.map((game, index) => (

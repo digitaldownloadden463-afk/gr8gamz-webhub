@@ -15,10 +15,18 @@ Main player routes:
 - /popular-games - strong repeat-play picks
 - /quick-games - short-session GR8 Originals
 - /mobile-games - touch-friendly GR8 Originals
+- /car-games - car-led racing, parking, drifting and stunt collection
+- /2-player-games - games with explicit two-player catalogue evidence
+- /io-games - explicit .io arena and multiplayer collection
+- /dress-up-games - outfit, fashion and makeover collection
+- /shooting-games - aiming, target, sniper and action-shooter collection
+- /word-games - word search, spelling, crossword and word-building collection
 - /categories/{slug} - substantial category hubs generated from the registry
 - /controls/{slug} - control-focused hubs generated from the registry
 - /more-free-games - legacy More Games route for GR8 Select discovery
 - /my-arcade - favourites and recently played games saved on this device
+- /classroom - GR8 Classroom hub
+- /classroom/timer - free classroom countdown timer
 
 Game routes:
 - /arcade/{slug} - playable GR8 Original profile and player page

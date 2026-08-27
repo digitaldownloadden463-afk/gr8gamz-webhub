@@ -5,6 +5,7 @@ import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHub
 import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 import { commerceRouteLastmod, commerceRoutePaths } from '@/lib/commerce/catalogue';
 import { classroomReviewedAt, classroomRoutePaths } from '@/lib/classroom';
+import { gameHubPath, gameHubReviewedAt, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 
 export const partnerSitemapSize = 1000;
 
@@ -77,6 +78,10 @@ export function collectionEntries() {
     `/controls/${hub.slug}`,
     ...Array.from({ length: Math.max(0, Math.ceil(hub.count / 48) - 1) }, (_, index) => `/controls/${hub.slug}/page/${index + 2}`)
   ]);
+  const gameHubRoutes = getActiveGameHubs().flatMap((hub) => {
+    const totalPages = Math.max(1, Math.ceil(getGameHubGames(hub.slug).length / 48));
+    return Array.from({ length: totalPages }, (_, index) => gameHubPath(hub.slug, index + 1));
+  });
   const routes = [
     '/games',
     '/gr8-originals',
@@ -88,13 +93,15 @@ export function collectionEntries() {
     '/popular-games',
     '/quick-games',
     '/mobile-games',
+    ...gameHubRoutes,
     ...categoryRoutes,
     ...controlRoutes,
     ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
   ];
   return routes.map((route) => {
     const categorySlug = route.match(/^\/categories\/([^/]+)/)?.[1];
-    const lastmod = categorySlug && editorialSlugs.has(categorySlug) ? categoryEditorialReviewedAt : undefined;
+    const isGameHub = getActiveGameHubs().some((hub) => route === gameHubPath(hub.slug) || route.startsWith(`${gameHubPath(hub.slug)}/page/`));
+    const lastmod = isGameHub ? gameHubReviewedAt : categorySlug && editorialSlugs.has(categorySlug) ? categoryEditorialReviewedAt : undefined;
     return urlEntry(route, lastmod, route === '/games' ? '0.85' : '0.65');
   }).join('');
 }

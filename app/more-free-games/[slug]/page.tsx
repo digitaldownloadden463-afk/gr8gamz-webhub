@@ -11,6 +11,7 @@ import { tr } from '@/lib/i18n';
 import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
+import { gameHubPath, getGameHubsForGameSlug } from '@/lib/gameHubs';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -49,6 +50,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
   if (!profile) notFound();
   const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
   const text = tr('en');
+  const specialistHubs = getGameHubsForGameSlug(profile.slug);
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
   const playPath = profile.playPath || `${profile.path}/play`;
@@ -116,6 +118,15 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         <p>{profile.whyPicked || `${profile.title} is a ${profile.category.toLowerCase()} game for quick browser play on GR8 GAMZ.`}</p>
         <p className="fine-print">The game loads only after you select Play.</p>
       </section>
+      {specialistHubs.length ? (
+        <section className="content-panel" aria-labelledby="specialist-collections-title">
+          <span className="eyebrow">Explore collections</span>
+          <h2 id="specialist-collections-title">More games with a similar play style</h2>
+          <div className="compact-link-list">
+            {specialistHubs.map((hub) => <Link key={hub.id} href={gameHubPath(hub.slug)}><strong>{hub.label}</strong><span>Browse the full collection</span></Link>)}
+          </div>
+        </section>
+      ) : null}
       <GameShare
         title={profile.title}
         url={canonical(profile.path)}
