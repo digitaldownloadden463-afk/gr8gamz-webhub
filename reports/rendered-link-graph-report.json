@@ -1,12 +1,12 @@
 {
-  "baseUrl": "http://127.0.0.1:3101",
+  "baseUrl": "http://127.0.0.1:3117",
   "sitemapFiles": 75,
-  "canonicalRoutes": 38520,
-  "renderedInternalAnchorTargets": 90764,
-  "graphEdges": 2720786,
+  "canonicalRoutes": 38637,
+  "renderedInternalAnchorTargets": 82613,
+  "graphEdges": 1925924,
   "partnerProfiles": 33231,
   "orphanRoutes": 0,
   "brokenCanonicalTargets": 0,
-  "maximumDepth": 3,
+  "maximumDepth": 693,
   "sampleFailures": []
 }

@@ -16,9 +16,9 @@
     {
       "slug": "action",
       "name": "Action",
-      "title": "Action Games: Fast Browser Challenges",
+      "title": "Free Action Games Online - Fast Browser Challenges",
       "description": "Browse action games built around reactions, movement, survival and fast retries, with clear starting points for touch, mouse and keyboard play.",
-      "h1": "Action games for fast reactions and bold moves",
+      "h1": "Free action games for fast reactions and bold moves",
       "introduction": "Action games ask you to react while the situation is changing. The catalogue ranges from short survival runs and physics stunts to battle arenas and movement-heavy challenges, so the right starting point depends on how much control and pressure you want.",
       "distinction": "What separates action from a general arcade game is sustained pressure: movement, timing or targeting keeps influencing the next decision instead of ending after one isolated move.",
       "subgenres": [
@@ -48,9 +48,9 @@
     {
       "slug": "adventure",
       "name": "Adventure",
-      "title": "Adventure Games: Explore and Make Progress",
+      "title": "Free Adventure Games Online - Explore and Progress",
       "description": "Find browser adventure games centred on exploration, discovery, choices and progress, from quick quests to broader simulation-style journeys.",
-      "h1": "Adventure games built around discovery",
+      "h1": "Free adventure games built around discovery",
       "introduction": "Adventure games give the next place, choice or objective as much importance as the immediate action. Some are compact quests with a clear decision loop; others use driving, exploration or simulation systems to create a longer-feeling journey.",
       "distinction": "The category is defined by progression through places, objectives or discoveries. Reflexes can matter, but they support a sense of moving through an experience rather than chasing one isolated score.",
       "subgenres": [
@@ -80,9 +80,9 @@
     {
       "slug": "multiplayer",
       "name": "Multiplayer",
-      "title": "Multiplayer Games: Arenas and Competitive Play",
+      "title": "Free Multiplayer Games Online - Arenas and Competition",
       "description": "Browse multiplayer browser games with arena movement, competitive rounds and quick rematches, plus guidance on controls and session fit.",
-      "h1": "Multiplayer games for competitive browser sessions",
+      "h1": "Free multiplayer games for competitive browser sessions",
       "introduction": "Multiplayer games are organised around other participants, shared arenas or competitive round structures. They can feel immediate, but each game handles matchmaking, opponents and online availability differently, so read the profile and in-game prompts before assuming a specific mode.",
       "distinction": "Unlike a solo score chase, multiplayer play depends on a shared or competitive game structure. GR8 GAMZ does not claim that every listed session always contains live human opponents.",
       "subgenres": [
@@ -117,9 +117,9 @@
     {
       "slug": "puzzle",
       "name": "Puzzle",
-      "title": "Puzzle Games: Logic, Blocks and Brain Teasers",
+      "title": "Free Puzzle Games Online - Logic, Blocks & Brain Teasers",
       "description": "Choose from logic, block, matching, sorting and spatial puzzle games, with practical guidance for quick touch play or deeper keyboard challenges.",
-      "h1": "Puzzle games for logic, patterns and careful moves",
+      "h1": "Free puzzle games for logic, patterns and careful moves",
       "introduction": "Puzzle games reward understanding a rule and applying it carefully. The catalogue includes quick matching and sorting loops, spatial movement problems, memory challenges and board-filling games, so difficulty depends as much on the rule set as the controls.",
       "distinction": "Progress comes primarily from recognising patterns, planning moves or testing a solution. Speed can add pressure, but the central challenge is deciding what to do next.",
       "subgenres": [
@@ -154,9 +154,9 @@
     {
       "slug": "racing",
       "name": "Racing",
-      "title": "Racing Games: Cars, Bikes and Time Trials",
+      "title": "Free Racing Games Online - Cars, Bikes & Speed",
       "description": "Browse racing and driving games for cars, bikes, stunts and time trials, with guidance for touch steering, keyboard control and session length.",
-      "h1": "Racing games for speed, steering and clean timing",
+      "h1": "Free racing games for speed, steering and clean timing",
       "introduction": "Racing games combine route reading with steering, braking or jump timing. Some aim for clean laps and time trials; others focus on stunts, traffic, crashes or survival, so choose by control style before choosing by vehicle.",
       "distinction": "Movement is judged against a route, obstacle sequence, clock or rival. Even crash-focused games remain racing-led when steering and forward progress drive the main challenge.",
       "subgenres": [
@@ -186,9 +186,9 @@
     {
       "slug": "shooter",
       "name": "Shooting",
-      "title": "Shooting Games: Aim, Dodge and Survive",
+      "title": "Free Shooting Games Online - Aim, Dodge & Survive",
       "description": "Start with GR8 GAMZ shooting play built around aiming, movement and survival, then continue into related action and strategy categories.",
-      "h1": "Shooting games for aim, movement and survival",
+      "h1": "Free shooting games for aim, movement and survival",
       "introduction": "Shooting games combine target selection with movement, timing or survival. This focused hub currently starts with a GR8 Original space shooter and links into broader action and strategy paths rather than pretending a one-game shelf is a large catalogue.",
       "distinction": "Aiming or projectile management is the central action. Dodging and positioning still matter, but they support the decision about when and where to fire.",
       "subgenres": [
@@ -220,9 +220,9 @@
     {
       "slug": "sports",
       "name": "Sports",
-      "title": "Sports Games: Football, Basketball and Skill",
+      "title": "Free Sports Games Online - Football, Basketball & Skill",
       "description": "Browse sports games for football, basketball, golf, bowling and timing challenges, with practical control and device guidance.",
-      "h1": "Sports games for scoring, timing and skill shots",
+      "h1": "Free sports games for scoring, timing and skill shots",
       "introduction": "Sports games turn familiar scoring ideas into short browser challenges. Some recreate a compact match or contest, while others isolate one skill such as a penalty, putt, bowl or basketball shot so you can retry it quickly.",
       "distinction": "The objective is tied to a recognisable sport, scoring system or athletic skill. Physics and timing matter, but the sport gives each attempt its structure.",
       "subgenres": [
@@ -252,9 +252,9 @@
     {
       "slug": "strategy",
       "name": "Strategy",
-      "title": "Strategy Games: Planning, Defence and Tactics",
+      "title": "Free Strategy Games Online - Planning, Defence & Tactics",
       "description": "Browse strategy games for planning, defence, sequencing and resource decisions, from quick traffic control to longer battle systems.",
-      "h1": "Strategy games for planning before you act",
+      "h1": "Free strategy games for planning before you act",
       "introduction": "Strategy games reward decisions that shape what happens later. The catalogue includes traffic control, tower defence, battle simulation, merging and incremental systems, so a good choice depends on whether you want a short sequencing puzzle or a longer tactical session.",
       "distinction": "The main challenge is the consequence of a plan: placement, timing, resource use or target order matters beyond the current move.",
       "subgenres": [

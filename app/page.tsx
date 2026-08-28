@@ -10,11 +10,26 @@ import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import { getRegistryCategories } from '@/lib/gameRegistry';
 import LenovoImpactTracking from '@/components/LenovoImpactTracking';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
+import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 
 const IMPACT_SITE_VERIFICATION = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
 
 export const metadata = {
-  alternates: { canonical: canonical('/') }
+  title: { absolute: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ' },
+  description: 'Play thousands of free online games in your browser, including arcade, puzzle, action, racing, sports and multiplayer games on mobile, tablet and desktop.',
+  alternates: { canonical: canonical('/') },
+  openGraph: {
+    title: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ',
+    description: 'Start free online games in your browser across arcade, puzzle, action, racing, sports and multiplayer collections.',
+    url: canonical('/'),
+    images: [{ url: '/og/gr8gamz-og.png', width: 1200, height: 630, alt: 'Free online games at GR8 GAMZ' }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ',
+    description: 'Start free online browser games across GR8 Originals and GR8 Select.',
+    images: ['/og/gr8gamz-og.png']
+  }
 };
 
 export const dynamic = 'force-static';
@@ -24,6 +39,7 @@ export default function HomePage() {
   const partners = getFeaturedPartnerGameProfiles(8);
   const stats = getCatalogueStats();
   const categories = getRegistryCategories(1).slice(0, 8);
+  const gameHubs = getActiveGameHubs();
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -63,9 +79,9 @@ export default function HomePage() {
           <span />
         </div>
         <div className="hero__content">
-          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> The global browser arcade</span>
-          <h1>Enter GR8 GAMZ.</h1>
-          <p>{stats.playable.toLocaleString()} playable games. Original worlds. Instant play across {stats.locales.toLocaleString()} languages.</p>
+          <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> Enter GR8 GAMZ</span>
+          <h1>Free online games at GR8 GAMZ.</h1>
+          <p>Play {stats.playable.toLocaleString()} free online games in your browser, including arcade, puzzle, action, racing, sports and multiplayer games. Start on mobile, tablet or desktop with no installation required.</p>
           <div className="cta-row">
             <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Start playing</Link>
             <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Explore GR8 Select</Link>
@@ -103,6 +119,22 @@ export default function HomePage() {
             <Link key={category.slug} href={`/categories/${category.slug}`}>
               <strong>{category.name}</strong>
               <span>{category.count.toLocaleString()} games</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="collection-discovery" aria-labelledby="collection-discovery-title">
+        <div className="section-heading">
+          <span className="eyebrow"><Compass size={18} aria-hidden="true" /> Explore game collections</span>
+          <h2 id="collection-discovery-title">Start with the kind of game you want.</h2>
+          <Link href="/games">Browse every category <ArrowRight size={18} aria-hidden="true" /></Link>
+        </div>
+        <div className="compact-link-list">
+          {gameHubs.map((hub) => (
+            <Link key={hub.id} href={gameHubPath(hub.slug)}>
+              <strong>{hub.label}</strong>
+              <span>{getGameHubGames(hub.slug).length.toLocaleString()} games</span>
             </Link>
           ))}
         </div>

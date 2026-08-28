@@ -5,16 +5,23 @@ import RegistryGameCard from '@/components/RegistryGameCard';
 import { getAllGames } from '@/lib/games';
 import { canonical, gameCountLabel } from '@/lib/features';
 import { getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
+import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 
-export const metadata = {
-  title: 'Games',
-  description: 'Browse every original GR8 GAMZ browser game by search, category, controls and difficulty.',
+const gamesMetadata = {
+  title: 'Free Games Online - Browse the GR8 GAMZ Directory',
+  description: 'Browse free games online across GR8 Originals and GR8 Select, with categories, controls, specialist collections and catalogue-wide search.',
   alternates: { canonical: canonical('/games') }
 };
 
 type GamesPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
+
+export async function generateMetadata({ searchParams }: GamesPageProps) {
+  const params = await searchParams;
+  const query = sanitizeQuery(params?.q);
+  return query ? { ...gamesMetadata, robots: { index: false, follow: true } } : gamesMetadata;
+}
 
 function sanitizeQuery(value: string | string[] | undefined) {
   const raw = Array.isArray(value) ? value[0] : value;
@@ -34,14 +41,29 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const games = getAllGames();
   const categories = getRegistryCategories();
   const controls = getRegistryControlHubs();
+  const hubs = getActiveGameHubs();
   const searchResults = query ? searchRegistryGames(query, requestedPage, 48) : null;
-  const queryCopy = query ? `Showing results for "${query}" across GR8 Originals and GR8 Select.` : 'Search the original GR8 GAMZ library. Every result has touch-friendly controls and a stable play screen.';
+  const queryCopy = query
+    ? `Showing results for "${query}" across GR8 Originals and GR8 Select.`
+    : 'Search across GR8 Originals and GR8 Select. Each result opens a profile with controls and device guidance before play.';
   return (
     <main>
       <section className="page-title">
-        <span className="eyebrow">Original games</span>
-        <h1>{gameCountLabel(games.length)} ready to play.</h1>
+        <span className="eyebrow">Game directory</span>
+        <h1>Find free games online across GR8 GAMZ.</h1>
         <p>{queryCopy}</p>
+      </section>
+      <section className="content-panel" aria-label="Explore specialist game collections">
+        <span className="eyebrow">Explore collections</span>
+        <h2>Browse by a more specific play style.</h2>
+        <div className="compact-link-list">
+          {hubs.map((hub) => (
+            <Link key={hub.id} href={gameHubPath(hub.slug)}>
+              <strong>{hub.label}</strong>
+              <span>{getGameHubGames(hub.slug).length.toLocaleString()} games</span>
+            </Link>
+          ))}
+        </div>
       </section>
       {searchResults ? (
         <section className="game-browser" aria-labelledby="game-browser-title">

@@ -1,0 +1,4061 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-27T16:57:08.679Z",
+  "catalogueGeneratedAt": "2026-08-13T05:52:24.051Z",
+  "baseline": {
+    "originals": 26,
+    "verifiedPartnerGames": 33231,
+    "playableGames": 33257,
+    "duplicatesExcluded": 2068,
+    "quarantinedExcluded": 4695
+  },
+  "methodology": "Selected hubs use explicit source-category and corroborated title/tag rules. Supporting concepts use exact source categories, exact tags or title word boundaries. Descriptions alone do not qualify a record.",
+  "clusters": [
+    {
+      "id": "car",
+      "confidentPlayableGames": 782,
+      "ambiguousMatchesExcluded": 2443,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "endless-car-chase",
+          "title": "Endless Car Chase",
+          "category": "Racing",
+          "path": "/more-free-games/endless-car-chase"
+        },
+        {
+          "slug": "val-d-agri-race",
+          "title": "Val d'Agri Race",
+          "category": "Arcade",
+          "path": "/more-free-games/val-d-agri-race"
+        },
+        {
+          "slug": "mr-racer-car-racing-game",
+          "title": "MR RACER - Car Racing",
+          "category": "Racing",
+          "path": "/more-free-games/mr-racer-car-racing-game"
+        },
+        {
+          "slug": "parking-solution",
+          "title": "Parking Solution",
+          "category": "Arcade",
+          "path": "/more-free-games/parking-solution"
+        },
+        {
+          "slug": "mini-car",
+          "title": "Mini Car Racing",
+          "category": "Racing",
+          "path": "/more-free-games/mini-car"
+        },
+        {
+          "slug": "russian-car-drift-3d",
+          "title": "Russian Car Drift 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/russian-car-drift-3d"
+        },
+        {
+          "slug": "car-rush-game",
+          "title": "Car Rush Game",
+          "category": "Racing",
+          "path": "/more-free-games/car-rush-game"
+        },
+        {
+          "slug": "car-defender",
+          "title": "Car Defender",
+          "category": "Arcade",
+          "path": "/more-free-games/car-defender"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 758
+        },
+        {
+          "category": "Arcade",
+          "count": 24
+        }
+      ]
+    },
+    {
+      "id": "driving",
+      "confidentPlayableGames": 1615,
+      "ambiguousMatchesExcluded": 701,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "bus-driver-simulator-3d",
+          "title": "Bus Driver Simulator 3D",
+          "category": "Adventure",
+          "path": "/more-free-games/bus-driver-simulator-3d"
+        },
+        {
+          "slug": "supercars-zombie-driving",
+          "title": "Supercars Zombie Driving",
+          "category": "Adventure",
+          "path": "/more-free-games/supercars-zombie-driving"
+        },
+        {
+          "slug": "italian-brainrot-extreme-driver",
+          "title": "Italian Brainrot Extreme Driver",
+          "category": "Arcade",
+          "path": "/more-free-games/italian-brainrot-extreme-driver"
+        },
+        {
+          "slug": "grand-city-driving-2",
+          "title": "Grand City Driving 2",
+          "category": "Action",
+          "path": "/more-free-games/grand-city-driving-2"
+        },
+        {
+          "slug": "super-suv-driving",
+          "title": "Super SUV Driving",
+          "category": "Racing",
+          "path": "/more-free-games/super-suv-driving"
+        },
+        {
+          "slug": "super-bike-racing",
+          "title": "Super Bike Racing",
+          "category": "Arcade",
+          "path": "/more-free-games/super-bike-racing"
+        },
+        {
+          "slug": "sprunki-stunt-driving-simulator",
+          "title": "Sprunki Stunt Driving Simulator",
+          "category": "Arcade",
+          "path": "/more-free-games/sprunki-stunt-driving-simulator"
+        },
+        {
+          "slug": "final-freeway-2r",
+          "title": "Final Freeway 2R",
+          "category": "Arcade",
+          "path": "/more-free-games/final-freeway-2r"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 868
+        },
+        {
+          "category": "Arcade",
+          "count": 369
+        },
+        {
+          "category": "Action",
+          "count": 167
+        },
+        {
+          "category": "Adventure",
+          "count": 130
+        },
+        {
+          "category": "Sports",
+          "count": 45
+        }
+      ]
+    },
+    {
+      "id": "racing",
+      "confidentPlayableGames": 2312,
+      "ambiguousMatchesExcluded": 1733,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "moto-x3m-spooky-land",
+          "title": "Moto X3M: Spooky Land",
+          "category": "Racing",
+          "path": "/more-free-games/moto-x3m-spooky-land"
+        },
+        {
+          "slug": "demolition-derby-life",
+          "title": "Demolition Derby Life",
+          "category": "Racing",
+          "path": "/more-free-games/demolition-derby-life"
+        },
+        {
+          "slug": "endless-car-chase",
+          "title": "Endless Car Chase",
+          "category": "Racing",
+          "path": "/more-free-games/endless-car-chase"
+        },
+        {
+          "slug": "drink-drive-survive",
+          "title": "Drink Drive Survive",
+          "category": "Racing",
+          "path": "/more-free-games/drink-drive-survive"
+        },
+        {
+          "slug": "wear-the-helmet",
+          "title": "Wear the Helmet",
+          "category": "Racing",
+          "path": "/more-free-games/wear-the-helmet"
+        },
+        {
+          "slug": "park-the-cars",
+          "title": "Park the Cars",
+          "category": "Racing",
+          "path": "/more-free-games/park-the-cars"
+        },
+        {
+          "slug": "mr-racer-car-racing-game",
+          "title": "MR RACER - Car Racing",
+          "category": "Racing",
+          "path": "/more-free-games/mr-racer-car-racing-game"
+        },
+        {
+          "slug": "bmg-crashday-2025",
+          "title": "BMG! CrashDay 2025",
+          "category": "Racing",
+          "path": "/more-free-games/bmg-crashday-2025"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 2310
+        },
+        {
+          "category": "racing",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "parking",
+      "confidentPlayableGames": 606,
+      "ambiguousMatchesExcluded": 130,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "parking-solution",
+          "title": "Parking Solution",
+          "category": "Arcade",
+          "path": "/more-free-games/parking-solution"
+        },
+        {
+          "slug": "my-parking-lot",
+          "title": "My Parking Lot",
+          "category": "Puzzle",
+          "path": "/more-free-games/my-parking-lot"
+        },
+        {
+          "slug": "car-chase-parking",
+          "title": "Car Chase Parking",
+          "category": "Arcade",
+          "path": "/more-free-games/car-chase-parking"
+        },
+        {
+          "slug": "perfect-car-parking",
+          "title": "Perfect Car Parking",
+          "category": "Racing",
+          "path": "/more-free-games/perfect-car-parking"
+        },
+        {
+          "slug": "school-bus-3d-parking",
+          "title": "School Bus 3D Parking",
+          "category": "Racing",
+          "path": "/more-free-games/school-bus-3d-parking"
+        },
+        {
+          "slug": "parking-lot",
+          "title": "Parking Lot",
+          "category": "Strategy",
+          "path": "/more-free-games/parking-lot"
+        },
+        {
+          "slug": "gt-burnout-parking-simulator",
+          "title": "GT Burnout Parking Simulator",
+          "category": "Racing",
+          "path": "/more-free-games/gt-burnout-parking-simulator"
+        },
+        {
+          "slug": "parking-line",
+          "title": "Parking Line",
+          "category": "Arcade",
+          "path": "/more-free-games/parking-line"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 268
+        },
+        {
+          "category": "Arcade",
+          "count": 184
+        },
+        {
+          "category": "Adventure",
+          "count": 49
+        },
+        {
+          "category": "Puzzle",
+          "count": 46
+        },
+        {
+          "category": "Action",
+          "count": 45
+        }
+      ]
+    },
+    {
+      "id": "drifting",
+      "confidentPlayableGames": 607,
+      "ambiguousMatchesExcluded": 121,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "train-drift",
+          "title": "Train Drift",
+          "category": "Racing",
+          "path": "/more-free-games/train-drift"
+        },
+        {
+          "slug": "drift-race-in-the-open-world",
+          "title": "Drift Race in the Open World",
+          "category": "Sports",
+          "path": "/more-free-games/drift-race-in-the-open-world"
+        },
+        {
+          "slug": "russian-car-drift-3d",
+          "title": "Russian Car Drift 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/russian-car-drift-3d"
+        },
+        {
+          "slug": "extreme-drift-racing",
+          "title": "Extreme Drift Racing",
+          "category": "Sports",
+          "path": "/more-free-games/extreme-drift-racing"
+        },
+        {
+          "slug": "minecraft-drift-simulator",
+          "title": "Minecraft Drift Simulator",
+          "category": "Arcade",
+          "path": "/more-free-games/minecraft-drift-simulator"
+        },
+        {
+          "slug": "oiia-oiia-cat-drift-master",
+          "title": "OIIA OIIA CAT Drift Master",
+          "category": "Arcade",
+          "path": "/more-free-games/oiia-oiia-cat-drift-master"
+        },
+        {
+          "slug": "pocket-drift",
+          "title": "Pocket Drift",
+          "category": "Sports",
+          "path": "/more-free-games/pocket-drift"
+        },
+        {
+          "slug": "zombie-drive-drift",
+          "title": "Zombie Drive Drift",
+          "category": "Arcade",
+          "path": "/more-free-games/zombie-drive-drift"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 315
+        },
+        {
+          "category": "Arcade",
+          "count": 191
+        },
+        {
+          "category": "Adventure",
+          "count": 48
+        },
+        {
+          "category": "Sports",
+          "count": 28
+        },
+        {
+          "category": "Puzzle",
+          "count": 12
+        }
+      ]
+    },
+    {
+      "id": "motorcycle-bike",
+      "confidentPlayableGames": 455,
+      "ambiguousMatchesExcluded": 75,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "super-bike-racing",
+          "title": "Super Bike Racing",
+          "category": "Arcade",
+          "path": "/more-free-games/super-bike-racing"
+        },
+        {
+          "slug": "bike-mania-2",
+          "title": "Bike Mania 2",
+          "category": "Sports",
+          "path": "/more-free-games/bike-mania-2"
+        },
+        {
+          "slug": "skibidi-toilet-moto-bike-racing-2",
+          "title": "Skibidi Toilet Moto Bike Racing 2",
+          "category": "Arcade",
+          "path": "/more-free-games/skibidi-toilet-moto-bike-racing-2"
+        },
+        {
+          "slug": "real-motor-race-master",
+          "title": "Real Motor Race Master",
+          "category": "Arcade",
+          "path": "/more-free-games/real-motor-race-master"
+        },
+        {
+          "slug": "bike-mania-3-on-ice",
+          "title": "Bike Mania 3 On Ice",
+          "category": "Sports",
+          "path": "/more-free-games/bike-mania-3-on-ice"
+        },
+        {
+          "slug": "stunt-extreme",
+          "title": "Stunt Extreme",
+          "category": "Arcade",
+          "path": "/more-free-games/stunt-extreme"
+        },
+        {
+          "slug": "xtreme-motorbikes-rider",
+          "title": "Xtreme Motorbikes Rider",
+          "category": "Arcade",
+          "path": "/more-free-games/xtreme-motorbikes-rider"
+        },
+        {
+          "slug": "mountain-bike-challenge",
+          "title": "Mountain Bike Challenge",
+          "category": "Arcade",
+          "path": "/more-free-games/mountain-bike-challenge"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Racing",
+          "count": 226
+        },
+        {
+          "category": "Arcade",
+          "count": 114
+        },
+        {
+          "category": "Sports",
+          "count": 42
+        },
+        {
+          "category": "Puzzle",
+          "count": 27
+        },
+        {
+          "category": "Adventure",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "id": "two-player",
+      "confidentPlayableGames": 319,
+      "ambiguousMatchesExcluded": 1060,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "racing-ball-3d",
+          "title": "Racing Ball 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/racing-ball-3d"
+        },
+        {
+          "slug": "red-and-blue-stickman-huggy",
+          "title": "Red and Blue Stickman Huggy",
+          "category": "Arcade",
+          "path": "/more-free-games/red-and-blue-stickman-huggy"
+        },
+        {
+          "slug": "drunken-duel",
+          "title": "Drunken Duel",
+          "category": "Arcade",
+          "path": "/more-free-games/drunken-duel"
+        },
+        {
+          "slug": "masquerades-vs-impostors",
+          "title": "Masquerades vs Impostors",
+          "category": "Arcade",
+          "path": "/more-free-games/masquerades-vs-impostors"
+        },
+        {
+          "slug": "block-vs-block-ii",
+          "title": "Block vs Block II",
+          "category": "Arcade",
+          "path": "/more-free-games/block-vs-block-ii"
+        },
+        {
+          "slug": "red-and-blue-stickman-rope",
+          "title": "Red and Blue Stickman Rope",
+          "category": "Arcade",
+          "path": "/more-free-games/red-and-blue-stickman-rope"
+        },
+        {
+          "slug": "red-and-green-3",
+          "title": "Red and Green 3",
+          "category": "Arcade",
+          "path": "/more-free-games/red-and-green-3"
+        },
+        {
+          "slug": "gun-and-guys",
+          "title": "Gun and Guys",
+          "category": "Arcade",
+          "path": "/more-free-games/gun-and-guys"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 159
+        },
+        {
+          "category": "Action",
+          "count": 65
+        },
+        {
+          "category": "Racing",
+          "count": 38
+        },
+        {
+          "category": "Sports",
+          "count": 21
+        },
+        {
+          "category": "Adventure",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "multiplayer",
+      "confidentPlayableGames": 316,
+      "ambiguousMatchesExcluded": 731,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "yenemy-io",
+          "title": "Yenemy",
+          "category": "Multiplayer",
+          "path": "/more-free-games/yenemy-io"
+        },
+        {
+          "slug": "worm-hunt-snake-game-io-zone",
+          "title": "Worm Hunt - Snake game iO zone",
+          "category": "Multiplayer",
+          "path": "/more-free-games/worm-hunt-snake-game-io-zone"
+        },
+        {
+          "slug": "blob-wars",
+          "title": "Blob Wars",
+          "category": "Multiplayer",
+          "path": "/more-free-games/blob-wars"
+        },
+        {
+          "slug": "cube-zone-master",
+          "title": "Cube Zone Master",
+          "category": "Multiplayer",
+          "path": "/more-free-games/cube-zone-master"
+        },
+        {
+          "slug": "archers-io-1",
+          "title": "Archers.io",
+          "category": "Multiplayer",
+          "path": "/more-free-games/archers-io-1"
+        },
+        {
+          "slug": "bunny-boy-online",
+          "title": "Bunny Boy Online",
+          "category": "Multiplayer",
+          "path": "/more-free-games/bunny-boy-online"
+        },
+        {
+          "slug": "fallingman",
+          "title": "Fallingman.io",
+          "category": "Multiplayer",
+          "path": "/more-free-games/fallingman"
+        },
+        {
+          "slug": "hole-io-2",
+          "title": "Hole.io 2",
+          "category": "Multiplayer",
+          "path": "/more-free-games/hole-io-2"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Multiplayer",
+          "count": 316
+        }
+      ]
+    },
+    {
+      "id": "io",
+      "confidentPlayableGames": 315,
+      "ambiguousMatchesExcluded": 1108,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "yenemy-io",
+          "title": "Yenemy",
+          "category": "Multiplayer",
+          "path": "/more-free-games/yenemy-io"
+        },
+        {
+          "slug": "worm-hunt-snake-game-io-zone",
+          "title": "Worm Hunt - Snake game iO zone",
+          "category": "Multiplayer",
+          "path": "/more-free-games/worm-hunt-snake-game-io-zone"
+        },
+        {
+          "slug": "skibidi-snake-io",
+          "title": "Skibidi Snake",
+          "category": "Arcade",
+          "path": "/more-free-games/skibidi-snake-io"
+        },
+        {
+          "slug": "stickman-broken-bones-io",
+          "title": "Stickman Broken Bones io",
+          "category": "Action",
+          "path": "/more-free-games/stickman-broken-bones-io"
+        },
+        {
+          "slug": "blob-wars",
+          "title": "Blob Wars",
+          "category": "Multiplayer",
+          "path": "/more-free-games/blob-wars"
+        },
+        {
+          "slug": "snake-2048-io",
+          "title": "Snake 2048.io",
+          "category": "Arcade",
+          "path": "/more-free-games/snake-2048-io"
+        },
+        {
+          "slug": "gusanos-snake-games",
+          "title": "Gusano.io Worms Snake Game",
+          "category": "Arcade",
+          "path": "/more-free-games/gusanos-snake-games"
+        },
+        {
+          "slug": "knife-io",
+          "title": "Knife io",
+          "category": "Arcade",
+          "path": "/more-free-games/knife-io"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 156
+        },
+        {
+          "category": "Multiplayer",
+          "count": 68
+        },
+        {
+          "category": "Action",
+          "count": 55
+        },
+        {
+          "category": "Puzzle",
+          "count": 12
+        },
+        {
+          "category": "Adventure",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "id": "dress-up",
+      "confidentPlayableGames": 1508,
+      "ambiguousMatchesExcluded": 967,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "anime-couple-dress-up",
+          "title": "Anime Couple Dress Up",
+          "category": "Arcade",
+          "path": "/more-free-games/anime-couple-dress-up"
+        },
+        {
+          "slug": "my-sweet-candy-outfits",
+          "title": "My Sweet Candy Outfits",
+          "category": "Arcade",
+          "path": "/more-free-games/my-sweet-candy-outfits"
+        },
+        {
+          "slug": "superstar-family-dress-up-game",
+          "title": "Superstar Family Dress Up Game",
+          "category": "Arcade",
+          "path": "/more-free-games/superstar-family-dress-up-game"
+        },
+        {
+          "slug": "bff-stylish-off-shoulder-outfits",
+          "title": "Bff Stylish Off Shoulder Outfits",
+          "category": "Arcade",
+          "path": "/more-free-games/bff-stylish-off-shoulder-outfits"
+        },
+        {
+          "slug": "baby-panda-care",
+          "title": "Baby Panda Care",
+          "category": "Arcade",
+          "path": "/more-free-games/baby-panda-care"
+        },
+        {
+          "slug": "cute-pet-friends",
+          "title": "Cute Pet Friends",
+          "category": "Arcade",
+          "path": "/more-free-games/cute-pet-friends"
+        },
+        {
+          "slug": "funny-rescue-gardener",
+          "title": "Funny Rescue Gardener",
+          "category": "Arcade",
+          "path": "/more-free-games/funny-rescue-gardener"
+        },
+        {
+          "slug": "model-wedding-girl-games",
+          "title": "Model Wedding - Girl Games",
+          "category": "Arcade",
+          "path": "/more-free-games/model-wedding-girl-games"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 1449
+        },
+        {
+          "category": "Puzzle",
+          "count": 46
+        },
+        {
+          "category": "Action",
+          "count": 7
+        },
+        {
+          "category": "Sports",
+          "count": 3
+        },
+        {
+          "category": "Adventure",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "cooking",
+      "confidentPlayableGames": 751,
+      "ambiguousMatchesExcluded": 138,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "cooking-match",
+          "title": "Cooking Match",
+          "category": "Arcade",
+          "path": "/more-free-games/cooking-match"
+        },
+        {
+          "slug": "cake-shop-cafe-pastries-waffles-cooking-game",
+          "title": "Cake Shop Cafe Pastries & Waffles cooking Game",
+          "category": "Strategy",
+          "path": "/more-free-games/cake-shop-cafe-pastries-waffles-cooking-game"
+        },
+        {
+          "slug": "cooking-korean-lesson",
+          "title": "Cooking Korean Lesson",
+          "category": "Arcade",
+          "path": "/more-free-games/cooking-korean-lesson"
+        },
+        {
+          "slug": "street-food-cooking-game",
+          "title": "Street Food - Cooking Game",
+          "category": "Arcade",
+          "path": "/more-free-games/street-food-cooking-game"
+        },
+        {
+          "slug": "pizza-maker-food-cooking-games",
+          "title": "Pizza Maker food Cooking Games",
+          "category": "Arcade",
+          "path": "/more-free-games/pizza-maker-food-cooking-games"
+        },
+        {
+          "slug": "cooking-fast-4-steak",
+          "title": "Cooking Fast 4: Steak",
+          "category": "Arcade",
+          "path": "/more-free-games/cooking-fast-4-steak"
+        },
+        {
+          "slug": "cooking-madness",
+          "title": "Cooking Madness",
+          "category": "Arcade",
+          "path": "/more-free-games/cooking-madness"
+        },
+        {
+          "slug": "my-restaurant",
+          "title": "My Restaurant",
+          "category": "Arcade",
+          "path": "/more-free-games/my-restaurant"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 708
+        },
+        {
+          "category": "Puzzle",
+          "count": 36
+        },
+        {
+          "category": "Action",
+          "count": 3
+        },
+        {
+          "category": "Strategy",
+          "count": 1
+        },
+        {
+          "category": "Adventure",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "shooting",
+      "confidentPlayableGames": 2213,
+      "ambiguousMatchesExcluded": 1493,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "funny-shooter-2",
+          "title": "Funny Shooter 2",
+          "category": "Action",
+          "path": "/more-free-games/funny-shooter-2"
+        },
+        {
+          "slug": "commando-force-2",
+          "title": "Commando Force 2",
+          "category": "Arcade",
+          "path": "/more-free-games/commando-force-2"
+        },
+        {
+          "slug": "the-room",
+          "title": "The Room",
+          "category": "Action",
+          "path": "/more-free-games/the-room"
+        },
+        {
+          "slug": "fractal-combat-x",
+          "title": "Fractal Combat X",
+          "category": "Action",
+          "path": "/more-free-games/fractal-combat-x"
+        },
+        {
+          "slug": "strykon",
+          "title": "Strykon",
+          "category": "Arcade",
+          "path": "/more-free-games/strykon"
+        },
+        {
+          "slug": "stickman-assault-prison-strike",
+          "title": "Stickman Prison Counter Assault",
+          "category": "Action",
+          "path": "/more-free-games/stickman-assault-prison-strike"
+        },
+        {
+          "slug": "dead-aim-skibidi-toilets-attack",
+          "title": "Dead Aim Skibidi Toilets Attack",
+          "category": "Arcade",
+          "path": "/more-free-games/dead-aim-skibidi-toilets-attack"
+        },
+        {
+          "slug": "green-slaughter",
+          "title": "Green Slaughter",
+          "category": "Action",
+          "path": "/more-free-games/green-slaughter"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Action",
+          "count": 1936
+        },
+        {
+          "category": "Arcade",
+          "count": 276
+        },
+        {
+          "category": "shooter",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "sniper",
+      "confidentPlayableGames": 170,
+      "ambiguousMatchesExcluded": 76,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "ww2-call-of-sniper",
+          "title": "WW2 Call of Sniper",
+          "category": "Arcade",
+          "path": "/more-free-games/ww2-call-of-sniper"
+        },
+        {
+          "slug": "guilty-sniper",
+          "title": "Guilty Sniper",
+          "category": "Arcade",
+          "path": "/more-free-games/guilty-sniper"
+        },
+        {
+          "slug": "fps-sniper-shooting",
+          "title": "FPS Sniper Shooting: Production Facility",
+          "category": "Arcade",
+          "path": "/more-free-games/fps-sniper-shooting"
+        },
+        {
+          "slug": "courageous-sniper",
+          "title": "Courageous Sniper",
+          "category": "Arcade",
+          "path": "/more-free-games/courageous-sniper"
+        },
+        {
+          "slug": "urban-sniper-multiplayer",
+          "title": "Urban Sniper Multiplayer",
+          "category": "Adventure",
+          "path": "/more-free-games/urban-sniper-multiplayer"
+        },
+        {
+          "slug": "urban-sniper-multiplayer-2",
+          "title": "Urban Sniper Multiplayer 2",
+          "category": "Action",
+          "path": "/more-free-games/urban-sniper-multiplayer-2"
+        },
+        {
+          "slug": "ghost-sniper",
+          "title": "Ghost Sniper",
+          "category": "Arcade",
+          "path": "/more-free-games/ghost-sniper"
+        },
+        {
+          "slug": "sniper-king-2d-the-dark-city",
+          "title": "Sniper King 2D The Dark City",
+          "category": "Action",
+          "path": "/more-free-games/sniper-king-2d-the-dark-city"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Action",
+          "count": 119
+        },
+        {
+          "category": "Arcade",
+          "count": 38
+        },
+        {
+          "category": "Adventure",
+          "count": 9
+        },
+        {
+          "category": "Multiplayer",
+          "count": 2
+        },
+        {
+          "category": "Puzzle",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "zombie",
+      "confidentPlayableGames": 775,
+      "ambiguousMatchesExcluded": 216,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "supercars-zombie-driving",
+          "title": "Supercars Zombie Driving",
+          "category": "Adventure",
+          "path": "/more-free-games/supercars-zombie-driving"
+        },
+        {
+          "slug": "stickman-simulator-zombie-battle",
+          "title": "Battle Simulator Stickman Zombie",
+          "category": "Action",
+          "path": "/more-free-games/stickman-simulator-zombie-battle"
+        },
+        {
+          "slug": "zombie-fortress-defense-empire",
+          "title": "Empire Tower Defense - Zombie Fortress",
+          "category": "Strategy",
+          "path": "/more-free-games/zombie-fortress-defense-empire"
+        },
+        {
+          "slug": "stickman-killing-zombie-3d",
+          "title": "Stickman Killing Zombie 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/stickman-killing-zombie-3d"
+        },
+        {
+          "slug": "stick-vs-zombies-epic-battle",
+          "title": "Stick vs Zombies - Epic Battle",
+          "category": "Arcade",
+          "path": "/more-free-games/stick-vs-zombies-epic-battle"
+        },
+        {
+          "slug": "aaawwe",
+          "title": "Zombie Colosseum",
+          "category": "Adventure",
+          "path": "/more-free-games/aaawwe"
+        },
+        {
+          "slug": "zombie-cant-jump",
+          "title": "Zombie Can't Jump",
+          "category": "Arcade",
+          "path": "/more-free-games/zombie-cant-jump"
+        },
+        {
+          "slug": "noob-vs-zombie",
+          "title": "Noob vs Zombie",
+          "category": "Action",
+          "path": "/more-free-games/noob-vs-zombie"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Action",
+          "count": 359
+        },
+        {
+          "category": "Arcade",
+          "count": 225
+        },
+        {
+          "category": "Adventure",
+          "count": 101
+        },
+        {
+          "category": "Puzzle",
+          "count": 36
+        },
+        {
+          "category": "Racing",
+          "count": 29
+        }
+      ]
+    },
+    {
+      "id": "horror",
+      "confidentPlayableGames": 166,
+      "ambiguousMatchesExcluded": 124,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "the-malevolent-mansion-of-evil",
+          "title": "The malevolent mansion of evil",
+          "category": "Arcade",
+          "path": "/more-free-games/the-malevolent-mansion-of-evil"
+        },
+        {
+          "slug": "halloween-horror-massacre",
+          "title": "Halloween Horror Massacre",
+          "category": "Arcade",
+          "path": "/more-free-games/halloween-horror-massacre"
+        },
+        {
+          "slug": "sprunki-horror",
+          "title": "Sprunki Horror",
+          "category": "Arcade",
+          "path": "/more-free-games/sprunki-horror"
+        },
+        {
+          "slug": "freddy-in-five-nights-terrors",
+          "title": "Freddy in Five Nights Terrors",
+          "category": "Arcade",
+          "path": "/more-free-games/freddy-in-five-nights-terrors"
+        },
+        {
+          "slug": "dr-psycho-hospital-escape",
+          "title": "Dr. Psycho - Hospital Escape",
+          "category": "Arcade",
+          "path": "/more-free-games/dr-psycho-hospital-escape"
+        },
+        {
+          "slug": "poppy-playtime-chapter-4-safe-haven",
+          "title": "Poppy Playtime Chapter 4 Safe Haven",
+          "category": "Arcade",
+          "path": "/more-free-games/poppy-playtime-chapter-4-safe-haven"
+        },
+        {
+          "slug": "horror-sniper-clown-ghost",
+          "title": "Horror Sniper Clown Ghost",
+          "category": "Arcade",
+          "path": "/more-free-games/horror-sniper-clown-ghost"
+        },
+        {
+          "slug": "granny-and-skibidi-toilet-escape-horror",
+          "title": "Granny & Skibidi toilet Escape Horror",
+          "category": "Action",
+          "path": "/more-free-games/granny-and-skibidi-toilet-escape-horror"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 55
+        },
+        {
+          "category": "Adventure",
+          "count": 41
+        },
+        {
+          "category": "Action",
+          "count": 40
+        },
+        {
+          "category": "Puzzle",
+          "count": 29
+        },
+        {
+          "category": "Racing",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "escape",
+      "confidentPlayableGames": 853,
+      "ambiguousMatchesExcluded": 689,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "killer-escape-huggy",
+          "title": "Killer Escape Huggy",
+          "category": "Action",
+          "path": "/more-free-games/killer-escape-huggy"
+        },
+        {
+          "slug": "100-doors-escape-from-prison",
+          "title": "100 Doors - Escape from Prison",
+          "category": "Arcade",
+          "path": "/more-free-games/100-doors-escape-from-prison"
+        },
+        {
+          "slug": "amaze-escape",
+          "title": "Amaze Escape",
+          "category": "Arcade",
+          "path": "/more-free-games/amaze-escape"
+        },
+        {
+          "slug": "reindeer-escape",
+          "title": "Reindeer Escape",
+          "category": "Action",
+          "path": "/more-free-games/reindeer-escape"
+        },
+        {
+          "slug": "thief-stick-puzzle-man-escape",
+          "title": "Thief Stick Puzzle Man Escape",
+          "category": "Puzzle",
+          "path": "/more-free-games/thief-stick-puzzle-man-escape"
+        },
+        {
+          "slug": "planet-escape",
+          "title": "Planet Escape",
+          "category": "Arcade",
+          "path": "/more-free-games/planet-escape"
+        },
+        {
+          "slug": "tralalero-tralala-red-light-squid-game",
+          "title": "Tralalero Tralala Red Light Squid Game",
+          "category": "Arcade",
+          "path": "/more-free-games/tralalero-tralala-red-light-squid-game"
+        },
+        {
+          "slug": "dr-psycho-hospital-escape",
+          "title": "Dr. Psycho - Hospital Escape",
+          "category": "Arcade",
+          "path": "/more-free-games/dr-psycho-hospital-escape"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 330
+        },
+        {
+          "category": "Puzzle",
+          "count": 294
+        },
+        {
+          "category": "Adventure",
+          "count": 114
+        },
+        {
+          "category": "Action",
+          "count": 87
+        },
+        {
+          "category": "Racing",
+          "count": 17
+        }
+      ]
+    },
+    {
+      "id": "football-soccer",
+      "confidentPlayableGames": 529,
+      "ambiguousMatchesExcluded": 65,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "football-masters",
+          "title": "Football Masters",
+          "category": "Sports",
+          "path": "/more-free-games/football-masters"
+        },
+        {
+          "slug": "football-crash",
+          "title": "Football Crash",
+          "category": "Sports",
+          "path": "/more-free-games/football-crash"
+        },
+        {
+          "slug": "soccer-dash",
+          "title": "Soccer Dash",
+          "category": "Sports",
+          "path": "/more-free-games/soccer-dash"
+        },
+        {
+          "slug": "football-heads",
+          "title": "Football Heads",
+          "category": "Sports",
+          "path": "/more-free-games/football-heads"
+        },
+        {
+          "slug": "penalty-challenge",
+          "title": "Penalty Challenge",
+          "category": "Arcade",
+          "path": "/more-free-games/penalty-challenge"
+        },
+        {
+          "slug": "football-panda",
+          "title": "Football Panda",
+          "category": "Arcade",
+          "path": "/more-free-games/football-panda"
+        },
+        {
+          "slug": "head-soccer-2023",
+          "title": "Head Soccer 2023",
+          "category": "Sports",
+          "path": "/more-free-games/head-soccer-2023"
+        },
+        {
+          "slug": "football-rumble",
+          "title": "Football Rumble",
+          "category": "Sports",
+          "path": "/more-free-games/football-rumble"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Sports",
+          "count": 297
+        },
+        {
+          "category": "Arcade",
+          "count": 187
+        },
+        {
+          "category": "Puzzle",
+          "count": 29
+        },
+        {
+          "category": "Adventure",
+          "count": 6
+        },
+        {
+          "category": "Action",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "basketball",
+      "confidentPlayableGames": 258,
+      "ambiguousMatchesExcluded": 28,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "hoop-world",
+          "title": "Hoop World",
+          "category": "Arcade",
+          "path": "/more-free-games/hoop-world"
+        },
+        {
+          "slug": "basketball-stars",
+          "title": "Basketball Stars",
+          "category": "Sports",
+          "path": "/more-free-games/basketball-stars"
+        },
+        {
+          "slug": "hoops-the-game",
+          "title": "HOOPS the Game",
+          "category": "Arcade",
+          "path": "/more-free-games/hoops-the-game"
+        },
+        {
+          "slug": "swipy-basketball",
+          "title": "Swipy Basketball",
+          "category": "Sports",
+          "path": "/more-free-games/swipy-basketball"
+        },
+        {
+          "slug": "basket-battle-1",
+          "title": "Basket Battle",
+          "category": "Arcade",
+          "path": "/more-free-games/basket-battle-1"
+        },
+        {
+          "slug": "basketball-masters",
+          "title": "Basketball Master",
+          "category": "Sports",
+          "path": "/more-free-games/basketball-masters"
+        },
+        {
+          "slug": "basketball-beans",
+          "title": "Basketball Beans",
+          "category": "Arcade",
+          "path": "/more-free-games/basketball-beans"
+        },
+        {
+          "slug": "retro-basketball",
+          "title": "Retro Basketball",
+          "category": "Sports",
+          "path": "/more-free-games/retro-basketball"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Sports",
+          "count": 142
+        },
+        {
+          "category": "Arcade",
+          "count": 68
+        },
+        {
+          "category": "Puzzle",
+          "count": 25
+        },
+        {
+          "category": "Racing",
+          "count": 11
+        },
+        {
+          "category": "Action",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "brain",
+      "confidentPlayableGames": 1710,
+      "ambiguousMatchesExcluded": 760,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "monster-go",
+          "title": "Monster Go",
+          "category": "Arcade",
+          "path": "/more-free-games/monster-go"
+        },
+        {
+          "slug": "lipuzz-water-sort-puzzle",
+          "title": "Lipuzz - Water Sort Puzzle",
+          "category": "Arcade",
+          "path": "/more-free-games/lipuzz-water-sort-puzzle"
+        },
+        {
+          "slug": "obunga-nextbot-spot-difference",
+          "title": "Obunga Nextbot Spot Difference",
+          "category": "Arcade",
+          "path": "/more-free-games/obunga-nextbot-spot-difference"
+        },
+        {
+          "slug": "flow-mania",
+          "title": "Flow Mania",
+          "category": "Arcade",
+          "path": "/more-free-games/flow-mania"
+        },
+        {
+          "slug": "christmas-brain-teasers",
+          "title": "Christmas Brain Teasers",
+          "category": "Arcade",
+          "path": "/more-free-games/christmas-brain-teasers"
+        },
+        {
+          "slug": "battleship-war-multiplayer",
+          "title": "Battleship War Multiplayer",
+          "category": "Arcade",
+          "path": "/more-free-games/battleship-war-multiplayer"
+        },
+        {
+          "slug": "bunny-quest",
+          "title": "Bunny Quest",
+          "category": "Arcade",
+          "path": "/more-free-games/bunny-quest"
+        },
+        {
+          "slug": "2048-fnaf",
+          "title": "2048 - FNAF",
+          "category": "Arcade",
+          "path": "/more-free-games/2048-fnaf"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 1135
+        },
+        {
+          "category": "Arcade",
+          "count": 453
+        },
+        {
+          "category": "Adventure",
+          "count": 33
+        },
+        {
+          "category": "Action",
+          "count": 32
+        },
+        {
+          "category": "Sports",
+          "count": 24
+        }
+      ]
+    },
+    {
+      "id": "word",
+      "confidentPlayableGames": 175,
+      "ambiguousMatchesExcluded": 158,
+      "matchingMethod": "selected-hub conservative rule",
+      "representativeGames": [
+        {
+          "slug": "word-cargo",
+          "title": "Word Cargo Puzzle",
+          "category": "Arcade",
+          "path": "/more-free-games/word-cargo"
+        },
+        {
+          "slug": "car-word-hunt",
+          "title": "Car Word Hunt",
+          "category": "Puzzle",
+          "path": "/more-free-games/car-word-hunt"
+        },
+        {
+          "slug": "word-blossom",
+          "title": "Word Blossom",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-blossom"
+        },
+        {
+          "slug": "word-online-hunt",
+          "title": "Word: Online Hunt",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-online-hunt"
+        },
+        {
+          "slug": "wolfoo-word-wonders",
+          "title": "Wolfoo Word Wonders",
+          "category": "Puzzle",
+          "path": "/more-free-games/wolfoo-word-wonders"
+        },
+        {
+          "slug": "wolfoo-word-search",
+          "title": "Wolfoo Word Search",
+          "category": "Puzzle",
+          "path": "/more-free-games/wolfoo-word-search"
+        },
+        {
+          "slug": "word-search-universe-animals",
+          "title": "Word Search Universe Animals",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-universe-animals"
+        },
+        {
+          "slug": "find-the-lost-letter-3d",
+          "title": "Find The Lost Letter 3D",
+          "category": "Puzzle",
+          "path": "/more-free-games/find-the-lost-letter-3d"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 145
+        },
+        {
+          "category": "Arcade",
+          "count": 27
+        },
+        {
+          "category": "Sports",
+          "count": 1
+        },
+        {
+          "category": "Racing",
+          "count": 1
+        },
+        {
+          "category": "Multiplayer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "word-search",
+      "confidentPlayableGames": 20,
+      "ambiguousMatchesExcluded": 19,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "wolfoo-word-search",
+          "title": "Wolfoo Word Search",
+          "category": "Puzzle",
+          "path": "/more-free-games/wolfoo-word-search"
+        },
+        {
+          "slug": "word-search-universe-animals",
+          "title": "Word Search Universe Animals",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-universe-animals"
+        },
+        {
+          "slug": "word-search-universe-easter",
+          "title": "Word Search Universe Easter",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-universe-easter"
+        },
+        {
+          "slug": "word-search-universe-2",
+          "title": "Word Search Universe 2",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-universe-2"
+        },
+        {
+          "slug": "word-search-2025",
+          "title": "Word Search 2025",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-2025"
+        },
+        {
+          "slug": "word-search-universe",
+          "title": "Word Search Universe",
+          "category": "Puzzle",
+          "path": "/more-free-games/word-search-universe"
+        },
+        {
+          "slug": "ng-the-word-search",
+          "title": "NG: The Word Search",
+          "category": "Puzzle",
+          "path": "/more-free-games/ng-the-word-search"
+        },
+        {
+          "slug": "simple-word-search",
+          "title": "Simple Word Search",
+          "category": "Puzzle",
+          "path": "/more-free-games/simple-word-search"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "confidentPlayableGames": 431,
+      "ambiguousMatchesExcluded": 195,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "three-cups-game",
+          "title": "Three Cups Game",
+          "category": "Arcade",
+          "path": "/more-free-games/three-cups-game"
+        },
+        {
+          "slug": "kobadoo-numbers",
+          "title": "Kobadoo Numbers",
+          "category": "Arcade",
+          "path": "/more-free-games/kobadoo-numbers"
+        },
+        {
+          "slug": "the-kitchen-spot-the-differences",
+          "title": "The Kitchen - Spot the differences",
+          "category": "Arcade",
+          "path": "/more-free-games/the-kitchen-spot-the-differences"
+        },
+        {
+          "slug": "robot-bar-find-the-differences",
+          "title": "Robot Bar - Find the differences",
+          "category": "Arcade",
+          "path": "/more-free-games/robot-bar-find-the-differences"
+        },
+        {
+          "slug": "guessthetiles",
+          "title": "GuessTheTiles",
+          "category": "Arcade",
+          "path": "/more-free-games/guessthetiles"
+        },
+        {
+          "slug": "sprunki-memory-card-match",
+          "title": "Sprunki Memory Card Match",
+          "category": "Arcade",
+          "path": "/more-free-games/sprunki-memory-card-match"
+        },
+        {
+          "slug": "100-doors-games-escape-from-school",
+          "title": "100 Doors Games: Escape from School",
+          "category": "Arcade",
+          "path": "/more-free-games/100-doors-games-escape-from-school"
+        },
+        {
+          "slug": "flag-memory-match",
+          "title": "Flag Memory Match",
+          "category": "Arcade",
+          "path": "/more-free-games/flag-memory-match"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 354
+        },
+        {
+          "category": "Arcade",
+          "count": 72
+        },
+        {
+          "category": "Sports",
+          "count": 2
+        },
+        {
+          "category": "Multiplayer",
+          "count": 1
+        },
+        {
+          "category": "Adventure",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "confidentPlayableGames": 361,
+      "ambiguousMatchesExcluded": 281,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "4-colors-multiplayer",
+          "title": "4 Colors Multiplayer",
+          "category": "Puzzle",
+          "path": "/more-free-games/4-colors-multiplayer"
+        },
+        {
+          "slug": "4-colors-pgs",
+          "title": "4 Colors PGS",
+          "category": "Puzzle",
+          "path": "/more-free-games/4-colors-pgs"
+        },
+        {
+          "slug": "memorybot",
+          "title": "Memorybot",
+          "category": "Puzzle",
+          "path": "/more-free-games/memorybot"
+        },
+        {
+          "slug": "sprunki-memory-card-match",
+          "title": "Sprunki Memory Card Match",
+          "category": "Arcade",
+          "path": "/more-free-games/sprunki-memory-card-match"
+        },
+        {
+          "slug": "infinite-heroes",
+          "title": "Infinite Heroes",
+          "category": "Puzzle",
+          "path": "/more-free-games/infinite-heroes"
+        },
+        {
+          "slug": "emberdeck",
+          "title": "Emberdeck",
+          "category": "Puzzle",
+          "path": "/more-free-games/emberdeck"
+        },
+        {
+          "slug": "flames-and-fortune",
+          "title": "Flames & Fortune",
+          "category": "Puzzle",
+          "path": "/more-free-games/flames-and-fortune"
+        },
+        {
+          "slug": "uno-online",
+          "title": "UNO Online",
+          "category": "Puzzle",
+          "path": "/more-free-games/uno-online"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 252
+        },
+        {
+          "category": "Arcade",
+          "count": 80
+        },
+        {
+          "category": "Multiplayer",
+          "count": 13
+        },
+        {
+          "category": "Racing",
+          "count": 7
+        },
+        {
+          "category": "Action",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "tower-defense",
+      "confidentPlayableGames": 205,
+      "ambiguousMatchesExcluded": 33,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "zombie-fortress-defense-empire",
+          "title": "Empire Tower Defense - Zombie Fortress",
+          "category": "Strategy",
+          "path": "/more-free-games/zombie-fortress-defense-empire"
+        },
+        {
+          "slug": "tower-defense",
+          "title": "Tower Defense",
+          "category": "Strategy",
+          "path": "/more-free-games/tower-defense"
+        },
+        {
+          "slug": "king-rugni-tower-conquest",
+          "title": "King Rugni Tower Defense",
+          "category": "Strategy",
+          "path": "/more-free-games/king-rugni-tower-conquest"
+        },
+        {
+          "slug": "space-tower-defense",
+          "title": "Space Tower Defense",
+          "category": "Arcade",
+          "path": "/more-free-games/space-tower-defense"
+        },
+        {
+          "slug": "stick-hero-tower-defense",
+          "title": "Stick Hero Tower Defense",
+          "category": "Arcade",
+          "path": "/more-free-games/stick-hero-tower-defense"
+        },
+        {
+          "slug": "tower-defense-zombies",
+          "title": "Tower Defense Zombies",
+          "category": "Strategy",
+          "path": "/more-free-games/tower-defense-zombies"
+        },
+        {
+          "slug": "tower-defense-clash",
+          "title": "Tower Defense Clash",
+          "category": "Adventure",
+          "path": "/more-free-games/tower-defense-clash"
+        },
+        {
+          "slug": "tower-defense-world-war",
+          "title": "Tower Defense - World War",
+          "category": "Strategy",
+          "path": "/more-free-games/tower-defense-world-war"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 86
+        },
+        {
+          "category": "Action",
+          "count": 61
+        },
+        {
+          "category": "Adventure",
+          "count": 28
+        },
+        {
+          "category": "Puzzle",
+          "count": 20
+        },
+        {
+          "category": "Strategy",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "tic-tac-toe",
+      "confidentPlayableGames": 51,
+      "ambiguousMatchesExcluded": 19,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "tic-tac-toe-mania",
+          "title": "Tic Tac Toe Mania",
+          "category": "Arcade",
+          "path": "/more-free-games/tic-tac-toe-mania"
+        },
+        {
+          "slug": "tic-tac-toe-multiplayer-x-o-puzzle-board-game",
+          "title": "Tic Tac Toe Multiplayer X O",
+          "category": "Arcade",
+          "path": "/more-free-games/tic-tac-toe-multiplayer-x-o-puzzle-board-game"
+        },
+        {
+          "slug": "tic-tac-toe-html5",
+          "title": "Tic Tac Toe HTML5",
+          "category": "Arcade",
+          "path": "/more-free-games/tic-tac-toe-html5"
+        },
+        {
+          "slug": "tic-tac-toe-multiplayer",
+          "title": "Tic Tac Toe Multiplayer",
+          "category": "Arcade",
+          "path": "/more-free-games/tic-tac-toe-multiplayer"
+        },
+        {
+          "slug": "x-o-tic-tac-toe",
+          "title": "X O Tic Tac Toe",
+          "category": "Arcade",
+          "path": "/more-free-games/x-o-tic-tac-toe"
+        },
+        {
+          "slug": "christmas-tic-tac-toe",
+          "title": "Christmas Tic Tac Toe",
+          "category": "Arcade",
+          "path": "/more-free-games/christmas-tic-tac-toe"
+        },
+        {
+          "slug": "hazel-tic-tac-toe",
+          "title": "Hazel Tic Tac Toe",
+          "category": "Puzzle",
+          "path": "/more-free-games/hazel-tic-tac-toe"
+        },
+        {
+          "slug": "cat-tic-tac-toe",
+          "title": "Cat Tic Tac Toe",
+          "category": "Puzzle",
+          "path": "/more-free-games/cat-tic-tac-toe"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 30
+        },
+        {
+          "category": "Arcade",
+          "count": 14
+        },
+        {
+          "category": "Multiplayer",
+          "count": 5
+        },
+        {
+          "category": "Adventure",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "mahjong",
+      "confidentPlayableGames": 243,
+      "ambiguousMatchesExcluded": 14,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "mahjong-sweet-connection",
+          "title": "Mahjong Sweet Connection",
+          "category": "Arcade",
+          "path": "/more-free-games/mahjong-sweet-connection"
+        },
+        {
+          "slug": "street-cafe-mahjong",
+          "title": "Mahjong Street Cafe",
+          "category": "Arcade",
+          "path": "/more-free-games/street-cafe-mahjong"
+        },
+        {
+          "slug": "mahjong-master-2",
+          "title": "Mahjong Master 2",
+          "category": "Arcade",
+          "path": "/more-free-games/mahjong-master-2"
+        },
+        {
+          "slug": "mahjonsorting",
+          "title": "MahjonSorting",
+          "category": "Arcade",
+          "path": "/more-free-games/mahjonsorting"
+        },
+        {
+          "slug": "mahjong-sweet-easter",
+          "title": "Mahjong Sweet Easter",
+          "category": "Arcade",
+          "path": "/more-free-games/mahjong-sweet-easter"
+        },
+        {
+          "slug": "mahjong-solitaire-crush-game",
+          "title": "Mahjong Solitaire Crush Game",
+          "category": "Puzzle",
+          "path": "/more-free-games/mahjong-solitaire-crush-game"
+        },
+        {
+          "slug": "mahjong-adventure-puzzle",
+          "title": "Mahjong Adventure Puzzle",
+          "category": "Puzzle",
+          "path": "/more-free-games/mahjong-adventure-puzzle"
+        },
+        {
+          "slug": "mahjong-bird-tiles",
+          "title": "Mahjong Bird Tiles",
+          "category": "Puzzle",
+          "path": "/more-free-games/mahjong-bird-tiles"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 221
+        },
+        {
+          "category": "Arcade",
+          "count": 18
+        },
+        {
+          "category": "Adventure",
+          "count": 2
+        },
+        {
+          "category": "Sports",
+          "count": 1
+        },
+        {
+          "category": "Multiplayer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "solitaire",
+      "confidentPlayableGames": 126,
+      "ambiguousMatchesExcluded": 10,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "solitaire-tripeaks-garden",
+          "title": "Solitaire TriPeaks Garden",
+          "category": "Arcade",
+          "path": "/more-free-games/solitaire-tripeaks-garden"
+        },
+        {
+          "slug": "solitaire-puzzle-2048",
+          "title": "Solitaire Puzzle 2048",
+          "category": "Arcade",
+          "path": "/more-free-games/solitaire-puzzle-2048"
+        },
+        {
+          "slug": "klondike-solitaire-paradise",
+          "title": "Klondike Solitaire Paradise",
+          "category": "Arcade",
+          "path": "/more-free-games/klondike-solitaire-paradise"
+        },
+        {
+          "slug": "klondike-solitaire",
+          "title": "Klondike Solitaire",
+          "category": "Arcade",
+          "path": "/more-free-games/klondike-solitaire"
+        },
+        {
+          "slug": "spider-solitaire",
+          "title": "Spider Solitaire",
+          "category": "Arcade",
+          "path": "/more-free-games/spider-solitaire"
+        },
+        {
+          "slug": "algerian-solitaire",
+          "title": "Algerian Solitaire",
+          "category": "Arcade",
+          "path": "/more-free-games/algerian-solitaire"
+        },
+        {
+          "slug": "mahjong-solitaire-crush-game",
+          "title": "Mahjong Solitaire Crush Game",
+          "category": "Puzzle",
+          "path": "/more-free-games/mahjong-solitaire-crush-game"
+        },
+        {
+          "slug": "solitaire-treasures",
+          "title": "Solitaire Treasures",
+          "category": "Puzzle",
+          "path": "/more-free-games/solitaire-treasures"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 90
+        },
+        {
+          "category": "Arcade",
+          "count": 30
+        },
+        {
+          "category": "Action",
+          "count": 4
+        },
+        {
+          "category": "Multiplayer",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "2048",
+      "confidentPlayableGames": 239,
+      "ambiguousMatchesExcluded": 28,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "merge-royal",
+          "title": "Merge Royal",
+          "category": "Arcade",
+          "path": "/more-free-games/merge-royal"
+        },
+        {
+          "slug": "2048",
+          "title": "2048",
+          "category": "Arcade",
+          "path": "/more-free-games/2048"
+        },
+        {
+          "slug": "2048-x2-merge-blocks",
+          "title": "2048 X2 Merge Blocks",
+          "category": "Arcade",
+          "path": "/more-free-games/2048-x2-merge-blocks"
+        },
+        {
+          "slug": "snake-2048-io",
+          "title": "Snake 2048.io",
+          "category": "Arcade",
+          "path": "/more-free-games/snake-2048-io"
+        },
+        {
+          "slug": "2048-classic-puzzle-challenge",
+          "title": "2048 Classic Puzzle - Challenge",
+          "category": "Arcade",
+          "path": "/more-free-games/2048-classic-puzzle-challenge"
+        },
+        {
+          "slug": "merge-grabber-race-to-2048",
+          "title": "Merge Grabber Race to 2048",
+          "category": "Arcade",
+          "path": "/more-free-games/merge-grabber-race-to-2048"
+        },
+        {
+          "slug": "2048-cube-run",
+          "title": "2048 Cube Run",
+          "category": "Arcade",
+          "path": "/more-free-games/2048-cube-run"
+        },
+        {
+          "slug": "falling-blocks-2048",
+          "title": "Falling Blocks 2048 - 2D",
+          "category": "Puzzle",
+          "path": "/more-free-games/falling-blocks-2048"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 131
+        },
+        {
+          "category": "Arcade",
+          "count": 77
+        },
+        {
+          "category": "Action",
+          "count": 20
+        },
+        {
+          "category": "Adventure",
+          "count": 5
+        },
+        {
+          "category": "Racing",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "bubble-shooter",
+      "confidentPlayableGames": 567,
+      "ambiguousMatchesExcluded": 19,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "cooking-match",
+          "title": "Cooking Match",
+          "category": "Arcade",
+          "path": "/more-free-games/cooking-match"
+        },
+        {
+          "slug": "ball-burst",
+          "title": "Ball Burst",
+          "category": "Arcade",
+          "path": "/more-free-games/ball-burst"
+        },
+        {
+          "slug": "sticky-balls-match-3-bubble-shooter",
+          "title": "Sticky Balls - Match 3 Bubble Shooter",
+          "category": "Puzzle",
+          "path": "/more-free-games/sticky-balls-match-3-bubble-shooter"
+        },
+        {
+          "slug": "bubble-shooter-blast-master",
+          "title": "Bubble Shooter Blast Master",
+          "category": "Arcade",
+          "path": "/more-free-games/bubble-shooter-blast-master"
+        },
+        {
+          "slug": "bubble-shooter-pop",
+          "title": "Bubble Shooter POP",
+          "category": "Arcade",
+          "path": "/more-free-games/bubble-shooter-pop"
+        },
+        {
+          "slug": "peggle-flash",
+          "title": "Peggle [FLASH]",
+          "category": "Puzzle",
+          "path": "/more-free-games/peggle-flash"
+        },
+        {
+          "slug": "puzzlebubble",
+          "title": "PuzzleBubble",
+          "category": "Arcade",
+          "path": "/more-free-games/puzzlebubble"
+        },
+        {
+          "slug": "bubble-invasion-3d",
+          "title": "Bubble Invasion 3D",
+          "category": "Puzzle",
+          "path": "/more-free-games/bubble-invasion-3d"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 221
+        },
+        {
+          "category": "Arcade",
+          "count": 187
+        },
+        {
+          "category": "Action",
+          "count": 105
+        },
+        {
+          "category": "Adventure",
+          "count": 27
+        },
+        {
+          "category": "Racing",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "match-3",
+      "confidentPlayableGames": 1133,
+      "ambiguousMatchesExcluded": 168,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "prism-match-3d",
+          "title": "Prism Match 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/prism-match-3d"
+        },
+        {
+          "slug": "match-mystery",
+          "title": "Match Mystery",
+          "category": "Arcade",
+          "path": "/more-free-games/match-mystery"
+        },
+        {
+          "slug": "skibidi-match-master",
+          "title": "Skibidi Match Master",
+          "category": "Arcade",
+          "path": "/more-free-games/skibidi-match-master"
+        },
+        {
+          "slug": "candy-match-saga-2",
+          "title": "Candy Match Saga 2",
+          "category": "Arcade",
+          "path": "/more-free-games/candy-match-saga-2"
+        },
+        {
+          "slug": "candy-crush-eggs-blast-game-eggs-link-puzzle",
+          "title": "Candy Egg Blast",
+          "category": "Arcade",
+          "path": "/more-free-games/candy-crush-eggs-blast-game-eggs-link-puzzle"
+        },
+        {
+          "slug": "butterfly-matching",
+          "title": "Butterfly Matching",
+          "category": "Arcade",
+          "path": "/more-free-games/butterfly-matching"
+        },
+        {
+          "slug": "merge-for-renovation",
+          "title": "Merge For Renovation",
+          "category": "Arcade",
+          "path": "/more-free-games/merge-for-renovation"
+        },
+        {
+          "slug": "pop-pop-kitties",
+          "title": "Pop-Pop Kitties",
+          "category": "Arcade",
+          "path": "/more-free-games/pop-pop-kitties"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 926
+        },
+        {
+          "category": "Arcade",
+          "count": 172
+        },
+        {
+          "category": "Action",
+          "count": 25
+        },
+        {
+          "category": "Adventure",
+          "count": 5
+        },
+        {
+          "category": "Sports",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "jigsaw",
+      "confidentPlayableGames": 872,
+      "ambiguousMatchesExcluded": 63,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "jigsaw-sort",
+          "title": "Jigsaw Sort",
+          "category": "Arcade",
+          "path": "/more-free-games/jigsaw-sort"
+        },
+        {
+          "slug": "jigsaw-puzzle",
+          "title": "Jigsaw Puzzle",
+          "category": "Arcade",
+          "path": "/more-free-games/jigsaw-puzzle"
+        },
+        {
+          "slug": "jigsaw-collections",
+          "title": "Jigsaw Collections",
+          "category": "Arcade",
+          "path": "/more-free-games/jigsaw-collections"
+        },
+        {
+          "slug": "poppy-playtime-chapter-3-puzzle",
+          "title": "Poppy Playtime Chapter 3 jigsaw puzzle",
+          "category": "Puzzle",
+          "path": "/more-free-games/poppy-playtime-chapter-3-puzzle"
+        },
+        {
+          "slug": "italian-brainrot-jigsaw",
+          "title": "Italian Brainrot Jigsaw",
+          "category": "Arcade",
+          "path": "/more-free-games/italian-brainrot-jigsaw"
+        },
+        {
+          "slug": "wolfoo-tangram",
+          "title": "Wolfoo Tangram",
+          "category": "Puzzle",
+          "path": "/more-free-games/wolfoo-tangram"
+        },
+        {
+          "slug": "ninja-gorilla-jigsaw-puzzle",
+          "title": "Ninja Gorilla Jigsaw Puzzle",
+          "category": "Puzzle",
+          "path": "/more-free-games/ninja-gorilla-jigsaw-puzzle"
+        },
+        {
+          "slug": "jigzoquest",
+          "title": "JigzoQuest",
+          "category": "Puzzle",
+          "path": "/more-free-games/jigzoquest"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 803
+        },
+        {
+          "category": "Arcade",
+          "count": 59
+        },
+        {
+          "category": "Action",
+          "count": 4
+        },
+        {
+          "category": "Adventure",
+          "count": 3
+        },
+        {
+          "category": "Sports",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "sudoku",
+      "confidentPlayableGames": 41,
+      "ambiguousMatchesExcluded": 8,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "sudoku-blocks",
+          "title": "Sudoku Blocks",
+          "category": "Arcade",
+          "path": "/more-free-games/sudoku-blocks"
+        },
+        {
+          "slug": "sudoku-master",
+          "title": "Sudoku Master",
+          "category": "Puzzle",
+          "path": "/more-free-games/sudoku-master"
+        },
+        {
+          "slug": "sudoku-puzzle",
+          "title": "Sudoku Puzzle",
+          "category": "Puzzle",
+          "path": "/more-free-games/sudoku-puzzle"
+        },
+        {
+          "slug": "sudoku-puzzle-master",
+          "title": "Sudoku Puzzle Master",
+          "category": "Puzzle",
+          "path": "/more-free-games/sudoku-puzzle-master"
+        },
+        {
+          "slug": "sudoku-for-bro",
+          "title": "Sudoku for bro",
+          "category": "Puzzle",
+          "path": "/more-free-games/sudoku-for-bro"
+        },
+        {
+          "slug": "sudoku-9x9",
+          "title": "Sudoku 9x9",
+          "category": "Puzzle",
+          "path": "/more-free-games/sudoku-9x9"
+        },
+        {
+          "slug": "prime-sudoku",
+          "title": "Prime Sudoku",
+          "category": "Puzzle",
+          "path": "/more-free-games/prime-sudoku"
+        },
+        {
+          "slug": "brainrot-sudoku",
+          "title": "Brainrot Sudoku",
+          "category": "Puzzle",
+          "path": "/more-free-games/brainrot-sudoku"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 34
+        },
+        {
+          "category": "Arcade",
+          "count": 5
+        },
+        {
+          "category": "Adventure",
+          "count": 1
+        },
+        {
+          "category": "Sports",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "chess",
+      "confidentPlayableGames": 36,
+      "ambiguousMatchesExcluded": 14,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "master-chess-multiplayer",
+          "title": "Master Chess Multiplayer",
+          "category": "Arcade",
+          "path": "/more-free-games/master-chess-multiplayer"
+        },
+        {
+          "slug": "chess-master-3d",
+          "title": "Chess Master 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/chess-master-3d"
+        },
+        {
+          "slug": "chess-online",
+          "title": "Chess Online",
+          "category": "Arcade",
+          "path": "/more-free-games/chess-online"
+        },
+        {
+          "slug": "junior-chess",
+          "title": "Junior Chess",
+          "category": "Arcade",
+          "path": "/more-free-games/junior-chess"
+        },
+        {
+          "slug": "shogi-japanese-chess",
+          "title": "Shogi Japanese Chess",
+          "category": "Arcade",
+          "path": "/more-free-games/shogi-japanese-chess"
+        },
+        {
+          "slug": "dungeon-chess",
+          "title": "Dungeon Chess",
+          "category": "Puzzle",
+          "path": "/more-free-games/dungeon-chess"
+        },
+        {
+          "slug": "chess-challenges",
+          "title": "Chess Challenges",
+          "category": "Arcade",
+          "path": "/more-free-games/chess-challenges"
+        },
+        {
+          "slug": "chess-3d",
+          "title": "Chess 3D",
+          "category": "Arcade",
+          "path": "/more-free-games/chess-3d"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 19
+        },
+        {
+          "category": "Arcade",
+          "count": 11
+        },
+        {
+          "category": "Multiplayer",
+          "count": 4
+        },
+        {
+          "category": "Sports",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "snake",
+      "confidentPlayableGames": 204,
+      "ambiguousMatchesExcluded": 27,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "worms-zone",
+          "title": "Worms Zone",
+          "category": "Arcade",
+          "path": "/more-free-games/worms-zone"
+        },
+        {
+          "slug": "worm-hunt-snake-game-io-zone",
+          "title": "Worm Hunt - Snake game iO zone",
+          "category": "Multiplayer",
+          "path": "/more-free-games/worm-hunt-snake-game-io-zone"
+        },
+        {
+          "slug": "skibidi-snake-io",
+          "title": "Skibidi Snake",
+          "category": "Arcade",
+          "path": "/more-free-games/skibidi-snake-io"
+        },
+        {
+          "slug": "color-snake-3d-online-1",
+          "title": "Color Snake 3D Online",
+          "category": "Arcade",
+          "path": "/more-free-games/color-snake-3d-online-1"
+        },
+        {
+          "slug": "snake-2048-io",
+          "title": "Snake 2048.io",
+          "category": "Arcade",
+          "path": "/more-free-games/snake-2048-io"
+        },
+        {
+          "slug": "gusanos-snake-games",
+          "title": "Gusano.io Worms Snake Game",
+          "category": "Arcade",
+          "path": "/more-free-games/gusanos-snake-games"
+        },
+        {
+          "slug": "snake",
+          "title": "Snake Simple Retro Game",
+          "category": "Arcade",
+          "path": "/more-free-games/snake"
+        },
+        {
+          "slug": "snake-and-circles",
+          "title": "Snake And Circles",
+          "category": "Arcade",
+          "path": "/more-free-games/snake-and-circles"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Arcade",
+          "count": 122
+        },
+        {
+          "category": "Puzzle",
+          "count": 43
+        },
+        {
+          "category": "Adventure",
+          "count": 13
+        },
+        {
+          "category": "Action",
+          "count": 11
+        },
+        {
+          "category": "Multiplayer",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": "skill",
+      "confidentPlayableGames": 1949,
+      "ambiguousMatchesExcluded": 693,
+      "matchingMethod": "exact source category, exact tag or title-boundary evidence",
+      "representativeGames": [
+        {
+          "slug": "santa-wood-cutter",
+          "title": "Santa Wood Cutter",
+          "category": "Arcade",
+          "path": "/more-free-games/santa-wood-cutter"
+        },
+        {
+          "slug": "geometrical-dash",
+          "title": "Geometrical Dash",
+          "category": "Arcade",
+          "path": "/more-free-games/geometrical-dash"
+        },
+        {
+          "slug": "god-of-light",
+          "title": "God of Light",
+          "category": "Arcade",
+          "path": "/more-free-games/god-of-light"
+        },
+        {
+          "slug": "fruits-shooter-pop-master",
+          "title": "Fruits Shooter Pop Master",
+          "category": "Arcade",
+          "path": "/more-free-games/fruits-shooter-pop-master"
+        },
+        {
+          "slug": "helix-blitz",
+          "title": "Spiral Blitz",
+          "category": "Arcade",
+          "path": "/more-free-games/helix-blitz"
+        },
+        {
+          "slug": "bouncy-dunk",
+          "title": "Bouncy Dunk",
+          "category": "Arcade",
+          "path": "/more-free-games/bouncy-dunk"
+        },
+        {
+          "slug": "red-mpostor-guys",
+          "title": "Red Impostor Guys",
+          "category": "Arcade",
+          "path": "/more-free-games/red-mpostor-guys"
+        },
+        {
+          "slug": "dunk-up",
+          "title": "Dunk Up Basketball",
+          "category": "Arcade",
+          "path": "/more-free-games/dunk-up"
+        }
+      ],
+      "leadingCategories": [
+        {
+          "category": "Puzzle",
+          "count": 913
+        },
+        {
+          "category": "Arcade",
+          "count": 700
+        },
+        {
+          "category": "Action",
+          "count": 126
+        },
+        {
+          "category": "Racing",
+          "count": 101
+        },
+        {
+          "category": "Sports",
+          "count": 54
+        }
+      ]
+    }
+  ],
+  "selectedHubCounts": {
+    "car-games": 782,
+    "2-player-games": 319,
+    "io-games": 315,
+    "dress-up-games": 1508,
+    "shooting-games": 2213,
+    "word-games": 175
+  },
+  "profileOpportunities": [
+    {
+      "slug": "2player-tanks-of-war",
+      "title": "2Player Tanks of War",
+      "path": "/more-free-games/2player-tanks-of-war",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "anime-girls-fashion-makeup-and-dress-up",
+      "title": "Anime Girls Fashion - Makeup & Dress up",
+      "path": "/more-free-games/anime-girls-fashion-makeup-and-dress-up",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "archer-peerless-io",
+      "title": "Archer Peerless.io",
+      "path": "/more-free-games/archer-peerless-io",
+      "category": "Arcade",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "armed-forces-io",
+      "title": "Armed Forces.io",
+      "path": "/more-free-games/armed-forces-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "assault-zone-3d-io",
+      "title": "Assault Zone 3D.IO",
+      "path": "/more-free-games/assault-zone-3d-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ball-shooter-2-player",
+      "title": "Ball Shooter 2 player",
+      "path": "/more-free-games/ball-shooter-2-player",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "battledudes-io",
+      "title": "BattleDudes.io",
+      "path": "/more-free-games/battledudes-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "best-model-dress-up",
+      "title": "Best Model Dress Up",
+      "path": "/more-free-games/best-model-dress-up",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "cannon-ball-io",
+      "title": "Cannon Ball IO",
+      "path": "/more-free-games/cannon-ball-io",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "io-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "clanker-io",
+      "title": "Clanker.io",
+      "path": "/more-free-games/clanker-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "cobraz-io",
+      "title": "CobraZ io",
+      "path": "/more-free-games/cobraz-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "college-student-girl-dress-up",
+      "title": "College Student Girl Dress Up",
+      "path": "/more-free-games/college-student-girl-dress-up",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "couples-dress-up",
+      "title": "Couples Dress Up",
+      "path": "/more-free-games/couples-dress-up",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "cubes-battle-royale",
+      "title": "Cubes Battle Royale",
+      "path": "/more-free-games/cubes-battle-royale",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "death-car-io",
+      "title": "Death Car.io",
+      "path": "/more-free-games/death-car-io",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "io-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "desire-io",
+      "title": "Desire IO",
+      "path": "/more-free-games/desire-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "dinoz-city",
+      "title": "DinoZ City",
+      "path": "/more-free-games/dinoz-city",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "fireboy-and-watergirls-io",
+      "title": "Fireboy and Watergirls.IO",
+      "path": "/more-free-games/fireboy-and-watergirls-io",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "io-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "fly-car-stunt-5",
+      "title": "Fly Car Stunt 5",
+      "path": "/more-free-games/fly-car-stunt-5",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "flying-cars-era",
+      "title": "Flying Cars Era",
+      "path": "/more-free-games/flying-cars-era",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "gold-gun-fury-io",
+      "title": "Gold Gun Fury.IO",
+      "path": "/more-free-games/gold-gun-fury-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "growwars-io",
+      "title": "GrowWars.io",
+      "path": "/more-free-games/growwars-io",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "io-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "gun-mayhem-io",
+      "title": "Gun Mayhem.IO",
+      "path": "/more-free-games/gun-mayhem-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "international-stylist-fashion-and-dress-up-games",
+      "title": "International Stylist - Fashion & Dress Up Games",
+      "path": "/more-free-games/international-stylist-fashion-and-dress-up-games",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "low-poly-car-racing",
+      "title": "Low poly car racing",
+      "path": "/more-free-games/low-poly-car-racing",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "mad-cars-racing-and-crash",
+      "title": "Mad Cars Racing and Crash",
+      "path": "/more-free-games/mad-cars-racing-and-crash",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "max-space-two-player-arena",
+      "title": "Max Space - Two Player Arena",
+      "path": "/more-free-games/max-space-two-player-arena",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "minecraft-rooftop-snipers",
+      "title": "Minecraft Rooftop Snipers",
+      "path": "/more-free-games/minecraft-rooftop-snipers",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "mini-tanks",
+      "title": "Mini Tanks",
+      "path": "/more-free-games/mini-tanks",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "monster-truck-extreme-racing",
+      "title": "Monster Truck Extreme Racing",
+      "path": "/more-free-games/monster-truck-extreme-racing",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "moon-car-stunt",
+      "title": "Moon Car Stunt",
+      "path": "/more-free-games/moon-car-stunt",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "neon-tank-arena",
+      "title": "Neon Tank Arena",
+      "path": "/more-free-games/neon-tank-arena",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "noob-vs-pro-but-archers-minecraft",
+      "title": "Noob vs Pro But Archers Minecraft",
+      "path": "/more-free-games/noob-vs-pro-but-archers-minecraft",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "pixel-battlegrounds-io",
+      "title": "Pixel Battlegrounds.IO",
+      "path": "/more-free-games/pixel-battlegrounds-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "pixel-factory-battle-3d-io",
+      "title": "Pixel Factory Battle 3D.IO",
+      "path": "/more-free-games/pixel-factory-battle-3d-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "pixel-hunting-io",
+      "title": "Pixel Hunting.IO",
+      "path": "/more-free-games/pixel-hunting-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "pixel-zombie-die-hard-io",
+      "title": "Pixel Zombie Die Hard.IO",
+      "path": "/more-free-games/pixel-zombie-die-hard-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "pixeled-smash-duel",
+      "title": "Pixeled Smash Duel",
+      "path": "/more-free-games/pixeled-smash-duel",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ragdoll-arena-2-player",
+      "title": "Ragdoll Arena 2 Player",
+      "path": "/more-free-games/ragdoll-arena-2-player",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ragdoll-duel-2p",
+      "title": "Ragdoll Duel 2P",
+      "path": "/more-free-games/ragdoll-duel-2p",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "retro-car-xtreme",
+      "title": "Retro Car Xtreme",
+      "path": "/more-free-games/retro-car-xtreme",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "rooftop-shooters",
+      "title": "Rooftop Shooters",
+      "path": "/more-free-games/rooftop-shooters",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "santa-revenge",
+      "title": "Santa Revenge",
+      "path": "/more-free-games/santa-revenge",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "shipnt-io",
+      "title": "Shipnt.io",
+      "path": "/more-free-games/shipnt-io",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "io-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "shootup-io",
+      "title": "Shootup.io",
+      "path": "/more-free-games/shootup-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "shoter-io",
+      "title": "Shoter.io",
+      "path": "/more-free-games/shoter-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "spaceguard-io",
+      "title": "SpaceGuard.io",
+      "path": "/more-free-games/spaceguard-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "style-doll-princess-dress-up",
+      "title": "Style doll Princess Dress Up",
+      "path": "/more-free-games/style-doll-princess-dress-up",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "tank-stormy",
+      "title": "Tank Stormy",
+      "path": "/more-free-games/tank-stormy",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "tanked-io",
+      "title": "Tanked.io",
+      "path": "/more-free-games/tanked-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "tanko-io",
+      "title": "Tanko.io",
+      "path": "/more-free-games/tanko-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "top-shooter-io",
+      "title": "Top Shooter io",
+      "path": "/more-free-games/top-shooter-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "tyran-io",
+      "title": "Tyran.io",
+      "path": "/more-free-games/tyran-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ultimate-flying-car-2",
+      "title": "Ultimate Flying Car 2",
+      "path": "/more-free-games/ultimate-flying-car-2",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games",
+        "2-player-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "warrior-survival-io",
+      "title": "Warrior Survival.io",
+      "path": "/more-free-games/warrior-survival-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "xmas-rooftop-battles",
+      "title": "Xmas Rooftop Battles",
+      "path": "/more-free-games/xmas-rooftop-battles",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "zombie-parade-defense",
+      "title": "Zombie Parade Defense",
+      "path": "/more-free-games/zombie-parade-defense",
+      "category": "Action",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 10,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "anime-fantasy-dress-up-games",
+      "title": "anime fantasy dress up games",
+      "path": "/more-free-games/anime-fantasy-dress-up-games",
+      "category": "Action",
+      "matchingHubs": [
+        "dress-up-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 8,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "kr-fte-io",
+      "title": "Kräfte io",
+      "path": "/more-free-games/kr-fte-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 8,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "space-invaders-io",
+      "title": "space invaders.io",
+      "path": "/more-free-games/space-invaders-io",
+      "category": "Action",
+      "matchingHubs": [
+        "io-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 8,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "stick-duel-battle-hero",
+      "title": "Stick Duel: Battle Hero",
+      "path": "/more-free-games/stick-duel-battle-hero",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games",
+        "shooting-games"
+      ],
+      "evidenceScore": 8,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "10-words-challenge",
+      "title": "10 Words Challenge",
+      "path": "/more-free-games/10-words-challenge",
+      "category": "Puzzle",
+      "matchingHubs": [
+        "word-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "12-minibattles",
+      "title": "12 MiniBattles",
+      "path": "/more-free-games/12-minibattles",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "18-wheeler-truck-driving-cargo",
+      "title": "18 wheeler truck driving cargo",
+      "path": "/more-free-games/18-wheeler-truck-driving-cargo",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "1945-air-force-space-shooter",
+      "title": "1945 Air Force Space Shooter",
+      "path": "/more-free-games/1945-air-force-space-shooter",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "1up-gunman",
+      "title": "1UP Gunman",
+      "path": "/more-free-games/1up-gunman",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-cars-online",
+      "title": "2 Cars Online",
+      "path": "/more-free-games/2-cars-online",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-among-soccer",
+      "title": "2 Player Among Soccer",
+      "path": "/more-free-games/2-player-among-soccer",
+      "category": "Sports",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-blockminer-escape",
+      "title": "2 Player BlockMiner Escape",
+      "path": "/more-free-games/2-player-blockminer-escape",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-games-princess-design-party",
+      "title": "2 Player Games Princess Design Party",
+      "path": "/more-free-games/2-player-games-princess-design-party",
+      "category": "Arcade",
+      "matchingHubs": [
+        "dress-up-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-head-soccer-game",
+      "title": "2 Player Head Soccer Game",
+      "path": "/more-free-games/2-player-head-soccer-game",
+      "category": "Sports",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-mini-challenge",
+      "title": "2 Player Mini Challenge",
+      "path": "/more-free-games/2-player-mini-challenge",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2-player-online-chess",
+      "title": "2 Player Online Chess",
+      "path": "/more-free-games/2-player-online-chess",
+      "category": "Puzzle",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2023-car-parking",
+      "title": "2023 Car Parking",
+      "path": "/more-free-games/2023-car-parking",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2048-shoot-merge-number-3d",
+      "title": "2048 Shoot Merge Number 3D",
+      "path": "/more-free-games/2048-shoot-merge-number-3d",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2048-the-king-return",
+      "title": "2048 The King Return",
+      "path": "/more-free-games/2048-the-king-return",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2048skill-edition",
+      "title": "2048Skill Edition",
+      "path": "/more-free-games/2048skill-edition",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-car-racing",
+      "title": "2D Car Racing",
+      "path": "/more-free-games/2d-car-racing",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-car-racing-2023",
+      "title": "2D Car Racing 2023",
+      "path": "/more-free-games/2d-car-racing-2023",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-car-runner",
+      "title": "2D Car Runner",
+      "path": "/more-free-games/2d-car-runner",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-dungeon",
+      "title": "2D Dungeon",
+      "path": "/more-free-games/2d-dungeon",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-space-shooter",
+      "title": "2D Space Shooter",
+      "path": "/more-free-games/2d-space-shooter",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-war-friends-shooting",
+      "title": "2D War Friends Shooting",
+      "path": "/more-free-games/2d-war-friends-shooting",
+      "category": "Arcade",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "2d-zombie-age",
+      "title": "2D Zombie Age",
+      "path": "/more-free-games/2d-zombie-age",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-bullet-bender",
+      "title": "3D Bullet Bender",
+      "path": "/more-free-games/3d-bullet-bender",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-bus-simulator-2021",
+      "title": "3D bus simulator 2021",
+      "path": "/more-free-games/3d-bus-simulator-2021",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-car-rush",
+      "title": "3D Car Rush",
+      "path": "/more-free-games/3d-car-rush",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-car-track-racer-alpha",
+      "title": "3D Car Track Racer Alpha",
+      "path": "/more-free-games/3d-car-track-racer-alpha",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-educational-car-adventure",
+      "title": "3D Educational Car Adventure",
+      "path": "/more-free-games/3d-educational-car-adventure",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-forces",
+      "title": "3D Forces",
+      "path": "/more-free-games/3d-forces",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-fps-target-shooting",
+      "title": "3D FPS Target Shooting",
+      "path": "/more-free-games/3d-fps-target-shooting",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-funny-shooter",
+      "title": "3D Funny Shooter",
+      "path": "/more-free-games/3d-funny-shooter",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-pool-champions",
+      "title": "3D Pool Champions",
+      "path": "/more-free-games/3d-pool-champions",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-royale",
+      "title": "3D Royale",
+      "path": "/more-free-games/3d-royale",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-sniper-shooting-game",
+      "title": "3D Sniper Shooting Game",
+      "path": "/more-free-games/3d-sniper-shooting-game",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "3d-space-shooter",
+      "title": "3D Space Shooter",
+      "path": "/more-free-games/3d-space-shooter",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "4-in-row-mania",
+      "title": "4 in Row Mania",
+      "path": "/more-free-games/4-in-row-mania",
+      "category": "Arcade",
+      "matchingHubs": [
+        "2-player-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "4-pics-guess-word-puzzle-game",
+      "title": "4 Pics Guess Word -Puzzle Game",
+      "path": "/more-free-games/4-pics-guess-word-puzzle-game",
+      "category": "Puzzle",
+      "matchingHubs": [
+        "word-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "4-pics-word",
+      "title": "4 Pics Word",
+      "path": "/more-free-games/4-pics-word",
+      "category": "Puzzle",
+      "matchingHubs": [
+        "word-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "456-minimal-bubble-shooter",
+      "title": "456 Minimal Bubble Shooter",
+      "path": "/more-free-games/456-minimal-bubble-shooter",
+      "category": "Arcade",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "456-sniper-challenge",
+      "title": "456 Sniper Challenge",
+      "path": "/more-free-games/456-sniper-challenge",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "4x4-car-driving-simulator-3d",
+      "title": "4x4 car driving Simulator 3D",
+      "path": "/more-free-games/4x4-car-driving-simulator-3d",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "6-errors-game",
+      "title": "6 Errors Game",
+      "path": "/more-free-games/6-errors-game",
+      "category": "Puzzle",
+      "matchingHubs": [
+        "word-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "8-pool-shooter",
+      "title": "8 Pool Shooter",
+      "path": "/more-free-games/8-pool-shooter",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "90-tank-battle",
+      "title": "90 Tank Battle",
+      "path": "/more-free-games/90-tank-battle",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "a-space-time-challenge",
+      "title": "A Space-time Challenge!",
+      "path": "/more-free-games/a-space-time-challenge",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ace-brawl-battle-3d",
+      "title": "Ace Brawl Battle 3D",
+      "path": "/more-free-games/ace-brawl-battle-3d",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ace-car-racing",
+      "title": "Ace Car Racing",
+      "path": "/more-free-games/ace-car-racing",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "ace-drift-car-racing-game",
+      "title": "Ace Drift - Car Racing Game",
+      "path": "/more-free-games/ace-drift-car-racing-game",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "acid-trip",
+      "title": "Acid Trip",
+      "path": "/more-free-games/acid-trip",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "adam-vs-sacha",
+      "title": "Adam vs Sacha",
+      "path": "/more-free-games/adam-vs-sacha",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advance-car-parking-classic-car-parking-car-games",
+      "title": "Advance Car Parking Classic Car Parking Car Games",
+      "path": "/more-free-games/advance-car-parking-classic-car-parking-car-games",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advance-car-parking-driver-simulator",
+      "title": "Advance Car Parking Driver Simulator",
+      "path": "/more-free-games/advance-car-parking-driver-simulator",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advance-car-parking-game-car-driver-simulator-3d",
+      "title": "Advance Car Parking Game - Car Driver Simulator 3D",
+      "path": "/more-free-games/advance-car-parking-game-car-driver-simulator-3d",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advance-car-parking-game-car-driver-simulator",
+      "title": "Advance Car Parking Game Car Driver Simulator",
+      "path": "/more-free-games/advance-car-parking-game-car-driver-simulator",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advance-car-parking-simulation",
+      "title": "Advance Car Parking Simulation",
+      "path": "/more-free-games/advance-car-parking-simulation",
+      "category": "Racing",
+      "matchingHubs": [
+        "car-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advanced-air-combat-simulator",
+      "title": "Advanced Air Combat Simulator",
+      "path": "/more-free-games/advanced-air-combat-simulator",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advanced-blocky-gangster-warfare",
+      "title": "Advanced Blocky Gangster Warfare",
+      "path": "/more-free-games/advanced-blocky-gangster-warfare",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advanced-blocky-paintball",
+      "title": "Advanced Blocky Paintball",
+      "path": "/more-free-games/advanced-blocky-paintball",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    },
+    {
+      "slug": "advanced-blocky-swat-zombie",
+      "title": "Advanced Blocky SWAT Zombie",
+      "path": "/more-free-games/advanced-blocky-swat-zombie",
+      "category": "Action",
+      "matchingHubs": [
+        "shooting-games"
+      ],
+      "evidenceScore": 7,
+      "searchConsoleMetrics": null
+    }
+  ],
+  "limitations": [
+    "Supplier tags can be noisy; conservative rules trade some recall for stronger relevance.",
+    "Search Console query exports were not present in the workspace, so profile ranking is catalogue-evidence only.",
+    "Two-player metadata identifies the mode but does not always establish local, shared-keyboard or remote-network operation."
+  ]
+}

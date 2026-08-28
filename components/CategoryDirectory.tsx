@@ -11,6 +11,7 @@ import {
 } from '@/lib/categoryEditorial';
 import { categoryDisplayName, categoryPagePath } from '@/lib/categoryPages';
 import { getRegistryGamesBySlugs, type RegistryGame } from '@/lib/gameRegistry';
+import { gameHubPath, getActiveGameHubs } from '@/lib/gameHubs';
 
 type CategoryDirectoryProps = {
   category: { slug: string; name: string; count: number };
@@ -29,6 +30,7 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
   const originals = getRegistryGamesBySlugs(editorial.originalSlugs).filter((game) => game.source === 'gr8-originals');
   const usedLabels = new Set<CategorySelectionLabel>(editorial.editorialPicks.flatMap((pick) => pick.labels));
   usedLabels.add('popular-on-gr8');
+  const specialistHubs = getActiveGameHubs().filter((hub) => hub.parentCategory === editorial.slug);
 
   return (
     <section className="category-editorial" aria-labelledby={`${editorial.slug}-guide-title`}>
@@ -89,6 +91,11 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
             <Link key={slug} href={categoryPagePath(slug)}>{categoryDisplayName(slug, slug)} games</Link>
           ))}
         </nav>
+        {specialistHubs.length ? (
+          <nav aria-label={`Specialist collections related to ${editorial.name}`}>
+            {specialistHubs.map((hub) => <Link key={hub.id} href={gameHubPath(hub.slug)}>{hub.label}</Link>)}
+          </nav>
+        ) : null}
         {editorial.gearGuide ? (
           <aside className="category-gear-link" aria-label="Optional gaming gear guide">
             <span>Optional setup guide</span>
@@ -157,7 +164,7 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
       ) : (
         <section className="page-title category-page-title">
           <span className="eyebrow">{page === 1 ? 'Category' : `${name} catalogue`}</span>
-          <h1>{page === 1 ? `${name} games` : `${name} games - page ${page}`}</h1>
+          <h1>{page === 1 ? `${category.slug === 'arcade' ? 'Free ' : ''}${name.toLowerCase()} games online` : `${name} games - page ${page}`}</h1>
           <p>{page === 1
             ? `Play ${category.count.toLocaleString('en-GB')} ${name.toLowerCase()} games from GR8 Originals and GR8 Select.`
             : `Browse ${games.length} games on page ${page} of ${totalPages}. Every game shown below links directly to its canonical profile.`}</p>
