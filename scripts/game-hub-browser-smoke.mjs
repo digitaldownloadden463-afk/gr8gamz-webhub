@@ -2,6 +2,7 @@ import { chromium, webkit } from '@playwright/test';
 import fs from 'node:fs';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
+const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
 const report = JSON.parse(fs.readFileSync('reports/phase-s1-catalogue-clusters.json', 'utf8'));
 const hubs = Object.entries(report.selectedHubCounts).map(([slug, count]) => ({ slug, count, pages: Math.ceil(count / 48) }));
 const failures = [];
@@ -28,6 +29,9 @@ async function runEngine(browserType, name) {
   const page = await context.newPage();
   const consoleErrors = [];
   page.on('console', (message) => { if (message.type() === 'error' && !/adsbygoogle|ERR_BLOCKED_BY_CLIENT|favicon/i.test(message.text())) consoleErrors.push(message.text()); });
+  if (previewShareUrl) {
+    await page.goto(previewShareUrl, { waitUntil: 'domcontentloaded', timeout: 180000 });
+  }
   await inspectRoute(page, '/', '/', name);
   if ((await page.locator('h1').textContent())?.trim() !== 'Free online games at GR8 GAMZ.') fail(`${name}: homepage H1 was not retargeted`);
   for (const hub of hubs) {
