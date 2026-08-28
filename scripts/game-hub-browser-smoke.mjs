@@ -10,7 +10,7 @@ const failures = [];
 function fail(message) { failures.push(message); }
 
 async function inspectRoute(page, route, expectedCanonical, label) {
-  const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: 60000 });
+  const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'commit', timeout: previewShareUrl ? 180000 : 60000 });
   if (response?.status() !== 200) fail(`${label}: ${route} returned ${response?.status()}`);
   await page.locator('h1').waitFor({ state: 'visible', timeout: 60000 });
   if (await page.locator('h1').count() !== 1) fail(`${label}: ${route} does not have exactly one H1`);
@@ -28,7 +28,15 @@ async function runEngine(browserType, name) {
   const context = await browser.newContext({ viewport: name.includes('mobile') ? { width: 390, height: 844 } : { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   const page = await context.newPage();
   const consoleErrors = [];
-  page.on('console', (message) => { if (message.type() === 'error' && !/adsbygoogle|ERR_BLOCKED_BY_CLIENT|favicon/i.test(message.text())) consoleErrors.push(message.text()); });
+  const applicationResponseFailures = [];
+  page.on('response', (response) => {
+    if (response.url().startsWith(baseUrl) && response.status() >= 400) applicationResponseFailures.push(`${response.status()} ${response.url()}`);
+  });
+  page.on('console', (message) => {
+    const value = message.text();
+    const previewToolbarNoise = previewShareUrl && (/vercel\.live\/_next-live\/feedback/i.test(value) || /Failed to load resource: the server responded with a status of 403/i.test(value));
+    if (message.type() === 'error' && !previewToolbarNoise && !/adsbygoogle|ERR_BLOCKED_BY_CLIENT|favicon/i.test(value)) consoleErrors.push(value);
+  });
   if (previewShareUrl) {
     await page.goto(previewShareUrl, { waitUntil: 'domcontentloaded', timeout: 180000 });
   }
@@ -53,6 +61,7 @@ async function runEngine(browserType, name) {
   const search = await context.request.get(`${baseUrl}/games?q=snake`);
   const searchHtml = await search.text();
   if (!/<meta[^>]+name="robots"[^>]+content="noindex, follow"/i.test(searchHtml) && !/<meta[^>]+content="noindex, follow"[^>]+name="robots"/i.test(searchHtml)) fail(`${name}: internal search response is not noindex`);
+  if (applicationResponseFailures.length) fail(`${name}: application response failures: ${applicationResponseFailures.slice(0, 5).join(' | ')}`);
   if (consoleErrors.length) fail(`${name}: console errors: ${consoleErrors.slice(0, 5).join(' | ')}`);
   await browser.close();
 }
