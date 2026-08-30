@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-08-30T09:40:43.353Z",
+  "publishingState": "paused",
+  "account": {
+    "gr8GamzBusinessAccount": "active-business-profile",
+    "publicProfile": "https://www.pinterest.com/gr8gamz/",
+    "gr8GamzClaimedDomain": false,
+    "websiteClaimState": "verification-marker-prepared-not-submitted",
+    "livingStyleUkAccount": "separate-and-untouched",
+    "boards": "not-created",
+    "rssConnections": "none",
+    "pinterestApi": "not-configured"
+  },
+  "rights": {
+    "eligibleOriginalGames": 26,
+    "eligibleCollections": 10,
+    "eligibleDestinations": 36,
+    "excludedOrUnknownPartnerGames": 33231,
+    "activationOwnershipReconfirmationRequired": true
+  },
+  "boards": [
+    {
+      "id": "free-online-games",
+      "name": "Free Online Games",
+      "feedPath": "/pinterest/feeds/free-online-games.xml",
+      "scheduledCreativeCount": 20
+    },
+    {
+      "id": "gr8-originals",
+      "name": "GR8 Originals",
+      "feedPath": "/pinterest/feeds/gr8-originals.xml",
+      "scheduledCreativeCount": 28
+    },
+    {
+      "id": "car-games",
+      "name": "Car Games",
+      "feedPath": "/pinterest/feeds/car-games.xml",
+      "scheduledCreativeCount": 8
+    },
+    {
+      "id": "2-player-games",
+      "name": "2 Player Games",
+      "feedPath": "/pinterest/feeds/2-player-games.xml",
+      "scheduledCreativeCount": 4
+    },
+    {
+      "id": "puzzle-games",
+      "name": "Puzzle Games",
+      "feedPath": "/pinterest/feeds/puzzle-games.xml",
+      "scheduledCreativeCount": 20
+    },
+    {
+      "id": "mobile-games",
+      "name": "Mobile Games",
+      "feedPath": "/pinterest/feeds/mobile-games.xml",
+      "scheduledCreativeCount": 12
+    }
+  ],
+  "schedule": {
+    "dailyRate": 3,
+    "globalMaximum": 5,
+    "scheduledCreativeCount": 92,
+    "startDate": "environment-required-before-activation"
+  },
+  "candidateScorecard": [
+    {
+      "destination": "/arcade/monster-truck-tap",
+      "title": "Monster Truck Tap",
+      "category": "racing",
+      "score": 80,
+      "evidence": {
+        "searchCategory": 20,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/turbo-drift-grid",
+      "title": "Turbo Drift Grid",
+      "category": "racing",
+      "score": 80,
+      "evidence": {
+        "searchCategory": 20,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/astro-memory-grid",
+      "title": "Astro Memory Grid",
+      "category": "puzzle",
+      "score": 78,
+      "evidence": {
+        "searchCategory": 18,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/bubble-pop-blitz",
+      "title": "Bubble Pop Blitz",
+      "category": "puzzle",
+      "score": 78,
+      "evidence": {
+        "searchCategory": 18,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/crystal-match-quest",
+      "title": "Crystal Match Quest",
+      "category": "puzzle",
+      "score": 78,
+      "evidence": {
+        "searchCategory": 18,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/ice-slide-puzzle",
+      "title": "Ice Slide Puzzle",
+      "category": "puzzle",
+      "score": 78,
+      "evidence": {
+        "searchCategory": 18,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/lava-tile-escape",
+      "title": "Lava Tile Escape",
+      "category": "puzzle",
+      "score": 78,
+      "evidence": {
+        "searchCategory": 18,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/traffic-tap-chaos",
+      "title": "Traffic Tap Chaos",
+      "category": "strategy",
+      "score": 76,
+      "evidence": {
+        "searchCategory": 16,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/cannon-coin-blast",
+      "title": "Cannon Coin Blast",
+      "category": "arcade",
+      "score": 75,
+      "evidence": {
+        "searchCategory": 15,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/neon-breakout-rush",
+      "title": "Neon Breakout Rush",
+      "category": "arcade",
+      "score": 75,
+      "evidence": {
+        "searchCategory": 15,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/neon-pinball-rush",
+      "title": "Neon Pinball Rush",
+      "category": "arcade",
+      "score": 75,
+      "evidence": {
+        "searchCategory": 15,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/neon-snake-rush",
+      "title": "Neon Snake Rush",
+      "category": "arcade",
+      "score": 75,
+      "evidence": {
+        "searchCategory": 15,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/rocket-fuel-frenzy",
+      "title": "Rocket Fuel Frenzy",
+      "category": "arcade",
+      "score": 75,
+      "evidence": {
+        "searchCategory": 15,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/alien-invader-swarm",
+      "title": "Alien Invader Swarm",
+      "category": "shooter",
+      "score": 74,
+      "evidence": {
+        "searchCategory": 14,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/shadow-ninja-leap",
+      "title": "Shadow Ninja Leap",
+      "category": "action",
+      "score": 74,
+      "evidence": {
+        "searchCategory": 14,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/space-tap-survival",
+      "title": "Space Tap Survival",
+      "category": "action",
+      "score": 74,
+      "evidence": {
+        "searchCategory": 14,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/zombie-lane-runner",
+      "title": "Zombie Lane Runner",
+      "category": "action",
+      "score": 74,
+      "evidence": {
+        "searchCategory": 14,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/cyber-basketball-shots",
+      "title": "Cyber Basketball Shots",
+      "category": "sports",
+      "score": 72,
+      "evidence": {
+        "searchCategory": 12,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/cyber-bowling-blitz",
+      "title": "Cyber Bowling Blitz",
+      "category": "sports",
+      "score": 72,
+      "evidence": {
+        "searchCategory": 12,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    },
+    {
+      "destination": "/arcade/fruit-slice-fever",
+      "title": "Fruit Slice Fever",
+      "category": "skill",
+      "score": 72,
+      "evidence": {
+        "searchCategory": 12,
+        "engagement": 0,
+        "visual": 15,
+        "mobile": 10,
+        "playability": 10,
+        "replayability": 10,
+        "destinationQuality": 10,
+        "freshness": 5
+      },
+      "limitation": "No first-party game-level engagement export was supplied, so engagement contributes zero."
+    }
+  ],
+  "evidenceLimitations": [
+    "No Pinterest-native analytics exists because no developer app or official analytics permission is configured.",
+    "The GR8 GAMZ domain remains unclaimed until the release marker is deployed and the authenticated claim is submitted once.",
+    "Boards and RSS connections remain intentionally absent until owner approval of the release candidate.",
+    "No game-level Search Console or GA4 engagement export was supplied to Phase D1.",
+    "Partner promotional rights are not documented, so every partner profile remains excluded.",
+    "Repository provenance for GR8 Originals should be reconfirmed by the owner before activation."
+  ]
+}

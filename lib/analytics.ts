@@ -32,7 +32,8 @@ export type AnalyticsEventName =
   | 'game_hub_pagination_used'
   | 'game_hub_game_selected'
   | 'related_hub_selected'
-  | 'category_discovery_selected';
+  | 'category_discovery_selected'
+  | 'pinterest_landing';
 
 export type AnalyticsParameters = Partial<{
   game_slug: string;
@@ -46,7 +47,9 @@ export type AnalyticsParameters = Partial<{
   category: string;
   page_type: 'hub' | 'category' | 'guide' | 'comparison' | 'product';
   link_position: string;
-  destination_type: 'merchant_product';
+  destination_type: 'merchant_product' | 'homepage' | 'collection' | 'game';
+  creative_id: string;
+  campaign: string;
   timer_seconds: number;
   timer_mode: 'standard' | 'calm';
   classroom_section: string;
@@ -58,7 +61,11 @@ export type AnalyticsParameters = Partial<{
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
-type Gtag = (command: GtagCommand, target: string | Date, parameters?: Record<string, unknown>) => void;
+type Gtag = (
+  command: GtagCommand,
+  target: string | Date,
+  parameters?: Record<string, unknown>
+) => void;
 
 declare global {
   interface Window {
@@ -70,16 +77,41 @@ declare global {
 }
 
 const safeParameterKeys = new Set<keyof AnalyticsParameters>([
-  'game_slug', 'game_type', 'locale', 'provider', 'merchant', 'product_slug', 'product_name', 'guide_slug', 'category', 'page_type', 'link_position', 'destination_type', 'timer_seconds', 'timer_mode', 'classroom_section', 'hub_id', 'parent_category', 'filter_id', 'page_number', 'source_surface'
+  'game_slug',
+  'game_type',
+  'locale',
+  'provider',
+  'merchant',
+  'product_slug',
+  'product_name',
+  'guide_slug',
+  'category',
+  'page_type',
+  'link_position',
+  'destination_type',
+  'creative_id',
+  'campaign',
+  'timer_seconds',
+  'timer_mode',
+  'classroom_section',
+  'hub_id',
+  'parent_category',
+  'filter_id',
+  'page_number',
+  'source_surface',
 ]);
-const pendingEvents: Array<{ name: AnalyticsEventName; parameters: Record<string, string | number> }> = [];
+const pendingEvents: Array<{
+  name: AnalyticsEventName;
+  parameters: Record<string, string | number>;
+}> = [];
 
 function safeParameters(parameters: AnalyticsParameters) {
   const result: Record<string, string | number> = {};
   for (const [key, value] of Object.entries(parameters)) {
     if (!safeParameterKeys.has(key as keyof AnalyticsParameters)) continue;
     if (key === 'timer_seconds' || key === 'page_number') {
-      if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 359999) result[key] = value;
+      if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 359999)
+        result[key] = value;
       continue;
     }
     if (typeof value !== 'string') continue;
@@ -90,12 +122,29 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'locale' && !/^[a-z]{2}(?:-[A-Z]{2})?$/.test(normalized)) continue;
     if (key === 'provider' && !['gr8', 'gamepix', 'gamemonetize'].includes(normalized)) continue;
     if (key === 'merchant' && normalized !== 'razer') continue;
-    if (key === 'page_type' && !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)) continue;
-    if (['product_slug', 'guide_slug', 'category', 'link_position'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
-    if (key === 'destination_type' && normalized !== 'merchant_product') continue;
+    if (
+      key === 'page_type' &&
+      !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)
+    )
+      continue;
+    if (
+      ['product_slug', 'guide_slug', 'category', 'link_position'].includes(key) &&
+      !/^[a-z0-9_-]+$/.test(normalized)
+    )
+      continue;
+    if (
+      key === 'destination_type' &&
+      !['merchant_product', 'homepage', 'collection', 'game'].includes(normalized)
+    )
+      continue;
+    if (['creative_id', 'campaign'].includes(key) && !/^[a-z0-9-]+$/.test(normalized)) continue;
     if (key === 'timer_mode' && !['standard', 'calm'].includes(normalized)) continue;
     if (key === 'classroom_section' && !/^[a-z0-9_-]+$/.test(normalized)) continue;
-    if (['hub_id', 'parent_category', 'filter_id', 'source_surface'].includes(key) && !/^[a-z0-9_-]+$/.test(normalized)) continue;
+    if (
+      ['hub_id', 'parent_category', 'filter_id', 'source_surface'].includes(key) &&
+      !/^[a-z0-9_-]+$/.test(normalized)
+    )
+      continue;
     result[key] = normalized;
   }
   return result;

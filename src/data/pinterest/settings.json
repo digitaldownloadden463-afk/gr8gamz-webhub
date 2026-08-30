@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "publishingDefault": "paused",
+  "dailyRate": 3,
+  "maximumDailyRate": 5,
+  "feedItemLimit": 120,
+  "minimumMinutesBetweenItems": 240,
+  "scheduleTimesUtc": ["09:00", "14:00", "19:00"],
+  "explorationPercent": 20,
+  "maximumDestinationSharePercent": 10,
+  "requiredClaimedHost": "www.gr8gamz.com",
+  "publishingEnvironmentFlag": "PINTEREST_RSS_ENABLED",
+  "scheduleStartEnvironmentFlag": "PINTEREST_SCHEDULE_START_DATE",
+  "emergencyPauseEnvironmentFlag": "PINTEREST_EMERGENCY_PAUSE",
+  "boardPauseEnvironmentPrefix": "PINTEREST_PAUSE_BOARD_",
+  "scheduleEndEnvironmentFlag": "PINTEREST_SCHEDULE_END_DATE",
+  "excludedCreativeIds": [],
+  "priorityCreativeIds": []
+}

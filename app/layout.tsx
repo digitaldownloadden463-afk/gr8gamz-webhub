@@ -9,8 +9,10 @@ import VercelObservability from '@/components/VercelObservability';
 import GoogleAdSense from '@/components/GoogleAdSense';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import GoogleConsentBridge from '@/components/GoogleConsentBridge';
+import PinterestAttribution from '@/components/PinterestAttribution';
 import { ADSENSE_ACCOUNT_ID, adsenseConfig } from '@/lib/ads/config';
 import { canonical, siteUrl } from '@/lib/features';
+import { PINTEREST_SITE_VERIFICATION } from '@/lib/pinterest/verification';
 import { headers } from 'next/headers';
 import { defaultLocale, isLocale, localeInfo, type Locale } from '@/lib/i18n';
 
@@ -49,7 +51,8 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
     other: {
       'google-adsense-account': ADSENSE_ACCOUNT_ID,
-      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : {})
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : {}),
+      'p:domain_verify': PINTEREST_SITE_VERIFICATION
     }
   }
 };
@@ -82,6 +85,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <GoogleAdSense />
         <ConsentBanner />
         <Suspense fallback={null}><GoogleAnalytics /></Suspense>
+        <Suspense fallback={null}><PinterestAttribution /></Suspense>
         <PwaRegister />
         <VercelObservability />
       </body>

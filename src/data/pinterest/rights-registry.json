@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-08-28",
+  "defaultState": "unknown",
+  "allowedStates": [
+    "gr8_original_owned",
+    "partner_distribution_authorised",
+    "artwork_only_authorised",
+    "gameplay_capture_authorised",
+    "category_only",
+    "excluded",
+    "unknown"
+  ],
+  "originalGameRule": {
+    "state": "gr8_original_owned",
+    "source": "README.md and src/data/games.json",
+    "evidence": "README.md identifies src/data/games.json as the source of truth for the 26 original games; records must also be Live, include the originals platform marker and use local GR8 artwork.",
+    "allowedAssetTypes": ["local_game_artwork", "gr8_brand_artwork"],
+    "allowedDestinationPattern": "^/arcade/[a-z0-9-]+$",
+    "reviewDate": "2026-08-28",
+    "expiry": null,
+    "notes": "This is repository provenance, not a third-party licence. Owner should reconfirm promotional ownership before Pinterest activation."
+  },
+  "partnerGameRule": {
+    "state": "unknown",
+    "source": "No promotional-rights grant recorded in the repository",
+    "evidence": "Playable embed permission is not treated as permission to republish partner artwork or gameplay.",
+    "allowedAssetTypes": [],
+    "allowedDestinationPattern": null,
+    "reviewDate": "2026-08-28",
+    "expiry": null,
+    "notes": "All GamePix and GameMonetize titles fail closed until explicit distribution rights are recorded."
+  },
+  "collectionRule": {
+    "state": "category_only",
+    "source": "GR8 GAMZ first-party brand and editorial collection routes",
+    "evidence": "Creatives use only GR8 brand artwork, typography and factual collection descriptions; no partner artwork is used.",
+    "allowedAssetTypes": ["gr8_brand_artwork"],
+    "allowedDestinationPattern": "^/(?:$|games$|car-games$|2-player-games$|mobile-games$|shooting-games$|dress-up-games$|word-games$|categories/(?:puzzle|arcade)$)",
+    "reviewDate": "2026-08-28",
+    "expiry": null,
+    "notes": "Collection creatives must remain brand-only unless a separate artwork grant is added."
+  },
+  "excludedGameSlugs": [],
+  "excludedDestinationPaths": []
+}
