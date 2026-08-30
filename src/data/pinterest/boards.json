@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "boards": [
+    {
+      "id": "free-online-games",
+      "name": "Free Online Games",
+      "description": "Free browser games and quick game collections for mobile, tablet and desktop, selected from GR8 GAMZ.",
+      "audience": "Players looking for free browser games without a download.",
+      "contentTypes": ["collection", "gr8_original"],
+      "feedPath": "/pinterest/feeds/free-online-games.xml",
+      "cadence": "Rotating share of the global three-Pins-per-day schedule.",
+      "exclusions": [
+        "unknown rights",
+        "partner artwork",
+        "quarantined games",
+        "duplicate creatives"
+      ]
+    },
+    {
+      "id": "gr8-originals",
+      "name": "GR8 Originals",
+      "description": "Original browser games from GR8 GAMZ, including quick arcade, puzzle, racing and skill challenges.",
+      "audience": "Players who want short original browser-game challenges.",
+      "contentTypes": ["gr8_original"],
+      "feedPath": "/pinterest/feeds/gr8-originals.xml",
+      "cadence": "Rotating share of the global three-Pins-per-day schedule.",
+      "exclusions": ["partner games", "non-live games", "expired rights", "duplicate creatives"]
+    },
+    {
+      "id": "car-games",
+      "name": "Car Games",
+      "description": "Free car, driving and racing games to play online on phone, tablet or desktop.",
+      "audience": "Players browsing driving and racing games.",
+      "contentTypes": ["collection", "gr8_original"],
+      "feedPath": "/pinterest/feeds/car-games.xml",
+      "cadence": "Rotating share of the global three-Pins-per-day schedule.",
+      "exclusions": ["non-driving games", "unknown rights", "duplicate creatives"]
+    },
+    {
+      "id": "2-player-games",
+      "name": "2 Player Games",
+      "description": "Two-player browser-game ideas for friends sharing a device or playing together online.",
+      "audience": "Friends and families looking for two-player game ideas.",
+      "contentTypes": ["collection"],
+      "feedPath": "/pinterest/feeds/2-player-games.xml",
+      "cadence": "A limited share of the global schedule until more rights-cleared content exists.",
+      "exclusions": ["unverified multiplayer claims", "partner artwork", "duplicate creatives"]
+    },
+    {
+      "id": "puzzle-games",
+      "name": "Puzzle Games",
+      "description": "Free online puzzle, logic, matching and memory games for quick or longer play sessions.",
+      "audience": "Players looking for puzzle and brain-game choices.",
+      "contentTypes": ["collection", "gr8_original"],
+      "feedPath": "/pinterest/feeds/puzzle-games.xml",
+      "cadence": "Rotating share of the global three-Pins-per-day schedule.",
+      "exclusions": ["unsupported educational claims", "unknown rights", "duplicate creatives"]
+    },
+    {
+      "id": "mobile-games",
+      "name": "Mobile Games",
+      "description": "Touch-friendly browser games and quick mobile game ideas from GR8 GAMZ.",
+      "audience": "Players looking for games that suit phones and tablets.",
+      "contentTypes": ["collection", "gr8_original"],
+      "feedPath": "/pinterest/feeds/mobile-games.xml",
+      "cadence": "Rotating share of the global three-Pins-per-day schedule.",
+      "exclusions": ["desktop-only games", "unknown rights", "duplicate creatives"]
+    }
+  ]
+}

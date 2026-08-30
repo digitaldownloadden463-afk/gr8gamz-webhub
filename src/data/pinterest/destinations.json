@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "collections": [
+    {
+      "id": "home-free-online-games",
+      "path": "/",
+      "title": "Free Online Games",
+      "description": "Browse free browser games across arcade, puzzle, racing, action and more on GR8 GAMZ.",
+      "boardId": "free-online-games",
+      "campaign": "free-online-games",
+      "hooks": [
+        "Find Your Next Free Game",
+        "Free Browser Games to Try",
+        "Pick a Game and Start Playing",
+        "Quick Games for Any Break"
+      ]
+    },
+    {
+      "id": "games-catalogue",
+      "path": "/games",
+      "title": "Free Browser Games",
+      "description": "Explore the GR8 GAMZ game catalogue and choose a game that fits your device and mood.",
+      "boardId": "free-online-games",
+      "campaign": "browser-games",
+      "hooks": [
+        "Browse Free Browser Games",
+        "Choose Your Next Game",
+        "Games to Play Without a Download",
+        "What Will You Play Next?"
+      ]
+    },
+    {
+      "id": "car-games",
+      "path": "/car-games",
+      "title": "Car Games",
+      "description": "Browse free online car, racing, parking and driving games on GR8 GAMZ.",
+      "boardId": "car-games",
+      "campaign": "car-games",
+      "hooks": [
+        "Free Car Games to Play Online",
+        "Pick Your Next Driving Game",
+        "Race, Drift or Park?",
+        "Browser Car Games to Try"
+      ]
+    },
+    {
+      "id": "two-player-games",
+      "path": "/2-player-games",
+      "title": "2 Player Games",
+      "description": "Find browser-game ideas for two players, shared devices and friendly challenges.",
+      "boardId": "2-player-games",
+      "campaign": "2-player-games",
+      "hooks": [
+        "Two Player Games to Try Together",
+        "Pick a Game for Two",
+        "Share a Screen and Play",
+        "Your Next Two Player Challenge"
+      ]
+    },
+    {
+      "id": "puzzle-games",
+      "path": "/categories/puzzle",
+      "title": "Puzzle Games",
+      "description": "Choose from matching, logic, memory and other free puzzle games on GR8 GAMZ.",
+      "boardId": "puzzle-games",
+      "campaign": "puzzle-games",
+      "hooks": [
+        "Pick Your Next Puzzle Game",
+        "Try a Quick Browser Puzzle",
+        "Logic, Matching or Memory?",
+        "Free Puzzle Games to Explore"
+      ]
+    },
+    {
+      "id": "mobile-games",
+      "path": "/mobile-games",
+      "title": "Mobile Games",
+      "description": "Browse touch-friendly browser games for phones and tablets on GR8 GAMZ.",
+      "boardId": "mobile-games",
+      "campaign": "mobile-games",
+      "hooks": [
+        "Touch-Friendly Games to Try",
+        "Quick Mobile Games in Your Browser",
+        "Pick a Game for Your Phone",
+        "Free Mobile Browser Games"
+      ]
+    },
+    {
+      "id": "arcade-games",
+      "path": "/categories/arcade",
+      "title": "Arcade Games",
+      "description": "Explore quick arcade games, score chases and reflex challenges on GR8 GAMZ.",
+      "boardId": "free-online-games",
+      "campaign": "arcade-games",
+      "hooks": [
+        "Quick Arcade Games to Try",
+        "Chase a New High Score",
+        "Pick an Arcade Challenge",
+        "Free Arcade Games Online"
+      ]
+    },
+    {
+      "id": "shooting-games",
+      "path": "/shooting-games",
+      "title": "Shooting Games",
+      "description": "Browse free browser shooting games with varied controls, themes and session lengths.",
+      "boardId": "free-online-games",
+      "campaign": "shooting-games",
+      "hooks": [
+        "Browse Free Shooting Games",
+        "Choose Your Next Aim Challenge",
+        "Quick Browser Shooting Games",
+        "Find a Shooting Game to Play"
+      ]
+    },
+    {
+      "id": "dress-up-games",
+      "path": "/dress-up-games",
+      "title": "Dress Up Games",
+      "description": "Explore dress-up, styling and makeover browser games collected on GR8 GAMZ.",
+      "boardId": "free-online-games",
+      "campaign": "dress-up-games",
+      "hooks": [
+        "Explore Free Dress Up Games",
+        "Choose a New Styling Game",
+        "Creative Dress Up Games Online",
+        "Pick Your Next Makeover Game"
+      ]
+    },
+    {
+      "id": "word-games",
+      "path": "/word-games",
+      "title": "Word Games",
+      "description": "Find word puzzles, spelling challenges and vocabulary games to play in your browser.",
+      "boardId": "puzzle-games",
+      "campaign": "word-games",
+      "hooks": [
+        "Pick Your Next Word Game",
+        "Try a Quick Word Puzzle",
+        "Free Word Games to Explore",
+        "Ready for a Word Challenge?"
+      ]
+    }
+  ]
+}
