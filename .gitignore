@@ -52,3 +52,6 @@ Thumbs.db
 
 # Locally generated YouTube review media (never deployed or committed)
 .youtube-output/
+
+# Local YouTube OAuth credentials, tokens and private upload records
+.youtube-private/

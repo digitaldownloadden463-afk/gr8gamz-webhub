@@ -25,7 +25,8 @@ expect(settings.publicPublishEnabled === false, 'Public publishing must fail clo
 expect(settings.emergencyPause === true, 'The Y1 emergency pause must be active.');
 expect(core.includes('assertYouTubeUploadAllowed'), 'Upload gate is missing.');
 expect(api.includes('OAuth 2.0'), 'Official OAuth requirement is undocumented.');
-expect(api.includes('no live upload transport'), 'Y1 contains an active upload transport.');
+expect(settings.uploadEnabled === false, 'Upload transport is not disabled by default.');
+expect(settings.emergencyPause === true, 'Upload transport is not emergency-paused by default.');
 
 expect(rights.policy.defaultState === 'unknown', 'Unknown rights do not fail closed.');
 expect(rights.policy.unknownBehaviour === 'exclude', 'Unknown rights are not excluded.');

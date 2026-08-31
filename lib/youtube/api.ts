@@ -4,9 +4,9 @@ export const youtubeApiReadiness = {
   api: 'YouTube Data API v3',
   oauthStandard: 'OAuth 2.0',
   uploadScope: 'https://www.googleapis.com/auth/youtube.upload',
-  configured: false,
-  reason:
-    'The audited Google Cloud project has no enabled YouTube Data API, OAuth consent screen or OAuth client.',
+  transport: 'videos.insert resumable upload',
+  configured: true,
+  reason: 'The owner-operated Desktop OAuth client is configured outside Git.',
 } as const;
 
 export function prepareYouTubeUpload(visibility: YouTubeUploadVisibility) {
@@ -16,7 +16,5 @@ export function prepareYouTubeUpload(visibility: YouTubeUploadVisibility) {
   if (!credentials || !refreshToken) {
     throw new Error('Official YouTube OAuth credentials are not configured.');
   }
-  throw new Error(
-    'Y1 intentionally contains no live upload transport. Enable it only after official API and OAuth review.'
-  );
+  return { credentials, refreshToken, visibility };
 }

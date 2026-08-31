@@ -67,3 +67,22 @@ Every destination uses only `utm_source=youtube`, `utm_medium=organic`, the cont
 ## Y2 boundary
 
 Y2 should first align the channel display name with GR8 GAMZ, configure an official dedicated Cloud/OAuth project, verify feature access, and perform at most one private API upload. Public launch should then use a small owner-approved batch and a fixed cadence, with retention and qualified GR8 GAMZ sessions reviewed before any scaling.
+
+## Y2 completion record
+
+Checked: 31 August 2026
+
+- Channel display name is now `GR8 GAMZ`; handle and channel ID are unchanged.
+- The channel description and `https://www.gr8gamz.com` profile link are configured.
+- Google Cloud project `My Project 59414` (`seventh-botany-475011-h6`, project number `330828837285`) has YouTube Data API v3 enabled.
+- Google Auth Platform is external and in Testing status with the owner as its sole test user.
+- The owner-operated client is a Desktop OAuth client and requests only `https://www.googleapis.com/auth/youtube.upload`.
+- OAuth credentials, refresh token, one-use authorisation and private upload manifest remain in ignored local `.youtube-private/` storage with restrictive file permissions.
+- Exactly one Y2 API upload was made: creative `yt-stack-tower-perfect-drop-01`, private, on the expected channel. The private video ID remains in the ignored local manifest.
+- The private test video ID is `y0RP-BZHGHM`; recording it here is safe, while OAuth credentials and tokens remain local-only.
+- Studio showed 20 seconds, vertical playback, HD processing, Private visibility, no copyright claim and no notice/restriction. The UTM-tagged GR8 GAMZ destination survived unchanged.
+- The committed gates remain `uploadEnabled=false`, `publicPublishEnabled=false`, `emergencyPause=true`; the local one-use authorisation is consumed.
+- The default quota observed was 100 video uploads/day; one upload had been used. No quota increase was requested.
+- The project has no recorded YouTube API compliance audit. Under the current `videos.insert` documentation, an unverified post-28-July-2020 project is private-only until audited.
+
+One channel-state discrepancy was observed after the private test: Studio and the public channel showed one other public Stack Tower Rush Short. Y2 did not create, edit or delete that video. Consequently the earlier Y1 observation of zero public videos is no longer current, while the Y2 test itself remains private.

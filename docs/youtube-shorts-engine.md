@@ -1,6 +1,6 @@
 # GR8 GAMZ YouTube Shorts Engine
 
-Phase Y1 prepares rights-gated, deterministic gameplay capture and posting-ready vertical MP4 files. It does not upload videos.
+Phase Y1 prepares rights-gated, deterministic gameplay capture and posting-ready vertical MP4 files. Phase Y2 adds a deliberately local-only official OAuth/API transport for one explicitly authorised private upload.
 
 ## Safety state
 
@@ -11,7 +11,7 @@ Phase Y1 prepares rights-gated, deterministic gameplay capture and posting-ready
 - Unknown partner rights: excluded.
 - OAuth credentials and tokens: environment-only and currently absent.
 
-`assertYouTubeUploadAllowed` blocks every upload while the emergency pause or upload gate is active. Y1 deliberately contains no API upload transport, so changing a flag alone cannot publish a video.
+`assertYouTubeUploadAllowed` blocks every upload while the emergency pause or upload gate is active. The Y2 transport reads credentials, tokens, one-use authorisations and private upload records only from ignored `.youtube-private/`. Public and unlisted upload states have no Y2 implementation path.
 
 ## Local generation
 
@@ -25,6 +25,6 @@ Run `pnpm validate:youtube-y1`. The validator checks the rights gate, score evid
 
 ## Official API activation boundary
 
-Future upload work must use YouTube Data API v3 and Google OAuth 2.0 with the `youtube.upload` scope. Before Y2, the owner must select or create an appropriate Cloud project, configure the OAuth consent screen, enable the API, create an OAuth desktop/web client, confirm channel identity and complete any Google audit needed for public uploads. Tokens belong only in secure deployment or local secret storage.
+Upload work uses YouTube Data API v3 `videos.insert` resumable upload and Google OAuth 2.0 with the single `youtube.upload` scope. The owner-operated Desktop OAuth client is in external Testing status. Its credentials and token belong only in local secret storage, and public uploads remain blocked pending a later owner decision and any required YouTube API compliance audit.
 
 No browser automation, Studio scraping, cookie reuse or unofficial upload endpoint is permitted.
