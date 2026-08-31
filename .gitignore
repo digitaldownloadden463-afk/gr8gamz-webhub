@@ -49,3 +49,6 @@ Thumbs.db
 .eslintcache
 *.tsbuildinfo
 .vercel/
+
+# Locally generated YouTube review media (never deployed or committed)
+.youtube-output/

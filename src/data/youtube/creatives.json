@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "campaign": "youtube-y1-originals",
+  "creatives": [
+    {
+      "creativeId": "yt-stack-tower-perfect-drop-01",
+      "gameId": "stack-tower-rush",
+      "hook": "How High Can You Stack?",
+      "title": "How High Can You Stack in Stack Tower Rush? #Shorts",
+      "description": "Time each drop and keep the tower alive. Play Stack Tower Rush free on GR8 GAMZ.",
+      "destinationPath": "/arcade/stack-tower-rush",
+      "runtimeSeconds": 20,
+      "concept": "challenge",
+      "audioProvenance": "No music or external audio; intentionally silent Y1 preview.",
+      "actions": "stack-drops"
+    },
+    {
+      "creativeId": "yt-turbo-drift-near-miss-01",
+      "gameId": "turbo-drift-grid",
+      "hook": "One Mistake and It's Over",
+      "title": "One Mistake Ends This Turbo Drift Run #Shorts",
+      "description": "Steer through the neon grid and hold the line. Play Turbo Drift Grid free on GR8 GAMZ.",
+      "destinationPath": "/arcade/turbo-drift-grid",
+      "runtimeSeconds": 20,
+      "concept": "fail-retry",
+      "audioProvenance": "No music or external audio; intentionally silent Y1 preview.",
+      "actions": "drift-steering"
+    },
+    {
+      "creativeId": "yt-monster-truck-perfect-timing-01",
+      "gameId": "monster-truck-tap",
+      "hook": "Perfect Timing Required",
+      "title": "Perfect Timing in Monster Truck Tap #Shorts",
+      "description": "Jump the obstacles and keep the truck moving. Play Monster Truck Tap free on GR8 GAMZ.",
+      "destinationPath": "/arcade/monster-truck-tap",
+      "runtimeSeconds": 20,
+      "concept": "skill",
+      "audioProvenance": "No music or external audio; intentionally silent Y1 preview.",
+      "actions": "truck-jumps"
+    },
+    {
+      "creativeId": "yt-astro-memory-last-match-01",
+      "gameId": "astro-memory-grid",
+      "hook": "Remember Every Tile",
+      "title": "Can You Remember Every Astro Memory Tile? #Shorts",
+      "description": "Watch the symbols, find the pairs and build a streak. Play Astro Memory Grid free on GR8 GAMZ.",
+      "destinationPath": "/arcade/astro-memory-grid",
+      "runtimeSeconds": 20,
+      "concept": "puzzle",
+      "audioProvenance": "No music or external audio; intentionally silent Y1 preview.",
+      "actions": "memory-pairs"
+    }
+  ]
+}

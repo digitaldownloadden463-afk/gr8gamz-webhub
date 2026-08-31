@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "generationEnabled": true,
+  "uploadEnabled": false,
+  "publicPublishEnabled": false,
+  "emergencyPause": true,
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minimumDurationSeconds": 15,
+    "maximumDurationSeconds": 35,
+    "container": "mp4",
+    "videoCodec": "h264",
+    "pixelFormat": "yuv420p"
+  },
+  "oauth": {
+    "requiredUploadScope": "https://www.googleapis.com/auth/youtube.upload",
+    "credentialsEnvironmentVariable": "YOUTUBE_OAUTH_CREDENTIALS_JSON",
+    "refreshTokenEnvironmentVariable": "YOUTUBE_OAUTH_REFRESH_TOKEN"
+  }
+}
