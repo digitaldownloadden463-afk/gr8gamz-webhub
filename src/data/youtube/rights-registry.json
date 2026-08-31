@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-08-31",
+  "policy": {
+    "defaultState": "unknown",
+    "unknownBehaviour": "exclude",
+    "partnerDirection": "The owner permits partner-game images to be considered for GR8 GAMZ promotion, but this operational direction is not a third-party copyright licence. Supplier terms and explicit restrictions must be reviewed before partner gameplay footage is generated at scale.",
+    "partnerDefault": "excluded_pending_supplier_terms_review"
+  },
+  "sources": [
+    {
+      "source": "gr8-originals",
+      "state": "gr8_original_owned",
+      "evidence": "Repository-owned HTML5 source, artwork and profile records under public/games and src/data/games.json.",
+      "allowedAssetTypes": ["gameplay_capture", "local_artwork", "gr8_branding"],
+      "allowedDestinations": ["https://www.gr8gamz.com/arcade/"],
+      "reviewedAt": "2026-08-31",
+      "expiresAt": null
+    },
+    {
+      "source": "gamepix",
+      "state": "unknown",
+      "evidence": "No promotional gameplay licence was verified during Y1.",
+      "allowedAssetTypes": [],
+      "allowedDestinations": [],
+      "reviewedAt": "2026-08-31",
+      "expiresAt": null
+    },
+    {
+      "source": "gamemonetize",
+      "state": "unknown",
+      "evidence": "No promotional gameplay licence was verified during Y1.",
+      "allowedAssetTypes": [],
+      "allowedDestinations": [],
+      "reviewedAt": "2026-08-31",
+      "expiresAt": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "scoringDate": "2026-08-31",
+  "method": "Ten verified or editorially reviewable factors, each scored from 0 to 10. Totals are heuristic opportunity scores, not YouTube demand or revenue forecasts. No first-party engagement metric was available for Y1.",
+  "factorNames": ["visualImpact", "immediateAction", "mobileFriendly", "gameplayClarity", "satisfyingMotion", "replayChallenge", "contrast", "verifiedGameplay", "formatFit", "categoryOpportunity"],
+  "candidates": [
+    {"gameId":"turbo-drift-grid","score":93,"factors":[10,10,10,9,10,9,10,10,9,6],"evidence":"Owned racing game; immediate steering action, bright track contrast and a clear short-run loop.","measuredEngagement":null},
+    {"gameId":"stack-tower-rush","score":92,"factors":[9,10,10,10,9,10,9,10,9,6],"evidence":"Owned skill game; one-tap drops are legible immediately and naturally create near-miss moments.","measuredEngagement":null},
+    {"gameId":"monster-truck-tap","score":90,"factors":[9,10,10,9,9,9,9,10,9,6],"evidence":"Owned racing-action game; jumps, crates and ramps read clearly in a vertical capture.","measuredEngagement":null},
+    {"gameId":"fruit-slice-fever","score":89,"factors":[9,10,10,9,10,8,9,10,8,6],"evidence":"Owned skill game; continuous pointer action and particle feedback create concise visual sequences.","measuredEngagement":null},
+    {"gameId":"neon-snake-rush","score":88,"factors":[9,9,10,9,9,9,10,10,8,5],"evidence":"Owned arcade game; recognisable motion and high-contrast presentation with a repeatable run.","measuredEngagement":null},
+    {"gameId":"traffic-tap-chaos","score":87,"factors":[9,9,10,9,9,9,9,10,8,5],"evidence":"Owned strategy game; visible junction decisions and collision tension suit short challenge edits.","measuredEngagement":null},
+    {"gameId":"alien-invader-swarm","score":86,"factors":[9,9,9,9,9,8,10,10,8,5],"evidence":"Owned shooter; auto-fire, movement and targets are visually understandable without narration.","measuredEngagement":null},
+    {"gameId":"crystal-match-quest","score":85,"factors":[9,8,10,9,9,8,9,10,8,5],"evidence":"Owned puzzle game; matching feedback is colourful and suitable for satisfying short edits.","measuredEngagement":null},
+    {"gameId":"shadow-ninja-leap","score":84,"factors":[8,9,10,9,9,9,9,10,7,4],"evidence":"Owned action game; one-tap leaps and hazards provide an honest challenge structure.","measuredEngagement":null},
+    {"gameId":"cannon-coin-blast","score":83,"factors":[9,8,10,8,9,8,9,10,8,4],"evidence":"Owned arcade game; aiming, coin hits and particles support distinct skill clips.","measuredEngagement":null},
+    {"gameId":"bubble-pop-blitz","score":82,"factors":[8,8,10,9,8,8,9,10,8,4],"evidence":"Owned puzzle game; clear matching interactions and bursts remain readable on mobile.","measuredEngagement":null},
+    {"gameId":"neon-breakout-rush","score":81,"factors":[9,8,9,9,9,8,9,10,7,3],"evidence":"Owned arcade game; familiar paddle action and brick clears offer visible progression.","measuredEngagement":null},
+    {"gameId":"astro-memory-grid","score":80,"factors":[8,7,10,9,7,8,9,10,8,4],"evidence":"Owned puzzle game; real tile reveals and matches provide a calmer contrasting concept.","measuredEngagement":null},
+    {"gameId":"pixel-goal-hero","score":79,"factors":[8,8,9,8,9,8,9,10,7,3],"evidence":"Owned sports game; aiming and goal attempts create an understandable payoff.","measuredEngagement":null},
+    {"gameId":"space-tap-survival","score":78,"factors":[8,9,10,8,8,9,8,10,6,2],"evidence":"Owned action game; hold-and-release flight creates immediate movement and near misses.","measuredEngagement":null},
+    {"gameId":"rocket-fuel-frenzy","score":77,"factors":[8,8,9,8,8,8,9,10,7,2],"evidence":"Owned arcade game; collection and avoidance actions are suitable for short runs.","measuredEngagement":null},
+    {"gameId":"zombie-lane-runner","score":76,"factors":[8,8,9,8,8,8,8,10,7,2],"evidence":"Owned action game; lane changes and hazards are clear, subject to content-suitability review per clip.","measuredEngagement":null},
+    {"gameId":"neon-pinball-rush","score":75,"factors":[8,7,8,8,9,8,9,10,6,2],"evidence":"Owned arcade game; pinball motion and bumper effects are visually strong but less controllable for capture.","measuredEngagement":null},
+    {"gameId":"lava-tile-escape","score":74,"factors":[8,7,10,8,7,8,8,10,6,2],"evidence":"Owned puzzle game; grid navigation is legible but requires more context than the leading candidates.","measuredEngagement":null},
+    {"gameId":"cyber-basketball-shots","score":73,"factors":[8,7,9,8,8,8,8,10,6,1],"evidence":"Owned sports game; genuine shot attempts offer payoff, with more setup time than leading clips.","measuredEngagement":null}
+  ]
+}
