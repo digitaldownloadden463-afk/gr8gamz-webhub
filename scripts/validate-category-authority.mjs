@@ -16,7 +16,7 @@ const localizedPagedSource = read('app/[locale]/categories/[slug]/page/[page]/pa
 const legacySource = read('app/more-free-games/categories/[slug]/page.tsx');
 const sitemapSource = read('lib/sitemapXml.ts');
 
-const requiredSlugs = ['action', 'adventure', 'multiplayer', 'puzzle', 'racing', 'shooter', 'sports', 'strategy'];
+const requiredSlugs = ['arcade', 'action', 'adventure', 'multiplayer', 'puzzle', 'racing', 'shooter', 'sports', 'strategy'];
 const requiredFields = [
   'name', 'title', 'description', 'h1', 'introduction', 'distinction', 'subgenres', 'choosing',
   'deviceGuidance', 'controlsGuidance', 'sessionGuidance', 'editorialPicks', 'originalSlugs',
@@ -29,8 +29,8 @@ const slugify = (value) => String(value || '').toLowerCase().replace(/&/g, 'and'
 
 assert(data.schemaVersion === 1, 'Category editorial schemaVersion must be 1.');
 assert(/^\d{4}-\d{2}-\d{2}$/.test(data.reviewedAt), 'Category reviewedAt must be YYYY-MM-DD.');
-assert(data.categories.length === 8, 'Exactly eight Phase A1 category records are required.');
-assert(JSON.stringify(data.categories.map((record) => record.slug).sort()) === JSON.stringify([...requiredSlugs].sort()), 'Phase A1 category slugs do not match the required set.');
+assert(data.categories.length === 9, 'The eight Phase A1 records plus the SI-1 Arcade authority record are required.');
+assert(JSON.stringify(data.categories.map((record) => record.slug).sort()) === JSON.stringify([...requiredSlugs].sort()), 'Reviewed category slugs do not match the required set.');
 
 const originalBySlug = new Map(originals.map((game) => [game.slug || game.id, game]));
 const partnerBySlug = new Map(partnerProfiles.map((game) => [game.slug, game]));
@@ -99,7 +99,7 @@ for (const label of ['gr8-original', 'editors-pick', 'quick-play', 'mobile-frien
 
 assert(categoryPageSource.includes('path: categoryPagePath(slug, page)'), 'Category pages must derive a stable page path centrally.');
 assert(categoryPageSource.includes("if (!/^[1-9]\\d*$/.test(value)) return null"), 'Category pagination must reject non-canonical numeric URL forms.');
-assert(categoryPageSource.includes("robots: { index: true, follow: true }"), 'Valid category pages must remain explicitly indexable.');
+assert(categoryPageSource.includes("robots: { index: page === 1, follow: true }"), 'Category page one must remain indexable while deep pages are noindex,follow.');
 assert(categoryPageSource.includes('`${name} Games - Page ${page} of ${totalPages}`'), 'Paged titles must include the page number and total.');
 assert(categoryPageSource.includes("'@type': 'BreadcrumbList'"), 'Category pages must emit BreadcrumbList data.');
 assert(categoryPageSource.includes("'@type': 'ItemList'"), 'Category pages must emit an ItemList for visible games.');
@@ -135,8 +135,7 @@ for (const game of [...originals, ...partnerProfiles]) {
 }
 const allCategoryPages = [...combinedCounts.values()].reduce((total, count) => total + Math.ceil(count / 48), 0);
 const coreSitemapCategoryPages = [...combinedCounts.entries()]
-  .filter(([slug, count]) => count >= 4 || requiredSlugs.includes(slug))
-  .reduce((total, [, count]) => total + Math.ceil(count / 48), 0);
+  .filter(([slug, count]) => count >= 4 || requiredSlugs.includes(slug)).length;
 const upgradedCategoryPages = requiredSlugs.reduce((total, slug) => total + Math.ceil((combinedCounts.get(slug) || 0) / 48), 0);
 
 const report = {
@@ -148,8 +147,8 @@ const report = {
   upgradedCategoryPages,
   sitemapCategoryPages: coreSitemapCategoryPages,
   paginationClassification: {
-    usefulAndIndexable: allCategoryPages,
-    usefulDiscoveryNotIndependentlyIndexable: 0,
+    usefulAndIndexable: coreSitemapCategoryPages,
+    usefulDiscoveryNotIndependentlyIndexable: allCategoryPages - coreSitemapCategoryPages,
     duplicateLegacyHubsRedirected: 6,
     emptyGeneratedPages: 0,
     invalidOrOutOfRange: '404 by range rule',

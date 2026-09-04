@@ -2,10 +2,9 @@ import { canonical, siteUrl } from '@/lib/features';
 import { categoryEditorialReviewedAt, getCategoryEditorialRecords } from '@/lib/categoryEditorial';
 import { getAllGames } from '@/lib/games';
 import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHubs } from '@/lib/gameRegistry';
-import { getPartnerCataloguePage } from '@/src/data/partnerGameProfiles';
 import { commerceRouteLastmod, commerceRoutePaths } from '@/lib/commerce/catalogue';
 import { classroomReviewedAt, classroomRoutePaths } from '@/lib/classroom';
-import { gameHubPath, gameHubReviewedAt, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
+import { gameHubPath, gameHubReviewedAt, getActiveGameHubs } from '@/lib/gameHubs';
 
 export const partnerSitemapSize = 1000;
 
@@ -70,33 +69,20 @@ export function partnerGameEntries(page: number) {
 export function collectionEntries() {
   const editorialSlugs = new Set(getCategoryEditorialRecords().map((record) => record.slug));
   const categories = getRegistryCategories(1).filter((category) => category.count >= 4 || editorialSlugs.has(category.slug));
-  const categoryRoutes = categories.flatMap((category) => [
-    `/categories/${category.slug}`,
-    ...Array.from({ length: Math.max(0, Math.ceil(category.count / 48) - 1) }, (_, index) => `/categories/${category.slug}/page/${index + 2}`)
-  ]);
-  const controlRoutes = getRegistryControlHubs().flatMap((hub) => [
-    `/controls/${hub.slug}`,
-    ...Array.from({ length: Math.max(0, Math.ceil(hub.count / 48) - 1) }, (_, index) => `/controls/${hub.slug}/page/${index + 2}`)
-  ]);
-  const gameHubRoutes = getActiveGameHubs().flatMap((hub) => {
-    const totalPages = Math.max(1, Math.ceil(getGameHubGames(hub.slug).length / 48));
-    return Array.from({ length: totalPages }, (_, index) => gameHubPath(hub.slug, index + 1));
-  });
+  const categoryRoutes = categories.map((category) => `/categories/${category.slug}`);
+  const controlRoutes = getRegistryControlHubs().map((hub) => `/controls/${hub.slug}`);
+  const gameHubRoutes = getActiveGameHubs().map((hub) => gameHubPath(hub.slug));
   const routes = [
     '/games',
     '/gr8-originals',
     '/gr8-select',
     '/more-free-games',
-    '/gr8-trending',
-    '/gr8-daily',
     '/new-games',
-    '/popular-games',
     '/quick-games',
     '/mobile-games',
     ...gameHubRoutes,
     ...categoryRoutes,
-    ...controlRoutes,
-    ...Array.from({ length: Math.max(0, getPartnerCataloguePage(1).totalPages - 1) }, (_, index) => `/gr8-select/page/${index + 2}`)
+    ...controlRoutes
   ];
   return routes.map((route) => {
     const categorySlug = route.match(/^\/categories\/([^/]+)/)?.[1];

@@ -8,7 +8,7 @@ import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { slugifyRegistryValue } from '@/lib/gameRegistry';
 import { tr } from '@/lib/i18n';
-import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getPartnerGameProfile, getPartnerIndexQuality, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 import { gameHubPath, getGameHubsForGameSlug } from '@/lib/gameHubs';
@@ -24,20 +24,23 @@ export async function generateMetadata({ params }: PageProps) {
   const profile = getPartnerGameProfile(slug);
   if (!profile) return {};
   const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
+  const pageTitle = `Play ${displayTitle} Online Free`;
+  const quality = getPartnerIndexQuality(profile.slug);
   const ogImage = `/og/game/${profile.slug}`;
   return {
-    title: displayTitle,
+    title: pageTitle,
     description: profile.description,
+    robots: { index: quality.state !== 'quarantined', follow: true },
     alternates: { canonical: canonical(`/more-free-games/${profile.slug}`) },
     openGraph: {
-      title: displayTitle,
+      title: pageTitle,
       description: profile.description,
       url: canonical(`/more-free-games/${profile.slug}`),
       images: [{ url: ogImage, width: 1200, height: 630, alt: `${displayTitle} on GR8 GAMZ` }]
     },
     twitter: {
       card: 'summary_large_image',
-      title: displayTitle,
+      title: pageTitle,
       description: profile.description,
       images: [ogImage]
     }

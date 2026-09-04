@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-08-22",
+  "reviewedAt": "2026-09-03",
   "catalogueSnapshotCommit": "fd48ca87fd2924999493f384f9a49d2eac2c521c",
   "selectionCriteria": {
     "gr8-original": "A game built and published by GR8 GAMZ whose registry source is GR8 Originals.",
@@ -13,6 +13,38 @@
     "popular-on-gr8": "Requires category-level GR8 GAMZ analytics. This label is not shown when that evidence is unavailable."
   },
   "categories": [
+    {
+      "slug": "arcade",
+      "name": "Arcade",
+      "title": "Free Arcade Games Online - Quick Browser Play",
+      "description": "Play free arcade games online with quick rules, score challenges and fast retries across touch, mouse and keyboard-friendly browser games.",
+      "h1": "Free arcade games for quick runs and score challenges",
+      "introduction": "Arcade games put the main action in front of you quickly. Some focus on survival or score chasing, while others use timing, aiming, matching or movement to create short rounds that are easy to retry.",
+      "distinction": "The arcade category is defined by an immediate, repeatable play loop. It can overlap with action, puzzle or sports mechanics, but the objective and controls should become clear without a long campaign or complicated setup.",
+      "subgenres": [
+        { "name": "Score and survival runs", "description": "Stay active, avoid hazards and improve a score across repeat attempts." },
+        { "name": "Breakout and aiming games", "description": "Control angles, rebounds or projectiles to clear a compact challenge." },
+        { "name": "Timing and one-input games", "description": "Use taps, clicks or short holds where precise timing matters more than many controls." },
+        { "name": "Classic-inspired arcade play", "description": "Recognisable loops such as snake, pinball and target shooting with browser-friendly controls." }
+      ],
+      "choosing": [
+        "Choose a tap or click game for the quickest start on a phone or during a short break.",
+        "Choose keyboard movement when you want finer control over a longer score run.",
+        "Check the profile controls before loading an external game because arcade mechanics cover several different input styles."
+      ],
+      "deviceGuidance": "One-input and touch-led arcade games can work well on phones and tablets. Movement-heavy games are often easier on a landscape screen or physical keyboard.",
+      "controlsGuidance": "Tap, click and drag controls offer the lowest setup. Arrow keys or WASD suit games where continuous movement and quick corrections drive the score.",
+      "sessionGuidance": "Most arcade rounds fit a short break, but score chasing and repeated attempts can naturally turn into a longer session.",
+      "editorialPicks": [
+        { "slug": "neon-snake-rush", "labels": ["editors-pick", "gr8-original", "keyboard-friendly"], "rationale": "A clear movement-and-survival Original that represents a classic arcade loop with direct keyboard controls." },
+        { "slug": "neon-breakout-rush", "labels": ["editors-pick", "gr8-original", "quick-play"], "rationale": "A compact rebound-and-clearing challenge for players who want familiar rules and immediate retries." },
+        { "slug": "cannon-coin-blast", "labels": ["editors-pick", "gr8-original", "quick-play", "mobile-friendly"], "rationale": "A touch-friendly aiming Original that contrasts with movement games while keeping the arcade objective easy to read." }
+      ],
+      "originalSlugs": ["neon-snake-rush", "neon-breakout-rush", "rocket-fuel-frenzy", "neon-pinball-rush", "cannon-coin-blast"],
+      "relatedCategorySlugs": ["action", "puzzle", "racing", "sports"],
+      "sourceState": "reviewed-catalogue",
+      "localeReadiness": "en-reviewed"
+    },
     {
       "slug": "action",
       "name": "Action",

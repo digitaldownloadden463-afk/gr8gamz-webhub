@@ -17,6 +17,9 @@ export type GameHubDefinition = {
   introduction: string;
   selectionNote: string;
   playStyles: string[];
+  deviceGuidance: string;
+  controlsGuidance: string;
+  sessionGuidance: string;
   relatedHubIds: HubRuleId[];
   relatedCategorySlugs: string[];
 };

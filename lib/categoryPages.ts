@@ -65,7 +65,7 @@ export function categoryPageMetadata(data: CategoryPageData): Metadata {
   return {
     title,
     description,
-    robots: { index: true, follow: true },
+    robots: { index: page === 1, follow: true },
     alternates: { canonical: url, ...(languages ? { languages } : {}) },
     openGraph: {
       title,

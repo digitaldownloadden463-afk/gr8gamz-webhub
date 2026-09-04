@@ -51,6 +51,15 @@ export default function GameHubDirectory({ data }: { data: GameHubPageData }) {
             <p>{hub.selectionNote}</p>
             <p className="fine-print"><CalendarCheck size={17} aria-hidden="true" /> Matching rules and catalogue evidence reviewed <time dateTime={gameHubReviewedAt}>{reviewedDate()}</time>.</p>
           </div>
+          <div>
+            <h2>Device and controls</h2>
+            <p>{hub.deviceGuidance}</p>
+            <p>{hub.controlsGuidance}</p>
+          </div>
+          <div>
+            <h2>Choose a session length</h2>
+            <p>{hub.sessionGuidance}</p>
+          </div>
         </section>
       ) : null}
 

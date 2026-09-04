@@ -7,18 +7,13 @@ import { urlEntry, xmlEscape } from '@/lib/sitemapXml';
 export const localizedGameSitemapSize = 500;
 
 export function localizedHubPaths(locale: NonEnglishLocale) {
-  const launch = getGlobalLaunchGames();
-  const categorySlugs = new Set(launch.map((game) => slugifyRegistryValue(game.category)));
-  const totalPages = Math.max(1, Math.ceil(launch.length / 48));
+  const categorySlugs = new Set(getGlobalLaunchGames().map((game) => slugifyRegistryValue(game.category)));
   return [
     pathForLocale(locale, '/'),
     pathForLocale(locale, '/games'),
     pathForLocale(locale, '/gr8-select'),
-    ...Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => pathForLocale(locale, `/gr8-select/page/${index + 2}`)),
     pathForLocale(locale, '/gr8-originals'),
-    pathForLocale(locale, '/gr8-trending'),
     pathForLocale(locale, '/new-games'),
-    pathForLocale(locale, '/gr8-daily'),
     pathForLocale(locale, '/my-arcade'),
     ...getRegistryCategories().filter((category) => categorySlugs.has(category.slug)).map((category) => pathForLocale(locale, `/categories/${category.slug}`))
   ];

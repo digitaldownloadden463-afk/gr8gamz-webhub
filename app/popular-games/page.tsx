@@ -7,7 +7,8 @@ import { getPopularPartnerProfiles } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'Popular Games',
-  description: 'Strong GR8 GAMZ picks for players who want a fast start.',
+  description: 'A compact set of GR8 GAMZ browser-game starting points for players who want a fast start.',
+  robots: { index: false, follow: true },
   alternates: { canonical: canonical('/popular-games') }
 };
 
@@ -18,8 +19,8 @@ export default function PopularGamesPage() {
     <main>
       <section className="page-title">
         <span className="eyebrow">Popular Games</span>
-        <h1>Start with the strongest picks.</h1>
-        <p>High-energy originals and Select games chosen for replay value, clear controls and quick starts.</p>
+        <h1>Start with a compact set of game picks.</h1>
+        <p>Browse originals and Select games chosen as clear starting points across several play styles.</p>
       </section>
       <section className="game-grid">
         {originals.map((game, index) => (
@@ -28,7 +29,7 @@ export default function PopularGamesPage() {
       </section>
       <section className="section-heading">
         <span className="eyebrow">GR8 Select</span>
-        <h2>More games players keep opening.</h2>
+        <h2>More checked browser games.</h2>
       </section>
       <section className="partner-grid">
         {(select as PartnerGameProfile[]).map((profile) => <PartnerGameCard key={profile.slug} profile={profile} />)}

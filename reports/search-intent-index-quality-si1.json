@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "productionBaseline": {
+    "capturedAt": "2026-09-03",
+    "regularSitemapUrls": 38637,
+    "imageSitemapEntries": 35971,
+    "collectionSitemapUrls": 2362,
+    "collectionPaginationUrls": 2332
+  },
+  "strategy": {
+    "pagination": "page one indexable; page 2+ self-canonical and noindex,follow; sequential links retained; deep pages omitted from XML sitemaps",
+    "profiles": "all active profiles remain playable; only combined-defect profiles scoring below 60 are noindex and omitted from regular/image sitemaps",
+    "borderlineProfiles": "scores from 60 through 74 remain indexable but are listed for editorial review"
+  },
+  "quality": {
+    "schemaVersion": 1,
+    "threshold": 60,
+    "reviewThreshold": 75,
+    "totalPlayable": 33231,
+    "stateCounts": {
+      "indexable": 27433,
+      "needs-review": 3707,
+      "quarantined": 2091
+    },
+    "reasonCounts": {
+      "description-thin": 12216,
+      "generic-controls": 2531,
+      "description-brief": 11426,
+      "generic-or-fragmented-description": 74,
+      "unclassified-category": 2,
+      "description-extremely-thin": 2318,
+      "duplicate-description": 3752,
+      "duplicate-title-needs-review": 4
+    }
+  },
+  "removedFromRegularSitemaps": {
+    "englishPagination": 2332,
+    "localizedSelectPagination": 48,
+    "quarantinedPartnerProfiles": 2091,
+    "brandInternalFeeds": 27,
+    "total": 4498
+  },
+  "estimatedAfterRegularSitemapUrls": 34139,
+  "estimatedAfterImageEntries": 33880,
+  "quarantineExamples": [
+    {
+      "slug": "mr-santa-run-2",
+      "title": "Mr Santa Run 2",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "push-noob",
+      "title": "Push Noob",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "bmg-crashday-2025",
+      "title": "BMG! CrashDay 2025",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "stock-car-hero",
+      "title": "Stock Car Hero",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "badland",
+      "title": "Badland",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "neon-shot",
+      "title": "Neon Shot",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "gram-simulator",
+      "title": "Gram Simulator",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "obby-pogo-parkour",
+      "title": "Obby Pogo Parkour!",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "cat-evolution",
+      "title": "Cat Evolution",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "brick-out-candy-online",
+      "title": "Brick Out Candy",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "escape-tsunami-for-brainrots",
+      "title": "Escape Tsunami For Brainrots!",
+      "score": 10,
+      "reasons": [
+        "description-thin",
+        "duplicate-description",
+        "generic-or-fragmented-description",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "dinosaur-runner-3d",
+      "title": "Dinosaur Runner 3D",
+      "score": 45,
+      "reasons": [
+        "description-extremely-thin",
+        "generic-controls"
+      ]
+    }
+  ],
+  "reviewExamples": [
+    {
+      "slug": "twin-peeks",
+      "title": "Twin Peeks",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "war-the-knights",
+      "title": "War the Knights",
+      "score": 60,
+      "reasons": [
+        "generic-or-fragmented-description",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "merge-mine-idle-clicker",
+      "title": "Merge Mine - Idle Clicker",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "kobadoo-numbers",
+      "title": "Kobadoo Numbers",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "yenemy-io",
+      "title": "Yenemy",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "robot-band-find-the-differences",
+      "title": "Robot Band - Find the differences",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "canjump",
+      "title": "Canjump",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "slope-racing-3d",
+      "title": "Slope Racing 3D",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "commando-force-2",
+      "title": "Commando Force 2",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "war-of-tanks-3d",
+      "title": "War of Tanks 3D",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "yummy-toast",
+      "title": "Yummy Toast",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    },
+    {
+      "slug": "ultimate-flying-car",
+      "title": "Ultimate Flying Car",
+      "score": 60,
+      "reasons": [
+        "description-thin",
+        "generic-controls"
+      ]
+    }
+  ],
+  "intentHubs": [
+    "/categories/arcade",
+    "/categories/puzzle",
+    "/categories/racing",
+    "/car-games",
+    "/2-player-games",
+    "/shooting-games",
+    "/categories/multiplayer",
+    "/mobile-games",
+    "/quick-games",
+    "/word-games",
+    "/dress-up-games"
+  ],
+  "failures": []
+}

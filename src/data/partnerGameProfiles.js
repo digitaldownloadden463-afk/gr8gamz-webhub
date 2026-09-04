@@ -1,4 +1,5 @@
 import generatedPartnerCatalogue from './partnerCatalog.generated.json' with { type: 'json' };
+import { buildPartnerIndexQuality, summarizePartnerIndexQuality } from '../../lib/partnerIndexQuality.js';
 
 const prohibitedPublicPhrases = [
   /high-intent/gi,
@@ -1258,6 +1259,7 @@ for (const profile of generatedPartnerGameProfiles) {
   );
 }
 export const allPartnerGameProfiles = [...partnerProfileMap.values()];
+const partnerIndexQualityBySlug = buildPartnerIndexQuality(allPartnerGameProfiles);
 const partnerProfilesByCategory = new Map();
 const partnerProfileIndex = new Map();
 for (const [index, profile] of allPartnerGameProfiles.entries()) {
@@ -1280,6 +1282,8 @@ export const partnerCatalogueReport = {
   statusCounts: generatedPartnerCatalogue.statusCounts,
   quarantineCounts: generatedPartnerCatalogue.quarantineCounts
 };
+
+export const partnerIndexQualityReport = summarizePartnerIndexQuality(allPartnerGameProfiles, partnerIndexQualityBySlug);
 
 export const partnerCataloguePageSize = 48;
 
@@ -1306,6 +1310,10 @@ export function getPartnerGameProfiles() {
 
 export function getPartnerGameProfile(slug) {
   return partnerProfileMap.get(slug);
+}
+
+export function getPartnerIndexQuality(slug) {
+  return partnerIndexQualityBySlug.get(slug) || { score: 0, state: 'quarantined', reasons: ['profile-not-found'] };
 }
 
 export function getFeaturedPartnerGameProfiles(limit = 12) {

@@ -1,6 +1,7 @@
-import GameCard from '@/components/GameCard';
+import Link from 'next/link';
+import RegistryGameCard from '@/components/RegistryGameCard';
 import { canonical } from '@/lib/features';
-import { getAllGames } from '@/lib/games';
+import { getPlayableRegistryGames } from '@/lib/gameRegistry';
 
 export const metadata = {
   title: 'Free Mobile Games Online - Play on Phone & Tablet',
@@ -9,18 +10,30 @@ export const metadata = {
 };
 
 export default function MobileGamesPage() {
-  const games = getAllGames().filter((game) => /mobile|touch|tap|swipe|drag|phone|tablet/i.test(`${game.platforms?.join(' ')} ${game.shortControls} ${game.controls?.join(' ')}`));
+  const games = getPlayableRegistryGames().filter((game) => /mobile|touch|tap|swipe|drag|phone|tablet/i.test(`${game.deviceSupport} ${game.controls} ${game.tags.join(' ')}`)).slice(0, 48);
+  const breadcrumbs = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') },
+      { '@type': 'ListItem', position: 2, name: 'Games', item: canonical('/games') },
+      { '@type': 'ListItem', position: 3, name: 'Mobile Games', item: canonical('/mobile-games') }
+    ]
+  };
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/games">Games</Link><span>/</span><span>Mobile Games</span></nav>
       <section className="page-title">
         <span className="eyebrow">Mobile Games</span>
         <h1>Free mobile games for phone and tablet.</h1>
-        <p>Browse verified touch-friendly GR8 Originals that play in a modern mobile browser without a separate app installation.</p>
+        <p>Choose touch-friendly browser games for phones and tablets without installing an app. Each profile explains the available controls before you start.</p>
+      </section>
+      <section className="content-panel">
+        <h2>Choose a game that fits a smaller screen</h2>
+        <p>Tap, swipe and drag controls usually suit mobile play best. Portrait and landscape support varies by game, so rotate your device when the play screen suggests it.</p>
+        <p>For short sessions, try <Link href="/quick-games">quick browser games</Link>. For more touch-led choices, browse the <Link href="/controls/tap">tap games collection</Link>.</p>
       </section>
       <section className="game-grid">
-        {games.map((game, index) => (
-          <GameCard key={game.id} id={game.id} title={game.name} category={game.category || game.genre || 'Arcade'} imageUrl={game.thumbnail || '/placeholder.png'} url={`/arcade/${game.slug || game.id}`} dateAdded={game.dateAdded} controls={game.shortControls || game.controls?.[0]} difficulty={game.difficulty} priority={index < 6} />
-        ))}
+        {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
       </section>
     </main>
   );

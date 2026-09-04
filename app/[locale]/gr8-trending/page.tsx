@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: text.nav.trending,
     description: text.hubs.launchIntro,
+    robots: { index: false, follow: true },
     alternates: { canonical: localizedCanonical(locale, '/gr8-trending'), languages: localizedAlternates('/gr8-trending') }
   };
 }

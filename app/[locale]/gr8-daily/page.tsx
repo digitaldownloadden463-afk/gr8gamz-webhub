@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: text.nav.daily,
     description: text.hubs.launchIntro,
+    robots: { index: false, follow: true },
     alternates: { canonical: localizedCanonical(locale, '/gr8-daily'), languages: localizedAlternates('/gr8-daily') }
   };
 }

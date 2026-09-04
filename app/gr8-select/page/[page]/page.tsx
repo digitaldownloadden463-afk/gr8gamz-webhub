@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `GR8 Select Games - Page ${catalogue.page}`,
     description: `Browse page ${catalogue.page} of the GR8 Select catalogue with checked free browser game profiles.`,
+    robots: { index: false, follow: true },
     alternates: { canonical: canonical(`/gr8-select/page/${catalogue.page}`) }
   };
 }
