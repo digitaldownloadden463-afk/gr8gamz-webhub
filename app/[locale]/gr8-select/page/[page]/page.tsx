@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${text.hubs.selectTitle} ${text.common.page} ${number}`,
     description: text.hubs.selectIntro,
+    robots: { index: false, follow: true },
     alternates: { canonical: localizedCanonical(locale, `/gr8-select/page/${number}`), languages: localizedAlternates(`/gr8-select/page/${number}`) }
   };
 }

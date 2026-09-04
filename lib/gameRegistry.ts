@@ -1,6 +1,6 @@
 import { getAllGames } from '@/lib/games';
 import { canonical } from '@/lib/features';
-import { getPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getPartnerGameProfiles, getPartnerIndexQuality } from '@/src/data/partnerGameProfiles';
 
 type PartnerProfile = {
   title: string;
@@ -41,6 +41,7 @@ export type RegistryGame = {
 };
 
 let registryCache: RegistryGame[] | null = null;
+let playableRegistryCache: RegistryGame[] | null = null;
 let indexableRegistryCache: RegistryGame[] | null = null;
 let registryBySlugCache: Map<string, RegistryGame> | null = null;
 
@@ -88,7 +89,7 @@ export function getRegistryGames(): RegistryGame[] {
     url: profile.path,
     playUrl: profile.playPath || `${profile.path}/play`,
     status: 'active' as const,
-    indexable: true,
+    indexable: getPartnerIndexQuality(profile.slug).state === 'indexable',
     category: profile.category || 'Arcade',
     tags: [profile.intent, profile.category].filter((tag): tag is string => Boolean(tag)),
     controls: profile.controls || 'Use the controls shown in the game',
@@ -109,13 +110,18 @@ export function getIndexableRegistryGames() {
   return indexableRegistryCache;
 }
 
+export function getPlayableRegistryGames() {
+  if (!playableRegistryCache) playableRegistryCache = getRegistryGames().filter((game) => game.status === 'active');
+  return playableRegistryCache;
+}
+
 export function getRegistryGamesBySlugs(slugs: string[]) {
   const requested = new Set(slugs);
-  return getIndexableRegistryGames().filter((game) => requested.has(game.slug));
+  return getPlayableRegistryGames().filter((game) => requested.has(game.slug));
 }
 
 export function getRegistryGameBySlug(slug: string, source?: RegistryGame['source']) {
-  if (!registryBySlugCache) registryBySlugCache = new Map(getIndexableRegistryGames().map((game) => [`${game.source}:${game.slug}`, game]));
+  if (!registryBySlugCache) registryBySlugCache = new Map(getPlayableRegistryGames().map((game) => [`${game.source}:${game.slug}`, game]));
   if (source) return registryBySlugCache.get(`${source}:${slug}`);
   return registryBySlugCache.get(`gr8-originals:${slug}`) || registryBySlugCache.get(`gr8-select:${slug}`);
 }
@@ -141,7 +147,7 @@ export function slugifyRegistryValue(value: string) {
 
 export function getRegistryCategories(minimumGames = 4) {
   const counts = new Map<string, { slug: string; name: string; count: number }>();
-  for (const game of getIndexableRegistryGames()) {
+  for (const game of getPlayableRegistryGames()) {
     const name = game.category || 'Arcade';
     const slug = slugifyRegistryValue(name);
     const current = counts.get(slug) || { slug, name, count: 0 };
@@ -152,7 +158,7 @@ export function getRegistryCategories(minimumGames = 4) {
 }
 
 export function getRegistryGamesByCategory(slug: string) {
-  return getIndexableRegistryGames().filter((game) => slugifyRegistryValue(game.category) === slug);
+  return getPlayableRegistryGames().filter((game) => slugifyRegistryValue(game.category) === slug);
 }
 
 export function searchRegistryGames(query: string, page = 1, pageSize = 48) {
@@ -160,7 +166,7 @@ export function searchRegistryGames(query: string, page = 1, pageSize = 48) {
   const safePageSize = Math.max(12, Math.min(96, Number(pageSize) || 48));
   if (!normalizedQuery) return { games: [], page: 1, pageSize: safePageSize, totalGames: 0, totalPages: 0 };
   const terms = normalizedQuery.split(/\s+/).filter(Boolean);
-  const matches = getIndexableRegistryGames()
+  const matches = getPlayableRegistryGames()
     .map((game) => {
       const title = game.title.toLowerCase();
       const searchable = `${title} ${game.category} ${game.summary} ${game.tags.join(' ')}`.toLowerCase();
@@ -200,5 +206,5 @@ export function getRegistryControlHubs(minimumGames = 4) {
 export function getRegistryGamesByControl(slug: string) {
   const hub = controlHubs.find((item) => item.slug === slug);
   if (!hub) return [];
-  return getIndexableRegistryGames().filter((game) => hub.pattern.test(`${game.controls} ${game.tags.join(' ')} ${game.sessionLength}`));
+  return getPlayableRegistryGames().filter((game) => hub.pattern.test(`${game.controls} ${game.tags.join(' ')} ${game.sessionLength}`));
 }

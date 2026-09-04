@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${categoryName(locale, category.name)} ${text.common.page} ${number} / ${totalPages}`,
     description: `${text.hubs.gamesIntro} ${text.common.page} ${number} / ${totalPages}.`,
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: true },
     alternates: { canonical: localizedCanonical(locale, `/categories/${slug}/page/${number}`), languages: localizedAlternates(`/categories/${slug}/page/${number}`) }
   };
 }

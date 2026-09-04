@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-08-22",
+  "reviewedAt": "2026-09-03",
   "upgradedCategories": [
+    "arcade",
     "action",
     "adventure",
     "multiplayer",
@@ -12,6 +13,7 @@
     "strategy"
   ],
   "categoryCounts": {
+    "arcade": 15743,
     "action": 3081,
     "adventure": 2143,
     "multiplayer": 316,
@@ -22,17 +24,17 @@
     "strategy": 59
   },
   "validEnglishCategoryPages": 702,
-  "upgradedCategoryPages": 370,
-  "sitemapCategoryPages": 698,
+  "upgradedCategoryPages": 698,
+  "sitemapCategoryPages": 9,
   "paginationClassification": {
-    "usefulAndIndexable": 702,
-    "usefulDiscoveryNotIndependentlyIndexable": 0,
+    "usefulAndIndexable": 9,
+    "usefulDiscoveryNotIndependentlyIndexable": 693,
     "duplicateLegacyHubsRedirected": 6,
     "emptyGeneratedPages": 0,
     "invalidOrOutOfRange": "404 by range rule",
     "obsolete": 6
   },
-  "contextualLinksValidated": 72,
+  "contextualLinksValidated": 84,
   "fabricatedPopularityLabels": 0,
   "errors": []
 }

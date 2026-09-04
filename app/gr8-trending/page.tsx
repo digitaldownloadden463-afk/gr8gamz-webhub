@@ -9,6 +9,7 @@ import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 export const metadata = {
   title: 'GR8 Trending',
   description: 'Start with the strongest GR8 GAMZ arcade picks and a focused shelf of selected extra games.',
+  robots: { index: false, follow: true },
   alternates: { canonical: canonical('/gr8-trending') }
 };
 

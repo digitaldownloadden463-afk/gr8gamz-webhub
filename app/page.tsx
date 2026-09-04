@@ -80,11 +80,11 @@ export default function HomePage() {
         </div>
         <div className="hero__content">
           <span className="eyebrow"><Sparkles size={18} aria-hidden="true" /> Enter GR8 GAMZ</span>
-          <h1>Free online games at GR8 GAMZ.</h1>
-          <p>Play {stats.playable.toLocaleString()} free online games in your browser, including arcade, puzzle, action, racing, sports and multiplayer games. Start on mobile, tablet or desktop with no installation required.</p>
+          <h1>Free Online Games — Play Instantly in Your Browser</h1>
+          <p>GR8 GAMZ brings together {stats.playable.toLocaleString()} free browser games across arcade, puzzle, action, racing, sports and multiplayer categories. Play on mobile, tablet or desktop without downloading or installing a game.</p>
           <div className="cta-row">
-            <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Start playing</Link>
-            <Link href="/gr8-select" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Explore GR8 Select</Link>
+            <Link href="/games" className="cta"><Gamepad2 size={20} aria-hidden="true" /> Browse free online games</Link>
+            <Link href="/categories/arcade" className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> Play arcade games</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ highlights">
             <span className="hero-stat"><strong>{stats.originals.toLocaleString()}</strong><span>Originals</span></span>

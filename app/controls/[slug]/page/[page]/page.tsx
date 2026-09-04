@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${hub.name} Games - Page ${pageNumber}`,
     description: `Browse page ${pageNumber} of ${hub.name.toLowerCase()}-friendly games on GR8 GAMZ.`,
+    robots: { index: false, follow: true },
     alternates: { canonical: canonical(`/controls/${hub.slug}/page/${pageNumber}`) }
   };
 }

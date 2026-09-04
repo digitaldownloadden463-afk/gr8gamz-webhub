@@ -9,6 +9,7 @@ export const revalidate = 3600;
 export const metadata = {
   title: 'GR8 Daily',
   description: 'A fresh daily GR8 GAMZ browser game pick with more quick games to play next.',
+  robots: { index: false, follow: true },
   alternates: { canonical: canonical('/gr8-daily') }
 };
 

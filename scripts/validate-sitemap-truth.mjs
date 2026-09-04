@@ -17,8 +17,17 @@ function lastmods(xml) {
 }
 
 async function fetchText(pathname) {
-  const response = await fetch(`${origin}${pathname}`, { headers: { 'user-agent': 'GR8-Sitemap-Truth/1.0' } });
-  return { response, text: await response.text() };
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(`${origin}${pathname}`, { headers: { 'user-agent': 'GR8-Sitemap-Truth/1.0' } });
+      return { response, text: await response.text() };
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 200));
+    }
+  }
+  throw lastError;
 }
 
 for (const file of ['lib/sitemapXml.ts', 'lib/localizedSitemaps.ts', 'lib/gameRegistry.ts', 'app/sitemap.xml/route.ts', 'app/sitemap-index.xml/route.ts']) {

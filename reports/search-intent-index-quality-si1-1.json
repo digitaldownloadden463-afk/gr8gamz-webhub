@@ -1,0 +1,1894 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04",
+  "productionBaseline": {
+    "capturedAt": "2026-09-03",
+    "regularSitemapUrls": 38637,
+    "imageSitemapEntries": 35971,
+    "collectionSitemapUrls": 2362,
+    "collectionPaginationUrls": 2332
+  },
+  "si1Baseline": {
+    "regularSitemapUrls": 34139,
+    "imageSitemapEntries": 33880,
+    "indexablePartnerProfiles": 31140,
+    "needsReviewProfiles": 3707,
+    "quarantinedProfiles": 2091
+  },
+  "strategy": {
+    "pagination": "page one indexable; page 2+ self-canonical and noindex,follow; sequential links retained; deep pages omitted from XML sitemaps",
+    "profiles": "all active profiles remain playable; only profiles scoring 75 or more with no hard failure and no unresolved third-party-brand review are indexable",
+    "borderlineProfiles": "scores from 60 through 74 are needs-review, noindex,follow, and absent from regular and image sitemaps",
+    "quarantine": "scores below 60 or any hard failure are quarantined from search while remaining playable and internally discoverable"
+  },
+  "quality": {
+    "schemaVersion": 2,
+    "threshold": 60,
+    "reviewThreshold": 75,
+    "policy": "Only profiles scoring 75 or more with no hard failure or unresolved third-party-brand review are indexable.",
+    "totalPlayable": 33231,
+    "stateCounts": {
+      "indexable": 23939,
+      "needs-review": 3904,
+      "quarantined": 5388
+    },
+    "reasonCounts": {
+      "description-thin": 12216,
+      "templated-description": 4214,
+      "generic-controls": 2531,
+      "description-brief": 11426,
+      "generic-or-fragmented-description": 35,
+      "category-intent-coherence-review": 11,
+      "malformed-feed-copy": 1170,
+      "unclassified-category": 2,
+      "description-extremely-thin": 2318,
+      "description-mostly-instructions": 514,
+      "third-party-brand-review": 1023,
+      "suspicious-title": 24,
+      "duplicate-description": 3752,
+      "device-control-coherence-review": 864,
+      "near-duplicate-description": 335,
+      "duplicate-title-needs-review": 4,
+      "keyword-spam": 10,
+      "unusable-page-content": 28
+    },
+    "hardFailureCounts": {
+      "keyword-spam": 10,
+      "unusable-page-content": 28
+    }
+  },
+  "examples": {
+    "indexable": [
+      {
+        "slug": "prism-match-3d",
+        "title": "Prism Match 3D",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "merge-royal",
+        "title": "Merge Royal",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-thin"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "bus-driver-simulator-3d",
+        "title": "Bus Driver Simulator 3D",
+        "provider": "gamepix",
+        "score": 85,
+        "reasons": [
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "three-cups-game",
+        "title": "Three Cups Game",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "body-drop-3d",
+        "title": "Body Drop 3D",
+        "provider": "gamepix",
+        "score": 85,
+        "reasons": [
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "parmesan-partisan",
+        "title": "Parmesan Partisan",
+        "provider": "gamepix",
+        "score": 85,
+        "reasons": [
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "kobadoo-emojis",
+        "title": "Kobadoo Emojis",
+        "provider": "gamepix",
+        "score": 90,
+        "reasons": [
+          "description-brief"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "hoops-and-fruits",
+        "title": "Hoops & Fruits",
+        "provider": "gamepix",
+        "score": 90,
+        "reasons": [
+          "description-brief"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "cerkio",
+        "title": "Cerkio",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-thin"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "turbo-dismounting",
+        "title": "Turbo Crash Test",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "gelatino",
+        "title": "Gelatino",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-thin"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "penalty-kick-wiz",
+        "title": "Penalty Kick Wiz",
+        "provider": "gamepix",
+        "score": 85,
+        "reasons": [
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "stickman-warriors-1",
+        "title": "Stickman Warriors",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "flamit",
+        "title": "Flamit",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "stickman-street-fighting",
+        "title": "Stickman Street Fighting 3D",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "morphit",
+        "title": "Morphit",
+        "provider": "gamepix",
+        "score": 90,
+        "reasons": [
+          "description-brief"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "funny-shooter-2",
+        "title": "Funny Shooter 2",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "my-100-first-words",
+        "title": "My First 100 Words",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-thin"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "sokoballs",
+        "title": "Sokoballs",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "going-right",
+        "title": "Going Right",
+        "provider": "gamepix",
+        "score": 85,
+        "reasons": [
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "moto-x3m-spooky-land",
+        "title": "Moto X3M: Spooky Land",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "kobadoo-shapes",
+        "title": "Kobadoo Shapes",
+        "provider": "gamepix",
+        "score": 100,
+        "reasons": [],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "royal-couple-halloween-party",
+        "title": "Royal Couple Halloween Party",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "tentrix",
+        "title": "TenTrix",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "epic-duck",
+        "title": "Epic Duck",
+        "provider": "gamepix",
+        "score": 75,
+        "reasons": [
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      }
+    ],
+    "needsReview": [
+      {
+        "slug": "merge-mine-idle-clicker",
+        "title": "Merge Mine - Idle Clicker",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "kobadoo-numbers",
+        "title": "Kobadoo Numbers",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "robot-band-find-the-differences",
+        "title": "Robot Band - Find the differences",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "canjump",
+        "title": "Canjump",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "commando-force-2",
+        "title": "Commando Force 2",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "war-of-tanks-3d",
+        "title": "War of Tanks 3D",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "yummy-toast",
+        "title": "Yummy Toast",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "catch-huggy-wuggy",
+        "title": "Catch Huggy Wuggy!",
+        "provider": "gamepix",
+        "score": 70,
+        "reasons": [
+          "description-brief",
+          "malformed-feed-copy"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "ultimate-flying-car",
+        "title": "Ultimate Flying Car",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "cat-clicker",
+        "title": "Cat Clicker",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "golf-orbit",
+        "title": "Golf Orbit",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "puzzle-drive",
+        "title": "Puzzle Drive",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "my-sugar-factory",
+        "title": "My Sugar Factory",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "bff-christmas-cookie-challeng",
+        "title": "Bff Christmas Cookie Challenge",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "stickman-simulator-final-battle",
+        "title": "Stickman Simulator Final Battle",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "wear-the-helmet",
+        "title": "Wear the Helmet",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "stickman-assault-prison-strike",
+        "title": "Stickman Prison Counter Assault",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "stickman-simulator-zombie-battle",
+        "title": "Battle Simulator Stickman Zombie",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "swipy-basketball",
+        "title": "Swipy Basketball",
+        "provider": "gamepix",
+        "score": 65,
+        "reasons": [
+          "description-brief",
+          "description-mostly-instructions"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "popcorn-race-3d-1",
+        "title": "Popcorn Race 3D",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "idle-noob-lumberjack",
+        "title": "Idle Noob Lumberjack",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "alpha-guns",
+        "title": "Alpha Guns",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "shadobirds",
+        "title": "Shadobirds",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "mr-racer-car-racing-game",
+        "title": "MR RACER - Car Racing",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "racing-ball-3d",
+        "title": "Racing Ball 3D",
+        "provider": "gamepix",
+        "score": 60,
+        "reasons": [
+          "description-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      }
+    ],
+    "quarantined": [
+      {
+        "slug": "twin-peeks",
+        "title": "Twin Peeks",
+        "provider": "gamepix",
+        "score": 30,
+        "reasons": [
+          "description-thin",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "war-the-knights",
+        "title": "War the Knights",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "generic-or-fragmented-description",
+          "generic-controls",
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "yenemy-io",
+        "title": "Yenemy",
+        "provider": "gamepix",
+        "score": 30,
+        "reasons": [
+          "description-thin",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "slope-racing-3d",
+        "title": "Slope Racing 3D",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-thin",
+          "generic-controls",
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "gravity-merge",
+        "title": "Gravity Merge",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-brief",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "mr-santa-run-2",
+        "title": "Mr Santa Run 2",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-extremely-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "push-noob",
+        "title": "Push Noob",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-extremely-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "bmg-crashday-2025",
+        "title": "BMG! CrashDay 2025",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-extremely-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "my-sweet-candy-outfits",
+        "title": "My Sweet Candy Outfits",
+        "provider": "gamepix",
+        "score": 30,
+        "reasons": [
+          "description-thin",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "bomber-friends",
+        "title": "Bomber Friends",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "generic-or-fragmented-description",
+          "generic-controls",
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "street-ball-jam",
+        "title": "Street Ball Jam",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-thin",
+          "templated-description"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "among-us",
+        "title": "Among Us",
+        "provider": "gamepix",
+        "score": 50,
+        "reasons": [
+          "description-brief",
+          "generic-controls",
+          "third-party-brand-review"
+        ],
+        "hardFailures": [],
+        "brandReview": "among-us"
+      },
+      {
+        "slug": "minecraft-skibidi-hidden-toilet",
+        "title": "Minecraft Skibidi Hidden Toilet",
+        "provider": "gamepix",
+        "score": 50,
+        "reasons": [
+          "description-brief",
+          "generic-controls",
+          "third-party-brand-review"
+        ],
+        "hardFailures": [],
+        "brandReview": "minecraft"
+      },
+      {
+        "slug": "stock-car-hero",
+        "title": "Stock Car Hero",
+        "provider": "gamepix",
+        "score": 15,
+        "reasons": [
+          "description-extremely-thin",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "guessthetiles",
+        "title": "GuessTheTiles",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-brief",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "egg-clicker",
+        "title": "Egg Clicker",
+        "provider": "gamepix",
+        "score": 35,
+        "reasons": [
+          "description-thin",
+          "description-mostly-instructions",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "gas-station-stick-simulator",
+        "title": "Gas Station - Stick Simulator",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-brief",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "basketball-masters",
+        "title": "Basketball Master",
+        "provider": "gamepix",
+        "score": 50,
+        "reasons": [
+          "description-thin",
+          "description-mostly-instructions"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "lotl-spa",
+        "title": "Lotl Spa",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-brief",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "blob-wars",
+        "title": "Blob Wars",
+        "provider": "gamepix",
+        "score": 30,
+        "reasons": [
+          "description-thin",
+          "templated-description",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "100-doors-escape-from-prison",
+        "title": "100 Doors - Escape from Prison",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "generic-or-fragmented-description",
+          "generic-controls",
+          "category-intent-coherence-review"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "mazean",
+        "title": "Mazean.com",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "suspicious-title",
+          "description-brief",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "badland",
+        "title": "Badland",
+        "provider": "gamepix",
+        "score": 45,
+        "reasons": [
+          "description-extremely-thin",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      },
+      {
+        "slug": "red-stickman-vs-monster-school",
+        "title": "Red Stickman vs Monster School",
+        "provider": "gamepix",
+        "score": 50,
+        "reasons": [
+          "description-brief",
+          "generic-controls",
+          "third-party-brand-review"
+        ],
+        "hardFailures": [],
+        "brandReview": "minecraft"
+      },
+      {
+        "slug": "loaf-clicker",
+        "title": "Loaf Clicker",
+        "provider": "gamepix",
+        "score": 50,
+        "reasons": [
+          "description-brief",
+          "description-mostly-instructions",
+          "generic-controls"
+        ],
+        "hardFailures": [],
+        "brandReview": null
+      }
+    ],
+    "descriptionClusters": [
+      {
+        "id": "template-6",
+        "type": "template",
+        "declaredSize": 88,
+        "examples": [
+          {
+            "slug": "guessthetiles",
+            "title": "GuessTheTiles"
+          },
+          {
+            "slug": "lotl-spa",
+            "title": "Lotl Spa"
+          },
+          {
+            "slug": "obby-chop-trees-in-the-forest",
+            "title": "Obby Chop Trees in the Forest"
+          },
+          {
+            "slug": "ayla-world-avatar-city",
+            "title": "Ayla World: Avatar City"
+          },
+          {
+            "slug": "99-nights-in-the-forest",
+            "title": "99 Nights in the Forest"
+          }
+        ]
+      },
+      {
+        "id": "template-1",
+        "type": "template",
+        "declaredSize": 36,
+        "examples": [
+          {
+            "slug": "twin-peeks",
+            "title": "Twin Peeks"
+          },
+          {
+            "slug": "gravity-merge",
+            "title": "Gravity Merge"
+          },
+          {
+            "slug": "emberdeck",
+            "title": "Emberdeck"
+          },
+          {
+            "slug": "laser-maze",
+            "title": "Laser Maze"
+          },
+          {
+            "slug": "mermaid-water-sort",
+            "title": "Mermaid Water Sort"
+          }
+        ]
+      },
+      {
+        "id": "template-7",
+        "type": "template",
+        "declaredSize": 16,
+        "examples": [
+          {
+            "slug": "gas-station-stick-simulator",
+            "title": "Gas Station - Stick Simulator"
+          },
+          {
+            "slug": "cauldron-counter",
+            "title": "Cauldron Counter"
+          },
+          {
+            "slug": "scary-shawarma-kiosk-the-anomaly",
+            "title": "Scary Shawarma Kiosk the Anomaly"
+          },
+          {
+            "slug": "dead-zone-adventure",
+            "title": "Dead Zone Adventure"
+          },
+          {
+            "slug": "find-the-princess",
+            "title": "Find The Princess"
+          }
+        ]
+      },
+      {
+        "id": "template-17",
+        "type": "template",
+        "declaredSize": 15,
+        "examples": [
+          {
+            "slug": "red-and-blue-leader-2",
+            "title": "Red and Blue Leader 2"
+          },
+          {
+            "slug": "super-zombie-shooter-2",
+            "title": "Super Zombie Shooter 2"
+          },
+          {
+            "slug": "auto-bus-driving-2024",
+            "title": "Auto Bus Driving 2024"
+          },
+          {
+            "slug": "counter-craft-battle-royale",
+            "title": "Counter Craft: Battle Royale"
+          },
+          {
+            "slug": "the-day-of-zombies",
+            "title": "The Day of Zombies"
+          }
+        ]
+      },
+      {
+        "id": "template-16",
+        "type": "template",
+        "declaredSize": 12,
+        "examples": [
+          {
+            "slug": "overdrive-x",
+            "title": "Overdrive X"
+          },
+          {
+            "slug": "mad-pursuit",
+            "title": "Mad Pursuit"
+          },
+          {
+            "slug": "bus-simulator-unblocked-remastered",
+            "title": "Bus Simulator Unblocked Remastered"
+          },
+          {
+            "slug": "ballrun",
+            "title": "BallRun"
+          },
+          {
+            "slug": "lane-change-3d",
+            "title": "Lane Change 3D"
+          }
+        ]
+      },
+      {
+        "id": "near-38",
+        "type": "near-duplicate",
+        "declaredSize": 12,
+        "examples": [
+          {
+            "slug": "zombies-killer-night",
+            "title": "Zombies Killer Night"
+          },
+          {
+            "slug": "spiderman-rescue-pin-pull-challange",
+            "title": "Spiderman Rescue - Pin Pull Challange"
+          },
+          {
+            "slug": "gladihoppers-gladiator-battle-simulator",
+            "title": "Gladihoppers - Gladiator Battle Simulator!"
+          },
+          {
+            "slug": "vr-halloween-ride",
+            "title": "VR Halloween Ride"
+          },
+          {
+            "slug": "space-shooter-stars",
+            "title": "Space Shooter Stars"
+          }
+        ]
+      },
+      {
+        "id": "near-37",
+        "type": "near-duplicate",
+        "declaredSize": 11,
+        "examples": [
+          {
+            "slug": "ben-10-match-3-puzzle-challange",
+            "title": "Ben 10 Match 3 Puzzle Challange"
+          },
+          {
+            "slug": "belle-princess-match-3-puzzle",
+            "title": "Belle Princess Match 3 Puzzle"
+          },
+          {
+            "slug": "elsa-frozen-match-3-puzzle",
+            "title": "Elsa | Frozen Match 3 Puzzle"
+          },
+          {
+            "slug": "cinderella-match-3-puzzle",
+            "title": "Cinderella Match 3 Puzzle"
+          },
+          {
+            "slug": "barbie-princess-match-3-puzzle",
+            "title": "Barbie Princess Match 3 Puzzle"
+          }
+        ]
+      },
+      {
+        "id": "near-80",
+        "type": "near-duplicate",
+        "declaredSize": 8,
+        "examples": [
+          {
+            "slug": "spongebob-halloween-jigsaw-puzzle",
+            "title": "SpongeBob Halloween Jigsaw Puzzle"
+          },
+          {
+            "slug": "st-patrick-s-day-2021-jigsaw-puzzle",
+            "title": "St. Patrick's Day 2021 Jigsaw Puzzle"
+          },
+          {
+            "slug": "spiderman-jigsaw-puzzle",
+            "title": "Spiderman Jigsaw Puzzle"
+          },
+          {
+            "slug": "the-grinch-jigsaw-puzzle",
+            "title": "The Grinch Jigsaw Puzzle"
+          },
+          {
+            "slug": "spongebob-christmas-jigsaw-puzzle",
+            "title": "SpongeBob Christmas Jigsaw Puzzle"
+          }
+        ]
+      },
+      {
+        "id": "template-31",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "ultimate-bus-simulator-game",
+            "title": "Ultimate Bus Simulator Game"
+          },
+          {
+            "slug": "urban-car-drift-game",
+            "title": "Urban Car Drift Game"
+          },
+          {
+            "slug": "kissy-missy-coloring-pages",
+            "title": "Kissy Missy Coloring Pages"
+          },
+          {
+            "slug": "messi-coloring-pages",
+            "title": "Messi Coloring Pages"
+          },
+          {
+            "slug": "brawl-stars-coloring-pages",
+            "title": "Brawl Stars Coloring Pages"
+          }
+        ]
+      },
+      {
+        "id": "template-142",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "hero-birds-hidden-stars",
+            "title": "Hero Birds Hidden Stars"
+          },
+          {
+            "slug": "brawl-stars-hidden-skulls",
+            "title": "Brawl Stars Hidden Skulls"
+          },
+          {
+            "slug": "find-easter-eggs",
+            "title": "Find Easter Eggs"
+          },
+          {
+            "slug": "roary-the-racing-car-hidden-keys",
+            "title": "Roary the Racing Car Hidden Keys"
+          },
+          {
+            "slug": "speed-cars-hidden-stars",
+            "title": "Speed Cars Hidden Stars"
+          }
+        ]
+      },
+      {
+        "id": "template-252",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "wall-kickers",
+            "title": "Wall Kickers"
+          },
+          {
+            "slug": "wobbly-ligs",
+            "title": "Wobbly Ligs"
+          },
+          {
+            "slug": "break-the-wall",
+            "title": "Break The Wall"
+          },
+          {
+            "slug": "smash-breaker",
+            "title": "Smash Breaker"
+          },
+          {
+            "slug": "speed-and-skill",
+            "title": "Speed And Skill"
+          }
+        ]
+      },
+      {
+        "id": "template-316",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "perfect-fruit-slicer-chop-sl",
+            "title": "Perfect Fruit Slicer - Chop sl"
+          },
+          {
+            "slug": "perfect-fruit-slicer-chop-s",
+            "title": "Perfect Fruit Slicer - Chop s"
+          },
+          {
+            "slug": "chop-slice",
+            "title": "Chop slice"
+          },
+          {
+            "slug": "food-slices",
+            "title": "Food Slices"
+          },
+          {
+            "slug": "perfect-food-slices-cut-the-food-and-fruit-slash",
+            "title": "Perfect Food Slices – Cut the Food & Fruit Slash"
+          }
+        ]
+      },
+      {
+        "id": "template-406",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "cute-girl-house-escape",
+            "title": "Cute Girl House Escape"
+          },
+          {
+            "slug": "help-me",
+            "title": "Help Me"
+          },
+          {
+            "slug": "basketball-player-escape-2",
+            "title": "Basketball Player Escape 2"
+          },
+          {
+            "slug": "forest-hut-escape-2",
+            "title": "Forest Hut Escape 2"
+          },
+          {
+            "slug": "happy-new-year-2022-escape",
+            "title": "Happy New Year 2022 Escape"
+          }
+        ]
+      },
+      {
+        "id": "template-407",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "life-moments-find-the-differences",
+            "title": "Life Moments - Find the Differences"
+          },
+          {
+            "slug": "car-garage-differences",
+            "title": "Car Garage Differences"
+          },
+          {
+            "slug": "spot-5-differences",
+            "title": "Spot 5 Differences"
+          },
+          {
+            "slug": "spot-the-differences-forests",
+            "title": "Spot The Differences Forests"
+          },
+          {
+            "slug": "animals-differences",
+            "title": "Animals Differences"
+          }
+        ]
+      },
+      {
+        "id": "template-566",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "robot-car-emergency-rescue2",
+            "title": "Robot Car Emergency Rescue2"
+          },
+          {
+            "slug": "robot-car-emergency-rescue-3-help-the-town",
+            "title": "Robot Car Emergency Rescue 3 - Help The Town"
+          },
+          {
+            "slug": "robot-car-emergency-rescue-help-the-town",
+            "title": "Robot Car Emergency Rescue - Help The Town"
+          },
+          {
+            "slug": "robot-car-emergency-rescue-2-help-the-town",
+            "title": "Robot Car Emergency Rescue 2 - Help The Town"
+          },
+          {
+            "slug": "robot-car-emergency-rescue-3",
+            "title": "Robot Car Emergency Rescue 3"
+          }
+        ]
+      },
+      {
+        "id": "template-693",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "girls-challenge-cat-walk-beauty-challenge",
+            "title": "Girls Challenge - Cat walk Beauty Challenge"
+          },
+          {
+            "slug": "fashion-cat-walk-girls-fashion-walk",
+            "title": "Fashion Cat walk - Girls Fashion Walk"
+          },
+          {
+            "slug": "catwalk-beauty-super-stylish",
+            "title": "Catwalk Beauty - Super Stylish"
+          },
+          {
+            "slug": "beauty-cat-walk-3d",
+            "title": "Beauty Cat Walk 3d"
+          },
+          {
+            "slug": "cat-walk-beauty-3d",
+            "title": "Cat Walk Beauty 3d"
+          }
+        ]
+      },
+      {
+        "id": "template-1072",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "gta-v-stunt-sky-driver-2",
+            "title": "Gta V Stunt - Sky Driver 2"
+          },
+          {
+            "slug": "sky-driver-on-ramps",
+            "title": "Sky Driver On Ramps"
+          },
+          {
+            "slug": "mega-car-ramp-jumping-car-stunts-extreme-3d-2022",
+            "title": "Mega Car Ramp Jumping Car Stunts Extreme 3d 2022"
+          },
+          {
+            "slug": "truck-stunt-on-the-sky-way",
+            "title": "Truck Stunt On the Sky Way"
+          },
+          {
+            "slug": "mega-ramps-ultimate-races",
+            "title": "Mega Ramps - Ultimate Races"
+          }
+        ]
+      },
+      {
+        "id": "template-1079",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "tom-and-jerry-i-can-draw",
+            "title": "Tom and Jerry I Can Draw"
+          },
+          {
+            "slug": "new-looney-tunes-find-it",
+            "title": "New Looney Tunes Find It"
+          },
+          {
+            "slug": "penalty-power-2021",
+            "title": "Penalty Power 2021"
+          },
+          {
+            "slug": "the-tom-and-jerry-show-dress-up",
+            "title": "The Tom and Jerry Show Dress Up"
+          },
+          {
+            "slug": "pick-a-path-the-loud-house",
+            "title": "Pick-a-Path The Loud House"
+          }
+        ]
+      },
+      {
+        "id": "template-1122",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "anime-couples-dress-up-games",
+            "title": "Anime Couples Dress Up Games"
+          },
+          {
+            "slug": "disney-frozen-princess-elsa-dress-up-games",
+            "title": "Disney Frozen Princess Elsa Dress Up Games"
+          },
+          {
+            "slug": "ellie-royal-wedding-play-frozen-games",
+            "title": "Ellie Royal Wedding - Play Frozen Games"
+          },
+          {
+            "slug": "ice-queen-beauty-dress-up-games",
+            "title": "Ice Queen - Beauty Dress Up Games"
+          },
+          {
+            "slug": "elsa-and-anna-dress-up-makeup",
+            "title": "elsa and anna Dress Up Makeup"
+          }
+        ]
+      },
+      {
+        "id": "template-1252",
+        "type": "template",
+        "declaredSize": 7,
+        "examples": [
+          {
+            "slug": "batman-beyond-coloring-book",
+            "title": "Batman Beyond Coloring Book"
+          },
+          {
+            "slug": "spongebob-coloring-book",
+            "title": "Spongebob Coloring Book"
+          },
+          {
+            "slug": "ninja-turtle-coloring-book",
+            "title": "Ninja Turtle Coloring Book"
+          },
+          {
+            "slug": "hello-kitty-coloring-book",
+            "title": "Hello Kitty Coloring Book"
+          },
+          {
+            "slug": "peppa-pig-coloring-book",
+            "title": "Peppa Pig Coloring Book"
+          }
+        ]
+      },
+      {
+        "id": "template-32",
+        "type": "template",
+        "declaredSize": 6,
+        "examples": [
+          {
+            "slug": "bullet-man-master-3d",
+            "title": "Bullet Man Master 3D"
+          },
+          {
+            "slug": "mr-john-wick",
+            "title": "Mr.John Wick"
+          },
+          {
+            "slug": "bullet-man-adventure-3d",
+            "title": "Bullet Man Adventure 3D"
+          },
+          {
+            "slug": "bullet-man",
+            "title": "Bullet Man"
+          },
+          {
+            "slug": "one-bullet-man-3d",
+            "title": "One Bullet Man 3D"
+          }
+        ]
+      },
+      {
+        "id": "template-48",
+        "type": "template",
+        "declaredSize": 6,
+        "examples": [
+          {
+            "slug": "car-eats-car-underwater-adventure",
+            "title": "Car Eats Car: Underwater Adventure"
+          },
+          {
+            "slug": "car-eats-car-sea-adventure",
+            "title": "Car Eats Car: Sea Adventure"
+          },
+          {
+            "slug": "car-eats-car-arctic-adventure",
+            "title": "Car Eats Car: Arctic Adventure"
+          },
+          {
+            "slug": "car-eats-car-volcanic-adventure",
+            "title": "Car Eats Car: Volcanic Adventure"
+          },
+          {
+            "slug": "car-eats-car-dungeon-adventure",
+            "title": "Car Eats Car: Dungeon Adventure"
+          }
+        ]
+      },
+      {
+        "id": "template-78",
+        "type": "template",
+        "declaredSize": 6,
+        "examples": [
+          {
+            "slug": "elvis-funny-face",
+            "title": "Elvis Funny Face"
+          },
+          {
+            "slug": "poke-the-buddy",
+            "title": "Poke the Buddy"
+          },
+          {
+            "slug": "buddy-relaxing-time",
+            "title": "Buddy Relaxing Time"
+          },
+          {
+            "slug": "hasbulla-running-adventure",
+            "title": "Hasbulla Running Adventure"
+          },
+          {
+            "slug": "funny-hasbulla-face",
+            "title": "Funny Hasbulla Face"
+          }
+        ]
+      },
+      {
+        "id": "template-132",
+        "type": "template",
+        "declaredSize": 6,
+        "examples": [
+          {
+            "slug": "giddy-blocks",
+            "title": "Giddy Blocks"
+          },
+          {
+            "slug": "giddy-pomni",
+            "title": "Giddy Pomni"
+          },
+          {
+            "slug": "giddy-poppy",
+            "title": "Giddy Poppy"
+          },
+          {
+            "slug": "giddy-fruit",
+            "title": "Giddy Fruit"
+          },
+          {
+            "slug": "giddy-birds",
+            "title": "Giddy Birds"
+          }
+        ]
+      },
+      {
+        "id": "template-266",
+        "type": "template",
+        "declaredSize": 6,
+        "examples": [
+          {
+            "slug": "advance-car-parking-car-games",
+            "title": "Advance Car Parking: Car Games"
+          },
+          {
+            "slug": "park-your-car-amazing",
+            "title": "Park Your Car Amazing"
+          },
+          {
+            "slug": "2023-car-parking",
+            "title": "2023 Car Parking"
+          },
+          {
+            "slug": "best-car-parking-simulator",
+            "title": "Best Car Parking Simulator"
+          },
+          {
+            "slug": "car-best-parking",
+            "title": "Car Best Parking"
+          }
+        ]
+      }
+    ],
+    "keywordSpam": [
+      {
+        "slug": "tank-z",
+        "title": "Tank Z",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "dinosaur-endless",
+        "title": "Dinosaur Endless",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "coin-clicker",
+        "title": "Coin Clicker",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "unicorn-pony-pet-salon",
+        "title": "Unicorn Pony Pet Salon",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "refuse-traffic-jam",
+        "title": "Refuse traffic jam",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "i-want-to-delete-this-game",
+        "title": "I want to delete this game",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "friday-night-funkin-music",
+        "title": "Friday Night Funkin Music",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "ball-fill-challange",
+        "title": "BALL FiLL CHALLANGE",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "friday-night-funkin-dancing-hop-music",
+        "title": "Friday night funkin Dancing Hop Music",
+        "score": 0,
+        "state": "quarantined"
+      },
+      {
+        "slug": "coloring-book-2021",
+        "title": "Coloring Book 2021",
+        "score": 0,
+        "state": "quarantined"
+      }
+    ],
+    "unrelatedSearchKeywords": [],
+    "thirdPartyBrandReview": [
+      {
+        "slug": "among-us",
+        "title": "Among Us",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "minecraft-skibidi-hidden-toilet",
+        "title": "Minecraft Skibidi Hidden Toilet",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "red-stickman-vs-monster-school",
+        "title": "Red Stickman vs Monster School",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "the-dead-amon-us",
+        "title": "The dead among us",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "counter-craft-zombies",
+        "title": "Counter Craft Zombies",
+        "score": 60,
+        "state": "needs-review"
+      },
+      {
+        "slug": "brain-iq-test-minecraft-quiz",
+        "title": "Brain IQ test Mincraft Quiz",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-drift-simulator",
+        "title": "Minecraft Drift Simulator",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "craft-bros-boy-runner",
+        "title": "Craft Bros Boy Runner",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-money-stack",
+        "title": "Minecraft Money Stack",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "eggdog-among-us",
+        "title": "Eggdog Among Us",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "minecraft-thief-auto",
+        "title": "Minecraft Thief Auto",
+        "score": 35,
+        "state": "quarantined"
+      },
+      {
+        "slug": "craftmart",
+        "title": "CraftMart",
+        "score": 60,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-cube-puzzle",
+        "title": "Mincraft Cube Puzzle",
+        "score": 60,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-zombie-survial",
+        "title": "Mincraft Zombie Survival",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "mario-jetpack-rush",
+        "title": "Mario Jetpack Rush",
+        "score": 75,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-towerdefense",
+        "title": "MineCraft TowerDefense!",
+        "score": 75,
+        "state": "needs-review"
+      },
+      {
+        "slug": "iron-man-repulsor-rush",
+        "title": "Iron Man Repulsor Rush",
+        "score": 50,
+        "state": "quarantined"
+      },
+      {
+        "slug": "voxel-frontier",
+        "title": "Voxel Frontier",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "mario-3d-shooter",
+        "title": "Mario 3D Shooter",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "bts-minecraft-coloring-time",
+        "title": "BTS Minecraft Coloring Time",
+        "score": 75,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-hole-io",
+        "title": "Minecraft Hole IO",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-diamond-miner",
+        "title": "Minecraft Diamond Miner",
+        "score": 75,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-pixel-gun-shooter",
+        "title": "Minecraft Pixel Gun Shooter",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-creeper-escape",
+        "title": "Minecraft Creeper Escape",
+        "score": 65,
+        "state": "needs-review"
+      },
+      {
+        "slug": "minecraft-flappy-creeper",
+        "title": "Minecraft Flappy Creeper",
+        "score": 75,
+        "state": "needs-review"
+      }
+    ]
+  },
+  "removedFromRegularSitemaps": {
+    "englishPagination": 2332,
+    "localizedSelectPagination": 48,
+    "quarantinedPartnerProfiles": 9292,
+    "brandInternalFeeds": 27,
+    "total": 11699
+  },
+  "sitemapImpact": {
+    "profilesRemovedSinceOriginalProduction": 9292,
+    "additionalProfilesRemovedSinceSi1": 7201,
+    "finalRegularSitemapUrls": 26938,
+    "finalImageEntries": 26679,
+    "rule": "Only state=indexable partner profiles may enter regular or image sitemaps."
+  },
+  "estimatedAfterRegularSitemapUrls": 26938,
+  "estimatedAfterImageEntries": 26679,
+  "intentHubs": [
+    "/categories/arcade",
+    "/categories/puzzle",
+    "/categories/racing",
+    "/car-games",
+    "/2-player-games",
+    "/shooting-games",
+    "/categories/multiplayer",
+    "/mobile-games",
+    "/quick-games",
+    "/word-games",
+    "/dress-up-games"
+  ],
+  "failures": []
+}

@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import CompactPagination from '@/components/CompactPagination';
-import GameFilters from '@/components/GameFilters';
 import RegistryGameCard from '@/components/RegistryGameCard';
-import { getAllGames } from '@/lib/games';
 import { canonical, gameCountLabel } from '@/lib/features';
-import { getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
+import { getPlayableRegistryGames, getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 
 const gamesMetadata = {
@@ -38,19 +36,28 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const params = await searchParams;
   const query = sanitizeQuery(params?.q);
   const requestedPage = sanitizePage(params?.page);
-  const games = getAllGames();
+  const playableGames = getPlayableRegistryGames();
+  const featuredGames = playableGames.slice(0, 48);
   const categories = getRegistryCategories();
   const controls = getRegistryControlHubs();
   const hubs = getActiveGameHubs();
   const searchResults = query ? searchRegistryGames(query, requestedPage, 48) : null;
   const queryCopy = query
     ? `Showing results for "${query}" across GR8 Originals and GR8 Select.`
-    : 'Search across GR8 Originals and GR8 Select. Each result opens a profile with controls and device guidance before play.';
+    : `Browse ${playableGames.length.toLocaleString('en-GB')} playable games across GR8 Originals and the wider catalogue. Search by title or choose a player-focused category below.`;
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Free online games',
+    url: canonical('/games'),
+    description: gamesMetadata.description
+  };
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <section className="page-title">
         <span className="eyebrow">Game directory</span>
-        <h1>Find free games online across GR8 GAMZ.</h1>
+        <h1>Free online games for every kind of player</h1>
         <p>{queryCopy}</p>
       </section>
       <section className="content-panel" aria-label="Explore specialist game collections">
@@ -89,7 +96,25 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
             ariaLabel="Search result pages"
           />
         </section>
-      ) : <GameFilters games={games} />}
+      ) : (
+        <section className="game-browser" aria-labelledby="game-browser-title">
+          <form className="filter-panel" action="/games" method="get" role="search">
+            <div>
+              <h2 id="game-browser-title">Search the complete playable catalogue</h2>
+              <p>Start with these games or search all {playableGames.length.toLocaleString('en-GB')} titles.</p>
+            </div>
+            <label>
+              Search
+              <input type="search" name="q" maxLength={80} placeholder="Snake, racing, puzzle..." />
+            </label>
+            <button className="cta" type="submit">Search games</button>
+          </form>
+          <div className="game-grid">
+            {featuredGames.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
+          </div>
+          <p className="section-copy">Continue through <Link href="/gr8-select">the full game catalogue</Link>, browse <Link href="/gr8-originals">games made by GR8 GAMZ</Link>, or choose a category below.</p>
+        </section>
+      )}
       <section className="content-panel" aria-label="Browse by category">
         <span className="eyebrow">Browse by style</span>
         <h2>Find a game by category.</h2>

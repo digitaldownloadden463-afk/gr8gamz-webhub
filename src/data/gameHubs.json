@@ -16,6 +16,9 @@
       "introduction": "Choose a car game built around racing, parking, drifting, stunts or traffic. This collection uses verified catalogue signals to keep vehicle-led games together without treating every racing title as a car game.",
       "selectionNote": "A game qualifies when its source category identifies cars, or when a car-led title and vehicle metadata agree. Motorcycle-only, generic racing and unrelated substring matches are excluded.",
       "playStyles": ["Track and traffic racing", "Parking and precision driving", "Drift and stunt challenges", "Crash and vehicle experiments"],
+      "deviceGuidance": "Touch steering can suit short mobile runs, while keyboard controls give more precise direction changes on desktop. Check the game profile before loading because layouts vary.",
+      "controlsGuidance": "Expect arrow keys or WASD on desktop and touch buttons, swipes or tilt-style prompts on supported phones and tablets.",
+      "sessionGuidance": "Traffic and stunt rounds often fit a short break; race series and driving simulations can reward a longer session.",
       "relatedHubIds": ["shooting"],
       "relatedCategorySlugs": ["racing", "arcade", "sports"]
     },
@@ -32,6 +35,9 @@
       "introduction": "Find games that explicitly identify two-player play rather than a vague multiplayer theme. Check each profile and the loaded game's instructions to see whether the match uses one keyboard, one device or another supported setup.",
       "selectionNote": "Two-player source metadata or an explicit two-player statement is required. Generic multiplayer wording alone never qualifies a game.",
       "playStyles": ["Same-keyboard duels", "Shared-device challenges", "Head-to-head sports", "Co-operative obstacle games"],
+      "deviceGuidance": "A larger screen is usually easier when two people share one device. Read the profile and in-game instructions before assuming that a phone supports local two-player controls.",
+      "controlsGuidance": "Shared-keyboard games commonly split keys between players; shared-device games may use opposite sides of a touch screen.",
+      "sessionGuidance": "Choose quick rounds for turn-taking, or a longer match format when both players have time to learn separate controls.",
       "relatedHubIds": ["io", "car"],
       "relatedCategorySlugs": ["multiplayer", "sports", "action"]
     },
@@ -48,6 +54,9 @@
       "introduction": "Browse games explicitly identified as .io titles or carrying a recognised .io game name. The collection includes arena, survival and competitive formats without assuming that every multiplayer game belongs here.",
       "selectionNote": "A recognised .io source category or a title ending in .io is required. The letters 'io' inside an unrelated title, slug or description never count.",
       "playStyles": ["Arena survival", "Growth and collection", "Competitive racing", "Team and battle formats"],
+      "deviceGuidance": "Desktop mouse and keyboard controls often provide the clearest arena view. Mobile support depends on whether the individual game supplies touch controls.",
+      "controlsGuidance": "Movement may use a mouse pointer, WASD, arrow keys or an on-screen stick, with extra actions shown inside the game.",
+      "sessionGuidance": "Arena rounds can end quickly, but stronger runs may continue for longer while you collect, survive or compete.",
       "relatedHubIds": ["two-player", "shooting"],
       "relatedCategorySlugs": ["multiplayer", "action", "arcade"]
     },
@@ -64,6 +73,9 @@
       "introduction": "Explore outfit, fashion, makeover and character-styling games that make dress-up play the central activity. Games qualify from explicit source categories or corroborated titles and tags, not from a stray clothing reference.",
       "selectionNote": "Dress-up source metadata is accepted directly. Other records need both a relevant title or description and a matching dress-up catalogue tag.",
       "playStyles": ["Outfit and wardrobe choices", "Character makeovers", "Event and theme styling", "Fashion challenge play"],
+      "deviceGuidance": "Touch screens work naturally for selecting and dragging outfit pieces, while a mouse offers precise placement on desktop.",
+      "controlsGuidance": "Most games use taps, clicks or drag gestures. Any extra styling steps are explained by the loaded game.",
+      "sessionGuidance": "A single outfit can be a quick activity; multi-character makeovers and themed challenges suit a longer creative session.",
       "relatedHubIds": ["word"],
       "relatedCategorySlugs": ["arcade", "adventure", "puzzle"]
     },
@@ -80,6 +92,9 @@
       "introduction": "Choose from shooting games where aiming, firing or target selection drives the challenge. The collection covers direct action, survival and precision formats while excluding games that merely mention a weapon in passing.",
       "selectionNote": "Explicit shooting, shooter or first-person-shooter source categories qualify. Other records need action context plus corroborating shooting or sniper metadata.",
       "playStyles": ["Target and precision shooting", "Arcade survival", "Sniper challenges", "Action and arena combat"],
+      "deviceGuidance": "A mouse generally gives the most precise aim on desktop. Touch aiming can work well when a game is designed with clear mobile controls.",
+      "controlsGuidance": "Aim with a mouse, pointer or drag gesture; firing and movement keys vary, so check the profile and on-screen instructions.",
+      "sessionGuidance": "Target rounds can be brief, while survival and arena formats may build into longer sessions with repeated waves.",
       "relatedHubIds": ["io", "car"],
       "relatedCategorySlugs": ["action", "arcade", "strategy"]
     },
@@ -96,6 +111,9 @@
       "introduction": "Browse games where finding, building or solving words is the main task. This collection brings together word searches, spelling, crosswords and anagrams without treating every puzzle description containing the word 'word' as a match.",
       "selectionNote": "A word-game source category qualifies directly. Other records need a word-led title or description together with an explicit word-game tag.",
       "playStyles": ["Word search grids", "Spelling and letter play", "Crosswords and clues", "Anagrams and word building"],
+      "deviceGuidance": "Word grids are comfortable on tablets and desktop screens; phone play is easiest when the letters remain large enough to select accurately.",
+      "controlsGuidance": "Use taps, clicks or drags to select letters, and a physical or on-screen keyboard where the game asks you to type.",
+      "sessionGuidance": "Short word searches suit a quick break, while crosswords and larger letter puzzles reward unhurried problem solving.",
       "relatedHubIds": ["dress-up"],
       "relatedCategorySlugs": ["puzzle", "strategy", "arcade"]
     }
