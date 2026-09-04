@@ -89,7 +89,7 @@ export function getRegistryGames(): RegistryGame[] {
     url: profile.path,
     playUrl: profile.playPath || `${profile.path}/play`,
     status: 'active' as const,
-    indexable: getPartnerIndexQuality(profile.slug).state !== 'quarantined',
+    indexable: getPartnerIndexQuality(profile.slug).state === 'indexable',
     category: profile.category || 'Arcade',
     tags: [profile.intent, profile.category].filter((tag): tag is string => Boolean(tag)),
     controls: profile.controls || 'Use the controls shown in the game',

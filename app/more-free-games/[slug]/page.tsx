@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: pageTitle,
     description: profile.description,
-    robots: { index: quality.state !== 'quarantined', follow: true },
+    robots: { index: quality.state === 'indexable', follow: true },
     alternates: { canonical: canonical(`/more-free-games/${profile.slug}`) },
     openGraph: {
       title: pageTitle,
