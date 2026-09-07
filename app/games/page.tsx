@@ -4,6 +4,7 @@ import RegistryGameCard from '@/components/RegistryGameCard';
 import { canonical, gameCountLabel } from '@/lib/features';
 import { getPlayableRegistryGames, getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
+import { getActivePseoIntents } from '@/lib/pseoIntents';
 
 const gamesMetadata = {
   title: 'Free Games Online - Browse the GR8 GAMZ Directory',
@@ -41,6 +42,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const categories = getRegistryCategories();
   const controls = getRegistryControlHubs();
   const hubs = getActiveGameHubs();
+  const pseoIntents = getActivePseoIntents();
   const searchResults = query ? searchRegistryGames(query, requestedPage, 48) : null;
   const queryCopy = query
     ? `Showing results for "${query}" across GR8 Originals and GR8 Select.`
@@ -70,6 +72,12 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
               <span>{getGameHubGames(hub.slug).length.toLocaleString()} games</span>
             </Link>
           ))}
+          {pseoIntents.length ? (
+            <Link href="/games/collections">
+              <strong>More specific game collections</strong>
+              <span>{pseoIntents.length.toLocaleString('en-GB')} focused ways to browse</span>
+            </Link>
+          ) : null}
         </div>
       </section>
       {searchResults ? (

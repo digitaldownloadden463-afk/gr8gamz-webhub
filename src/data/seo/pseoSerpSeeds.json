@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-06",
+  "purpose": "Human-reviewed public SERP seed evidence. These are cluster signals, not claimed search-volume or keyword-difficulty scores.",
+  "seeds": [
+    {
+      "query": "free strategy games online",
+      "cluster": "strategy",
+      "strength": "mixed",
+      "observation": "Results include Poki but also smaller specialist/category sites such as Playthora, StrategyGames.app, OnlineFreeGames and PacoGames."
+    },
+    {
+      "query": "strategy games online",
+      "cluster": "strategy",
+      "strength": "mixed",
+      "observation": "Category pages from both major and smaller browser-game domains rank, supporting a collection-page search intent."
+    },
+    {
+      "query": "keyboard puzzle games",
+      "cluster": "keyboard-puzzle",
+      "strength": "weak-to-mixed",
+      "observation": "A tagged itch.io filter and individual game pages surface; the exact dedicated collection intent is not dominated by major arcade category pages."
+    },
+    {
+      "query": "2 player keyboard games",
+      "cluster": "two-player-keyboard",
+      "strength": "established",
+      "observation": "Dedicated same-keyboard sites such as DuoArcade and PlayBrain validate the intent; this cluster should only be entered where GR8 inventory is genuinely distinct."
+    },
+    {
+      "query": "mobile racing games browser",
+      "cluster": "mobile-racing",
+      "strength": "mixed",
+      "observation": "A focused WebGLGames mobile-racing page ranks, validating the device-plus-genre intent."
+    },
+    {
+      "query": "keyboard shooting games browser",
+      "cluster": "keyboard-shooting",
+      "strength": "weak-to-mixed",
+      "observation": "Results lean toward individual game pages and editorial roundups rather than a dense set of exact dedicated collections."
+    },
+    {
+      "query": "mouse puzzle games browser",
+      "cluster": "mouse-puzzle",
+      "strength": "weak-to-mixed",
+      "observation": "Results include individual mouse/puzzle game pages and broad browser-puzzle roundups, leaving room for a precise inventory-backed collection."
+    }
+  ]
+}
