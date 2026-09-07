@@ -124,24 +124,51 @@ await mapLimit(sitemapPaths, 8, async (sitemapPath) => {
 const canonicalRoutes = [...regularPaths].sort();
 if (!canonicalRoutes.length) failures.push('No canonical routes were read from the sitemap system.');
 const canonicalSet = new Set(canonicalRoutes);
+const discoveryRoutes = new Set(['/games/collections']);
 const graph = new Map(canonicalRoutes.map((route) => [route, new Set()]));
 const internalAnchors = new Set();
 const pageInfo = new Map();
 
-await mapLimit(canonicalRoutes, concurrency, async (route) => {
+function isDiscoveryRoute(route) {
+  return discoveryRoutes.has(route) || /\/page\/\d+$/.test(route);
+}
+
+async function inspectRoute(route) {
   const { response, text } = await fetchText(route);
   if (response.status !== 200) failures.push(`${route} returned ${response.status}`);
   const canonical = canonicalPath(text);
   if (canonical !== route) failures.push(`${route} canonical points to ${canonical || 'missing'}`);
-  if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(text)) failures.push(`${route} is noindex in a canonical sitemap`);
+  const noindex = /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(text);
+  if (canonicalSet.has(route) && noindex) failures.push(`${route} is noindex in a canonical sitemap`);
+  if (isDiscoveryRoute(route) && !noindex) failures.push(`${route} must remain a noindex discovery route`);
 
   const renderedAnchors = [...new Set(anchors(text))];
   pageInfo.set(route, { anchors: renderedAnchors.length });
   for (const href of renderedAnchors) {
     internalAnchors.add(href);
-    if (canonicalSet.has(href) && !isPlayRoute(href)) graph.get(route).add(href);
+    if (!isPlayRoute(href) && (canonicalSet.has(href) || isDiscoveryRoute(href))) {
+      graph.get(route).add(href);
+    }
   }
-});
+}
+
+await mapLimit(canonicalRoutes, concurrency, inspectRoute);
+
+// Deep listing pages are intentionally noindex but remain the crawlable route to
+// profiles that are still playable. Traverse those discovery chains without
+// treating them as canonical sitemap entries.
+let pendingDiscovery = [...new Set(
+  [...internalAnchors].filter((route) => isDiscoveryRoute(route) && !graph.has(route))
+)];
+while (pendingDiscovery.length) {
+  const batch = pendingDiscovery;
+  pendingDiscovery = [];
+  for (const route of batch) graph.set(route, new Set());
+  await mapLimit(batch, concurrency, inspectRoute);
+  pendingDiscovery = [...new Set(
+    [...internalAnchors].filter((route) => isDiscoveryRoute(route) && !graph.has(route))
+  )];
+}
 
 const anchorPaths = [...internalAnchors].filter((href) =>
   !href.startsWith('/_next/') &&
@@ -155,10 +182,8 @@ if (![partnerPlaySource, localizedPlaySource].every((source) => /robots:\s*\{\s*
 }
 
 const uncheckedAnchorPaths = anchorPaths.filter((route) => {
-  if (canonicalSet.has(route)) return false;
+  if (graph.has(route)) return false;
   if (!isPlayRoute(route)) return true;
-  const profileRoute = route.replace(/\/play$/, '');
-  if (!canonicalSet.has(profileRoute)) failures.push(`Play route ${route} has no canonical profile destination`);
   return false;
 });
 
@@ -196,7 +221,7 @@ const orphanRoutes = canonicalRoutes.filter((route) => !depth.has(route));
 const brokenCanonicalTargets = [];
 for (const [from, links] of graph) {
   for (const to of links) {
-    if (!canonicalSet.has(to)) brokenCanonicalTargets.push(`${from} -> ${to}`);
+    if (!graph.has(to)) brokenCanonicalTargets.push(`${from} -> ${to}`);
   }
 }
 

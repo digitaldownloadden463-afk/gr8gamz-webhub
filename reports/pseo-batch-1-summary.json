@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "batchId": "batch-1",
+  "generatedAt": "2026-09-07",
+  "targetSize": 1000,
+  "accepted": 225,
+  "candidates": 2407,
+  "evaluatedCandidates": 432,
+  "minimumInventory": 24,
+  "inventory": {
+    "minimum": 43,
+    "median": 299,
+    "maximum": 2995
+  },
+  "top25": [
+    {
+      "url": "/games/keyboard-puzzle-games",
+      "primaryIntent": "keyboard puzzle games",
+      "inventoryCount": 385,
+      "evidenceClass": "serp-reviewed-cluster",
+      "priority": 1
+    },
+    {
+      "url": "/games/keyboard-car-games",
+      "primaryIntent": "keyboard car games",
+      "inventoryCount": 826,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 2
+    },
+    {
+      "url": "/games/keyboard-racing-games",
+      "primaryIntent": "keyboard racing games",
+      "inventoryCount": 564,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 3
+    },
+    {
+      "url": "/games/keyboard-action-games",
+      "primaryIntent": "keyboard action games",
+      "inventoryCount": 407,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 4
+    },
+    {
+      "url": "/games/mobile-shooting-games",
+      "primaryIntent": "mobile shooting games",
+      "inventoryCount": 1385,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 5
+    },
+    {
+      "url": "/games/keyboard-drift-games",
+      "primaryIntent": "keyboard drift games",
+      "inventoryCount": 202,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 6
+    },
+    {
+      "url": "/games/keyboard-parking-games",
+      "primaryIntent": "keyboard parking games",
+      "inventoryCount": 196,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 7
+    },
+    {
+      "url": "/games/math-games",
+      "primaryIntent": "math games",
+      "inventoryCount": 347,
+      "evidenceClass": "direct-gsc",
+      "priority": 8
+    },
+    {
+      "url": "/games/mobile-racing-games",
+      "primaryIntent": "mobile racing games",
+      "inventoryCount": 1130,
+      "evidenceClass": "serp-reviewed-cluster",
+      "priority": 9
+    },
+    {
+      "url": "/games/2-player-keyboard-games",
+      "primaryIntent": "2 player keyboard games",
+      "inventoryCount": 474,
+      "evidenceClass": "serp-reviewed-cluster",
+      "priority": 10
+    },
+    {
+      "url": "/games/mobile-car-games",
+      "primaryIntent": "mobile car games",
+      "inventoryCount": 1832,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 11
+    },
+    {
+      "url": "/games/mobile-drift-games",
+      "primaryIntent": "mobile drift games",
+      "inventoryCount": 358,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 12
+    },
+    {
+      "url": "/games/block-puzzle-games",
+      "primaryIntent": "block puzzle games",
+      "inventoryCount": 421,
+      "evidenceClass": "direct-gsc",
+      "priority": 13
+    },
+    {
+      "url": "/games/mobile-match-3-games",
+      "primaryIntent": "mobile match 3 games",
+      "inventoryCount": 732,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 14
+    },
+    {
+      "url": "/games/mobile-block-games",
+      "primaryIntent": "mobile block games",
+      "inventoryCount": 709,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 15
+    },
+    {
+      "url": "/games/mobile-logic-games",
+      "primaryIntent": "mobile logic games",
+      "inventoryCount": 636,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 16
+    },
+    {
+      "url": "/games/mobile-parking-games",
+      "primaryIntent": "mobile parking games",
+      "inventoryCount": 344,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 17
+    },
+    {
+      "url": "/games/keyboard-platform-games",
+      "primaryIntent": "keyboard platform games",
+      "inventoryCount": 475,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 18
+    },
+    {
+      "url": "/games/keyboard-jump-games",
+      "primaryIntent": "keyboard jump games",
+      "inventoryCount": 430,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 19
+    },
+    {
+      "url": "/games/mobile-action-games",
+      "primaryIntent": "mobile action games",
+      "inventoryCount": 934,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 20
+    },
+    {
+      "url": "/games/keyboard-arcade-games",
+      "primaryIntent": "keyboard arcade games",
+      "inventoryCount": 926,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 21
+    },
+    {
+      "url": "/games/car-racing-games",
+      "primaryIntent": "car racing games",
+      "inventoryCount": 873,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 22
+    },
+    {
+      "url": "/games/keyboard-space-games",
+      "primaryIntent": "keyboard space games",
+      "inventoryCount": 314,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 23
+    },
+    {
+      "url": "/games/keyboard-adventure-games",
+      "primaryIntent": "keyboard adventure games",
+      "inventoryCount": 1307,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 24
+    },
+    {
+      "url": "/games/keyboard-driving-games",
+      "primaryIntent": "keyboard driving games",
+      "inventoryCount": 691,
+      "evidenceClass": "proven-gr8-cluster",
+      "priority": 25
+    }
+  ],
+  "qualitySummary": {
+    "accepted": 225,
+    "rejected": 2182,
+    "exactInventoryDuplicatesRejected": 35,
+    "nearDuplicatesRejected": 26,
+    "existingIntentCollisionsRejected": 32,
+    "duplicateIntentsRejected": 146,
+    "rejectedReasons": {
+      "blocked-modifier": 24,
+      "duplicate-intent": 146,
+      "duplicate-proposal": 19,
+      "exact-inventory-duplicate": 35,
+      "existing-intent-collision": 32,
+      "insufficient-external-or-cluster-evidence": 28,
+      "insufficient-inventory": 238,
+      "low-opportunity-score": 230,
+      "near-duplicate-inventory": 26,
+      "overbroad-inventory": 17,
+      "unnatural-category-mechanic": 417,
+      "unnatural-control-combination": 798,
+      "unnatural-device-combination": 172
+    }
+  }
+}

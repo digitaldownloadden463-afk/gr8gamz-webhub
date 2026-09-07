@@ -49,3 +49,7 @@ Thumbs.db
 .eslintcache
 *.tsbuildinfo
 .vercel/
+
+# Private search and revenue evidence
+.gr8-private/
+reports/private/
