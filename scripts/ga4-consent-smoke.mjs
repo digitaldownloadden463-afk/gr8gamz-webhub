@@ -64,7 +64,6 @@ async function stubAnalytics(context, requests) {
     requests.push(route.request().url());
     await route.fulfill({ status: 204, body: '' });
   });
-  await context.route('https://razer.a9yw.net/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Tracked Razer destination</title>' }));
   await context.route('https://play.gamepix.com/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>Game test</title>' }));
 }
 
@@ -93,14 +92,9 @@ const browser = await chromium.launch();
   if ((await dataLayerEvents(page, 'partner_profile_view')).length) failures.push('Fresh visitor: partner profile analytics fired before consent');
   await page.evaluate(() => window.__gr8EmitTcf('rejected'));
   await expectNoAnalytics(page, requests, 'Reject All');
-  await page.goto(`${baseUrl}/gaming-gear/products/razer-viper-v3-pro`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.goto(`${baseUrl}/gaming-gear/products/flydigi-vader-5-pro-wireless-controller`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   if ((await dataLayerEvents(page, 'product_view')).length) failures.push('Reject All: product analytics fired without consent');
-  const affiliateLink = page.locator('a[rel*="sponsored"]').first();
-  const popupPromise = page.waitForEvent('popup');
-  await affiliateLink.click();
-  const popup = await popupPromise;
-  if (!popup.url().startsWith('https://razer.a9yw.net/')) failures.push('Reject All: affiliate navigation did not use the tracked Razer destination');
-  await popup.close();
+  if (await page.locator('a[rel*="sponsored"]').count()) failures.push('Reject All: unconfigured preview unexpectedly exposed a merchant affiliate link');
   await expectNoAnalytics(page, requests, 'Rejected affiliate navigation');
   await context.close();
 }
@@ -188,20 +182,13 @@ const browser = await chromium.launch();
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
   await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_guide_view'));
   const guideViews = await dataLayerEvents(page, 'affiliate_guide_view');
-  if (guideViews.length !== 1 || guideViews[0]?.guide_slug !== 'best-gaming-mouse' || guideViews[0]?.page_type !== 'guide' || guideViews[0]?.merchant !== 'razer' || guideViews[0]?.locale !== 'en') {
+  if (guideViews.length !== 1 || guideViews[0]?.guide_slug !== 'best-gaming-mouse' || guideViews[0]?.page_type !== 'guide' || guideViews[0]?.merchant !== 'gadgethyper' || guideViews[0]?.locale !== 'en') {
     failures.push('Buying guide: expected one correctly labelled affiliate_guide_view event');
   }
-  await page.locator('a[rel*="sponsored"]').first().click();
-  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_click'));
-  const guideClicks = await dataLayerEvents(page, 'affiliate_click');
-  if (guideClicks.length !== 1 || guideClicks[0]?.guide_slug !== 'best-gaming-mouse' || guideClicks[0]?.product_slug !== 'razer-viper-v4-pro' || guideClicks[0]?.link_position !== 'card' || guideClicks[0]?.destination_type !== 'merchant_product' || guideClicks[0]?.locale !== 'en') {
-    failures.push('Affiliate click: expected one consent-aware event with guide, product, position, and destination parameters');
-  }
-
-  await page.goto(`${baseUrl}/gaming-gear/products/razer-viper-v3-pro`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.goto(`${baseUrl}/gaming-gear/products/flydigi-vader-5-pro-wireless-controller`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'product_view'));
   const productViews = await dataLayerEvents(page, 'product_view');
-  if (productViews.length !== 1 || productViews[0]?.product_slug !== 'razer-viper-v3-pro' || productViews[0]?.page_type !== 'product' || productViews[0]?.merchant !== 'razer') {
+  if (productViews.length !== 1 || productViews[0]?.product_slug !== 'flydigi-vader-5-pro-wireless-controller' || productViews[0]?.page_type !== 'product' || productViews[0]?.merchant !== 'gadgethyper') {
     failures.push('Product page: expected one correctly labelled product_view event');
   }
 

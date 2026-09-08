@@ -1,71 +1,61 @@
-export type Merchant = 'razer';
+export type Merchant = 'gadgethyper';
 
 export type CommerceCategorySlug =
-  | 'gaming-mice'
-  | 'gaming-headsets'
-  | 'gaming-keyboards'
-  | 'gaming-controllers'
-  | 'mobile-gaming'
-  | 'gaming-laptops'
-  | 'gaming-chairs';
+  | 'controllers'
+  | 'controller-accessories'
+  | 'keyboards'
+  | 'mice'
+  | 'cooling'
+  | 'power'
+  | 'audio'
+  | 'desktop-gear'
+  | 'lifestyle';
 
 export type CommercePageType = 'hub' | 'category' | 'guide' | 'comparison' | 'product';
+export type ProductLifecycle = 'active' | 'sold-out' | 'retired' | 'review-required';
+export type AssetRightsState = 'affiliate-authorised' | 'review-required' | 'excluded';
 
-export type ProductLifecycle = 'current' | 'predecessor' | 'uncertain';
-
-export type ProductEvidence = {
-  label: string;
-  sourceUrl: string;
-  checkedAt: string;
-};
-
-export type ProductSpecification = ProductEvidence & {
-  value: string;
+export type CommerceVariant = {
+  id: string;
+  name: string;
+  available: boolean;
+  price: number | null;
+  compareAtPrice: number | null;
 };
 
 export type CommerceProduct = {
-  schemaVersion: 2;
+  schemaVersion: 3;
   id: string;
   merchant: Merchant;
   merchantProductId: string;
-  brand: 'Razer';
+  brand: string;
   name: string;
-  family: string;
-  model: string;
-  generation: string;
-  lifecycle: ProductLifecycle;
   slug: string;
   category: CommerceCategorySlug;
-  image: string;
+  productType: string;
+  lifecycle: ProductLifecycle;
   destinationUrl: string;
   officialSourceUrl: string;
   sourceCheckedAt: string;
-  sourceEvidence: readonly ProductEvidence[];
-  contentEvidenceState: 'verified-official-sources';
-  platforms: readonly string[];
-  variants: readonly string[];
-  predecessorSlugs: readonly string[];
-  successorSlugs: readonly string[];
-  relatedAccessorySlugs: readonly string[];
+  lastUpdated: string;
+  sourceEvidenceState: 'official-public-catalogue';
+  imageSourceUrl: string | null;
+  imageRightsState: AssetRightsState;
+  variants: readonly CommerceVariant[];
+  price: number | null;
+  compareAtPrice: number | null;
+  currency: 'USD';
+  availability: 'in-stock' | 'sold-out' | 'unknown';
   shortDescription: string;
   buyingSummary: string;
   keyFeatures: readonly string[];
+  compatibility: readonly string[];
   bestFor: string;
   limitations: readonly string[];
-  specifications: Readonly<Record<string, ProductSpecification>>;
-  price: null;
-  currency: 'GBP';
-  availability: 'check-merchant';
-  authorisedPriceSource: null;
-  priceCheckedAt: null;
-  lifecycleNote?: string;
-  lastUpdated: string;
+  indexable: boolean;
 };
 
-export type EditorialSection = {
-  heading: string;
-  body: string;
-};
+export type EditorialSection = { heading: string; body: string };
 
 export type GuideRecommendation = {
   productSlug: string;
@@ -77,6 +67,7 @@ export type GuideRecommendation = {
 export type BuyingGuide = {
   slug: string;
   category: CommerceCategorySlug;
+  legacyCategory?: string;
   title: string;
   description: string;
   query: string;
@@ -88,41 +79,17 @@ export type BuyingGuide = {
   sourceCheckedAt: string;
 };
 
-export type ComparisonRow = {
-  label: string;
-  left: string;
-  right: string;
-  decision: string;
-};
+export type ComparisonRow = { label: string; left: string; right: string; decision: string };
 
 export type ProductComparison = {
   slug: string;
   category: CommerceCategorySlug;
   title: string;
   description: string;
-  productSlugs: readonly string[];
-  externalComparisonProduct?: {
-    name: string;
-    officialSourceUrl: string;
-  };
+  productSlugs: readonly [string, string];
   verdict: string;
   comparisonRows: readonly ComparisonRow[];
   recommendations: readonly EditorialSection[];
-  parentGuideSlug: string;
+  parentGuideSlug?: string;
   sourceCheckedAt: string;
-};
-
-export type KeywordOpportunity = {
-  keyword: string;
-  intent: 'commercial' | 'transactional';
-  country: 'UK';
-  demand: 'high' | 'medium' | 'emerging';
-  source: string;
-  checked: string;
-  difficulty: 'high' | 'medium' | 'lower';
-  productValue: 'high' | 'medium';
-  razerRelevance: 'strong' | 'partial';
-  pageType: 'guide' | 'comparison' | 'product';
-  priority: number;
-  selected: boolean;
 };

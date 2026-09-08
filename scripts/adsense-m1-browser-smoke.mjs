@@ -176,7 +176,7 @@ const browser = await chromium.launch();
   if (separation < 32) failures.push(`Editorial ad is only ${Math.round(separation)}px from an affiliate CTA.`);
 
   for (const path of [
-    '/gaming-gear/products/razer-viper-v4-pro',
+    '/gaming-gear/products/flydigi-vader-5-pro-wireless-controller',
     '/more-free-games/duck-math',
     '/more-free-games/duck-math/play',
     '/arcade/neon-snake-rush',
@@ -200,7 +200,7 @@ for (const viewport of [{ width: 768, height: 1024 }, { width: 1440, height: 900
   await inspectAllowed(page, '/categories/puzzle', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
   await inspectAllowed(page, '/gaming-gear', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
   await inspectExcluded(page, '/more-free-games/duck-math/play');
-  await inspectExcluded(page, '/gaming-gear/products/razer-viper-v4-pro');
+  await inspectExcluded(page, '/gaming-gear/products/flydigi-vader-5-pro-wireless-controller');
   await context.close();
 }
 

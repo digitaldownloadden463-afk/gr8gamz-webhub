@@ -1,18 +1,27 @@
 {
-  "generatedAt": "2026-08-22T14:42:10.436Z",
-  "merchant": "razer",
-  "products": 16,
-  "categories": 7,
-  "buyingGuides": 16,
-  "comparisons": 11,
-  "indexableRoutes": 51,
-  "internalEdges": 109,
-  "orphanRoutes": 0,
-  "maximumDepth": 2,
-  "affiliateLinksValidated": 16,
-  "brokenLinks": 0,
-  "selectedKeywords": 15,
-  "rejectedKeywords": 4,
-  "pricesStored": 0,
+  "generatedAt": "2026-09-08T17:54:26.478Z",
+  "merchant": "gadgethyper",
+  "products": 129,
+  "active": 99,
+  "soldOut": 30,
+  "indexableProducts": 0,
+  "imageRightsReviewRequired": 129,
+  "affiliateTemplateConfigured": false,
+  "liveDestinationCount": null,
+  "liveRateLimitedCount": null,
+  "releaseBlockers": [
+    "approved GoAffPro affiliate template is not configured",
+    "product-image promotional rights are not recorded as authorised"
+  ],
+  "categoryCounts": {
+    "controllers": 42,
+    "controller-accessories": 51,
+    "keyboards": 3,
+    "mice": 2,
+    "cooling": 5,
+    "power": 7,
+    "audio": 6,
+    "lifestyle": 13
+  },
   "errors": []
 }

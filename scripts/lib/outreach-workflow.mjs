@@ -26,7 +26,7 @@ export function createOutreachDraft(request, communities) {
   if (discussion.protocol !== 'https:') throw new Error('A public HTTPS discussion is required.');
   if (!request.proposedCopy || request.proposedCopy.length < 40 || request.proposedCopy.length > 1500) throw new Error('Draft copy must be specific and readable.');
   if (!/founder of GR8 GAMZ/i.test(request.operatorDisclosure || '')) throw new Error('Transparent GR8 GAMZ founder disclosure is required.');
-  if (/razer\.a9yw\.net|amazon\.|impact\.com/i.test(request.proposedCopy)) throw new Error('Raw affiliate links are not allowed in outreach drafts.');
+  if (/gadgethyper\.com\/products\/.*(?:ref|aff)|amazon\.|impact\.com/i.test(request.proposedCopy)) throw new Error('Raw affiliate links are not allowed in outreach drafts.');
   const destination = buildCampaignUrl(request.destination, {
     source: community.id,
     campaign: request.campaign,
