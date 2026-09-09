@@ -38,7 +38,7 @@ export default function GamingGearPage() {
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Shop by setup</span><h2>Start with the equipment you need.</h2></div><div className="commerce-category-grid">{commerceCategories.map((category) => { const Icon = icons[category.slug as keyof typeof icons] || Gamepad2; const count = commerceProducts.filter((product) => product.category === category.slug).length; return <Link key={category.slug} href={`/gaming-gear/${category.slug}`} className="commerce-category-card"><Icon aria-hidden="true" /><span><strong>{category.name}</strong><small>{count} catalogue products</small></span><ArrowRight aria-hidden="true" /></Link>; })}</div></section>
       <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Buying guides</span><h2>Decide by compatibility and use case.</h2></div><div className="guide-link-grid">{buyingGuides.map((guide) => <Link key={guide.slug} href={guidePath(guide)}><span>{guide.query}</span><strong>{guide.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div></section>
       <AdSensePlacement placement="editorial-mid-content" />
-      <CatalogueBrowser products={featured} title="Featured controller options" />
+      <CatalogueBrowser products={featured} title="Featured controller options" pageType="hub" pageSlug="gaming-gear" />
       <section className="commerce-freshness"><strong>Catalogue checked {commerceCatalogueMeta.sourceCheckedAt}</strong><span>Price and availability can change. Check GadgetHyper for the latest price.</span></section>
       <AdSensePlacement placement="editorial-lower-content" />
     </main>

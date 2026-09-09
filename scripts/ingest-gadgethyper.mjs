@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const sourceUrl = 'https://gadgethyper.com/collections/all/products.json?limit=250';
 const outputPath = path.resolve('src/data/commerce/gadgethyper-products.generated.json');
+const privateReportPath = path.resolve('reports/private/gadgethyper-catalogue-refresh.json');
 const write = process.argv.includes('--write');
 const sourceArg = process.argv.indexOf('--source');
 const checkedAtArg = process.argv.indexOf('--checked-at');
@@ -100,9 +101,11 @@ function normalizeProduct(product) {
     officialSourceUrl: `https://gadgethyper.com/products/${product.handle}`,
     sourceCheckedAt: checkedAt,
     lastUpdated: checkedAt,
-    sourceEvidenceState: 'official-public-catalogue',
+    sourceEvidenceState: 'official-merchant-catalogue',
     imageSourceUrl: product.images?.[0]?.src || null,
     imageRightsState,
+    imageRightsEvidence: imageRightsEvidence || null,
+    imageRightsCheckedAt: imageRightsEvidence ? checkedAt : null,
     variants: product.variants.map((variant) => ({
       id: String(variant.id),
       name: decode(variant.title),
@@ -124,7 +127,7 @@ function normalizeProduct(product) {
       availabilityState === 'sold-out' ? 'No variant was shown as available when the catalogue was checked.' : 'Compatibility can vary by platform, game and connection mode.',
       'Price, availability, delivery and warranty terms can change at the retailer.'
     ],
-    indexable: imageRightsState === 'affiliate-authorised' && availabilityState === 'in-stock' && features.length >= 3
+    indexable: imageRightsState === 'affiliate-authorised' && Boolean(product.images?.[0]?.src) && features.length >= 3
   };
 }
 
@@ -137,18 +140,51 @@ async function loadSource() {
 function parseJson(value) { return JSON.parse(value); }
 
 async function main() {
+  let previous = { products: [] };
+  try { previous = JSON.parse(await fs.readFile(outputPath, 'utf8')); } catch {}
   const raw = sourceArg >= 0
     ? parseJson(await fs.readFile(path.resolve(process.argv[sourceArg + 1]), 'utf8'))
     : await loadSource();
   if (!Array.isArray(raw.products) || raw.products.length === 0) throw new Error('GadgetHyper catalogue contains no products');
-  const products = raw.products.map(normalizeProduct).sort((a, b) => a.name.localeCompare(b.name));
+  const currentProducts = raw.products.map(normalizeProduct);
+  const currentIds = new Set(currentProducts.map((product) => product.merchantProductId));
+  const retiredProducts = (previous.products || [])
+    .filter((product) => !currentIds.has(product.merchantProductId))
+    .map((product) => ({
+      ...product,
+      lifecycle: 'retired',
+      availability: 'unknown',
+      price: null,
+      compareAtPrice: null,
+      indexable: false,
+      lastUpdated: checkedAt
+    }));
+  const products = [...currentProducts, ...retiredProducts].sort((a, b) => a.name.localeCompare(b.name));
   const slugs = new Set(products.map((product) => product.slug));
   if (slugs.size !== products.length) throw new Error('Duplicate GadgetHyper product slugs detected');
-  const payload = { schemaVersion: 1, merchant: 'GadgetHyper', sourceUrl, sourceCheckedAt: checkedAt, imageRightsState, products };
+  const payload = { schemaVersion: 1, merchant: 'GadgetHyper', sourceUrl, sourceCheckedAt: checkedAt, currentProductCount: currentProducts.length, imageRightsState, imageRightsEvidence: imageRightsEvidence || null, products };
+  const previousById = new Map((previous.products || []).map((product) => [product.merchantProductId, product]));
+  const currentById = new Map(currentProducts.map((product) => [product.merchantProductId, product]));
+  const changed = (field) => currentProducts.filter((product) => previousById.has(product.merchantProductId) && JSON.stringify(previousById.get(product.merchantProductId)?.[field]) !== JSON.stringify(product[field])).map((product) => product.slug);
+  const privateReport = {
+    generatedAt: new Date().toISOString(),
+    source: sourceArg >= 0 ? 'authoritative-snapshot' : sourceUrl,
+    previousProducts: previous.products?.length || 0,
+    currentProducts: currentProducts.length,
+    newProducts: currentProducts.filter((product) => !previousById.has(product.merchantProductId)).map((product) => product.slug),
+    removedProducts: (previous.products || []).filter((product) => !currentById.has(product.merchantProductId)).map((product) => product.slug),
+    priceChanges: changed('price'),
+    salePriceChanges: changed('compareAtPrice'),
+    availabilityChanges: changed('availability'),
+    urlChanges: changed('destinationUrl'),
+    imageChanges: changed('imageSourceUrl'),
+    categoryChanges: changed('category')
+  };
   const report = {
     products: products.length,
     active: products.filter((product) => product.lifecycle === 'active').length,
     soldOut: products.filter((product) => product.lifecycle === 'sold-out').length,
+    retired: products.filter((product) => product.lifecycle === 'retired').length,
     indexable: products.filter((product) => product.indexable).length,
     imageRightsReviewRequired: products.filter((product) => product.imageRightsState === 'review-required').length,
     categories: Object.fromEntries(Object.keys(categoryNames).map((category) => [category, products.filter((product) => product.category === category).length]))
@@ -156,6 +192,8 @@ async function main() {
   if (write) {
     await fs.mkdir(path.dirname(outputPath), { recursive: true });
     await fs.writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`);
+    await fs.mkdir(path.dirname(privateReportPath), { recursive: true });
+    await fs.writeFile(privateReportPath, `${JSON.stringify(privateReport, null, 2)}\n`);
   }
   console.log(JSON.stringify(report, null, 2));
 }

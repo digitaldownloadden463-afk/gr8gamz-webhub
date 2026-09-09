@@ -2,8 +2,10 @@
   "schemaVersion": 1,
   "merchant": "GadgetHyper",
   "sourceUrl": "https://gadgethyper.com/collections/all/products.json?limit=250",
-  "sourceCheckedAt": "2026-09-07",
-  "imageRightsState": "review-required",
+  "sourceCheckedAt": "2026-09-09",
+  "currentProductCount": 129,
+  "imageRightsState": "affiliate-authorised",
+  "imageRightsEvidence": "goaffpro-program-content-license",
   "products": [
     {
       "schemaVersion": 3,
@@ -18,11 +20,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/8bitdo-ultimate-2-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/8bitdo-ultimate-2-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/3_14f17e4e-1e0b-406e-b01c-1a2c3fa4c918.png?v=1763990421",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42151108313174",
@@ -72,7 +76,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -87,11 +91,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/back-paddles-m1-m3-3d-printed-for-beitong-kp70-kp40d",
       "officialSourceUrl": "https://gadgethyper.com/products/back-paddles-m1-m3-3d-printed-for-beitong-kp70-kp40d",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/kp70a-_-1.png?v=1776999213",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44522019553366",
@@ -184,11 +190,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/back-paddles-m2-m4-3d-printed-for-beitong-kp70-kp40d",
       "officialSourceUrl": "https://gadgethyper.com/products/back-paddles-m2-m4-3d-printed-for-beitong-kp70-kp40d",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/KP70A_890ab4c3-3868-4c94-9ea4-d2ea5d77e087.png?v=1777359521",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44621350404182",
@@ -248,11 +256,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/back-paddles-3d-printed-for-flydigi-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/back-paddles-3d-printed-for-flydigi-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/Stock_Short_1.png?v=1770703878",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43898508771414",
@@ -480,11 +490,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-controller-bag",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-controller-bag",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_f45e27ea-afff-44ae-ad40-73bd002b6e1e.png?v=1766141515",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43637972631638",
@@ -526,11 +538,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-d-pad-sets-for-kunpeng-70-kunpeng-40d",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-d-pad-sets-for-kunpeng-70-kunpeng-40d",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0211k_097649b6-fb35-4e29-bbe1-e6617744026g.png?v=1778578305",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44688561995862",
@@ -573,11 +587,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp20d-elite-controller-punishing-gray-raven-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp20d-elite-controller-punishing-gray-raven-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_a1a15111-32d4-4f02-a1c2-cb2ca986198f.png?v=1768548004",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44213358919766",
@@ -624,7 +640,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -639,11 +655,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-accessory-set",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-accessory-set",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/65.png?v=1778659790",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44691680133206",
@@ -685,11 +703,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-controller-wuthering-waves-cartethyia-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-controller-wuthering-waves-cartethyia-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_1bc0b3be-f320-40d5-89f8-0af31a774d68.png?v=1766141341",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44164332879958",
@@ -729,7 +749,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -744,11 +764,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-controller-wuthering-waves-phrolova-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp40d-elite-controller-wuthering-waves-phrolova-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_75cc8882-2c18-4e55-a728-ef7b4add3e2e.png?v=1766141139",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44164332748886",
@@ -788,7 +810,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -803,11 +825,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp40d-faceplate-accessories",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp40d-faceplate-accessories",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-08-07T182256.015.png?v=1786098192",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45528802590806",
@@ -860,11 +884,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kp40d-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kp40d-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/63.png?v=1778659247",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44691480215638",
@@ -921,7 +947,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -936,11 +962,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-faceplate-accessories",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-faceplate-accessories",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-29T154411.094.png?v=1785311070",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45460724940886",
@@ -1007,11 +1035,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/62.png?v=1778659236",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43436724355158",
@@ -1067,7 +1097,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1082,11 +1112,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-wireless-controller-neverness-to-everness-lacrimosa-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-wireless-controller-neverness-to-everness-lacrimosa-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-15T161809.533.png?v=1784103524",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45393001218134",
@@ -1129,7 +1161,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1144,11 +1176,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-wireless-controller-neverness-to-everness-mint-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-kunpeng-70-wireless-controller-neverness-to-everness-mint-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-15T161718.181.png?v=1784103523",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45393002332246",
@@ -1191,7 +1225,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1206,11 +1240,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-pangu-modular-components-and-swappable-accessories",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-pangu-modular-components-and-swappable-accessories",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/8_dfd15a89-c796-4758-936b-5b9e2fa12468.png?v=1781514159",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44951108845654",
@@ -1344,11 +1380,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-pangu-modular-game-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-pangu-modular-game-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/7_f7ffec77-e46b-46bc-b3a6-39fe104d306c.png?v=1773833133",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44192983154774",
@@ -1404,7 +1442,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1419,11 +1457,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/beitong-wireless-charger-dock",
       "officialSourceUrl": "https://gadgethyper.com/products/beitong-wireless-charger-dock",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_774ee4a7-7001-44ca-9f53-f0482046835b.png?v=1737642190",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43748081827926",
@@ -1470,7 +1510,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1485,11 +1525,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/bemoe-hatsune-miku-16th-anniversary-cd-player",
       "officialSourceUrl": "https://gadgethyper.com/products/bemoe-hatsune-miku-16th-anniversary-cd-player",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_794ebaf9-bac3-4246-96cb-ed9d7c892aba.png?v=1723204961",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40737742684246",
@@ -1518,7 +1560,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1533,11 +1575,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/bigbig-won-bag-bundle-for-blitz-2-and-rainbow-series-controllers",
       "officialSourceUrl": "https://gadgethyper.com/products/bigbig-won-bag-bundle-for-blitz-2-and-rainbow-series-controllers",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/3_c9cc0eb5-a556-4034-b8eb-7d9017bb7436.png?v=1730284732",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41865827975254",
@@ -1579,11 +1623,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/bigbig-won-blitz-2-gaming-controller-alps-joysticks-model",
       "officialSourceUrl": "https://gadgethyper.com/products/bigbig-won-blitz-2-gaming-controller-alps-joysticks-model",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/Blitz2ALPS1.png?v=1742914342",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41872164651094",
@@ -1618,7 +1664,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1633,11 +1679,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/bigbig-won-blitz-2-gaming-controller-tmr-joysticks-model",
       "officialSourceUrl": "https://gadgethyper.com/products/bigbig-won-blitz-2-gaming-controller-tmr-joysticks-model",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_c6c0d757-360e-456c-8b3e-46a12e5f61bc.png?v=1763047713",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41872160292950",
@@ -1693,7 +1741,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1708,11 +1756,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/bigbig-won-interchangeable-joystick-set",
       "officialSourceUrl": "https://gadgethyper.com/products/bigbig-won-interchangeable-joystick-set",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1-1.png?v=1725175535",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41719833657430",
@@ -1748,7 +1798,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1763,11 +1813,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/bigbig-won-wireless-charger-dock",
       "officialSourceUrl": "https://gadgethyper.com/products/bigbig-won-wireless-charger-dock",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/d4f70b20ae08baa91175811c4f952f6f.png?v=1768744936",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43819965972566",
@@ -1802,7 +1854,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1817,11 +1869,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/bilibiligoods-hatsune-miku-cube-face-lcd-touch-screen-bluetooth-airpods",
       "officialSourceUrl": "https://gadgethyper.com/products/bilibiligoods-hatsune-miku-cube-face-lcd-touch-screen-bluetooth-airpods",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_38d1aecb-e012-451b-96a0-53fbff5856ae.png?v=1737640978",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42070462070870",
@@ -1854,7 +1908,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -1869,11 +1923,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/d-pad-sets-3d-printed-for-flydigi-apex-5-vader-5-pro-direwolf-4",
       "officialSourceUrl": "https://gadgethyper.com/products/d-pad-sets-3d-printed-for-flydigi-apex-5-vader-5-pro-direwolf-4",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/32_b197d60a-9541-4494-bf16-fcc5f7d696da.png?v=1770368243",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43898925088854",
@@ -2241,11 +2297,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/d-pad-sets-3d-printed-for-gamesir-g7-pro-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/d-pad-sets-3d-printed-for-gamesir-g7-pro-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/Diamond_2_9de012bb-58fb-4161-9d4e-9311d5935e0a.png?v=1776754613",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44521665888342",
@@ -2557,11 +2615,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/easysmx-dune-8k-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/easysmx-dune-8k-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-06T182255.848.png?v=1783333394",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45300602929238",
@@ -2596,7 +2656,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2611,11 +2671,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/easysmx-s10-lite-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/easysmx-s10-lite-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_cc8cfc2d-bdce-4fe2-845f-baf4106a82b6.png?v=1772610478",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44060250603606",
@@ -2665,7 +2727,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2680,11 +2742,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/elite-accessory-set-for-beitong-kp70-kp40d",
       "officialSourceUrl": "https://gadgethyper.com/products/elite-accessory-set-for-beitong-kp70-kp40d",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/66_7ba3645a-276e-4cdf-9bb8-d3c10850c8f2.png?v=1778659876",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43637950218326",
@@ -2713,7 +2777,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2728,11 +2792,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-adjustable-clip-on-phone-holder-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-adjustable-clip-on-phone-holder-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/dwdw.png?v=1762848421",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43618826322006",
@@ -2769,7 +2835,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2784,11 +2850,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_ec291e8c-41ba-4907-9e28-dbfb4884ed11.png?v=1753174628",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40593504600150",
@@ -2837,7 +2905,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2852,11 +2920,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-assassins-creed-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-assassins-creed-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_213bc99f-ea6a-4b4d-b7cd-9bcec6e9a0b6.png?v=1734361883",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41346733113430",
@@ -2898,7 +2968,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2913,11 +2983,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-black-myth-wukong-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-black-myth-wukong-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_5cb1e33c-e805-4ae7-afc7-1b0d9ebad88b.png?v=1763047593",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41691323433046",
@@ -2966,7 +3038,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -2981,11 +3053,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-genshin-impact-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-genshin-impact-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20_b6b4d8c6-2e10-44df-9d5b-e69b119227bd.png?v=1770778686",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42121274654806",
@@ -3027,7 +3101,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3042,11 +3116,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-honkai-star-rail-firefly-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-4-wireless-controller-honkai-star-rail-firefly-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_21fd0c8b-f2e3-4615-b3c6-32681b2a541c.png?v=1766482559",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41592994299990",
@@ -3088,7 +3164,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3103,11 +3179,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/85_-800.png?v=1751013147",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42354860621910",
@@ -3163,7 +3241,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3178,11 +3256,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-dragon-ball-z-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-dragon-ball-z-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/14_12ba00cd-7a0d-4f9e-aab3-abd01e57b1d4.png?v=1770776672",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43909882740822",
@@ -3238,7 +3318,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3253,11 +3333,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-eva-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-eva-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/800.png?v=1751012885",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40595472482390",
@@ -3292,7 +3374,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3307,11 +3389,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-genshin-impact-skirk-void-star-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-genshin-impact-skirk-void-star-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_86a1006a-755d-478a-8ed8-6f354ea28cbe.png?v=1755171389",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42575342501974",
@@ -3353,7 +3437,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3368,11 +3452,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-honkai-star-rail-castorice-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-honkai-star-rail-castorice-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/b87d15a9-541f-4fff-9305-0f973f0c4f3f.png?v=1749209880",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42362614317142",
@@ -3414,7 +3500,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3429,11 +3515,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-wuchang-fallen-feathers-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-apex-5-wireless-controller-wuchang-fallen-feathers-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/4_55210950-3a42-4a98-b156-4c735c11875a.png?v=1753100377",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42493255843926",
@@ -3489,7 +3577,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3504,11 +3592,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-blade-style-back-paddles-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-blade-style-back-paddles-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/9_65fa8e2c-fe15-42da-94d0-f3a814a9c6b7.png?v=1768811784",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44196376051798",
@@ -3558,11 +3648,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-bs2-pro-laptop-cooling-pad-eva-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-bs2-pro-laptop-cooling-pad-eva-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_e7cce24f-f78c-4e3e-a266-3abd4f17e7c1.png?v=1749626313",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42312929312854",
@@ -3595,7 +3687,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3610,11 +3702,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-bs3-laptop-cooling-pad",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-bs3-laptop-cooling-pad",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/02-bs3-laptop_cooler-800x800.png?v=1779451729",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42271958728790",
@@ -3647,7 +3741,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3662,11 +3756,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-bs3-pro-laptop-cooling-pad",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-bs3-pro-laptop-cooling-pad",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/BS3-Pro.png?v=1779444627",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42271963807830",
@@ -3699,7 +3795,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3714,11 +3810,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-bs3-pro-laptop-cooling-pad-eva-rei-ayanami-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-bs3-pro-laptop-cooling-pad-eva-rei-ayanami-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/85.png?v=1780569456",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44817161486422",
@@ -3751,7 +3849,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3766,11 +3864,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-bag-bundle-for-apex-and-vader-series-controllers",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-bag-bundle-for-apex-and-vader-series-controllers",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_cc948a9a-7e0e-4425-939e-396edc5c853c.png?v=1723279445",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41676414419030",
@@ -3812,11 +3912,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-wireless-dongle",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-wireless-dongle",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/f618b04a-bcc0-4461-80e1-0a4434cdb48c.png?v=1757925323",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43357542121558",
@@ -3883,11 +3985,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-direwolf-3-wireless-controller-naruto-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-direwolf-3-wireless-controller-naruto-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/24_957fd87c-7cfd-454b-a1da-3fc1c5d6925a.png?v=1770779158",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42002038063190",
@@ -3922,7 +4026,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -3937,11 +4041,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/640.png?v=1758112054",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43631404843094",
@@ -3991,7 +4097,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4006,11 +4112,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-wireless-controller-arknights-endfield-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-wireless-controller-arknights-endfield-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0213f_2b0bcfcb-5e23-4184-ba26-af6d2219151g_11a46367-970e-46a6-af3d-6c34c2cb8bcc.png?v=1783656712",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45364866449494",
@@ -4046,7 +4154,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4061,11 +4169,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-wireless-controller-genshin-impact-frolicking-flames-yoimiya-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-direwolf-4-wireless-controller-genshin-impact-frolicking-flames-yoimiya-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/4_a65553f3-5fe4-4ef9-8547-4b3d0c7dfb59.png?v=1762265363",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43576928796758",
@@ -4101,7 +4211,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4116,11 +4226,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-elite-accessory-pack-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-elite-accessory-pack-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2_db034774-4523-446c-99fc-38bfd01234b1.png?v=1762848633",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43618848800854",
@@ -4159,7 +4271,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4174,11 +4286,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-eva-elite-gaming-bundle",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-eva-elite-gaming-bundle",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-22T103256.141.png?v=1784687619",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45421909966934",
@@ -4210,7 +4324,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4225,11 +4339,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-fs68-gaming-keyboard",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-fs68-gaming-keyboard",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/83_96d91d17-47cd-4656-94ac-5e005ec1c90b.png?v=1780569475",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44813331005526",
@@ -4271,7 +4387,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4286,11 +4402,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-fs68-gaming-keyboard-eva-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-fs68-gaming-keyboard-eva-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/84_f3356071-066e-4c6b-8ae3-1e73c66610d2.png?v=1780569463",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44816552099926",
@@ -4325,7 +4443,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4340,11 +4458,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-interchangeable-d-pad-sets-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-interchangeable-d-pad-sets-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/ddd.png?v=1762848531",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43618848571478",
@@ -4394,11 +4514,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-interchangeable-joystick-set-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-interchangeable-joystick-set-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/daw.png?v=1762848469",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43618820522070",
@@ -4436,7 +4558,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4451,11 +4573,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-original-nylon-braided-usb-cable",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-original-nylon-braided-usb-cable",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/11_ee8f4655-8dbf-4f81-a676-44b8dc955429.png?v=1729085406",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41816528486486",
@@ -4483,7 +4607,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4498,11 +4622,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-replacement-back-paddles-part-for-apex-5-vader-5-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-replacement-back-paddles-part-for-apex-5-vader-5-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/49.png?v=1778230757",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45272931532886",
@@ -4538,7 +4664,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4553,11 +4679,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-replacement-component",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-replacement-component",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/b58ce7b99582c961375527c3c6b27ebb.png?v=1728143607",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41794569109590",
@@ -4683,7 +4811,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4698,11 +4826,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-3-pro-wireless-controller-one-piece-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-3-pro-wireless-controller-one-piece-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_6f77453e-8aba-4f31-a0b6-90240b144fae.png?v=1723195011",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40699612430422",
@@ -4744,7 +4874,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4759,11 +4889,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-4-pro-wireless-controller-elite-bundles",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-4-pro-wireless-controller-elite-bundles",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/FlydigiVader4Pro_Bag_Stand_10f2493e-f50d-435d-97e2-3b0a8641c7b7.png?v=1749544983",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41924821680214",
@@ -4791,7 +4923,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4806,11 +4938,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-4-pro-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-4-pro-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/af5eaab5-b8bc-4fa1-9fb2-a40c60bd0c74.png?v=1751440012",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41525341913174",
@@ -4861,7 +4995,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4876,11 +5010,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-5-pro-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-5-pro-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0213r_1ff3deea-72be-4669-91e7-2d78d5537a2g.png?v=1784707380",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43592999305302",
@@ -4937,7 +5073,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -4952,11 +5088,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-5-pro-wireless-controller-dragon-ball-z-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-5-pro-wireless-controller-dragon-ball-z-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/18_38549b75-42c2-4903-a152-9970b3a8cf0f.png?v=1768990159",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43593055404118",
@@ -5013,7 +5151,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5028,11 +5166,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/honkai-impact-3rd-elysia-limited-edition-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/honkai-impact-3rd-elysia-limited-edition-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_c02a4aff-489b-4d6b-ba61-692cac9a89b0.png?v=1770265533",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43894185099350",
@@ -5075,7 +5215,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5090,11 +5230,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-vader-5s-xbox-wired-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-vader-5s-xbox-wired-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/30_09db9ca2-34d0-464d-9a72-75b99e36be0e.png?v=1770364056",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43910068699222",
@@ -5144,7 +5286,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5159,11 +5301,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_8eed3c55-01a8-4ea9-8d79-be171c6d9b26.png?v=1763047952",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41709590577238",
@@ -5201,7 +5345,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5216,11 +5360,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock-2-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock-2-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_03cef5fd-6fb5-461c-bd78-83105304c321.png?v=1762848497",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42493230153814",
@@ -5262,7 +5408,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5277,11 +5423,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock-for-direwolf-4",
       "officialSourceUrl": "https://gadgethyper.com/products/flydigi-wireless-charger-dock-for-direwolf-4",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_d0cf5d4c-1707-401e-9df8-d6918b17e8e8.png?v=1763033701",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43631406088278",
@@ -5309,7 +5457,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5324,11 +5472,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/gadgethyper-fridge-magnet-3rd-anniversary-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/gadgethyper-fridge-magnet-3rd-anniversary-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/94.png?v=1781249343",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44942078672982",
@@ -5357,7 +5507,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5372,11 +5522,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/gadgethyper-sticker-3rd-anniversary-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/gadgethyper-sticker-3rd-anniversary-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-06-22T161055.218.png?v=1782115872",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45121341390934",
@@ -5417,11 +5569,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/gadgethyper-t-shirt-3rd-anniversary-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/gadgethyper-t-shirt-3rd-anniversary-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0213c_0347e32f-cf6c-44dc-b2d9-adb031ed3acg.png?v=1783414536",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45348901191766",
@@ -5483,11 +5637,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/gadgethyper-tote-bag",
       "officialSourceUrl": "https://gadgethyper.com/products/gadgethyper-tote-bag",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20260519-180106.png?v=1779185053",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44758234202198",
@@ -5516,7 +5672,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5531,11 +5687,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/genshin-impact-clamor-within-nicole-portable-over-ear-headphones-gift-set",
       "officialSourceUrl": "https://gadgethyper.com/products/genshin-impact-clamor-within-nicole-portable-over-ear-headphones-gift-set",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2026-07-28T150510.434.png?v=1785222367",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "45456387604566",
@@ -5568,7 +5726,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5583,11 +5741,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/genshin-impact-furina-endless-solo-of-solitude-wireless-bluetooth-earphones",
       "officialSourceUrl": "https://gadgethyper.com/products/genshin-impact-furina-endless-solo-of-solitude-wireless-bluetooth-earphones",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/11_f2cab2e0-b5b0-4c25-bb6a-c31541698cc8.png?v=1765011726",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43708341780566",
@@ -5623,7 +5783,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5638,11 +5798,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-apex-4-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-apex-4-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_5d8d729c-2caf-4837-95a1-6e22a7a29124.png?v=1725875317",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41742052261974",
@@ -5671,7 +5833,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5686,11 +5848,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-apex-5-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-apex-5-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_8b2030f8-615b-418b-8a38-c7dc97db9c0f.png?v=1755429745",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42583312826454",
@@ -5719,7 +5883,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5734,11 +5898,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-vader-4-pro-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-vader-4-pro-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_b8ce2d31-56e1-481b-9f98-a52e86b449fb.png?v=1725875179",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42160300490838",
@@ -5784,7 +5950,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5799,11 +5965,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-vader-5-pro-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/grip-tapes-for-flydigi-vader-5-pro-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/25.png?v=1770084885",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43873976025174",
@@ -5835,7 +6003,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5850,11 +6018,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/grip-tapes-for-gamesir-g7-pro-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/grip-tapes-for-gamesir-g7-pro-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/40_d626bc1d-ba10-4668-afbd-91a3109c196c.png?v=1777949779",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44657599742038",
@@ -5892,7 +6062,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5907,11 +6077,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/honkai-star-rail-boothill-revolver-power-bank",
       "officialSourceUrl": "https://gadgethyper.com/products/honkai-star-rail-boothill-revolver-power-bank",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/4_afbb4c78-8a33-409a-95d4-863856ab0037.png?v=1764755795",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43699338248278",
@@ -5940,7 +6112,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -5955,11 +6127,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-8k-usb-cable",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-8k-usb-cable",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1440-PNG_a880d38a-b053-48da-b782-253bcf11d8ea.png?v=1781611775",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44962588622934",
@@ -5995,7 +6169,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6010,11 +6184,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-controller-bag",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-controller-bag",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1440-PNG_3edd0f93-b126-4489-9e0b-cc45ffe69c9b.png?v=1774262396",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44203840077910",
@@ -6056,11 +6232,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-magic-cap-motion-interchangeable-joystick-set",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-magic-cap-motion-interchangeable-joystick-set",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/X2_3.png?v=1777285306",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44207188836438",
@@ -6099,7 +6277,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6114,11 +6292,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-magic-key-motion-control-module",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-magic-key-motion-control-module",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20260322153438_99_1989.png?v=1774177140",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44201907224662",
@@ -6148,7 +6328,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6163,11 +6343,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-r20-wireless-dongle",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-r20-wireless-dongle",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/15_c40d2d54-3d67-4e90-9482-430e63fcf45b.png?v=1774261579",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44203826675798",
@@ -6206,11 +6388,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-saber-plus-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-saber-plus-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20260519-160555_cb64dea0-7cef-4b76-ac32-94b99ded26d1.png?v=1779245327",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44760395481174",
@@ -6294,7 +6478,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6309,11 +6493,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/leadjoy-xeno-plus-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/leadjoy-xeno-plus-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20260322153436_98_1989_1d471c4f-fbce-43f9-a035-fa4528bf583f.png?v=1774174936",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44201907388502",
@@ -6369,7 +6555,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6384,11 +6570,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/manba-one-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/manba-one-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/2_1739f451-5445-4b6c-95dd-8aa9a8e97559.png?v=1763047852",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41630054088790",
@@ -6423,7 +6611,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6438,11 +6626,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/metal-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
       "officialSourceUrl": "https://gadgethyper.com/products/metal-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/87.png?v=1780993379",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842664230998",
@@ -6521,11 +6711,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/metal-d-pad-for-gamesir-g7-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/metal-d-pad-for-gamesir-g7-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/87_2acb6781-b2f0-48bd-98f7-eb1af93da192.png?v=1780993523",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842668097622",
@@ -6604,11 +6796,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/metal-interchangeable-d-pad-for-gamesir-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/metal-interchangeable-d-pad-for-gamesir-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_4fe390ed-d96d-4b86-9c25-55535995e0c5.png?v=1776999978",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44521284239446",
@@ -6693,11 +6887,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/mobapad-huben2-wireless-switch-pc-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/mobapad-huben2-wireless-switch-pc-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/34.png?v=1770188952",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42451027853398",
@@ -6744,7 +6940,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6759,11 +6955,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/mobapad-wireless-charger-dock-for-chitu2-hd",
       "officialSourceUrl": "https://gadgethyper.com/products/mobapad-wireless-charger-dock-for-chitu2-hd",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_a9052698-5faa-48df-b494-a76ce596c18a.png?v=1770189642",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43883883135062",
@@ -6809,7 +7007,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6824,11 +7022,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/moeyu-hatsune-miku-heart-of-esports-series-mechanical-gaming-keyboard",
       "officialSourceUrl": "https://gadgethyper.com/products/moeyu-hatsune-miku-heart-of-esports-series-mechanical-gaming-keyboard",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20240304003944.png?v=1709489514",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40726098608214",
@@ -6863,7 +7063,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6878,11 +7078,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/moeyu-hatsune-miku-heart-of-esports-series-mechanical-gaming-mouse",
       "officialSourceUrl": "https://gadgethyper.com/products/moeyu-hatsune-miku-heart-of-esports-series-mechanical-gaming-mouse",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/20240304003941.png?v=1709489703",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40726105620566",
@@ -6921,11 +7123,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/mojhon-bigbig-won-blitz-2-gaming-controller-dynasty-warriors-origins-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/mojhon-bigbig-won-blitz-2-gaming-controller-dynasty-warriors-origins-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/7_463a9f0a-7105-48b7-b046-e13cb727c04d.png?v=1766484739",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43819974066262",
@@ -6967,7 +7171,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -6982,11 +7186,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/mojhon-bigbig-won-storm-wireless-gaming-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/mojhon-bigbig-won-storm-wireless-gaming-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/48_10ed7d8f-ee1f-4197-915f-cc17c064b8c0.png?v=1778209485",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44675169157206",
@@ -7030,7 +7236,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7045,11 +7251,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/mojhon-bigbigwon-rainbow-3-wireless-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/mojhon-bigbigwon-rainbow-3-wireless-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_21fb97bc-af79-42bf-9d2e-5612513ab7f1.png?v=1758270180",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "43374774583382",
@@ -7084,7 +7292,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7099,11 +7307,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/nylon-d-pad-for-gamesir-g7-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/nylon-d-pad-for-gamesir-g7-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0212g_8585e030-059c-4a96-9b8f-1c20ffd7336g_e0be16da-2634-4a44-9135-cc7894e85efe.png?v=1780998296",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842671013974",
@@ -7161,11 +7371,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/nylon-d-pad-for-leadjoy-xeno-plus",
       "officialSourceUrl": "https://gadgethyper.com/products/nylon-d-pad-for-leadjoy-xeno-plus",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/img_v3_0212g_8585e030-059c-4a96-9b8f-1c20ffd7336g.png?v=1780998257",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842673111126",
@@ -7223,11 +7435,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/palmlab-lancer-001-pro-8k-wireless-gaming-mouse",
       "officialSourceUrl": "https://gadgethyper.com/products/palmlab-lancer-001-pro-8k-wireless-gaming-mouse",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/LC01_b__1.png?v=1781512282",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44952321851478",
@@ -7263,7 +7477,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7278,11 +7492,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/palmlab-m001-ultimate-wireless-gaming-pro-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/palmlab-m001-ultimate-wireless-gaming-pro-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/PALMLAB_M.001.png?v=1745239411",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42260449230934",
@@ -7315,7 +7531,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7330,11 +7546,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/pisen-65w-gan-wall-charger-eva-type-01-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/pisen-65w-gan-wall-charger-eva-type-01-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_65e8cd21-a74d-4cbd-8788-b1854a986335.png?v=1724153554",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40694831644758",
@@ -7370,7 +7588,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7385,11 +7603,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/resin-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
       "officialSourceUrl": "https://gadgethyper.com/products/resin-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/88_6b9c6be0-6207-45d9-b551-8e1f1e549c38.png?v=1780993429",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842659315798",
@@ -7489,11 +7709,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/resin-d-pad-for-gamesir-g7-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/resin-d-pad-for-gamesir-g7-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/92_2a4b40ae-12ea-4a3f-bff6-224ccaa83846.png?v=1780993517",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842659545174",
@@ -7614,11 +7836,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/resin-d-pad-for-leadjoy-xeno-plus",
       "officialSourceUrl": "https://gadgethyper.com/products/resin-d-pad-for-leadjoy-xeno-plus",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/91_78d071f7-ca6d-4a77-a1d5-33ef30cdeedb.png?v=1780993455",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842660364374",
@@ -7739,11 +7963,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/screen-protector-for-flydigi-apex-5-series-3-pack",
       "officialSourceUrl": "https://gadgethyper.com/products/screen-protector-for-flydigi-apex-5-series-3-pack",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6_9468d01e-7d56-4b04-8bf5-1951dcd40ff9.png?v=1773202178",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44156016001110",
@@ -7788,7 +8014,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7803,11 +8029,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/silicone-skin-cover-grip-for-mojhon-blitz-2-controller",
       "officialSourceUrl": "https://gadgethyper.com/products/silicone-skin-cover-grip-for-mojhon-blitz-2-controller",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/28_81cd9230-e1a5-480e-ba02-30d93cf6fa5b.png?v=1776930806",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44521267953750",
@@ -7840,7 +8068,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7855,11 +8083,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/stump-eva-neon-genesis-evangelion-active-noise-cancelling-bluetooth-earphones",
       "officialSourceUrl": "https://gadgethyper.com/products/stump-eva-neon-genesis-evangelion-active-noise-cancelling-bluetooth-earphones",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_38175470-6e15-46f1-b4ae-8a9f1f20a7d6.png?v=1724156541",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41644609273942",
@@ -7891,7 +8121,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7906,11 +8136,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/stumpe-eva-01-neon-genesis-evangelion-ear-hook-noise-cancelling-earphones",
       "officialSourceUrl": "https://gadgethyper.com/products/stumpe-eva-01-neon-genesis-evangelion-ear-hook-noise-cancelling-earphones",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_a46b0df3-83e5-4d3d-9611-828c2ae12747.png?v=1724154837",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41644641615958",
@@ -7941,7 +8173,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -7956,11 +8188,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/stumpe-eva-02-neon-genesis-evangelion-asuka-noise-cancelling-wireless-earphones",
       "officialSourceUrl": "https://gadgethyper.com/products/stumpe-eva-02-neon-genesis-evangelion-asuka-noise-cancelling-wireless-earphones",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_be8166c5-e479-4689-9df3-037652452baa.png?v=1724155141",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41644632735830",
@@ -7994,7 +8228,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8009,11 +8243,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/stumpe-ows-open-ear-headphones-eva-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/stumpe-ows-open-ear-headphones-eva-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_587c3657-0b22-4482-859d-987f5c5a537c.png?v=1723196289",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "41131027628118",
@@ -8047,7 +8283,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8062,11 +8298,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/transparent-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
       "officialSourceUrl": "https://gadgethyper.com/products/transparent-d-pad-for-flydigi-apex-5-vader-5-pro-direwolf-4",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/90.png?v=1780993328",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842493968470",
@@ -8229,11 +8467,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/transparent-d-pad-for-gamesir-g7-g7-pro",
       "officialSourceUrl": "https://gadgethyper.com/products/transparent-d-pad-for-gamesir-g7-g7-pro",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/92.png?v=1780993506",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842530865238",
@@ -8396,11 +8636,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/transparent-d-pad-for-leadjoy-xeno-plus",
       "officialSourceUrl": "https://gadgethyper.com/products/transparent-d-pad-for-leadjoy-xeno-plus",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/91.png?v=1780993263",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44842529095766",
@@ -8563,11 +8805,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/yoose-ice-electric-shaver-eva-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/yoose-ice-electric-shaver-eva-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_74acb9f9-2a0d-42ef-9242-c80db2f15267.png?v=1742914488",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "40599758274646",
@@ -8600,7 +8844,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8615,11 +8859,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/yoose-electric-shaver-pokemon-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/yoose-electric-shaver-pokemon-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_29aa2afc-41b7-4995-9e80-28adfe0b678a.png?v=1751869109",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42000773677142",
@@ -8651,7 +8897,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8666,11 +8912,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/yoose-mini5-pro-electric-shaver-gundam-limited-edition",
       "officialSourceUrl": "https://gadgethyper.com/products/yoose-mini5-pro-electric-shaver-gundam-limited-edition",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_77a66e57-53aa-4265-acf6-cecfdffc4874.png?v=1755951196",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42535197474902",
@@ -8703,7 +8951,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8718,11 +8966,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-140w-gan-3-port-fast-charger",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-140w-gan-3-port-fast-charger",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/12_42313678-6161-4f8f-9baf-fd5c7bc1f37f.png?v=1773987234",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44197773443158",
@@ -8757,7 +9007,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8772,11 +9022,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-240w-fast-charging-cable",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-240w-fast-charging-cable",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/14_b651d106-da40-422b-9a16-ab4c91a76c63.png?v=1773988786",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44197956517974",
@@ -8818,7 +9070,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8833,11 +9085,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-36w-gan-multi-functional-desktop-light-box-socket",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-36w-gan-multi-functional-desktop-light-box-socket",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_26b7c287-25f2-4a3b-a899-4d2c562b05b2.png?v=1743768727",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42228138836054",
@@ -8868,7 +9122,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8883,11 +9137,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-charge-pro-fast-charge-power-bank-with-digital-display",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-charge-pro-fast-charge-power-bank-with-digital-display",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_ed9069b5-4662-459e-b46c-96747171d2bd.png?v=1773649080",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "44180164149334",
@@ -8927,7 +9183,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8942,11 +9198,13 @@
       "lifecycle": "active",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-coiled-fast-charging-data-cabletypec-typec",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-coiled-fast-charging-data-cabletypec-typec",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/6a0f48436f03bf48e8c7f28f9f150b4c_d150334b-f680-4da4-b921-69f57b24004d.png?v=1770791190",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42236463218774",
@@ -8975,7 +9233,7 @@
         "Compatibility can vary by platform, game and connection mode.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     },
     {
       "schemaVersion": 3,
@@ -8990,11 +9248,13 @@
       "lifecycle": "sold-out",
       "destinationUrl": "https://gadgethyper.com/products/zenless-zone-zero-magnetic-wireless-power-bank",
       "officialSourceUrl": "https://gadgethyper.com/products/zenless-zone-zero-magnetic-wireless-power-bank",
-      "sourceCheckedAt": "2026-09-07",
-      "lastUpdated": "2026-09-07",
-      "sourceEvidenceState": "official-public-catalogue",
+      "sourceCheckedAt": "2026-09-09",
+      "lastUpdated": "2026-09-09",
+      "sourceEvidenceState": "official-merchant-catalogue",
       "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0559/3035/5798/files/1_b3875661-9400-46f2-a550-c177cb211d99.png?v=1743936154",
-      "imageRightsState": "review-required",
+      "imageRightsState": "affiliate-authorised",
+      "imageRightsEvidence": "goaffpro-program-content-license",
+      "imageRightsCheckedAt": "2026-09-09",
       "variants": [
         {
           "id": "42231568597078",
@@ -9024,7 +9284,7 @@
         "No variant was shown as available when the catalogue was checked.",
         "Price, availability, delivery and warranty terms can change at the retailer."
       ],
-      "indexable": false
+      "indexable": true
     }
   ]
 }

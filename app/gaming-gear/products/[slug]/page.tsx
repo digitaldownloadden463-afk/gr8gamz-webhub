@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!product) return {};
   const path = `/gaming-gear/products/${product.slug}`;
   const images = canShowMerchantImage(product) && product.imageSourceUrl ? [{ url: product.imageSourceUrl, alt: product.name }] : undefined;
-  return { title: `${product.name} | Features and Compatibility`, description: product.shortDescription, robots: product.indexable ? { index: true, follow: true } : { index: false, follow: true }, alternates: { canonical: canonical(path) }, openGraph: { title: product.name, description: product.shortDescription, url: canonical(path), images } };
+  return { title: `${product.name} | GR8 GEAR`, description: product.shortDescription, robots: product.indexable ? { index: true, follow: true } : { index: false, follow: true }, alternates: { canonical: canonical(path) }, openGraph: { title: `${product.name} | GR8 GEAR`, description: product.shortDescription, url: canonical(path), images } };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -38,7 +38,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const priceVisible = canShowPrice(product);
   const heroHref = buildAffiliateUrl(product, commercePageId('product', product.slug), 'hero');
   const footerHref = buildAffiliateUrl(product, commercePageId('product', product.slug), 'footer');
-  const productSchema = { '@context': 'https://schema.org', '@type': 'Product', name: product.name, brand: { '@type': 'Brand', name: product.brand }, category: category.name, description: product.shortDescription, url: canonical(currentPath), ...(canShowMerchantImage(product) && product.imageSourceUrl ? { image: product.imageSourceUrl } : {}) };
+  const productSchema = { '@context': 'https://schema.org', '@type': 'Product', name: product.name, brand: { '@type': 'Brand', name: product.brand }, category: category.name, description: product.shortDescription, url: canonical(currentPath), ...(canShowMerchantImage(product) && product.imageSourceUrl ? { image: product.imageSourceUrl } : {}), ...(priceVisible ? { offers: { '@type': 'Offer', url: heroHref || product.destinationUrl, priceCurrency: product.currency, price: product.price!.toFixed(2), availability: 'https://schema.org/InStock', seller: { '@type': 'Organization', name: 'GadgetHyper' } } } : {}) };
   return (
     <main className="commerce-page">
       <CommercePageView pageType="product" pageSlug={product.slug} category={product.category} productSlug={product.slug} productName={product.name} />

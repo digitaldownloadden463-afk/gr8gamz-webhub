@@ -38,9 +38,11 @@ export type CommerceProduct = {
   officialSourceUrl: string;
   sourceCheckedAt: string;
   lastUpdated: string;
-  sourceEvidenceState: 'official-public-catalogue';
+  sourceEvidenceState: 'official-merchant-catalogue';
   imageSourceUrl: string | null;
   imageRightsState: AssetRightsState;
+  imageRightsEvidence: string | null;
+  imageRightsCheckedAt: string | null;
   variants: readonly CommerceVariant[];
   price: number | null;
   compareAtPrice: number | null;

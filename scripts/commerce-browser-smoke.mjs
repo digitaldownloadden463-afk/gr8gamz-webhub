@@ -2,6 +2,7 @@ import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import catalogue from '../src/data/commerce/gadgethyper-products.generated.json' with { type: 'json' };
+import affiliateConfig from '../src/data/commerce/gadgethyper-affiliate.json' with { type: 'json' };
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:3100';
 const screenshotDirectory = process.env.SCREENSHOT_DIR ? path.resolve(process.env.SCREENSHOT_DIR) : null;
@@ -17,7 +18,11 @@ const editorial = [
   '/gaming-gear/controllers/best-tmr-controllers',
   '/gaming-gear/controllers/best-mobile-gaming-controllers',
   '/gaming-gear/controllers/flydigi-vader-5-pro-vs-apex-5',
-  '/gaming-gear/cooling/flydigi-bs3-vs-bs3-pro'
+  '/gaming-gear/controllers/easysmx-dune-8k-vs-bigbig-won-blitz-2-tmr',
+  '/gaming-gear/cooling/flydigi-bs3-vs-bs3-pro',
+  '/gaming-gear/gaming-mice/best-gaming-mouse',
+  '/gaming-gear/gaming-mice/best-wireless-gaming-mouse',
+  '/gaming-gear/gaming-keyboards/best-mechanical-gaming-keyboard'
 ];
 const routes = ['/gaming-gear', '/gaming-gear/all-products', ...categories.map((category) => `/gaming-gear/${category}`), ...editorial, ...catalogue.products.slice(0, 20).map((product) => `/gaming-gear/products/${product.slug}`)];
 const representativeProduct = catalogue.products.find((product) => product.lifecycle === 'active') || catalogue.products[0];
@@ -45,14 +50,25 @@ try {
       if (await page.getByText(/add to cart|checkout/i).count()) failures.push(`${route} implies an on-site transaction`);
       const schema = (await page.locator('script[type="application/ld+json"]').allTextContents()).join('\n');
       if (route.startsWith('/gaming-gear/products/')) {
+        const product = catalogue.products.find((item) => route === `/gaming-gear/products/${item.slug}`);
         if (!schema.includes('"@type":"Product"')) failures.push(`${route} has no Product structured data`);
         const robots = await page.locator('meta[name="robots"]').getAttribute('content');
-        if (!robots?.includes('noindex')) failures.push(`${route} is indexable before image-rights approval`);
+        if (product?.indexable && robots?.includes('noindex')) failures.push(`${route} remains noindex after satisfying the product quality gate`);
+        if (!product?.indexable && !robots?.includes('noindex')) failures.push(`${route} is indexable without satisfying the product quality gate`);
+        await page.locator('.product-hero__image img').waitFor({ state: 'visible', timeout: 20_000 });
+        const imageLoaded = await page.locator('.product-hero__image img').evaluate((image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0);
+        if (!imageLoaded) failures.push(`${route} has a broken product image`);
       }
       if (categories.some((category) => route === `/gaming-gear/${category}`) && !schema.includes('CollectionPage')) failures.push(`${route} has no CollectionPage structured data`);
-      for (const anchor of await page.locator('a[rel*="sponsored"]').all()) {
+      const sponsoredLinks = page.locator('a[rel*="sponsored"]');
+      if (!(await sponsoredLinks.count())) failures.push(`${route} has no enabled affiliate CTA`);
+      for (const anchor of await sponsoredLinks.all()) {
         const rel = new Set(((await anchor.getAttribute('rel')) || '').split(/\s+/));
         if (!rel.has('noopener') || !rel.has('noreferrer')) failures.push(`${route} has incomplete affiliate rel attributes`);
+        const href = await anchor.getAttribute('href');
+        if (!href) { failures.push(`${route} has an empty affiliate destination`); continue; }
+        const affiliateUrl = new URL(href);
+        if (!['gadgethyper.com', 'www.gadgethyper.com'].includes(affiliateUrl.hostname) || affiliateUrl.searchParams.get('ref') !== affiliateConfig.publicReferralCode) failures.push(`${route} has invalid GadgetHyper affiliate attribution`);
       }
       if (screenshotDirectory && ['/gaming-gear', '/gaming-gear/controllers', `/gaming-gear/products/${representativeProduct.slug}`].includes(route)) {
         await page.screenshot({ path: path.join(screenshotDirectory, `${viewport.width}-${route.split('/').filter(Boolean).join('-')}.png`), fullPage: true });

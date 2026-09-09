@@ -39,7 +39,7 @@ export default async function CommerceCategoryPage({ params }: { params: Promise
       <section className="commerce-title"><span className="eyebrow">GR8 GEAR</span><h1>{category.name}</h1><p>{category.description} Purchases are completed at GadgetHyper.</p></section>
       <AffiliateDisclosure />
       <AdSensePlacement placement="editorial-upper-content" />
-      <CatalogueBrowser products={products} title={`${category.name} catalogue`} />
+      <CatalogueBrowser products={products} title={`${category.name} catalogue`} pageType="category" pageSlug={category.slug} />
       <AdSensePlacement placement="editorial-mid-content" />
       {guides.length ? <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Buying guides</span><h2>Start with the decision you need to make.</h2></div><div className="guide-link-grid">{guides.map((guide) => <Link key={guide.slug} href={guidePath(guide)}><span>{guide.query}</span><strong>{guide.title}</strong><ArrowRight size={18} aria-hidden="true" /></Link>)}</div></section> : null}
       {comparisons.length ? <section className="commerce-section"><div className="section-heading"><span className="eyebrow">Compare</span><h2>Attribute-by-attribute product decisions.</h2></div><div className="comparison-links">{comparisons.map((comparison) => <Link key={comparison.slug} href={`/gaming-gear/${comparison.category}/${comparison.slug}`}><strong>{comparison.title}</strong><span>{comparison.description}</span></Link>)}</div></section> : null}

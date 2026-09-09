@@ -15,7 +15,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
     "ingest:partners": "node scripts/ingest-partner-catalogue.mjs",
     "ingest:gamemonetize": "node scripts/ingest-partner-catalogue.mjs",
-    "ingest:gadgethyper": "node scripts/ingest-gadgethyper.mjs --write",
+    "ingest:gadgethyper": "node scripts/ingest-gadgethyper.mjs --write --image-rights-evidence goaffpro-program-content-license",
     "validate:gadgethyper": "node scripts/validate-gadgethyper.mjs",
     "validate:no-razer-affiliate": "node scripts/validate-no-razer-affiliate.mjs",
     "validate:games": "node scripts/validate-games.mjs",
@@ -88,7 +88,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "1.27.0",
-    "next": "16.2.12",
+    "next": "16.3.3",
     "postcss": "8.5.23",
     "react": "19.2.8",
     "react-dom": "19.2.8"
@@ -99,7 +99,7 @@
     "@types/react": "19.2.17",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.2.12",
+    "eslint-config-next": "^16.3.3",
     "lighthouse": "^13.4.1",
     "prettier": "^3.1.0",
     "typescript": "5.9.3"
