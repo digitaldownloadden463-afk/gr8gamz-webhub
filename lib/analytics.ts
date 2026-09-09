@@ -40,7 +40,7 @@ export type AnalyticsParameters = Partial<{
   game_type: 'original' | 'select';
   locale: string;
   provider: 'gr8' | 'gamepix' | 'gamemonetize';
-  merchant: 'razer';
+  merchant: 'gadgethyper';
   product_slug: string;
   product_name: string;
   guide_slug: string;
@@ -121,7 +121,7 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (key === 'game_type' && normalized !== 'original' && normalized !== 'select') continue;
     if (key === 'locale' && !/^[a-z]{2}(?:-[A-Z]{2})?$/.test(normalized)) continue;
     if (key === 'provider' && !['gr8', 'gamepix', 'gamemonetize'].includes(normalized)) continue;
-    if (key === 'merchant' && normalized !== 'razer') continue;
+    if (key === 'merchant' && normalized !== 'gadgethyper') continue;
     if (
       key === 'page_type' &&
       !['hub', 'category', 'guide', 'comparison', 'product'].includes(normalized)

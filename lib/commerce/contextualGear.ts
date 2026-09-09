@@ -24,11 +24,11 @@ const localizedCopy: Record<Locale, { aria: string; eyebrow: string; title: stri
 };
 
 const guideByKind: Record<ContextualGearKind, string> = {
-  mobile: '/gaming-gear/mobile-gaming/best-mobile-gaming-controller',
-  competitive: '/gaming-gear/gaming-mice/best-gaming-mouse-for-fps',
-  communication: '/gaming-gear/gaming-headsets/best-gaming-headset',
-  precision: '/gaming-gear/gaming-mice/best-ergonomic-gaming-mouse',
-  starter: '/gaming-gear/gaming-mice/best-gaming-mouse'
+  mobile: '/gaming-gear/controllers/best-mobile-gaming-controllers',
+  competitive: '/gaming-gear/controllers/best-controllers-for-fps-games',
+  communication: '/gaming-gear/controllers',
+  precision: '/gaming-gear/keyboards',
+  starter: '/gaming-gear/controllers/best-gaming-controllers'
 };
 
 export function contextualGearRecommendation({ category, controls = '', deviceFit = '' }: { category?: string; controls?: string; deviceFit?: string }): ContextualGearRecommendation {

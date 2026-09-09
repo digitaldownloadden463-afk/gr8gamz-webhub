@@ -9,11 +9,15 @@ const [{ contextualGearCopy, contextualGearRecommendation }, { buyingGuides }] =
   import(pathToFileURL(path.join(root, 'src/data/commerce/guides.ts')).href)
 ]);
 const catalogue = JSON.parse(fs.readFileSync(path.join(root, 'src/data/partnerCatalog.generated.json'), 'utf8'));
-const guideRoutes = new Set(buyingGuides.map((guide) => `/gaming-gear/${guide.category}/${guide.slug}`));
+const commerceRoutes = new Set([
+  '/gaming-gear/controllers',
+  '/gaming-gear/keyboards',
+  ...buyingGuides.map((guide) => `/gaming-gear/${guide.legacyCategory || guide.category}/${guide.slug}`)
+]);
 const kindCounts = {};
 for (const game of catalogue.games) {
   const recommendation = contextualGearRecommendation({ category: game.category, controls: game.controls, deviceFit: game.deviceSupport });
-  assert.ok(guideRoutes.has(recommendation.href), `${game.slug} has a broken gear guide target`);
+  assert.ok(commerceRoutes.has(recommendation.href), `${game.slug} has a broken gear guide target`);
   kindCounts[recommendation.kind] = (kindCounts[recommendation.kind] || 0) + 1;
 }
 for (const locale of ['en', 'es', 'pt-BR', 'fr', 'de', 'it', 'pl', 'tr', 'id', 'ja', 'ko', 'hi', 'ar']) {
@@ -29,6 +33,6 @@ const localizedSource = fs.readFileSync(path.join(root, 'components/LocalizedPag
 const moduleSource = fs.readFileSync(path.join(root, 'components/commerce/GearContextModule.tsx'), 'utf8');
 assert.match(profileSource, /GearContextModule category=\{profile\.category\} controls=\{controls\}/);
 assert.match(localizedSource, /GearContextModule category=\{game\.category\}/);
-assert.doesNotMatch(moduleSource, /razer\.a9yw\.net|target="_blank"/);
+assert.doesNotMatch(moduleSource, /gadgethyper\.com\/products\/.*(?:ref|aff)|target="_blank"/);
 assert.match(moduleSource, /copy\.disclosure/);
 console.log(JSON.stringify({ partnerProfilesWithContextualRecommendations: catalogue.games.length, recommendationKinds: kindCounts }, null, 2));

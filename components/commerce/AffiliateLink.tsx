@@ -3,9 +3,9 @@
 import type { ReactNode } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import type { CommercePageType, CommerceProduct } from '@/lib/commerce/types';
-import { buildAffiliateUrl, commercePageId } from '@/lib/commerce/affiliate';
 
-export default function AffiliateLink({ product, pageType, pageSlug, position, className, children }: {
+export default function AffiliateLink({ href, product, pageType, pageSlug, position, className, children }: {
+  href: string | null;
   product: CommerceProduct;
   pageType: CommercePageType;
   pageSlug: string;
@@ -13,17 +13,16 @@ export default function AffiliateLink({ product, pageType, pageSlug, position, c
   className?: string;
   children: ReactNode;
 }) {
-  const href = buildAffiliateUrl(product, commercePageId(pageType, pageSlug), position);
-  const locale = () => document.documentElement.lang || 'en';
+  if (!href) return <span className={`${className || ''} affiliate-link--disabled`} aria-disabled="true" title="Affiliate link awaiting approved configuration">Affiliate link pending</span>;
   return (
     <a
       href={href}
       target="_blank"
-      rel="sponsored nofollow noopener"
+      rel="sponsored noopener noreferrer"
       className={className}
       onClick={() => trackEvent('affiliate_click', {
         merchant: product.merchant,
-        locale: locale(),
+        locale: document.documentElement.lang || 'en',
         product_slug: product.slug,
         product_name: product.name,
         guide_slug: pageType === 'guide' || pageType === 'comparison' ? pageSlug : undefined,

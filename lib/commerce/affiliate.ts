@@ -1,43 +1,36 @@
-import type { CommerceProduct, CommercePageType } from '@/lib/commerce/types';
+import type { CommercePageType, CommerceProduct } from '@/lib/commerce/types';
+import { gadgetHyperAffiliateRef } from '@/lib/commerce/gadgethyperConfig';
 
-const RAZER_TRACKING_BASE = 'https://razer.a9yw.net/c/7589251/642901/10229';
-const RAZER_DESTINATION_HOST = 'www.razer.com';
+const merchantHosts = new Set(['gadgethyper.com', 'www.gadgethyper.com']);
 
-function safeSubId(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9_]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 64);
+function safeId(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9_-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 64);
 }
 
-export function isApprovedRazerDestination(value: string) {
+export function isApprovedGadgetHyperDestination(value: string) {
   try {
     const url = new URL(value);
-    return url.protocol === 'https:' && url.hostname === RAZER_DESTINATION_HOST && url.pathname.startsWith('/gb-en/');
+    return url.protocol === 'https:' && merchantHosts.has(url.hostname) && url.pathname.startsWith('/products/');
   } catch {
     return false;
   }
 }
 
-export function buildAffiliateUrl(product: CommerceProduct, pageId: string, ctaPosition: string) {
-  if (!isApprovedRazerDestination(product.destinationUrl)) throw new Error(`Unapproved Razer destination for ${product.slug}`);
-  const url = new URL(RAZER_TRACKING_BASE);
-  url.searchParams.set('u', product.destinationUrl);
-  url.searchParams.set('subId1', safeSubId(`gr8_${pageId}`));
-  url.searchParams.set('subId2', safeSubId(product.slug));
-  url.searchParams.set('subId3', safeSubId(ctaPosition));
-  return url.toString();
-}
-
 export function commercePageId(pageType: CommercePageType, slug: string) {
-  return safeSubId(`${pageType}_${slug}`);
+  return safeId(`${pageType}_${slug}`);
 }
 
-export const razerAffiliateProgramme = {
-  network: 'Impact',
-  programme: 'Razer Affiliate Program',
-  programmeId: '10229',
-  accountId: '7589251',
-  attributionWindowDays: 14,
-  attributionModel: 'last click',
-  standardCommission: '5%',
-  bladeCommission: '2.5%',
-  trackingBase: RAZER_TRACKING_BASE
-} as const;
+export function buildAffiliateUrl(product: CommerceProduct, pageId: string, placement: string) {
+  if (!isApprovedGadgetHyperDestination(product.destinationUrl)) throw new Error(`Unapproved GadgetHyper destination for ${product.slug}`);
+  void pageId;
+  void placement;
+  try {
+    const destination = new URL(product.destinationUrl);
+    destination.searchParams.set('ref', gadgetHyperAffiliateRef);
+    const url = new URL(destination.toString());
+    if (!isApprovedGadgetHyperDestination(url.toString()) || url.searchParams.get('ref') !== gadgetHyperAffiliateRef) return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}

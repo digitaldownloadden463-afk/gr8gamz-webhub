@@ -139,7 +139,7 @@
       "originalSlugs": [],
       "relatedCategorySlugs": ["action", "strategy", "racing", "sports"],
       "gearGuide": {
-        "path": "/gaming-gear/gaming-headsets/best-gaming-headset",
+        "path": "/gaming-gear/controllers",
         "label": "Compare gaming headsets for communication and immersion",
         "description": "A secondary guide for players considering clearer voice communication or a more private audio setup."
       },
@@ -176,7 +176,7 @@
       "originalSlugs": ["bubble-pop-blitz", "crystal-match-quest", "lava-tile-escape", "ice-slide-puzzle", "astro-memory-grid"],
       "relatedCategorySlugs": ["strategy", "adventure", "arcade"],
       "gearGuide": {
-        "path": "/gaming-gear/gaming-mice/best-gaming-mouse",
+        "path": "/gaming-gear/controllers/best-gaming-controllers",
         "label": "Compare mouse shapes for precise desktop control",
         "description": "Optional reading for players who spend longer sessions on drag, placement or pointer-led games."
       },
@@ -242,7 +242,7 @@
       "originalSlugs": ["alien-invader-swarm"],
       "relatedCategorySlugs": ["action", "arcade", "strategy"],
       "gearGuide": {
-        "path": "/gaming-gear/gaming-mice/best-gaming-mouse-for-fps",
+        "path": "/gaming-gear/controllers/best-controllers-for-fps-games",
         "label": "Compare current mouse shapes for FPS play",
         "description": "Optional hardware guidance for players moving from simple browser aiming to mouse-led PC shooters."
       },
@@ -311,7 +311,7 @@
       "originalSlugs": ["traffic-tap-chaos"],
       "relatedCategorySlugs": ["puzzle", "multiplayer", "action"],
       "gearGuide": {
-        "path": "/gaming-gear/gaming-mice/best-ergonomic-gaming-mouse",
+        "path": "/gaming-gear/keyboards",
         "label": "Compare mouse shapes for longer desktop sessions",
         "description": "Optional reading for players who spend extended strategy sessions using pointer-led controls."
       },

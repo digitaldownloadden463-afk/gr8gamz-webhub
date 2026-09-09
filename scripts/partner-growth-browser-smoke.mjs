@@ -17,7 +17,7 @@ try {
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
     const context = await browser.newContext({ viewport });
     const providerRequests = [];
-    context.on('request', (request) => { if (/html5\.gamemonetize\.co|razer\.a9yw\.net/.test(request.url())) providerRequests.push(request.url()); });
+    context.on('request', (request) => { if (/html5\.gamemonetize\.co|gadgethyper\.com/.test(request.url())) providerRequests.push(request.url()); });
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));

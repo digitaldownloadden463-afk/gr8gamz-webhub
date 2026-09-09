@@ -21,7 +21,7 @@ export default function CommercePageView({ pageType, pageSlug, category, product
     const key = `${pageType}:${pageSlug}`;
     if (trackedKey.current === key) return;
     if (!trackEvent(pageType === 'product' ? 'product_view' : 'affiliate_guide_view', {
-      merchant: 'razer',
+      merchant: 'gadgethyper',
       locale: document.documentElement.lang || 'en',
       page_type: pageType,
       category,

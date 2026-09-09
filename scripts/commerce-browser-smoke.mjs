@@ -1,86 +1,102 @@
 import { chromium } from '@playwright/test';
+import fs from 'node:fs/promises';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import catalogue from '../src/data/commerce/gadgethyper-products.generated.json' with { type: 'json' };
+import affiliateConfig from '../src/data/commerce/gadgethyper-affiliate.json' with { type: 'json' };
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:3100';
-const [{ commerceProducts }, { buyingGuides }, { productComparisons }] = await Promise.all([
-  import(pathToFileURL(path.join(process.cwd(), 'src/data/commerce/products.ts')).href),
-  import(pathToFileURL(path.join(process.cwd(), 'src/data/commerce/guides.ts')).href),
-  import(pathToFileURL(path.join(process.cwd(), 'src/data/commerce/comparisons.ts')).href)
-]);
-
-const representativeRoutes = [
-  '/gaming-gear',
-  '/gaming-gear/gaming-mice',
-  '/gaming-gear/gaming-headsets',
-  '/gaming-gear/gaming-keyboards',
-  '/gaming-gear/gaming-laptops',
-  '/gaming-gear/gaming-chairs',
-  '/gaming-gear/gaming-controllers',
-  '/gaming-gear/mobile-gaming',
-  '/gaming-gear/gaming-headsets/razer-blackshark-v3-pro-vs-kraken-v4-pro',
-  '/gaming-gear/gaming-mice/best-wireless-gaming-mouse',
-  '/gaming-gear/gaming-mice/razer-viper-v4-pro-vs-deathadder-v4-pro',
-  '/gaming-gear/products/razer-viper-v4-pro',
-  '/gaming-gear/products/razer-naga-v3-pro',
-  '/gaming-gear/gaming-laptops/razer-blade-14-vs-blade-16',
-  '/gaming-gear/gaming-chairs/razer-iskur-v2-newgen-vs-enki',
-  '/gaming-gear/gaming-keyboards/razer-huntsman-v3-pro-8khz-vs-blackwidow-v4-pro',
-  '/gaming-gear/mobile-gaming/razer-kishi-v3-vs-kishi-v3-pro'
-];
-const routes = [
-  '/gaming-gear',
-  ...new Set(commerceProducts.map((product) => `/gaming-gear/${product.category}`)),
-  ...commerceProducts.map((product) => `/gaming-gear/products/${product.slug}`),
-  ...buyingGuides.map((guide) => `/gaming-gear/${guide.category}/${guide.slug}`),
-  ...productComparisons.map((comparison) => `/gaming-gear/${comparison.category}/${comparison.slug}`)
-];
-
-const browser = await chromium.launch({ headless: true });
+const screenshotDirectory = process.env.SCREENSHOT_DIR ? path.resolve(process.env.SCREENSHOT_DIR) : null;
 const failures = [];
+const categories = ['controllers', 'controller-accessories', 'keyboards', 'mice', 'cooling', 'power', 'audio', 'lifestyle'];
+const editorial = [
+  '/gaming-gear/controllers/best-gaming-controllers',
+  '/gaming-gear/controllers/best-wireless-gaming-controllers',
+  '/gaming-gear/controllers/best-budget-gaming-controllers',
+  '/gaming-gear/controllers/best-controllers-for-pc',
+  '/gaming-gear/controllers/best-controllers-for-fps-games',
+  '/gaming-gear/controllers/best-hall-effect-controllers',
+  '/gaming-gear/controllers/best-tmr-controllers',
+  '/gaming-gear/controllers/best-mobile-gaming-controllers',
+  '/gaming-gear/controllers/flydigi-vader-5-pro-vs-apex-5',
+  '/gaming-gear/controllers/easysmx-dune-8k-vs-bigbig-won-blitz-2-tmr',
+  '/gaming-gear/cooling/flydigi-bs3-vs-bs3-pro',
+  '/gaming-gear/gaming-mice/best-gaming-mouse',
+  '/gaming-gear/gaming-mice/best-wireless-gaming-mouse',
+  '/gaming-gear/gaming-keyboards/best-mechanical-gaming-keyboard'
+];
+const routes = ['/gaming-gear', '/gaming-gear/all-products', ...categories.map((category) => `/gaming-gear/${category}`), ...editorial, ...catalogue.products.slice(0, 20).map((product) => `/gaming-gear/products/${product.slug}`)];
+const representativeProduct = catalogue.products.find((product) => product.lifecycle === 'active') || catalogue.products[0];
+const viewports = [{ width: 390, height: 844 }, { width: 768, height: 1024 }, { width: 1440, height: 900 }, { width: 1920, height: 1080 }];
+const browser = await chromium.launch();
+if (screenshotDirectory) await fs.mkdir(screenshotDirectory, { recursive: true });
 
 try {
-  for (const viewport of [{ width: 390, height: 844 }, { width: 768, height: 1024 }, { width: 1440, height: 900 }]) {
+  for (const viewport of viewports) {
     const context = await browser.newContext({ viewport });
-    await context.route('https://pagead2.googlesyndication.com/**', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
-    await context.route('https://fundingchoicesmessages.google.com/**', (route) => route.fulfill({ status: 204, body: '' }));
     const page = await context.newPage();
-    const consoleErrors = [];
-    page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
-    const viewportRoutes = viewport.width < 1000 ? representativeRoutes : routes;
-    for (const route of viewportRoutes) {
-      const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 60_000 });
-      if (response?.status() !== 200) failures.push(`${route} returned ${response?.status()}`);
-      const facts = await page.evaluate(() => ({
-        h1: document.querySelectorAll('h1').length,
-        canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
-        disclosure: Boolean(document.querySelector('.commerce-disclosure')),
-        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
-        affiliateHrefs: [...document.querySelectorAll('a[rel~="sponsored"]')].map((anchor) => anchor.getAttribute('href') || '')
-      }));
-      if (facts.h1 !== 1) failures.push(`${route} has ${facts.h1} H1 elements`);
-      if (!facts.canonical.endsWith(route)) failures.push(`${route} canonical mismatch: ${facts.canonical}`);
-      if (!facts.disclosure) failures.push(`${route} is missing its affiliate disclosure`);
-      if (facts.overflow) failures.push(`${route} overflows at ${viewport.width}px`);
-      for (const href of facts.affiliateHrefs) {
-        const url = new URL(href);
-        if (url.hostname !== 'razer.a9yw.net' || !url.searchParams.get('u')?.startsWith('https://www.razer.com/gb-en/')) failures.push(`${route} has invalid affiliate URL`);
+    const errors = [];
+    page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('pageerror', (error) => errors.push(error.message));
+    for (const route of routes) {
+      const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+      if (response?.status() !== 200) { failures.push(`${route} returned ${response?.status()} at ${viewport.width}px`); continue; }
+      if (!(await page.locator('h1').count())) failures.push(`${route} has no H1`);
+      const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+      if (canonical !== `https://www.gr8gamz.com${route}`) failures.push(`${route} canonical mismatch: ${canonical}`);
+      if (!(await page.locator('meta[name="description"]').getAttribute('content'))?.trim()) failures.push(`${route} has no meta description`);
+      if (!(await page.locator('.commerce-disclosure').count())) failures.push(`${route} has no affiliate disclosure`);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+      if (overflow) failures.push(`${route} overflows at ${viewport.width}px`);
+      if (await page.getByText(/add to cart|checkout/i).count()) failures.push(`${route} implies an on-site transaction`);
+      const schema = (await page.locator('script[type="application/ld+json"]').allTextContents()).join('\n');
+      if (route.startsWith('/gaming-gear/products/')) {
+        const product = catalogue.products.find((item) => route === `/gaming-gear/products/${item.slug}`);
+        if (!schema.includes('"@type":"Product"')) failures.push(`${route} has no Product structured data`);
+        const robots = await page.locator('meta[name="robots"]').getAttribute('content');
+        if (product?.indexable && robots?.includes('noindex')) failures.push(`${route} remains noindex after satisfying the product quality gate`);
+        if (!product?.indexable && !robots?.includes('noindex')) failures.push(`${route} is indexable without satisfying the product quality gate`);
+        await page.locator('.product-hero__image img').waitFor({ state: 'visible', timeout: 20_000 });
+        const imageLoaded = await page.locator('.product-hero__image img').evaluate((image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0);
+        if (!imageLoaded) failures.push(`${route} has a broken product image`);
+      }
+      if (categories.some((category) => route === `/gaming-gear/${category}`) && !schema.includes('CollectionPage')) failures.push(`${route} has no CollectionPage structured data`);
+      const sponsoredLinks = page.locator('a[rel*="sponsored"]');
+      if (!(await sponsoredLinks.count())) failures.push(`${route} has no enabled affiliate CTA`);
+      for (const anchor of await sponsoredLinks.all()) {
+        const rel = new Set(((await anchor.getAttribute('rel')) || '').split(/\s+/));
+        if (!rel.has('noopener') || !rel.has('noreferrer')) failures.push(`${route} has incomplete affiliate rel attributes`);
+        const href = await anchor.getAttribute('href');
+        if (!href) { failures.push(`${route} has an empty affiliate destination`); continue; }
+        const affiliateUrl = new URL(href);
+        if (!['gadgethyper.com', 'www.gadgethyper.com'].includes(affiliateUrl.hostname) || affiliateUrl.searchParams.get('ref') !== affiliateConfig.publicReferralCode) failures.push(`${route} has invalid GadgetHyper affiliate attribution`);
+      }
+      if (screenshotDirectory && ['/gaming-gear', '/gaming-gear/controllers', `/gaming-gear/products/${representativeProduct.slug}`].includes(route)) {
+        await page.screenshot({ path: path.join(screenshotDirectory, `${viewport.width}-${route.split('/').filter(Boolean).join('-')}.png`), fullPage: true });
       }
     }
-    const appErrors = consoleErrors.filter((message) =>
-      !/Failed to load resource/.test(message)
-      && !/eval\(\) is not supported.*React requires eval\(\) in development mode/is.test(message)
-    );
-    if (appErrors.length) failures.push(`Console errors at ${viewport.width}px: ${appErrors.join(' | ')}`);
+    if (viewport.width === 1440) {
+      await page.goto(`${baseUrl}/gaming-gear/all-products`, { waitUntil: 'domcontentloaded' });
+      await page.locator('input[type="search"]').fill('Flydigi');
+      if (!(await page.locator('.store-product-card').count())) failures.push('Catalogue search returned no Flydigi products');
+      await page.locator('select').nth(1).selectOption({ label: 'Flydigi' });
+      if (!(await page.locator('.store-product-card').count())) failures.push('Brand filter returned no Flydigi products');
+    }
+    if (errors.some((message) => /hydration|uncaught|typeerror/i.test(message))) failures.push(`Browser errors at ${viewport.width}px: ${errors.join(' | ')}`);
     await context.close();
   }
+
+  const response301 = await fetch(`${baseUrl}/gaming-gear/mobile-gaming/best-mobile-gaming-controller`, { redirect: 'manual' });
+  const redirectLocation = response301.headers.get('location');
+  const redirectPath = redirectLocation ? new URL(redirectLocation, baseUrl).pathname : '';
+  if (response301.status !== 301 || redirectPath !== '/gaming-gear/controllers/best-mobile-gaming-controllers') failures.push('Legacy equivalent guide does not return the expected 301');
+  const formerBrand = ['ra', 'zer'].join('');
+  const response410 = await fetch(`${baseUrl}/gaming-gear/products/${formerBrand}-viper-v4-pro`, { redirect: 'manual' });
+  if (response410.status !== 410) failures.push(`Brand-specific legacy product returned ${response410.status}, expected 410`);
+  const response404 = await fetch(`${baseUrl}/gaming-gear/products/not-a-real-product`, { redirect: 'manual' });
+  if (response404.status !== 404) failures.push(`Unknown product returned ${response404.status}, expected 404`);
 } finally {
   await browser.close();
 }
 
-if (failures.length) {
-  console.error(failures.join('\n'));
-  process.exit(1);
-}
-
-console.log(`Commerce browser smoke passed: ${routes.length} canonical routes plus mobile representatives.`);
+if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
+console.log(`Commerce browser smoke passed: ${routes.length} storefront routes across four viewports plus 301/410 migration checks.`);

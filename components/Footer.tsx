@@ -17,7 +17,7 @@ export function Footer({ locale }: { locale?: Locale }) {
     ['/games', text.nav.games, true],
     ['/gr8-originals', text.nav.originals, true],
     ['/gr8-select', text.nav.select, true],
-    ['/gaming-gear', 'Gaming Gear', false],
+    ['/gaming-gear', 'GR8 GEAR', false],
     ['/classroom', 'Classroom', false],
     ['/gr8-trending', text.nav.trending, true],
     ['/gr8-daily', text.nav.daily, true],
@@ -49,7 +49,7 @@ export function Footer({ locale }: { locale?: Locale }) {
       <div className="site-footer__brand">
         <span className="brand-mark__icon" aria-hidden="true">G8</span>
         <strong>GR8 GAMZ</strong>
-        <p>Original worlds, instant browser play, GR8 Select discovery and practical gaming gear guides.</p>
+        <p>Original worlds, instant browser play, GR8 Select discovery and transparent GR8 GEAR shopping guides.</p>
       </div>
       <nav className="site-footer__links" aria-label="Footer navigation">
         {links.map(([href, label, localize]) => (

@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { ArrowRight, Headphones, MousePointer2, Smartphone } from 'lucide-react';
+import { ArrowRight, Gamepad2, Keyboard, Smartphone } from 'lucide-react';
 import { contextualGearCopy, contextualGearRecommendation } from '@/lib/commerce/contextualGear';
 import type { Locale } from '@/lib/i18n';
 
 export default function GearContextModule({ category, controls, deviceFit, locale = 'en' }: { category?: string; controls?: string; deviceFit?: string; locale?: Locale }) {
   const recommendation = contextualGearRecommendation({ category, controls, deviceFit });
   const copy = contextualGearCopy(locale);
-  const Icon = recommendation.kind === 'mobile' ? Smartphone : recommendation.kind === 'communication' ? Headphones : MousePointer2;
+  const Icon = recommendation.kind === 'mobile' ? Smartphone : recommendation.kind === 'precision' ? Keyboard : Gamepad2;
   return (
     <aside className="gear-context" aria-label={copy.aria} data-recommendation-kind={recommendation.kind}>
       <Icon aria-hidden="true" />

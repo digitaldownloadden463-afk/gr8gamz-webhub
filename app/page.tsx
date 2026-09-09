@@ -191,9 +191,9 @@ export default function HomePage() {
         {partners.map((profile) => <PartnerGameCard key={profile.slug} profile={profile} />)}
       </section>
 
-      <section className="gear-home-band" aria-label="Gaming gear guides">
-        <div><span className="eyebrow"><Headphones size={18} aria-hidden="true" /> GR8 Gaming Gear</span><h2>Upgrade the setup, not the sales pitch.</h2><p>Focused UK guides for mice, headsets, keyboards and mobile controllers, with clear comparisons and no invented testing claims.</p></div>
-        <Link href="/gaming-gear" className="cta">Explore gaming gear <ArrowRight size={18} aria-hidden="true" /></Link>
+      <section className="gear-home-band" aria-label="GR8 GEAR storefront">
+        <div><span className="eyebrow"><Headphones size={18} aria-hidden="true" /> GR8 GEAR</span><h2>Gaming hardware, without the hard sell.</h2><p>Browse current controllers, accessories, keyboards, cooling and gaming tech from our retail partner catalogue. Purchases are completed at GadgetHyper.</p></div>
+        <Link href="/gaming-gear" className="cta">Explore GR8 GEAR <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
 
       <section className="classroom-home-band" aria-label="GR8 Classroom">

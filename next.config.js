@@ -18,8 +18,8 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'img.gamepix.com', pathname: '/games/**' },
       { protocol: 'https', hostname: 'img.gamemonetize.com', pathname: '/**' },
-      { protocol: 'https', hostname: 'assets3.razerzone.com', pathname: '/**' },
-      { protocol: 'https', hostname: 'assets2.razerzone.com', pathname: '/**' }
+      { protocol: 'https', hostname: 'cdn.shopify.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'gadgethyper.com', pathname: '/cdn/**' }
     ]
   },
   async redirects() {
@@ -42,7 +42,7 @@ const nextConfig = {
       "object-src 'none'",
       "frame-ancestors 'self'",
       "form-action 'self'",
-      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://assets2.razerzone.com https://assets3.razerzone.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google",
+      "img-src 'self' data: blob: https://img.gamepix.com https://img.gamemonetize.com https://cdn.shopify.com https://gadgethyper.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google",
       "script-src 'self' 'unsafe-inline' https://play.gamepix.com https://www.googletagmanager.com https://utt.impactcdn.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep2.adtrafficquality.google",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
