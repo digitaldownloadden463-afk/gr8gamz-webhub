@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-10",
+  "paths": [
+    "/games",
+    "/categories/action",
+    "/categories/sports",
+    "/mobile-games",
+    "/more-free-games/the-speed-ninja",
+    "/more-free-games/mr-bullet-puzzles-d-espion",
+    "/more-free-games/sugar-eyes",
+    "/more-free-games/flying-football-flapper-soccer-game",
+    "/more-free-games/popcorn-run-3d",
+    "/more-free-games/thief-ro",
+    "/more-free-games/quiz-goose-math",
+    "/more-free-games/jungle-adventure-run-3d",
+    "/more-free-games/scrap-brawl",
+    "/more-free-games/street-rush-running-game",
+    "/more-free-games/car-avoid-game",
+    "/more-free-games/green-battle",
+    "/more-free-games/parking-jam-2d",
+    "/more-free-games/monster-truck-mountain-climb",
+    "/more-free-games/tangram-king"
+  ]
+}

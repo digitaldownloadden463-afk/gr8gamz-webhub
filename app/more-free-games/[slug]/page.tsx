@@ -12,6 +12,7 @@ import { getPartnerGameProfile, getPartnerIndexQuality, getRelatedPartnerGamePro
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 import { gameHubPath, getGameHubsForGameSlug } from '@/lib/gameHubs';
+import { getOrganicProfileEditorial } from '@/lib/organicRevenueSprint';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -23,25 +24,27 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) return {};
-  const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
+  const editorial = getOrganicProfileEditorial(profile.slug);
+  const displayTitle = editorial?.displayTitle || (profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title);
   const pageTitle = `Play ${displayTitle} Online Free`;
+  const description = editorial?.summary || profile.description;
   const quality = getPartnerIndexQuality(profile.slug);
   const ogImage = `/og/game/${profile.slug}`;
   return {
     title: pageTitle,
-    description: profile.description,
+    description,
     robots: { index: quality.state === 'indexable', follow: true },
     alternates: { canonical: canonical(`/more-free-games/${profile.slug}`) },
     openGraph: {
       title: pageTitle,
-      description: profile.description,
+      description,
       url: canonical(`/more-free-games/${profile.slug}`),
       images: [{ url: ogImage, width: 1200, height: 630, alt: `${displayTitle} on GR8 GAMZ` }]
     },
     twitter: {
       card: 'summary_large_image',
       title: pageTitle,
-      description: profile.description,
+      description,
       images: [ogImage]
     }
   };
@@ -51,15 +54,17 @@ export default async function PartnerProfilePage({ params }: PageProps) {
   const { slug } = await params;
   const profile = getPartnerGameProfile(slug);
   if (!profile) notFound();
-  const displayTitle = profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title;
+  const editorial = getOrganicProfileEditorial(profile.slug);
+  const displayTitle = editorial?.displayTitle || (profile.slug === 'duck-math' ? 'Math Duck (Duck Math)' : profile.title);
   const text = tr('en');
   const specialistHubs = getGameHubsForGameSlug(profile.slug);
 
   const related = getRelatedPartnerGameProfiles(profile, 6);
   const playPath = profile.playPath || `${profile.path}/play`;
   const categoryPath = `/categories/${slugifyRegistryValue(profile.category)}`;
-  const controls = profile.controls || 'Use the on-screen instructions after the game opens.';
-  const deviceFit = profile.deviceFit || 'Phone, tablet and desktop support depends on the loaded game.';
+  const controls = editorial?.controls || profile.controls || 'Use the on-screen instructions after the game opens.';
+  const deviceFit = editorial?.deviceFit || profile.deviceFit || 'Phone, tablet and desktop support depends on the loaded game.';
+  const description = editorial?.summary || profile.description;
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -74,7 +79,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: displayTitle,
-    description: profile.description,
+    description,
     url: canonical(profile.path),
     gamePlatform: 'Web browser',
     genre: profile.category,
@@ -99,7 +104,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         <div className="partner-profile-copy">
           <span className="eyebrow">GR8 Select</span>
           <h1>{displayTitle}</h1>
-          <p>{profile.description}</p>
+          <p>{description}</p>
           <div className="cta-row profile-cta-row">
             <Link href={playPath} className="cta">Play</Link>
             <Link href={categoryPath} className="secondary-cta">{profile.category} games</Link>
@@ -116,9 +121,17 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       </section>
       <section className="content-panel">
         <h2>How to start</h2>
-        <p>{profile.howToPlay || controls}</p>
+        <p>{editorial?.howToPlay || profile.howToPlay || controls}</p>
         <h2>Why you might like it</h2>
-        <p>{profile.whyPicked || `${profile.title} is a ${profile.category.toLowerCase()} game for quick browser play on GR8 GAMZ.`}</p>
+        <p>{editorial?.whyPlay || profile.whyPicked || `${profile.title} is a ${profile.category.toLowerCase()} game for quick browser play on GR8 GAMZ.`}</p>
+        {editorial ? (
+          <>
+            <h2>Game at a glance</h2>
+            <ul>
+              {editorial.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+            </ul>
+          </>
+        ) : null}
         <p className="fine-print">The game loads only after you select Play.</p>
       </section>
       {specialistHubs.length ? (
