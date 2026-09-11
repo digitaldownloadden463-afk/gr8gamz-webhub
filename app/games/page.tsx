@@ -5,10 +5,11 @@ import { canonical, gameCountLabel } from '@/lib/features';
 import { getPlayableRegistryGames, getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 import { getActivePseoIntents } from '@/lib/pseoIntents';
+import { getOrganicProfileEditorials, organicRevenueSprintProfileSlugs } from '@/lib/organicRevenueSprint';
 
 const gamesMetadata = {
-  title: 'Free Games Online - Browse the GR8 GAMZ Directory',
-  description: 'Browse free games online across GR8 Originals and GR8 Select, with categories, controls, specialist collections and catalogue-wide search.',
+  title: 'Free Online Games - Browse Browser Games',
+  description: 'Browse free online games by category, controls or play style. Search thousands of browser games and start on mobile, tablet or desktop.',
   alternates: { canonical: canonical('/games') }
 };
 
@@ -43,6 +44,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
   const controls = getRegistryControlHubs();
   const hubs = getActiveGameHubs();
   const pseoIntents = getActivePseoIntents();
+  const quickGuides = getOrganicProfileEditorials(organicRevenueSprintProfileSlugs.slice(0, 8));
   const searchResults = query ? searchRegistryGames(query, requestedPage, 48) : null;
   const queryCopy = query
     ? `Showing results for "${query}" across GR8 Originals and GR8 Select.`
@@ -131,6 +133,19 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
             <Link key={category.slug} href={`/categories/${category.slug}`}>
               <strong>{category.name}</strong>
               <span>{category.count} games</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className="content-panel" aria-labelledby="quick-game-guides-title">
+        <span className="eyebrow">Game guides</span>
+        <h2 id="quick-game-guides-title">Check the controls before you play.</h2>
+        <p>These individual game pages explain the objective, input and device fit before the external game loads.</p>
+        <div className="compact-link-list">
+          {quickGuides.map((game) => (
+            <Link key={game.slug} href={`/more-free-games/${game.slug}`}>
+              <strong>{game.displayTitle}</strong>
+              <span>{game.highlights[0]}</span>
             </Link>
           ))}
         </div>

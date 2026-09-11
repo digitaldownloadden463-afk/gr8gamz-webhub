@@ -12,6 +12,7 @@ import {
 import { categoryDisplayName, categoryPagePath } from '@/lib/categoryPages';
 import { getRegistryGamesBySlugs, type RegistryGame } from '@/lib/gameRegistry';
 import { gameHubPath, getActiveGameHubs } from '@/lib/gameHubs';
+import { getOrganicProfilesForCategory } from '@/lib/organicRevenueSprint';
 
 type CategoryDirectoryProps = {
   category: { slug: string; name: string; count: number };
@@ -31,6 +32,7 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
   const usedLabels = new Set<CategorySelectionLabel>(editorial.editorialPicks.flatMap((pick) => pick.labels));
   usedLabels.add('popular-on-gr8');
   const specialistHubs = getActiveGameHubs().filter((hub) => hub.parentCategory === editorial.slug);
+  const gameGuides = getOrganicProfilesForCategory(editorial.slug);
 
   return (
     <section className="category-editorial" aria-labelledby={`${editorial.slug}-guide-title`}>
@@ -104,6 +106,16 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
           </aside>
         ) : null}
       </section>
+
+      {gameGuides.length ? (
+        <section aria-labelledby={`${editorial.slug}-game-guides-title`}>
+          <h3 id={`${editorial.slug}-game-guides-title`}>Game guides in this category</h3>
+          <p>Check the objective, controls and device fit before opening one of these games.</p>
+          <ul className="category-link-list">
+            {gameGuides.map((game) => <li key={game.slug}><Link href={`/more-free-games/${game.slug}`}>{game.displayTitle}</Link></li>)}
+          </ul>
+        </section>
+      ) : null}
 
       <details className="category-methodology">
         <summary><ChevronDown size={18} aria-hidden="true" /> How category labels are selected</summary>
