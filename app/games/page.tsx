@@ -69,6 +69,10 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
         <span className="eyebrow">Explore collections</span>
         <h2>Browse by a more specific play style.</h2>
         <div className="compact-link-list">
+          <Link href="/no-download-games">
+            <strong>No-download browser games</strong>
+            <span>Play instantly without installing a game</span>
+          </Link>
           {hubs.map((hub) => (
             <Link key={hub.id} href={gameHubPath(hub.slug)}>
               <strong>{hub.label}</strong>

@@ -44,23 +44,41 @@ export default async function ArcadeGamePage({ params }: PageProps) {
   const game = getGameBySlug(slug);
   if (!game) notFound();
   const text = tr('en');
+  const gamePath = `/arcade/${game.slug || game.id}`;
+  const thumbnail = game.thumbnail?.split('?')[0];
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.name,
     description: game.description,
-    url: canonical(`/arcade/${game.slug || game.id}`),
+    url: canonical(gamePath),
     gamePlatform: 'Web browser',
     applicationCategory: 'Game',
     genre: game.genre || game.category,
-    datePublished: game.dateAdded
+    datePublished: game.dateAdded,
+    isAccessibleForFree: true,
+    publisher: {
+      '@type': 'Organization',
+      name: 'GR8 GAMZ',
+      url: canonical('/')
+    },
+    ...(thumbnail ? { image: thumbnail } : {})
   };
-  const thumbnail = game.thumbnail?.split('?')[0];
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') },
+      { '@type': 'ListItem', position: 2, name: 'GR8 Originals', item: canonical('/gr8-originals') },
+      { '@type': 'ListItem', position: 3, name: game.name, item: canonical(gamePath) }
+    ]
+  };
 
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Link href="/games" className="text-link">Back to games</Link>
       <section className="game-hero">
         <div>
