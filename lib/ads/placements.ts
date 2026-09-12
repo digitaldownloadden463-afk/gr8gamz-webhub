@@ -31,6 +31,16 @@ export const adPlacements = {
     minHeight: 250,
     pageTypes: ['discovery']
   },
+  'game-profile-editorial': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 250,
+    pageTypes: ['game-profile']
+  },
+  'game-profile-lower': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 250,
+    pageTypes: ['game-profile']
+  },
   'editorial-upper-content': {
     slot: adsenseConfig.slots.editorial,
     minHeight: 250,

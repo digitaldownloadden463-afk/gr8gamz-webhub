@@ -69,12 +69,16 @@ async function stubGoogle(context, requests) {
   }
 }
 
-async function inspectAllowed(page, path, expectedSlot, expectedPlacements) {
+async function inspectAllowed(page, path, expectedSlot, expectedPlacements, expectedMinHeight = 250) {
   const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
   if (response?.status() !== 200) failures.push(`${path} returned ${response?.status()}`);
   const ad = page.locator('.adsense-slot');
   await page.waitForFunction(() => document.cookie.includes('gr8_consent=v1.accepted'), null, { timeout: 5000 }).catch(() => {});
-  await page.waitForTimeout(500);
+  await page.waitForFunction(
+    (count) => document.querySelectorAll('.adsense-slot').length === count,
+    expectedPlacements.length,
+    { timeout: 5000 }
+  ).catch(() => {});
   if (await ad.count() !== expectedPlacements.length) {
     const facts = await page.evaluate(() => ({
       script: Boolean(document.querySelector('#gr8-adsense-script')),
@@ -101,7 +105,7 @@ async function inspectAllowed(page, path, expectedSlot, expectedPlacements) {
   if (facts.some((fact) => fact.slot !== expectedSlot || fact.client !== 'ca-pub-9245359017496056')) failures.push(`${path} uses an unexpected account or slot.`);
   if (JSON.stringify(facts.map((fact) => fact.placement)) !== JSON.stringify(expectedPlacements)) failures.push(`${path} uses placements ${facts.map((fact) => fact.placement).join(', ')}.`);
   if (facts.some((fact) => fact.testMode !== 'on')) failures.push(`${path} preview units are not in AdSense test mode.`);
-  if (facts.some((fact) => fact.minHeight < 250 || fact.width <= 0 || fact.overflow)) failures.push(`${path} does not reserve safe responsive areas.`);
+  if (facts.some((fact) => fact.minHeight < expectedMinHeight || fact.width <= 0 || fact.overflow)) failures.push(`${path} does not reserve safe responsive areas.`);
 }
 
 async function inspectExcluded(page, path) {
@@ -162,10 +166,17 @@ const browser = await chromium.launch();
   if (await page.evaluate(() => window.__gr8AdPushCount) !== 6) failures.push('SPA navigation did not initialize exactly three units per eligible page.');
 
   await inspectAllowed(page, '/categories/action/page/2', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/categories/sports', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/mobile-games', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/quick-games', slots.discovery, ['discovery-upper-content', 'discovery-lower-content']);
   await inspectAllowed(page, '/controls/tap', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
   await inspectAllowed(page, '/gr8-select', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/games', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/more-free-games/duck-math', slots.discovery, ['game-profile-editorial', 'game-profile-lower']);
   await inspectAllowed(page, '/gaming-gear', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
   await inspectAllowed(page, '/gaming-gear/gaming-mice/best-wireless-gaming-mouse', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
+  await inspectAllowed(page, '/classroom', slots.discovery, ['classroom-upper-content', 'classroom-mid-content', 'classroom-lower-content'], 180);
+  await inspectAllowed(page, '/classroom/timer', slots.discovery, ['classroom-tool-lower-content'], 180);
 
   const separation = await page.evaluate(() => {
     const ads = [...document.querySelectorAll('.adsense-slot')].map((node) => node.getBoundingClientRect());
@@ -177,7 +188,8 @@ const browser = await chromium.launch();
 
   for (const path of [
     '/gaming-gear/products/flydigi-vader-5-pro-wireless-controller',
-    '/more-free-games/duck-math',
+    '/more-free-games/merge-mine-idle-clicker',
+    '/more-free-games/twin-peeks',
     '/more-free-games/duck-math/play',
     '/arcade/neon-snake-rush',
     '/games?q=snake',
@@ -191,13 +203,16 @@ const browser = await chromium.launch();
   await context.close();
 }
 
-for (const viewport of [{ width: 768, height: 1024 }, { width: 1440, height: 900 }]) {
+for (const viewport of [{ width: 768, height: 1024 }, { width: 1440, height: 900 }, { width: 1920, height: 1080 }]) {
   const requests = [];
   const context = await contextFor(browser, 'accepted', viewport);
   await stubGoogle(context, requests);
   const page = await context.newPage();
   await inspectAllowed(page, '/', slots.home, ['home-upper-content', 'home-mid-content', 'home-lower-content']);
+  await inspectAllowed(page, '/games', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
   await inspectAllowed(page, '/categories/puzzle', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/games/keyboard-puzzle-games', slots.discovery, ['discovery-upper-content', 'discovery-mid-content', 'discovery-lower-content']);
+  await inspectAllowed(page, '/more-free-games/duck-math', slots.discovery, ['game-profile-editorial', 'game-profile-lower']);
   await inspectAllowed(page, '/gaming-gear', slots.editorial, ['editorial-upper-content', 'editorial-mid-content', 'editorial-lower-content']);
   await inspectExcluded(page, '/more-free-games/duck-math/play');
   await inspectExcluded(page, '/gaming-gear/products/flydigi-vader-5-pro-wireless-controller');
@@ -211,4 +226,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('AdSense M1 browser smoke passed: reject/accept/revoke, single SPA loader, three manual units, responsive reserved space at 390/768/1440px, affiliate separation and protected-route exclusions verified.');
+console.log('AdSense M1 browser smoke passed: reject/accept/revoke, single SPA loader, controlled manual units, responsive reserved space at 390/768/1440/1920px, affiliate separation and protected-route exclusions verified.');

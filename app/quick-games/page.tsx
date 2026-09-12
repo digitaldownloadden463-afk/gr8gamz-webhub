@@ -2,6 +2,7 @@ import Link from 'next/link';
 import RegistryGameCard from '@/components/RegistryGameCard';
 import { canonical } from '@/lib/features';
 import { getPlayableRegistryGames } from '@/lib/gameRegistry';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 export const metadata = {
   title: 'Quick Games Online - Free Five-Minute Browser Games',
@@ -32,9 +33,11 @@ export default function QuickGamesPage() {
         <p>Clear goals, short rounds and fast retries make these games easy to fit around a break. Tap-led arcade games work well on mobile, while keyboard games can suit a short desktop session.</p>
         <p>Browse <Link href="/categories/arcade">free arcade games</Link> for repeatable score runs or <Link href="/categories/puzzle">online puzzle games</Link> for a calmer challenge.</p>
       </section>
+      <AdSensePlacement placement="discovery-upper-content" />
       <section className="game-grid">
         {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
       </section>
+      <AdSensePlacement placement="discovery-lower-content" />
     </main>
   );
 }

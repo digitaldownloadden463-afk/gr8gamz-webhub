@@ -44,7 +44,8 @@ const eligible = [
   ['components/PartnerCatalogueGrid.tsx', 'discovery'],
   ['app/gaming-gear/page.tsx', 'editorial'],
   ['app/gaming-gear/[category]/page.tsx', 'editorial'],
-  ['app/gaming-gear/[category]/[slug]/page.tsx', 'editorial']
+  ['app/gaming-gear/[category]/[slug]/page.tsx', 'editorial'],
+  ['app/games/page.tsx', 'discovery']
 ];
 for (const [file, prefix] of eligible) {
   const source = read(file);
@@ -58,6 +59,9 @@ for (const prefix of ['home', 'discovery', 'editorial']) {
     expect(placements.includes(`'${prefix}-${position}'`), `Placement registry is missing ${prefix}-${position}.`);
   }
 }
+for (const placement of ['game-profile-editorial', 'game-profile-lower']) {
+  expect(placements.includes(`'${placement}'`), `Placement registry is missing ${placement}.`);
+}
 expect(!policy.includes('autoAdsAllowed: true'), 'Auto ads must remain disabled.');
 expect(styles.includes('.adsense-slot[data-ad-state="unfilled"]') && styles.includes('display: none;'), 'Unfilled manual units do not collapse safely.');
 
@@ -65,10 +69,8 @@ for (const file of [
   'app/not-found.tsx',
   'app/error.tsx',
   'app/more-free-games/[slug]/play/page.tsx',
-  'app/more-free-games/[slug]/page.tsx',
   'app/arcade/[slug]/page.tsx',
   'app/gaming-gear/products/[slug]/page.tsx',
-  'app/games/page.tsx',
   'app/my-arcade/page.tsx',
   'app/privacy/page.tsx'
 ]) {

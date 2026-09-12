@@ -13,6 +13,7 @@ import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 import { gameHubPath, getGameHubsForGameSlug } from '@/lib/gameHubs';
 import { getOrganicProfileEditorial } from '@/lib/organicRevenueSprint';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -65,6 +66,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
   const controls = editorial?.controls || profile.controls || 'Use the on-screen instructions after the game opens.';
   const deviceFit = editorial?.deviceFit || profile.deviceFit || 'Phone, tablet and desktop support depends on the loaded game.';
   const description = editorial?.summary || profile.description;
+  const monetiseProfile = getPartnerIndexQuality(profile.slug).state === 'indexable';
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -134,6 +136,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
         ) : null}
         <p className="fine-print">The game loads only after you select Play.</p>
       </section>
+      {monetiseProfile ? <AdSensePlacement placement="game-profile-editorial" /> : null}
       {specialistHubs.length ? (
         <section className="content-panel" aria-labelledby="specialist-collections-title">
           <span className="eyebrow">Explore collections</span>
@@ -151,6 +154,7 @@ export default async function PartnerProfilePage({ params }: PageProps) {
       />
       <ChallengeShare gameSlug={profile.slug} gameTitle={profile.title} kind="select" labels={text.engagement} />
       <GearContextModule category={profile.category} controls={controls} deviceFit={deviceFit} />
+      {monetiseProfile ? <AdSensePlacement placement="game-profile-lower" /> : null}
       <section className="section-heading">
         <span className="eyebrow">Play next</span>
         <h2>Related games.</h2>
