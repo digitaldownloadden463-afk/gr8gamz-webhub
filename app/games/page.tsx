@@ -6,6 +6,7 @@ import { getPlayableRegistryGames, getRegistryCategories, getRegistryControlHubs
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
 import { getActivePseoIntents } from '@/lib/pseoIntents';
 import { getOrganicProfileEditorials, organicRevenueSprintProfileSlugs } from '@/lib/organicRevenueSprint';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 const gamesMetadata = {
   title: 'Free Online Games - Browse Browser Games',
@@ -82,6 +83,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           ) : null}
         </div>
       </section>
+      {!query ? <AdSensePlacement placement="discovery-upper-content" /> : null}
       {searchResults ? (
         <section className="game-browser" aria-labelledby="game-browser-title">
           <form className="filter-panel" action="/games" method="get" role="search">
@@ -125,6 +127,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           <p className="section-copy">Continue through <Link href="/gr8-select">the full game catalogue</Link>, browse <Link href="/gr8-originals">games made by GR8 GAMZ</Link>, or choose a category below.</p>
         </section>
       )}
+      {!query ? <AdSensePlacement placement="discovery-mid-content" /> : null}
       <section className="content-panel" aria-label="Browse by category">
         <span className="eyebrow">Browse by style</span>
         <h2>Find a game by category.</h2>
@@ -137,6 +140,7 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           ))}
         </div>
       </section>
+      {!query ? <AdSensePlacement placement="discovery-lower-content" /> : null}
       <section className="content-panel" aria-labelledby="quick-game-guides-title">
         <span className="eyebrow">Game guides</span>
         <h2 id="quick-game-guides-title">Check the controls before you play.</h2>

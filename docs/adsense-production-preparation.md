@@ -4,8 +4,8 @@
 
 - Publisher: `pub-9245359017496056`
 - Site: `gr8gamz.com`
-- Site review: required
-- ads.txt status before this change: not found
+- Site status: Ready
+- ads.txt status: Authorized
 - Auto ads: off
 - Google European regulations message: published for `gr8gamz.com`
 
@@ -21,13 +21,13 @@ Do not enable production ad serving until the Google CMP message, TCF signal, GA
 
 | Page type | Density | Formats | Notes |
 | --- | --- | --- | --- |
-| Home | Medium | In-page, desktop side rail | Keep the first play action clear. |
-| Discovery/category | Medium-high | In-page, desktop side rail | Insert only between complete game rows. |
-| Game profile | Medium | In-page, desktop side rail | Keep clear of Play and game artwork actions. |
+| Home | Low | In-page | Keep the first play action clear. |
+| Discovery/category | Low | In-page | Insert only between complete game rows or sections. |
+| Game profile | Low-medium | In-page | Only index-quality partner profiles; keep clear of Play and game artwork actions. |
 | Play | None | None | Protect controls, provider revenue and session depth. |
-| Gaming Gear hub | Medium | In-page, desktop side rail | Keep commercial decisions uncluttered. |
-| Buying guide/comparison | Low-medium | In-page, desktop side rail | Never place next to affiliate CTAs. |
-| Product | Low | Manually controlled in-page only | Prefer the higher-value affiliate journey. |
+| Gaming Gear hub | Low | In-page | Keep commercial decisions uncluttered. |
+| Buying guide/comparison | Low | In-page | Never place next to affiliate CTAs. |
+| Product | None | None | Preserve the higher-value affiliate journey. |
 
 Auto ads remain off. Intent-driven formats, related search and vignettes remain off. A later owner-reviewed experiment may evaluate restrained bottom anchors or vignettes, with play routes and affiliate decision areas excluded in the AdSense dashboard.
 

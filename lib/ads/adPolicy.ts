@@ -39,10 +39,10 @@ const policies: Record<AdPageType, AdPolicy> = {
   },
   'game-profile': {
     pageType: 'game-profile',
-    adDensity: 'none',
+    adDensity: 'low-medium',
     autoAdsAllowed: false,
-    allowedFormats: [],
-    manualSlots: []
+    allowedFormats: ['in-page'],
+    manualSlots: ['game-profile-editorial', 'game-profile-lower']
   },
   play: {
     pageType: 'play',
@@ -112,7 +112,6 @@ const legalRoutes = new Set([
 ]);
 
 const interactionRoutes = new Set([
-  '/games',
   '/my-arcade'
 ]);
 

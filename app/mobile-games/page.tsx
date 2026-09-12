@@ -3,6 +3,7 @@ import RegistryGameCard from '@/components/RegistryGameCard';
 import { canonical } from '@/lib/features';
 import { getPlayableRegistryGames } from '@/lib/gameRegistry';
 import { getOrganicProfileEditorials, organicRevenueMobileTargets } from '@/lib/organicRevenueSprint';
+import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
 export const metadata = {
   title: 'Free Mobile Games Online - Play on Phone & Tablet',
@@ -34,6 +35,7 @@ export default function MobileGamesPage() {
         <p>Tap, swipe and drag controls usually suit mobile play best. Portrait and landscape support varies by game, so rotate your device when the play screen suggests it.</p>
         <p>For short sessions, try <Link href="/quick-games">quick browser games</Link>. For more touch-led choices, browse the <Link href="/controls/tap">tap games collection</Link>.</p>
       </section>
+      <AdSensePlacement placement="discovery-upper-content" />
       <section className="content-panel" aria-labelledby="mobile-game-guides-title">
         <h2 id="mobile-game-guides-title">Touch-friendly game guides</h2>
         <p>Check the documented tap, swipe or drag controls for these games before opening the player.</p>
@@ -46,9 +48,11 @@ export default function MobileGamesPage() {
           ))}
         </div>
       </section>
+      <AdSensePlacement placement="discovery-mid-content" />
       <section className="game-grid">
         {games.map((game, index) => <RegistryGameCard key={game.id} game={game} priority={index < 8} />)}
       </section>
+      <AdSensePlacement placement="discovery-lower-content" />
     </main>
   );
 }

@@ -37,12 +37,12 @@ expect(adsText.split(/\r?\n/).filter((line) => line.trim() === adsLine).length =
 expect(adsText.includes('pub-5519830896693885') && adsText.includes('pub-4764333688337558'), 'GameMonetize ads.txt records were removed.');
 
 expect(!policy.includes('autoAdsAllowed: true'), 'Auto ads must remain disabled throughout Phase M1.');
-for (const pageType of ["'game-profile'", 'play', 'product', 'legal']) {
+for (const pageType of ['play', 'product', 'legal']) {
   const start = policy.indexOf(`${pageType}: {`);
   const block = start >= 0 ? policy.slice(start, policy.indexOf('\n  }', start) + 4) : '';
   expect(block.includes('manualSlots: []'), `${pageType} must not allow manual ads.`);
 }
-expect(policy.includes("const interactionRoutes = new Set([\n  '/games',\n  '/my-arcade'"), 'Search and local-progress routes are not explicitly excluded.');
+expect(policy.includes("const interactionRoutes = new Set([\n  '/my-arcade'"), 'Local-progress routes are not explicitly excluded.');
 expect(slot.includes("consent === 'accepted'"), 'Manual ads are not gated by explicit consent.');
 expect(slot.includes('data-adtest={adsenseConfig.testMode'), 'Preview/test ad mode is not wired to manual units.');
 expect(slot.includes('MutationObserver'), 'Ad fill/error state containment is missing.');
@@ -71,7 +71,9 @@ const expectedPlacementFiles = [
   'components/LocalizedPages.tsx',
   'app/gaming-gear/page.tsx',
   'app/gaming-gear/[category]/page.tsx',
-  'app/gaming-gear/[category]/[slug]/page.tsx'
+  'app/gaming-gear/[category]/[slug]/page.tsx',
+  'app/games/page.tsx',
+  'app/more-free-games/[slug]/page.tsx'
 ];
 for (const file of expectedPlacementFiles) expect(read(file).includes('AdSensePlacement'), `${file} is missing its approved placement.`);
 
@@ -94,10 +96,8 @@ for (const file of [
   'app/not-found.tsx',
   'app/error.tsx',
   'app/more-free-games/[slug]/play/page.tsx',
-  'app/more-free-games/[slug]/page.tsx',
   'app/arcade/[slug]/page.tsx',
   'app/gaming-gear/products/[slug]/page.tsx',
-  'app/games/page.tsx',
   'app/my-arcade/page.tsx',
   'app/privacy/page.tsx'
 ]) expect(!read(file).includes('AdSensePlacement'), `${file} must remain free of manual ads.`);

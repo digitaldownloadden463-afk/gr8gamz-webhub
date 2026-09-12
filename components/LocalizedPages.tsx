@@ -9,7 +9,7 @@ import type { RegistryGame } from '@/lib/gameRegistry';
 import { getRegistryCategories, getRegistryGameBySlug, slugifyRegistryValue } from '@/lib/gameRegistry';
 import { categoryName, localeInfo, localizedCanonical, pathForLocale, tr, type Locale } from '@/lib/i18n';
 import { getGlobalLaunchGames, getLocalizedGameText } from '@/lib/globalLaunch';
-import { getPartnerGameProfile, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
+import { getPartnerGameProfile, getPartnerIndexQuality, getRelatedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
@@ -131,6 +131,7 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
   const copy = getLocalizedGameText(game, locale, text.profile);
   const related = localizedRelated(game, 6);
   const playPath = pathForLocale(locale, game.playUrl);
+  const monetiseProfile = game.source === 'gr8-select' && getPartnerIndexQuality(game.slug).state === 'indexable';
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
@@ -178,9 +179,11 @@ export function LocalizedGameProfile({ locale, game }: { locale: Locale; game: R
         <p>{copy.tips}</p>
         <p className="fine-print">{copy.external}</p>
       </section>
+      {monetiseProfile ? <AdSensePlacement placement="game-profile-editorial" /> : null}
       <GameShare title={game.title} url={localizedCanonical(locale, game.url)} text={copy.description} labels={text.engagement} />
       {game.source === 'gr8-select' ? <ChallengeShare gameSlug={game.slug} gameTitle={game.title} kind="select" locale={locale} labels={text.engagement} /> : null}
       {game.source === 'gr8-select' ? <GearContextModule category={game.category} controls={copy.controls} deviceFit={copy.fit} locale={locale} /> : null}
+      {monetiseProfile ? <AdSensePlacement placement="game-profile-lower" /> : null}
       <section className="section-heading">
         <span className="eyebrow">{text.common.related}</span>
         <h2>{text.common.related}.</h2>
