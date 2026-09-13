@@ -69,6 +69,10 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
         <span className="eyebrow">Explore collections</span>
         <h2>Browse by a more specific play style.</h2>
         <div className="compact-link-list">
+          <Link href="/tools">
+            <strong>Free gaming tools</strong>
+            <span>Test a keyboard, controller, click speed or sensitivity</span>
+          </Link>
           <Link href="/no-download-games">
             <strong>No-download browser games</strong>
             <span>Play instantly without installing a game</span>

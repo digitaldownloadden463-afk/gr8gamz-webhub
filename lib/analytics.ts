@@ -33,7 +33,13 @@ export type AnalyticsEventName =
   | 'game_hub_game_selected'
   | 'related_hub_selected'
   | 'category_discovery_selected'
-  | 'pinterest_landing';
+  | 'pinterest_landing'
+  | 'tool_view'
+  | 'tool_start'
+  | 'tool_complete'
+  | 'tool_retry'
+  | 'related_tool_click'
+  | 'game_funnel_click';
 
 export type AnalyticsParameters = Partial<{
   game_slug: string;
@@ -58,6 +64,7 @@ export type AnalyticsParameters = Partial<{
   filter_id: string;
   page_number: number;
   source_surface: string;
+  tool_id: 'tools-hub' | 'keyboard-tester' | 'cps-test' | 'spacebar-clicker' | 'gamepad-tester' | 'sensitivity-converter';
 }>;
 
 type GtagCommand = 'config' | 'consent' | 'event' | 'js';
@@ -99,6 +106,7 @@ const safeParameterKeys = new Set<keyof AnalyticsParameters>([
   'filter_id',
   'page_number',
   'source_surface',
+  'tool_id',
 ]);
 const pendingEvents: Array<{
   name: AnalyticsEventName;
@@ -143,6 +151,11 @@ function safeParameters(parameters: AnalyticsParameters) {
     if (
       ['hub_id', 'parent_category', 'filter_id', 'source_surface'].includes(key) &&
       !/^[a-z0-9_-]+$/.test(normalized)
+    )
+      continue;
+    if (
+      key === 'tool_id' &&
+      !['tools-hub', 'keyboard-tester', 'cps-test', 'spacebar-clicker', 'gamepad-tester', 'sensitivity-converter'].includes(normalized)
     )
       continue;
     result[key] = normalized;

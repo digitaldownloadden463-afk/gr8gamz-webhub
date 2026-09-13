@@ -5,6 +5,7 @@ import { getIndexableRegistryGames, getRegistryCategories, getRegistryControlHub
 import { commerceIndexableRoutePaths, commerceRouteLastmod } from '@/lib/commerce/catalogue';
 import { classroomReviewedAt, classroomRoutePaths } from '@/lib/classroom';
 import { gameHubPath, gameHubReviewedAt, getActiveGameHubs } from '@/lib/gameHubs';
+import { toolRoutePaths } from '@/lib/gr8Tools';
 
 export const partnerSitemapSize = 1000;
 
@@ -49,7 +50,8 @@ export function coreEntries() {
   const staticRoutes = ['/', '/about', '/contact', '/privacy', '/terms', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
   return [
     ...staticRoutes.map((route) => urlEntry(route, undefined, route === '/' ? '1.0' : '0.7')),
-    ...classroomRoutePaths().map((route) => urlEntry(route, classroomReviewedAt, route === '/classroom/timer' ? '0.85' : '0.8'))
+    ...classroomRoutePaths().map((route) => urlEntry(route, classroomReviewedAt, route === '/classroom/timer' ? '0.85' : '0.8')),
+    ...toolRoutePaths.map((route) => urlEntry(route, '2026-09-13', route === '/tools' ? '0.8' : '0.75'))
   ].join('');
 }
 
