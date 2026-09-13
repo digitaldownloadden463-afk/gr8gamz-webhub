@@ -64,6 +64,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const requestedLocale = headerList.get('x-gr8-locale') || defaultLocale;
   const locale: Locale = isLocale(requestedLocale) ? requestedLocale : defaultLocale;
   const info = localeInfo(locale);
+  const organizationId = `${canonical('/')}#organization`;
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: 'GR8 GAMZ',
+    url: canonical('/'),
+    logo: canonical('/brand/gr8-gamz-logo-wide.png')
+  };
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GR8 GAMZ',
+    url: canonical('/'),
+    publisher: { '@id': organizationId },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${canonical('/games')}?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    }
+  };
   return (
     <html lang={locale} dir={info.dir}>
       {adsenseConfig.enabled ? (
@@ -77,6 +98,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </head>
       ) : null}
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <a href="#main-content" className="skip-link">Skip to content</a>
         <TopNav />
         <div id="main-content">{children}</div>

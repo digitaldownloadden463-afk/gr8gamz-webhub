@@ -79,6 +79,7 @@ export function collectionEntries() {
     '/more-free-games',
     '/new-games',
     '/quick-games',
+    '/no-download-games',
     '/mobile-games',
     ...gameHubRoutes,
     ...categoryRoutes,
