@@ -75,6 +75,21 @@ export const adPlacements = {
     slot: adsenseConfig.slots.discovery,
     minHeight: 180,
     pageTypes: ['classroom-tool']
+  },
+  'tool-upper-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 180,
+    pageTypes: ['tool-hub', 'tool']
+  },
+  'tool-after-utility': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 250,
+    pageTypes: ['tool']
+  },
+  'tool-lower-content': {
+    slot: adsenseConfig.slots.discovery,
+    minHeight: 250,
+    pageTypes: ['tool-hub', 'tool']
   }
 } as const;
 
