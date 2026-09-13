@@ -1234,6 +1234,56 @@ function generatedPartnerProfile(record) {
   });
 }
 
+const reviewedDescriptionOverrides = {
+  'catch-huggy-wuggy': 'A suspenseful adventure set inside a factory, where the objective is to capture the monstrous toys roaming the building. Follow the on-screen prompts and use touch controls where supported.',
+  'swipy-basketball': 'A timing-focused basketball game built around swiping shots toward the basket. Aim each attempt carefully and use precise touch gestures to keep scoring during a quick sports session.',
+  'cut-the-rope': 'A candy-delivery arcade puzzle controlled with swipes and taps. Cut and manipulate the ropes carefully so the candy reaches the waiting creature instead of falling out of reach.',
+  'candy-monsters': 'A colourful arcade challenge about choosing and delivering the correct candy to each monster. The simple premise supports quick rounds while the matching choices provide the challenge.',
+  'gem-clicker-pro': 'A gem-focused clicker game where taps collect colourful gems that can be used for gear upgrades and boosters. Build up each resource gradually through short, repeatable arcade sessions.',
+  'grab-io': 'A territory arcade game played on a round arena against computer-controlled rivals. Steer with the mouse or touch, trace a loop, and return safely to your own colour to capture the enclosed area.',
+  'wolfoo-tangram': 'A tangram puzzle collection with 30 pictures to complete. Choose a piece count, drag shapes into position, rotate them until upright, and place each one near its matching space in the frame.',
+  'running-roadball': 'A rhythm arcade game where a glowing ball travels along neon tracks in time with music. Tap or click to jump and change direction, collect gems, and keep the ball safely on the route.',
+  'match-picture-to-words-3d': 'A picture-and-word matching puzzle featuring objects such as an apple, ant and airplane. Drag each illustrated item to the word that correctly identifies it using a mouse or touch screen.',
+  'block-escape-2': 'A three-dimensional block-clearing puzzle built around removing every block from a structure. Push or remove pieces with the mouse, then rotate, pan and zoom the camera to inspect possible moves.',
+  'divide-puzzle-arcade': 'A compact puzzle where a divider must be dragged into the playing field without colliding with the moving ball. Choose the timing and position carefully before making each dividing move.',
+  'toy-block-blast': 'A block-placement puzzle played on an 8-by-8 grid. Drag colourful toy pieces into open spaces and complete full rows or columns to clear them and add to the current score.',
+  'dead-paradise': 'An apocalyptic driving and shooting game that combines racing with vehicle combat. Accelerate and slow down with the arrow keys, adjust missile direction, fire at enemies, and use nitro when needed.',
+  'dont-panic-dude': 'A fast one-touch survival game centred on well-timed jumps and quick reactions. Click the mouse or tap the screen to jump, avoid the immediate danger, and keep the arcade run going.',
+  ballcrazesortgame: 'A colour-matching puzzle where the boxes below the play area correspond to balls shown above. Select the appropriate coloured box for each ball using a mouse click or screen tap.',
+  'goods-sorting-shopping-master': 'A sorting puzzle about turning a disorganised display of goods into tidy matching groups. Move related items together with mouse or touch controls and work through each arrangement carefully.',
+  blokku: 'A grid-based block puzzle played on an 11-by-11 board. Drag available pieces into open positions and complete entire rows or columns to clear space and continue building the score.',
+  'game-of-goose-2': 'A digital version of the traditional Game of the Goose board game. It supports solo play or up to four players sharing the same screen, making it suitable for either individual or local group sessions.',
+  'billy-the-kid-2': 'A western action game centred on a confrontation with an outlaw gang attempting to control the town. Take aim at the approaching troublemakers and react quickly during each shooting sequence.',
+  'goods-sorting-shopping-master-2': 'A shelf-sorting puzzle featuring mixed drinks, snacks and everyday goods. Move matching products into tidy groups using a mouse click or screen tap, and organise each crowded display carefully.',
+  'magic-coloring-book-for-little-artists': 'A relaxed drawing and colouring activity that combines outlined pictures with interactive colour tools. Use a mouse click or screen tap to select areas and add colour at your own pace.',
+  'solitaire-card-master': 'A solitaire card puzzle using alternating colours and descending tableau order. Move aces to the foundations, build each suit upward toward the king, and draw additional cards from the stock when required.',
+  'stickman-hit-3d': 'A three-dimensional platform action game controlled with the WASD keys and mouse. Move through the environment, respond to the obstacles presented by the level, and keep each attempt moving forward.',
+  pongfu: 'A table-tennis sports game presented in a colourful panda-themed setting. Control the paddle, track the incoming ball, and choose each return carefully to keep the rally in play.',
+  unipairs: 'A card-matching arcade game where the objective is to identify and pair matching cards. Use the available card controls carefully and remember previously revealed positions between choices.',
+  'flying-baby-billi': 'A side-scrolling arcade game where tapping or pressing the up key makes the character flap. Collect coins, avoid obstacles in the air, and continue on foot whenever the character lands.',
+  'click-to-control-chaos': 'A reaction game where clicking moving objects calms one part of the scene while increasing disruption elsewhere. Watch the chaos meter, make quick choices, and survive for as long as possible.',
+  'spill-the-wine': 'A physics puzzle where balls are dropped to knock over glasses and spill their contents. Use the mouse to position each ball and consider how the resulting movement will affect the objects below.',
+  'neon-saga-tic-tac-toe-69-level-war': 'A neon-styled puzzle based on the familiar game of noughts and crosses. Place each mark with a mouse click or screen tap and plan around the opposing moves presented during the level sequence.',
+  'easy-coloring-sprunki-time': 'A simple interactive colouring activity featuring a character illustration and a selection of vibrant colours. Use the mouse to choose colours and apply them to the picture at your own pace.',
+  'two-dot-connect-game': 'A connection puzzle controlled by swiping between coloured dots. Link the matching points so the colours flow together and build a larger connected ball arrangement on the board.',
+  'prime-ball-adventure-game': 'A ball puzzle built around pulling pins and choosing a logical sequence of moves. Use the mouse to interact with the available controls and work through each three-dimensional challenge carefully.',
+  'fps-shooting-game-3d-gun-game': 'A three-dimensional first-person shooting game with movement and aiming controls for desktop play. Use WASD or the arrow keys to move through the area and the mouse to interact and aim.',
+  'slime-farm': 'A light arcade game where a suction truck collects roaming slimes and converts them into cash. Drive with WASD or the arrow keys, or drag with the mouse where supported, to move around the area.',
+  '3d-puzzle': 'An isometric puzzle presented with three-dimensional tiles. Use mouse clicks, taps or swipe controls to interact with the layout and consider the position of each tile before making a move.',
+  'drag-race-x': 'A straight-track racing game focused on speed and precise timing. Use mouse clicks or taps to control the run and manage each action carefully while the vehicle accelerates along the course.',
+  'bubble-popper': 'A score-focused arcade game where bubbles disappear when clicked or tapped. Smaller bubbles award more points, so careful targeting can produce a stronger result during each quick round.',
+  'super-clicked': 'A clicker game where taps earn points and gold that can be spent on power upgrades. Build the total through repeated interactions and use the available improvements to progress toward the leaderboard.',
+  hangertheguy: "A swinging adventure controlled with a mouse click or screen tap. Create a thin thread from the character's hand, attach it overhead, and use the resulting arc to travel through the scene.",
+  'repo-and-repo': 'A puzzle platform game built around switching between two characters to collect every gem. Move with the arrow keys, jump with the up arrow, and press X when a character change is required.',
+  'swipe-runner-quest': 'A coin-collecting adventure where speed and accurate movement shape each run. Guide the character with the arrow keys, follow the route, and collect the available coins while progressing.',
+  'crack-eggs': 'A compact clicker challenge centred on breaking an egg. Each egg requires 40 clicks before it cracks, providing a clear target for a short mouse-or-touch arcade session.',
+  one2one: 'A speed-ordering game where numbers or letters must be selected in ascending sequence. Find 1, 2, 3 or A, B, C on the grid and tap each entry as quickly and accurately as possible.',
+  'my-tiny-land': 'A timed sorting puzzle where fruits and vegetables are moved between baskets. Form groups of three to remove matching produce and clear every basket before the available time expires.',
+  'rescue-the-boy-rope-to-exit': 'A rope-cutting puzzle where the goal is to help a boy reach the exit door. Swipe across the correct rope, observe where the character falls, and choose cuts that create a safe route.',
+  'hole-3d-color-block-game': 'A three-dimensional collecting game controlled by moving a hole around the play area. Gather every cube and sphere needed for the level while steering clear of the coloured obstacles.',
+  'ice-is-coming': 'A block-positioning puzzle where an ice cube must be moved into its designated place. Use touch controls to shift the cube, complete the required line, and clear it from the board.'
+};
+
 const generatedPartnerGameProfiles = (generatedPartnerCatalogue.games || []).map(generatedPartnerProfile);
 const partnerProfileMap = new Map();
 const curatedBySlug = new Map(partnerGameProfiles.map((profile) => [profile.slug, profile]));
@@ -1258,7 +1308,12 @@ for (const profile of generatedPartnerGameProfiles) {
       : cleanProfile(profile)
   );
 }
-export const allPartnerGameProfiles = [...partnerProfileMap.values()];
+export const allPartnerGameProfiles = [...partnerProfileMap.values()].map((profile) => ({
+  ...profile,
+  description: Object.hasOwn(reviewedDescriptionOverrides, profile.slug)
+    ? reviewedDescriptionOverrides[profile.slug]
+    : profile.description
+}));
 const partnerIndexQualityBySlug = buildPartnerIndexQuality(allPartnerGameProfiles);
 const partnerProfilesByCategory = new Map();
 const partnerProfileIndex = new Map();
