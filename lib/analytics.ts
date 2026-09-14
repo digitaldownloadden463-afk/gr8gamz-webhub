@@ -38,6 +38,12 @@ export type AnalyticsEventName =
   | 'tool_start'
   | 'tool_complete'
   | 'tool_retry'
+  | 'share_open'
+  | 'share_success'
+  | 'share_fallback_copy'
+  | 'share_landing'
+  | 'challenge_started'
+  | 'challenge_completed'
   | 'related_tool_click'
   | 'game_funnel_click';
 

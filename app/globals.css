@@ -1653,6 +1653,23 @@ main summary {
 .spacebar-target > strong { font-size: 5rem; line-height: 1; }
 .click-target > small,
 .spacebar-target > small { font-size: .95rem; }
+.tool-challenge-banner {
+  display: grid;
+  gap: 4px;
+  padding: 15px 17px;
+  border-left: 3px solid var(--brand);
+  background: rgba(53,255,141,.08);
+}
+.tool-challenge-banner strong { color: var(--brand); }
+.tool-challenge-banner span { color: var(--text); }
+.tool-challenge-comparison {
+  margin: 0;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 900;
+}
+.tool-share-action { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.tool-share-action span { min-height: 1.4em; color: var(--brand); font-weight: 800; }
 .tool-notice {
   display: flex;
   align-items: flex-start;
