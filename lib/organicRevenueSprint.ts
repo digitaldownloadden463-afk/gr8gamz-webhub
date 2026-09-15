@@ -22,8 +22,8 @@ const profiles: OrganicProfileEditorial[] = [
   },
   {
     slug: 'mr-bullet-puzzles-d-espion',
-    displayTitle: "Mr Bullet - Puzzles d'espion",
-    summary: 'Solve compact shooting puzzles by choosing an angle carefully and using each shot to reach the target.',
+    displayTitle: "Mr Bullet - Puzzles d'Espion",
+    summary: "Play Mr Bullet - Puzzles d'Espion online and solve compact shooting puzzles by choosing each angle carefully to reach the target.",
     controls: 'Use the pointer or the on-screen aiming control shown by the game to line up and take a shot.',
     deviceFit: 'Pointer and touch support depend on the controls presented after the game loads.',
     howToPlay: 'Study the obstacle layout before firing. Aim for a direct route or use the level geometry when the target is not in a straight line.',
@@ -53,7 +53,7 @@ const profiles: OrganicProfileEditorial[] = [
   {
     slug: 'popcorn-run-3d',
     displayTitle: 'Popcorn Run 3D',
-    summary: 'Guide a bare corn cob along the course, collect loose kernels and try to reach the finish with the cob rebuilt.',
+    summary: 'Play Popcorn Run 3D online and guide a bare corn cob through a short 3D course, collecting loose kernels on the way to the finish.',
     controls: 'Use the movement control shown in the game to steer along the course and collect kernels.',
     deviceFit: 'The game is designed around a simple course-running control; exact input guidance appears after loading.',
     howToPlay: 'Follow the course and move toward groups of kernels while avoiding hazards that interrupt the run. The immediate objective is to gather the missing kernels and reach the end.',
@@ -123,12 +123,22 @@ const profiles: OrganicProfileEditorial[] = [
   {
     slug: 'green-battle',
     displayTitle: 'Green Battle',
-    summary: 'Guide Handit the frog through a bee-catching arcade challenge and keep the feeding run going.',
+    summary: 'Play Green Battle online and guide Handit the frog through a bright bee-catching arcade challenge built for quick, repeatable runs.',
     controls: 'Use the controls shown inside the game after it loads.',
     deviceFit: 'Best on desktop, tablet or landscape mobile screens, subject to the controls shown by the game.',
     howToPlay: 'Follow the opening control prompt, move the frog toward the bees and avoid breaking the current run.',
     whyPlay: 'A bright, focused arcade game with a clear frog-and-bee objective.',
     highlights: ['Frog arcade challenge', 'Bee-catching objective', 'Short repeatable runs']
+  },
+  {
+    slug: 'prison-school-anime-game-online',
+    displayTitle: 'Prison School Game',
+    summary: "Play Prison School Game online on GR8 GAMZ, using the mouse and the game's opening instructions to get started.",
+    controls: 'Use the mouse and follow the introduction shown by the game.',
+    deviceFit: 'The supplied controls are mouse-based, making desktop or a device with pointer input the clearest documented fit.',
+    howToPlay: 'Open the game, follow its introduction and use the mouse for the actions shown on screen.',
+    whyPlay: 'Choose it when you are specifically looking for the Prison School anime-themed browser game.',
+    highlights: ['Prison School anime theme', 'Mouse-based controls', 'On-screen introduction']
   },
   {
     slug: 'parking-jam-2d',
@@ -166,10 +176,17 @@ const bySlug = new Map(profiles.map((profile) => [profile.slug, profile]));
 
 export const organicRevenueSprintProfileSlugs = profiles.map((profile) => profile.slug);
 
+export const fastSearchCtrProfileSlugs = [
+  'mr-bullet-puzzles-d-espion',
+  'popcorn-run-3d',
+  'prison-school-anime-game-online',
+  'green-battle'
+];
+
 export const organicRevenueCategoryTargets: Record<string, string[]> = {
   action: ['scrap-brawl', 'the-speed-ninja', 'green-battle'],
   adventure: ['mr-bullet-puzzles-d-espion', 'jungle-adventure-run-3d', 'street-rush-running-game'],
-  arcade: ['the-speed-ninja', 'popcorn-run-3d', 'thief-ro', 'green-battle'],
+  arcade: ['the-speed-ninja', 'popcorn-run-3d', 'thief-ro', 'green-battle', 'prison-school-anime-game-online'],
   puzzle: ['sugar-eyes', 'quiz-goose-math', 'parking-jam-2d', 'tangram-king'],
   racing: ['car-avoid-game', 'monster-truck-mountain-climb'],
   sports: ['flying-football-flapper-soccer-game']

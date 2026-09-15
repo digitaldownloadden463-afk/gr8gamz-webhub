@@ -3,12 +3,12 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import updates from '../src/data/indexnow-updates.json' with { type: 'json' };
-import { organicRevenueMobileTargets, organicRevenueSprintProfileSlugs, getOrganicProfileEditorial } from '../lib/organicRevenueSprint.ts';
+import { fastSearchCtrProfileSlugs, organicRevenueMobileTargets, organicRevenueSprintProfileSlugs, getOrganicProfileEditorial } from '../lib/organicRevenueSprint.ts';
 import { getPartnerGameProfile, getPartnerIndexQuality } from '../src/data/partnerGameProfiles.js';
 
 const root = process.cwd();
 const uniqueSlugs = new Set(organicRevenueSprintProfileSlugs);
-assert.equal(organicRevenueSprintProfileSlugs.length, 15, 'The first wave must remain limited to 15 profile pages.');
+assert.equal(organicRevenueSprintProfileSlugs.length, 16, 'The reviewed profile set must remain limited to 16 pages.');
 assert.equal(uniqueSlugs.size, organicRevenueSprintProfileSlugs.length, 'Profile sprint slugs must be unique.');
 assert.equal(new Set(organicRevenueMobileTargets).size, organicRevenueMobileTargets.length, 'Mobile target links must be unique.');
 
@@ -31,11 +31,7 @@ for (const slug of organicRevenueSprintProfileSlugs) {
 }
 
 const expectedPaths = [
-  '/games',
-  '/categories/action',
-  '/categories/sports',
-  '/mobile-games',
-  ...organicRevenueSprintProfileSlugs.map((slug) => `/more-free-games/${slug}`)
+  ...fastSearchCtrProfileSlugs.map((slug) => `/more-free-games/${slug}`)
 ];
 assert.deepEqual(updates.paths, expectedPaths, 'IndexNow changed-URL manifest must match the reviewed sprint set and order.');
 
