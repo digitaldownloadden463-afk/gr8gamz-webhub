@@ -42,8 +42,14 @@ export function TopNav({ locale }: { locale?: Locale }) {
       {gamingGearLabel(activeLocale)}
     </Link>
   ));
-  const classroomActive = localizedPath === '/classroom' || localizedPath.startsWith('/classroom/');
+  const toolsActive = localizedPath === '/tools' || localizedPath.startsWith('/tools/');
   navLinks.splice(5, 0, (
+    <Link key="/tools" href="/tools" aria-current={toolsActive ? 'page' : undefined}>
+      Tools
+    </Link>
+  ));
+  const classroomActive = localizedPath === '/classroom' || localizedPath.startsWith('/classroom/');
+  navLinks.splice(6, 0, (
     <Link key="/classroom" href="/classroom" aria-current={classroomActive ? 'page' : undefined}>
       Classroom
     </Link>
