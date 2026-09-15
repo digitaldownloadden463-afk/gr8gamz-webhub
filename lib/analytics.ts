@@ -1,6 +1,7 @@
 'use client';
 
 import { getConsentChoice } from '@/lib/consentPreferences';
+import { sanitizeToolChallengeAnalyticsId } from '@/lib/toolChallenge';
 
 export type AnalyticsEventName =
   | 'game_play_start'
@@ -70,6 +71,8 @@ export type AnalyticsParameters = Partial<{
   filter_id: string;
   page_number: number;
   source_surface: string;
+  challenge_sid: string;
+  challenge_parent_sid: string;
   tool_id: 'tools-hub' | 'keyboard-tester' | 'cps-test' | 'spacebar-clicker' | 'gamepad-tester' | 'sensitivity-converter';
 }>;
 
@@ -112,6 +115,8 @@ const safeParameterKeys = new Set<keyof AnalyticsParameters>([
   'filter_id',
   'page_number',
   'source_surface',
+  'challenge_sid',
+  'challenge_parent_sid',
   'tool_id',
 ]);
 const pendingEvents: Array<{
@@ -129,6 +134,11 @@ function safeParameters(parameters: AnalyticsParameters) {
       continue;
     }
     if (typeof value !== 'string') continue;
+    if (key === 'challenge_sid' || key === 'challenge_parent_sid') {
+      const challengeId = sanitizeToolChallengeAnalyticsId(value);
+      if (challengeId) result[key] = challengeId;
+      continue;
+    }
     const normalized = value.trim().slice(0, 100);
     if (!normalized) continue;
     if (key === 'game_slug' && !/^[a-z0-9-]+$/.test(normalized)) continue;

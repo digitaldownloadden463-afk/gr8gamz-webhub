@@ -7,6 +7,7 @@ import {
   createChildToolChallenge,
   formatToolChallengeScore,
   parseToolChallengeHash,
+  toolChallengeAnalyticsLineage,
   toolChallengeUrl,
   type ToolChallenge,
   type ToolChallengeDuration,
@@ -48,7 +49,7 @@ export default function ClickSpeedTest() {
       setRemaining(incoming.duration);
       if (!landingRecorded.current) {
         landingRecorded.current = true;
-        trackEvent('share_landing', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+        trackEvent('share_landing', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(incoming) });
       }
     }, 0);
     return () => window.clearTimeout(timeout);
@@ -68,7 +69,7 @@ export default function ClickSpeedTest() {
         return updated;
       });
       trackEvent('tool_complete', { tool_id: 'cps-test' });
-      if (challenge) trackEvent('challenge_completed', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+      if (challenge) trackEvent('challenge_completed', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(challenge) });
     };
     tick();
     const interval = window.setInterval(tick, 50);
@@ -96,7 +97,7 @@ export default function ClickSpeedTest() {
       endAt.current = performance.now() + duration * 1000;
       setStatus('running');
       trackEvent('tool_start', { tool_id: 'cps-test' });
-      if (challenge) trackEvent('challenge_started', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+      if (challenge) trackEvent('challenge_started', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(challenge) });
     }
     clicksRef.current += 1;
     setClicks(clicksRef.current);
@@ -112,7 +113,7 @@ export default function ClickSpeedTest() {
         : `${(challenge.score - finalScore).toFixed(2)} CPS short - try again.`
     : '';
 
-  const copyChallenge = async (text: string) => {
+  const copyChallenge = async (text: string, outgoing: ToolChallenge) => {
     if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
     else {
       const textarea = document.createElement('textarea');
@@ -126,32 +127,33 @@ export default function ClickSpeedTest() {
       if (!copied) throw new Error('Clipboard copy failed');
     }
     setShareStatus('Challenge link copied');
-    trackEvent('share_fallback_copy', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+    trackEvent('share_fallback_copy', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(outgoing) });
   };
 
   const shareChallenge = async () => {
     setShareStatus('');
-    trackEvent('share_open', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+    let outgoing: ToolChallenge;
     let url: string;
     try {
-      const outgoing = createChildToolChallenge('cps', finalScore, duration as ToolChallengeDuration, challenge);
+      outgoing = createChildToolChallenge('cps', finalScore, duration as ToolChallengeDuration, challenge);
       url = toolChallengeUrl(`${window.location.origin}${window.location.pathname}`, outgoing);
     } catch {
       setShareStatus('Unable to share this challenge');
       return;
     }
+    trackEvent('share_open', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(outgoing) });
     const text = `I scored ${formatToolChallengeScore(finalScore)} CPS on GR8 GAMZ. Can you beat me?`;
     if (navigator.share) {
       try {
         await navigator.share({ title: 'GR8 GAMZ CPS challenge', text, url });
         setShareStatus('Challenge shared');
-        trackEvent('share_success', { tool_id: 'cps-test', source_surface: 'friend-challenge' });
+        trackEvent('share_success', { tool_id: 'cps-test', source_surface: 'friend-challenge', ...toolChallengeAnalyticsLineage(outgoing) });
         return;
       } catch (error) {
         if (error instanceof Error && error.name === 'AbortError') return;
       }
     }
-    try { await copyChallenge(`${text}\n${url}`); } catch { setShareStatus('Unable to share this challenge'); }
+    try { await copyChallenge(`${text}\n${url}`, outgoing); } catch { setShareStatus('Unable to share this challenge'); }
   };
 
   return (

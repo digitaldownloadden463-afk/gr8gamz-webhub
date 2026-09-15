@@ -18,8 +18,19 @@ function isDuration(value: number): value is ToolChallengeDuration {
   return toolChallengeDurations.includes(value as ToolChallengeDuration);
 }
 
-function validId(value: string | null): value is string {
+export function isToolChallengeId(value: unknown): value is string {
   return typeof value === 'string' && idPattern.test(value);
+}
+
+export function sanitizeToolChallengeAnalyticsId(value: unknown): string | undefined {
+  return isToolChallengeId(value) ? value : undefined;
+}
+
+export function toolChallengeAnalyticsLineage(challenge: ToolChallenge) {
+  return {
+    challenge_sid: challenge.sid,
+    ...(challenge.parent ? { challenge_parent_sid: challenge.parent } : {}),
+  };
 }
 
 export function parseToolChallengeHash(hash: string, expectedKind?: ToolChallengeKind): ToolChallenge | null {
@@ -45,8 +56,8 @@ export function parseToolChallengeHash(hash: string, expectedKind?: ToolChalleng
     const score = Number(scoreText);
     const duration = Number(durationText);
     if (!Number.isFinite(score) || score < 0 || score > maximumScore) return null;
-    if (!isDuration(duration) || !validId(sid)) return null;
-    if (parent !== null && !validId(parent)) return null;
+    if (!isDuration(duration) || !isToolChallengeId(sid)) return null;
+    if (parent !== null && !isToolChallengeId(parent)) return null;
 
     return { kind, score, duration, sid, ...(parent ? { parent } : {}) };
   } catch {
