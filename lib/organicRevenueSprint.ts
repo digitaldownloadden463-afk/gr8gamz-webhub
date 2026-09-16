@@ -22,8 +22,8 @@ const profiles: OrganicProfileEditorial[] = [
   },
   {
     slug: 'mr-bullet-puzzles-d-espion',
-    displayTitle: "Mr Bullet - Puzzles d'espion",
-    summary: 'Solve compact shooting puzzles by choosing an angle carefully and using each shot to reach the target.',
+    displayTitle: "Mr Bullet - Puzzles d'Espion",
+    summary: "Play Mr Bullet - Puzzles d'Espion online and solve compact shooting puzzles by choosing each angle carefully to reach the target.",
     controls: 'Use the pointer or the on-screen aiming control shown by the game to line up and take a shot.',
     deviceFit: 'Pointer and touch support depend on the controls presented after the game loads.',
     howToPlay: 'Study the obstacle layout before firing. Aim for a direct route or use the level geometry when the target is not in a straight line.',
@@ -53,7 +53,7 @@ const profiles: OrganicProfileEditorial[] = [
   {
     slug: 'popcorn-run-3d',
     displayTitle: 'Popcorn Run 3D',
-    summary: 'Guide a bare corn cob along the course, collect loose kernels and try to reach the finish with the cob rebuilt.',
+    summary: 'Play Popcorn Run 3D online and guide a bare corn cob through a short 3D course, collecting loose kernels on the way to the finish.',
     controls: 'Use the movement control shown in the game to steer along the course and collect kernels.',
     deviceFit: 'The game is designed around a simple course-running control; exact input guidance appears after loading.',
     howToPlay: 'Follow the course and move toward groups of kernels while avoiding hazards that interrupt the run. The immediate objective is to gather the missing kernels and reach the end.',
@@ -123,7 +123,7 @@ const profiles: OrganicProfileEditorial[] = [
   {
     slug: 'green-battle',
     displayTitle: 'Green Battle',
-    summary: 'Guide Handit the frog through a bee-catching arcade challenge and keep the feeding run going.',
+    summary: 'Play Green Battle online and guide Handit the frog through a bright bee-catching arcade challenge built for quick, repeatable runs.',
     controls: 'Use the controls shown inside the game after it loads.',
     deviceFit: 'Best on desktop, tablet or landscape mobile screens, subject to the controls shown by the game.',
     howToPlay: 'Follow the opening control prompt, move the frog toward the bees and avoid breaking the current run.',
@@ -165,6 +165,12 @@ const profiles: OrganicProfileEditorial[] = [
 const bySlug = new Map(profiles.map((profile) => [profile.slug, profile]));
 
 export const organicRevenueSprintProfileSlugs = profiles.map((profile) => profile.slug);
+
+export const fastSearchCtrProfileSlugs = [
+  'mr-bullet-puzzles-d-espion',
+  'popcorn-run-3d',
+  'green-battle'
+];
 
 export const organicRevenueCategoryTargets: Record<string, string[]> = {
   action: ['scrap-brawl', 'the-speed-ninja', 'green-battle'],
