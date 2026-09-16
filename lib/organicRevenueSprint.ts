@@ -131,16 +131,6 @@ const profiles: OrganicProfileEditorial[] = [
     highlights: ['Frog arcade challenge', 'Bee-catching objective', 'Short repeatable runs']
   },
   {
-    slug: 'prison-school-anime-game-online',
-    displayTitle: 'Prison School Game',
-    summary: "Play Prison School Game online on GR8 GAMZ, using the mouse and the game's opening instructions to get started.",
-    controls: 'Use the mouse and follow the introduction shown by the game.',
-    deviceFit: 'The supplied controls are mouse-based, making desktop or a device with pointer input the clearest documented fit.',
-    howToPlay: 'Open the game, follow its introduction and use the mouse for the actions shown on screen.',
-    whyPlay: 'Choose it when you are specifically looking for the Prison School anime-themed browser game.',
-    highlights: ['Prison School anime theme', 'Mouse-based controls', 'On-screen introduction']
-  },
-  {
     slug: 'parking-jam-2d',
     displayTitle: 'Parking Jam 2D',
     summary: 'Shift parked vehicles to clear a route for the white ambulance and solve each traffic-jam layout.',
@@ -179,14 +169,13 @@ export const organicRevenueSprintProfileSlugs = profiles.map((profile) => profil
 export const fastSearchCtrProfileSlugs = [
   'mr-bullet-puzzles-d-espion',
   'popcorn-run-3d',
-  'prison-school-anime-game-online',
   'green-battle'
 ];
 
 export const organicRevenueCategoryTargets: Record<string, string[]> = {
   action: ['scrap-brawl', 'the-speed-ninja', 'green-battle'],
   adventure: ['mr-bullet-puzzles-d-espion', 'jungle-adventure-run-3d', 'street-rush-running-game'],
-  arcade: ['the-speed-ninja', 'popcorn-run-3d', 'thief-ro', 'green-battle', 'prison-school-anime-game-online'],
+  arcade: ['the-speed-ninja', 'popcorn-run-3d', 'thief-ro', 'green-battle'],
   puzzle: ['sugar-eyes', 'quiz-goose-math', 'parking-jam-2d', 'tangram-king'],
   racing: ['car-avoid-game', 'monster-truck-mountain-climb'],
   sports: ['flying-football-flapper-soccer-game']

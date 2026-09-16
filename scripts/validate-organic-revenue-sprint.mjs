@@ -8,7 +8,7 @@ import { getPartnerGameProfile, getPartnerIndexQuality } from '../src/data/partn
 
 const root = process.cwd();
 const uniqueSlugs = new Set(organicRevenueSprintProfileSlugs);
-assert.equal(organicRevenueSprintProfileSlugs.length, 16, 'The reviewed profile set must remain limited to 16 pages.');
+assert.equal(organicRevenueSprintProfileSlugs.length, 15, 'The reviewed profile set must remain limited to 15 pages.');
 assert.equal(uniqueSlugs.size, organicRevenueSprintProfileSlugs.length, 'Profile sprint slugs must be unique.');
 assert.equal(new Set(organicRevenueMobileTargets).size, organicRevenueMobileTargets.length, 'Mobile target links must be unique.');
 
