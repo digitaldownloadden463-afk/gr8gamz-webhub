@@ -1,0 +1,53 @@
+name: Daily revenue growth engine
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      target_revenue_gbp:
+        description: Daily revenue target in GBP
+        required: false
+        default: '1000'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-revenue-growth
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OUTPUT_DIR: ${{ runner.temp }}/gr8-daily-growth
+      TARGET_REVENUE_GBP: ${{ inputs.target_revenue_gbp || '1000' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Validate the queue generator
+        run: node scripts/validate-daily-growth.mjs
+      - name: Build the next seven days of tracked campaigns
+        run: node scripts/generate-daily-growth-queue.mjs --days 7 --output "$OUTPUT_DIR"
+      - name: Calculate the traffic required for the revenue target
+        run: node scripts/revenue-target-model.mjs --target "$TARGET_REVENUE_GBP" --output "$OUTPUT_DIR"
+      - name: Audit today's promoted landing pages
+        run: node scripts/audit-growth-destinations.mjs --queue "$OUTPUT_DIR/queue.json" --output "$OUTPUT_DIR"
+      - name: Add the brief and revenue model to the run summary
+        if: always()
+        run: |
+          if [ -f "$OUTPUT_DIR/daily-brief.md" ]; then cat "$OUTPUT_DIR/daily-brief.md" >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f "$OUTPUT_DIR/revenue-model.md" ]; then cat "$OUTPUT_DIR/revenue-model.md" >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f "$OUTPUT_DIR/destination-audit.md" ]; then cat "$OUTPUT_DIR/destination-audit.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Upload the daily operating pack
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gr8-daily-growth-${{ github.run_id }}
+          path: ${{ runner.temp }}/gr8-daily-growth
+          retention-days: 30
+          if-no-files-found: error
