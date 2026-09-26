@@ -8,11 +8,8 @@ import { canonical } from '@/lib/features';
 import { getCatalogueStats } from '@/lib/catalogueStats';
 import { getFeaturedPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 import { getRegistryCategories } from '@/lib/gameRegistry';
-import LenovoImpactTracking from '@/components/LenovoImpactTracking';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
-
-const IMPACT_SITE_VERIFICATION = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
 
 export const metadata = {
   title: { absolute: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ' },
@@ -55,8 +52,6 @@ export default function HomePage() {
 
   return (
     <main>
-      <meta name="impact-site-verification" {...{ value: IMPACT_SITE_VERIFICATION }} />
-      <LenovoImpactTracking />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <nav className="home-play-menu" aria-label="Homepage play menu">
         <Link href="/gr8-originals"><Gamepad2 size={18} aria-hidden="true" /> GR8 Originals</Link>
