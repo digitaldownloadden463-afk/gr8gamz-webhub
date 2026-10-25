@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useEffect, useMemo, useRef, useSyncExternalStore, useState } from 'react';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, nextLevelXp, resetPlayerEngagement, subscribePlayerEngagement } from '@/lib/playerEngagement';
 import type { EngagementText } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
+import { useConsentChoice } from '@/lib/consentPreferences';
 
 export type ArcadeLookupGame = {
   id: string;
@@ -24,6 +26,8 @@ export function MyArcadeClient({ games, labels }: MyArcadeClientProps) {
   const [confirmReset, setConfirmReset] = useState(false);
   const [lookedUpGames, setLookedUpGames] = useState<ArcadeLookupGame[]>([]);
   const requestedSlugs = useRef(new Set<string>());
+  const trackedView = useRef(false);
+  const consent = useConsentChoice();
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
 
   const bySlug = useMemo(() => new Map([...games, ...lookedUpGames].map((game) => [game.slug || game.id, game])), [games, lookedUpGames]);
@@ -54,6 +58,20 @@ export function MyArcadeClient({ games, labels }: MyArcadeClientProps) {
   const target = nextLevelXp(level);
   const pct = Math.min(100, Math.round((progress.xp / target) * 100));
   const personalBests = Object.values(progress.games).filter((item) => Number(item.bestScore) > 0).sort((a, b) => Number(b.bestScore) - Number(a.bestScore)).slice(0, 8);
+  const savedGameCount = new Set([
+    ...progress.favourites.map((item) => item.slug),
+    ...progress.recent.map((item) => item.slug),
+    ...Object.keys(progress.games)
+  ]).size;
+
+  useEffect(() => {
+    if (consent !== 'accepted' || trackedView.current) return;
+    if (!trackEvent('my_arcade_view', {
+      player_state: savedGameCount > 0 ? 'returning' : 'new',
+      saved_games: savedGameCount
+    })) return;
+    trackedView.current = true;
+  }, [consent, savedGameCount]);
 
   function clearLocalData() {
     if (!confirmReset) {

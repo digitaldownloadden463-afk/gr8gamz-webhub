@@ -17,10 +17,14 @@ export default function CommercePageView({ pageType, pageSlug, category, product
 
   useEffect(() => {
     if (consent !== 'accepted') return;
-    if (pageType !== 'product' && pageType !== 'guide' && pageType !== 'comparison') return;
     const key = `${pageType}:${pageSlug}`;
     if (trackedKey.current === key) return;
-    if (!trackEvent(pageType === 'product' ? 'product_view' : 'affiliate_guide_view', {
+    const eventName = pageType === 'product'
+      ? 'product_view'
+      : pageType === 'guide' || pageType === 'comparison'
+        ? 'affiliate_guide_view'
+        : 'affiliate_catalogue_view';
+    if (!trackEvent(eventName, {
       merchant: 'gadgethyper',
       locale: document.documentElement.lang || 'en',
       page_type: pageType,

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Compass, Gamepad2, ShieldCheck, Sparkles, Star } from 'lucide-react';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import LocalizedGameCard from '@/components/LocalizedGameCard';
@@ -29,17 +29,14 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
   const info = localeInfo(locale);
   const launch = getGlobalLaunchGames();
   const featured = launch.slice(0, 12);
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'GR8 GAMZ',
-    url: localizedCanonical(locale, '/'),
-    inLanguage: locale
-  };
+  const originals = launch.filter((game) => game.source === 'gr8-originals').length;
+  const categories = getRegistryCategories(1).slice(0, 8).map((category) => ({
+    ...category,
+    localizedCount: launch.filter((game) => slugifyRegistryValue(game.category) === category.slug).length
+  })).filter((category) => category.localizedCount > 0);
 
   return (
     <main lang={locale} dir={info.dir}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <nav className="home-play-menu" aria-label={text.hubs.launchTitle}>
         <Link href={pathForLocale(locale, '/gr8-originals')}><Gamepad2 size={18} aria-hidden="true" /> {text.nav.originals}</Link>
         <Link href={pathForLocale(locale, '/gr8-select')}><Star size={18} aria-hidden="true" /> {text.nav.select}</Link>
@@ -56,17 +53,33 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
             <Link href={pathForLocale(locale, '/gr8-select')} className="secondary-cta"><ArrowRight size={20} aria-hidden="true" /> {text.home.selectCta}</Link>
           </div>
           <div className="hero__stats" aria-label="GR8 GAMZ">
-            <span className="hero-stat"><strong>26</strong><span>{text.nav.originals}</span></span>
-            <span className="hero-stat"><strong>226</strong><span>{text.hubs.launchTitle}</span></span>
-            <span className="hero-stat hero-stat--wide"><strong>12</strong><span>locales</span></span>
+            <span className="hero-stat"><strong>{originals.toLocaleString(locale)}</strong><span>{text.nav.originals}</span></span>
+            <span className="hero-stat"><strong>{launch.length.toLocaleString(locale)}</strong><span>{text.hubs.launchTitle}</span></span>
+            <span className="hero-stat hero-stat--wide"><strong>13</strong><span>languages</span></span>
           </div>
         </div>
       </section>
-      <AdSensePlacement placement="home-upper-content" />
       <section className="value-grid" aria-label={text.hubs.gamesTitle}>
         <article><Gamepad2 aria-hidden="true" /><strong>{text.home.fast}</strong><span>{text.hubs.gamesIntro}</span></article>
         <article><ShieldCheck aria-hidden="true" /><strong>{text.home.privacy}</strong><span>{text.profile.external}</span></article>
         <article><Star aria-hidden="true" /><strong>{text.home.browse}</strong><span>{text.hubs.launchIntro}</span></article>
+      </section>
+      <AdSensePlacement placement="home-upper-content" />
+      <section className="portal-stage" aria-label={text.hubs.categoryTitle}>
+        <div className="portal-stage__copy">
+          <span className="eyebrow"><Compass size={18} aria-hidden="true" /> {text.home.browse}</span>
+          <h2>{text.hubs.gamesTitle}</h2>
+          <p>{text.hubs.gamesIntro}</p>
+          <Link href={pathForLocale(locale, '/games')} className="cta">{text.nav.games} <ArrowRight size={18} aria-hidden="true" /></Link>
+        </div>
+        <div className="portal-links" aria-label={text.hubs.categoryTitle}>
+          {categories.map((category) => (
+            <Link key={category.slug} href={pathForLocale(locale, `/categories/${category.slug}`)}>
+              <strong>{categoryName(locale, category.name)}</strong>
+              <span>{category.localizedCount.toLocaleString(locale)} {text.nav.games.toLowerCase()}</span>
+            </Link>
+          ))}
+        </div>
       </section>
       <AdSensePlacement placement="home-mid-content" />
       <section className="section-heading">
@@ -78,6 +91,14 @@ export function LocalizedHomePage({ locale }: { locale: Locale }) {
         {featured.map((game, index) => <LocalizedGameCard key={game.id} game={game} locale={locale} priority={index < 12} />)}
       </section>
       <AdSensePlacement placement="home-lower-content" />
+      <section className="final-play-cta">
+        <span className="eyebrow">{text.home.eyebrow}</span>
+        <h2>{text.hubs.launchIntro}</h2>
+        <div className="cta-row">
+          <Link href={pathForLocale(locale, '/games')} className="cta">{text.nav.games} <ArrowRight size={18} aria-hidden="true" /></Link>
+          <Link href={pathForLocale(locale, '/my-arcade')} className="secondary-cta">{text.nav.arcade}</Link>
+        </div>
+      </section>
     </main>
   );
 }

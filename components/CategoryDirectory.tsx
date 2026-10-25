@@ -27,7 +27,21 @@ function formatReviewedDate(value: string) {
   return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
 }
 
-function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: CategoryEditorialRecord; reviewedAt: string }) {
+function CategoryEditorialOverview({ editorial, reviewedAt }: { editorial: CategoryEditorialRecord; reviewedAt: string }) {
+  return (
+    <section className="category-overview" aria-labelledby={`${editorial.slug}-overview-title`}>
+      <div className="category-overview__heading">
+        <span className="eyebrow">Choose your game</span>
+        <h2 id={`${editorial.slug}-overview-title`}>What makes a {editorial.name.toLowerCase()} game?</h2>
+        <p>{editorial.distinction}</p>
+      </div>
+      <p className="category-overview__styles"><strong>Play styles:</strong> {editorial.subgenres.map((subgenre) => subgenre.name).join(', ')}.</p>
+      <p className="category-reviewed"><CalendarCheck size={18} aria-hidden="true" /> Catalogue and editorial choices checked <time dateTime={reviewedAt}>{formatReviewedDate(reviewedAt)}</time>.</p>
+    </section>
+  );
+}
+
+function CategoryEditorialDetails({ editorial }: { editorial: CategoryEditorialRecord }) {
   const originals = getRegistryGamesBySlugs(editorial.originalSlugs).filter((game) => game.source === 'gr8-originals');
   const usedLabels = new Set<CategorySelectionLabel>(editorial.editorialPicks.flatMap((pick) => pick.labels));
   usedLabels.add('popular-on-gr8');
@@ -38,28 +52,8 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
     <section className="category-editorial" aria-labelledby={`${editorial.slug}-guide-title`}>
       <div className="category-editorial__heading">
         <span className="eyebrow">Category guide</span>
-        <h2 id={`${editorial.slug}-guide-title`}>Find the right {editorial.name.toLowerCase()} game</h2>
-        <p>{editorial.distinction}</p>
-      </div>
-
-      <div className="category-editorial__grid">
-        <section aria-labelledby={`${editorial.slug}-styles-title`}>
-          <h3 id={`${editorial.slug}-styles-title`}>Play styles in this category</h3>
-          <dl className="category-editorial__definitions">
-            {editorial.subgenres.map((subgenre) => (
-              <div key={subgenre.name}>
-                <dt>{subgenre.name}</dt>
-                <dd>{subgenre.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-        <section aria-labelledby={`${editorial.slug}-choose-title`}>
-          <h3 id={`${editorial.slug}-choose-title`}>How to choose</h3>
-          <ul className="category-editorial__list">
-            {editorial.choosing.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </section>
+        <h2 id={`${editorial.slug}-guide-title`}>Plan a better {editorial.name.toLowerCase()} session</h2>
+        <p>Use the device notes, original-game links and related collections below to narrow the catalogue without opening every game.</p>
       </div>
 
       <section className="category-fit" aria-labelledby={`${editorial.slug}-fit-title`}>
@@ -69,6 +63,26 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
           <div><dt>Controls</dt><dd>{editorial.controlsGuidance}</dd></div>
           <div><dt>Session length</dt><dd>{editorial.sessionGuidance}</dd></div>
         </dl>
+      </section>
+
+      <section className="category-editorial__grid" aria-label={`${editorial.name} styles and selection guidance`}>
+        <div>
+          <h3>Play styles explained</h3>
+          <dl className="category-editorial__definitions">
+            {editorial.subgenres.map((subgenre) => (
+              <div key={subgenre.name}>
+                <dt>{subgenre.name}</dt>
+                <dd>{subgenre.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div>
+          <h3>How to choose</h3>
+          <ul className="category-editorial__list">
+            {editorial.choosing.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
       </section>
 
       {originals.length ? (
@@ -130,7 +144,6 @@ function CategoryEditorialDetails({ editorial, reviewedAt }: { editorial: Catego
         </dl>
       </details>
 
-      <p className="category-reviewed"><CalendarCheck size={18} aria-hidden="true" /> Catalogue and editorial choices checked <time dateTime={reviewedAt}>{formatReviewedDate(reviewedAt)}</time>.</p>
     </section>
   );
 }
@@ -183,6 +196,8 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
         </section>
       )}
 
+      {page === 1 && editorial ? <CategoryEditorialOverview editorial={editorial} reviewedAt={reviewedAt} /> : null}
+
       {supportsThreeAds ? <AdSensePlacement placement="discovery-upper-content" /> : null}
 
       <section className="game-grid" aria-label={`${name} games, page ${page}, first group`}>
@@ -207,7 +222,7 @@ export default function CategoryDirectory({ category, games, page, totalPages, e
         ariaLabel={`${name} game pages`}
       />
 
-      {page === 1 && editorial ? <CategoryEditorialDetails editorial={editorial} reviewedAt={reviewedAt} /> : null}
+      {page === 1 && editorial ? <CategoryEditorialDetails editorial={editorial} /> : null}
     </>
   );
 }

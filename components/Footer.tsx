@@ -21,28 +21,14 @@ export function Footer({ locale }: { locale?: Locale }) {
     ['/classroom', 'Classroom', false],
     ['/tools', 'Gaming tools', false],
     ['/gr8-trending', text.nav.trending, true],
-    ['/gr8-daily', text.nav.daily, true],
-    ['/new-games', text.nav.new, true],
     ['/my-arcade', text.nav.arcade, true],
-    ['/categories/arcade', text.categories.Arcade, true],
-    ['/categories/puzzle', text.categories.Puzzle, true],
-    ['/categories/racing', text.categories.Racing, true],
+    ['/about', 'About', false],
+    ['/contact', 'Contact', false],
     ['/privacy', text.legal.privacyTitle, true],
     ['/terms', text.legal.termsTitle, true],
-    ['/privacy-choices', text.common.privacyChoice, false],
-    ['/contact', 'Contact', false],
-    ['/about', 'About', false],
     ['/accessibility', 'Accessibility', false],
     ['/affiliate-disclosure', 'Affiliate disclosure', false],
-    ['/child-safety', 'Child safety', false],
-    ['/cookie-policy', 'Cookie policy', false],
-    ['/copyright', 'Copyright', false],
-    ['/editorial-policy', 'Editorial policy', false],
-    ['/mobile-games', 'Mobile games', false],
-    ['/more-free-games', 'More games', false],
-    ['/popular-games', 'Popular games', false],
-    ['/quick-games', 'Quick games', false],
-    ['/report-a-game', 'Report a game', false]
+    ['/policies', 'All policies and safety', false]
   ] as const;
 
   return (

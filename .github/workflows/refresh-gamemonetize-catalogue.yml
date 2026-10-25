@@ -33,13 +33,16 @@ jobs:
           GR8_GAMEMONETIZE_REVENUE_VERIFIED: 'true'
           GR8_ENABLE_GAMEMONETIZE_EMBEDS: 'true'
         run: pnpm run ingest:gamemonetize
+      - name: Regenerate production partner caches
+        run: pnpm run generate:partner-runtime-cache
       - run: pnpm run validate:gamemonetize
       - run: pnpm run validate:partners
+      - run: pnpm run validate:partner-index-quality-cache
       - name: Open a draft catalogue update
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet -- src/data/partnerCatalog.generated.json src/data/providers/gamemonetize reports/partner-catalogue-report.json reports/gamemonetize-ingestion-report.json; then
+          if git diff --quiet -- src/data/partnerCatalog.generated.json src/data/partnerProfiles.generated.json src/data/partnerIndexQuality.generated.json src/data/providers/gamemonetize reports/partner-catalogue-report.json reports/gamemonetize-ingestion-report.json; then
             echo "No material catalogue changes."
             exit 0
           fi
@@ -47,7 +50,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add src/data/partnerCatalog.generated.json src/data/providers/gamemonetize reports/partner-catalogue-report.json reports/gamemonetize-ingestion-report.json
+          git add src/data/partnerCatalog.generated.json src/data/partnerProfiles.generated.json src/data/partnerIndexQuality.generated.json src/data/providers/gamemonetize reports/partner-catalogue-report.json reports/gamemonetize-ingestion-report.json
           git commit -m "Refresh GameMonetize catalogue"
           git push origin "$branch"
           gh pr create --draft --base main --head "$branch" --title "Refresh GameMonetize catalogue" --body "Automated daily refresh from the current official publisher feed. Review validation totals and provider availability before merging."

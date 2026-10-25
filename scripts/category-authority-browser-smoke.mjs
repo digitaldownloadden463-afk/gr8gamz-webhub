@@ -1,4 +1,5 @@
 import { chromium } from '@playwright/test';
+import categoryEditorial from '../src/data/categoryEditorial.json' with { type: 'json' };
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:3117';
 const categorySlugs = ['action', 'adventure', 'multiplayer', 'puzzle', 'racing', 'shooter', 'sports', 'strategy'];
@@ -69,7 +70,7 @@ async function inspectCategory(page, slug, viewport) {
   if (facts.forbiddenSchema) failures.push(`${route} contains fabricated commercial or review schema`);
   if (facts.overflow) failures.push(`${route} overflows at ${viewport.width}px`);
   if (!/not community ratings/i.test(facts.selectionDisclosure)) failures.push(`${route} does not disclose the editorial-label basis`);
-  if (facts.updatedDate !== '2026-08-22') failures.push(`${route} is missing the reviewed date`);
+  if (facts.updatedDate !== categoryEditorial.reviewedAt) failures.push(`${route} is missing the current reviewed date`);
   if (viewport.width === 390 && facts.firstCardTop > 920) failures.push(`${route} pushes the first playable card to ${Math.round(facts.firstCardTop)}px on mobile`);
 }
 

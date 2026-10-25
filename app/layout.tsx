@@ -86,7 +86,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     }
   };
   return (
-    <html lang={locale} dir={info.dir}>
+    <html lang={locale} dir={info.dir} data-scroll-behavior="smooth">
       {adsenseConfig.enabled ? (
         <head>
           <script

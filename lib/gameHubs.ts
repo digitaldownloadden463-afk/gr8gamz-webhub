@@ -1,8 +1,8 @@
 import gameHubData from '@/src/data/gameHubs.json';
-import generatedPartnerCatalogue from '@/src/data/partnerCatalog.generated.json';
 import gamesData from '@/src/data/games.json';
 import { getRegistryGamesBySlugs, type RegistryGame } from '@/lib/gameRegistry';
 import { matchesHubRule, type HubMatchRecord, type HubRuleId } from '@/lib/gameHubRules';
+import { getPartnerGameProfiles } from '@/src/data/partnerGameProfiles';
 
 export type GameHubDefinition = {
   id: HubRuleId;
@@ -32,7 +32,15 @@ type GameHubData = {
 };
 
 const data = gameHubData as GameHubData;
-const partnerRecords = generatedPartnerCatalogue.games as HubMatchRecord[];
+const partnerRecords: HubMatchRecord[] = getPartnerGameProfiles().map((profile) => ({
+  title: profile.title,
+  slug: profile.slug,
+  category: profile.category,
+  sourceCategory: profile.category,
+  description: profile.description,
+  instructions: profile.controls || '',
+  tags: profile.tags || []
+}));
 const originalRecords = (gamesData as Array<Record<string, unknown>>).map((game) => ({
   title: String(game.name || ''),
   slug: String(game.slug || game.id || ''),

@@ -41,23 +41,10 @@ export default function HomePage() {
   const categories = getRegistryCategories(1).slice(0, 8);
   const gameHubs = getActiveGameHubs();
 
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'GR8 GAMZ',
-    url: canonical('/'),
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${canonical('/games')}?q={search_term_string}`,
-      'query-input': 'required name=search_term_string'
-    }
-  };
-
   return (
     <main>
       <meta name="impact-site-verification" {...{ value: IMPACT_SITE_VERIFICATION }} />
       <LenovoImpactTracking />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <nav className="home-play-menu" aria-label="Homepage play menu">
         <Link href="/gr8-originals"><Gamepad2 size={18} aria-hidden="true" /> GR8 Originals</Link>
         <Link href="/gr8-select"><Star size={18} aria-hidden="true" /> GR8 Select</Link>

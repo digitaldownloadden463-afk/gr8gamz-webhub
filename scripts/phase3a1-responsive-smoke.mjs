@@ -175,14 +175,14 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }
   const pair = await openPage(browser, '/', { width: 390, height: 844 });
   const page = pair.page;
   const heroTop = (await rect(page, page.locator('.hero--home'))).top;
-  const start = await rect(page, page.getByRole('link', { name: /start playing/i }).first());
+  const start = await rect(page, page.locator('.hero--home .cta').first());
   const quickLinks = page.locator('.home-play-menu a');
   for (let index = 0; index < await quickLinks.count(); index += 1) {
     const box = await rect(page, quickLinks.nth(index));
     if (box.height < 44) fail(`quick-play control ${index + 1} is below 44px: ${box.height}`);
   }
   if (heroTop > 170) fail(`homepage hero starts too low at 390px: ${heroTop}`);
-  if (start.top < 0 || start.bottom > 844) fail(`Start Playing is not visible in first mobile viewport: ${JSON.stringify(start)}`);
+  if (start.top < 0 || start.bottom > 844) fail(`Primary hero play CTA is not visible in first mobile viewport: ${JSON.stringify(start)}`);
   await assertHeroStats(page, 'homepage 390px');
   metrics.mobileHomeHeroTop = Math.round(heroTop);
   await screenshot(page, 'home-mobile');

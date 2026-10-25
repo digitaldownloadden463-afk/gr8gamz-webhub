@@ -1,5 +1,13 @@
-import generatedPartnerCatalogue from './partnerCatalog.generated.json' with { type: 'json' };
+import { createRequire } from 'node:module';
 import { buildPartnerIndexQuality, summarizePartnerIndexQuality } from '../../lib/partnerIndexQuality.js';
+
+const loadRuntimeData = createRequire(import.meta.url);
+const generatedPartnerProfiles = loadRuntimeData('./partnerProfiles.generated.json');
+const generatedPartnerIndexQuality = loadRuntimeData('./partnerIndexQuality.generated.json');
+const rebuildPartnerProfiles = process.env.GR8_REBUILD_PARTNER_PROFILES === 'true';
+const generatedPartnerCatalogue = rebuildPartnerProfiles
+  ? loadRuntimeData(['./partnerCatalog', 'generated', 'json'].join('.'))
+  : null;
 
 const prohibitedPublicPhrases = [
   /high-intent/gi,
@@ -1284,7 +1292,7 @@ const reviewedDescriptionOverrides = {
   'ice-is-coming': 'A block-positioning puzzle where an ice cube must be moved into its designated place. Use touch controls to shift the cube, complete the required line, and clear it from the board.'
 };
 
-const generatedPartnerGameProfiles = (generatedPartnerCatalogue.games || []).map(generatedPartnerProfile);
+const generatedPartnerGameProfiles = rebuildPartnerProfiles ? (generatedPartnerCatalogue?.games || []).map(generatedPartnerProfile) : [];
 const partnerProfileMap = new Map();
 const curatedBySlug = new Map(partnerGameProfiles.map((profile) => [profile.slug, profile]));
 for (const profile of generatedPartnerGameProfiles) {
@@ -1308,13 +1316,26 @@ for (const profile of generatedPartnerGameProfiles) {
       : cleanProfile(profile)
   );
 }
-export const allPartnerGameProfiles = [...partnerProfileMap.values()].map((profile) => ({
-  ...profile,
-  description: Object.hasOwn(reviewedDescriptionOverrides, profile.slug)
-    ? reviewedDescriptionOverrides[profile.slug]
-    : profile.description
-}));
-const partnerIndexQualityBySlug = buildPartnerIndexQuality(allPartnerGameProfiles);
+export const allPartnerGameProfiles = rebuildPartnerProfiles
+  ? [...partnerProfileMap.values()].map((profile) => ({
+      ...profile,
+      description: Object.hasOwn(reviewedDescriptionOverrides, profile.slug)
+        ? reviewedDescriptionOverrides[profile.slug]
+        : profile.description
+    }))
+  : generatedPartnerProfiles.profiles;
+if (!rebuildPartnerProfiles) {
+  for (const profile of allPartnerGameProfiles) partnerProfileMap.set(profile.slug, profile);
+}
+const partnerIndexQualityBySlug = rebuildPartnerProfiles
+  ? buildPartnerIndexQuality(allPartnerGameProfiles)
+  : new Map(Object.entries(generatedPartnerIndexQuality.profiles).map(([slug, quality]) => [slug, {
+      score: quality[0],
+      state: quality[1],
+      reasons: quality[2],
+      hardFailures: quality[3],
+      brandReview: quality[4]
+    }]));
 const partnerProfilesByCategory = new Map();
 const partnerProfileIndex = new Map();
 for (const [index, profile] of allPartnerGameProfiles.entries()) {
@@ -1325,17 +1346,19 @@ for (const [index, profile] of allPartnerGameProfiles.entries()) {
   partnerProfileIndex.set(profile.slug, index);
 }
 export const partnerCatalogueReport = {
-  generatedAt: generatedPartnerCatalogue.generatedAt,
-  totals: {
-    ...generatedPartnerCatalogue.totals,
-    verifiedIndexable: allPartnerGameProfiles.length,
-    canonicalPartnerProfiles: allPartnerGameProfiles.length,
-    totalIndexableWithOriginals: allPartnerGameProfiles.length + 26
-  },
-  supplierTotals: generatedPartnerCatalogue.supplierTotals,
-  pagesProcessed: generatedPartnerCatalogue.pagesProcessed,
-  statusCounts: generatedPartnerCatalogue.statusCounts,
-  quarantineCounts: generatedPartnerCatalogue.quarantineCounts
+  ...(rebuildPartnerProfiles ? {
+    generatedAt: generatedPartnerCatalogue?.generatedAt,
+    totals: {
+      ...generatedPartnerCatalogue?.totals,
+      verifiedIndexable: allPartnerGameProfiles.length,
+      canonicalPartnerProfiles: allPartnerGameProfiles.length,
+      totalIndexableWithOriginals: allPartnerGameProfiles.length + 26
+    },
+    supplierTotals: generatedPartnerCatalogue?.supplierTotals,
+    pagesProcessed: generatedPartnerCatalogue?.pagesProcessed,
+    statusCounts: generatedPartnerCatalogue?.statusCounts,
+    quarantineCounts: generatedPartnerCatalogue?.quarantineCounts
+  } : generatedPartnerProfiles.catalogueReport)
 };
 
 export const partnerIndexQualityReport = summarizePartnerIndexQuality(allPartnerGameProfiles, partnerIndexQualityBySlug);

@@ -6,7 +6,7 @@ import PartnerArtwork from '@/components/PartnerArtwork';
 import ChallengeShare from '@/components/ChallengeShare';
 import GameShare from '@/components/GameShare';
 import { recordGameStarted } from '@/lib/playerEngagement';
-import { tr, type EngagementText, type Locale } from '@/lib/i18n';
+import { pathForLocale, tr, type EngagementText, type Locale } from '@/lib/i18n';
 import { trackEvent } from '@/lib/analytics';
 import {
   getPartnerContentSnapshot,
@@ -236,6 +236,7 @@ export function PartnerPlayClient({ title, profilePath, image, playUrl, width, h
       <section className="partner-afterplay">
         <GameShare title={title} url={profilePath} text={`Challenge a friend to try ${title} on GR8 GAMZ.`} labels={copy} />
         <ChallengeShare gameSlug={gameSlug} gameTitle={title} kind="select" locale={locale} labels={copy} />
+        <Link href={pathForLocale(locale, '/my-arcade')} className="secondary-cta">My GR8 Arcade</Link>
       </section>
     </section>
   );

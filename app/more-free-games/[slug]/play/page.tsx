@@ -29,7 +29,10 @@ export default async function PartnerPlayPage({ params }: PageProps) {
   try {
     if (!profile.playUrl) {
       const result = await resolvePartnerGame(profile);
-      resolved = result.resolved;
+      resolved = {
+        ...result.resolved,
+        provider: result.resolved.provider === 'gamemonetize' ? 'gamemonetize' : 'gamepix'
+      };
     }
   } catch {
     resolved = { ...resolved };
