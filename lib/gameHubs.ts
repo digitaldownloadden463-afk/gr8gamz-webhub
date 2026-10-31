@@ -1,8 +1,8 @@
 import gameHubData from '@/src/data/gameHubs.json';
-import generatedPartnerCatalogue from '@/src/data/partnerCatalog.generated.json';
 import gamesData from '@/src/data/games.json';
 import { getRegistryGamesBySlugs, type RegistryGame } from '@/lib/gameRegistry';
-import { matchesHubRule, type HubMatchRecord, type HubRuleId } from '@/lib/gameHubRules';
+import { matchesHubRule, type HubRuleId } from '@/lib/gameHubRules';
+import { getPartnerHubSlugs } from '@/lib/gameHubClassification';
 
 export type GameHubDefinition = {
   id: HubRuleId;
@@ -16,6 +16,7 @@ export type GameHubDefinition = {
   h1: string;
   introduction: string;
   selectionNote: string;
+  playerGuidance: string;
   playStyles: string[];
   deviceGuidance: string;
   controlsGuidance: string;
@@ -32,7 +33,6 @@ type GameHubData = {
 };
 
 const data = gameHubData as GameHubData;
-const partnerRecords = generatedPartnerCatalogue.games as HubMatchRecord[];
 const originalRecords = (gamesData as Array<Record<string, unknown>>).map((game) => ({
   title: String(game.name || ''),
   slug: String(game.slug || game.id || ''),
@@ -69,7 +69,7 @@ export function getGameHubGames(slug: string) {
   const hub = getGameHubDefinition(slug);
   if (!hub) return [];
   const slugs = new Set([
-    ...partnerRecords.filter((record) => matchesHubRule(hub.id, record)).map((record) => String(record.slug || '')),
+    ...getPartnerHubSlugs(hub.id),
     ...originalRecords.filter((record) => matchesHubRule(hub.id, record)).map((record) => String(record.slug || ''))
   ].filter(Boolean));
   const games = getRegistryGamesBySlugs([...slugs]).sort((left, right) => left.title.localeCompare(right.title) || left.url.localeCompare(right.url));

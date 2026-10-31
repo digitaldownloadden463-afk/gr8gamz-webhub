@@ -1,10 +1,24 @@
 import { chromium, webkit } from '@playwright/test';
 import fs from 'node:fs';
+import { getPartnerHubSlugs } from '../lib/gameHubClassification.js';
+import { matchesHubRule } from '../lib/gameHubRules.ts';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
 const previewShareUrl = process.env.PLAYWRIGHT_SHARE_URL || '';
-const report = JSON.parse(fs.readFileSync('reports/phase-s1-catalogue-clusters.json', 'utf8'));
-const hubs = Object.entries(report.selectedHubCounts).map(([slug, count]) => ({ slug, count, pages: Math.ceil(count / 48) }));
+const definitions = JSON.parse(fs.readFileSync('src/data/gameHubs.json', 'utf8'));
+const originals = JSON.parse(fs.readFileSync('src/data/games.json', 'utf8')).map((game) => ({
+  title: game.name,
+  slug: game.slug || game.id,
+  category: game.category || game.genre,
+  sourceCategory: game.category || game.genre,
+  description: game.description || game.longDescription,
+  instructions: [...(game.controls || []), game.shortControls || ''].join(' '),
+  tags: game.tags || []
+}));
+const hubs = definitions.hubs.map((hub) => {
+  const count = getPartnerHubSlugs(hub.id).length + originals.filter((game) => matchesHubRule(hub.id, game)).length;
+  return { id: hub.id, slug: hub.slug, count, pages: Math.ceil(count / 48) };
+});
 const failures = [];
 
 function fail(message) { failures.push(message); }
@@ -41,10 +55,14 @@ async function runEngine(browserType, name) {
     await page.goto(previewShareUrl, { waitUntil: 'domcontentloaded', timeout: 180000 });
   }
   await inspectRoute(page, '/', '/', name);
-  if ((await page.locator('h1').textContent())?.trim() !== 'Free online games at GR8 GAMZ.') fail(`${name}: homepage H1 was not retargeted`);
+  if ((await page.locator('h1').textContent())?.trim() !== 'Free Online Games — Play Instantly in Your Browser') fail(`${name}: homepage H1 was unexpected`);
   for (const hub of hubs) {
     await inspectRoute(page, `/${hub.slug}`, `/${hub.slug}`, name);
     if (await page.locator('.game-card').count() !== Math.min(48, hub.count)) fail(`${name}: ${hub.slug} page-one card count is incorrect`);
+    const displayedCount = Number((await page.locator('.game-hub-summary dd').first().textContent())?.replace(/,/g, ''));
+    if (displayedCount !== hub.count) fail(`${name}: ${hub.slug} displayed ${displayedCount} games instead of ${hub.count}`);
+    const guideText = await page.locator('.game-hub-guide').innerText();
+    if (/source categor|metadata|catalogue evidence|matching rules|qualif(?:y|ies)/i.test(guideText)) fail(`${name}: ${hub.slug} exposes internal classification wording`);
     if (hub.pages > 1) {
       const middle = Math.max(2, Math.ceil(hub.pages / 2));
       await inspectRoute(page, `/${hub.slug}/page/${middle}`, `/${hub.slug}/page/${middle}`, name);

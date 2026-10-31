@@ -94,7 +94,7 @@ const browser = await chromium.launch();
   await expectNoAnalytics(page, requests, 'Reject All');
   await page.goto(`${baseUrl}/gaming-gear/products/flydigi-vader-5-pro-wireless-controller`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   if ((await dataLayerEvents(page, 'product_view')).length) failures.push('Reject All: product analytics fired without consent');
-  if (await page.locator('a[rel*="sponsored"]').count()) failures.push('Reject All: unconfigured preview unexpectedly exposed a merchant affiliate link');
+  if ((await dataLayerEvents(page, 'affiliate_click')).length) failures.push('Reject All: affiliate analytics fired without consent');
   await expectNoAnalytics(page, requests, 'Rejected affiliate navigation');
   await context.close();
 }
@@ -166,6 +166,21 @@ const browser = await chromium.launch();
   if (starts.length !== 1 || starts[0]?.game_slug !== 'neon-snake-rush' || starts[0]?.game_type !== 'original' || starts[0]?.provider !== 'gr8' || starts[0]?.locale !== 'en') {
     failures.push('Game start: expected one correctly labelled original-game event');
   }
+  await page.getByRole('button', { name: /save on this device/i }).click();
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'game_favourite'));
+  const favourites = await dataLayerEvents(page, 'game_favourite');
+  if (favourites.length !== 1 || favourites[0]?.game_slug !== 'neon-snake-rush') failures.push('Game favourite: expected one labelled save event');
+  const gameFrame = page.frames().find((candidate) => candidate !== page.mainFrame());
+  if (!gameFrame) throw new Error('Original game iframe was not available for completion tracking.');
+  await gameFrame.evaluate(() => window.parent.postMessage({ source: 'GR8_GAMZ', type: 'game_completed', game: 'neon-snake-rush', score: 123 }, window.location.origin));
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'game_play_complete'));
+  const completions = await dataLayerEvents(page, 'game_play_complete');
+  if (completions.length !== 1 || completions[0]?.game_slug !== 'neon-snake-rush') failures.push('Game completion: expected one labelled completion event per run');
+
+  await page.goto(`${baseUrl}/my-arcade`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'my_arcade_view'));
+  const arcadeViews = await dataLayerEvents(page, 'my_arcade_view');
+  if (arcadeViews.length !== 1 || arcadeViews[0]?.player_state !== 'returning' || arcadeViews[0]?.saved_games < 1) failures.push('My Arcade: expected one returning-player view with saved game count');
 
   await page.goto(`${baseUrl}/more-free-games/body-drop-3d/play`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });
@@ -177,6 +192,11 @@ const browser = await chromium.launch();
   if (partnerStarts.length !== 1 || partnerStarts[0]?.game_slug !== 'body-drop-3d' || partnerStarts[0]?.game_type !== 'select' || partnerStarts[0]?.locale !== 'en') {
     failures.push('Partner game start: expected one correctly labelled event after Load game');
   }
+
+  await page.goto(`${baseUrl}/gaming-gear`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
+  await page.waitForFunction(() => (window.dataLayer || []).some((entry) => entry?.[0] === 'event' && entry?.[1] === 'affiliate_catalogue_view'));
+  const catalogueViews = await dataLayerEvents(page, 'affiliate_catalogue_view');
+  if (catalogueViews.length !== 1 || catalogueViews[0]?.page_type !== 'hub' || catalogueViews[0]?.merchant !== 'gadgethyper') failures.push('GR8 GEAR hub: expected one catalogue-view funnel event');
 
   await page.goto(`${baseUrl}/gaming-gear/gaming-mice/best-gaming-mouse`, { waitUntil: 'domcontentloaded', timeout: 180_000 });
   await page.locator('#gr8-ga4-script').waitFor({ state: 'attached', timeout: 15000 });

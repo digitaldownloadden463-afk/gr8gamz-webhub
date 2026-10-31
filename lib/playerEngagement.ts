@@ -85,6 +85,8 @@ function emptyState(): PlayerEngagementState {
   };
 }
 
+const serverSnapshot = emptyState();
+
 function canUseBrowser() {
   return typeof window !== 'undefined';
 }
@@ -334,7 +336,7 @@ export function getPlayerEngagementSnapshot() {
 }
 
 export function getServerPlayerEngagementSnapshot() {
-  return emptyState();
+  return serverSnapshot;
 }
 
 export function subscribePlayerEngagement(listener: () => void) {

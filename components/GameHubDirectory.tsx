@@ -47,9 +47,9 @@ export default function GameHubDirectory({ data }: { data: GameHubPageData }) {
             <ul>{hub.playStyles.map((style) => <li key={style}>{style}</li>)}</ul>
           </div>
           <div>
-            <h2>How this collection is selected</h2>
-            <p>{hub.selectionNote}</p>
-            <p className="fine-print"><CalendarCheck size={17} aria-hidden="true" /> Matching rules and catalogue evidence reviewed <time dateTime={gameHubReviewedAt}>{reviewedDate()}</time>.</p>
+            <h2>Find the right game for you</h2>
+            <p>{hub.playerGuidance}</p>
+            <p className="fine-print"><CalendarCheck size={17} aria-hidden="true" /> Collection guide reviewed <time dateTime={gameHubReviewedAt}>{reviewedDate()}</time>.</p>
           </div>
           <div>
             <h2>Device and controls</h2>

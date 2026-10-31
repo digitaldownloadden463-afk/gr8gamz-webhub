@@ -17,11 +17,13 @@ const keyPath = path.join(process.cwd(), 'public', `${indexNowKey}.txt`);
 assert.equal(fs.readFileSync(keyPath, 'utf8').trim(), indexNowKey, 'IndexNow key endpoint file must contain the exact key.');
 assert.match(indexNowKey, /^[A-Za-z0-9-]{8,128}$/, 'IndexNow key must match the official format.');
 assert.equal(indexNowKeyLocation, `https://www.gr8gamz.com/${indexNowKey}.txt`);
-assert.equal(updates.paths.length, 19, 'The sprint manifest must contain only the 19 reviewed changed URLs.');
+assert.match(updates.updatedAt, /^\d{4}-\d{2}-\d{2}$/, 'The IndexNow manifest must have a dated review stamp.');
+assert(updates.paths.length > 0, 'The IndexNow manifest must contain at least one reviewed changed URL.');
+assert(updates.paths.length <= indexNowBatchSize, 'The IndexNow manifest must stay within the local batch cap.');
 assert.equal(uniqueIndexNowUrls(updates.paths).length, updates.paths.length, 'IndexNow manifest contains duplicate URLs.');
 
 const payload = buildIndexNowPayload(updates.paths);
-assert.equal(payload.urlList.length, 19);
+assert.equal(payload.urlList.length, updates.paths.length);
 assert.equal(payload.host, 'www.gr8gamz.com');
 assert(payload.urlList.every((url) => url.startsWith('https://www.gr8gamz.com/')));
 assert(indexNowBatchSize < 10000, 'Local rate protection must be stricter than the protocol maximum.');

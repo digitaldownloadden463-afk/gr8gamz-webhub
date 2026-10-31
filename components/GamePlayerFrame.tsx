@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import ChallengeShare from '@/components/ChallengeShare';
 import type { Gr8Game } from '@/lib/games';
 import { getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot, levelFromXp, recordGameStarted, recordOriginalResult, saveFavourite, subscribePlayerEngagement, type EngagementResult } from '@/lib/playerEngagement';
-import { tr, type EngagementText, type Locale } from '@/lib/i18n';
+import { pathForLocale, tr, type EngagementText, type Locale } from '@/lib/i18n';
 import { trackEvent } from '@/lib/analytics';
 
 type GamePlayerFrameProps = {
@@ -36,6 +36,7 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
   const [lastResult, setLastResult] = useState<(EngagementResult & { score: number }) | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const startListenerCleanupRef = useRef<(() => void) | null>(null);
+  const completionTrackedRunRef = useRef('');
   const progress = useSyncExternalStore(subscribePlayerEngagement, getPlayerEngagementSnapshot, getServerPlayerEngagementSnapshot);
   const copy = labels || tr(locale).engagement;
   const title = game.name || game.title || 'GR8 Game';
@@ -43,7 +44,8 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
   const gameProgress = progress.games[slug];
   const level = levelFromXp(progress.xp);
   const source = game.iframeUrl || game.embedUrl || '';
-  const playNextHref = useMemo(() => '/games', []);
+  const playNextHref = useMemo(() => pathForLocale(locale, '/games'), [locale]);
+  const myArcadeHref = useMemo(() => pathForLocale(locale, '/my-arcade'), [locale]);
 
   const connectStartTracking = useCallback(() => {
     startListenerCleanupRef.current?.();
@@ -72,11 +74,15 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
       const score = Number(data.best || data.score || 0);
       if (!Number.isInteger(score) || score <= 0 || score > 100000000) return;
       const result = recordOriginalResult(slug, score, runId);
+      if (completionTrackedRunRef.current !== runId) {
+        trackEvent('game_play_complete', { game_slug: slug, game_type: 'original', provider: 'gr8', locale });
+        completionTrackedRunRef.current = runId;
+      }
       setLastResult({ ...result, score });
     }
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [runId, slug]);
+  }, [locale, runId, slug]);
 
   useEffect(() => {
     try {
@@ -87,12 +93,14 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
 
   function saveGame() {
     saveFavourite(slug, 'original');
+    trackEvent('game_favourite', { game_slug: slug, game_type: 'original', provider: 'gr8', locale });
     setSaved(true);
   }
 
   function replay() {
     setLastResult(null);
     setRunId(makeRunId());
+    completionTrackedRunRef.current = '';
     setIframeKey((value) => value + 1);
   }
 
@@ -107,7 +115,8 @@ export function GamePlayerFrame({ game, locale = 'en', labels }: GamePlayerFrame
           <button type="button" className="secondary-button" onClick={saveGame}>
             {saved ? 'Saved' : 'Save on this device'}
           </button>
-          <Link href="/games" className="secondary-cta">More games</Link>
+          <Link href={playNextHref} className="secondary-cta">More games</Link>
+          <Link href={myArcadeHref} className="secondary-cta">My GR8 Arcade</Link>
         </div>
       </div>
       <iframe

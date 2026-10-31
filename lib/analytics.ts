@@ -12,7 +12,9 @@ export type AnalyticsEventName =
   | 'search'
   | 'language_change'
   | 'affiliate_guide_view'
+  | 'affiliate_catalogue_view'
   | 'product_view'
+  | 'my_arcade_view'
   | 'partner_profile_view'
   | 'affiliate_product_impression'
   | 'classroom_hub_view'
@@ -70,6 +72,8 @@ export type AnalyticsParameters = Partial<{
   parent_category: string;
   filter_id: string;
   page_number: number;
+  saved_games: number;
+  player_state: 'new' | 'returning';
   source_surface: string;
   challenge_sid: string;
   challenge_parent_sid: string;
@@ -114,6 +118,8 @@ const safeParameterKeys = new Set<keyof AnalyticsParameters>([
   'parent_category',
   'filter_id',
   'page_number',
+  'saved_games',
+  'player_state',
   'source_surface',
   'challenge_sid',
   'challenge_parent_sid',
@@ -128,7 +134,7 @@ function safeParameters(parameters: AnalyticsParameters) {
   const result: Record<string, string | number> = {};
   for (const [key, value] of Object.entries(parameters)) {
     if (!safeParameterKeys.has(key as keyof AnalyticsParameters)) continue;
-    if (key === 'timer_seconds' || key === 'page_number') {
+    if (key === 'timer_seconds' || key === 'page_number' || key === 'saved_games') {
       if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 359999)
         result[key] = value;
       continue;
@@ -163,6 +169,7 @@ function safeParameters(parameters: AnalyticsParameters) {
       continue;
     if (['creative_id', 'campaign'].includes(key) && !/^[a-z0-9-]+$/.test(normalized)) continue;
     if (key === 'timer_mode' && !['standard', 'calm'].includes(normalized)) continue;
+    if (key === 'player_state' && !['new', 'returning'].includes(normalized)) continue;
     if (key === 'classroom_section' && !/^[a-z0-9_-]+$/.test(normalized)) continue;
     if (
       ['hub_id', 'parent_category', 'filter_id', 'source_surface'].includes(key) &&
