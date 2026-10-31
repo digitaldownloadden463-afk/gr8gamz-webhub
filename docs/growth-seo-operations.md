@@ -97,5 +97,6 @@ The 92 MB source catalogue is an ingestion artifact, not a production runtime de
 
 - `src/data/partnerProfiles.generated.json`
 - `src/data/partnerIndexQuality.generated.json`
+- `src/data/partnerHubClassification.generated.json`
 
 Then run `pnpm run validate:partner-index-quality-cache`. The daily GameMonetize workflow performs and validates this sequence automatically. A stale cache must block release because it can make sitemap, canonical and indexability decisions disagree with the source catalogue.

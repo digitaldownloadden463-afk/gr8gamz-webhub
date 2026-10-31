@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { allPartnerGameProfiles, partnerCatalogueReport } from '../src/data/partnerGameProfiles.js';
 import { buildPartnerIndexQuality } from '../lib/partnerIndexQuality.js';
+import { matchesHubRule } from '../lib/gameHubRules.ts';
+import generatedPartnerCatalogue from '../src/data/partnerCatalog.generated.json' with { type: 'json' };
 
 const publicProfileKeys = [
   'title', 'provider', 'category', 'intent', 'rank', 'slug', 'image', 'artwork', 'path', 'playPath',
@@ -36,4 +38,28 @@ const qualityPayload = {
 };
 fs.writeFileSync(path.join(process.cwd(), 'src/data/partnerIndexQuality.generated.json'), `${JSON.stringify(qualityPayload)}\n`);
 
-console.log(`Generated compact runtime profiles and quality decisions for ${profiles.length} partner games.`);
+const hubIds = ['car', 'two-player', 'io', 'dress-up', 'shooting', 'word'];
+const eligibleSlugs = new Set(allPartnerGameProfiles.map((profile) => profile.slug));
+const hubCounts = Object.fromEntries(hubIds.map((id) => [id, 0]));
+const classificationRecords = {};
+for (const game of generatedPartnerCatalogue.games) {
+  if (!eligibleSlugs.has(game.slug)) continue;
+  let membershipMask = 0;
+  hubIds.forEach((id, index) => {
+    if (!matchesHubRule(id, game)) return;
+    membershipMask |= 1 << index;
+    hubCounts[id] += 1;
+  });
+  if (membershipMask) classificationRecords[game.slug] = [membershipMask, game.sourceCategory || '', game.tags || []];
+}
+const classificationPayload = {
+  schemaVersion: 1,
+  sourceCatalogueGeneratedAt: partnerCatalogueReport.generatedAt,
+  eligibleProfileCount: eligibleSlugs.size,
+  hubs: hubIds,
+  counts: hubCounts,
+  records: classificationRecords
+};
+fs.writeFileSync(path.join(process.cwd(), 'src/data/partnerHubClassification.generated.json'), `${JSON.stringify(classificationPayload)}\n`);
+
+console.log(`Generated compact runtime profiles, quality decisions and hub classification for ${profiles.length} partner games.`);

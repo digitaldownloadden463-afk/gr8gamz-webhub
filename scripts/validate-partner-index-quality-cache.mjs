@@ -2,12 +2,16 @@ import assert from 'node:assert/strict';
 import generatedPartnerCatalogue from '../src/data/partnerCatalog.generated.json' with { type: 'json' };
 import generatedQuality from '../src/data/partnerIndexQuality.generated.json' with { type: 'json' };
 import generatedProfiles from '../src/data/partnerProfiles.generated.json' with { type: 'json' };
+import generatedHubClassification from '../src/data/partnerHubClassification.generated.json' with { type: 'json' };
 
 assert.equal(generatedQuality.schemaVersion, 1, 'Partner index-quality cache schema is unsupported.');
 assert.equal(generatedQuality.sourceCatalogueGeneratedAt, generatedPartnerCatalogue.generatedAt, 'Partner index-quality cache is stale for the current catalogue.');
 assert.equal(generatedProfiles.schemaVersion, 1, 'Partner runtime-profile cache schema is unsupported.');
 assert.equal(generatedProfiles.sourceCatalogueGeneratedAt, generatedPartnerCatalogue.generatedAt, 'Partner runtime-profile cache is stale for the current catalogue.');
 assert.equal(generatedProfiles.profiles.length, generatedPartnerCatalogue.games.length, 'Partner runtime-profile cache count does not match the catalogue.');
+assert.equal(generatedHubClassification.schemaVersion, 1, 'Partner hub-classification cache schema is unsupported.');
+assert.equal(generatedHubClassification.sourceCatalogueGeneratedAt, generatedPartnerCatalogue.generatedAt, 'Partner hub-classification cache is stale for the current catalogue.');
+assert.equal(generatedHubClassification.eligibleProfileCount, generatedProfiles.profiles.length, 'Partner hub-classification eligible-profile count does not match the runtime profiles.');
 assert.equal(generatedQuality.profileCount, generatedPartnerCatalogue.games.length, 'Partner index-quality cache profile count does not match the catalogue.');
 assert.equal(Object.keys(generatedQuality.profiles).length, generatedPartnerCatalogue.games.length, 'Partner index-quality cache is missing profile decisions.');
 
