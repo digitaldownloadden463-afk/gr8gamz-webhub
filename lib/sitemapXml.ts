@@ -50,6 +50,7 @@ export function coreEntries() {
   const staticRoutes = ['/', '/about', '/contact', '/privacy', '/terms', '/policies', '/cookie-policy', '/partner-disclosure', '/affiliate-disclosure', '/accessibility', '/child-safety', '/copyright', '/report-a-game', '/editorial-policy'];
   return [
     ...staticRoutes.map((route) => urlEntry(route, undefined, route === '/' ? '1.0' : '0.7')),
+    urlEntry('/gr8-daily/gta-6-pc-free-browser-games', '2026-11-21', '0.85'),
     ...classroomRoutePaths().map((route) => urlEntry(route, classroomReviewedAt, route === '/classroom/timer' ? '0.85' : '0.8')),
     ...toolRoutePaths.map((route) => urlEntry(route, '2026-09-13', route === '/tools' ? '0.8' : '0.75'))
   ].join('');

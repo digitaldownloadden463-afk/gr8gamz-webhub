@@ -1,4 +1,16 @@
-export type HubRuleId = 'car' | 'two-player' | 'io' | 'dress-up' | 'shooting' | 'word';
+export type HubRuleId =
+  | 'car'
+  | 'two-player'
+  | 'io'
+  | 'dress-up'
+  | 'shooting'
+  | 'word'
+  | 'ragdoll'
+  | 'merge'
+  | 'asmr'
+  | 'parking'
+  | 'brainrot'
+  | 'obby';
 
 export type HubMatchRecord = {
   title?: string;
@@ -58,6 +70,30 @@ export function matchesHubRule(rule: HubRuleId, record: HubMatchRecord) {
     const actionCategory = ['action', 'arcade'].includes(normalize(record.category));
     const shootingEvidence = tags.has('shooting') || tags.has('shooter') || tags.has('sniper');
     return actionCategory && shootingEvidence && /\b(shoot|shooting|shooter|sniper|gunfire|target shooting)\b/.test(text);
+  }
+
+  if (rule === 'ragdoll') {
+    return source === 'ragdoll' || tags.has('ragdoll') || /\bragdoll\b/.test(title);
+  }
+
+  if (rule === 'merge') {
+    return source === 'merge' || tags.has('merge') || /\bmerge\b/.test(title);
+  }
+
+  if (rule === 'asmr') {
+    return source === 'asmr' || tags.has('asmr') || /\basmr\b/.test(title);
+  }
+
+  if (rule === 'parking') {
+    return source === 'parking' || tags.has('parking') || /\bparking\b/.test(title);
+  }
+
+  if (rule === 'brainrot') {
+    return source === 'brainrot' || tags.has('brainrot') || /\bbrain[ -]?rot\b/.test(title);
+  }
+
+  if (rule === 'obby') {
+    return source === 'obby' || tags.has('obby') || /\bobby\b/.test(title);
   }
 
   if (source === 'word') return true;

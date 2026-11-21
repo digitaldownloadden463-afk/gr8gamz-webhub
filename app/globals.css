@@ -3747,6 +3747,77 @@ main[dir="rtl"] .nav-links--compact a {
   .product-card__image img, .store-product-card__image img { transition: none !important; transform: none !important; }
 }
 
+.editorial-article {
+  display: grid;
+  gap: clamp(26px, 4vw, 46px);
+}
+.editorial-article__header { margin-bottom: 0; }
+.editorial-article__hero {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 8px);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.editorial-article__hero img { display: block; width: 100%; height: auto; }
+.editorial-article__hero figcaption {
+  padding: 12px 18px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+.editorial-article__body,
+.editorial-article__footer { max-width: 1000px; width: 100%; margin-inline: auto; }
+.editorial-article__body h2 { margin-top: 0; }
+.editorial-article__body h3 { margin: 30px 0 8px; font-size: 1.3rem; }
+.editorial-article__body a,
+.editorial-article__footer a { color: var(--brand); font-weight: 800; }
+.editorial-article__body a svg { vertical-align: -2px; }
+.editorial-note {
+  margin-top: 22px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--brand);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: rgba(53,255,141,.07);
+  color: var(--muted);
+  line-height: 1.6;
+}
+.editorial-game-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.editorial-game-list > article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.035);
+}
+.editorial-game-list > article > span {
+  color: var(--brand);
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+.editorial-game-list h3 { margin: 4px 0 8px; }
+.editorial-game-list p { margin: 0; }
+.editorial-game-list .eyebrow { font-size: .72rem; }
+.editorial-article__footer {
+  padding: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.65;
+}
+.editorial-article__footer p { margin: 0 0 10px; }
+
+@media (max-width: 760px) {
+  .editorial-game-list { grid-template-columns: 1fr; }
+  .editorial-article__body { padding: 22px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .top-nav,
   .home-play-menu,

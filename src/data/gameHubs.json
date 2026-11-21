@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-31",
+  "reviewedAt": "2026-11-21",
   "minimumInventory": 30,
   "hubs": [
     {
@@ -157,6 +157,174 @@
       "sessionGuidance": "Short word searches suit a quick break, while crosswords and larger letter puzzles reward unhurried problem solving.",
       "relatedHubIds": ["dress-up"],
       "relatedCategorySlugs": ["puzzle", "strategy", "arcade"]
+    },
+    {
+      "id": "ragdoll",
+      "slug": "ragdoll-games",
+      "label": "Ragdoll Games",
+      "primaryKeyword": "ragdoll games",
+      "aliases": ["ragdoll physics games", "ragdoll sandbox games", "free ragdoll games"],
+      "parentCategory": "action",
+      "title": "Free Ragdoll Games Online - Physics, Stunts & Fights",
+      "description": "Play free ragdoll games online across physics sandboxes, stunt challenges, fights and two-player chaos, with controls checked before play.",
+      "h1": "Free ragdoll games online",
+      "introduction": "Explore physics-led games where floppy characters tumble, collide, fight or launch through obstacle courses. Start with a quick stunt, try a two-player duel or open a sandbox-style challenge when you want more room to experiment.",
+      "selectionNote": "A game qualifies only when ragdoll is explicit in its current title, source category or catalogue tags. Generic physics and stickman games are not included automatically.",
+      "playerGuidance": "Choose stunt and launch games for short attempts, fighting games for direct action, or sandbox-style games when you want to experiment with movement and collisions. Check the profile for controls and tone before loading.",
+      "playStyles": ["Physics and collision challenges", "Ragdoll fighting", "Launch and stunt games", "Two-player ragdoll action"],
+      "deviceGuidance": "Simple tap and drag games can work well on mobile. Physics fighters and multi-key challenges are usually easier with a keyboard on a larger screen.",
+      "controlsGuidance": "Expect taps, drags, arrow keys or WASD depending on the game. Physics movement can be deliberately loose, so use the game profile to distinguish the control style from a technical problem.",
+      "sessionGuidance": "Launch and stunt attempts often take only a minute or two. Fighting and sandbox games can support longer repeat sessions.",
+      "relatedHubIds": ["two-player", "car", "obby"],
+      "relatedCategorySlugs": ["action", "arcade", "simulation"],
+      "editorialSections": [
+        {"heading": "Physics sandboxes and experiments", "body": "Sandbox-style ragdoll games give you space to test falls, collisions and objects rather than follow one fixed race. Check the individual profile because the available tools and level of action differ widely."},
+        {"heading": "Ragdoll fights and two-player games", "body": "Fighting games use unstable physics as part of the challenge. Two-player versions may split one keyboard, so confirm the key layout before inviting another player."},
+        {"heading": "Stunts, launches and crash challenges", "body": "These games reward timing, distance or surviving an obstacle course. They suit short repeat attempts when you want an immediate result and a score to improve."}
+      ]
+    },
+    {
+      "id": "merge",
+      "slug": "merge-games",
+      "label": "Merge Games",
+      "primaryKeyword": "merge games",
+      "aliases": ["merge puzzle games", "free merge games", "merge games online"],
+      "parentCategory": "puzzle",
+      "title": "Free Merge Games Online - Match, Combine & Upgrade",
+      "description": "Play free merge games online where matching items creates upgrades, new pieces and larger puzzle chains on mobile or desktop.",
+      "h1": "Free merge games online",
+      "introduction": "Combine matching objects to unlock the next item, clear space or grow a longer upgrade chain. Choose a compact merge puzzle for a quick round or a progress-based game when you want to build over a longer session.",
+      "selectionNote": "Merge must be explicit in the title, source category or catalogue tags. General matching and crafting games do not qualify unless merging is a named central mechanic.",
+      "playerGuidance": "Pick number and block merges for a clean puzzle, food and item merges for collection progress, or mobile merge games when you want tap-led controls. Watch the available board space before committing every match.",
+      "playStyles": ["Number and block merging", "Item and collection upgrades", "Merge-and-build puzzles", "Tap-led mobile merge games"],
+      "deviceGuidance": "Merge games commonly suit touch screens because pieces are selected or dragged. Dense boards and small objects are easier to compare on a tablet or desktop.",
+      "controlsGuidance": "Most games use taps, clicks or drag-and-drop placement. Check whether a game merges two identical items or requires a line of three before starting.",
+      "sessionGuidance": "Small merge boards work for short puzzle breaks. Progression and building formats are better when you have time to develop several upgrade chains.",
+      "relatedHubIds": ["word", "asmr", "parking"],
+      "relatedCategorySlugs": ["puzzle", "strategy", "simulation"],
+      "featuredCollections": [
+        {"path": "/games/merge-puzzle-games", "label": "Merge puzzle games", "description": "Merge collections selected specifically for puzzle play."},
+        {"path": "/games/mobile-merge-games", "label": "Mobile merge games", "description": "Merge profiles with current phone and tablet guidance."},
+        {"path": "/games/block-puzzle-games", "label": "Block puzzle games", "description": "Placement and block puzzles when you want a related mechanic."}
+      ],
+      "editorialSections": [
+        {"heading": "How merge games work", "body": "Most merge games ask you to combine identical pieces into one higher-level item. The useful decision is often whether to merge immediately or preserve space for a larger chain."},
+        {"heading": "Puzzle boards versus progression games", "body": "Puzzle-board games focus on efficient moves and clearing space. Progression formats add collections, buildings or unlocks and usually suit a longer session."},
+        {"heading": "Playing merge games on mobile", "body": "Tap and drag controls can feel natural on a phone, but crowded boards are easier to read on a larger display. Use the mobile collection above when device fit matters most."}
+      ]
+    },
+    {
+      "id": "asmr",
+      "slug": "asmr-games",
+      "label": "ASMR Games",
+      "primaryKeyword": "ASMR games",
+      "aliases": ["satisfying games", "relaxing ASMR games", "ASMR games online"],
+      "parentCategory": "simulation",
+      "title": "Free ASMR Games Online - Relaxing & Satisfying Play",
+      "description": "Play free ASMR games online across cleaning, cutting, makeover, food and satisfying simulation styles, with device and sound guidance.",
+      "h1": "Free ASMR and satisfying games online",
+      "introduction": "Browse games that explicitly use ASMR or satisfying sensory play in their current title or catalogue details. Try cleaning, cutting, food, makeover and tactile simulation themes, then check sound and controls on the individual profile.",
+      "selectionNote": "ASMR must be explicit in the title, source category or catalogue tags. General relaxing games are not included merely because their pace is calm.",
+      "playerGuidance": "Choose cleaning and makeover games for visible before-and-after progress, cutting and food games for repeated actions, or a short mobile simulation for tap-led play. Audio varies, so use headphones only at a comfortable volume.",
+      "playStyles": ["Cleaning and restoration", "Cutting and tactile simulations", "Food and makeover ASMR", "Satisfying tap games"],
+      "deviceGuidance": "Touch screens often suit tap, swipe and drag interactions. A larger display can make small tools and makeover steps easier to control.",
+      "controlsGuidance": "Most ASMR games use taps, clicks or slow drag gestures. Sound is optional; lower the device volume before loading if you do not know how loud a game begins.",
+      "sessionGuidance": "Many tasks fit a short calming break, while multi-stage cleaning and makeover games can take longer to complete.",
+      "relatedHubIds": ["merge", "dress-up", "word"],
+      "relatedCategorySlugs": ["simulation", "arcade", "puzzle"],
+      "featuredCollections": [
+        {"path": "/games/tap-makeover-games", "label": "Tap makeover games", "description": "Touch-led makeover profiles related to satisfying play."},
+        {"path": "/games/mobile-fashion-games", "label": "Mobile fashion games", "description": "Fashion and makeover games with mobile guidance."}
+      ],
+      "editorialSections": [
+        {"heading": "What makes an ASMR game different", "body": "ASMR-labelled games usually combine repeated actions, close visual feedback and optional sound. This collection requires explicit catalogue evidence instead of assuming that every slow game is ASMR."},
+        {"heading": "Cleaning, cutting and makeover play", "body": "Cleaning games show steady visual progress, cutting games repeat a tactile action, and makeover games build toward a finished result. Choose the activity rather than relying only on the ASMR label."},
+        {"heading": "Sound, comfort and device choice", "body": "Audio levels and effects differ by provider. Start quietly, pause if a sound is uncomfortable and use a larger screen when precise tools are difficult to control on a phone."}
+      ]
+    },
+    {
+      "id": "parking",
+      "slug": "parking-games",
+      "label": "Parking Games",
+      "primaryKeyword": "parking games",
+      "aliases": ["car parking games", "parking games online", "free parking games"],
+      "parentCategory": "racing",
+      "title": "Free Parking Games Online - Cars, Buses & Trucks",
+      "description": "Play free parking games online with cars, buses, trucks and precision driving challenges for mobile and desktop controls.",
+      "h1": "Free parking games online",
+      "introduction": "Practise careful steering, reversing and obstacle awareness across car, bus, truck and specialist parking challenges. Start with a simple bay or take on a longer route with tighter spaces and larger vehicles.",
+      "selectionNote": "Parking must be explicit in the current title, source category or catalogue tags. General driving games are excluded unless parking is a named mechanic.",
+      "playerGuidance": "Choose car parking for compact manoeuvres, bus and truck games for wider turns, or mobile parking when you want touch controls. Camera position and steering layout matter as much as vehicle choice.",
+      "playStyles": ["Car parking challenges", "Bus and truck parking", "Precision obstacle courses", "Mobile parking games"],
+      "deviceGuidance": "Keyboard steering is often more precise for tight spaces. Touch controls can work well when a game provides large buttons and a clear camera view.",
+      "controlsGuidance": "Expect arrow keys or WASD on desktop, with touch steering and pedal buttons on supported phones. Some games add camera controls or a handbrake.",
+      "sessionGuidance": "Single parking levels suit a quick attempt. Multi-level driving and delivery formats reward a longer session.",
+      "relatedHubIds": ["car", "merge", "obby"],
+      "relatedCategorySlugs": ["racing", "simulation", "arcade"],
+      "featuredCollections": [
+        {"path": "/games/mobile-parking-games", "label": "Mobile parking games", "description": "Parking profiles selected for phone and tablet guidance."},
+        {"path": "/games/parking-racing-games", "label": "Parking racing games", "description": "Parking challenges grouped with racing catalogue evidence."},
+        {"path": "/car-games", "label": "All car games", "description": "Move from precision parking into racing, drifting and stunts."}
+      ],
+      "editorialSections": [
+        {"heading": "Car, bus and truck parking", "body": "Cars fit tighter spaces and respond quickly. Buses and trucks need wider turns and more planning, which makes vehicle size a meaningful difficulty choice."},
+        {"heading": "Precision and camera control", "body": "Look for games with a clear camera angle and predictable steering. Reversing becomes easier when you can see the rear corners rather than relying on speed."},
+        {"heading": "Parking games on mobile", "body": "Large steering and pedal buttons are important on a phone. Use the mobile collection above rather than assuming every desktop driving game has suitable touch controls."}
+      ]
+    },
+    {
+      "id": "brainrot",
+      "slug": "brainrot-games",
+      "label": "Brainrot Games",
+      "primaryKeyword": "brainrot games",
+      "aliases": ["Italian brainrot games", "brainrot games online", "free brainrot games"],
+      "parentCategory": "arcade",
+      "title": "Brainrot Games Online - Obby, Merge & Meme Challenges",
+      "description": "Browse current brainrot games online across obby, merge, escape, clicker and arcade challenges, with direct browser play and device notes.",
+      "h1": "Brainrot games to play online",
+      "introduction": "Explore browser games that explicitly identify brainrot themes in their current catalogue details. The collection changes quickly, so use the activity labels to choose between obby, merge, escape, clicker and arcade-style play.",
+      "selectionNote": "Brainrot or brain-rot wording must be explicit in the title, source category or catalogue tags. Unrelated meme games are not added automatically.",
+      "playerGuidance": "Choose an obby for jumping and checkpoints, a merge game for collection progress, or an escape and clicker game for shorter repeat runs. Treat the theme as a label and choose by the actual mechanic.",
+      "playStyles": ["Brainrot obby challenges", "Merge and collection games", "Escape and survival play", "Clicker and arcade formats"],
+      "deviceGuidance": "Tap and clicker games can suit phones, while 3D obbies and multi-key movement are usually clearer with a keyboard and larger display.",
+      "controlsGuidance": "Controls vary sharply because brainrot is a theme, not one mechanic. Check the profile for taps, drag input, arrow keys or WASD before loading.",
+      "sessionGuidance": "Clicker and escape rounds can be brief. Obbies and progression games may take longer when they include checkpoints or upgrades.",
+      "relatedHubIds": ["obby", "merge", "io"],
+      "relatedCategorySlugs": ["arcade", "adventure", "action"],
+      "editorialSections": [
+        {"heading": "Choose the mechanic, not only the meme", "body": "Brainrot is a fast-changing theme shared by very different games. Use the activity description to decide whether you want platforming, merging, escaping or repeated clicking."},
+        {"heading": "Obbies, collection games and quick challenges", "body": "Obbies focus on movement and checkpoints, collection games reward upgrades, and quick challenges aim for an immediate score. The same characters or phrases do not mean the controls are alike."},
+        {"heading": "A current, independently curated collection", "body": "GR8 GAMZ is not affiliated with the creators of third-party meme characters or Roblox experiences. Games appear here because their current provider metadata explicitly supports the theme."}
+      ]
+    },
+    {
+      "id": "obby",
+      "slug": "obby-games",
+      "label": "Obby Games",
+      "primaryKeyword": "obby games",
+      "aliases": ["obby games online", "obstacle course games", "parkour obby games"],
+      "parentCategory": "adventure",
+      "title": "Free Obby Games Online - Parkour & Obstacle Courses",
+      "description": "Play free obby games online across parkour, obstacle courses, checkpoint runs and two-player challenges in your browser.",
+      "h1": "Free obby games online",
+      "introduction": "Run, jump and time your movement through obstacle courses with platforms, traps and checkpoints. Choose a short colour run, a 3D parkour route or a two-player challenge after checking the control layout.",
+      "selectionNote": "Obby must be explicit in the current title, source category or catalogue tags. Generic platform games do not qualify automatically.",
+      "playerGuidance": "Pick a checkpoint course when you want steady progress, a speed obby for repeat runs, or a two-player challenge when both control sets are clearly documented. Keyboard movement is normally the most precise.",
+      "playStyles": ["Checkpoint obstacle courses", "Parkour and tower runs", "Speed and colour obbies", "Two-player obby challenges"],
+      "deviceGuidance": "3D movement and camera control usually work best with a keyboard and mouse. Touch play depends on whether the individual game supplies a usable on-screen stick and jump button.",
+      "controlsGuidance": "Expect WASD or arrow keys plus a jump key on desktop. Some 3D games also use the mouse to control the camera.",
+      "sessionGuidance": "Short colour and trap courses suit quick attempts. Long towers and checkpoint routes can take more time, especially when a missed jump resets progress.",
+      "relatedHubIds": ["brainrot", "ragdoll", "two-player"],
+      "relatedCategorySlugs": ["adventure", "arcade", "action"],
+      "featuredCollections": [
+        {"path": "/games/keyboard-platform-games", "label": "Keyboard platform games", "description": "Platform games whose current controls explicitly support a keyboard."},
+        {"path": "/2-player-games", "label": "2 player games", "description": "Shared-device and head-to-head games with explicit two-player evidence."}
+      ],
+      "editorialSections": [
+        {"heading": "What an obby game is", "body": "An obby is an obstacle-course game built around movement, jumps, traps and checkpoints. This page requires the obby label explicitly rather than treating every platform game as the same thing."},
+        {"heading": "Checkpoint, tower and speed obbies", "body": "Checkpoint courses preserve progress, tower obbies emphasise height and careful movement, and speed formats reward repeat runs. Choose by how much restarting you enjoy."},
+        {"heading": "Keyboard, camera and mobile controls", "body": "Keyboard movement usually gives the cleanest jumps. For 3D games, camera control matters too; on mobile, confirm that the on-screen stick and jump button are visible before committing to a long course."}
+      ]
     }
   ]
 }

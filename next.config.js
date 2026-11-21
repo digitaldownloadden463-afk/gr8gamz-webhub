@@ -13,6 +13,7 @@ const nextConfig = {
     localPatterns: [
       { pathname: '/games/**' },
       { pathname: '/art/**' },
+      { pathname: '/editorial/**' },
       { pathname: '/og/**' }
     ],
     remotePatterns: [

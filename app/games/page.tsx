@@ -91,6 +91,41 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
           ) : null}
         </div>
       </section>
+      <section className="content-panel" aria-label="Trending game collections">
+        <span className="eyebrow">Trending ways to play</span>
+        <h2>Start with the mechanics players are looking for now.</h2>
+        <p>These hand-picked routes connect broad searches to a useful, playable collection instead of a thin results page.</p>
+        <div className="compact-link-list">
+          <Link href="/games/block-puzzle-games">
+            <strong>Block puzzle games</strong>
+            <span>Fit, clear and organise pieces across focused puzzle rounds</span>
+          </Link>
+          <Link href="/merge-games">
+            <strong>Merge games</strong>
+            <span>Combine matching items and build longer upgrade chains</span>
+          </Link>
+          <Link href="/ragdoll-games">
+            <strong>Ragdoll games</strong>
+            <span>Physics-led movement, collisions and unpredictable challenges</span>
+          </Link>
+          <Link href="/asmr-games">
+            <strong>ASMR games</strong>
+            <span>Calm, tactile tasks with simple tap and drag controls</span>
+          </Link>
+          <Link href="/parking-games">
+            <strong>Parking games</strong>
+            <span>Precision steering, obstacle courses and vehicle control</span>
+          </Link>
+          <Link href="/brainrot-games">
+            <strong>Brainrot games</strong>
+            <span>Fast, surreal challenges built around current online humour</span>
+          </Link>
+          <Link href="/obby-games">
+            <strong>Obby games</strong>
+            <span>Obstacle courses, platforming and checkpoint runs</span>
+          </Link>
+        </div>
+      </section>
       {!query ? <AdSensePlacement placement="discovery-upper-content" /> : null}
       {searchResults ? (
         <section className="game-browser" aria-labelledby="game-browser-title">
