@@ -39,6 +39,13 @@ export default function Gr8DailyPage() {
         <p>One original GR8 GAMZ game gets the spotlight each day, with more fast starts ready when you want another run.</p>
       </section>
 
+      <section className="content-panel">
+        <span className="eyebrow">Launch-week guide</span>
+        <h2>GTA 6 is out—but what can PC and browser players play now?</h2>
+        <p>Check the official platform position, avoid misleading PC-download claims and open twelve verified city-driving, chase and heist browser games.</p>
+        <Link href="/gr8-daily/gta-6-pc-free-browser-games" className="cta">Read the GTA 6 PC browser guide <ArrowRight size={18} aria-hidden="true" /></Link>
+      </section>
+
       {dailyGame ? (
         <section className="daily-feature" aria-label={`Today&apos;s pick: ${dailyGame.name}`}>
           <GameCard

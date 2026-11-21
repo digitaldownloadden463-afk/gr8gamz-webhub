@@ -38,7 +38,8 @@ const qualityPayload = {
 };
 fs.writeFileSync(path.join(process.cwd(), 'src/data/partnerIndexQuality.generated.json'), `${JSON.stringify(qualityPayload)}\n`);
 
-const hubIds = ['car', 'two-player', 'io', 'dress-up', 'shooting', 'word'];
+const hubDefinitions = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/gameHubs.json'), 'utf8'));
+const hubIds = hubDefinitions.hubs.map((hub) => hub.id);
 const eligibleSlugs = new Set(allPartnerGameProfiles.map((profile) => profile.slug));
 const hubCounts = Object.fromEntries(hubIds.map((id) => [id, 0]));
 const classificationRecords = {};
