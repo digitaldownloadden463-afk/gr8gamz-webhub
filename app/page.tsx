@@ -11,13 +11,14 @@ import { getRegistryCategories } from '@/lib/gameRegistry';
 import LenovoImpactTracking from '@/components/LenovoImpactTracking';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
+import { localizedAlternates } from '@/lib/i18n';
 
 const IMPACT_SITE_VERIFICATION = 'b10f2eab-7037-42af-8278-acbcf3da8f6a';
 
 export const metadata = {
   title: { absolute: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ' },
   description: 'Play thousands of free online games in your browser, including arcade, puzzle, action, racing, sports and multiplayer games on mobile, tablet and desktop.',
-  alternates: { canonical: canonical('/') },
+  alternates: { canonical: canonical('/'), languages: localizedAlternates('/') },
   openGraph: {
     title: 'Free Online Games - Thousands of Browser Games | GR8 GAMZ',
     description: 'Start free online games in your browser across arcade, puzzle, action, racing, sports and multiplayer collections.',

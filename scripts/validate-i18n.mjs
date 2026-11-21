@@ -8,6 +8,7 @@ const nonEnglish = locales.filter((locale) => locale !== 'en');
 const i18n = fs.readFileSync(path.join(root, 'lib/i18n.ts'), 'utf8');
 const globalLaunch = fs.readFileSync(path.join(root, 'lib/globalLaunch.ts'), 'utf8');
 const masterSitemap = fs.readFileSync(path.join(root, 'lib/masterSitemap.ts'), 'utf8');
+const homepage = fs.readFileSync(path.join(root, 'app/page.tsx'), 'utf8');
 const localizedRoutes = [
   'page.tsx',
   'games/page.tsx',
@@ -40,6 +41,7 @@ if (!i18n.includes("dir: 'rtl'")) failures.push('Arabic RTL direction is not reg
 if (!i18n.includes("ar: {")) failures.push('Arabic translations are missing.');
 if (!globalLaunch.includes('export const partnerTarget = 200')) failures.push('Global Launch partner target must stay at 200.');
 if (!masterSitemap.includes('localizedSitemapPaths')) failures.push('Master sitemap index does not include localized sitemap groups.');
+if (!homepage.includes("languages: localizedAlternates('/')")) failures.push('English homepage does not publish reciprocal hreflang alternates.');
 
 for (const required of ['nav', 'common', 'home', 'hubs', 'profile', 'legal', 'categories', 'categoryFit']) {
   if (!i18n.includes(`${required}: {`)) failures.push(`Translation namespace missing: ${required}`);

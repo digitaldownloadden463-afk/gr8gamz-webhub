@@ -30,6 +30,9 @@ for (const [path, source] of [['/classroom', hub], ['/classroom/timer', tool]]) 
 }
 
 expect(tool.includes("'@type': 'WebApplication'"), 'Timer does not expose accurate WebApplication data.');
+expect(hub.includes("'@type': 'CollectionPage'") && hub.includes("'@type': 'ItemList'"), 'Classroom hub does not expose its reviewed game collection as structured data.');
+expect(hub.includes('Free classroom games and a timer for short brain breaks'), 'Classroom hub H1 is not aligned to the primary search intent.');
+expect(hub.includes('five-minute classroom game') && hub.includes('brain break'), 'Classroom hub is missing the supported short-session search language.');
 expect(!hub.includes("'@type': 'FAQPage'") && !tool.includes("'@type': 'FAQPage'"), 'Ineligible FAQ rich-result markup was added.');
 expect(!hub.includes('AggregateRating') && !tool.includes('AggregateRating'), 'Fabricated rating markup was added.');
 expect(classroom.includes("slugs: ['duck-math'"), 'Math Duck is not represented by the existing Duck Math canonical.');
