@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const baseUrl = process.env.SITEMAP_BASE_URL || process.env.RENDERED_GRAPH_BASE_URL || 'http://127.0.0.1:3000';
 const origin = new URL(baseUrl).origin;
-const reportPath = path.join(root, 'reports/sitemap-truth-report.json');
+const reportPath = process.env.SITEMAP_REPORT_PATH || path.join(root, 'reports/sitemap-truth-report.json');
 const failures = [];
 const staleDates = ['2026-07-27', '2026-07-28'];
 

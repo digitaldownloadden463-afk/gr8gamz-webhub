@@ -14,7 +14,6 @@ export function localizedHubPaths(locale: NonEnglishLocale) {
     pathForLocale(locale, '/gr8-select'),
     pathForLocale(locale, '/gr8-originals'),
     pathForLocale(locale, '/new-games'),
-    pathForLocale(locale, '/my-arcade'),
     ...getRegistryCategories().filter((category) => categorySlugs.has(category.slug)).map((category) => pathForLocale(locale, `/categories/${category.slug}`))
   ];
 }

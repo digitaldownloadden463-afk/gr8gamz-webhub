@@ -5,7 +5,7 @@ import GamePlayerFrame from '@/components/GamePlayerFrame';
 import GameShare from '@/components/GameShare';
 import { getAllGames, getGameBySlug } from '@/lib/games';
 import { canonical } from '@/lib/features';
-import { tr } from '@/lib/i18n';
+import { localizedAlternates, tr } from '@/lib/i18n';
 import GearContextModule from '@/components/commerce/GearContextModule';
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: game.seoTitle || game.name,
     description: game.seoDescription || game.description || `Play ${game.name} on GR8 GAMZ.`,
-    alternates: { canonical: canonical(gamePath) },
+    alternates: { canonical: canonical(gamePath), languages: localizedAlternates(gamePath) },
     openGraph: {
       title: game.name,
       description: game.description,

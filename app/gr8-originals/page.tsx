@@ -2,11 +2,12 @@ import { Gamepad2 } from 'lucide-react';
 import GameCard from '@/components/GameCard';
 import { canonical, gameCountLabel } from '@/lib/features';
 import { getAllGames } from '@/lib/games';
+import { localizedAlternates } from '@/lib/i18n';
 
 export const metadata = {
   title: 'GR8 Originals',
   description: 'Play the full GR8 GAMZ original arcade collection on phone, tablet and desktop.',
-  alternates: { canonical: canonical('/gr8-originals') }
+  alternates: { canonical: canonical('/gr8-originals'), languages: localizedAlternates('/gr8-originals') }
 };
 
 export default function Gr8OriginalsPage() {

@@ -4,7 +4,7 @@ import { LocalizedCollectionPage } from '@/components/LocalizedPages';
 import { getGlobalLaunchGames } from '@/lib/globalLaunch';
 import { parseCategoryPageNumber } from '@/lib/categoryPages';
 import { getRegistryCategories, slugifyRegistryValue } from '@/lib/gameRegistry';
-import { categoryName, localizedAlternates, localizedCanonical, nonEnglishLocales, tr, type Locale } from '@/lib/i18n';
+import { categoryName, localizedCanonical, nonEnglishLocales, tr, type Locale } from '@/lib/i18n';
 
 type PageProps = { params: Promise<{ locale: Locale; slug: string; page: string }> };
 const pageSize = 48;
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${categoryName(locale, category.name)} ${text.common.page} ${number} / ${totalPages}`,
     description: `${text.hubs.gamesIntro} ${text.common.page} ${number} / ${totalPages}.`,
     robots: { index: false, follow: true },
-    alternates: { canonical: localizedCanonical(locale, `/categories/${slug}/page/${number}`), languages: localizedAlternates(`/categories/${slug}/page/${number}`) }
+    alternates: { canonical: localizedCanonical(locale, `/categories/${slug}/page/${number}`) }
   };
 }
 

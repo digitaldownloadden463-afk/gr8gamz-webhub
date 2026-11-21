@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { LocalizedCollectionPage } from '@/components/LocalizedPages';
-import { localizedAlternates, localizedCanonical, tr, type Locale } from '@/lib/i18n';
+import { localizedCanonical, tr, type Locale } from '@/lib/i18n';
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: text.nav.daily,
     description: text.hubs.launchIntro,
     robots: { index: false, follow: true },
-    alternates: { canonical: localizedCanonical(locale, '/gr8-daily'), languages: localizedAlternates('/gr8-daily') }
+    alternates: { canonical: localizedCanonical(locale, '/gr8-daily') }
   };
 }
 

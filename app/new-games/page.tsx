@@ -3,12 +3,13 @@ import PartnerGameCard from '@/components/PartnerGameCard';
 import type { PartnerGameProfile } from '@/components/PartnerGameCard';
 import { canonical } from '@/lib/features';
 import { getAllGames } from '@/lib/games';
+import { localizedAlternates } from '@/lib/i18n';
 import { getNewPartnerProfiles } from '@/src/data/partnerGameProfiles';
 
 export const metadata = {
   title: 'New Games',
   description: 'Fresh GR8 Originals and newly listed GR8 Select games ready to play in your browser.',
-  alternates: { canonical: canonical('/new-games') }
+  alternates: { canonical: canonical('/new-games'), languages: localizedAlternates('/new-games') }
 };
 
 export default function NewGamesPage() {

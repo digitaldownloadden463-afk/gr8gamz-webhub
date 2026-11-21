@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { getCategoryEditorial } from '@/lib/categoryEditorial';
 import { canonical } from '@/lib/features';
-import { getRegistryCategories, getRegistryGamesByCategory, type RegistryGame } from '@/lib/gameRegistry';
+import { getRegistryCategories, getRegistryGamesByCategory, slugifyRegistryValue, type RegistryGame } from '@/lib/gameRegistry';
 import { localizedAlternates } from '@/lib/i18n';
+import { getGlobalLaunchGames } from '@/lib/globalLaunch';
 
 export const categoryPageSize = 48;
 
@@ -60,7 +61,8 @@ export function categoryPageMetadata(data: CategoryPageData): Metadata {
     ? editorial?.description || `Browse ${category.count.toLocaleString('en-GB')} ${name.toLowerCase()} games from GR8 Originals and GR8 Select.`
     : `Browse ${name.toLowerCase()} games on page ${page} of ${totalPages}, with direct links to every game shown in this part of the GR8 GAMZ catalogue.`;
   const url = canonical(path);
-  const languages = page === 1 && editorial ? localizedAlternates(path) : undefined;
+  const hasLocalizedEquivalent = page === 1 && getGlobalLaunchGames().some((game) => slugifyRegistryValue(game.category) === category.slug);
+  const languages = hasLocalizedEquivalent ? localizedAlternates(path) : undefined;
 
   return {
     title,

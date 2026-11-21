@@ -2,11 +2,12 @@ import { Sparkles } from 'lucide-react';
 import PartnerCatalogueGrid from '@/components/PartnerCatalogueGrid';
 import { canonical } from '@/lib/features';
 import { partnerCatalogueReport } from '@/src/data/partnerGameProfiles';
+import { localizedAlternates } from '@/lib/i18n';
 
 export const metadata = {
   title: 'GR8 Select',
   description: 'Browse the GR8 Select catalogue of checked free browser games with real artwork and clear load choices.',
-  alternates: { canonical: canonical('/gr8-select') }
+  alternates: { canonical: canonical('/gr8-select'), languages: localizedAlternates('/gr8-select') }
 };
 
 export const dynamic = 'force-static';

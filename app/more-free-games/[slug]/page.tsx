@@ -12,6 +12,8 @@ import { getPartnerGameProfile, getPartnerIndexQuality, getRelatedPartnerGamePro
 import GearContextModule from '@/components/commerce/GearContextModule';
 import PartnerProfileAnalytics from '@/components/PartnerProfileAnalytics';
 import { gameHubPath, getGameHubsForGameSlug } from '@/lib/gameHubs';
+import { isGlobalLaunchGame } from '@/lib/globalLaunch';
+import { localizedAlternates } from '@/lib/i18n';
 import { getOrganicProfileEditorial } from '@/lib/organicRevenueSprint';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
 
@@ -30,12 +32,13 @@ export async function generateMetadata({ params }: PageProps) {
   const pageTitle = `Play ${displayTitle} Online Free`;
   const description = editorial?.summary || profile.description;
   const quality = getPartnerIndexQuality(profile.slug);
+  const languages = isGlobalLaunchGame(profile.slug, 'gr8-select') ? localizedAlternates(profile.path) : undefined;
   const ogImage = `/og/game/${profile.slug}`;
   return {
     title: pageTitle,
     description,
     robots: { index: quality.state === 'indexable', follow: true },
-    alternates: { canonical: canonical(`/more-free-games/${profile.slug}`) },
+    alternates: { canonical: canonical(`/more-free-games/${profile.slug}`), ...(languages ? { languages } : {}) },
     openGraph: {
       title: pageTitle,
       description,

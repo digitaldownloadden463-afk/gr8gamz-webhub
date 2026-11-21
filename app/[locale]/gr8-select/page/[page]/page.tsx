@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LocalizedCollectionPage } from '@/components/LocalizedPages';
 import { getGlobalLaunchGames } from '@/lib/globalLaunch';
-import { localizedAlternates, localizedCanonical, tr, type Locale, nonEnglishLocales } from '@/lib/i18n';
+import { localizedCanonical, tr, type Locale, nonEnglishLocales } from '@/lib/i18n';
 
 type PageProps = { params: Promise<{ locale: Locale; page: string }> };
 const pageSize = 48;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${text.hubs.selectTitle} ${text.common.page} ${number}`,
     description: text.hubs.selectIntro,
     robots: { index: false, follow: true },
-    alternates: { canonical: localizedCanonical(locale, `/gr8-select/page/${number}`), languages: localizedAlternates(`/gr8-select/page/${number}`) }
+    alternates: { canonical: localizedCanonical(locale, `/gr8-select/page/${number}`) }
   };
 }
 

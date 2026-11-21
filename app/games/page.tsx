@@ -4,6 +4,7 @@ import RegistryGameCard from '@/components/RegistryGameCard';
 import { canonical, gameCountLabel } from '@/lib/features';
 import { getPlayableRegistryGames, getRegistryCategories, getRegistryControlHubs, searchRegistryGames } from '@/lib/gameRegistry';
 import { gameHubPath, getActiveGameHubs, getGameHubGames } from '@/lib/gameHubs';
+import { localizedAlternates } from '@/lib/i18n';
 import { getActivePseoIntents } from '@/lib/pseoIntents';
 import { getOrganicProfileEditorials, organicRevenueSprintProfileSlugs } from '@/lib/organicRevenueSprint';
 import AdSensePlacement from '@/components/ads/AdSensePlacement';
@@ -11,7 +12,7 @@ import AdSensePlacement from '@/components/ads/AdSensePlacement';
 const gamesMetadata = {
   title: 'Free Online Games - Browse Browser Games',
   description: 'Browse free online games by category, controls or play style. Search thousands of browser games and start on mobile, tablet or desktop.',
-  alternates: { canonical: canonical('/games') }
+  alternates: { canonical: canonical('/games'), languages: localizedAlternates('/games') }
 };
 
 type GamesPageProps = {
