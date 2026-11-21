@@ -23,6 +23,8 @@ export type GameHubDefinition = {
   sessionGuidance: string;
   relatedHubIds: HubRuleId[];
   relatedCategorySlugs: string[];
+  featuredCollections?: Array<{ path: string; label: string; description: string }>;
+  editorialSections?: Array<{ heading: string; body: string }>;
 };
 
 type GameHubData = {

@@ -63,6 +63,34 @@ export default function GameHubDirectory({ data }: { data: GameHubPageData }) {
         </section>
       ) : null}
 
+      {page === 1 && hub.featuredCollections?.length ? (
+        <section className="content-panel" aria-labelledby={`${hub.id}-collections-title`}>
+          <span className="eyebrow">Narrow the collection</span>
+          <h2 id={`${hub.id}-collections-title`}>Browse by device and play style</h2>
+          <div className="compact-link-list">
+            {hub.featuredCollections.map((collection) => (
+              <Link key={collection.path} href={collection.path}>
+                <strong>{collection.label}</strong>
+                <span>{collection.description}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {page === 1 && hub.editorialSections?.length ? (
+        <section className="content-panel" aria-labelledby={`${hub.id}-editorial-title`}>
+          <span className="eyebrow">Collection guide</span>
+          <h2 id={`${hub.id}-editorial-title`}>How to choose from this collection</h2>
+          {hub.editorialSections.map((section) => (
+            <section key={section.heading}>
+              <h3>{section.heading}</h3>
+              <p>{section.body}</p>
+            </section>
+          ))}
+        </section>
+      ) : null}
+
       {supportsThreeAds ? <AdSensePlacement placement="discovery-upper-content" /> : null}
       <section className="game-grid" aria-label={`${hub.label}, page ${page}, first group`}>
         {firstGames.map((game, index) => <GameHubGameCard key={game.id} game={game} hubId={hub.id} priority={index < 8} />)}

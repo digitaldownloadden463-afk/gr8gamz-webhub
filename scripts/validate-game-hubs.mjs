@@ -110,6 +110,10 @@ if (!viewTrackerSource.includes('useConsentChoice') || !viewTrackerSource.includ
 const directorySource = fs.readFileSync(path.join(root, 'components/GameHubDirectory.tsx'), 'utf8');
 if (directorySource.includes('{hub.selectionNote}')) failures.push('Internal collection-selection methodology is still rendered to players');
 if (!directorySource.includes('{hub.playerGuidance}')) failures.push('Player-facing specialist-hub guidance is not rendered');
+const dressUpHub = definitions.hubs.find((hub) => hub.id === 'dress-up');
+if (!dressUpHub?.featuredCollections?.some((collection) => collection.path === '/games/mobile-dress-up-games')) failures.push('Dress-up hub is missing its evidence-backed mobile subcollection link');
+if (!dressUpHub?.editorialSections || dressUpHub.editorialSections.length < 4) failures.push('Dress-up hub lacks the reviewed style and device guide');
+if (!directorySource.includes('hub.featuredCollections') || !directorySource.includes('hub.editorialSections')) failures.push('Specialist-hub collection guidance is not rendered');
 
 if (failures.length) {
   console.error(failures.join('\n'));

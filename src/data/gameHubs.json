@@ -81,7 +81,42 @@
       "controlsGuidance": "Most games use taps, clicks or drag gestures. Any extra styling steps are explained by the loaded game.",
       "sessionGuidance": "A single outfit can be a quick activity; multi-character makeovers and themed challenges suit a longer creative session.",
       "relatedHubIds": ["word"],
-      "relatedCategorySlugs": ["arcade", "adventure", "puzzle"]
+      "relatedCategorySlugs": ["arcade", "adventure", "puzzle"],
+      "featuredCollections": [
+        {
+          "path": "/games/mobile-dress-up-games",
+          "label": "Mobile dress up games",
+          "description": "Dress-up profiles selected for phone and tablet play."
+        },
+        {
+          "path": "/games/mobile-fashion-games",
+          "label": "Mobile fashion games",
+          "description": "Fashion and outfit games with mobile device guidance."
+        },
+        {
+          "path": "/games/tap-makeover-games",
+          "label": "Tap makeover games",
+          "description": "Makeover games whose controls include taps or touch input."
+        }
+      ],
+      "editorialSections": [
+        {
+          "heading": "Outfit and wardrobe games",
+          "body": "These games start with a character and a wardrobe. Choose clothes, shoes and accessories, then adjust the combination for an occasion or theme. They suit players who want the styling itself to be the main activity."
+        },
+        {
+          "heading": "Makeover and character-creator games",
+          "body": "Makeover games focus on hair, makeup and the finished look, while character creators may also let you choose facial features or build an avatar. Check each profile before playing because the available choices and save options differ by game."
+        },
+        {
+          "heading": "Fashion challenges and themed styling",
+          "body": "Some games add a brief such as a party, wedding, school look or fantasy theme. Others compare two completed styles. Choose these when you want a clearer goal than open-ended wardrobe play."
+        },
+        {
+          "heading": "Playing on a phone, tablet or computer",
+          "body": "Tap-led wardrobe games can work well on a phone. Detailed character creators with small menus are usually easier on a tablet or computer. Use the mobile and tap collections above to narrow the catalogue before opening a game."
+        }
+      ]
     },
     {
       "id": "shooting",
