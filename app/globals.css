@@ -1008,6 +1008,25 @@ main summary {
   list-style: none;
 }
 
+.category-discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.category-discovery-grid > section {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .025);
+}
+
+.category-discovery-grid h4,
+.category-discovery-grid p { margin: 0; }
+
 .category-gear-link {
   display: grid;
   gap: 4px;
@@ -2117,6 +2136,7 @@ main summary {
   .consent-banner {
     grid-template-columns: 1fr;
   }
+  .category-discovery-grid { grid-template-columns: 1fr; }
   .section-heading { grid-template-columns: 1fr; }
   .partner-rail {
     display: grid;

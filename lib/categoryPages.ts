@@ -37,7 +37,16 @@ export function categoryDisplayName(slug: string, fallback: string) {
 export function getCategoryPageData(slug: string, page = 1): CategoryPageData | null {
   const category = getRegistryCategories(1).find((item) => item.slug === slug);
   if (!category || !Number.isInteger(page) || page < 1) return null;
-  const allGames = getRegistryGamesByCategory(slug);
+  const categoryGames = getRegistryGamesByCategory(slug);
+  // The Strategy landing page is a proven search opportunity. Keep its
+  // playable catalogue intact while placing indexable profiles before gated
+  // review/quarantine profiles so the first screen and first page lead to the
+  // strongest canonical destinations.
+  const allGames = slug === 'strategy'
+    ? categoryGames.map((game, position) => ({ game, position }))
+        .sort((left, right) => Number(right.game.indexable) - Number(left.game.indexable) || left.position - right.position)
+        .map(({ game }) => game)
+    : categoryGames;
   const totalPages = Math.max(1, Math.ceil(allGames.length / categoryPageSize));
   if (page > totalPages) return null;
   const start = (page - 1) * categoryPageSize;

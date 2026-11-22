@@ -80,6 +80,17 @@ for (const record of data.categories) {
     contextualLinks += 1;
   }
 
+  for (const section of record.discoverySections || []) {
+    assert(section.name && section.description, `${record.slug} has an incomplete discovery section.`);
+    assert(Array.isArray(section.gameSlugs) && section.gameSlugs.length >= 2, `${record.slug} discovery section ${section.name} needs at least two games.`);
+    for (const slug of section.gameSlugs) {
+      const game = allBySlug.get(slug);
+      assert(game, `${record.slug} discovery game ${slug} does not exist.`);
+      assert(game && slugify(game.category || game.genre) === record.slug, `${slug} is not in ${record.slug}.`);
+      contextualLinks += 1;
+    }
+  }
+
   for (const relatedSlug of record.relatedCategorySlugs) {
     assert(allCategorySlugs.has(relatedSlug), `${record.slug} links to unknown category ${relatedSlug}.`);
     assert(relatedSlug !== record.slug, `${record.slug} cannot relate to itself.`);
@@ -100,6 +111,8 @@ for (const label of ['gr8-original', 'editors-pick', 'quick-play', 'mobile-frien
 assert(categoryPageSource.includes('path: categoryPagePath(slug, page)'), 'Category pages must derive a stable page path centrally.');
 assert(categoryPageSource.includes("if (!/^[1-9]\\d*$/.test(value)) return null"), 'Category pagination must reject non-canonical numeric URL forms.');
 assert(categoryPageSource.includes("robots: { index: page === 1, follow: true }"), 'Category page one must remain indexable while deep pages are noindex,follow.');
+assert(categoryPageSource.includes("slug === 'strategy'"), 'Strategy games must receive the quality-first catalogue ordering.');
+assert(categoryPageSource.includes('Number(right.game.indexable) - Number(left.game.indexable)'), 'Strategy ordering must use the existing index-quality gate.');
 assert(categoryPageSource.includes('`${name} Games - Page ${page} of ${totalPages}`'), 'Paged titles must include the page number and total.');
 assert(categoryPageSource.includes("'@type': 'BreadcrumbList'"), 'Category pages must emit BreadcrumbList data.');
 assert(categoryPageSource.includes("'@type': 'ItemList'"), 'Category pages must emit an ItemList for visible games.');
