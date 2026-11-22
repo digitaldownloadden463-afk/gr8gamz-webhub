@@ -39,7 +39,12 @@ export default function HomePage() {
   const featured = getFeaturedGames(6);
   const partners = getFeaturedPartnerGameProfiles(8);
   const stats = getCatalogueStats();
-  const categories = getRegistryCategories(1).slice(0, 8);
+  const allCategories = getRegistryCategories(1);
+  const strategyCategory = allCategories.find((category) => category.slug === 'strategy');
+  const categories = [
+    ...allCategories.filter((category) => category.slug !== 'strategy').slice(0, 7),
+    ...(strategyCategory ? [strategyCategory] : [])
+  ];
   const gameHubs = getActiveGameHubs();
 
   return (
