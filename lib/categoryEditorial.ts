@@ -30,6 +30,11 @@ export type CategoryEditorialRecord = {
   controlsGuidance: string;
   sessionGuidance: string;
   editorialPicks: CategoryEditorialPick[];
+  discoverySections?: Array<{
+    name: string;
+    description: string;
+    gameSlugs: string[];
+  }>;
   originalSlugs: string[];
   relatedCategorySlugs: string[];
   gearGuide?: { path: string; label: string; description: string };
