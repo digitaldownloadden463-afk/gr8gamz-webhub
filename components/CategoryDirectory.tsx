@@ -47,6 +47,10 @@ function CategoryEditorialDetails({ editorial }: { editorial: CategoryEditorialR
   usedLabels.add('popular-on-gr8');
   const specialistHubs = getActiveGameHubs().filter((hub) => hub.parentCategory === editorial.slug);
   const gameGuides = getOrganicProfilesForCategory(editorial.slug);
+  const discoverySections = (editorial.discoverySections || []).map((section) => ({
+    ...section,
+    games: getRegistryGamesBySlugs(section.gameSlugs).filter((game) => game.indexable)
+  })).filter((section) => section.games.length);
 
   return (
     <section className="category-editorial" aria-labelledby={`${editorial.slug}-guide-title`}>
@@ -84,6 +88,24 @@ function CategoryEditorialDetails({ editorial }: { editorial: CategoryEditorialR
           </ul>
         </div>
       </section>
+
+      {discoverySections.length ? (
+        <section aria-labelledby={`${editorial.slug}-discovery-title`}>
+          <h3 id={`${editorial.slug}-discovery-title`}>Explore useful {editorial.name.toLowerCase()} routes</h3>
+          <p>These routes use only playable, indexable game profiles already in the reviewed catalogue.</p>
+          <div className="category-discovery-grid">
+            {discoverySections.map((section) => (
+              <section key={section.name} aria-labelledby={`${editorial.slug}-${section.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+                <h4 id={`${editorial.slug}-${section.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{section.name}</h4>
+                <p>{section.description}</p>
+                <ul className="category-link-list">
+                  {section.games.map((game) => <li key={game.id}><Link href={game.url}>{game.title}</Link></li>)}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {originals.length ? (
         <section aria-labelledby={`${editorial.slug}-originals-title`}>
