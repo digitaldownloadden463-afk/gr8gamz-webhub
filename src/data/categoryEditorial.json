@@ -308,6 +308,23 @@
         { "slug": "perimeter", "labels": ["editors-pick", "longer-session"], "rationale": "A broader tactical choice for players who want more systems and a desktop-oriented session." },
         { "slug": "tower-defense", "labels": ["editors-pick"], "rationale": "A direct route into placement and defence for players who want the category's core planning loop." }
       ],
+      "discoverySections": [
+        {
+          "name": "War strategy games",
+          "description": "Choose armies, positions or upgrades before the battle develops.",
+          "gameSlugs": ["ww1-battle-simulator", "army-commander-1", "tile-hex-world-red-vs-blue"]
+        },
+        {
+          "name": "Real-time strategy games",
+          "description": "Adapt a plan while units, resources or territory change in real time.",
+          "gameSlugs": ["perimeter", "tile-hex-world-red-vs-blue", "knight-wars"]
+        },
+        {
+          "name": "Tower defence games",
+          "description": "Place and upgrade defences to manage repeated waves and changing pressure.",
+          "gameSlugs": ["tower-defense", "king-rugni-tower-conquest", "base-defense"]
+        }
+      ],
       "originalSlugs": ["traffic-tap-chaos"],
       "relatedCategorySlugs": ["puzzle", "multiplayer", "action"],
       "gearGuide": {
