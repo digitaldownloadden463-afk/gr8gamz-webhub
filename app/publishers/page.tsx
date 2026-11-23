@@ -24,6 +24,10 @@ export default function PublishersPage() {
           <Link className="text-link" href="/publishers/games.json">
             Browse the machine-readable original-games catalogue (JSON)
           </Link>
+          {' · '}
+          <Link className="text-link" href="/publishers/feed.xml">
+            Subscribe to the original-games RSS feed
+          </Link>
         </p>
         <p>
           No account is needed to browse or link to game pages. This is a
